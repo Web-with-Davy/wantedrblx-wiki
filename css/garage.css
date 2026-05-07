@@ -1,0 +1,221 @@
+.garage-intro::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.3), transparent);
+    transition: height 1s ease-out;
+    pointer-events: none;
+}
+
+.garage-intro.open::after {
+    height: 70%;
+    opacity: 0;
+    transition: height 0.8s ease-out, opacity 1.2s ease-out;
+}
+
+.door-panel {
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.panel4::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    background: repeating-linear-gradient(45deg,
+            #f1c40f,
+            #f1c40f 15px,
+            #000 15px,
+            #000 30px);
+    border-top: 3px solid #000;
+}
+
+.biometric-terminal {
+    position: absolute;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background: #0a0a0a;
+    border: 1px solid #0f0;
+    border-radius: 4px;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.1), inset 0 0 20px rgba(0, 255, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-width: 200px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.garage-intro.open .biometric-terminal {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+}
+
+.hand-scanner {
+    width: 90px;
+    height: 130px;
+    background: #111;
+    border: 1px solid #444;
+    position: relative;
+    cursor: default;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hand-scanner.active {
+    border-color: #0f0;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.hand-scanner .fingerprint {
+    width: 60px;
+    height: auto;
+    filter: sepia(1) saturate(10) hue-rotate(90deg) opacity(0.3);
+    transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+}
+
+.hand-scanner.active .fingerprint {
+    filter: sepia(1) saturate(15) hue-rotate(90deg) opacity(1);
+    animation: pulse 1.5s infinite;
+}
+
+.hand-scanner .scan-line {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to bottom, transparent, #0f0, transparent);
+    box-shadow: 0 0 15px #0f0;
+    top: -10%;
+    left: 0;
+    animation: scan-vertical 2s linear infinite;
+}
+
+.terminal-header {
+    font-size: 8px;
+    color: #0f0;
+    margin-bottom: 8px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.status-dot {
+    height: 4px;
+    background: #300;
+    border-radius: 2px;
+}
+
+.hand-scanner.active~.status-grid .status-dot {
+    background: #030;
+    animation: status-blink 0.5s infinite alternate;
+}
+
+.click-prompt {
+    position: absolute;
+    bottom: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #444;
+    text-shadow: 0 0 10px #fff;
+    animation: slow-blink 3s infinite;
+}
+
+@keyframes scan-vertical {
+    0% {
+        top: -10%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes status-blink {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes slow-blink {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+}
+
+.never-show-container {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #333;
+}
+
+.never-show-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 9px;
+    color: #888;
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.never-show-label:hover {
+    color: #0f0;
+}
+
+.never-show-checkbox {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    accent-color: #0f0;
+}
+
+.checkbox-text {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

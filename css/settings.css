@@ -1,0 +1,237 @@
+.settings-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #000;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s ease;
+    border-radius: 0;
+}
+
+.settings-toggle:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: rotate(90deg);
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.settings-panel.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.settings-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.settings-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: #000;
+    border: 1px solid #fff;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    transition: transform 0.2s ease;
+}
+
+.settings-panel.active .settings-content {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.settings-header {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-header h2 {
+    margin: 0;
+    font-family: monospace;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+.settings-close {
+    background: transparent;
+    border: 1px solid #444;
+    color: #fff;
+    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+    line-height: 1;
+    padding: 0;
+}
+
+.settings-close:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+    transform: rotate(90deg);
+}
+
+.settings-body {
+    padding: 20px;
+}
+
+.setting-item {
+    margin-bottom: 25px;
+}
+
+.setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.setting-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.setting-icon {
+    font-size: 18px;
+    filter: grayscale(100%) brightness(1000%);
+    color: #fff;
+}
+
+.setting-slider {
+    width: 100%;
+    height: 6px;
+    background: #222;
+    border: 1px solid #444;
+    outline: none;
+    cursor: pointer;
+    accent-color: #fff;
+}
+
+.setting-select {
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #444;
+    color: #fff;
+    font-family: monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.setting-select:focus,
+.setting-select:hover {
+    border-color: #fff;
+    background: #111;
+}
+
+.setting-select option {
+    background: #000;
+    color: #fff;
+}
+
+.setting-item-toggle {
+    display: block;
+}
+
+.setting-item-toggle .setting-label {
+    margin-bottom: 0;
+}
+
+.setting-toggle-btn {
+    width: 100%;
+    position: static;
+    margin: 0;
+    padding: 12px;
+    background: #000;
+    border: 1px solid #444;
+    color: #fff;
+    font-family: monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.setting-toggle-btn:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
+
+.setting-toggle-btn.active {
+    background: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.toggle-text {
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.toggle-icon {
+    filter: grayscale(100%) brightness(1000%);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .settings-toggle {
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 18px;
+    }
+
+    .settings-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .settings-header h2 {
+        font-size: 16px;
+    }
+}
