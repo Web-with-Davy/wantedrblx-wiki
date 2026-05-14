@@ -1,0 +1,2972 @@
+const SIR_B_MISSIONS_I18N = [
+
+  {
+    fr: {
+      title: "Contrebande - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le Syndicat a besoin de fournitures, et les autorités locales nous bloquent. Nous avons besoin de quelqu'un pour faire passer des marchandises par le port : vous. Allez voir Rod au port, il aura ce qu'il vous faut.",
+      howToComplete: "Trouvez Rod au Port.",
+    },
+    de: {
+      title: "Schmuggelware - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das Syndikat braucht Vorräte, und die örtlichen Behörden sperren uns aus. Wir brauchen jemanden, der Waren durch den Hafen schmuggelt: dich. Geh zu Rod am Hafen, er wird haben, was du brauchst.",
+      howToComplete: "Finde Rod am Hafen.",
+    },
+    es: {
+      title: "Contrabando - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El Sindicato necesita suministros y las autoridades locales nos están bloqueando. Necesitamos a alguien que pase mercancías por el puerto: tú. Ve a ver a Rod al puerto, él tendrá lo que necesitas.",
+      howToComplete: "Encuentra a Rod en el Puerto.",
+    },
+    pt: {
+      title: "Contrabando - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O Sindicato precisa de suprimentos e as autoridades locais estão nos bloqueando. Precisamos de alguém para passar mercadorias pelo porto: você. Vá ver Rod no porto, ele terá o que você precisa.",
+      howToComplete: "Encontre Rod no Porto.",
+    },
+    ru: {
+      title: "Контрабанда — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Синдикату нужны припасы, а местные власти блокируют нас. Нам нужен кто-то, кто протащит товары через порт: ты. Сходи к Роду в порт, у него будет то, что тебе нужно.",
+      howToComplete: "Найдите Рода в порту.",
+    },
+    ar: {
+      title: "التهريب - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "المنظمة (Syndicate) بحاجة إلى إمدادات، والسلطات المحلية تمنعنا. نحن بحاجة إلى شخص لتمرير البضائع عبر الميناء: أنت. اذهب لمقابلة رود في الميناء، سيكون لديه ما تحتاجه.",
+      howToComplete: "ابحث عن رود في الميناء.",
+    },
+    tr: {
+      title: "Kaçak Mal - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika'nın erzağa ihtiyacı var ve yerel yetkililer bizi engelliyor. Limandan mal geçirecek birine ihtiyacımız var: sana. Limandaki Rod'un yanına git, ihtiyacın olan şey onda olacak.",
+      howToComplete: "Limanda Rod'u bul.",
+    },
+    zh: {
+      title: "走私物品 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "辛迪加需要物资，而当地当局正在封锁我们。我们需要有人通过港口运送货物：就是你。去港口找 Rod，他会有你需要的东西。",
+      howToComplete: "在港口找到 Rod。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebande - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Bon travail au port. Maintenant, nous devons transporter ces marchandises vers nos planques. C'est un travail risqué, alors restez discret. Livrez les marchandises à la planque dans les Badlands.",
+      howToComplete: "Livrez 3 caisses à la planque des Badlands.",
+    },
+    de: {
+      title: "Schmuggelware - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Gute Arbeit am Hafen. Jetzt müssen wir diese Waren zu unseren Verstecken transportieren. Das ist ein riskanter Job, also bleib unauffällig. Liefere die Waren zum Versteck in den Badlands.",
+      howToComplete: "Liefere 3 Kisten zum Badlands-Versteck.",
+    },
+    es: {
+      title: "Contrabando - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Buen trabajo en el puerto. Ahora tenemos que transportar estos bienes a nuestros refugios. Es un trabajo arriesgado, así que mantente alerta. Entrega los bienes en el refugio de Badlands.",
+      howToComplete: "Entrega 3 cajas en el refugio de Badlands.",
+    },
+    pt: {
+      title: "Contrabando - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Bom trabalho no porto. Agora precisamos transportar essas mercadorias para nossos esconderijos. É um trabalho arriscado, então mantenha-si discreto. Entregue as mercadorias no esconderijo em Badlands.",
+      howToComplete: "Entregue 3 caixas no esconderijo de Badlands.",
+    },
+    ru: {
+      title: "Контрабанда — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Хорошая работа в порту. Теперь нам нужно перевезти эти товары в наши убежища. Это рискованная работа, так что не высовывайся. Доставь товары в убежище в Бэдлендс.",
+      howToComplete: "Доставьте 3 ящика в убежище в Бэдлендс.",
+    },
+    ar: {
+      title: "التهريب - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "عمل جيد في الميناء. الآن نحتاج لنقل هذه البضائع إلى مخابئنا. إنها مهمة محفوفة بالمخاطر، لذا ابقَ بعيدًا عن الأنظار. قم بتسليم البضائع إلى المخبأ في الأراضي القاحلة (Badlands).",
+      howToComplete: "قم بتسليم 3 صناديق إلى مخبأ الأراضي القاحلة.",
+    },
+    tr: {
+      title: "Kaçak Mal - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Limanda iyi iş çıkardın. Şimdi bu malları güvenli evlerimize taşımamız gerekiyor. Riskli bir iş, bu yüzden dikkat çekme. Malları Çorak Topraklar'daki (Badlands) güvenli eve teslim et.",
+      howToComplete: "Çorak Topraklar'daki güvenli eve 3 kasa teslim et.",
+    },
+    zh: {
+      title: "走私物品 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "在港口做得好。现在我们需要将这些货物运送到我们的安全屋。这是一项冒险的工作，所以请保持低调。将货物送到荒地的安全屋。",
+      howToComplete: "将 3 箱货物送到荒地安全屋。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebande - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous avons une livraison spéciale pour un client VIP. C'est une cargaison de grande valeur, alors ne la perdez pas de vue. Livrez la cargaison au manoir sur la colline.",
+      howToComplete: "Livrez la cargaison spéciale au manoir.",
+    },
+    de: {
+      title: "Schmuggelware - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir haben eine Sonderlieferung für einen VIP-Kunden. Es ist eine hochwertige Fracht, also lass sie nicht aus den Augen. Liefere die Fracht zum Herrenhaus auf dem Hügel.",
+      howToComplete: "Liefere die Sonderfracht zum Herrenhaus.",
+    },
+    es: {
+      title: "Contrabando - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tenemos una entrega especial para un cliente VIP. Es un cargamento de gran valor, así que no lo pierdas de vista. Entrega el cargamento en la mansión de la colina.",
+      howToComplete: "Entrega el cargamento especial en la mansión.",
+    },
+    pt: {
+      title: "Contrabando - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Temos uma entrega especial para um cliente VIP. É uma carga de alto valor, então não a perca de vista. Entregue a carga na mansão na colina.",
+      howToComplete: "Entregue a carga especial na mansão.",
+    },
+    ru: {
+      title: "Контрабанда — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У нас есть специальная доставка для VIP-клиента. Это ценный груз, так что не выпускай его из виду. Доставь груз в особняк на холме.",
+      howToComplete: "Доставьте спецгруз в особняк.",
+    },
+    ar: {
+      title: "التهريب - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدينا تسليم خاص لعميل مهم (VIP). إنها شحنة عالية القيمة، لذا لا تغب عنها عيناك. قم بتسليم الشحنة إلى القصر الموجود على التلة.",
+      howToComplete: "قم بتسليم الشحنة الخاصة إلى القصر.",
+    },
+    tr: {
+      title: "Kaçak Mal - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bir VIP müşterimiz için özel bir teslimatımız var. Yüksek değerli bir kargo, bu yüzden gözünü üzerinden ayırma. Kargoyu tepedeki malikaneye teslim et.",
+      howToComplete: "Özel kargoyu malikaneye teslim et.",
+    },
+    zh: {
+      title: "走私物品 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们有一份送给 VIP 客户的特别快递。这是一批高价值货物，所以千万别让它离开你的视线。将货物送到山上的豪宅。",
+      howToComplete: "将特别货物送到豪宅。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Escouade du Crime - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Bienvenue dans le Syndicat. Ici, nous ne nous contentons pas de commettre des crimes : nous menons une révolution. Pour commencer, nous devons semer un peu de chaos. Allez en ville et montrez aux autorités locaux que nous ne plaisantons pas.",
+      howToComplete: "Éliminez 5 policiers.",
+    },
+    de: {
+      title: "Verbrecherkommando - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Willkommen beim Syndikat. Hier begehen wir nicht nur Verbrechen – wir führen eine Revolution an. Für den Anfang müssen wir ein wenig Chaos stiften. Geh in die Stadt und zeig den örtlichen Behörden, dass wir es ernst meinen.",
+      howToComplete: "Eliminiere 5 Polizisten.",
+    },
+    es: {
+      title: "Escuadrón del Crimen - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Bienvenido al Sindicato. Aquí no solo cometemos delitos, lideramos una revolución. Para empezar, tenemos que sembrar un poco de caos. Ve a la ciudad y demuestra a las autoridades locales que no estamos bromeando.",
+      howToComplete: "Elimina a 5 policías.",
+    },
+    pt: {
+      title: "Esquadrão do Crime - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Bem-vindo ao Sindicato. Aqui, não apenas cometemos crimes – lideramos uma revolução. Para começar, precisamos causar um pouco de caos. Vá para a cidade e mostre às autoridades locais que não estamos brincando.",
+      howToComplete: "Elimine 5 policiais.",
+    },
+    ru: {
+      title: "Криминальный отряд — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Добро пожаловать в Синдикат. Здесь мы не просто совершаем преступления — мы возглавляем революцию. Для начала нам нужно посеять немного хаоса. Отправляйся в город и покажи местным властям, что мы не шутим.",
+      howToComplete: "Ликвидируйте 5 полицейских.",
+    },
+    ar: {
+      title: "فرقة الجريمة - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "مرحبًا بك في المنظمة (Syndicate). هنا، نحن لا نرتكب الجرائم فحسب - بل نقود ثورة. كبداية، نحن بحاجة لإثارة بعض الفوضى. اذهب إلى المدينة وأظهر للسلطات المحلية أننا لا نمزح.",
+      howToComplete: "قم بتصفية 5 من رجال الشرطة.",
+    },
+    tr: {
+      title: "Suç Kadrosu - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika'ya hoş geldin. Burada sadece suç işlemiyoruz; bir devrime öncülük ediyoruz. Başlangıç olarak biraz kaos yaratmamız gerekiyor. Şehre git ve yerel yetkililere şakamız olmadığını göster.",
+      howToComplete: "5 polisi etkisiz hale getir.",
+    },
+    zh: {
+      title: "犯罪小队 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "欢迎来到辛迪加。在这里，我们不仅仅是在犯罪——我们正在领导一场革命。首先，我们需要制造一些混乱。进城去，让当地当局看看我们不是在开玩笑。",
+      howToComplete: "消灭 5 名警察。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Escouade du Crime - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Il est temps de monter d'un cran. Le Syndicat a besoin de fonds pour ses opérations, et les entreprises locales sont des cibles faciles. Braquez quelques magasins et rapportez-nous l'argent.",
+      howToComplete: "Braquez 5 magasins.",
+    },
+    de: {
+      title: "Verbrecherkommando - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Zeit, einen Zahn zuzulegen. Das Syndikat braucht Gelder für seine Operationen, und die örtlichen Geschäfte sind leichte Ziele. Überfalle ein paar Läden und bring uns das Geld.",
+      howToComplete: "Überfalle 5 Läden.",
+    },
+    es: {
+      title: "Escuadrón del Crimen - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Es hora de subir de nivel. El Sindicato necesita fondos para sus operaciones y los negocios locales son objetivos fáciles. Atraca algunas tiendas y tráenos el dinero.",
+      howToComplete: "Atraca 5 tiendas.",
+    },
+    pt: {
+      title: "Esquadrão do Crime - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "É hora de aumentar o nível. O Sindicato precisa de fundos para suas operações, e os negócios locais são alvos fáceis. Assalte algumas lojas e traga o dinheiro para nós.",
+      howToComplete: "Assalte 5 lojas.",
+    },
+    ru: {
+      title: "Криминальный отряд — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Пора поднять ставки. Синдикату нужны средства для операций, а местные предприятия — легкая добыча. Ограбь несколько магазинов и принеси нам деньги.",
+      howToComplete: "Ограбьте 5 магазинов.",
+    },
+    ar: {
+      title: "فرقة الجريمة - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "حان الوقت لرفع المستوى. المنظمة بحاجة إلى أموال لعملياتها، والشركات المحلية أهداف سهلة. قم بسطو على بعض المتاجر وأحضر لنا المال.",
+      howToComplete: "قم بالسطو على 5 متاجر.",
+    },
+    tr: {
+      title: "Suç Kadrosu - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Vitesi yükseltme vakti. Sendika'nın operasyonları için fona ihtiyacı var ve yerel işletmeler kolay hedefler. Birkaç dükkan soy ve parayı bize getir.",
+      howToComplete: "5 dükkan soy.",
+    },
+    zh: {
+      title: "犯罪小队 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "是时候更进一步了。辛迪加的行动需要资金，而当地企业是容易下手的目标。抢劫几家商店并将钱带给我们。",
+      howToComplete: "抢劫 5 家商店。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Escouade du Crime - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous recevons des rapports faisant état d'un nouveau gang qui tente de s'installer sur notre territoire. Nous ne pouvons pas laisser passer ça. Trouvez leur chef et éliminez-le.",
+      howToComplete: "Éliminez le chef du gang rival.",
+    },
+    de: {
+      title: "Verbrecherkommando - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir erhalten Berichte über eine neue Bande, die versucht, in unser Territorium einzudringen. Das können wir nicht zulassen. Finde ihren Anführer und schalte ihn aus.",
+      howToComplete: "Eliminiere den Anführer der rivalisierenden Bande.",
+    },
+    es: {
+      title: "Escuadrón del Crimen - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Nos llegan informes de una nueva banda que intenta invadir nuestro territorio. No podemos permitirlo. Encuentra a su líder y elimínalo.",
+      howToComplete: "Elimina al líder de la banda rival.",
+    },
+    pt: {
+      title: "Esquadrão do Crime - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Estamos recebendo relatórios de uma nova gangue tentando invadir nosso território. Não podemos deixar isso acontecer. Encontre o líder deles e elimine-o.",
+      howToComplete: "Elimine o líder da gangue rival.",
+    },
+    ru: {
+      title: "Криминальный отряд — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Мы получаем сообщения о новой банде, пытающейся проникнуть на нашу территорию. Мы не можем этого допустить. Найди их главаря и ликвидируй его.",
+      howToComplete: "Ликвидируйте главаря соперничающей банды.",
+    },
+    ar: {
+      title: "فرقة الجريمة - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "تصلنا تقارير عن عصابة جديدة تحاول التعدي على أراضينا. لا يمكننا السماح بذلك. ابحث عن زعيمهم وقم بتصفيته.",
+      howToComplete: "قم بتصفية زعيم العصابة المنافسة.",
+    },
+    tr: {
+      title: "Suç Kadrosu - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bölgemize sızmaya çalışan yeni bir çete hakkında raporlar alıyoruz. Buna izin veremeyiz. Liderlerini bul ve etkisiz hale getir.",
+      howToComplete: "Rakip çetenin liderini etkisiz hale getir.",
+    },
+    zh: {
+      title: "犯罪小队 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们收到报告称有一个新帮派试图侵占我们的领地。我们不能让这种事发生。找到他们的头目并消灭他。",
+      howToComplete: "消灭敌对帮派的头目。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Escouade du Crime - Partie 4",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "La police commence à se rapprocher de nos opérations. Nous devons les ralentir. Détruisez quelques-unes de leurs voitures de patrouille pour leur faire passer un message.",
+      howToComplete: "Détruisez 5 voitures de police.",
+    },
+    de: {
+      title: "Verbrecherkommando - Teil 4",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Die Polizei rückt unseren Operationen immer näher. Wir müssen sie ausbremsen. Zerstöre ein paar ihrer Streifenwagen, um eine Nachricht zu senden.",
+      howToComplete: "Zerstöre 5 Polizeiautos.",
+    },
+    es: {
+      title: "Escuadrón del Crimen - Parte 4",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "La policía está empezando a acercarse a nuestras operaciones. Tenemos que frenarlos. Destruye algunos de sus coches patrulla para enviarles un mensaje.",
+      howToComplete: "Destruye 5 coches de policía.",
+    },
+    pt: {
+      title: "Esquadrão do Crime - Parte 4",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "A polícia está começando a si aproximar de nossas operações. Precisamos detê-los. Destrua alguns de seus carros de patrulha para enviar uma mensagem.",
+      howToComplete: "Destrua 5 carros de polícia.",
+    },
+    ru: {
+      title: "Криминальный отряд — Часть 4",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Полиция начинает подбираться к нашим операциям. Нам нужно их замедлить. Уничтожь несколько их патрульных машин в качестве предупреждения.",
+      howToComplete: "Уничтожьте 5 полицейских машин.",
+    },
+    ar: {
+      title: "فرقة الجريمة - الجزء 4",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بدأت الشرطة في الاقتراب من عملياتنا. نحن بحاجة لإبطائهم. قم بتدمير بعض سيارات الدوريات الخاصة بهم لإرسال رسالة.",
+      howToComplete: "قم بتدمير 5 سيارات شرطة.",
+    },
+    tr: {
+      title: "Suç Kadrosu - Bölüm 4",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Polis operasyonlarımıza yaklaşmaya başladı. Onları yavaşlatmamız gerekiyor. Bir mesaj göndermek için birkaç devriye arabasını havaya uçur.",
+      howToComplete: "5 polis arabasını yok et.",
+    },
+    zh: {
+      title: "犯罪小队 - 第 4 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "警察开始接近我们的行动了。我们需要拖慢他们的速度。摧毁几辆巡逻车给他们传个话。",
+      howToComplete: "摧毁 5 辆警车。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Escouade du Crime - Partie 5",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "C'est la mission finale. Nous allons lancer un assaut complet sur le commissariat de police. C'est tout ou rien. Soyez prêt pour tout.",
+      howToComplete: "Infiltrez le commissariat de police.",
+    },
+    de: {
+      title: "Verbrecherkommando - Teil 5",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das ist die finale Mission. Wir starten einen Großangriff auf das Polizeirevier. Alles oder nichts. Sei auf alles vorbereitet.",
+      howToComplete: "Infiltriere das Polizeirevier.",
+    },
+    es: {
+      title: "Escuadrón del Crimen - Parte 5",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Esta es la misión final. Vamos a lanzar un asalto total a la estación de policía. Es todo o nada. Prepárate para cualquier cosa.",
+      howToComplete: "Infiltrate en la estación de policía.",
+    },
+    pt: {
+      title: "Esquadrão do Crime - Parte 5",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Esta é a missão final. Vamos lançar um assalto total à delegacia de polícia. É tudo ou nada. Esteja preparado para tudo.",
+      howToComplete: "Infiltre a delegacia de polícia.",
+    },
+    ru: {
+      title: "Криминальный отряд — Часть 5",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Это финальное задание. Мы собираемся начать полномасштабный штурм полицейского участка. Всё или ничего. Будь готов ко всему.",
+      howToComplete: "Проникните в полицейский участок.",
+    },
+    ar: {
+      title: "فرقة الجريمة - الجزء 5",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "هذه هي المهمة النهائية. سنشن هجومًا شاملاً على مركز الشرطة. إما كل شيء أو لا شيء. كن مستعدًا لأي شيء.",
+      howToComplete: "تسلل إلى مركز الشرطة.",
+    },
+    tr: {
+      title: "Suç Kadrosu - Bölüm 5",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bu son görev. Polis merkezine tam kapsamlı bir saldırı başlatacağız. Ya hep ya hiç. Her şeye hazırlıklı ol.",
+      howToComplete: "Polis merkezine sız.",
+    },
+    zh: {
+      title: "犯罪小队 - 第 5 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "这是最后一项任务。我们将对警察局发起全面进攻。要么全胜，要么全败。做好应对一切的准备。",
+      howToComplete: "潜入警察局。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Disque de Données",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le Syndicat a un travail spécial pour vous. Nous avons besoin que vous récupériez un disque de données important à la base militaire. C'est une mission risquée, alors soyez prêt.",
+      howToComplete: "Trouvez le disque de données à la base militaire et apportez-le à Sir. B.",
+    },
+    de: {
+      title: "Datenträger",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das Syndikat hat einen speziellen Auftrag für dich. Wir brauchen dich, um einen wichtigen Datenträger von der Militärbasis zu bergen. Es ist eine riskante Mission, also sei vorbereitet.",
+      howToComplete: "Finde den Datenträger in der Militärbasis und bringe ihn zu Sir. B.",
+    },
+    es: {
+      title: "Disco de Datos",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El Sindicato tiene un trabajo especial para ti. Necesitamos que recuperes un disco de datos importante de la base militar. Es una misión arriesgada, así que prepárate.",
+      howToComplete: "Encuentra el disco de datos en la base militar y llévalo a Sir. B.",
+    },
+    pt: {
+      title: "Disco de Dados",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O Sindicato tem um trabalho especial para você. Precisamos que você recupere um disco de dados importante da base militar. É uma missão arriscada, então esteja preparado.",
+      howToComplete: "Encontre o disco de dados na base militar e leve-o para Sir. B.",
+    },
+    ru: {
+      title: "Диск с данными",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У Синдиката есть для тебя особое задание. Нам нужно, чтобы ты добыл важный диск с данными с военной базы. Это рискованная миссия, так что будь готов.",
+      howToComplete: "Найдите диск с данными на военной базе и принесите его Сиру Б.",
+    },
+    ar: {
+      title: "قرص البيانات",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "المنظمة لديها مهمة خاصة لك. نحتاج منك استعادة قرص بيانات مهم من القاعدة العسكرية. إنها مهمة محفوفة بالمخاطر، لذا كن مستعدًا.",
+      howToComplete: "ابحث عن قرص البيانات في القاعدة العسكرية وأحضره إلى السير ب.",
+    },
+    tr: {
+      title: "Veri Diski",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika'nın senin için özel bir işi var. Askeri üsten önemli bir veri diskini ele geçirmeni istiyoruz. Riskli bir görev, o yüzden hazırlıklı ol.",
+      howToComplete: "Askeri Üsteki veri diskini bul ve Sir. B'ye getir.",
+    },
+    zh: {
+      title: "数据盘",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "辛迪加有一项特殊任务交给。我们需要从军事基地找回一个重要的数据盘。这是一项冒险的任务，所以做好准备。",
+      howToComplete: "在军事基地找到数据盘并将其带给 Sir. B。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Receleur - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous commencez à vous faire un nom. Il est temps de commencer à vendre des marchandises de plus grande valeur. Allez voir Ofy et vendez-lui quelques-uns de vos articles volés.",
+      howToComplete: "Vendez $10 000 de butin à Ofy.",
+    },
+    de: {
+      title: "Hehler - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Du fängst an, dir einen Namen zu machen. Es ist Zeit, hochwertigere Waren zu verkaufen. Geh zu Ofy und verkauf ihm einige deiner gestohlenen Gegenstände.",
+      howToComplete: "Verkaufe Beute im Wert von 10.000 $ an Ofy.",
+    },
+    es: {
+      title: "Receptor - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Te estás empezando a hacer un nombre. Es hora de empezar a vender bienes de mayor valor. Ve a ver a Ofy y véndele algunos de tus artículos robados.",
+      howToComplete: "Vende $10,000 de botín a Ofy.",
+    },
+    pt: {
+      title: "Receptador - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você está começando a si tornar conhecido. É hora de começar a vender mercadorias de maior valor. Vá ver Ofy e venda alguns de seus itens roubados para ele.",
+      howToComplete: "Venda $10.000 em saques para Ofy.",
+    },
+    ru: {
+      title: "Скупщик — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Ты начинаешь делать себе имя. Пора начать продавать более ценные товары. Сходи к Офи и продай ему часть своих украденных вещей.",
+      howToComplete: "Продайте добычу на сумму $10 000 Офи.",
+    },
+    ar: {
+      title: "المستلم - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لقد بدأت في صنع اسم لنفسك. حان الوقت لبدء بيع سلع ذات قيمة أعلى. اذهب لمقابلة \"أوفي\" وبع له بعض مسروقاتك.",
+      howToComplete: "بع غنائم بقيمة 10,000 دولار لـ أوفي.",
+    },
+    tr: {
+      title: "Recep - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Adını duyurmaya başladın. Daha yüksek değerli mallar satmaya başlamanın zamanı geldi. Ofy'nin yanına git ve ona çaldığın bazı eşyaları sat.",
+      howToComplete: "Ofy'ye 10.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "销赃 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你开始小有名气了。是时候开始出售更高价值的货物了。去见 Ofy 并卖给他一些คุณ偷来的物品。",
+      howToComplete: "向 Ofy 出售价值 10,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Receleur - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Ofy est impressionné par votre travail. Il a une demande spéciale pour certains articles de grande valeur. Rapportez-les lui et il vous paiera gracieusement.",
+      howToComplete: "Vendez $25 000 de butin à Ofy.",
+    },
+    de: {
+      title: "Hehler - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ofy ist beeindruckt von deiner Arbeit. Er hat eine spezielle Anfrage für einige hochwertige Gegenstände. Bring sie ihm, und er wird dich großzügig bezahlen.",
+      howToComplete: "Verkaufe Beute im Wert von 25.000 $ an Ofy.",
+    },
+    es: {
+      title: "Receptor - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Ofy está impresionado con tu trabajo. Tiene una petición especial para algunos artículos de gran valor. Tráelos y te pagará generosamente.",
+      howToComplete: "Vende $25,000 de botín a Ofy.",
+    },
+    pt: {
+      title: "Receptador - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Ofy está impressionado com seu trabalho. Ele tem um pedido especial para alguns itens de alto valor. Traga-os e ele pagará generosamente.",
+      howToComplete: "Venda $25.000 em saques para Ofy.",
+    },
+    ru: {
+      title: "Скупщик — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Офи впечатлен твоей работой. У него есть особый запрос на некоторые ценные вещи. Принеси их ему, и он щедро заплатит.",
+      howToComplete: "Продайте добычу на сумму $25 000 Офи.",
+    },
+    ar: {
+      title: "المستلم - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "أوفي معجب بعملك. لديه طلب خاص لبعض السلع ذات القيمة العالية. أحضرها له وسيدفع لك بسخاء.",
+      howToComplete: "بع غنائم بقيمة 25,000 دولار لـ أوفي.",
+    },
+    tr: {
+      title: "Recep - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Ofy işinden etkilendi. Bazı yüksek değerli eşyalar için özel bir talebi var. Onları ona getir, sana cömertçe ödeme yapacak.",
+      howToComplete: "Ofy'ye 25.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "销赃 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "Ofy 对你的工作印象深刻。他对一些高价值物品有特殊要求。把它们带给他，他会优厚地回报你。",
+      howToComplete: "向 Ofy 出售价值 25,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Face à l'Ennemi",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "La police commence à utiliser des tactiques plus agressives. Nous devons contre-attaquer. Posez des pièges autour de la ville pour les surprendre.",
+      howToComplete: "Éliminez 5 policiers avec des explosifs.",
+    },
+    de: {
+      title: "Front zum Feind",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Die Polizei greift zu aggressiveren Taktiken. Wir müssen zurückschlagen. Stelle Fallen in der Stadt auf, um sie zu überraschen.",
+      howToComplete: "Eliminiere 5 Polizisten mit Sprengstoff.",
+    },
+    es: {
+      title: "Frente al Enemigo",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "La policía está empezando a utilizar tácticas más agresivas. Tenemos que contraatacar. Coloca trampas por la ciudad para sorprenderlos.",
+      howToComplete: "Elimina a 5 policías con explosivos.",
+    },
+    pt: {
+      title: "Frente para o Inimigo",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "A polícia está começando a usar táticas mais agressivas. Precisamos contra-atacar. Arme armadilhas pela cidade para surpreendê-los.",
+      howToComplete: "Elimine 5 policiais com explosivos.",
+    },
+    ru: {
+      title: "Направлять на противника",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Полиция начинает использовать более агрессивную тактику. Мы должны нанести ответный удар. Расставь ловушки по всему городу, чтобы застать их врасплох.",
+      howToComplete: "Ликвидируйте 5 полицейских с помощью взрывчатки.",
+    },
+    ar: {
+      title: "الجهة المقابلة للعدو",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بدأت الشرطة في استخدام تكتيكات أكثر عدوانية. نحن بحاجة للرد. ضع فخاخًا في أنحاء المدينة لمفاجأتهم.",
+      howToComplete: "قم بتصفية 5 من رجال الشرطة باستخدام المتفجرات.",
+    },
+    tr: {
+      title: "Düşmana Doğru",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Polis daha agresif taktikler kullanmaya başladı. Karşı saldırıya geçmeliyiz. Onları şaşırtmak için şehrin etrafına tuzaklar kur.",
+      howToComplete: "Patlayıcılarla 5 polisi etkisiz hale getir.",
+    },
+    zh: {
+      title: "此面向敌",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "警察开始使用更激进的战术。我们需要反击。在城市周围设置陷阱，打他们个措手不及。",
+      howToComplete: "使用爆炸物消灭 5 名警察。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Dépôt de Carburant",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous sommes restés dans l'ombre bien trop longtemps. Je pense qu'il est temps de sortir de notre cachette. Je veux vraiment effrayer ces flics, alors faisons des feux d'artifice. Les camions-citernes sont la cible. Vous aurez besoin d'explosifs pour vraiment les faire exploser. Trouvez 3 camions différents et mettez-les à feu.",
+      howToComplete: "Détruisez 3 des 5 camions-citernes situés à la Banque, à la Base Militaire, à l'Aéroport, à la Station-Service (près du Mont-de-Piété) et au Crystal Resort.",
+    },
+    de: {
+      title: "Treibstofflager",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir waren viel zu lange im Schatten. Ich denke, es ist Zeit, aus unserem Versteck zu kommen. Ich will diesen Polizisten wirklich Angst einjagen, also lass uns ein Feuerwerk veranstalten. Die Tankwagen sind das Ziel. Du brauchst Sprengstoff, um sie richtig zum Explodieren zu bringen. Finde 3 verschiedene Tankwagen und zünde sie an.",
+      howToComplete: "Zerstöre 3 der 5 Tankwagen an der Bank, bei der Militärbasis, am Flughafen, an der Tankstelle (in der Nähe des Pfandleihers) und beim Crystal Resort.",
+    },
+    es: {
+      title: "Depósito de Combustible",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Hemos estado en las sombras durante demasiado tiempo. Creo que es hora de salir de nuestro escondite. Quiero asustar de verdad a esos policías, así que hagamos algo de ruido. Los camiones cisterna son el objetivo. Necesitarás explosivos para hacerlos explotar de verdad. Encuentra 3 camiones diferentes y enciéndelos.",
+      howToComplete: "Destruye 3 de los 5 camiones cisterna ubicados en el Banco, la Base Militar, el Aeropuerto, la Gasolinera (cerca del Empeño) y el Crystal Resort.",
+    },
+    pt: {
+      title: "Depósito de Combustível",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Estivemos nas sombras por muito tempo. Acho que é hora de sairmos do esconderijo. Quero realmente assustar esses policiais, então vamos fazer uma festa. Os caminhões-tanque são o alvo. Você precisará de explosivos para fazê-los explodir de verdade. Encontre 3 caminhões diferentes e coloque-os em chamas.",
+      howToComplete: "Destrua 3 dos 5 caminhões-tanque localizados no Banco, na Base Militar, no Aeroporto, no Posto de Gasolina (perto da Penhora) e no Crystal Resort.",
+    },
+    ru: {
+      title: "Топливный склад",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Мы слишком долго были в тени. Думаю, пора выходить из укрытия. Я хочу по-настоящему напугать этих копов, так что устроим фейерверк. Цель — топливные танкеры. Тебе понадобятся взрывчатка, чтобы они по-настоящему взорвались. Найди 3 разных танкера и подорви их.",
+      howToComplete: "Уничтожьте 3 из 5 автоцистерн, расположенных у Банка, Военной базы, Аэропорта, Автозаправочной станции (рядом с ломбардом) и Crystal Resort.",
+    },
+    ar: {
+      title: "مستودع الوقود",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لقد كنا في الظل لفترة طويلة جدًا. أعتقد أن الوقت قد حان للخروج من مخبئنا. أريد أن أخيف هؤلاء الشرطة حقًا، لذا دعونا نصنع بعض الألعاب النارية. شاحنات الوقود هي الهدف. ستحتاج إلى متفجرات لجعلها تنفجر حقًا. ابحث عن 3 شاحنات مختلفة وأشعلها.",
+      howToComplete: "دمر 3 من 5 شاحنات صهريج تقع عند البنك، والقاعدة العسكرية، والمطار، ومحطة الوقود (بالقرب من محل الرهن) ومنتجع كريستال.",
+    },
+    tr: {
+      title: "Yakıt Deposu",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Çok uzun zamandır gölgelerde saklanıyoruz. Sanırım saklandığımız yerden çıkma zamanı geldi. Bu polislere gerçekten gözdağı vermek istiyorum, o yüzden biraz şenlik yapalım. Hedefimiz yakıt tankerleri. Onları gerçekten patlatmak için patlayıcılara ihtiyacın olacak. 3 farklı tanker bul ve onları ateşe ver.",
+      howToComplete: "Bankanın yanındaki, Askeri üssün yanındaki, Havalimanının yanındaki, Benzin istasyonunun (Rehinci dükkanının yakınında) ve Crystal Resort'taki 5 tankerden 3'ünü yok et.",
+    },
+    zh: {
+      title: "燃料库",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们已经躲在暗处太久了。我想是时候走出藏身之处了。我想给那些警察一点真正的颜色看看，所以让我们放点烟花。目标是油罐车。你需要炸药才能真正引爆它们。找到 3 辆不同的油罐车并点燃它们。",
+      howToComplete: "摧毁位于银行、军事基地、机场、加油站（靠近当铺）和水晶度假村的 5 辆油罐车中的 3 辆。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Collectionneur de Gemmes - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Il y a un collectionneur privé qui cherche des gemmes rares. Nous pouvons les lui vendre à un prix élevé. Trouvez et apportez-nous des gemmes pour commencer.",
+      howToComplete: "Trouvez 5 gemmes de n'importe quelle couleur.",
+    },
+    de: {
+      title: "Edelsteinsammler - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Es gibt einen privaten Sammler, der nach seltenen Edelsteinen sucht. Wir können sie ihm zu einem hohen Preis verkaufen. Finde und bringe uns Edelsteine, um anzufangen.",
+      howToComplete: "Finde 5 Edelsteine in einer beliebigen Farbe.",
+    },
+    es: {
+      title: "Coleccionista de Gemas - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Hay un coleccionista privado que busca gemas raras. Podemos vendérselas por un precio alto. Encuentra y tráenos gemas para empezar.",
+      howToComplete: "Encuentra 5 gemas de cualquier color.",
+    },
+    pt: {
+      title: "Colecionador de Gemas - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Há um colecionador particular procurando por gemas raras. Podemos vendê-las para ele por um preço alto. Encontre e traga joias para nós começarmos.",
+      howToComplete: "Encontre 5 gemas de qualquer cor.",
+    },
+    ru: {
+      title: "Коллекционер драгоценных камней — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Есть один частный коллекционер, который ищет редкие драгоценные камни. Мы можем продать их ему по высокой цене. Для начала найди и принеси нам камни.",
+      howToComplete: "Найдите 5 драгоценных камней любого цвета.",
+    },
+    ar: {
+      title: "جامع الجواهر - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "هناك جامع مقتنيات خاص يبحث عن جواهر نادرة. يمكننا بيعها له بسعر مرتفع. ابحث عن بعض الجواهر وأحضرها لنا للبدء.",
+      howToComplete: "ابحث عن 5 جواهر من أي لون.",
+    },
+    tr: {
+      title: "Mücevher Avcısı - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Nadir mücevherler arayan özel bir koleksiyoncu var. Onları ona yüksek bir fiyata satabiliriz. Başlamak için mücevher bul ve bize getir.",
+      howToComplete: "Herhangi bir renkte 5 mücevher bul.",
+    },
+    zh: {
+      title: "宝石收藏家 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "有一位私人收藏家正在寻找稀有宝石。我们可以高价卖给他。为了开始，请去寻找一些宝石并带给我们。",
+      howToComplete: "找到 5 颗任何颜色的宝石。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Collectionneur de Gemmes - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le collectionneur est satisfait des premières gemmes. Maintenant, il en veut des plus rares. Trouvez-nous des saphirs cette fois-ci.",
+      howToComplete: "Trouvez 3 saphirs.",
+    },
+    de: {
+      title: "Edelsteinsammler - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Der Sammler ist mit den ersten Edelsteinen zufrieden. Jetzt will er noch seltenere. Finde uns diesmal Saphire.",
+      howToComplete: "Finde 3 Saphire.",
+    },
+    es: {
+      title: "Coleccionista de Gemas - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El coleccionista está satisfecho con las primeras gemas. Ahora quiere unas más raras. Encuéntranos zafiros esta vez.",
+      howToComplete: "Encuentra 3 zafiros.",
+    },
+    pt: {
+      title: "Colecionador de Gemas - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O colecionador está satisfeito com as primeiras gemas. Agora ele quer algumas mais raras. Encontre safiras para nós desta vez.",
+      howToComplete: "Encontre 3 safiras.",
+    },
+    ru: {
+      title: "Коллекционер драгоценных камней — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Коллекционер доволен первыми камнями. Теперь ему нужны более редкие. На этот раз найди для нас сапфиры.",
+      howToComplete: "Найдите 3 сапфира.",
+    },
+    ar: {
+      title: "جامع الجواهر - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "جامع المقتنيات راضٍ عن الجواهر الأولى. الآن يريد جواهر أندر. ابحث لنا عن الياقوت الأزرق (Sapphires) هذه المرة.",
+      howToComplete: "ابحث عن 3 يواقيت زرقاء.",
+    },
+    tr: {
+      title: "Mücevher Avcısı - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Koleksiyoncu ilk mücevherlerden memnun kaldı. Şimdi daha nadir olanlarını istiyor. Bu sefer bize safir bul.",
+      howToComplete: "3 safir bul.",
+    },
+    zh: {
+      title: "宝石收藏家 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "收藏家对第一批宝石很满意。现在他想要更稀有的。这次帮我们找一些蓝宝石。",
+      howToComplete: "找到 3 颗蓝宝石。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Collectionneur de Gemmes - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous continuons. Le collectionneur veut maintenant des rubis. Ils sont plus difficiles à trouver, mais la récompense en vaut la peine.",
+      howToComplete: "Trouvez 2 rubis.",
+    },
+    de: {
+      title: "Edelsteinsammler - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Weiter geht's. Der Sammler will jetzt Rubine. Sie sind schwerer zu finden, aber die Belohnung ist es wert.",
+      howToComplete: "Finde 2 Rubine.",
+    },
+    es: {
+      title: "Coleccionista de Gemas - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Seguimos adelante. El coleccionista ahora quiere rubíes. Son más difíciles de encontrar, pero la recompensa vale la pena.",
+      howToComplete: "Encuentra 2 rubíes.",
+    },
+    pt: {
+      title: "Colecionador de Gemas - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Continuando. O colecionador agora quer rubis. Eles são mais difíceis de encontrar, mas a recompensa vale a pena.",
+      howToComplete: "Encontre 2 rubis.",
+    },
+    ru: {
+      title: "Коллекционер драгоценных камней — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Продолжаем. Теперь коллекционеру нужны рубины. Их сложнее найти, но награда того стоит.",
+      howToComplete: "Найдите 2 рубина.",
+    },
+    ar: {
+      title: "جامع الجواهر - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "نحن مستمرون. جامع المقتنيات يريد الآن الياقوت الأحمر (Rubies). من الصعب العثور عليها، لكن المكافأة تستحق العناء.",
+      howToComplete: "ابحث عن ياقوتتين حمراوين.",
+    },
+    tr: {
+      title: "Mücevher Avcısı - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Devam ediyoruz. Koleksiyoncu şimdi yakut istiyor. Bunları bulmak daha zor ama ödülü buna değecek.",
+      howToComplete: "2 yakut bul.",
+    },
+    zh: {
+      title: "宝石收藏家 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "继续。收藏家现在想要红宝石。它们更难找到，但回报非常值得。",
+      howToComplete: "找到 2 颗红宝石。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Collectionneur de Gemmes - Partie 4",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Il s'agit de la demande finale du collectionneur. Il veut une émeraude. C'est la gemme la plus rare de toutes. Trouvez-en une et vous serez richement récompensé.",
+      howToComplete: "Trouvez 1 émeraude.",
+    },
+    de: {
+      title: "Edelsteinsammler - Teil 4",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Dies ist die letzte Anfrage des Sammlers. Er will einen Smaragd. Es ist der seltenste Edelstein von allen. Finde einen und du wirst reichlich belohnt.",
+      howToComplete: "Finde 1 Smaragd.",
+    },
+    es: {
+      title: "Coleccionista de Gemas - Parte 4",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Esta es la petición final del coleccionista. Quiere una esmeralda. Es la gema más rara de todas. Encuentra una y serás generosamente recompensado.",
+      howToComplete: "Encuentra 1 esmeralda.",
+    },
+    pt: {
+      title: "Colecionador de Gemas - Parte 4",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Este é o pedido final do colecionador. Ele quer uma esmeralda. É a gema mais rara de todas. Encontre uma e você será ricamente recompensado.",
+      howToComplete: "Encontre 1 esmeralda.",
+    },
+    ru: {
+      title: "Коллекционер драгоценных камней — Часть 4",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Это последняя просьба коллекционера. Он хочет изумруд. Это самый редкий камень из всех. Найди один, и ты будешь щедро вознагражден.",
+      howToComplete: "Найдите 1 изумруд.",
+    },
+    ar: {
+      title: "جامع الجواهر - الجزء 4",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "هذا هو الطلب الأخير من جامع المقتنيات. إنه يريد زمردة (Emerald). إنها أندر الجواهر على الإطلاق. ابحث عن واحدة وستتم مكافأتك بسخاء.",
+      howToComplete: "ابحث عن زمردة واحدة.",
+    },
+    tr: {
+      title: "Mücevher Avcısı - Bölüm 4",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bu koleksiyoncunun son talebi. Bir zümrüt istiyor. Aralarındaki en nadir mücevher bu. Bir tane bul, cömertçe ödüllendirileceksin.",
+      howToComplete: "1 zümrüt bul.",
+    },
+    zh: {
+      title: "宝石收藏家 - 第 4 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "这是收藏家的最后一次请求。他想要一颗祖母绿。这是所有宝石中最稀有的一种。找到一颗，你将获得丰厚的回报。",
+      howToComplete: "找到 1 颗祖母绿。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Faire du Bruit",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous avons besoin d'une diversion pour notre prochaine opération. Allez en ville et faites le plus de bruit possible. Détruisez tout ce que vous voyez.",
+      howToComplete: "Détruisez 10 véhicules de police.",
+    },
+    de: {
+      title: "Lautstark",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir brauchen ein Ablenkungsmanöver für unsere nächste Operation. Geh in die Stadt und mach so viel Lärm wie möglich. Zerstöre alles, was du siehst.",
+      howToComplete: "Zerstöre 10 Polizeifahrzeuge.",
+    },
+    es: {
+      title: "Haciendo Ruido",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Necesitamos una distracción para nuestra próxima operación. Ve a la ciudad y haz todo el ruido que puedas. Destruye todo lo que veas.",
+      howToComplete: "Destruye 10 vehículos de policía.",
+    },
+    pt: {
+      title: "Fazendo Barulho",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Precisamos de uma distração para nossa próxima operação. Vá para a cidade e faça o máximo de barulho possível. Destrua tudo o que vir.",
+      howToComplete: "Destruua 10 veículos de polícia.",
+    },
+    ru: {
+      title: "Громкое дело",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Нам нужно отвлечь внимание для нашей следующей операции. Отправляйся в город и натвори как можно больше шума. Уничтожай всё на своем пути.",
+      howToComplete: "Уничтожьте 10 полицейских машин.",
+    },
+    ar: {
+      title: "إحداث ضجيج",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "نحتاج إلى تمويه لعمليتنا القادمة. اذهب إلى المدينة وأحدث أكبر قدر ممكن من الضجيج. دمر كل ما تراه.",
+      howToComplete: "قم بتدمير 10 مركبات شرطة.",
+    },
+    tr: {
+      title: "Gürültü Çıkar",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sıradaki operasyonumuz için bir dikkat dağıtıcıya ihtiyacımız var. Şehre git ve mümkün olduğu kadar çok gürültü çıkar. Gördüğün her şeyi yok et.",
+      howToComplete: "10 polis aracını yok et.",
+    },
+    zh: {
+      title: "大张旗鼓",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们需要在下次行动中制造一点干扰。进城去，尽可能大地制造动静。摧毁你能看到的一切。",
+      howToComplete: "摧毁 10 辆警察车辆。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Cargaison Cachée",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous avons des informations suggérant qu'il y a un cargo coulé avec des actifs de valeur à bord. Nous avons besoin que vous plongiez et récupériez tout ce qui a de la valeur.",
+      howToComplete: "Récupérez 3 actifs coulés au phare.",
+    },
+    de: {
+      title: "Versteckte Fracht",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir haben Informationen, die darauf hindeuten, dass es ein gesunkenes Frachtschiff mit wertvollen Vermögenswerten an Bord gibt. Wir brauchen dich, um hinunterzutauchen und alles Wertvolle zu bergen.",
+      howToComplete: "Berge 3 gesunkene Vermögenswerte beim Leuchtturm.",
+    },
+    es: {
+      title: "Cargamento Oculto",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tenemos información que sugiere que hay un carguero hundido con activos valiosos a bordo. Necesitamos que bucees y recuperes cualquier cosa de valor.",
+      howToComplete: "Recupera 3 activos hundidos del faro.",
+    },
+    pt: {
+      title: "Carga Oculta",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Temos informações sugerindo que há um navio de carga afundado com ativos valiosos a bordo. Precisamos que você mergulhe e recupere qualquer coisa de valor.",
+      howToComplete: "Recupere 3 ativos afundados do farol.",
+    },
+    ru: {
+      title: "Скрытый груз",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У нас есть сведения о затонувшем грузовом судне с ценным имуществом на борту. Тебе нужно нырнуть и достать всё ценное.",
+      howToComplete: "Достаньте 3 затонувших предмета у маяка.",
+    },
+    ar: {
+      title: "الشحنة المخفية",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدينا معلومات تشير إلى وجود سفينة شحن غارقة مع أصول قيمة على متنها. نحتاج منك الغوص واستعادة أي شيء ذي قيمة.",
+      howToComplete: "استعد 3 أصول غارقة من المنارة.",
+    },
+    tr: {
+      title: "Gizli Kargo",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "İçinde değerli varlıklar bulunan batık bir kargo gemisi olduğuna dair istihbaratımız var. Dalıp değerli olan her şeyi çıkarmanı istiyoruz.",
+      howToComplete: "Deniz fenerinden 3 batık varlık çıkar.",
+    },
+    zh: {
+      title: "隐秘货物",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们有情报显示有一艘沉没的货轮，船上装有贵重资产。我们需要你潜入水下，找回任何有价值的东西。",
+      howToComplete: "从灯塔处找回 3 件沉没资产。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Données Compromettantes",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Un cadre d'entreprise a divulgué des informations sur nos opérations. Nous devons l'éliminer et sécuriser son ordinateur portable. Nous ne pouvons pas laisser ces données tomber entre de mauvaises mains.",
+      howToComplete: "Assassinez le cadre d'entreprise à Oasis et sécurisez son ordinateur portable.",
+    },
+    de: {
+      title: "Belastende Daten",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ein leitender Angestellter hat Informationen über unsere Operationen durchsickern lassen. Wir müssen ihn ausschalten und seinen Laptop sichern. Wir dürfen nicht zulassen, dass diese Daten in die falschen Hände geraten.",
+      howToComplete: "Ermorde den leitenden Angestellten in Oasis und sichere seinen Laptop.",
+    },
+    es: {
+      title: "Datos Incriminatorios",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Hay un ejecutivo corporativo que ha estado filtrando información sobre nuestras operaciones. Tenemos que eliminarlo y asegurar su portátil. No podemos permitir que estos datos caigan en las manos equivocadas.",
+      howToComplete: "Asesina al ejecutivo corporativo en Oasis y asegura su portátil.",
+    },
+    pt: {
+      title: "Dados Incriminatórios",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Há um executivo corporativo que tem vazado informações sobre nossas operações. Precisamos eliminá-lo e proteger seu laptop. Não podemos deixar que esses dados caiam em mãos erradas.",
+      howToComplete: "Assassine o executivo corporativo em Oasis e proteja seu laptop.",
+    },
+    ru: {
+      title: "Инкриминирующие данные",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Один топ-менеджер сливал информацию о наших операциях. Мы должны убрать его и забрать ноутбук. Нельзя допустить, чтобы эти данные попали в чужие руки.",
+      howToComplete: "Устраните топ-менеджера в Оазисе и заберите его ноутбук.",
+    },
+    ar: {
+      title: "بيانات تدين",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "هناك مسؤول تنفيذي في شركة يقوم بتسريب معلومات عن عملياتنا. نحن بحاجة لتصفيته وتأمين جهاز الكمبيوتر المحمول الخاص به. لا يمكننا السماح لهذه البيانات بالوقوع في الأيدي الخطأ.",
+      howToComplete: "اغتل المسؤول التنفيذي في الشركة في الواحة وقم بتأمين جهاز الكمبيوتر المحمول الخاص به.",
+    },
+    tr: {
+      title: "Suçlayıcı Veriler",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Operasyonlarımız hakkında bilgi sızdıran bir kurumsal yönetici var. Onu ortadan kaldırmalı ve dizüstü bilgisayarını ele geçirmeliyiz. Bu verilerin yanlış ellere geçmesine izin veremeyiz.",
+      howToComplete: "Oasis'teki kurumsal yöneticiye suikast düzenle ve dizüstü bilgisayarını ele geçir.",
+    },
+    zh: {
+      title: "罪证数据",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "有一名公司高管一直在泄露关于我们行动的信息。我们需要除掉他并拿到他的笔记本电脑。我们不能让这些数据落入坏人手中。",
+      howToComplete: "在绿洲城暗杀那名公司高管并拿到他的笔记本电脑。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Extinction des Feux",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Si nous voulons réussir ce prochain coup, nous allons devoir couper le réseau électrique. Rendez-vous à la centrale électrique et sabotez les générateurs. Cela devrait nous donner assez de temps.",
+      howToComplete: "Sabotez 5 générateurs de la centrale électrique.",
+    },
+    de: {
+      title: "Licht aus",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wenn wir diesen nächsten Job durchziehen wollen, müssen wir das Stromnetz ausschalten. Geh zum Kraftwerk und sabotiere die Generatoren. Das sollte uns genug Zeit verschaffen.",
+      howToComplete: "Sabotiere 5 Kraftwerksgeneratoren.",
+    },
+    es: {
+      title: "Apagón",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Si vamos a realizar este próximo trabajo, tendremos que apagar la red eléctrica. Dirígete a la central eléctrica y sabotea los generadores. Eso debería darnos tiempo suficiente.",
+      howToComplete: "Sabotea 5 generadores de la central eléctrica.",
+    },
+    pt: {
+      title: "Luzes Apagadas",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Se quisermos realizar este próximo trabalho, precisaremos desligar a rede elétrica. Vá até a Estação de Energia e sabote os geradores. Isso deve nos dar tempo suficiente.",
+      howToComplete: "Sabote 5 geradores da Estação de Energia.",
+    },
+    ru: {
+      title: "Конец игры",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Если мы хотим провернуть следующее дело, нам придется отключить электросеть. Отправляйся на электростанцию и выведи из строя генераторы. Это должно дать нам достаточно времени.",
+      howToComplete: "Выведите из строя 5 генераторов на электростанции.",
+    },
+    ar: {
+      title: "إطفاء الأنوار",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "إذا أردنا القيام بهذه المهمة التالية، فسنحتاج إلى إغلاق شبكة الطاقة. توجه إلى محطة الطاقة وقم بتخريب المولدات. هذا يجب أن يعطينا الوقت الكافي.",
+      howToComplete: "قم بتخريب 5 مولدات في محطة الطاقة.",
+    },
+    tr: {
+      title: "Işıklar Kapansın",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bir sonraki işi bitirmek istiyorsak elektrik şebekebini kapatmamız gerekecek. Güç İstasyonuna git ve jeneratörleri sabote et. Bu bize yeterli zamanı kazandıracaktır.",
+      howToComplete: "5 Güç İstasyonu jeneratörünü sabote et.",
+    },
+    zh: {
+      title: "灯火管制",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "如果我们想完成下一项工作，我们需要关闭电网。前往发电站并破坏发电机。那应该能给我们足够的时间。",
+      howToComplete: "破坏 5 台发电站发电机。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Crocheteur - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous allez devoir apprendre à crocheter des serrures si vous voulez être un criminel de haut vol. Commencez petit : sifflez quelques coffres-forts dans la ville et voyez si vous pouvez les ouvrir.",
+      howToComplete: "Crochetez 5 serrures de coffre-fort.",
+    },
+    de: {
+      title: "Schlossknacker - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Du musst lernen, wie man Schlösser knackt, wenn du ein Spitzenverbrecher werden willst. Fang klein an – nimm dir ein paar Tresore in der Stadt vor und sieh nach, ob du sie aufbekommst.",
+      howToComplete: "Knacke 5 Tresorschlösser.",
+    },
+    es: {
+      title: "Ganzúa - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Vas a tener que aprender a forzar cerraduras si quieres ser un criminal de primera. Empieza por algo pequeño: asalta algunas cajas fuertes de la ciudad y mira si puedes abrirlas.",
+      howToComplete: "Fuerza 5 cerraduras de caja fuerte.",
+    },
+    pt: {
+      title: "Ganzua - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você precisará aprender a abrir fechaduras si quiser ser um criminoso de elite. Comece pequeno – assalte alguns cofres pela cidade e veja si consegue abri-los.",
+      howToComplete: "Abra 5 fechaduras de cofres.",
+    },
+    ru: {
+      title: "Взломщик — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Тебе придется научиться взламывать замки, если хочешь стать первоклассным преступником. Начни с малого — найди несколько сейфов в городе и попробуй их вскрыть.",
+      howToComplete: "Взломайте 5 замков сейфа.",
+    },
+    ar: {
+      title: "خبير فتح الأقفال - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "سيتعين عليك تعلم كيفية فتح الأقفال إذا كنت تريد أن تصبح مجرمًا بارزًا. ابدأ بصغير - قم بالسطو على بعض الخزائن في أنحاء المدينة وانظر إذا كان بإمكانك فتحها.",
+      howToComplete: "افتح 5 أقفال خزائن.",
+    },
+    tr: {
+      title: "Çilingir - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Üst düzey bir suçlu olmak istiyorsan kilit açmayı öğrenmen gerekecek. Küçükten başla; şehrin dört bir yanındaki birkaç kasayı vur ve onları açıp açamayacağına bak.",
+      howToComplete: "5 kasa kilidi aç.",
+    },
+    zh: {
+      title: "锁匠 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "如果你想成为一名顶尖罪犯，你需要学会如何开锁。从小事做起——在城市里找几个保险箱，看看你能不能把它们打开。",
+      howToComplete: "撬开 5 个保险箱锁。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Crocheteur - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Bon travail. Essayons maintenant quelque chose de plus difficile. Ces coffres-forts industriels ont des mécanismes de verrouillage plus complexes. Voyez si vous pouvez les forcer.",
+      howToComplete: "Crochetez 15 serrures de coffre-fort.",
+    },
+    de: {
+      title: "Schlossknacker - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Gute Arbeit. Versuchen wir nun etwas Schwierigeres. Diese industriesicheren Tresore haben komplexere Schließmechanismen. Schau, ob du sie knacken kannst.",
+      howToComplete: "Knacke 15 Tresorschlösser.",
+    },
+    es: {
+      title: "Ganzúa - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Buen trabajo. Ahora intentemos algo un poco más difícil. Estas cajas fuertes industriales tienen mecanismos de cierre más complejos. Mira si puedes forzarlas.",
+      howToComplete: "Fuerza 15 cerraduras de caja fuerte.",
+    },
+    pt: {
+      title: "Ganzua - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Bom trabalho. Agora vamos tentar algo um pouco mais difícil. Estes cofres industriais têm mecanismos de travamento mais complexos. Veja si consegue abri-los.",
+      howToComplete: "Abra 15 fechaduras de cofres.",
+    },
+    ru: {
+      title: "Взломщик — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Хорошая работа. Теперь давай попробуем что-нибудь посложнее. У этих промышленных сейфов более сложные механизмы запирания. Попробуй их вскрыть.",
+      howToComplete: "Взломайте 15 замков сейфа.",
+    },
+    ar: {
+      title: "خبير فتح الأقفال - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "عمل جيد. الآن دعنا نجرب شيئًا أصعب قليلاً. هذه الخزائن الصناعية لديها آليات قفل أكثر تعقيداً. انظر إذا كان بإمكانك كسرها.",
+      howToComplete: "افتح 15 قفل خزائن.",
+    },
+    tr: {
+      title: "Çilingir - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "İyi iş. Şimdi biraz daha zor bir şey deneyelim. Bu endüstriyel kasaların daha karmaşık kilit mekanizmaları var. Bakalım onları kırabilecek misin?",
+      howToComplete: "15 kasa kilidi aç.",
+    },
+    zh: {
+      title: "锁匠 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "做得好。现在让我们尝试一些更难的任务。这些工业保险箱有更复杂的锁定机制。看看你能不能破解它们。",
+      howToComplete: "撬开 15 个保险箱锁。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Crocheteur - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous devenez un vrai pro. Cette fois, je veux que vous cibliez un coffre-fort de haute sécurité. Cela va demander tout ce que vous avez appris. Ne nous décevez pas.",
+      howToComplete: "Crochetez 30 serrures de coffre-fort.",
+    },
+    de: {
+      title: "Schlossknacker - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Du wirst ein Echter Profi. Diesmal möchte ich, dass du einen Hochsicherheitstresor knackst. Es wird alles erfordern, was du gelernt hast. Enttäusche uns nicht.",
+      howToComplete: "Knacke 30 Tresorschlösser.",
+    },
+    es: {
+      title: "Ganzúa - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Te estás convirtiendo en un verdadero profesional. Esta vez, quiero que asaltes una cámara acorazada de alta seguridad. Va a requerir todo lo que has aprendido. No nos falles.",
+      howToComplete: "Fuerza 30 cerraduras de caja fuerte.",
+    },
+    pt: {
+      title: "Ganzua - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você está si tornando um verdadeiro profissional. Desta vez, quero que você assalte um cofre de alta segurança. Vai exigir tudo o que você aprendeu. Não nos decepcione.",
+      howToComplete: "Abra 30 fechaduras de cofres.",
+    },
+    ru: {
+      title: "Взломщик — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Ты становишься настоящим профи. На этот раз я хочу, чтобы ты вскрыл хранилище с высокой степенью защиты. Потребуется всё, чему ты научился. Не подведи нас.",
+      howToComplete: "Взломайте 30 замков сейфа.",
+    },
+    ar: {
+      title: "خبير فتح الأقفال - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "أصبحت محترفًا حقيقيًا. هذه المرة، أريدك أن تقتحم خزنة عالية الأمان. سيتطلب الأمر كل ما تعلمته. لا تخذلنا.",
+      howToComplete: "افتح 30 قفل خزائن.",
+    },
+    tr: {
+      title: "Çilingir - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Gerçek bir profesyonel oluyorsun. Bu sefer yüksek güvenlikli bir kasayı vurmanı istiyorum. Öğrendiğin her şeyi kullanman gerekecek. Bizi hayal kırıklığına uğratma.",
+      howToComplete: "30 kasa kilidi aç.",
+    },
+    zh: {
+      title: "锁匠 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你正在成为一名真正的专业人士。这一次，我希望你挑战一个高安全性金库。这将需要你运用所学到的一切。别让我们失望。",
+      howToComplete: "撬开 30 个保险箱锁。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Le Plus Recherché",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le gouvernement a mis votre tête à prix. Ils vous ont désigné comme l'un des criminels les plus recherchés de la ville. Acceptez-le. Montrez-leur pourquoi ils devraient avoir peur de vous.",
+      howToComplete: "Atteignez un niveau de recherche de 5 étoiles et survivez pendant 10 minutes.",
+    },
+    de: {
+      title: "Meistgesucht",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Die Regierung hat ein Kopfgeld auf dich ausgesetzt. Sie haben dich als einen der meistgesuchten Verbrecher der Stadt abgestempelt. Nimm es an. Zeig ihnen, warum sie Angst vor dir haben sollten.",
+      howToComplete: "Erreiche eine 5-Sterne-Fahndungsstufe und überlebe 10 Minuten lang.",
+    },
+    es: {
+      title: "El Más Buscado",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El gobierno ha puesto precio a tu cabeza. Te han etiquetado como uno de los criminales más buscados de la ciudad. Acéptalo. Demuéstrales por qué deberían tenerte miedo.",
+      howToComplete: "Alcanza un nivel de búsqueda de 5 estrellas y sobrevive durante 10 minutos.",
+    },
+    pt: {
+      title: "Mais Procurado",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O governo colocou um preço pela sua cabeça. Eles o rotularam como um dos criminosos mais procurados da cidade. Aceite isso. Mostre a eles por que deveriam ter medo de você.",
+      howToComplete: "Alcance um nível de procurado de 5 estrelas e sobreviva por 10 minutos.",
+    },
+    ru: {
+      title: "Самый разыскиваемый",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Правительство назначило награду за твою голову. Тебя объявили одним из самых разыскиваемых преступников в городе. Прими это. Покажи им, почему они должны тебя бояться.",
+      howToComplete: "Получите 5 звезд розыска и продержитесь 10 минут.",
+    },
+    ar: {
+      title: "الأكثر طلبًا",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "وضعت الحكومة مكافأة على رأسك. لقد صنفوك كواحد من أكثر المجرمين مطلوبين في المدينة. تقبل ذلك. أظهر لهم لماذا يجب أن يخافوا منك.",
+      howToComplete: "صل إلى مستوى مطلوب 5 نجوم وابقَ على قيد الحياة لمدة 10 دقائق.",
+    },
+    tr: {
+      title: "En Çok Aranan",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Hükümet başına ödül koydu. Seni şehrin en çok aranan suçlularından biri olarak damgaladılar. Bunu kabullen. Onlara neden senden korkmaları gerektiğini göster.",
+      howToComplete: "5 yıldızlı aranan seviyesine ulaş ve 10 dakika hayatta kal.",
+    },
+    zh: {
+      title: "头号通缉犯",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "政府为你开出了赏金。他们把你列为这个城市头号通缉犯之一。接受它吧。让他们看看为什么他们应该害怕你。",
+      howToComplete: "达到 5 星通缉等级并生存 10 分钟。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Rôdeur de Nuit",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous avons des informations sur une réunion secrète entre le chef de la police et un politicien local. Ça se passe ce soir aux docks. Infiltrez la réunion et rassemblez toutes les preuves possibles.",
+      howToComplete: "Rassemblez des preuves aux Docks pendant la nuit.",
+    },
+    de: {
+      title: "Nachtpirscher",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir haben Informationen über ein geheimes Treffen zwischen dem Polizeichef und einem lokalen Politiker. Es findet heute Abend an den Docks statt. Infiltriere das Treffen und sammle alle Beweise, die du finden kannst.",
+      howToComplete: "Sammle Beweise an den Docks während der Nacht.",
+    },
+    es: {
+      title: "Acechador Nocturno",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tenemos información sobre una reunión secreta entre el jefe de policía y un político local. Tendrá lugar esta noche en los muelles. Infiltrate en la reunión y reúne todas las pruebas que puedas.",
+      howToComplete: "Reúne pruebas en los muelles durante la noche.",
+    },
+    pt: {
+      title: "Perseguidor Noturno",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Temos informações sobre uma reunião secreta entre o chefe de polícia e um político local. Está acontecendo hoje à noite nas docas. Infiltre-si na reunião e reúna todas as evidências que puder.",
+      howToComplete: "Reúna evidências nas docas durante a noite.",
+    },
+    ru: {
+      title: "Ночной охотник",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У нас есть данные о тайной встрече шефа полиции с местным политиком. Она пройдет сегодня ночью в доках. Проникни на встречу и собери любые улики.",
+      howToComplete: "Соберите улики в доках ночью.",
+    },
+    ar: {
+      title: "مطارد الليل",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدينا معلومات عن اجتماع سري بين رئيس الشرطة وسياسي محلي. سيعقد الاجتماع الليلة في الأحواض (Docks). تسلل إلى الاجتماع واجمع أي أدلة يمكنك الحصول عليها.",
+      howToComplete: "اجمع الأدلة في الأحواض خلال الليل.",
+    },
+    tr: {
+      title: "Gece Avcısı",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Emniyet müdürü ile yerel bir politikacı arasında gizli bir toplantı yapılacağına dair bilgimiz var. Bu gece rıhtımda gerçekleşecek. Toplantıya sız ve toplayabildiğin tüm kanıtları topla.",
+      howToComplete: "Gece vakti rıhtımda kanıt topla.",
+    },
+    zh: {
+      title: "暗夜潜行者",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们得到消息，警察局长和当地一名政治家要进行秘密会面。地点就在今晚的码头。潜入会面现场，搜集尽可能多的证据。",
+      howToComplete: "夜间在码头搜集证据。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Oasis Eleven - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "De temps en temps, un énorme chargement d'objets de valeur passe par la banque. Nous avons des informations selon lesquelles un chargement d'or arrive bientôt. Entrez par effraction, prenez l'or et sortez.",
+      howToComplete: "Cambriolez 3 coffres d'or.",
+    },
+    de: {
+      title: "Oasis Eleven - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Hin und wieder kommt eine riesige Lieferung von Wertsachen durch die Bank. Wir haben Informationen, dass bald eine Goldlieferung eintrifft. Brich ein, hol das Gold und verschwinde.",
+      howToComplete: "Raube 3 Goldtresore aus.",
+    },
+    es: {
+      title: "Oasis Eleven - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "De vez en cuando, llega al banco un enorme cargamento de objetos de valor. Tenemos información de que pronto llegará un cargamento de oro. Entra, llévate el oro y sal.",
+      howToComplete: "Roba 3 cajas fuertes de oro.",
+    },
+    pt: {
+      title: "Oasis Eleven - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "De vez em quando, uma enorme remessa de itens valiosos passa pelo banco. Temos informações de que uma remessa de ouro chegará em breve. Invada, pegue o ouro e saia.",
+      howToComplete: "Assalte 3 cofres de ouro.",
+    },
+    ru: {
+      title: "Одиннадцать друзей Оазиса — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Время от времени через банк проходят крупные партии ценностей. У нас есть данные, что скоро прибудет золото. Взломай банк, забери золото и уходи.",
+      howToComplete: "Ограбьте 3 золотых хранилища.",
+    },
+    ar: {
+      title: "أوكسيس 11 - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بين الحين والآخر، تمر شحنة ضخمة من المقتنيات الثمينة عبر البنك. لدينا معلومات أن شحنة من الذهب ستصل قريباً. اقتحم البنك، خذ الذهب، واخرج.",
+      howToComplete: "قم بالسطو على 3 خزائن ذهب.",
+    },
+    tr: {
+      title: "Oasis Eleven - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Arada bir bankadan büyük bir değerli eşya sevkiyatı geçer. Yakında bir altın sevkiyatının geleceğine dair bilgimiz var. İçeri sız, altını al ve çık.",
+      howToComplete: "3 Altın Kasasını soy.",
+    },
+    zh: {
+      title: "绿洲城十一罗汉 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "每隔一段时间，就会有一批巨额财宝经过银行。我们得到消息说很快就会有一批黄金经过。潜入进去，拿走黄金，然后撤离。",
+      howToComplete: "抢劫 3 个黄金金库。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Oasis Eleven - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "De temps en temps, un énorme chargement d'objets de valeur passe par la banque. Cette fois, il y aura un chargement de gemmes : des saphirs. Volez-en autant que possible.",
+      howToComplete: "Cambriolez 2 coffres de saphirs.",
+    },
+    de: {
+      title: "Oasis Eleven - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Hin und wieder kommt eine riesige Lieferung von Wertsachen durch die Bank. Diesmal wird es eine Lieferung von Edelsteinen sein: Saphire. Stiehl so viele wie möglich.",
+      howToComplete: "Raube 2 Saphirtresore aus.",
+    },
+    es: {
+      title: "Oasis Eleven - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "De vez en cuando, llega al banco un enorme cargamento de objetos de valor. Esta vez, habrá un cargamento de gemas: zafiros. Roba todos los que puedas.",
+      howToComplete: "Roba 2 cajas fuertes de zafiros.",
+    },
+    pt: {
+      title: "Oasis Eleven - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "De vez em quando, uma enorme remessa de itens valiosos passa pelo banco. Desta vez, haverá uma remessa de gemas: safiras. Roube o máximo que puder.",
+      howToComplete: "Assalte 2 cofres de safiras.",
+    },
+    ru: {
+      title: "Одиннадцать друзей Оазиса — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Время от времени через банк проходят крупные партии ценностей. На этот раз прибудет партия камней: сапфиров. Укради столько, сколько сможешь.",
+      howToComplete: "Ограбьте 2 сапфировых хранилища.",
+    },
+    ar: {
+      title: "أوكسيس 11 - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بين الحين والآخر، تمر شحنة ضخمة من المقتنيات الثمينة عبر البنك. هذه المرة، ستكون هناك شحنة من الجواهر: الياقوت الأزرق. اسرق أكبر قدر ممكن.",
+      howToComplete: "قم بالسطو على خزنتا ياقوت أزرق.",
+    },
+    tr: {
+      title: "Oasis Eleven - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Arada bir bankadan büyük bir değerli eşya sevkiyatı geçer. Bu sefer bir mücevher sevkiyatı olacak: safirler. Alabildiğin kadarını çal.",
+      howToComplete: "2 Safir Kasasını soy.",
+    },
+    zh: {
+      title: "绿洲城十一罗汉 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "每隔一段时间，就会有一批巨额财宝经过银行。这一次是一批宝石：蓝宝石。尽可能多地偷走它们。",
+      howToComplete: "抢劫 2 个蓝宝石金库。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Oasis Eleven - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "De temps en temps, un énorme chargement d'objets de valeur passe par la banque. Les coffres de rubis sont particulièrement précieux. Ils contiennent également une plus grande quantité d'argent liquide.",
+      howToComplete: "Cambriolez 2 coffres de rubis.",
+    },
+    de: {
+      title: "Oasis Eleven - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Hin und wieder kommt eine riesige Lieferung von Wertsachen durch die Bank. Rubintresore sind besonders wertvoll. Sie enthalten auch einen größeren Geldbetrag.",
+      howToComplete: "Raube 2 Rubintresore aus.",
+    },
+    es: {
+      title: "Oasis Eleven - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "De vez en cuando, llega al banco un enorme cargamento de objetos de valor. Las cajas fuertes de rubíes son especialmente valiosas. También vienen con una mayor cantidad de efectivo.",
+      howToComplete: "Roba 2 cajas fuertes de rubíes.",
+    },
+    pt: {
+      title: "Oasis Eleven - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "De vez em quando, uma enorme remessa de itens valiosos passa pelo banco. Cofres de rubis são particularmente valiosos. Também vêm com uma quantidade maior de dinheiro.",
+      howToComplete: "Assalte 2 cofres de rubis.",
+    },
+    ru: {
+      title: "Одиннадцать друзей Оазиса — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Время от времени через банк проходят крупные партии ценностей. Рубиновые хранилища особенно ценны. В них также больше наличных.",
+      howToComplete: "Ограбьте 2 рубиновых хранилища.",
+    },
+    ar: {
+      title: "أوكسيس 11 - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بين الحين والآخر، تمر شحنة ضخمة من المقتنيات الثمينة عبر البنك. خزائن الياقوت الأحمر قيمة بشكل خاص، وتأتي مع كمية كبيرة من النقود أيضاً.",
+      howToComplete: "قم بالسطو على خزنتا ياقوت أحمر.",
+    },
+    tr: {
+      title: "Oasis Eleven - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Arada bir bankadan büyük bir değerli eşya sevkiyatı geçer. Yakut Kasaları özellikle değerlidir. Ayrıca daha fazla nakit para ile birlikte gelirler.",
+      howToComplete: "2 Yakut Kasasını soy.",
+    },
+    zh: {
+      title: "绿洲城十一罗汉 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "每隔一段时间，就会有一批巨额财宝经过银行。红宝石金库特别值钱，而且里面还有大量的现金。",
+      howToComplete: "抢劫 2 个红宝石金库。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Oasis Eleven - Partie 4",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "De temps en temps, un énorme chargement d'objets de valeur passe par la banque. Les émeraudes sont parmi les gemmes les plus rares et les plus chères. Rapportez-en autant que possible.",
+      howToComplete: "Cambriolez 1 coffre d'émeraude.",
+    },
+    de: {
+      title: "Oasis Eleven - Teil 4",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Hin und wieder kommt eine riesige Lieferung von Wertsachen durch die Bank. Smaragde gehören zu den seltensten und teuersten Edelsteinen. Bring so viele wie möglich zurück.",
+      howToComplete: "Raube 1 Smaragdtresor aus.",
+    },
+    es: {
+      title: "Oasis Eleven - Parte 4",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "De vez en cuando, llega al banco un enorme cargamento de objetos de valor. Las esmeraldas se encuentran entre las gemas más raras y caras. Trae todas las que puedas.",
+      howToComplete: "Roba 1 caja fuerte de esmeralda.",
+    },
+    pt: {
+      title: "Oasis Eleven - Parte 4",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "De vez em quando, uma enorme remessa de itens valiosos passa pelo banco. Esmeraldas estão entre as gemas mais raras e caras. Traga o máximo que puder.",
+      howToComplete: "Assalte 1 cofre de esmeralda.",
+    },
+    ru: {
+      title: "Одиннадцать друзей Оазиса — Часть 4",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Время от времени через банк проходят крупные партии ценностей. Изумруды — одни из самых редких и дорогих камней. Принеси их как можно больше.",
+      howToComplete: "Ограбьте 1 изумрудное хранилище.",
+    },
+    ar: {
+      title: "أوكسيس 11 - الجزء 4",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بين الحين والآخر، تمر شحنة ضخمة من المقتنيات الثمينة عبر البنك. الزمرد من بين أندر وأغلى الجواهر. أحضر أكبر قدر ممكن.",
+      howToComplete: "قم بالسطو على خزنة زمرد واحدة.",
+    },
+    tr: {
+      title: "Oasis Eleven - Bölüm 4",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Arada bir bankadan büyük bir değerli eşya sevkiyatı geçer. Zümrütler en nadir ve en pahalı mücevherler arasındadır. Alabildiğin kadarını getir.",
+      howToComplete: "1 Zümrüt Kasasını soy.",
+    },
+    zh: {
+      title: "绿洲城十一罗汉 - 第 4 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "每隔一段时间，就会有一批巨额财宝经过银行。祖母绿是最稀有且最昂贵的宝石之一。尽可能多地带回来。",
+      howToComplete: "抢劫 1 个祖母绿金库。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Oasis Eleven - Partie 5",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "De temps en temps, un énorme chargement d'objets de valeur passe par la banque. Les améthystes sont ce qu'il y a de plus rare. Réussir un seul casse d'améthyste vous rendra riche.",
+      howToComplete: "Cambriolez 1 coffre d'améthyste.",
+    },
+    de: {
+      title: "Oasis Eleven - Teil 5",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Hin und wieder kommt eine riesige Lieferung von Wertsachen durch die Bank. Amethyste sind so selten wie es nur geht. Allein ein Amethyst-Raub wird dich reich machen.",
+      howToComplete: "Raube 1 Amethysttresor aus.",
+    },
+    es: {
+      title: "Oasis Eleven - Parte 5",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "De vez en cuando, llega al banco un enorme cargamento de objetos de valor. Las amatistas son de lo más raro que existe. Realizar un solo atraco de amatista te hará rico.",
+      howToComplete: "Roba 1 caja fuerte de amatista.",
+    },
+    pt: {
+      title: "Oasis Eleven - Parte 5",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "De vez em quando, uma enorme remessa de itens valiosos passa pelo banco. Ametistas são o mais raro possível. Realizar apenas um assalto de ametista o tornará rico.",
+      howToComplete: "Assalte 1 cofre de ametista.",
+    },
+    ru: {
+      title: "Одиннадцать друзей Оазиса — Часть 5",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Время от времени через банк проходят крупные партии ценностей. Аметисты — это самая редкость. Одно только ограбление аметистового хранилища сделает тебя богатым.",
+      howToComplete: "Ограбьте 1 аметистовое хранилище.",
+    },
+    ar: {
+      title: "أوكسيس 11 - الجزء 5",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "بين الحين والآخر، تمر شحنة ضخمة من المقتنيات الثمينة عبر البنك. الجمشت (Amethysts) نادر جداً. القيام بعملية سطو واحدة على الجمشت سيجعلك غنياً.",
+      howToComplete: "قم بالسطو على خزنة جمشت واحدة.",
+    },
+    tr: {
+      title: "Oasis Eleven - Bölüm 5",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Arada bir bankadan büyük bir değerli eşya sevkiyatı geçer. Ametistler olabildiğince nadirdir. Sadece bir Ametist soygunu yapmak bile seni zengin edecektir.",
+      howToComplete: "1 Ametist Kasasını soy.",
+    },
+    zh: {
+      title: "绿洲城十一罗汉 - 第 5 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "每隔一段时间，就会有一批巨额财宝经过银行。紫水晶极其罕见。只要完成一次紫水晶劫案，你就能大发横财。",
+      howToComplete: "抢劫 1 个紫水晶金库。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Jour de Paie",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous devenez un vrai pro... Essayons un plus gros casse. Volez 50 000 $ dans le coffre de la banque. N'oubliez pas l'or.",
+      howToComplete: "Volez 50 000 $ dans le coffre de la banque et trouvez 15 lingots d'or.",
+    },
+    de: {
+      title: "Zahltag",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Du wirst ein echter Profi... Versuchen wir einen größeren Raubüberfall. Stiehl 50.000 $ aus dem Banktresor. Vergiss das Gold nicht.",
+      howToComplete: "Stiehl 50.000 $ aus dem Banktresor und finde 15 Goldbarren.",
+    },
+    es: {
+      title: "Día de Pago",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Te estás convirtiendo en un verdadero profesional... Intentemos un atraco mayor. Roba $50,000 de la cámara del banco. No te olvides del oro.",
+      howToComplete: "Roba $50,000 de la cámara acorazada del banco y encuentra 15 lingotes de oro.",
+    },
+    pt: {
+      title: "Dia de Pagamento",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você está si tornando um verdadeiro profissional... Vamos tentar um assalto maior. Roube $50.000 do cofre do banco. Não si esqueça do ouro.",
+      howToComplete: "Roube $50.000 do cofre do banco e encontre 15 barras de ouro.",
+    },
+    ru: {
+      title: "День расплаты",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Ты становишься настоящим профи... Давай попробуем ограбление покрупнее. Укради 50 000 долларов из банковского хранилища. Не забудь про золото.",
+      howToComplete: "Украдите 50 000 долларов из банковского хранилища и найдите 15 золотых слитков.",
+    },
+    ar: {
+      title: "يوم الدفع",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "أصبحت محترفًا حقيقيًا... لنقم بعملية سطو أكبر. اسرق 50,000 دولار من خزنة البنك. لا تنسَ الذهب.",
+      howToComplete: "اسرق 50,000 دولار من خزنة البنك وابحث عن 15 سبائك ذهب.",
+    },
+    tr: {
+      title: "Ödeme Günü",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Gerçek bir profesyonel oluyorsun... Daha büyük bir soygun deneyelim. Banka kasasından 50.000 $ çal. Altını unutma.",
+      howToComplete: "Banka kasasından 50.000 $ çal ve 15 Altın Külçesi bul.",
+    },
+    zh: {
+      title: "发薪日",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你正在成为一名真正的专业人士……让我们尝试一次更大的劫案。从银行金库里偷走 50,000 美元。别忘了那些黄金。",
+      howToComplete: "从银行金库偷取 50,000 美元并找到 15 块金条。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Fantôme",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Si vous voulez être un criminel de haut vol, vous allez avoir besoin de vitesse. La Spectre est la meilleure de sa catégorie : moteur, aérodynamisme, tout y est.",
+      howToComplete: "Débloquez la voiture Spectre et rapportez-la à Sir B.",
+    },
+    de: {
+      title: "Phantom",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wenn du ein Spitzenverbrecher werden willst, brauchst du Geschwindigkeit. Der Spectre ist der Beste seiner Klasse: Motor, Aerodynamik, das ganze Programm.",
+      howToComplete: "Schalte das Spectre-Auto frei und bringe es zu Sir B.",
+    },
+    es: {
+      title: "Fantasma",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Si quieres ser un criminal de primera, vas a necesitar velocidad. El Spectre es el mejor de su clase: motor, aerodinámica, todo.",
+      howToComplete: "Desbloquea el coche Spectre y llévaselo a Sir B.",
+    },
+    pt: {
+      title: "Fantasma",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Si quiser ser um criminoso de elite, você precisará de velocidade. O Spectre é o melhor da categoria: motor, aerodinâmica, tudo mais.",
+      howToComplete: "Desbloqueie o carro Spectre e entregue-o ao Sir B.",
+    },
+    ru: {
+      title: "Фантом",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Если хочешь быть первоклассным преступником, тебе нужна скорость. Spectre — лучший в своем классе: двигатель, аэродинамика, всё при нем.",
+      howToComplete: "Разблокируйте автомобиль Spectre и передайте его Сиру Б.",
+    },
+    ar: {
+      title: "فانتوم",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "إذا كنت تريد أن تصبح مجرماً بارزاً، فستحتاج إلى السرعة. سيارة \"سبيكتر\" (Spectre) هي الأفضل في فئتها: المحرك، الديناميكا الهوائية، وكل شيء آخر.",
+      howToComplete: "قم بفتح سيارة \"سبيكتر\" وسلمها إلى السير ب.",
+    },
+    tr: {
+      title: "Hayalet",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Üst düzey bir suçlu olmak istiyorsan hıza ihtiyacın olacak. Spectre sınıfının en iyisidir: motoru, aerodinamiği, her şeyiyle.",
+      howToComplete: "Spectre arabasının kilidini aç ve Sir B'ye teslim et.",
+    },
+    zh: {
+      title: "幽灵",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "如果你想成为一名顶尖罪犯，你需要速度。Spectre 是同类产品中的佼佼者：引擎、空气动力学等等，应有尽有。",
+      howToComplete: "解锁 Spectre 汽车并将其交给 Sir B。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Collectionneur de Bagues - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Les bagues de valeur se vendent à prix d'or sur le marché noir. Un de mes clients en veut des échantillons : cela pourrait être une affaire lucrative pour nous deux.",
+      howToComplete: "Apportez à Sir B 2 bagues de saphir, 2 bagues de rubis et 2 bagues d'émeraude.",
+    },
+    de: {
+      title: "Ringsammler - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Teure Ringe erzielen auf dem Schwarzmarkt einen hohen Preis. Ein Kunde von mir möchte einige Proben – das könnte ein lukratives Geschäft für uns beide sein.",
+      howToComplete: "Bring Sir B 2 Saphirringe, 2 Rubinringe und 2 Smaragdringe.",
+    },
+    es: {
+      title: "Coleccionista de Anillos - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Los anillos caros se venden a un precio alto en el mercado negro. Un cliente mío quiere algunas muestras; podría ser un negocio lucrativo para ambos.",
+      howToComplete: "Lleva a Sir B 2 anillos de zafiro, 2 anillos de rubí y 2 anillos de esmeralda.",
+    },
+    pt: {
+      title: "Colecionador de Anéis - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Anéis caros alcançam um preço alto no mercado negro. Um cliente meu quer algumas amostras – pode ser um negócio lucrativo para nós dois.",
+      howToComplete: "Traga para o Sir B 2 anéis de safira, 2 anéis de rubi e 2 anéis de esmeralda.",
+    },
+    ru: {
+      title: "Коллекционер колец — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Дорогие кольца высоко ценятся на черном рынке. Один мой клиент хочет взглянуть на образцы — это может быть выгодная сделка для нас обоих.",
+      howToComplete: "Принесите Сиру Б 2 сапфировых кольца, 2 рубиновых кольца и 2 изумрудных кольца.",
+    },
+    ar: {
+      title: "جامع الخواتم - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "تباع الخواتم باهظة الثمن بسعر مرتفع في السوق السوداء. أحد عملائي يريد بعض العينات - قد تكون هذه صفقة مربحة لنا كليهما.",
+      howToComplete: "أحضر للسير ب خاتمي ياقوت أزرق، وخاتمي ياقوت أحمر، وخاتمي زمرد.",
+    },
+    tr: {
+      title: "Yüzük Avcısı - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Pahalı yüzükler karaborsada yüksek fiyata alıcı bulur. Bir müşterim bazı numuneler istiyor; bu ikimiz için de kazançlı bir anlaşma olabilir.",
+      howToComplete: "Sir B'ye 2 Safir Yüzük, 2 Yakut Yüzük ve 2 Zümrüt Yüzük getir.",
+    },
+    zh: {
+      title: "戒指收藏家 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "昂贵的戒指在黑市上能卖出高价。我的一个客户想要一些样品——这对我们双方来说都可能是一笔有利可图的交易。",
+      howToComplete: "带给 Sir B 2 枚蓝宝石戒指、2 枚红宝石戒指和 2 枚祖母绿戒指。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebandier - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "On vous fait confiance maintenant. À partir de maintenant, apportez-moi toutes les marchandises volées. Je paierai une prime importante, le double de ce qu'Ofy payait. Pour votre peine.",
+      howToComplete: "Vendez pour 30 000 $ de butin à Sir B.",
+    },
+    de: {
+      title: "Schmuggler - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Man vertraut dir jetzt. Von nun an bringst du alle gestohlenen Waren zu mir. Ich zahle einen saftigen Aufpreis, das Doppelte von dem, was Ofy bezahlt hat. Als Entschädigung.",
+      howToComplete: "Verkaufe Beute im Wert von 30.000 $ an Sir B.",
+    },
+    es: {
+      title: "Contrabandista - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Ahora eres de confianza. A partir de ahora, tráeme todos los bienes robados. Te pagaré una prima considerable, el doble de lo que pagaba Ofy. Por tus molestias.",
+      howToComplete: "Vende $30,000 de botín a Sir B.",
+    },
+    pt: {
+      title: "Contrabandista - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Agora você é de confiança. De agora em diante, traga todas as mercadorias roubadas para mim. Pagarei um prêmio generoso, o dobro do que Ofy pagava. Pelo seu esforço.",
+      howToComplete: "Venda $30.000 em saques para o Sir B.",
+    },
+    ru: {
+      title: "Контрабандист — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Теперь тебе доверяют. Отныне приноси всё краденое мне. Я заплачу щедрую премию, вдвое больше, чем платил Офи. За твои старания.",
+      howToComplete: "Продайте добычу на сумму $30 000 Сиру Б.",
+    },
+    ar: {
+      title: "المهرب - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "أصبحت موضع ثقة الآن. من الآن فصاعدًا، أحضر جميع المسروقات إليّ. سأدفع لك علاوة مجزية، ضعف ما كان يدفعه \"أوفي\"، تقديرًا لمجهودك.",
+      howToComplete: "بع غنائم بقيمة 30,000 دولار للسير ب.",
+    },
+    tr: {
+      title: "Kaçakçı - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sana artık güveniyoruz. Bundan sonra çalınan tüm malları bana getir. Ofy'nin ödediğinin iki katı kadar yüklü bir prim ödeyeceğim. Zahmetin için.",
+      howToComplete: "Sir B'ye 30.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "走私客 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你现在值得信赖了。从现在起，把所有赃物都带给我。我会支付高额溢价，是 Ofy 支付金额的两倍。算是给你的辛苦费。",
+      howToComplete: "向 Sir B 出售价值 30,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebandier - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "J'ai des acheteurs en attente, alors continuons à faire affaire ensemble. Grimpez à 100 000 $ cette fois-ci. Plus nous vendons, plus vous êtes payé.",
+      howToComplete: "Vendez pour 100 000 $ de butin à Sir B.",
+    },
+    de: {
+      title: "Schmuggler - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ich habe wartende Käufer, also lass uns weiter zusammen Geschäfte machen. Erhöhe diesmal das Volumen auf 100.000 $. Je mehr wir umsetzen, desto mehr wirst du bezahlt.",
+      howToComplete: "Verkaufe Beute im Wert von 100.000 $ an Sir B.",
+    },
+    es: {
+      title: "Contrabandista - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tengo compradores esperando, así que sigamos haciendo negocios juntos. Sube el volumen a $100,000 esta vez. Cuanto más movamos, más te pagaremos.",
+      howToComplete: "Vende $100,000 de botín a Sir B.",
+    },
+    pt: {
+      title: "Contrabandista - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Tenho compradores esperando, então vamos continuar fazendo negócios juntos. Aumente o volume para $100.000 desta vez. Quanto mais girarmos, mais você será pago.",
+      howToComplete: "Venda $100.000 em saques para o Sir B.",
+    },
+    ru: {
+      title: "Контрабандист — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Покупатели ждут, так что давай продолжим наше сотрудничество. На этот раз объем — 100 000 долларов. Чем больше оборот, тем больше твоя доля.",
+      howToComplete: "Продайте добычу на сумму $100 000 Сиру Б.",
+    },
+    ar: {
+      title: "المهرب - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدي مشترون ينتظرون، لذا دعنا نواصل العمل معاً. ارفع حجم المبيعات إلى 100,000 دولار هذه المرة. كلما بعنا أكثر، زاد أجرك.",
+      howToComplete: "بع غنائم بقيمة 100,000 دولار للسير ب.",
+    },
+    tr: {
+      title: "Kaçakçı - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bekleyen alıcılarım var, bu yüzden birlikte iş yapmaya devam edelim. Bu sefer hacmi 100.000 $'a çıkaralım. Ne kadar çok satış yaparsak, sana o kadar çok ödeme yapılır.",
+      howToComplete: "Sir B'ye 100.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "走私客 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我有买家在等，所以让我们继续合作吧。这次把交易额提高到 100,000 美元。我们出的货越多，你拿到的钱就越多。",
+      howToComplete: "向 Sir B 出售价值 100,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebandier - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous avez fait vos preuves, passons maintenant aux choses sérieuses. 300 000 $ de volume cette fois-ci. Mes acheteurs attendent - ne me décevez pas.",
+      howToComplete: "Vendez pour 300 000 $ de butin à Sir B.",
+    },
+    de: {
+      title: "Schmuggler - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Du hast dich als fähig erwiesen, jetzt werden wir richtig ernst. Diesmal 300.000 $ Volumen. Meine Käufer warten – enttäusche mich nicht.",
+      howToComplete: "Verkaufe Beute im Wert von 300.000 $ an Sir B.",
+    },
+    es: {
+      title: "Contrabandista - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Has demostrado ser capaz, ahora hablemos en serio. $300,000 de volumen esta vez. Mis compradores están esperando; no me decepciones.",
+      howToComplete: "Vende $300,000 de botín a Sir B.",
+    },
+    pt: {
+      title: "Contrabandista - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você provou ser capaz, agora vamos falar sério. $300.000 de volume desta vez. Meus compradores estão esperando – não me decepcione.",
+      howToComplete: "Venda $300.000 em saques para o Sir B.",
+    },
+    ru: {
+      title: "Контрабандист — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Ты доказал свою состоятельность, теперь давай по-серьезному. Объем — 300 000 долларов. Покупатели заждались — не подведи меня.",
+      howToComplete: "Продайте добычу на сумму $300 000 Сиру Б.",
+    },
+    ar: {
+      title: "المهرب - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لقد أثبتت كفاءتك، والآن لنتحدث بجدية أكبر. 300,000 دولار من المبيعات هذه المرة. المشترون ينتظرون - لا تخذلني.",
+      howToComplete: "بع غنائم بقيمة 300,000 دولار للسير ب.",
+    },
+    tr: {
+      title: "Kaçakçı - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Kendini kanıtladın, şimdi gerçekten ciddileşelim. Bu sefer 300.000 $ hacim. Alıcılarım bekliyor; beni hayal kırıklığına uğratma.",
+      howToComplete: "Sir B'ye 300.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "走私客 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你已经证明了自己的能力，现在让我们认真起来。这次是 300,000 美元的交易额。我的买家们在等着呢——别让我失望。",
+      howToComplete: "向 Sir B 出售价值 300,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebandier - Partie 4",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous ne semblez pas avoir de problèmes avec ça, passons à 500 000 $ cette fois-ci. N'oubliez pas, le temps c'est de l'argent. Mon argent.",
+      howToComplete: "Vendez pour 500 000 $ de butin à Sir B.",
+    },
+    de: {
+      title: "Schmuggler - Teil 4",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das schien dir keine Probleme zu bereiten, machen wir diesmal 500.000 $. Denk dran, Zeit ist Geld. Mein Geld.",
+      howToComplete: "Verkaufe Beute im Wert von 500.000 $ an Sir B.",
+    },
+    es: {
+      title: "Contrabandista - Parte 4",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "No parece que hayas tenido problemas con eso, así que subamos a $500,000 esta vez. Recuerda, el tiempo es dinero. Mi dinero.",
+      howToComplete: "Vende $500,000 de botín a Sir B.",
+    },
+    pt: {
+      title: "Contrabandista - Parte 4",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você não pareceu ter problemas com isso, vamos para $500.000 desta vez. Lembre-si, tempo é dinheiro. Meu dinheiro.",
+      howToComplete: "Venda $500.000 em saques para o Sir B.",
+    },
+    ru: {
+      title: "Контрабандист — Часть 4",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Похоже, у тебя нет с этим проблем, так что на этот раз — 500 000 долларов. Помни, время — деньги. Мои деньги.",
+      howToComplete: "Продайте добычу на сумму $500 000 Сиру Б.",
+    },
+    ar: {
+      title: "المهرب - الجزء 4",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "يبدو أنك لم تواجه أي مشكلة في ذلك، لنجعل المبلغ 500,000 دولار هذه المرة. تذكر، الوقت هو المال. مالي أنا.",
+      howToComplete: "بع غنائم بقيمة 500,000 دولار للسير ب.",
+    },
+    tr: {
+      title: "Kaçakçı - Bölüm 4",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bunda zorlanmış gibi görünmüyorsun, bu sefer 500.000 $ yapalım. Unutma, vakit nakittir. Benim nakdim.",
+      howToComplete: "Sir B'ye 500.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "走私客 - 第 4 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你看起来应付得很轻松，这次交易额定在 500,000 美元吧。记住，时间就是金钱。我的钱。",
+      howToComplete: "向 Sir B 出售价值 500,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebandier - Partie 5",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Nous jouons dans la cour des grands maintenant : sept chiffres. Un million. Vous savez ce qu'on dit : le premier million est toujours le plus difficile.",
+      howToComplete: "Vendez pour 1 000 000 $ de butin à Sir B.",
+    },
+    de: {
+      title: "Schmuggler - Teil 5",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wir spielen jetzt in der obersten Liga: sieben Stellen. Eine Million. Du weißt ja, was man sagt: Die erste Million ist immer die schwerste.",
+      howToComplete: "Verkaufe Beute im Wert von 1.000.000 $ an Sir B.",
+    },
+    es: {
+      title: "Contrabandista - Parte 5",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Estamos en las grandes ligas ahora: siete cifras. Un millón. Ya sabes lo que dicen: el primer millón siempre es el más difícil.",
+      howToComplete: "Vende $1,000,000 de botín a Sir B.",
+    },
+    pt: {
+      title: "Contrabandista - Parte 5",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Estamos nas grandes ligas agora: sete dígitos. Um milhão. Você sabe o que dizem: o primeiro milhão é sempre o mais difícil.",
+      howToComplete: "Venda $1.000.000 em saques para o Sir B.",
+    },
+    ru: {
+      title: "Контрабандист — Часть 5",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Теперь мы в высшей лиге: семь цифр. Один миллион. Знаешь, как говорят: первый миллион всегда самый трудный.",
+      howToComplete: "Продайте добычу на сумму $1 000 000 Сиру Б.",
+    },
+    ar: {
+      title: "المهرب - الجزء 5",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "نحن في دوري الكبار الآن: سبعة أرقام. مليون واحد. أنت تعرف ما يقولون: المليون الأول هو دائماً الأصعب.",
+      howToComplete: "بع غنائم بقيمة 1,000,000 دولار للسير ب.",
+    },
+    tr: {
+      title: "Kaçakçı - Bölüm 5",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Artık büyükler ligindeyiz: yedi haneli rakamlar. Bir milyon. Ne derler bilirsin; ilk milyon her zaman en zorudur.",
+      howToComplete: "Sir B'ye 1.000.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "走私客 - 第 5 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我们现在进入大联盟了：七位数。一百万。你知道人们常说的那句话：第一个一百万总是最难赚的。",
+      howToComplete: "向 Sir B 出售价值 1,000,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Contrebandier - Partie 6",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Vous vous demandez probablement pourquoi je vous pousse sans cesse à gagner de l'argent. C'est parce que le Syndicat est une opération coûteuse - il faut beaucoup d'argent pour maintenir notre petite rébellion à flot. Vous êtes un acteur clé maintenant. Ne nous décevez pas.",
+      howToComplete: "Vendez pour 1 000 000 $ de butin à Sir B.",
+    },
+    de: {
+      title: "Schmuggler - Teil 6",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Du fragst dich jetzt wahrscheinlich, warum ich dich ständig dränge, Geld zu verdienen. Das liegt daran, dass das Syndikat ein teures Unternehmen ist – es kostet viel Geld, unsere kleine Rebellion am Laufen zu halten. Du bist jetzt ein wichtiger Akteur. Enttäusche uns nicht.",
+      howToComplete: "Verkaufe Beute im Wert von 1.000.000 $ an Sir B.",
+    },
+    es: {
+      title: "Contrabandista - Parte 6",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Probablemente te estés preguntando por qué sigo insistiendo en que ganes dinero. Eso es porque el Sindicato es una operación costosa: se necesita mucho dinero para mantener a flote nuestra pequeña rebelión. Ahora eres un jugador clave. No nos decepciones.",
+      howToComplete: "Vende $1,000,000 de botín a Sir B.",
+    },
+    pt: {
+      title: "Contrabandista - Parte 6",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Você provavelmente está si perguntando agora por que continuo insistindo para que você ganhe dinheiro. Isso ocorre porque o Sindicato é uma operação cara – é necessário muito dinheiro para manter nossa pequena rebelião funcionando. Você é um jogador fundamental agora. Não nos decepcione.",
+      howToComplete: "Venda $1.000.000 em saques para o Sir B.",
+    },
+    ru: {
+      title: "Контрабандист — Часть 6",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Ты, наверное, гадаешь, почему я всё время требую от тебя денег. Всё потому, что Синдикат — это дорогая затея, поддержка нашего восстания требует огромных средств. Теперь ты — важная фигура. Не подведи нас.",
+      howToComplete: "Продайте добычу на сумму $1 000 000 Сиру Б.",
+    },
+    ar: {
+      title: "المهرب - الجزء 6",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "ربما تتساءل الآن لماذا أستمر في حثك على كسب المال. ذلك لأن المنظمة هي عملية مكلفة - يتطلب الأمر الكثير من المال لإبقاء تمردنا الصغير قائماً. أنت لاعب رئيسي الآن، لا تخذلنا.",
+      howToComplete: "بع غنائم بقيمة 1,000,000 دولار للسير ب.",
+    },
+    tr: {
+      title: "Kaçakçı - Bölüm 6",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Muhtemelen neden seni sürekli para kazanman için darladığımı merak ediyorsundur. Bunun sebebi Sendika'nın pahalı bir operasyon olması; küçük isyanımızı ayakta tutmak çok paraya mal oluyor. Artık kilit bir oyuncusun. Bizi hayal kırıklığına uğratma.",
+      howToComplete: "Sir B'ye 1.000.000 $ değerinde ganimet sat.",
+    },
+    zh: {
+      title: "走私客 - 第 6 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "你现在可能在想为什么我一直催你赚钱。那是因为辛迪加是一项昂贵的行动——维持我们的小规模反叛需要很多钱。你现在是核心成员了。别让我们失望。",
+      howToComplete: "向 Sir B 出售价值 1,000,000 美元的战利品。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Pilote Furtif",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le Syndicat a besoin d'un véhicule capable de mener des raids aériens. Allez parler à Davis, notre contact à l'héliport. Il vous guidera à travers les licences et la paperasse.",
+      howToComplete: "Achetez l'hélicoptère MD 500.",
+    },
+    de: {
+      title: "Stealth-Pilot",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das Syndikat braucht ein Fahrzeug für Luftangriffe. Geh zu Davis, unserem Kontakt am Heliport. Er wird dich durch die Lizenzen und den bürokratischen Aufwand führen.",
+      howToComplete: "Kaufe den Hubschrauber MD 500.",
+    },
+    es: {
+      title: "Piloto Sigiloso",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El Sindicato necesita un vehículo que pueda realizar incursiones aéreas. Ve a hablar con Davis, nuestro contacto en el helipuerto. Él te guiará a través de las licencias y el papeleo.",
+      howToComplete: "Compra el helicóptero MD 500.",
+    },
+    pt: {
+      title: "Piloto Furtivo",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O Sindicato precisa de um veículo que possa realizar ataques aéreos. Vá falar com Davis, nosso contato no heliporto. Ele o guiará pelas licenças e burocracia.",
+      howToComplete: "Compre o helicóptero MD 500.",
+    },
+    ru: {
+      title: "Скрытный пилот",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Синдикату нужно средство для воздушных налетов. Поговори с Дэвисом, нашим человеком в вертолетном порту. Он поможет с лицензиями и бумагами.",
+      howToComplete: "Купите вертолет MD 500.",
+    },
+    ar: {
+      title: "طيار متسلل",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "المنظمة بحاجة إلى مركبة يمكنها القيام بغارات جوية. اذهب للتحدث إلى ديفيس، جهة اتصالنا في المطار المروحي. سيقوم بإرشادك عبر التراخيص والإجراءات الروتينية.",
+      howToComplete: "قم بشراء المروحية MD 500.",
+    },
+    tr: {
+      title: "Gizli Pilot",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika'nın havadan baskınlar yapabilecek bir araca ihtiyacı var. Helikopter pistindeki bağlantımız Davis ile konuş. Seni lisans ve bürokrasi işlerinde yönlendirecektir.",
+      howToComplete: "MD 500 helikopterini satın al.",
+    },
+    zh: {
+      title: "隐形飞行员",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "辛迪加需要一辆能够进行空中突袭的载具。去和我们在直升机场的联系人 Davis 谈谈。他会带你办理执照和繁琐的手续。",
+      howToComplete: "购买 MD 500 直升机。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Chiens du Syndicat - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Il est temps pour vous d'apprendre à réaliser un véritable casse de bijoux. Il vous faudra d'abord les bons outils. Allez acheter la scie sauteuse au prêteur sur gages d'Ofy. C'est la seule chose assez puissante pour traverser les vitrines.",
+      howToComplete: "Achetez une scie sauteuse au prêteur sur gages d'Ofy, localisez la bijouterie et brisez 5 vitrines.",
+    },
+    de: {
+      title: "Syndikats-Hunde - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Es ist Zeit für dich zu lernen, wie man einen richtigen Juwelenraub durchzieht. Du brauchst zuerst die richtigen Werkzeuge. Kaufe die Buzzsaw in Ofys Pfandleihhaus. Es ist das Einzige, was stark genug ist, um durch die Vitrinen zu kommen.",
+      howToComplete: "Kaufe eine Buzzsaw in Ofys Pfandleihhaus, finde den Juwelierladen und brich 5 Vitrinen auf.",
+    },
+    es: {
+      title: "Perros del Sindicato - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Es hora de que aprendas a realizar un auténtico robo de joyas. Primero necesitarás las herramientas adecuadas. Ve a comprar la sierra circular a la casa de empeños de Ofy. Es lo único lo suficientemente fuerte como para atravesar las vitrinas.",
+      howToComplete: "Compra una sierra circular en la casa de empeños de Ofy, localiza la joyería y rompe 5 vitrinas.",
+    },
+    pt: {
+      title: "Cães do Sindicato - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "É hora de você aprender a realizar um assalto a uma joalheria de verdade. Você precisará das ferramentas adequadas primeiro. Vá comprar a Buzzsaw na loja de penhores do Ofy. É a única coisa forte o suficiente para passar pelas vitrines.",
+      howToComplete: "Compre uma Buzzsaw na loja de penhores do Ofy, localize a Joalheria e quebre 5 vitrines.",
+    },
+    ru: {
+      title: "Псы Синдиката — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Пора тебе научиться грабить ювелирные магазины. Сначала понадобятся инструменты. Купи дисковую пилу в ломбарде Офи. Только она сможет вскрыть витрины.",
+      howToComplete: "Купите дисковую пилу в ломбарде Офи, найдите ювелирный магазин и вскройте 5 витрин.",
+    },
+    ar: {
+      title: "كلاب المنظمة - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "حان الوقت لتتعلم كيف تقوم بعملية سطو حقيقية على المجوهرات. ستحتاج أولاً إلى الأدوات المناسبة. اذهب لشراء المنشار الآلي (Buzzsaw) من محل الرهونات الخاص بـ \"أوفي\". إنه الشيء الوحيد القوي بما يكفي لاختراق واجهات العرض.",
+      howToComplete: "قم بشراء منشار آلي من محل رهونات أوفي، وحدد موقع متجر المجوهرات، واكسر 5 واجهات عرض.",
+    },
+    tr: {
+      title: "Sendika Köpekleri - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Gerçek bir mücevher soygunu yapmayı öğrenme vaktin geldi. Önce uygun aletlere ihtiyacın olacak. Ofy'nin rehin dükkanından bir Buzzsaw satın al. Vitrinleri geçebilecek kadar güçlü olan tek şey bu.",
+      howToComplete: "Ofy'nin rehin dükkanından bir Buzzsaw satın al, Kuyumcu Dükkanını bul ve 5 vitrini kır.",
+    },
+    zh: {
+      title: "辛迪加之犬 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "是时候让你学习如何进行一次真正的珠宝劫案了。你首先需要合适的工具。去 Ofy 的典当铺买一把电锯。它是唯一能锯开展示柜的强力工具。",
+      howToComplete: "从 Ofy 的典当铺购买一把电锯，找到珠宝店并打碎 5 个展示柜。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Chiens du Syndicat - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le coffre-fort de la bijouterie est renforcé - les explosifs puissants ne suffiront pas. Vous aurez besoin d'une perceuse spécialisée. Allez voir Rod au Port. Il aura ce qu'il vous faut pour entrer par effraction.",
+      howToComplete: "Trouvez un perceur de coffre, entrez dans le coffre de la bijouterie et brisez 20 vitrines.",
+    },
+    de: {
+      title: "Syndikats-Hunde - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Der Juwelier-Tresor ist verstärkt – Sprengstoff allein reicht nicht aus. Du brauchst einen speziellen Bohrer. Geh zu Rod am Hafen. Er wird haben, was du zum Einbrechen brauchst.",
+      howToComplete: "Finde einen Tresorknacker, brich in den Juwelier-Tresor ein und brich 20 Schmuckvitrinen auf.",
+    },
+    es: {
+      title: "Perros del Sindicato - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "La cámara de la joyería está reforzada; los explosivos potentes no bastarán. Necesitarás un taladro especializado. Ve a ver a Rod al Puerto. Él tendrá lo que necesitas para entrar.",
+      howToComplete: "Busca un abridor de cajas fuertes, entra en la cámara de la joyería y rompe 20 vitrinas.",
+    },
+    pt: {
+      title: "Cães do Sindicato - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O cofre da joalheria é reforçado – explosivos de alto poder não serão suficientes. Você precisará de uma furadeira especializada. Vá ver Rod no Porto. Ele terá o que você precisa para invadir.",
+      howToComplete: "Encontre um Vault Cracker, invada o cofre da joalheria e quebre 20 vitrines de joias.",
+    },
+    ru: {
+      title: "Псы Синдиката — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Хранилище ювелирного укреплено — обычной взрывчаткой не обойтись. Тебе понадобится специальный бур. Сходи к Роду в порт. У него есть то, что нужно для взлома.",
+      howToComplete: "Найдите взломщик хранилищ, проникните в ювелирное хранилище и вскройте 20 витрин.",
+    },
+    ar: {
+      title: "كلاب المنظمة - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "خزنة المجوهرات محصنة - المتفجرات القوية لن تنفع. ستحتاج إلى مثقاب متخصص. اذهب لمقابلة رود في الميناء، سيكون لديه ما تحتاجه للاقتحام.",
+      howToComplete: "ابحث عن خبير فتح الخزائن (Vault Cracker)، واقتحم خزنة المجوهرات، واكسر 20 واجهة عرض مجوهرات.",
+    },
+    tr: {
+      title: "Sendika Köpekleri - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Kuyumcu kasası takviye edilmiş; yüksek patlayıcılar işe yaramayacaktır. Özel bir matkaba ihtiyacın olacak. Limandaki Rod'un yanına git. İçeri girmek için ihtiyacın olan şey onda olacak.",
+      howToComplete: "Bir Kasa Kırıcı bul, Kuyumcu Kasasına sız ve 20 Mücevher Kutusunu kır.",
+    },
+    zh: {
+      title: "辛迪加之犬 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "珠宝店的金库经过加固——普通高能炸药行不通。你需要一个专门的钻机。去港口找 Rod。他会有你潜入金库所需的工具。",
+      howToComplete: "寻找到一个金库破解器，潜入珠宝金库并打碎 20 个珠宝柜。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Submariner",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Cette fois, la commande groupée va à Ofy. Ofy a un client qui a besoin de nouvelles montres de luxe. Vendez à Ofy un sac contenant 3 Rollies, d'un coup.",
+      howToComplete: "Vendez à Ofy un sac contenant 3 Rollies, d'un coup.",
+    },
+    de: {
+      title: "Submariner",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Diesmal geht die Großbestellung an Ofy. Ofy hat einen Kunden, der einige neue schicke Uhren braucht. Verkaufe Ofy eine Tasche mit 3 Rollies gleichzeitig.",
+      howToComplete: "Verkaufe Ofy eine Tasche mit 3 Rollies gleichzeitig.",
+    },
+    es: {
+      title: "Submarinista",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Esta vez el pedido al por mayor es para Ofy. Ofy tiene un cliente que necesita algunos relojes de lujo nuevos. Vende a Ofy una bolsa que contenga 3 Rollies, todos a la vez.",
+      howToComplete: "Vende a Ofy una bolsa que contenga 3 Rollies, todos a la vez.",
+    },
+    pt: {
+      title: "Submariner",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Desta vez a encomenda em massa vai para Ofy. Ofy tem um cliente que precisa de alguns relógios extravagantes novos. Venda ao Ofy uma bolsa contendo 3 Rollies, todos de uma vez.",
+      howToComplete: "Venda ao Ofy uma bolsa contendo 3 Rollies, de uma vez só.",
+    },
+    ru: {
+      title: "Подводник",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "На этот раз крупный заказ идет Офи. У Офи есть клиент, которому нужны новые шикарные часы. Продай Офи сумку с 3 «Ролликами» за один раз.",
+      howToComplete: "Продайте Офи сумку, содержащую сразу 3 «Роллика».",
+    },
+    ar: {
+      title: "سابمارينر",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "هذه المرة الطلبية الكبيرة ستذهب إلى أوفي. أوفي لديه عميل يحتاج إلى بعض الساعات الفاخرة الجديدة. بع لأوفي حقيبة تحتوي على 3 ساعات \"رولي\" (Rollies) دفعة واحدة.",
+      howToComplete: "بع لأوفي حقيبة تحتوي على 3 ساعات رولي دفعة واحدة.",
+    },
+    tr: {
+      title: "Denizci",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Bu seferki toplu sipariş Ofy'ye gidiyor. Ofy'nin yeni ve şık saatlere ihtiyacı olan bir müşterisi var. Ofy'ye tek seferde 3 Rollie içeren bir çanta sat.",
+      howToComplete: "Ofy'ye tek seferde 3 Rollie içeren bir çanta sat.",
+    },
+    zh: {
+      title: "潜航者",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "这一次的出货是给 Ofy 的。Ofy 有一个客户需要一些高档手表。一次性卖给 Ofy 一个装有 3 块 Rollies 手表的包。",
+      howToComplete: "一次性卖给 Ofy 一个装有 3 块 Rollies 手表的包。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Guichetier - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Je vais vous confier un petit secret : tout le système est conçu pour vous maintenir pauvre. Les banques vous font payer pour retirer votre propre argent de la machine. Qui aurait cru que vous paieriez de l'argent pour obtenir de l'argent ? C'est là que nous en sommes. Ils vous possèdent.",
+      howToComplete: "Braquez 20 distributeurs automatiques et 20 caisses enregistreuses.",
+    },
+    de: {
+      title: "Kassierer - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ich verrate dir ein kleines Geheimnis: Das ganze System ist darauf ausgelegt, dich am Boden und arm zu halten. Banken verlangen Geld von dir, damit du dein eigenes Geld aus dem Automaten bekommst. Wer hätte gedacht, dass man bar bezahlt, um Bargeld zu bekommen? So weit ist es gekommen. Sie besitzen dich.",
+      howToComplete: "Raube 20 Geldautomaten und 20 Registrierkassen aus.",
+    },
+    es: {
+      title: "Cajero - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Te voy a contar un secreto: todo el sistema está diseñado para mantenerte hundido y pobre. Los bancos te cobran dinero por sacar tu propio dinero del cajero. ¿Quién iba a pensar que pagarías efectivo para obtener efectivo? A eso hemos llegado. Te poseen.",
+      howToComplete: "Roba 20 cajeros automáticos y 20 cajas registradoras.",
+    },
+    pt: {
+      title: "Caixa - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Vou lhe contar um segredinho: todo o sistema foi projetado para mantê-lo pobre. Os bancos cobram dinheiro para você tirar o seu próprio dinheiro da máquina. Quem diria que você pagaria em dinheiro para receber dinheiro? É aí que chegamos. Eles são seus donos.",
+      howToComplete: "Assalte 20 caixas eletrônicos e 20 caixas registradoras.",
+    },
+    ru: {
+      title: "Кассир — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Открою тебе секрет: вся система создана, чтобы держать тебя в нищете. Банки берут с тебя деньги за то, что ты снимаешь собственные деньги. Кто бы мог подумать, что придется платить за наличные? Вот до чего мы дошли. Они владеют тобой.",
+      howToComplete: "Ограбьте 20 банкоматов и 20 кассовых аппаратов.",
+    },
+    ar: {
+      title: "الصراف - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "سأخبرك بسر صغير: النظام بأكمله مصمم لإبقائك محبطاً وفقيراً. البنوك تفرض عليك رسوماً لتخرج أموالك الخاصة من الآلة. من كان يظن أنك ستدفع نقداً لتحصل على نقد؟ هذا هو الحال الذي وصلنا إليه. إنهم يمتلكونك.",
+      howToComplete: "قم بالسطو على 20 صراف آلي و20 آلة تسجيل نقد.",
+    },
+    tr: {
+      title: "Veznedar - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sana küçük bir sır vereyim: tüm sistem seni ezilmeye ve fakir kalmaya mahkum etmek için tasarlandı. Bankalar kendi paranı makineden çekmen için senden para kesiyor. Nakit almak için nakit ödeyeceğin kimin aklına gelirdi? İşte bu noktaya geldik. Sana sahipler.",
+      howToComplete: "20 ATM ve 20 Yazar Kasa soy.",
+    },
+    zh: {
+      title: "出纳员 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我告诉你一个小秘密：整个系统就是为了让你受穷受累而设计的。银行收你的钱，让你从机器里取回你自己的钱。谁能想到你会为了拿现金而付现金？这就是我们现在的现状。他们拥有你。",
+      howToComplete: "抢劫 20 台 ATM 机和 20 个收银机。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Guichetier - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Si les gens comprenaient réellement comment fonctionne notre système bancaire et monétaire, il y aurait une révolution dès demain matin. Vous travaillez dur, et votre argent est déposé dans une banque. Ils vous volent, vous aussi.",
+      howToComplete: "Braquez 60 distributeurs automatiques et 60 caisses enregistreuses.",
+    },
+    de: {
+      title: "Kassierer - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Wenn die Menschen unser Banken- und Geldsystem wirklich verstehen würden, gäbe es morgen früh eine Revolution. Du arbeitest hart, und dein Geld wird bei einer Bank eingezahlt. Sie bestehlen dich auch.",
+      howToComplete: "Raube 60 Geldautomaten und 60 Registrierkassen aus.",
+    },
+    es: {
+      title: "Cajero - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Si la gente comprendiera realmente nuestro sistema bancario y monetario, habría una revolución mañana por la mañana. Trabajas duro y tu dinero se deposita en un banco. A ti también te están robando.",
+      howToComplete: "Roba 60 cajeros automáticos y 60 cajas registradoras.",
+    },
+    pt: {
+      title: "Caixa - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Si as pessoas realmente tivessem algum entendimento sobre o nosso sistema bancário e monetário, haveria uma revolução amanhã de manhã. Você trabalha duro e seu dinheiro é depositado em um banco. Eles estão roubando de você também.",
+      howToComplete: "Assalte 60 caixas eletrônicos e 60 caixas registradoras.",
+    },
+    ru: {
+      title: "Кассир — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Если бы люди действительно понимали нашу банковскую и денежную систему, революция началась бы уже завтра утром. Ты вкалываешь, а твои деньги лежат в банке. Они обкрадывают и тебя тоже.",
+      howToComplete: "Ограбьте 60 банкоматов и 60 кассовых аппаратов.",
+    },
+    ar: {
+      title: "الصراف - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لو كان لدى الناس أي فهم حقيقي لنظامنا المصرفي والنقدي، لحدثت ثورة بحلول صباح الغد. أنت تعمل بجد، وأموالك تودع في بنك. إنهم يسرقون منك أنت أيضاً.",
+      howToComplete: "قم بالسطو على 60 صراف آلي و60 آلة تسجيل نقد.",
+    },
+    tr: {
+      title: "Veznedar - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "İnsanlar bankacılık ve parasal sistemimiz hakkında gerçekten bir şeyler anlasaydı, yarın sabaha bir devrim olurdu. Çok çalışıyorsun ve paran bir bankaya yatırılıyor. Seni de soyuyorlar.",
+      howToComplete: "60 ATM ve 60 Yazar Kasa soy.",
+    },
+    zh: {
+      title: "出纳员 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "如果人们真的能理解我们的银行和货币系统，明天早上就会发生革命。你辛勤工作，然后你的钱存进了银行。他们也在偷你的钱。",
+      howToComplete: "抢劫 60 台 ATM 机和 60 个收银机。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Le Dépôt",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le vol à la tire n'est pas prestigieux, mais tout maître voleur commence petit. Je préférerais être un voleur qu'un esclave au col blanc, pas vous ? Frappez 4 stations-service autour d'Oasis. Ils gardent leur argent dans un coffre à l'arrière. Relevez les empreintes et forcez le verrou à combinaison.",
+      howToComplete: "Cambriolez 4 coffres de station-service.",
+    },
+    de: {
+      title: "Die Einzahlung",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Kleinkriminalität ist nicht glamourös, aber jeder Meisterdieb fängt klein an. Ich wäre lieber ein Dieb als ein Sklave mit weißem Kragen, du nicht? Überfalle 4 Tankstellen in Oasis. Sie bewahren ihr Geld in einem Tresor im hinteren Bereich auf. Suche nach Fingerabdrücken und knacke das Kombinationsschloss.",
+      howToComplete: "Raube 4 Tankstellentresore aus.",
+    },
+    es: {
+      title: "El Depósito",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El hurto de poca monta no tiene glamour, pero todo maestro ladrón empieza por algo pequeño. Yo preferiría ser un ladrón que un esclavo de cuello blanco, ¿tú no? Asalta 4 gasolineras alrededor de Oasis. Guardan su dinero en una caja fuerte al fondo. Limpia las huellas y abre la cerradura de combinación.",
+      howToComplete: "Roba 4 cajas fuertes de gasolineras.",
+    },
+    pt: {
+      title: "O Depósito",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Pequenos furtos não são glamorosos, mas todo mestre ladrão começa pequeno. Eu prefiro ser um ladrão a um escravo de colarinho branco, não acha? Assalte 4 postos de gasolina em Oasis. Eles guardam o dinheiro em um cofre nos fundos. Limpe as impressões e abra a fechadura combinada.",
+      howToComplete: "Assalte 4 cofres de postos de gasolina.",
+    },
+    ru: {
+      title: "Вклад",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Мелкие кражи — это не престижно, но каждый мастер начинал с низов. Я лучше буду вором, чем офисным рабом, а ты? Ограбь 4 заправки вокруг Оазиса. Деньги в сейфе в подсобке. Сотри пальчики и вскрой замок.",
+      howToComplete: "Ограбьте 4 сейфа на заправках.",
+    },
+    ar: {
+      title: "الإيداع",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "السرقات الصغيرة ليست براقة، لكن كل لص بارع يبدأ صغيراً. أفضل أن أكون لصاً على أن أكون عبداً بياقة بيضاء، أليس كذلك؟ قم بالسطو على 4 محطات وقود حول الواحة (Oasis). إنهم يحتفظون بأموالهم في خزنة في الخلف. فقط قم بمسح البصمات وافتح القفل المشفر.",
+      howToComplete: "قم بالسطو على 4 خزائن محطات وقود.",
+    },
+    tr: {
+      title: "Emanet",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Ufak tefek hırsızlıklar gösterişli değildir ama her usta hırsız küçükten başlar. Beyaz yakalı bir köle olmaktansa hırsız olmayı tercih ederim, ya sen? Oasis civarındaki 4 benzin istasyonunu vur. Paralarını arkadaki bir kasada saklıyorlar. Parmak izlerini tozla ve şifreli kilidi kır.",
+      howToComplete: "4 Benzin İstasyonu Kasasını soy.",
+    },
+    zh: {
+      title: "存款",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "小偷小摸并不体面，但每一位神偷都是从小事做起的。我宁愿做个小偷，也不愿做个白领奴隶，你呢？在绿洲城周围抢劫 4 家加油站。他们把钱藏在后面的保险箱里。擦掉指纹，破解组合锁。",
+      howToComplete: "抢劫 4 个加油站保险箱。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Le Domaine",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "J'ai besoin que vous établissiez une nouvelle planque pour le Syndicat. Quelque chose de plus agréable que ça : un endroit discret, où nous pourrons négocier plus de contrats.",
+      howToComplete: "Achetez la maison Modern Brickstone.",
+    },
+    de: {
+      title: "Das Anwesen",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ich möchte, dass du ein neues Versteck für das Syndikat einrichtest. Irgendwo schöner als hier: ein ruhiger Ort, an dem wir mehr Geschäfte abwickeln können.",
+      howToComplete: "Kaufe das Haus Modern Brickstone.",
+    },
+    es: {
+      title: "La Propiedad",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Necesito que establezcas un nuevo refugio para el Sindicato. Un lugar más agradable que este: un sitio tranquilo donde podamos negociar más tratos.",
+      howToComplete: "Compra la casa Modern Brickstone.",
+    },
+    pt: {
+      title: "A Propriedade",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Preciso que você estabeleça um novo esconderijo para o Sindicato. Algum lugar melhor que este: um lugar discreto, onde possamos negociar mais acordos.",
+      howToComplete: "Compre a casa Modern Brickstone.",
+    },
+    ru: {
+      title: "Поместье",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Мне нужно, чтобы ты обустроил новое убежище для Синдиката. Что-нибудь поприличнее этого места: где не так жарко и можно проворачивать больше сделок.",
+      howToComplete: "Купите дом Modern Brickstone.",
+    },
+    ar: {
+      title: "العقار",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "أحتاج منك إنشاء مخبأ جديد للمنظمة. مكان أفضل من هذا: مكان هادئ، حيث يمكننا إبرام المزيد من الصفقات.",
+      howToComplete: "قم بشراء منزل Modern Brickstone.",
+    },
+    tr: {
+      title: "Mülk",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika için yeni bir güvenli ev kurmanı istiyorum. Buradan daha güzel bir yer: daha az dikkat çeken, daha fazla anlaşma yapabileceğimiz bir yer.",
+      howToComplete: "Modern Brickstone evini satın al.",
+    },
+    zh: {
+      title: "庄园",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我需要你为辛迪加建立一个新的安全屋。要比这里好一些：一个低调的地方，我们可以那里达成更多交易。",
+      howToComplete: "购买 Modern Brickstone 房屋。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Les Dossiers",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le gouvernement, l'armée - ils ont tous été achetés. Il y a une corporation clandestine qui mène des expériences dangereuses : apparemment, ce sont eux les responsables de la mystérieuse Anomalie. Infiltrez la base militaire et récupérez tous les documents que vous trouverez à ce sujet. Nous devons comprendre ce qui se passe.",
+      howToComplete: "Trouvez 3 dossiers secrets à la base militaire et apportez-les à Sir B.",
+    },
+    de: {
+      title: "Die Akten",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Die Regierung, das Militär – sie wurden alle bestochen. Es gibt einen zwielichtigen Konzern, der gefährliche Experimente durchführt: Anscheinend sind sie für die mysteriöse Anomalie verantwortlich. Infiltriere die Militärbasis und beschaffe alle Dokumente, die du dazu findest. Wir müssen herausfinden, was hier vor sich geht.",
+      howToComplete: "Finde 3 Geheimakten auf der Militärbasis und bringe sie zu Sir B.",
+    },
+    es: {
+      title: "Los Archivos",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El gobierno, el ejército... todos han sido sobornados. Hay una corporación negra realizando experimentos peligrosos: al parecer, ellos son los responsables de la misteriosa Anomalía. Infiltra la Base Militar y recupera cualquier documento que encuentres al respecto. Tenemos que descubrir qué está pasando.",
+      howToComplete: "Encuentra 3 archivos secretos en la Base Militar y llévaselos a Sir B.",
+    },
+    pt: {
+      title: "Os Arquivos",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O governo, os militares – todos foram comprados. Existe uma corporação secreta conduzindo experimentos perigosos: aparentemente eles são os responsáveis pela misteriosa Anomalia. Infiltre-si na Base Militar e recupere quaisquer documentos que encontrar sobre isso. Precisamos descobrir o que está acontecendo.",
+      howToComplete: "Encontre 3 arquivos secretos na Base Militar e leve-os para Sir B.",
+    },
+    ru: {
+      title: "Файлы",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Правительство, армия — они все куплены. Есть тайная корпорация, проводящая опасные эксперименты: похоже, именно они стоят за загадочной Аномалией. Проберись на военную базу и добудь любые документы об этом. Нам нужно знать, что происходит.",
+      howToComplete: "Найдите 3 секретных файла на военной базе и доставьте их Сиру Б.",
+    },
+    ar: {
+      title: "الملفات",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "الحكومة، الجيش - تم شراء الجميع. هناك منظمة سوداء تجري تجارب خطيرة: يبدو أنهم هم المسؤولون عن الظاهرة الغامضة (Anomaly). تسلل إلى القاعدة العسكرية واسترجع أي مستندات تجدها حول هذا الموضوع. نحتاج إلى معرفة ما يحدث.",
+      howToComplete: "اعثر على 3 ملفات سرية في القاعدة العسكرية وأحضرها إلى السير ب.",
+    },
+    tr: {
+      title: "Dosyalar",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Hükümet, ordu; hepsi satın alındı. Tehlikeli deneyler yürüten karanlık bir şirket var: Görünüşe göre gizemli Anomali'den onlar sorumlu. Askeri Üsse sız ve bu konuda bulduğun tüm belgeleri ele geçir. Neler olup bittiğini anlamamız gerekiyor.",
+      howToComplete: "Askeri Üsteki 3 Gizli Dosyayı bul ve Sir B'ye getir.",
+    },
+    zh: {
+      title: "档案",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "政府、军队——他们都被收买了。有一家黑子公司正在进行危险的实验：显然他们就是那个神秘“异常”的罪魁祸首。潜入军事基地，找回你发现的任何相关文件。我们需要弄清楚到底发生了什么。",
+      howToComplete: "在军事基地找到 3 份秘密档案并将其带给 Sir B。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Le Sac le plus Lourd",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "L'argent n'achète pas le bonheur - il achète la liberté. Remplissez votre sac de butin jusqu'au bord - pour une valeur de 500 000 $.",
+      howToComplete: "Obtenez un sac d'une valeur totale de 500 000 $.",
+    },
+    de: {
+      title: "Die schwerste Tasche",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Geld kauft kein Glück – es kauft Freiheit. Fülle deine Beutetasche bis zum Rand – 500.000 $ wert.",
+      howToComplete: "Hol dir eine Tasche mit einem Gesamtwert von 500.000 $.",
+    },
+    es: {
+      title: "La Bolsa más Pesada",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El dinero no compra la felicidad, compra la libertad. Llena tu bolsa de botín hasta los topes: un valor de $500,000.",
+      howToComplete: "Consigue una bolsa con un valor total de $500,000.",
+    },
+    pt: {
+      title: "A Bolsa mais Pesada",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Dinheiro não compra felicidade – compra liberdade. Encha sua bolsa de saque até a borda – no valor de $500.000.",
+      howToComplete: "Consiga uma bolsa com valor total de $500.000.",
+    },
+    ru: {
+      title: "Самая тяжелая сумка",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "За деньги счастье не купишь, но на них можно купить свободу. Набей свою сумку добычей дополна — целых 500 000 долларов.",
+      howToComplete: "Соберите сумку общей стоимостью 500 000 долларов.",
+    },
+    ar: {
+      title: "أثقل حقيبة",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "المال لا يشتري السعادة - إنه يشتري الحرية. املأ حقيبة الغنائم الخاصة بك حتى الحافة - بقيمة 500,000 دولار.",
+      howToComplete: "احصل على حقيبة بقيمة إجمالية قدرها 500,000 دولار.",
+    },
+    tr: {
+      title: "En Ağır Çanta",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Para mutluluğu satın almaz; özgürlüğü satın alır. Ganimet çantanı ağzına kadar doldur; 500.000 $ değerinde.",
+      howToComplete: "Toplam değeri 500.000 $ olan bir çanta al.",
+    },
+    zh: {
+      title: "取经路漫漫",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "金钱买不到幸福——但它能买到自由。把你的战利品袋装满——价值 500,000 美元。",
+      howToComplete: "获得一个总价值 500,000 美元的包。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Chronomètre",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Dépouiller les riches est le moyen le plus simple de gagner de l'argent dans le milieu du crime. Il y a ce type du milieu bancaire - Buck Moneymaker. Il se pavane avec sa montre, une pièce inestimable. Je veux que vous la lui voliez. Vérifiez son bureau à la banque et rapportez-la-moi.",
+      howToComplete: "Localisez le bureau de Buck dans la banque, volez la montre inestimable et rapportez-la à Sir B.",
+    },
+    de: {
+      title: "Zeitmesser",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Reiche Leute auszurauben ist der einfachste Weg, im Verbrechergeschäft Geld zu verdienen. Da ist dieser reiche Banker-Typ – Buck Moneymaker. Er rennt mit seiner Uhr herum, einem unbezahlbaren Zeitmesser. Ich möchte, dass du sie ihm stiehlst. Such in seinem Büro in der Bank danach und bring sie mir.",
+      howToComplete: "Finde Bucks Büro in der Bank, stiehl die unbezahlbare Uhr und bringe sie zu Sir B.",
+    },
+    es: {
+      title: "Reloj de Lujo",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Robar a los ricos es la forma más fácil de ganar dinero en el mundo del crimen. Hay un tipo rico del mundo bancario: Buck Moneymaker. Anda por ahí presumiendo de su reloj, una pieza de valor incalculable. Quiero que se lo robes. Revisa su oficina en el banco y tráemelo.",
+      howToComplete: "Localiza la oficina de Buck en el banco, roba el reloj de valor incalculable y llévaselo a Sir B.",
+    },
+    pt: {
+      title: "Relógio",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Roubar pessoas ricas é a maneira mais fácil de ganhar dinheiro no crime. Tem esse tipo corporativo bancário rico – Buck Moneymaker. Ele anda por aí exibindo aquele relógio dele, uma peça inestimável. Quero que você o roube dele. Verifique o escritório dele no banco e traga-o para mim.",
+      howToComplete: "Localize o escritório de Buck no banco, roube o relógio inestimável e leve-o para o Sir B.",
+    },
+    ru: {
+      title: "Часы",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Оббирать богатеев — это самый легкий способ заработать в нашем деле. Есть тут один богатый банковский воротила — Бак Манимейкер. Он вечно щеголяет своими бесценными часами. Я хочу, чтобы ты их украл. Проверь его кабинет в банке и принеси их мне.",
+      howToComplete: "Найдите кабинет Бака в банке, украдите бесценные часы и доставьте их Сиру Б.",
+    },
+    ar: {
+      title: "ساعة ثمينة",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "سرقة الأغنياء هي أسهل طريقة لكسب المال في عالم الجريمة. هناك هذا النوع من الشركات المصرفية الغنية - باك موني ميكر. يتجول وهو يتباهى بساعته تلك، وهي قطعة لا تقدر بثمن. أريدك أن تسرقها منه. ابحث في مكتبه في البنك وأحضرها لي.",
+      howToComplete: "حدد موقع مكتب باك في البنك، واسرق الساعة التي لا تقدر بثمن، وأعدها إلى السير ب.",
+    },
+    tr: {
+      title: "Saat",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Zenginleri soymak, suç dünyasında para kazanmanın en kolay yoludur. Zengin bir bankacı tipi var; Buck Moneymaker. Etrafta paha biçilemez saatiyle caka satıyor. Onu ondan çalmanı istiyorum. Bankadaki ofisini kontrol et ve saati bana getir.",
+      howToComplete: "Bankadaki Buck'ın Ofisini bul, Paha Biçilemez Saati çal ve Sir B'ye getir.",
+    },
+    zh: {
+      title: "时钟",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "抢劫有钱人是犯罪游戏中最容易赚钱的方式。有一个很有钱的银行高管——Buck Moneymaker。他整天炫耀他的那块表，那是一件无价之宝。我要你把它偷过来。去他在银行的办公室看看，然后带给我。",
+      howToComplete: "找到 Buck 在银行的办公室，偷走那块无价之宝名表，并将其带给 Sir B。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Mise à Niveau - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "J'ai un client qui veut acheter de la technologie, mais seulement en gros. Tout ou rien. Vendez-moi un sac contenant 2 PearBooks, 2 PearPads et 2 clés USB.",
+      howToComplete: "Vendez à Sir B un sac contenant 2 PearBooks, 2 PearPads et 2 clés USB.",
+    },
+    de: {
+      title: "Upgrade - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ich habe einen Kunden, der Technik kaufen möchte, aber nur in großen Mengen. Alles oder nichts. Verkaufe mir eine Tasche mit 2 PearBooks, 2 PearPads und 2 Flash-Laufwerken.",
+      howToComplete: "Verkaufe Sir B eine Tasche mit 2 PearBooks, 2 PearPads und 2 Flash-Laufwerken.",
+    },
+    es: {
+      title: "Actualización - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tengo un cliente que quiere comprar tecnología, pero solo al por mayor. Todo o nada. Véndeme una bolsa con 2 PearBooks, 2 PearPads y 2 memorias USB.",
+      howToComplete: "Vende a Sir B una bolsa con 2 PearBooks, 2 PearPads y 2 memorias USB.",
+    },
+    pt: {
+      title: "Upgrade - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Tenho um cliente que quer comprar tecnologia, mas apenas em grandes quantidades. Tudo ou nada. Venda-me uma bolsa contendo 2 PearBooks, 2 PearPads e 2 pendrives.",
+      howToComplete: "Venda para o Sir B uma bolsa contendo 2 PearBooks, 2 PearPads e 2 pendrives.",
+    },
+    ru: {
+      title: "Обновление — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У меня есть клиент, который хочет купить технику, но только оптом. Всё или ничего. Продай мне сумку, в которой будет 2 PearBook, 2 PearPad и 2 флешки.",
+      howToComplete: "Продайте Сиру Б сумку с 2 PearBook, 2 PearPad и 2 флешками.",
+    },
+    ar: {
+      title: "ترقية - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدي عميل يريد شراء أجهزة تقنية، ولكن بالجملة فقط. كل شيء أو لا شيء. بع لي حقيبة تحتوي على 2 PearBook، و2 PearPad، و2 فلاش ميموري.",
+      howToComplete: "بع للسير ب حقيبة تحتوي على 2 PearBook، و2 PearPad، و2 فلاش ميموري.",
+    },
+    tr: {
+      title: "Yükseltme - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Teknoloji ürünü satın almak isteyen bir müşterim var ama sadece toplu alıyor. Ya hep ya hiç. Bana içinde 2 PearBook, 2 PearPad ve 2 Flash Bellek olan bir çanta sat.",
+      howToComplete: "Sir B'ye 2 PearBook, 2 PearPad ve 2 Flash Bellek içeren bir çanta sat.",
+    },
+    zh: {
+      title: "升级 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我有个客户想买电子产品，但只要批发的。要么全要，要么全不要。卖给我一个装有 2 台 PearBook、2 台 PearPad 和 2 个 U 盘的包。",
+      howToComplete: "卖给 Sir B 一个装有 2 台 PearBook、2 台 PearPad 和 2 个 U 盘的包。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Mise à Niveau - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "J'ai un client qui veut acheter de la technologie, mais seulement en gros. Tout ou rien. Vendez-moi un sac contenant 2 GoldPads, 1 HDD, 1 PSU et 1 GPU.",
+      howToComplete: "Vendez à Sir B un sac contenant 2 GoldPads, 1 HDD, 1 PSU et 1 GPU.",
+    },
+    de: {
+      title: "Upgrade - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ich habe einen Kunden, der Technik kaufen möchte, aber nur in großen Mengen. Alles oder nichts. Verkaufe mir eine Tasche mit 2 GoldPads, 1 HDD, 1 PSU und 1 GPU.",
+      howToComplete: "Verkaufe Sir B eine Tasche mit 2 GoldPads, 1 HDD, 1 PSU und 1 GPU.",
+    },
+    es: {
+      title: "Actualización - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tengo un cliente que quiere comprar tecnología, pero solo al por mayor. Todo o nada. Véndeme una bolsa con 2 GoldPads, 1 HDD, 1 PSU y 1 GPU.",
+      howToComplete: "Vende a Sir B una bolsa con 2 GoldPads, 1 HDD, 1 PSU y 1 GPU.",
+    },
+    pt: {
+      title: "Upgrade - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Tenho um cliente que quer comprar tecnologia, mas apenas em grandes quantidades. Tudo ou nada. Venda-me uma bolsa contendo 2 GoldPads, 1 HDD, 1 PSU e 1 GPU.",
+      howToComplete: "Venda para o Sir B uma bolsa contendo 2 GoldPads, 1 HDD, 1 PSU e 1 GPU.",
+    },
+    ru: {
+      title: "Обновление — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У меня есть клиент, который хочет купить технику, но только оптом. Всё или ничего. Продай мне сумку, в которой будет 2 GoldPad, 1 HDD, 1 PSU и 1 GPU.",
+      howToComplete: "Продайте Сиру Б сумку с 2 GoldPad, 1 HDD, 1 PSU и 1 GPU.",
+    },
+    ar: {
+      title: "ترقية - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدي عميل يريد شراء أجهزة تقنية، ولكن بالجملة فقط. كل شيء أو لا شيء. بع لي حقيبة تحتوي على 2 GoldPad، و1 HDD، و1 PSU، و1 GPU.",
+      howToComplete: "بع للسير ب حقيبة تحتوي على 2 GoldPad، و1 HDD، و1 PSU، و1 GPU.",
+    },
+    tr: {
+      title: "Yükseltme - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Teknoloji ürünü satın almak isteyen bir müşterim var ama sadece toplu alıyor. Ya hep ya hiç. Bana içinde 2 GoldPad, 1 HDD, 1 PSU ve 1 GPU olan bir çanta sat.",
+      howToComplete: "Sir B'ye 2 GoldPad, 1 HDD, 1 PSU ve 1 GPU içeren bir çanta sat.",
+    },
+    zh: {
+      title: "升级 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我有个客户想买电子产品，但只要批发的。要么全要，要么全不要。卖给我一个装有 2 台 GoldPad、1 个硬盘、1 个电源和 1 个显卡的包。",
+      howToComplete: "卖给 Sir B 一个装有 2 台 GoldPad、1 个硬盘、1 个电源和 1 个显卡的包。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Mise à Niveau - Partie 3",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "J'ai un client qui veut acheter de la technologie, mais seulement en gros. Tout ou rien. Vendez-moi un sac contenant 2 GoldBooks, 2 GoldPhones, 1 GoldPods et 1 Bitcoin.",
+      howToComplete: "Vendez à Sir B un sac contenant 2 GoldBooks, 2 GoldPhones, 1 GoldPods et 1 Bitcoin.",
+    },
+    de: {
+      title: "Upgrade - Teil 3",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Ich habe einen Kunden, der Technik kaufen möchte, aber nur in großen Mengen. Alles oder nichts. Verkaufe mir eine Tasche mit 2 GoldBooks, 2 GoldPhones, 1 GoldPods und 1 Bitcoin.",
+      howToComplete: "Verkaufe Sir B eine Tasche mit 2 GoldBooks, 2 GoldPhones, 1 GoldPods und 1 Bitcoin.",
+    },
+    es: {
+      title: "Actualización - Parte 3",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Tengo un cliente que quiere comprar tecnología, pero solo al por mayor. Todo o nada. Véndeme una bolsa con 2 GoldBooks, 2 GoldPhones, 1 GoldPods y 1 Bitcoin.",
+      howToComplete: "Vende a Sir B una bolsa con 2 GoldBooks, 2 GoldPhones, 1 GoldPods y 1 Bitcoin.",
+    },
+    pt: {
+      title: "Upgrade - Parte 3",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Tenho um cliente que quer comprar tecnologia, mas apenas em grandes quantidades. Tudo ou nada. Venda-me uma bolsa contendo 2 GoldBooks, 2 GoldPhones, 1 GoldPods e 1 Bitcoin.",
+      howToComplete: "Venda para o Sir B uma bolsa contendo 2 GoldBooks, 2 GoldPhones, 1 GoldPods e 1 Bitcoin.",
+    },
+    ru: {
+      title: "Обновление — Часть 3",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "У меня есть клиент, который хочет купить технику, но только оптом. Всё или ничего. Продай мне сумку, в которой будет 2 GoldBook, 2 GoldPhone, 1 GoldPods и 1 биткоин.",
+      howToComplete: "Продайте Сиру Б сумку с 2 GoldBook, 2 GoldPhone, 1 GoldPods и 1 биткоином.",
+    },
+    ar: {
+      title: "ترقية - الجزء 3",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "لدي عميل يريد شراء أجهزة تقنية، ولكن بالجملة فقط. كل شيء أو لا شيء. بع لي حقيبة تحتوي على 2 GoldBook، و2 GoldPhone، و1 GoldPods، و1 بيتكوين.",
+      howToComplete: "بع للسير ب حقيبة تحتوي على 2 GoldBook، و2 GoldPhone، و1 GoldPods، و1 بيتكوين.",
+    },
+    tr: {
+      title: "Yükseltme - Bölüm 3",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Teknoloji ürünü satın almak isteyen bir müşterim var ama sadece toplu alıyor. Ya hep ya hiç. Bana içinde 2 GoldBook, 2 GoldPhone, 1 GoldPods ve 1 Bitcoin olan bir çanta sat.",
+      howToComplete: "Sir B'ye 2 GoldBook, 2 GoldPhone, 1 GoldPods ve 1 Bitcoin içeren bir çanta sat.",
+    },
+    zh: {
+      title: "升级 - 第 3 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "我有个客户想买电子产品，但只要批发的。要么全要，要么全不要。卖给我一个装有 2 台 GoldBook、2 部 GoldPhone、1 个 GoldPods 和 1 个比特币的包。",
+      howToComplete: "卖给 Sir B 一个装有 2 台 GoldBook、2 部 GoldPhone、1 个 GoldPods 和 1 个比特币的包。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Jeux de Guerre - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le Syndicat se prépare pour un raid sur Fort Emberreach. Nous allons avoir besoin de tout le monde pour cette opération. Pénétrez dans la base, volez leurs armes et tuez tout le monde.",
+      howToComplete: "Piratez 1 caisse sécurisée, ouvrez 10 coffres militaires et faites 10 éliminations à la base militaire.",
+    },
+    de: {
+      title: "Kriegsspiele - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das Syndikat bereitet einen Überfall auf Fort Emberreach vor. Wir brauchen jeden Mann für diese Operation. Brich in die Basis ein, plündere ihre Waffen und töte jeden, den du siehst.",
+      howToComplete: "Hacke 1 sichere Kiste, öffne 10 Militärtruhen und erziele 10 Kills beim Militär.",
+    },
+    es: {
+      title: "Juegos de Guerra - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El Sindicato se está preparando para un asalto a Fort Emberreach. Necesitaremos a todos los que podamos para esta operación. Entra en la base, saquea sus armas y mata a todos los que veas.",
+      howToComplete: "Hackea 1 caja segura, abre 10 cofres militares y consigue 10 bajas en la base militar.",
+    },
+    pt: {
+      title: "Jogos de Guerra - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O Sindicato está si preparando para um ataque ao Fort Emberreach. Precisaremos de todos que pudermos para esta operação. Invada a base, saqueie as armas deles e mate todos que encontrar.",
+      howToComplete: "Hackeie 1 Crate Seguro, abra 10 Baús Militares e consiga 10 abates no Militar.",
+    },
+    ru: {
+      title: "Военные игры — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Синдикат готовится к рейду на Форт Эмберрич. Нам понадобятся все силы для этой операции. Проберись на базу, разграбь их арсенал и уничтожь всех на своем пути.",
+      howToComplete: "Взломайте 1 защищенный ящик, откройте 10 военных сундуков и убейте 10 врагов на военной базе.",
+    },
+    ar: {
+      title: "ألعاب الحرب - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "تستعد المنظمة لشن غارة على حصن \"إيمبريتش\" (Fort Emberreach). سنحتاج إلى كل شخص يمكننا الحصول عليه لهذه العملية. اقتحم القاعدة، وانهب أسلحتهم، واقتل كل من تراه.",
+      howToComplete: "قم باختراق صندوق آمن واحد، وافتح 10 صناديق عسكرية، واحصل على 10 عمليات قتل في القاعدة العسكرية.",
+    },
+    tr: {
+      title: "Savaş Oyunları - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika, Fort Emberreach'e bir baskın düzenlemek için hazırlanıyor. Bu operasyon için elimizden gelen herkesi toplamamız gerekecek. Üsse gir, silahlarını yağmala ve gördüğün her şeyi öldür.",
+      howToComplete: "1 Güvenli Kasayı hackle, 10 Askeri Sandık aç ve Askeriyede 10 leş al.",
+    },
+    zh: {
+      title: "战争游戏 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "辛迪加正准备突袭埃姆伯里奇堡。这次行动我们需要尽可能多的人手。潜入基地，搜刮他们的武器，并干掉任何你看到的人。",
+      howToComplete: "黑入 1 个安全板箱、开启 10 个军事箱并在军事区获得 10 次击杀。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Jeux de Guerre - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Fort Emberreach est au cœur de toutes les opérations gouvernementales. Détruisez la base. Ce raid sera une balle tirée droit en plein cœur.",
+      howToComplete: "Piratez 5 caisses sécurisées, ouvrez 15 coffres militaires et faites 20 éliminations à la base militaire.",
+    },
+    de: {
+      title: "Kriegsspiele - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Fort Emberreach ist das Herz der gesamten Regierungsoperation. Mach die Basis dem Erdboden gleich. Dieser Überfall wird eine Kugel mitten in ihr Herz sein.",
+      howToComplete: "Hacke 5 sichere Kisten, öffne 15 Militärtruhen und erziele 20 Kills beim Militär.",
+    },
+    es: {
+      title: "Juegos de Guerra - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "Fort Emberreach está en el centro de toda la operación del gobierno. Arrasa la base. Este asalto será una bala directa a su corazón.",
+      howToComplete: "Hackea 5 cajas seguras, abre 15 cofres militares y consigue 20 bajas en la base militar.",
+    },
+    pt: {
+      title: "Jogos de Guerra - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "Fort Emberreach está no centro de toda a operação governamental. Arrase a base. Este ataque será uma bala direta no coração deles.",
+      howToComplete: "Hackeie 5 Crates Seguros, abra 15 Baús Militares e consiga 20 abates no Militar.",
+    },
+    ru: {
+      title: "Военные игры — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Форт Эмберрич — сердце всех правительственных операций. Разрушьте базу. Этот рейд станет пулей прямо в их сердце.",
+      howToComplete: "Взломайте 5 защищенных ящиков, откройте 15 военных сундуков и убейте 20 врагов на военной базе.",
+    },
+    ar: {
+      title: "ألعاب الحرب - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "حصن \"إيمبريتش\" (Fort Emberreach) هو قلب العمليات الحكومية بالكامل. قم بتدمير القاعدة. ستكون هذه الغارة رصاصة مباشرة في قلوبهم.",
+      howToComplete: "قم باختراق 5 صناديق آمنة، وافتح 15 صندوقاً عسكرياً، واحصل على 20 عملية قتل في القاعدة العسكرية.",
+    },
+    tr: {
+      title: "Savaş Oyunları - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Fort Emberreach tüm hükümet operasyonlarının kalbidir. Üssü dümdüz et. Bu baskın kalplerine doğrudan sıkılmış bir mermi olacak.",
+      howToComplete: "5 Güvenli Kasayı hackle, 15 Askeri Sandık aç ve Askeriyede 20 leş al.",
+    },
+    zh: {
+      title: "战争游戏 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "埃姆伯里奇堡是整个政府行动的核心。夷平这个基地。这次突袭将是直插他们心脏的一颗子弹。",
+      howToComplete: "黑入 5 个安全板箱、开启 15 个军事箱并在军事区获得 20 次击杀。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Cache d'Armes - Partie 1",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le Syndicat a caché diverses caches d'armes dans Oasis, mais nous en avons perdu la trace de certaines. Si vous pouvez les localiser, je vous serai redevable.",
+      howToComplete: "Localisez les caches cachées du Glock 18c, de l'AK 47 et du Benelli M1014.",
+    },
+    de: {
+      title: "Waffenlager - Teil 1",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das Syndikat hat verschiedene Waffenlager in Oasis versteckt, aber wir haben den Überblick über einige verloren. Wenn du sie finden kannst, stehe ich in deiner Schuld.",
+      howToComplete: "Finde die versteckten Waffenlager für Glock 18c, AK 47 und Benelli M1014.",
+    },
+    es: {
+      title: "Alijo de Armas - Parte 1",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El Sindicato ha escondido varios alijos de armas por todo Oasis, pero hemos perdido el rastro de algunos. Si puedes localizarlos, te estaré muy agradecido.",
+      howToComplete: "Localiza los alijos ocultos de Glock 18c, AK 47 y Benelli M1014.",
+    },
+    pt: {
+      title: "Esconderijo de Armas - Parte 1",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O Sindicato escondeu vários estoques de armas em Oasis, mas perdemos o rastro de alguns deles. Si você puder localizá-los, ficarei em dívida com você.",
+      howToComplete: "Localize os esconderijos da Glock 18c, AK 47 e Benelli M1014.",
+    },
+    ru: {
+      title: "Оружейный тайник — Часть 1",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Синдикат спрятал различные тайники с оружием по всему Оазису, но мы потеряли некоторые из них. Если сможешь их найти, я буду в долгу.",
+      howToComplete: "Найдите спрятанные тайники с Glock 18c, АК-47 и Benelli M1014.",
+    },
+    ar: {
+      title: "خبأ الأسلحة - الجزء 1",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "قامت المنظمة بإخفاء مخابئ أسلحة مختلفة حول الواحة (Oasis)، لكننا فقدنا تتبع بعضها. إذا تمكنت من تحديد مواقعها، سأكون مديناً لك.",
+      howToComplete: "حدد موقع مخابئ الأسلحة المخفية Glock 18c وAK 47 وBenelli M1014.",
+    },
+    tr: {
+      title: "Silah Zulası - Bölüm 1",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika, Oasis çevresinde çeşitli silah zulaları sakladı ancak bazılarının yerini kaybettik. Eğer onları bulabilirsen sana borçlu kalırım.",
+      howToComplete: "Glock 18c, AK 47 ve Benelli M1014 gizli zulalarının yerini tespit et.",
+    },
+    zh: {
+      title: "武器密藏 - 第 1 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "辛迪加在绿洲城周围隐藏了各种武器密藏，但我们丢失了其中一些的踪迹。如果你能找到它们，我就欠你个人情。",
+      howToComplete: "找到 Glock 18c、AK 47 和 Benelli M1014 的隐藏密藏。",
+    },
+  },
+
+  {
+    fr: {
+      title: "Cache d'Armes - Partie 2",
+      location: "Avant-poste criminel – Parler à Sir. B",
+      description: "Le Syndicat a caché diverses caches d'armes dans Oasis, mais nous en avons perdu la trace de certaines. Si vous pouvez les localiser, je vous serai redevable.",
+      howToComplete: "Localisez les caches cachées de l'AUG A1, de l'AWM et du RPG-7.",
+    },
+    de: {
+      title: "Waffenlager - Teil 2",
+      location: "Krimineller Außenposten – Sprich mit Sir. B",
+      description: "Das Syndikat hat verschiedene Waffenlager in Oasis versteckt, aber wir haben den Überblick über einige verloren. Wenn du sie finden kannst, stehe ich in deiner Schuld.",
+      howToComplete: "Finde die versteckten Waffenlager für AUG A1, AWM und RPG-7.",
+    },
+    es: {
+      title: "Alijo de Armas - Parte 2",
+      location: "Puesto de avanzada criminal: habla con Sir. B",
+      description: "El Sindicato ha escondido varios alijos de armas por todo Oasis, pero hemos perdido el rastro de algunos. Si puedes localizarlos, te estaré muy agradecido.",
+      howToComplete: "Localiza los alijos ocultos de AUG A1, AWM y RPG-7.",
+    },
+    pt: {
+      title: "Esconderijo de Armas - Parte 2",
+      location: "Posto Avançado Criminoso – Fale com Sir. B",
+      description: "O Sindicato escondeu vários estoques de armas em Oasis, mas perdemos o rastro de alguns deles. Si você puder localizá-los, ficarei em dívida com você.",
+      howToComplete: "Localize os esconderijos do AUG A1, do AWM e do RPG-7.",
+    },
+    ru: {
+      title: "Оружейный тайник — Часть 2",
+      location: "Криминальный аванпост — поговорите с Сиром Б.",
+      description: "Синдикат спрятал различные тайники с оружием по всему Оазису, но мы потеряли некоторые из них. Если сможешь их найти, я буду в долгу.",
+      howToComplete: "Найдите спрятанные тайники с AUG A1, AWM и РПГ-7.",
+    },
+    ar: {
+      title: "خبأ الأسلحة - الجزء 2",
+      location: "المخفر الإجرامي - تحدث إلى السير ب",
+      description: "قامت المنظمة بإخفاء مخابئ أسلحة مختلفة حول الواحة (Oasis)، لكننا فقدنا تتبع بعضها. إذا تمكنت من تحديد مواقعها، سأكون مديناً لك.",
+      howToComplete: "حدد موقع مخابئ الأسلحة المخفية AUG A1 وAWM وRPG-7.",
+    },
+    tr: {
+      title: "Silah Zulası - Bölüm 2",
+      location: "Suçlu Karakolu – Sir. B ile Konuş",
+      description: "Sendika, Oasis çevresinde çeşitli silah zulaları sakladı ancak bazılarının yerini kaybettik. Eğer onları bulabilirsen sana borçlu kalırım.",
+      howToComplete: "AUG A1, AWM ve RPG-7 gizli zulalarının yerini tespit et.",
+    },
+    zh: {
+      title: "武器密藏 - 第 2 部分",
+      location: "犯罪据点 – 与 Sir. B 对话",
+      description: "辛迪加在绿洲城周围隐藏了各种武器密藏，但我们丢失了其中一些的踪迹。如果你能找到它们，我就欠你个人情。",
+      howToComplete: "找到 AUG A1、AWM 和 RPG-7 的隐藏密藏。",
+    },
+  },
+
+];
+
+(function () {
+  SIR_B_MISSIONS.forEach(function (mission, index) {
+    const i18n = SIR_B_MISSIONS_I18N[index];
+    if (!i18n) return;
+    mission.translations = Object.assign(
+      { en: { title: mission.title, location: mission.location, description: mission.description, howToComplete: mission.howToComplete } },
+      i18n
+    );
+  });
+})();
