@@ -23,17 +23,17 @@ function renderMissions(order = "hard") {
     return list.map(item => {
       const formattedRewards = (item.rewards || []).map(formatReward).join(', ');
 
-      const title = typeof tv === 'function' ? tv(item, 'title') : item.title;
-      const location = typeof tv === 'function' ? tv(item, 'location') : item.location;
-      const description = typeof tv === 'function' ? tv(item, 'description') : item.description;
-      const howToComplete = typeof tv === 'function' ? tv(item, 'howToComplete') : item.howToComplete;
+      const title = item.title;
+      const location = item.location;
+      const description = item.description;
+      const howToComplete = item.howToComplete;
 
       const visibleContent = `<h3>${title}</h3>`;
       const hiddenContent = `
-        ${renderStat(t('stat_location'), location)}
-        ${renderStat(t('stat_description'), description)}
-        ${renderStat(t('stat_how'), howToComplete)}
-        ${renderStat(t('stat_reward'), formattedRewards)}
+        ${renderStat('Location', location)}
+        ${renderStat('Description', description)}
+        ${renderStat('How', howToComplete)}
+        ${renderStat('Reward', formattedRewards)}
       `;
 
       return renderExpandableCardJPG(item, item.difficulty, visibleContent, hiddenContent, 'missions');
@@ -41,13 +41,13 @@ function renderMissions(order = "hard") {
   };
 
   const categories = [
-    { type: 'Game', key: 'cat_game_missions' },
-    { type: 'Erik', key: 'cat_erik_missions' },
-    { type: 'Dan', key: 'cat_dan_missions' },
-    { type: 'Sir. B', key: 'cat_sirb_missions' },
-    { type: 'Bert', key: 'cat_bert_missions' },
-    { type: 'Easter', key: 'cat_easter_missions' },
-    { type: 'Christmas', key: 'cat_christmas_missions' },
+    { type: 'Game', label: 'Game Missions' },
+    { type: 'Erik', label: "Erik's Missions" },
+    { type: 'Dan', label: "Dan's Missions" },
+    { type: 'Sir. B', label: "Sir. B's Missions" },
+    { type: 'Bert', label: "Bert's Missions" },
+    { type: 'Easter', label: 'Easter Missions' },
+    { type: 'Christmas', label: 'Christmas Missions' },
   ];
 
   const sections = categories.map((cat, index) => {
@@ -61,7 +61,7 @@ function renderMissions(order = "hard") {
 
     return `
       ${divider}
-      <h3 style="margin: 20px 0 10px;">${t(cat.key)}</h3>
+      <h3 style="margin: 20px 0 10px;">${cat.label}</h3>
       <div class="card-grid">
         ${cards.join('')}
       </div>
@@ -69,13 +69,13 @@ function renderMissions(order = "hard") {
   }).join('');
 
   const sortButtons = renderSortButtons([
-    { label: t('sort_hardest'), value: 'hard', onClick: "sortMissions('hard')" },
-    { label: t('sort_easiest'), value: 'easy', onClick: "sortMissions('easy')" }
+    { label: 'Hardest first', value: 'hard', onClick: "sortMissions('hard')" },
+    { label: 'Easiest first', value: 'easy', onClick: "sortMissions('easy')" }
   ], order);
 
   return `
-    <h2>${t('page_missions')}</h2>
-    <div class="page-disclaimer">${t('disclaimer_wip')}</div>
+    <h2>${'MISSIONS'}</h2>
+    <div class="page-disclaimer">${'This page is currently unfinished and being worked on'}</div>
     ${sortButtons}
     ${sections}
   `;

@@ -37,20 +37,5 @@ function initSettingsPanel(clickSfx) {
             closeSettings();
         }
     });
-
-    _initLanguageSelector();
 }
-
-function _initLanguageSelector() {
-    const select = document.getElementById('language-select');
-    if (!select || typeof i18n === 'undefined') return;
-
-    const languages = i18n.getLanguages();
-    select.innerHTML = languages.map(lang =>
-        `<option value="${lang.code}">${lang.flag} ${lang.label}</option>`
-    ).join('');
-    select.value = i18n.getLang();
-    select.addEventListener('change', () => {
-        i18n.setLang(select.value);
-    });
-}
+

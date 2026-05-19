@@ -6,6 +6,7 @@ const hoverSfx = document.getElementById("sfx-hover");
 const volumeSlider = document.getElementById("bgm-volume");
 const sizeSlider = document.getElementById("card-size-slider");
 
+
 window.audioUnlocked = false;
 
 window.loadPage = loadPage;
@@ -156,13 +157,11 @@ function toggleCardDetails(cardId, btn) {
     if (!detailsElement || !button) return;
 
     const isCollapsed = detailsElement.classList.toggle('collapsed');
-    button.textContent = isCollapsed
-        ? (typeof t === 'function' ? t('show_more') : 'Show more...')
-        : (typeof t === 'function' ? t('show_less') : 'Show less');
+    button.textContent = isCollapsed ? 'Show more...' : 'Show less';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof i18n !== 'undefined') i18n.init();
+
     if (typeof initMobileMenu === 'function') initMobileMenu();
     if (typeof initDropdownNav === 'function') initDropdownNav();
     if (typeof initSettingsPanel === 'function') initSettingsPanel(clickSfx);
@@ -316,14 +315,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isLowEnd) {
             document.body.classList.add("low-end-mode");
             lowEndToggle.classList.add("active");
-            lowEndStatus.textContent = typeof t === 'function' ? t('toggle_on') : 'ON';
+            lowEndStatus.textContent = 'ON';
         }
         lowEndToggle.addEventListener("click", () => {
             const active = document.body.classList.toggle("low-end-mode");
             lowEndToggle.classList.toggle("active", active);
-            lowEndStatus.textContent = active
-                ? (typeof t === 'function' ? t('toggle_on') : 'ON')
-                : (typeof t === 'function' ? t('toggle_off') : 'OFF');
+            lowEndStatus.textContent = active ? 'ON' : 'OFF';
             localStorage.setItem("lowEndMode", active);
         });
     }
@@ -335,14 +332,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isAlwaysShow) {
             document.body.classList.add("always-show-more");
             showMoreToggle.classList.add("active");
-            showMoreStatus.textContent = typeof t === 'function' ? t('toggle_on') : 'ON';
+            showMoreStatus.textContent = 'ON';
         }
         showMoreToggle.addEventListener("click", () => {
             const active = document.body.classList.toggle("always-show-more");
             showMoreToggle.classList.toggle("active", active);
-            showMoreStatus.textContent = active
-                ? (typeof t === 'function' ? t('toggle_on') : 'ON')
-                : (typeof t === 'function' ? t('toggle_off') : 'OFF');
+            showMoreStatus.textContent = active ? 'ON' : 'OFF';
             localStorage.setItem("alwaysShowMore", active);
 
             const activeTab = document.querySelector(".tab.active");
@@ -357,15 +352,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const isOn = !isSkipped;
 
         if (isOn) introToggle.classList.add("active");
-        introStatus.textContent = isOn
-            ? (typeof t === 'function' ? t('toggle_on') : 'ON')
-            : (typeof t === 'function' ? t('toggle_off') : 'OFF');
+        introStatus.textContent = isOn ? 'ON' : 'OFF';
 
         introToggle.addEventListener("click", () => {
             const nowOn = introToggle.classList.toggle("active");
-            introStatus.textContent = nowOn
-                ? (typeof t === 'function' ? t('toggle_on') : 'ON')
-                : (typeof t === 'function' ? t('toggle_off') : 'OFF');
+            introStatus.textContent = nowOn ? 'ON' : 'OFF';
             localStorage.setItem("skipGarageIntro", nowOn ? "false" : "true");
         });
     }
