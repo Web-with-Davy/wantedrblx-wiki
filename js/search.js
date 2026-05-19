@@ -45,17 +45,17 @@ function renderSearchItem(item) {
             <h3>${displayName}</h3>
         `;
         hiddenContent = `
-            ${renderStat(t('stat_obtaining'),  item.obtaining)}
-            ${renderStat(t('stat_location'),   item.location || (item.stats && item.stats.location))}
-            ${renderStat(t('stat_rebuy'),      formatPrice(item.reBuyPrice))}
-            ${renderStat(t('stat_sell'),       formatPrice(item.sellPrice))}
+            ${renderStat('Obtaining',  item.obtaining)}
+            ${renderStat('Location',   item.location || (item.stats && item.stats.location))}
+            ${renderStat('Re-Buy Price',      formatPrice(item.reBuyPrice))}
+            ${renderStat('Sell Price',       formatPrice(item.sellPrice))}
             ${item.stats ? `
-                ${renderStat(t('stat_ammo'),       item.stats.ammo)}
-                ${renderStat(t('stat_ammo_cost'),  item.stats.ammoPrice)}
-                ${renderStat(t('stat_damage'),     item.stats.damage)}
-                ${renderStat(t('stat_rpm'),        item.stats.firerate)}
-                ${item.stats.reload ? renderStat(t('stat_reload'), `${item.stats.reload}s`) : ''}
-                ${renderStat(t('stat_accuracy'),   item.stats.accuracy)}
+                ${renderStat('Ammo',       item.stats.ammo)}
+                ${renderStat('Ammo Cost',  item.stats.ammoPrice)}
+                ${renderStat('Damage',     item.stats.damage)}
+                ${renderStat('Fire Rate',        item.stats.firerate)}
+                ${item.stats.reload ? renderStat('Reload Speed', `${item.stats.reload}s`) : ''}
+                ${renderStat('Accuracy',   item.stats.accuracy)}
             ` : ''}
         `;
         return renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder);
@@ -67,27 +67,27 @@ function renderSearchItem(item) {
         `;
         const isFlying = item.type === 'flying';
         hiddenContent = `
-            ${renderStat(t('stat_obtaining'),     item.obtaining)}
-            ${renderStat(t('stat_repair'),        formatPrice(item.repairPrice))}
-            ${renderStat(t('stat_garage_repair'), formatPrice(item.repairPriceGarage))}
-            ${renderStatSuffix(t('stat_top_speed'),   item.stats.topSpeed, isFlying ? '%' : ' MPH')}
+            ${renderStat('Obtaining',     item.obtaining)}
+            ${renderStat('Repair Price',        formatPrice(item.repairPrice))}
+            ${renderStat('Garage Repair Price', formatPrice(item.repairPriceGarage))}
+            ${renderStatSuffix('Top Speed',   item.stats.topSpeed, isFlying ? '%' : ' MPH')}
             ${isFlying ? `
-                ${renderStatSuffix(t('stat_handling'),    item.stats.handling, '%')}
-                ${renderStatSuffix(t('stat_spool_time'),  item.stats.spoolTime, 's')}
+                ${renderStatSuffix('Handling',    item.stats.handling, '%')}
+                ${renderStatSuffix('Spool Time',  item.stats.spoolTime, 's')}
             ` : `
-                ${renderStatSuffix(t('stat_acceleration'),item.stats.acceleration, '%')}
-                ${renderStatSuffix(t('stat_braking'),     item.stats.braking, '%')}
+                ${renderStatSuffix('Acceleration',item.stats.acceleration, '%')}
+                ${renderStatSuffix('Braking',     item.stats.braking, '%')}
             `}
-            ${renderStat(t('stat_health'), item.stats.Health)}
-            ${renderStat(t('stat_armor'),      item.stats.armor)}
+            ${renderStat('Health', item.stats.Health)}
+            ${renderStat('Armor',      item.stats.armor)}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
 
     } else if (type === 'mission') {
-        const title = typeof tv === 'function' ? tv(item, 'title') : (item.title || item.name);
-        const location = typeof tv === 'function' ? tv(item, 'location') : item.location;
-        const description = typeof tv === 'function' ? tv(item, 'description') : item.description;
-        const howToComplete = typeof tv === 'function' ? tv(item, 'howToComplete') : item.howToComplete;
+        const title = item.title || item.name;
+        const location = item.location;
+        const description = item.description;
+        const howToComplete = item.howToComplete;
         
         const formattedRewards = (item.rewards || []).map(formatReward).join(', ');
 
@@ -95,70 +95,70 @@ function renderSearchItem(item) {
             <h3>${title}</h3>
         `;
         hiddenContent = `
-            ${renderStat(t('stat_location'), location)}
-            ${renderStat(t('stat_description'), description)}
-            ${renderStat(t('stat_how'), howToComplete)}
-            ${renderStat(t('stat_reward'), formattedRewards)}
+            ${renderStat('Location', location)}
+            ${renderStat('Description', description)}
+            ${renderStat('How', howToComplete)}
+            ${renderStat('Reward', formattedRewards)}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
 
     } else if (type === 'valuable') {
         visibleContent = `
             <h3>${displayName}</h3>
-            ${renderStat(t('stat_sell'), formatPrice(item.price))}
+            ${renderStat('Sell Price', formatPrice(item.price))}
         `;
         hiddenContent = `
-            ${renderStatSuffix(t('stat_weight'), item.weight, ' kg')}
-            ${renderStat(t('stat_common_location'), typeof tv === 'function' ? tv(item, 'commonLocation') : item.commonLocation)}
+            ${renderStatSuffix('Weight', item.weight, ' kg')}
+            ${renderStat('Common Location', item.commonLocation)}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
 
     } else if (type === 'npc') {
         hiddenContent = `
-            ${renderStat(t('stat_location'), item.location)}
-            ${renderStat(t('stat_description'), item.description)}
+            ${renderStat('Location', item.location)}
+            ${renderStat('Description', item.description)}
         `;
         return renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder);
 
     } else if (type === 'event') {
-        const title = typeof tv === 'function' ? tv(item, 'title') : (item.title || item.name);
-        const description = typeof tv === 'function' ? tv(item, 'description') : item.description;
+        const title = item.title || item.name;
+        const description = item.description;
         visibleContent = `<h3>${title}</h3>`;
         hiddenContent = `
-            ${renderStat(t('stat_description'), description)}
+            ${renderStat('Description', description)}
         `;
         return renderEventCard(item, visibleContent, hiddenContent, folder);
 
     } else if (type === 'atm') {
         visibleContent = `
             <h3>${displayName}</h3>
-            ${renderStat(t('stat_value'), formatPrice(item.price))}
+            ${renderStat('Value', formatPrice(item.price))}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, '', folder);
 
     } else if (type === 'guncrate') {
-        const name = typeof tv === 'function' ? tv(item, 'name') : (item.name || item.title);
-        const gun = typeof tv === 'function' ? tv(item, 'gun') : item.gun;
-        const cooldown = typeof tv === 'function' ? tv(item, 'cooldown') : item.cooldown;
-        const location = typeof tv === 'function' ? tv(item, 'location') : item.location;
+        const name = item.name || item.title;
+        const gun = item.gun;
+        const cooldown = item.cooldown;
+        const location = item.location;
 
         visibleContent = `
             <h3>${name}</h3>
         `;
         hiddenContent = `
-            ${renderStat(t('stat_content'),  gun)}
-            ${renderStat(t('stat_cooldown'), cooldown)}
-            ${renderStat(t('stat_location'), location)}
+            ${renderStat('Content',  gun)}
+            ${renderStat('Cooldown', cooldown)}
+            ${renderStat('Location', location)}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
 
     } else {
         // Fallback for location or unknown types
-        const name = typeof tv === 'function' ? tv(item, 'name') : (item.name || item.title);
-        const description = typeof tv === 'function' ? tv(item, 'description') : item.description;
+        const name = item.name || item.title;
+        const description = item.description;
         
         visibleContent = `<h3>${name}</h3>`;
-        hiddenContent = description ? renderStat(t('stat_description'), description) : '';
+        hiddenContent = description ? renderStat('Description', description) : '';
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
     }
 }

@@ -8,15 +8,15 @@ function renderPromoCodes(filter = "all") {
     }
 
     const cards = filteredCodes.map(item => {
-        const statusText  = item.active ? t('status_active') : t('status_expired');
+        const statusText  = item.active ? 'Active' : 'Expired';
         const statusColor = item.active ? '#00ffaa' : '#ff3333';
         const statusHtml  = `<span style="color: ${statusColor}; text-shadow: 0 0 5px ${statusColor};">${statusText}</span>`;
 
         const visibleContent = `
             <h3>${item.code}</h3>
-            ${renderStat(t('stat_status'),      statusHtml)}
-            ${renderStat(t('stat_code_reward'), tv(item, 'reward'))}
-            ${renderStat(t('stat_description'), tv(item, 'description'))}
+            ${renderStat('Status',      statusHtml)}
+            ${renderStat('Reward', item.reward)}
+            ${renderStat('Description', item.description)}
         `;
 
         const slug = generateSlug(item.code);
@@ -34,12 +34,12 @@ function renderPromoCodes(filter = "all") {
     });
 
     const filterButtons = renderSortButtons([
-        { label: t('filter_all'),     value: 'all',     onClick: "filterPromoCodes('all')" },
-        { label: t('filter_active'),  value: 'active',  onClick: "filterPromoCodes('active')" },
-        { label: t('filter_expired'), value: 'expired', onClick: "filterPromoCodes('expired')" }
+        { label: 'All',     value: 'all',     onClick: "filterPromoCodes('all')" },
+        { label: 'Active',  value: 'active',  onClick: "filterPromoCodes('active')" },
+        { label: 'Expired', value: 'expired', onClick: "filterPromoCodes('expired')" }
     ], filter);
 
-    return renderPage(t('page_promo_codes'), filterButtons, cards, t('promo_disclaimer'));
+    return renderPage('PROMO CODES', filterButtons, cards, '* Disclaimer: Promo codes are not managed by the wiki. Check the official social media for latest codes.');
 }
 
 function filterPromoCodes(status) {

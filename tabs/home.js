@@ -76,20 +76,20 @@ function renderHome() {
                     <div class="hero-logo-container">
                         <img src="images/logo.png" alt="WANTED Logo" class="hero-logo">
                     </div>
-                    <h1 class="hero-title">${t('home_hero_title')}</h1>
+                    <h1 class="hero-title">WANTED WIKI</h1>
                     <p class="hero-text">
-                        ${t('home_hero_text')}<br><br>
-                        ${t('home_hero_disclaimer')}
+                        Welcome to the ultimate <strong>Wanted Wiki</strong>.<br>Here we document all information about the Roblox game Wanted.<br><br>
+                        <em>Note: This wiki is community-managed and is not affiliated with Roblox, the game Wanted, or DevvGames.</em>
                     </p>
                     <div class="play-btn-container">
-                        <a href="https://www.roblox.com/games/14438406081/Wanted" target="_blank" class="play-btn">${t('home_play_btn')}</a>
+                        <a href="https://www.roblox.com/games/14438406081/Wanted" target="_blank" class="play-btn">PLAY HERE</a>
                     </div>
                 </div>
 
                 <div class="main-grid-container">
                     <div class="main-grid-col">
                         <div class="grid-header">
-                            <h2 class="grid-title"><span class="cat-icon">⚔️</span> ${t('nav_combat')}</h2>
+                            <h2 class="grid-title"><span class="cat-icon">⚔️</span> COMBAT</h2>
                             <div class="grid-nav-arrows">
                                 <span onclick="scrollCardGrid('grid-combat',-1)">&lt;</span>
                                 <span onclick="scrollCardGrid('grid-combat',1)">&gt;</span>
@@ -98,31 +98,31 @@ function renderHome() {
                         <div class="inner-card-grid" id="grid-combat">
                             <div class="home-category-card" onclick="goToTab('weapons')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_weapons')}</h3>
+                                    <h3 class="cat-title">WEAPONS</h3>
                                     <span class="cat-icon">🔫</span>
                                 </div>
-                                <p class="cat-desc">${t('home_combat_desc')}</p>
+                                <p class="cat-desc">Weapon stats, attachments and prices.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('vehicles')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_vehicles')}</h3>
+                                    <h3 class="cat-title">VEHICLES</h3>
                                     <span class="cat-icon">🚗</span>
                                 </div>
-                                <p class="cat-desc">${t('home_vehicles_desc')}</p>
+                                <p class="cat-desc">Vehicle stats, handling and modifications (coming soon).</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('gun-crates')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_gun_crates')}</h3>
+                                    <h3 class="cat-title">GUN CRATES</h3>
                                     <span class="cat-icon">📦</span>
                                 </div>
-                                <p class="cat-desc">${t('home_gun_crates_desc')}</p>
+                                <p class="cat-desc">Gun crates and their locations.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="main-grid-col">
                         <div class="grid-header">
-                            <h2 class="grid-title"><span class="cat-icon">🌍</span> ${t('nav_world')}</h2>
+                            <h2 class="grid-title"><span class="cat-icon">🌍</span> WORLD</h2>
                             <div class="grid-nav-arrows">
                                 <span onclick="scrollCardGrid('grid-world',-1)">&lt;</span>
                                 <span onclick="scrollCardGrid('grid-world',1)">&gt;</span>
@@ -131,38 +131,38 @@ function renderHome() {
                         <div class="inner-card-grid" id="grid-world">
                             <div class="home-category-card" onclick="goToTab('locations')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_locations')}</h3>
+                                    <h3 class="cat-title">LOCATIONS</h3>
                                     <span class="cat-icon">🗺️</span>
                                 </div>
-                                <p class="cat-desc">${t('home_locations_desc')}</p>
+                                <p class="cat-desc">The map of key locations.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('npcs')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_npcs')}</h3>
+                                    <h3 class="cat-title">NPCs</h3>
                                     <span class="cat-icon">👥</span>
                                 </div>
-                                <p class="cat-desc">${t('home_npcs_desc')}</p>
+                                <p class="cat-desc">NPCs and their dialogues.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('missions')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_missions')}</h3>
+                                    <h3 class="cat-title">MISSIONS</h3>
                                     <span class="cat-icon">📋</span>
                                 </div>
-                                <p class="cat-desc">${t('home_missions_desc')}</p>
+                                <p class="cat-desc">Info on missions and how to complete them.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('events')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_events')}</h3>
+                                    <h3 class="cat-title">EVENTS</h3>
                                     <span class="cat-icon">🌍</span>
                                 </div>
-                                <p class="cat-desc">${t('home_events_desc')}</p>
+                                <p class="cat-desc">Info on festive game events.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="main-grid-col">
                         <div class="grid-header">
-                            <h2 class="grid-title"><span class="cat-icon">💰</span> ${t('nav_economy')}</h2>
+                            <h2 class="grid-title"><span class="cat-icon">💰</span> ECONOMY</h2>
                             <div class="grid-nav-arrows">
                                 <span onclick="scrollCardGrid('grid-economy',-1)">&lt;</span>
                                 <span onclick="scrollCardGrid('grid-economy',1)">&gt;</span>
@@ -171,31 +171,31 @@ function renderHome() {
                         <div class="inner-card-grid" id="grid-economy">
                             <div class="home-category-card" onclick="goToTab('atms')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_atms')}</h3>
+                                    <h3 class="cat-title">ATMs & VAULTS</h3>
                                     <span class="cat-icon">🏧</span>
                                 </div>
-                                <p class="cat-desc">${t('home_atms_desc')}</p>
+                                <p class="cat-desc">Info on ATMs and Vaults.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('store')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_store')}</h3>
+                                    <h3 class="cat-title">STORE</h3>
                                     <span class="cat-icon">🛒</span>
                                 </div>
-                                <p class="cat-desc">${t('home_store_desc')}</p>
+                                <p class="cat-desc">Info on the in-game store.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('valuables')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_valuables')}</h3>
+                                    <h3 class="cat-title">VALUABLES</h3>
                                     <span class="cat-icon">💎</span>
                                 </div>
-                                <p class="cat-desc">${t('home_valuables_desc')}</p>
+                                <p class="cat-desc">Info on valuables and their prices.</p>
                             </div>
                             <div class="home-category-card" onclick="goToTab('promo-codes')">
                                 <div class="cat-header">
-                                    <h3 class="cat-title">${t('nav_promo_codes')}</h3>
+                                    <h3 class="cat-title">PROMO CODES</h3>
                                     <span class="cat-icon">🏷️</span>
                                 </div>
-                                <p class="cat-desc">${t('home_promo_codes_desc')}</p>
+                                <p class="cat-desc">Active promo codes and rewards.</p>
                             </div>
                         </div>
                     </div>
@@ -203,7 +203,7 @@ function renderHome() {
 
                 <div class="videos-section">
                     <div class="sidebar-block" style="width: 100%;">
-                        <h2 class="sidebar-title">${t('home_featured_videos')}</h2>
+                        <h2 class="sidebar-title">FEATURED VIDEOS</h2>
                         <div class="video-list-container video-row-flex">
                             ${videosHTML}
                         </div>
@@ -214,7 +214,7 @@ function renderHome() {
             <div class="home-admin-sidebar">
                 <div class="admin-section">
                     <div class="sidebar-block">
-                        <h2 class="sidebar-title">${t('home_recent_updates')}</h2>
+                        <h2 class="sidebar-title">RECENT UPDATES</h2>
                         <div class="sidebar-box">
                             <div class="updates-list sidebar-updates-list">
                                 ${updatesHTML}
@@ -226,16 +226,16 @@ function renderHome() {
                         <div class="sidebar-box countdown-box" style="width: 100%;">
                             <div class="countdown-header">
                                 <span class="countdown-icon">⏱</span>
-                                <h3 class="countdown-title">${t('home_next_update')}</h3>
+                                <h3 class="countdown-title">NEXT UPDATE</h3>
                             </div>
                             <div id="countdown-display" class="countdown-display">
-                                <div class="countdown-time">${t('home_calculating')}</div>
+                                <div class="countdown-time">Calculating...</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="sidebar-block">
-                        <h2 class="sidebar-title">${t('home_wiki_contributors')}</h2>
+                        <h2 class="sidebar-title">WIKI CONTRIBUTORS</h2>
                         <div class="sidebar-box staff-group-box">
                             <div class="staff-inline-grid" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
                                 ${managersHTML}
@@ -249,11 +249,11 @@ function renderHome() {
                     <div class="sidebar-block">
                         <div class="sidebar-box views-box" style="width: 100%;">
                             <div class="views-header" style="justify-content: center;">
-                                <h3 class="views-title">${t('home_viewers_title')}</h3>
+                                <h3 class="views-title">VIEWER COUNTER</h3>
                             </div>
                             <div class="views-display">
                                 <div id="visitor-count" class="views-count">---</div>
-                                <div class="views-subtext">${t('home_viewers_subtext')}</div>
+                                <div class="views-subtext">UNIQUE IDENTITIES RECORDED</div>
                             </div>
                         </div>
                     </div>

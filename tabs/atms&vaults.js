@@ -11,10 +11,10 @@ function renderATMs(sort = "high") {
 
   const atmCards = sortedATMs.map(item => {
     const visibleContent = `
-      <h3>${tv(item, 'name')}</h3>
-      ${renderStat(t('stat_cash'), formatPrice(item.price))}
+      <h3>${item.name}</h3>
+      ${renderStat('Cash', formatPrice(item.price))}
     `;
-    const hiddenContent = renderStat(t('stat_rarity'), item.rarityPercent);
+    const hiddenContent = renderStat('Rarity', item.rarityPercent);
     return renderExpandableCardJPG(item, item.rarity, visibleContent, hiddenContent, 'atms&vaults');
   });
 
@@ -23,22 +23,22 @@ function renderATMs(sort = "high") {
       ? `${formatPrice(item.priceMin)} - ${formatPrice(item.priceMax)}`
       : '? - ?';
     const visibleContent = `
-      <h3>${tv(item, 'name')}</h3>
-      ${renderStat(t('stat_cash'), priceDisplay)}
+      <h3>${item.name}</h3>
+      ${renderStat('Cash', priceDisplay)}
     `;
-    const hiddenContent = renderStat(t('stat_rarity'), item.rarityPercent);
+    const hiddenContent = renderStat('Rarity', item.rarityPercent);
     return renderExpandableCardJPG(item, item.rarity, visibleContent, hiddenContent, 'atms&vaults');
   });
 
   const sortButtons = renderSortButtons([
-    { label: t('sort_expensive'), value: 'high', onClick: "sortATMs('high')" },
-    { label: t('sort_cheap'),     value: 'low',  onClick: "sortATMs('low')" }
+    { label: 'Most expensive first', value: 'high', onClick: "sortATMs('high')" },
+    { label: 'Cheapest first',     value: 'low',  onClick: "sortATMs('low')" }
   ], sort);
 
   const divider = `<div style="margin: 40px 0; border-bottom: 2px solid #fff; opacity: 0.3;"></div>`;
 
   return `
-    <h2>${t('page_atms')}</h2>
+    <h2>${'ATMs & VAULTS'}</h2>
     ${sortButtons}
     <h3 style="margin: 20px 0 10px;">ATMs</h3>
     <div class="card-grid">${atmCards.join('')}</div>

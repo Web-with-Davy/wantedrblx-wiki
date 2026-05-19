@@ -9,9 +9,9 @@ function renderStore(sort = "high") {
         const robuxPriceHtml = `<img src="${robuxIcon}" alt="Robux" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px; border-radius: 0; padding: 0;" onerror="this.src=''; this.alt='Robux'"/>${item.robuxPrice}`;
 
         const visibleContent = `
-            <h3>${tv(item, 'name')}</h3>
-            ${renderStat(t('stat_price'),       robuxPriceHtml)}
-            ${renderStat(t('stat_description'), tv(item, 'description'))}
+            <h3>${item.name}</h3>
+            ${renderStat('Price',       robuxPriceHtml)}
+            ${renderStat('Description', item.description)}
         `;
 
         const slug = generateSlug(item.name);
@@ -29,11 +29,11 @@ function renderStore(sort = "high") {
     });
 
     const sortButtons = renderSortButtons([
-        { label: t('sort_expensive'), value: 'high', onClick: "sortStore('high')" },
-        { label: t('sort_cheap'),     value: 'low',  onClick: "sortStore('low')" }
+        { label: 'Most expensive first', value: 'high', onClick: "sortStore('high')" },
+        { label: 'Cheapest first',     value: 'low',  onClick: "sortStore('low')" }
     ], sort);
 
-    return renderPage(t('page_store'), sortButtons, cards);
+    return renderPage('STORE', sortButtons, cards);
 }
 
 function sortStore(order) {

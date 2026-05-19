@@ -25,12 +25,12 @@ function renderValuables(sort = "high") {
 
   const makeValuableCard = (item) => {
     const visibleContent = `
-      <h3>${tv(item, 'name')}</h3>
-      ${renderStat(t('stat_sell'), formatPrice(item.price))}
+      <h3>${item.name}</h3>
+      ${renderStat('Sell Price', formatPrice(item.price))}
     `;
     const hiddenContent = `
-      ${renderStatSuffix(t('stat_weight'), item.weight, ' kg')}
-      ${renderStat(t('stat_common_location'), tv(item, 'commonLocation'))}
+      ${renderStatSuffix('Weight', item.weight, ' kg')}
+      ${renderStat('Common Location', item.commonLocation)}
     `;
     return renderExpandableCardJPG(item, item.rarity, visibleContent, hiddenContent, 'valuables');
   };
@@ -60,12 +60,12 @@ function renderValuables(sort = "high") {
   `;
 
   const sortButtons = renderSortButtons([
-    { label: t('sort_expensive'), value: 'high', onClick: "sortValuables('high')" },
-    { label: t('sort_cheap'), value: 'low', onClick: "sortValuables('low')" }
+    { label: 'Most expensive first', value: 'high', onClick: "sortValuables('high')" },
+    { label: 'Cheapest first', value: 'low', onClick: "sortValuables('low')" }
   ], sort);
 
   return `
-    <h2>${t('page_valuables')}</h2>
+    <h2>${'VALUABLES'}</h2>
     ${sortButtons}
     ${sections}
     ${christmasSection}

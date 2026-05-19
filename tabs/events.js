@@ -1,9 +1,9 @@
 function renderEvents() {
   const cards = EVENTS_DATA.map(event => {
-    const title = typeof tv === 'function' ? tv(event, 'title') : event.title;
-    const description = typeof tv === 'function' ? tv(event, 'description') : event.description;
-    const date = typeof tv === 'function' ? tv(event, 'date') : event.date;
-    const features = typeof tv === 'function' ? tv(event, 'features') : event.features;
+    const title = typeof tv === 'function' ? event.title : event.title;
+    const description = typeof tv === 'function' ? event.description : event.description;
+    const date = typeof tv === 'function' ? event.date : event.date;
+    const features = typeof tv === 'function' ? event.features : event.features;
 
     const visibleContent = `
       <h3>${title}</h3>
@@ -21,7 +21,7 @@ function renderEvents() {
   });
 
   return `
-    <h2>${t('page_events')}</h2>
+    <h2>${'EVENTS'}</h2>
     <div class="card-grid">
       ${cards.join('')}
     </div>
