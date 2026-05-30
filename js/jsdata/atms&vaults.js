@@ -1,0 +1,4 @@
+const ATMS_AND_VAULTS_DATA = [
+  ...ATMS_DATA,
+  ...VAULTS_DATA,
+];

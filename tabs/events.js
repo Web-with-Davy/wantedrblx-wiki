@@ -1,9 +1,9 @@
 function renderEvents() {
   const cards = EVENTS_DATA.map(event => {
-    const title = typeof tv === 'function' ? event.title : event.title;
-    const description = typeof tv === 'function' ? event.description : event.description;
-    const date = typeof tv === 'function' ? event.date : event.date;
-    const features = typeof tv === 'function' ? event.features : event.features;
+    const title = event.title;
+    const description = event.description;
+    const date = event.date;
+    const features = event.features;
 
     const visibleContent = `
       <h3>${title}</h3>

@@ -1,0 +1,37 @@
+const GUNS_DATA = [
+
+  // Pistols
+  ...WEAPON_M9,
+  ...WEAPON_GLOCK_18C,
+  ...WEAPON_DEAGLE,
+
+  // SMGs
+  ...WEAPON_UZI,
+  ...WEAPON_UMP_45,
+  ...WEAPON_SKORPION,
+  ...WEAPON_KRISS_VECTOR,
+
+  // Shotguns
+  ...WEAPON_MODEL_870,
+  ...WEAPON_BENELLI_M1014,
+  ...WEAPON_SPAS_12,
+
+  // Rifles
+  ...WEAPON_AUG_A1,
+  ...WEAPON_AK_47,
+  ...WEAPON_M4A1,
+  ...WEAPON_ARX_160,
+  ...WEAPON_M60,
+  ...WEAPON_FN_FAL,
+
+  // Snipers
+  ...WEAPON_AWM,
+  ...WEAPON_SVD,
+
+  // Airdrop
+  ...WEAPON_BARRETT_M82,
+  ...WEAPON_GOLDEN_BARRETT_M82,
+  ...WEAPON_GOLDEN_AK_47,
+  ...WEAPON_GOLDEN_DEAGLE,
+
+];

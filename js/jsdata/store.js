@@ -1,0 +1,7 @@
+const STORE_DATA = [
+  ...STORE_OTHER,
+  ...STORE_BAG_BOOSTS,
+  ...STORE_PACKS,
+  ...STORE_MONEY_PRINTERS,
+  ...STORE_CASH,
+];
