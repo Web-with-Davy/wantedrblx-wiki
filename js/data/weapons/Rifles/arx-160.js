@@ -1,0 +1,36 @@
+const WEAPON_ARX_160 = [
+
+  {
+    name: "ARX-160",
+    showMoreButton: true,
+    reBuyPrice: 8000,
+    sellPrice: 2400,
+    contractPrice: 1800000,
+    stats: {
+      ammo: "30/300",
+      ammoPrice: "$450 for 30",
+      damage: "Head-9/Torso-8/Limbs-7",
+      firerate: 1200,
+      reload: 3,
+      accuracy: "±1.10m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "N/A", price: 0 }
+      ],
+      Muzzle: [
+        { name: "N/A", price: 0 }
+      ],
+      Underbarrel: [
+        { name: "N/A", price: 0 }
+      ],
+      Tactical: [
+        { name: "N/A", price: 0 }
+      ],
+      Ammunition: [
+        { name: "N/A", price: 0 }
+      ]
+    }
+  },
+
+];
