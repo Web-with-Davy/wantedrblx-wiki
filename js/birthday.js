@@ -1,4 +1,4 @@
-const BIRTHDAY_ENABLED = true;
+const BIRTHDAY_ENABLED = false;
 
 (function () {
     'use strict';
