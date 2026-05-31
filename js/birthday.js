@@ -1,4 +1,4 @@
-const BIRTHDAY_ENABLED = false;
+const BIRTHDAY_ENABLED = true;
 
 (function () {
     'use strict';
@@ -15,7 +15,7 @@ const BIRTHDAY_ENABLED = false;
             '#7bed9f', '#a29bfe', '#fd79a8', '#00cec9'
         ];
 
-        const CAKE_DELAY_MS = 10000;
+        const CAKE_DELAY_MS = 5000;
 
         const dimmer = document.createElement('div');
         dimmer.id = 'birthday-dimmer';
