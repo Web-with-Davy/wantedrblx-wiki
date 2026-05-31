@@ -1,5 +1,5 @@
 const VIDEOS_DATA = [
-    { title: "NEW DIAMOND VAULT & Robberies! / Roblox Wanted / Part 20", link: "https://www.youtube.com/watch?v=sfoor3qewAI", thumbnail: "https://i.ytimg.com/vi/sfoor3qewAI/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCJjjIvvO0cm33T8YaKiQ-28yEeDA" },
-    { title: "How to Join The SYNDICATE Team in Wanted!", link: "https://www.youtube.com/watch?v=Vy_ZyTmK3J4", thumbnail: "https://i.ytimg.com/vi/Vy_ZyTmK3J4/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAFP4-3MIOSdLh8I5hYJzKnxrpJgQ" },
-    { title: "NEW TOWN + DIAMOND VAULT In Wanted UPDATE!", link: "https://www.youtube.com/watch?v=SJ8dtgvxiLs", thumbnail: "https://i.ytimg.com/vi/SJ8dtgvxiLs/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDq0zCebeEbzd4C9I4NLhP-GhjfDA" }
+    { title: "HOW To Rob Wanted PLANE HEIST!", link: "https://www.youtube.com/watch?v=TnQJZBlBlwM", thumbnail: "https://i.ytimg.com/vi/TnQJZBlBlwM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCrYlaTS3zOf6G7TrVem2qNIC4FQA" },
+    { title: "New Gambling Crates & Plane Robberies! / Roblox Wanted / Part 21", link: "https://www.youtube.com/watch?v=5Ef2UwYOm1k", thumbnail: "https://i.ytimg.com/vi/5Ef2UwYOm1k/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFZ6hr5SjUiS178VzPQAugK73IwA" },
+    { title: "NEW CARGO PLANE ROBBERY In Wanted!", link: "https://www.youtube.com/watch?v=UWcKWbMitrQ", thumbnail: "https://i.ytimg.com/vi/UWcKWbMitrQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDauGS6SZreOZpeEQUyAcbLaaQ-YA" }
 ];
