@@ -7,7 +7,7 @@ const VEHICLE_RANGER = [
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
-    contractPrice: 24000,
+    contractPrice: 8000,
     stats: {
       topSpeed: 29,
       acceleration: 29,

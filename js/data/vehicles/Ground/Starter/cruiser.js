@@ -7,7 +7,7 @@ const VEHICLE_CRUISER = [
     type: "ground",
     repairPrice: 0,
     repairPriceGarage: 0,
-    contractPrice: 0,
+    contractPrice: 1000,
     stats: {
       topSpeed: 38,
       acceleration: 31,

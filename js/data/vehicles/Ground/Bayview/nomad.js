@@ -7,7 +7,7 @@ const VEHICLE_NOMAD = [
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
-    contractPrice: 0,
+    contractPrice: 24000,
     stats: {
       topSpeed: 32,
       acceleration: 28,

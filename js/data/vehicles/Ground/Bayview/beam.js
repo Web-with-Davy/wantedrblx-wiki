@@ -7,7 +7,7 @@ const VEHICLE_BEAM = [
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
-    contractPrice: 80000,
+    contractPrice: 85000,
     stats: {
       topSpeed: 44,
       acceleration: 35,
