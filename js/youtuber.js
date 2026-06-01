@@ -1,4 +1,4 @@
-const YOUTUBER_ENABLED = true;
+const YOUTUBER_ENABLED = false;
 
 (function () {
     'use strict';
