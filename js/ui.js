@@ -188,6 +188,10 @@ function initCountdownTimer() {
     const countdownDisplay = document.getElementById('countdown-display');
     if (!countdownDisplay) return;
 
+    if (window.countdownTimerTimeout) {
+        clearTimeout(window.countdownTimerTimeout);
+    }
+
     const targetDate = window.COUNTDOWN_TARGET || new Date('2026-03-06T17:00:00Z');
 
     function updateCountdown() {
@@ -225,7 +229,7 @@ function initCountdownTimer() {
             </div>
         `;
 
-        setTimeout(updateCountdown, 1000);
+        window.countdownTimerTimeout = setTimeout(updateCountdown, 1000);
     }
 
     updateCountdown();

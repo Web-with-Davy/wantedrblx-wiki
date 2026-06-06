@@ -97,7 +97,7 @@ function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ex
       </div>` : ''}
       ${showButton ? `
       <button class="card-details-toggle" onclick="toggleCardDetails('${cardId}', this)">
-        'Show more...'
+        Show more...
       </button>` : ''}
     </div>`;
 }
@@ -205,7 +205,7 @@ function renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder
     const localizedCategory = category;
     const itemsHTML = items.map(att => `
       <div class="card-overlay-item">
-        <p><strong>${item.name}:</strong> ${att.price === 0 ? `<span style="color:#666">Free</span>` : formatPrice(att.price)}</p>
+        <p><strong>${att.name}:</strong> ${att.price === 0 ? `<span style="color:#666">Free</span>` : formatPrice(att.price)}</p>
       </div>
     `).join('');
     const icon = categoryIcons[category] || '●';

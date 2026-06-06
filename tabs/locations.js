@@ -1,18 +1,13 @@
 function renderLocations(order = "az") {
   const sorted = [...LOCATIONS_DATA].sort((a, b) => {
-    const nameA = typeof tv === 'function' ? a.name : a.name;
-    const nameB = typeof tv === 'function' ? b.name : b.name;
     return order === "az"
-      ? nameA.localeCompare(nameB)
-      : nameB.localeCompare(nameA);
+      ? a.name.localeCompare(b.name)
+      : b.name.localeCompare(a.name);
   });
 
   const cards = sorted.map(item => {
-    const name = typeof tv === 'function' ? item.name : item.name;
-    const description = typeof tv === 'function' ? item.description : item.description;
-
-    const visibleContent = `<h3>${name}</h3>`;
-    const hiddenContent  = `<p>${description}</p>`;
+    const visibleContent = `<h3>${item.name}</h3>`;
+    const hiddenContent  = `<p>${item.description}</p>`;
     return renderExpandableCardJPG(item, null, visibleContent, hiddenContent, 'locations');
   });
 

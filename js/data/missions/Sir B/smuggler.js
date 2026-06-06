@@ -72,4 +72,16 @@ const MISSIONS_SIR_B_SMUGGLER = [
     rewards: ["1,600 Syndicate XP", "$400,000"]
   },
 
+  {
+    id: "smuggler",
+    showMoreButton: true,
+    title: "Smuggler - Part 7",
+    location: "Criminal Outpost – Talk to Sir. B",
+    description: "Financing an operation like this is no easy task. We need all the money we can get. This one is a hefty price tag, but you'll be paid handsomely if you succeed.",
+    howToComplete: "Sell $4,000,000 worth of loot to Sir B.",
+    difficulty: "HARD",
+    missionType: "Sir. B",
+    rewards: ["3,200 Syndicate XP", "$1,000,000"]
+  },
+
 ];

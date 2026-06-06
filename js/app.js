@@ -255,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(".tab[data-page]").forEach(tab => {
         tab.addEventListener("click", (e) => {
             e.preventDefault();
-            if (!window.audioUnlocked) return;
             loadPage(tab.dataset.page);
         });
     });
@@ -263,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
         const item = e.target.closest('.tab-dropdown-item[data-page], .tab-direct[data-page]');
-        if (item && window.audioUnlocked) {
+        if (item) {
             e.preventDefault();
             loadPage(item.dataset.page);
         }

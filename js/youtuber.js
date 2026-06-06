@@ -1,12 +1,12 @@
-const YOUTUBER_ENABLED = true;
+const YOUTUBER_ENABLED = false;
 
 (function () {
     'use strict';
 
     if (!YOUTUBER_ENABLED) return;
 
-    const REDIRECT_URL = 'https://www.youtube.com/watch?v=P28SlF7Lx1U';
-    const HAIR_IMAGE = 'https://tr.rbxcdn.com/180DAY-224bb55411c9176a317711b4fd30b7ab/420/420/HairAccessory/Webp/noFilter';
+    const REDIRECT_URL = 'url';
+    const HAIR_IMAGE = 'image';
     const DELAY_MS = 10000;
     const FALL_MS = 7000;
 

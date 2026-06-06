@@ -28,7 +28,7 @@ function renderSearchItem(item) {
     const folderMap = {
         'weapon': 'weapons',
         'vehicle': 'vehicles',
-        'atm': 'atms&vaults',
+        'atm': 'atms',
         'valuable': 'valuables',
         'guncrate': 'crates',
         'mission': 'missions',

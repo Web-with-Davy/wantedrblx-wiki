@@ -276,12 +276,16 @@ function scrollCardGrid(gridId, direction) {
 window.scrollCardGrid = scrollCardGrid;
 
 function goToTab(tabId) {
+    if (typeof window.loadPage === 'function') {
+        window.loadPage(tabId);
+        return;
+    }
     if (typeof window.switchTab === 'function') {
         window.switchTab(tabId);
         return;
     }
     const navTab = document.querySelector(
-        `.tab[data-tab="${tabId}"], .tab[href="#${tabId}"], [data-tab="${tabId}"]`
+        `.tab[data-tab="${tabId}"], .tab[data-page="${tabId}"], .tab[href="#${tabId}"], [data-tab="${tabId}"]`
     );
     if (navTab) {
         navTab.click();

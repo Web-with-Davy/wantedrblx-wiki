@@ -13,7 +13,7 @@ function renderEvents() {
       <div style="margin-top: 15px;">
         <strong>Key Features:</strong>
         <ul style="margin-top: 10px; margin-left: 15px; list-style-type: square; opacity: 0.9;">
-          ${features.map(f => `<li style="margin-bottom: 5px;">${f}</li>`).join('')}
+          ${(features || []).map(f => `<li style="margin-bottom: 5px;">${f}</li>`).join('')}
         </ul>
       </div>
     `;
