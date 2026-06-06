@@ -5,9 +5,8 @@ const YOUTUBER_ENABLED = false;
 
     if (!YOUTUBER_ENABLED) return;
 
-    const REDIRECT_URL = 'url';
-    const HAIR_IMAGE = 'image';
-    const DELAY_MS = 10000;
+    const REDIRECT_URL = 'videolink';
+    const HAIR_IMAGE = 'imagelink;
     const FALL_MS = 7000;
 
     const style = document.createElement('style');
