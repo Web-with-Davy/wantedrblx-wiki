@@ -9,7 +9,7 @@ function initGarage(onOpen) {
     }
 
     const openSequence = () => {
-        if (loadSfx && window.audioUnlocked) {
+        if (loadSfx) {
             loadSfx.volume = 0.5;
             loadSfx.play().catch(() => { });
         }

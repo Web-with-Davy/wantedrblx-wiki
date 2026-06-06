@@ -424,6 +424,7 @@ function initTutorial() {
     };
 
     function completeTutorial() {
+        window.removeEventListener('resize', updatePosition);
         overlay.classList.remove('active');
         highlight.style.opacity = '0';
         content.style.opacity = '0';
@@ -444,7 +445,7 @@ function initTutorial() {
         }, 500);
     }
 
-    window.onresize = updatePosition;
+    window.addEventListener('resize', updatePosition);
 
     setTimeout(() => {
         overlay.classList.add('active');

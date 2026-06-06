@@ -4,8 +4,8 @@ function renderMissions(order = "hard") {
 
   const sortMissionsList = (list) => {
     return [...list].sort((a, b) => {
-      const diffA = DIFFICULTIES[a.difficulty];
-      const diffB = DIFFICULTIES[b.difficulty];
+      const diffA = DIFFICULTIES[a.difficulty] || { order: 0 };
+      const diffB = DIFFICULTIES[b.difficulty] || { order: 0 };
 
       if (diffA.order === diffB.order) {
         const numA = parseInt(a.title) || 0;

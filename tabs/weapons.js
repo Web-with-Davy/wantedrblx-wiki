@@ -18,15 +18,15 @@ function renderWeapons(sort = "high") {
       `;
       const hiddenContent = `
         ${renderStat('Obtaining',  item.obtaining)}
-        ${renderStat('Location',   item.location || item.stats.location)}
+        ${renderStat('Location',   item.location || (item.stats && item.stats.location))}
         ${renderStat('Re-Buy Price',      formatPrice(item.reBuyPrice))}
         ${renderStat('Sell Price',       formatPrice(item.sellPrice))}
-        ${renderStat('Ammo',       item.stats.ammo)}
-        ${renderStat('Ammo Cost',  item.stats.ammoPrice)}
-        ${renderStat('Damage',     item.stats.damage)}
-        ${renderStat('Fire Rate',        item.stats.firerate)}
-        ${item.stats.reload ? renderStat('Reload Speed', `${item.stats.reload}s`) : ''}
-        ${renderStat('Accuracy',   item.stats.accuracy)}
+        ${renderStat('Ammo',       item.stats && item.stats.ammo)}
+        ${renderStat('Ammo Cost',  item.stats && item.stats.ammoPrice)}
+        ${renderStat('Damage',     item.stats && item.stats.damage)}
+        ${renderStat('Fire Rate',        item.stats && item.stats.firerate)}
+        ${item.stats && item.stats.reload ? renderStat('Reload Speed', `${item.stats.reload}s`) : ''}
+        ${renderStat('Accuracy',   item.stats && item.stats.accuracy)}
       `;
       return renderWeaponCard(item, null, visibleContent, hiddenContent, 'weapons');
     });

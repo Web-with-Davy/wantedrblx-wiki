@@ -32,7 +32,7 @@ function renderVehicles(sort = "high") {
       ${renderStat('Obtaining',     item.obtaining)}
       ${renderStat('Repair Price',        formatPrice(item.repairPrice))}
       ${renderStat('Garage Repair Price', formatPrice(item.repairPriceGarage))}
-      ${renderStatSuffix('Top Speed',   item.stats.topSpeed, '%')}
+      ${renderStatSuffix('Top Speed',   item.stats.topSpeed, ' MPH')}
       ${renderStatSuffix('Acceleration',item.stats.acceleration, '%')}
       ${renderStatSuffix('Braking',     item.stats.braking, '%')}
       ${renderStat('Health', item.stats.Health)}

@@ -2,28 +2,16 @@ function renderGunCrates(sort = "a-z") {
   let sorted = [...GUN_CRATES_DATA];
 
   if (sort === "a-z") {
-    sorted.sort((a, b) => {
-      const nameA = typeof tv === 'function' ? a.name : a.name;
-      const nameB = typeof tv === 'function' ? b.name : b.name;
-      return nameA.localeCompare(nameB);
-    });
+    sorted.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sort === "z-a") {
-    sorted.sort((a, b) => {
-      const nameA = typeof tv === 'function' ? a.name : a.name;
-      const nameB = typeof tv === 'function' ? b.name : b.name;
-      return nameB.localeCompare(nameA);
-    });
+    sorted.sort((a, b) => b.name.localeCompare(a.name));
   }
 
   const cards = sorted.map(item => {
-    const name = typeof tv === 'function' ? item.name : item.name;
-    const gun = typeof tv === 'function' ? item.gun : item.gun;
-    const location = typeof tv === 'function' ? item.location : item.location;
-
-    const visibleContent = `<h3>${name}</h3>`;
+    const visibleContent = `<h3>${item.name}</h3>`;
     const hiddenContent  = `
-      ${renderStat('Content',  gun)}
-      ${renderStat('Location', location)}
+      ${renderStat('Content',  item.gun)}
+      ${renderStat('Location', item.location)}
     `;
     return renderExpandableCardJPG(item, null, visibleContent, hiddenContent, 'crates');
   });
