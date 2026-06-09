@@ -1,3 +1,10 @@
+function toggleProgress(id, btn) {
+    let progress = JSON.parse(localStorage.getItem('wikiProgress') || '{}');
+    progress[id] = !progress[id];
+    localStorage.setItem('wikiProgress', JSON.stringify(progress));
+    btn.classList.toggle('completed', progress[id]);
+}
+
 function renderCard(item, rarityKey, content, folder = null) {
   const name = item.name || item.title || "";
   const slug = item.id || generateSlug(name);
@@ -5,9 +12,13 @@ function renderCard(item, rarityKey, content, folder = null) {
   const rarityClass = rarity ? rarity.class : '';
   const rarityName = rarity ? rarity.name : '';
   const imagePath = folder ? `images/${folder}/${slug}.png` : `images/${slug}.png`;
+  
+  const progress = JSON.parse(localStorage.getItem('wikiProgress') || '{}');
+  const isCompleted = progress[slug] ? 'completed' : '';
 
   return `
     <div class="card">
+      <div class="progress-toggle ${isCompleted}" onclick="toggleProgress('${slug}', this)" title="Mark as Completed">✓</div>
       <img src="${imagePath}" alt="${name}" loading="lazy" 
            style="width:100%; height:auto; margin-bottom:15px; border-radius:4px; 
                   box-shadow:0 0 10px rgba(255,255,255,0.2);"
@@ -82,9 +93,13 @@ function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ex
   const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 9)}`;
   const showButton = item.showMoreButton !== false && hiddenContent && hiddenContent.trim() !== '';
   const imagePath = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
+  
+  const progress = JSON.parse(localStorage.getItem('wikiProgress') || '{}');
+  const isCompleted = progress[slug] ? 'completed' : '';
 
   return `
     <div class="card">
+      <div class="progress-toggle ${isCompleted}" onclick="toggleProgress('${slug}', this)" title="Mark as Completed">✓</div>
       <img src="${imagePath}" alt="${item.name}" loading="lazy" 
            style="width:100%; height:auto; margin-bottom:15px; border-radius:4px; 
                   box-shadow:0 0 10px rgba(255,255,255,0.2);"

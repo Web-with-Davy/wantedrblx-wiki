@@ -87,6 +87,29 @@ function renderHome() {
                     </div>
                 </div>
 
+                <div class="global-stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">📜</div>
+                        <div class="stat-value">90+</div>
+                        <div class="stat-label">Total Missions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔫</div>
+                        <div class="stat-value">25+</div>
+                        <div class="stat-label">Weapons</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚗</div>
+                        <div class="stat-value">30+</div>
+                        <div class="stat-label">Vehicles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏧</div>
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Crime Types</div>
+                    </div>
+                </div>
+
                 <div class="main-grid-container">
                     <div class="main-grid-col">
                         <div class="grid-header">
