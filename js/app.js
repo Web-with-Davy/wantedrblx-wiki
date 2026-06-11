@@ -78,6 +78,23 @@ function loadPage(page, saveToHistory = true) {
 
         container.innerHTML = content;
 
+        // ── Update breadcrumb / page-label ──────────────────────
+        const pageNames = {
+            home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
+            weapons: 'WEAPONS', vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES',
+            missions: 'MISSIONS', npcs: 'NPCs', locations: 'LOCATIONS',
+            store: 'STORE', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
+        };
+        const pageLabel = document.getElementById('page-label');
+        if (pageLabel) pageLabel.textContent = pageNames[page] || page.toUpperCase();
+        const breadcrumb = document.getElementById('page-breadcrumb');
+        if (breadcrumb) {
+            breadcrumb.classList.add('visible');
+            clearTimeout(breadcrumb._hideTimer);
+            breadcrumb._hideTimer = setTimeout(() => breadcrumb.classList.remove('visible'), 1200);
+        }
+        // ─────────────────────────────────────────────────────────
+
         if (saveToHistory) {
             try {
                 const isFileProtocol = window.location.protocol === 'file:';
@@ -175,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             '.tab',
             '.sort-btn',
             '.card-details-toggle',
+            '.val-toggle',
             '.card-overlay-button',
             '.attachment-category-header',
             '.settings-toggle',
@@ -185,6 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
             '.hamburger',
             '.settings-backdrop',
             '.setting-select',
+            '.page-jump-nav a',
+            '.home-category-card',
             'a'
         ].join(', ');
 

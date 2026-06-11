@@ -29,9 +29,14 @@ const generateSlug = (name) => {
 };
 
 const formatPrice = (price) => {
-  if (typeof price === 'string') return price;
-  if (typeof price !== 'number') return undefined;
-  return `<img src="images/cash.png" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">${price.toLocaleString()}`;
+  if (price === undefined || price === null) return undefined;
+  // Coerce numeric strings (e.g. "300000") to numbers
+  const num = typeof price === 'number' ? price : Number(price);
+  if (!isNaN(num)) {
+    return `<img src="images/cash.png" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">${num.toLocaleString()}`;
+  }
+  // Non-numeric string (e.g. "Un-Buyable", "Contract only") — return as-is
+  return String(price);
 };
 
 const formatReward = (reward) => {

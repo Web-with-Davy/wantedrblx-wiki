@@ -1,27 +1,29 @@
 function renderGunCrates(sort = "a-z") {
   let sorted = [...GUN_CRATES_DATA];
+  if (sort === "a-z") sorted.sort((a, b) => a.name.localeCompare(b.name));
+  else                sorted.sort((a, b) => b.name.localeCompare(a.name));
 
-  if (sort === "a-z") {
-    sorted.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sort === "z-a") {
-    sorted.sort((a, b) => b.name.localeCompare(a.name));
-  }
-
-  const cards = sorted.map(item => {
-    const visibleContent = `<h3>${item.name}</h3>`;
-    const hiddenContent  = `
-      ${renderStat('Content',  item.gun)}
-      ${renderStat('Location', item.location)}
-    `;
-    return renderExpandableCardJPG(item, null, visibleContent, hiddenContent, 'crates');
-  });
+  const cards = sorted.map(item => makeUniversalCard(item, {
+    folder: 'crates',
+    rarityKey: null,
+    visibleStats: [],
+    hiddenStats: [
+      { label: 'Content',  value: item.gun      },
+      { label: 'Location', value: item.location },
+    ].filter(s => s.value),
+    showButton: item.showMoreButton !== false
+  })).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'A-Z', value: 'a-z', onClick: "sortGunCrates('a-z')" },
     { label: 'Z-A', value: 'z-a', onClick: "sortGunCrates('z-a')" }
   ], sort);
 
-  return renderPage('GUN CRATES', sortButtons, cards);
+  return `
+    <h2>GUN CRATES</h2>
+    ${sortButtons}
+    <div class="val-grid">${cards}</div>
+  `;
 }
 
 function sortGunCrates(order) {

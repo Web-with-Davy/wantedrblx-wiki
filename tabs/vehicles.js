@@ -1,7 +1,4 @@
 function renderVehicles(sort = "high") {
-  const renderStatSuffix = (label, val, suffix) =>
-    val !== undefined && val !== null ? renderStat(label, `${val}${suffix}`) : '';
-
   const groundVehicles = VEHICLES_DATA.filter(v => v.type === 'ground');
   const flyingVehicles = VEHICLES_DATA.filter(v => v.type === 'flying');
 
@@ -14,51 +11,69 @@ function renderVehicles(sort = "high") {
   const sortedGround = [...groundVehicles].sort(sortFn);
   const sortedFlying = [...flyingVehicles].sort(sortFn);
 
-  const makeCard = (item, isFlying) => {
-    const visibleContent = `
-      ${renderPriceTag(item.contractPrice)}
-      <h3>${item.name}</h3>
-    `;
-    const hiddenContent = isFlying ? `
-      ${renderStat('Obtaining',     item.obtaining)}
-      ${renderStat('Repair Price',        formatPrice(item.repairPrice))}
-      ${renderStat('Garage Repair Price', formatPrice(item.repairPriceGarage))}
-      ${renderStatSuffix('Top Speed',   item.stats.topSpeed, '%')}
-      ${renderStatSuffix('Handling',    item.stats.handling, '%')}
-      ${renderStatSuffix('Spool Time',  item.stats.spoolTime, 's')}
-      ${renderStat('Health', item.stats.Health)}
-      ${renderStat('Armor',      item.stats.armor)}
-    ` : `
-      ${renderStat('Obtaining',     item.obtaining)}
-      ${renderStat('Repair Price',        formatPrice(item.repairPrice))}
-      ${renderStat('Garage Repair Price', formatPrice(item.repairPriceGarage))}
-      ${renderStatSuffix('Top Speed',   item.stats.topSpeed, ' MPH')}
-      ${renderStatSuffix('Acceleration',item.stats.acceleration, '%')}
-      ${renderStatSuffix('Braking',     item.stats.braking, '%')}
-      ${renderStat('Health', item.stats.Health)}
-      ${renderStat('Armor',      item.stats.armor)}
-    `;
-    return renderExpandableCardJPG(item, null, visibleContent, hiddenContent, 'vehicles');
+  const makeVehicleCard = (item, isFlying) => {
+    const contractHtml = formatPrice(item.contractPrice);
+    const repairHtml   = formatPrice(item.repairPrice);
+    const garageHtml   = formatPrice(item.repairPriceGarage);
+
+    const visibleStats = [
+      contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
+    ].filter(Boolean);
+
+    const hiddenStats = [
+      { label: 'Obtaining',      value: item.obtaining },
+      repairHtml ? { label: 'Repair Price',   value: repairHtml } : null,
+      garageHtml ? { label: 'Garage Repair',  value: garageHtml } : null,
+      isFlying
+        ? { label: 'Top Speed',    value: item.stats.topSpeed   != null ? `${item.stats.topSpeed}%`    : null }
+        : { label: 'Top Speed',    value: item.stats.topSpeed   != null ? `${item.stats.topSpeed} MPH` : null },
+      !isFlying
+        ? { label: 'Acceleration', value: item.stats.acceleration != null ? `${item.stats.acceleration}%` : null }
+        : { label: 'Spool Time',   value: item.stats.spoolTime   != null ? `${item.stats.spoolTime}s`    : null },
+      !isFlying
+        ? { label: 'Braking',      value: item.stats.braking   != null ? `${item.stats.braking}%`   : null }
+        : { label: 'Handling',     value: item.stats.handling  != null ? `${item.stats.handling}%`  : null },
+      { label: 'Health', value: item.stats.Health },
+      { label: 'Armor',  value: item.stats.armor != null ? String(item.stats.armor) : null },
+    ].filter(s => s && s.value !== undefined && s.value !== null && s.value !== '');
+
+    return makeUniversalCard(item, {
+      folder: 'vehicles',
+      rarityKey: null,
+      visibleStats,
+      hiddenStats,
+      showButton: item.showMoreButton !== false && hiddenStats.length > 0
+    });
   };
 
-  const groundCards = sortedGround.map(item => makeCard(item, false));
-  const flyingCards = sortedFlying.map(item => makeCard(item, true));
+  const groundCards = sortedGround.map(v => makeVehicleCard(v, false)).join('');
+  const flyingCards = sortedFlying.map(v => makeVehicleCard(v, true)).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortVehicles('high')" },
-    { label: 'Cheapest first',     value: 'low',  onClick: "sortVehicles('low')" }
+    { label: 'Cheapest first',       value: 'low',  onClick: "sortVehicles('low')"  }
   ], sort);
 
-  const divider = `<div style="margin: 40px 0; border-bottom: 2px solid #fff; opacity: 0.3;"></div>`;
+  const jumpNav = `<div class="page-jump-nav">
+    <a onclick="document.getElementById('vehicles-ground')?.scrollIntoView({behavior:'smooth'})">Ground</a>
+    <a onclick="document.getElementById('vehicles-air')?.scrollIntoView({behavior:'smooth'})">Air</a>
+  </div>`;
 
   return `
-    <h2>${'VEHICLES'}</h2>
+    <h2>VEHICLES</h2>
     ${sortButtons}
-    <h3 style="margin: 20px 0 10px;">${'Ground Vehicles'}</h3>
-    <div class="card-grid">${groundCards.join('')}</div>
-    ${divider}
-    <h3 style="margin: 20px 0 10px;">${'Air Vehicles'}</h3>
-    <div class="card-grid">${flyingCards.join('')}</div>
+    ${jumpNav}
+    <div class="val-section-header" id="vehicles-ground">
+      <h3 class="val-section-title">Ground Vehicles</h3>
+      <span class="val-section-count">${sortedGround.length} items</span>
+    </div>
+    <div class="val-grid">${groundCards}</div>
+    <div class="val-section-divider"></div>
+    <div class="val-section-header" id="vehicles-air">
+      <h3 class="val-section-title">Air Vehicles</h3>
+      <span class="val-section-count">${sortedFlying.length} items</span>
+    </div>
+    <div class="val-grid">${flyingCards}</div>
   `;
 }
 
