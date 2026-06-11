@@ -1,72 +1,116 @@
-function renderCard(item, rarityKey, content, folder = null) {
-  const name = item.name || item.title || "";
-  const slug = item.id || generateSlug(name);
-  const rarity = RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey];
+function makeUniversalCard(item, opts = {}) {
+  const name    = item.name || item.title || item.code || '';
+  const slug    = item.id   || generateSlug(name);
+  const ext     = opts.ext    || 'jpg';
+  const folder  = opts.folder || '';
+  const imgSrc  = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
+
+  const rarityKey   = opts.rarityKey;
+  const rarity      = rarityKey ? (RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey]) : null;
+  const rarityName  = rarity ? rarity.name  : '';
   const rarityClass = rarity ? rarity.class : '';
-  const rarityName = rarity ? rarity.name : '';
-  const imagePath = folder ? `images/${folder}/${slug}.png` : `images/${slug}.png`;
+
+  const accentStyle = opts.accentColor
+    ? `style="background:${opts.accentColor};box-shadow:0 0 6px ${opts.accentColor};"`
+    : '';
+
+  let dateTagHtml = '';
+  if (opts.dateTag) {
+    const dc = opts.dateColor   ? `color:${opts.dateColor};`   : '';
+    const ds = opts.dateOutline ? `border-color:${opts.dateOutline};box-shadow:0 0 8px ${opts.dateOutline};text-shadow:0 0 5px ${opts.dateOutline};` : '';
+    dateTagHtml = `<span class="val-rarity-tag" style="${dc}${ds}">${opts.dateTag}</span>`;
+  }
+
+  const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 8)}`;
+
+  const buildStatRow = ({label, value}) => {
+    if (!value && value !== 0) return '';
+    return `<div class="val-stat"><span class="val-stat-label">${label}</span><span class="val-stat-value">${value}</span></div>`;
+  };
+
+  const visibleRows = (opts.visibleStats || []).map(buildStatRow).join('');
+  const hiddenRows  = (opts.hiddenStats  || []).map(buildStatRow).join('');
+
+  const hasHidden  = hiddenRows.trim() !== '' || (opts.extraBodyHtml || '').trim() !== '';
+  const showButton = opts.showButton !== undefined
+    ? opts.showButton
+    : (item.showMoreButton !== false && hasHidden);
+
+  const hiddenBlock = hasHidden ? `<div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">${hiddenRows}${opts.extraBodyHtml || ''}</div>` : '';
+  const toggleBtn   = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
+
+  const overlayHtml  = opts.overlayHtml  || '';
+  const overlayLabel = opts.overlayLabel || 'VIEW';
+
+  const overlayBtn = overlayHtml
+    ? `<button class="val-overlay-btn" onclick="toggleValCardOverlay(this)">${overlayLabel}</button>`
+    : '';
+
+  const overlayPanel = overlayHtml ? `
+    <div class="val-overlay-panel">
+      <button class="val-overlay-close" onclick="toggleValCardOverlay(this)">✕ Close</button>
+      <div class="val-overlay-title">${overlayLabel}</div>
+      <div class="val-overlay-body">${overlayHtml}</div>
+    </div>` : '';
+
+  const headlineHtml = opts.headlineHtml || '';
+  const badgeHtml    = opts.badgeHtml    || '';
+  const wideClass    = opts.wide ? ' val-card-wide' : '';
 
   return `
-    <div class="card">
-      <img src="${imagePath}" alt="${name}" loading="lazy" 
-           style="width:100%; height:auto; margin-bottom:15px; border-radius:4px; 
-                  box-shadow:0 0 10px rgba(255,255,255,0.2);"
-           onerror="this.onerror=null; this.src='images/favicon.png'; this.style.opacity='0.5'; this.style.objectFit='contain'; this.style.height='150px';">
-      ${rarityName ? `<div class="rarity ${rarityClass}">${rarityName}</div>` : ''}
-      ${content}
+    <div class="val-card${wideClass}" data-rarity="${rarityKey || ''}">
+      <div class="val-rarity-bar ${rarityClass}" ${accentStyle}></div>
+      <div class="val-img-wrap">
+        <img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img"
+          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');">
+        ${rarityName && !opts.dateTag ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
+        ${dateTagHtml}
+        ${badgeHtml}
+        ${overlayBtn}
+      </div>
+      <div class="val-body">
+        ${headlineHtml}
+        <h3 class="val-name">${name}</h3>
+        ${visibleRows}
+        ${hiddenBlock}
+        ${toggleBtn}
+      </div>
+      ${overlayPanel}
     </div>`;
+}
+
+function toggleValCardOverlay(btn) {
+  const card = btn.closest('.val-card');
+  if (!card) return;
+  const panel = card.querySelector('.val-overlay-panel');
+  if (panel) panel.classList.toggle('active');
+}
+
+function renderCard(item, rarityKey, content, folder = null) {
+  return makeUniversalCard(item, { folder, rarityKey, ext: 'png', extraBodyHtml: content });
 }
 
 function renderCardJPG(item, rarityKey, content, folder = null) {
-  const name = item.name || item.title || "";
-  const slug = item.id || generateSlug(name);
-  const rarity = RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey];
-  const rarityClass = rarity ? rarity.class : '';
-  const rarityName = rarity ? rarity.name : '';
-  const imagePath = folder ? `images/${folder}/${slug}.jpg` : `images/${slug}.jpg`;
-
-  return `
-    <div class="card">
-      <img src="${imagePath}" alt="${name}" loading="lazy" 
-           style="width:100%; height:auto; margin-bottom:15px; border-radius:4px; 
-                  box-shadow:0 0 10px rgba(255,255,255,0.2);"
-           onerror="this.onerror=null; this.src='images/favicon.png'; this.style.opacity='0.5'; this.style.objectFit='contain'; this.style.height='150px';">
-      ${rarityName ? `<div class="rarity ${rarityClass}">${rarityName}</div>` : ''}
-      ${content}
-    </div>`;
+  return makeUniversalCard(item, { folder, rarityKey, extraBodyHtml: content });
 }
 
 function renderPriceTag(price) {
-  return `<div class="price-tag">${formatPrice(price)}</div>`;
+  const html = formatPrice(price);
+  if (!html) return '';
+  return `<div class="val-price-row"><span class="val-price-label">Contract Price</span><span class="val-price-value">${html}</span></div>`;
 }
 
 function renderSortButtons(buttons, activeSort) {
-  return `
-    <div class="sort-buttons">
-      ${buttons.map(btn => `
-        <span class="sort-btn ${activeSort === btn.value ? 'active' : ''}" 
-              onclick="${btn.onClick}">
-          ${btn.label}
-        </span>
-      `).join('')}
-    </div>`;
+  return `<div class="sort-buttons">${buttons.map(btn => `<span class="sort-btn ${activeSort === btn.value ? 'active' : ''}" onclick="${btn.onClick}">${btn.label}</span>`).join('')}</div>`;
 }
 
 function renderPage(title, sortButtons, cards, disclaimer = null) {
-  const html = `
-    <h2>${title}</h2>
-    ${disclaimer ? `<div class="page-disclaimer">${disclaimer}</div>` : ''}
-    ${sortButtons}
-    <div class="card-grid">
-      ${cards.join('')}
-    </div>`;
-
-  return html;
+  return `<h2>${title}</h2>${disclaimer ? `<div class="page-disclaimer">${disclaimer}</div>` : ''}${sortButtons}<div class="val-grid">${cards.join('')}</div>`;
 }
 
 function renderStat(label, value) {
   if (value === undefined || value === null || value === '' || value === '?' || value === '? - ?') return '';
-  return `<p><strong>${label}:</strong> ${value}</p>`;
+  return `<div class="val-stat"><span class="val-stat-label">${label}</span><span class="val-stat-value">${value}</span></div>`;
 }
 
 function renderStatSuffix(label, val, suffix) {
@@ -74,32 +118,11 @@ function renderStatSuffix(label, val, suffix) {
 }
 
 function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ext = 'jpg', folder = null) {
-  const name = item.name || item.title || "";
-  const slug = item.id || generateSlug(name);
-  const rarity = RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey];
-  const rarityClass = rarity ? rarity.class : '';
-  const rarityName = rarity ? rarity.name : '';
-  const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 9)}`;
-  const showButton = item.showMoreButton !== false && hiddenContent && hiddenContent.trim() !== '';
-  const imagePath = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
-
-  return `
-    <div class="card">
-      <img src="${imagePath}" alt="${item.name}" loading="lazy" 
-           style="width:100%; height:auto; margin-bottom:15px; border-radius:4px; 
-                  box-shadow:0 0 10px rgba(255,255,255,0.2);"
-           onerror="this.onerror=null; this.src='images/favicon.png'; this.style.opacity='0.5'; this.style.objectFit='contain'; this.style.height='150px';">
-      ${rarityName ? `<div class="rarity ${rarityClass}">${rarityName}</div>` : ''}
-      ${visibleContent}
-      ${hiddenContent && hiddenContent.trim() !== '' ? `
-      <div class="card-details ${showButton ? 'collapsed' : ''}" id="${cardId}-details">
-        ${hiddenContent}
-      </div>` : ''}
-      ${showButton ? `
-      <button class="card-details-toggle" onclick="toggleCardDetails('${cardId}', this)">
-        Show more...
-      </button>` : ''}
-    </div>`;
+  return makeUniversalCard(item, {
+    folder, rarityKey, ext,
+    extraBodyHtml: `${visibleContent || ''}${hiddenContent || ''}`,
+    showButton: item.showMoreButton !== false && (hiddenContent || '').trim() !== ''
+  });
 }
 
 function renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder = null) {
@@ -111,14 +134,7 @@ function renderExpandableCardPNG(item, rarityKey, visibleContent, hiddenContent,
 }
 
 function toggleCardOverlay(btn) {
-  const card = btn.closest('.card');
-  if (!card) return;
-  const front = card.querySelector('.card-front-content');
-  const overlay = card.querySelector('.card-overlay');
-  if (front && overlay) {
-    front.classList.toggle('hidden');
-    overlay.classList.toggle('active');
-  }
+  toggleValCardOverlay(btn);
 }
 
 function toggleAttachmentCategory(headerEl) {
@@ -127,13 +143,8 @@ function toggleAttachmentCategory(headerEl) {
 }
 
 function renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder = 'npcs') {
-  const name = item.name || "";
-  const slug = generateSlug(name);
   const dialogueData = item.dialogue;
   const hasDialogues = dialogueData && Object.keys(dialogueData).length > 0;
-  const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 9)}`;
-  const showButton = item.showMoreButton !== false && hiddenContent && hiddenContent.trim() !== '';
-  const imagePath = `images/${folder}/${slug}.png`;
 
   if (!hasDialogues) {
     return renderExpandableCardPNG(item, rarityKey, visibleContent, hiddenContent, folder);
@@ -141,138 +152,73 @@ function renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder = 
 
   const dialoguesHTML = Object.entries(dialogueData).map(([category, items]) => {
     if (!items || items.length === 0) return '';
-    const itemsHTML = items.map(d => `
-      <div class="card-overlay-item">
-        <p style="white-space: normal; line-height: 1.5; word-break: break-word;">
-          ${d.title ? `<strong>${d.title}:</strong> ` : ''}${d.dialogue}
-        </p>
-      </div>
-    `).join('');
-    return `
-      <div class="attachment-group">
-        <div class="attachment-category-header" onclick="toggleAttachmentCategory(this)">
-          <span>${category}</span>
-          <span class="attachment-chevron">▼</span>
-        </div>
-        <div class="attachment-category-items">
-          ${itemsHTML}
-        </div>
-      </div>
-    `;
+    const itemsHTML = items.map(d => `<div class="card-overlay-item"><p style="white-space:normal;line-height:1.5;word-break:break-word;">${d.title ? `<strong>${d.title}:</strong> ` : ''}${d.dialogue}</p></div>`).join('');
+    return `<div class="attachment-group"><div class="attachment-category-header" onclick="toggleAttachmentCategory(this)"><span>${category}</span><span class="attachment-chevron">▼</span></div><div class="attachment-category-items">${itemsHTML}</div></div>`;
   }).join('');
 
-  return `
-  <div class="card">
-    <button class="card-overlay-button" onclick="toggleCardOverlay(this)">DIALOGUES</button>
-    <img src="${imagePath}" alt="${name}" loading="lazy"
-         style="width:100%; height:auto; margin-bottom:15px; border-radius:4px;
-                box-shadow:0 0 10px rgba(255,255,255,0.2);"
-         onerror="this.onerror=null; this.src='images/favicon.png'; this.style.opacity='0.5'; this.style.objectFit='contain'; this.style.height='150px';">
-    <div class="card-front-content">
-      ${visibleContent}
-      ${showButton ? `
-      <div class="card-details collapsed" id="${cardId}-details">
-        ${hiddenContent}
-      </div>
-      <button class="card-details-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>
-      ` : ''}
-    </div>
-    <div class="card-overlay">
-      <div class="card-overlay-title">${name} DIALOGUES</div>
-      <div class="card-overlay-list">
-        ${dialoguesHTML}
-      </div>
-    </div>
-  </div>`;
+  return makeUniversalCard(item, {
+    folder, rarityKey, ext: 'png',
+    extraBodyHtml: `${visibleContent || ''}${hiddenContent || ''}`,
+    showButton: item.showMoreButton !== false && (hiddenContent || '').trim() !== '',
+    overlayHtml: dialoguesHTML,
+    overlayLabel: 'DIALOGUES'
+  });
 }
 
 function renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder = 'weapons') {
-  const name = item.name || item.title || "";
-  const slug = item.id || generateSlug(item.name || item.title || "");
   const hasAttachments = item.attachments && Object.keys(item.attachments).length > 0;
-  const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 9)}`;
-  const showButton = item.showMoreButton !== false && hiddenContent && hiddenContent.trim() !== '';
-  const imagePath = folder ? `images/${folder}/${slug}.jpg` : `images/${slug}.jpg`;
 
   if (!hasAttachments) {
     return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
   }
 
-  const categoryIcons = { Optics: '', Muzzle: '', Underbarrel: '', Tactical: '', Ammunition: '', Stock: '' };
-
   const attachmentsHTML = Object.entries(item.attachments || {}).map(([category, items]) => {
     if (!items || items.length === 0) return '';
-    const localizedCategory = category;
-    const itemsHTML = items.map(att => `
-      <div class="card-overlay-item">
-        <p><strong>${att.name}:</strong> ${att.price === 0 ? `<span style="color:#666">Free</span>` : formatPrice(att.price)}</p>
-      </div>
-    `).join('');
-    const icon = categoryIcons[category] || '●';
-    return `
-      <div class="attachment-group">
-        <div class="attachment-category-header" onclick="toggleAttachmentCategory(this)">
-          <span>${localizedCategory}</span>
-          <span class="attachment-chevron">▼</span>
-        </div>
-        <div class="attachment-category-items">
-          ${itemsHTML}
-        </div>
-      </div>
-    `;
+    const itemsHTML = items.map(att => `<div class="card-overlay-item"><p><strong>${att.name}:</strong> ${att.price === 0 ? `<span style="color:#666">Free</span>` : formatPrice(att.price)}</p></div>`).join('');
+    return `<div class="attachment-group"><div class="attachment-category-header" onclick="toggleAttachmentCategory(this)"><span>${category}</span><span class="attachment-chevron">▼</span></div><div class="attachment-category-items">${itemsHTML}</div></div>`;
   }).join('');
 
-  return `
-  <div class="card">
-    ${renderPriceTag(item.contractPrice)}
-    <button class="card-overlay-button" onclick="toggleCardOverlay(this)">ATTACHMENTS</button>
-    <img src="${imagePath}" alt="${name}" loading="lazy"
-         style="width:100%; height:auto; margin-bottom:15px; border-radius:4px;
-                box-shadow:0 0 10px rgba(255,255,255,0.2);"
-         onerror="this.onerror=null; this.src='images/favicon.png'; this.style.opacity='0.5'; this.style.objectFit='contain'; this.style.height='150px';">
-    <div class="card-front-content">
-      ${visibleContent}
-      ${showButton ? `
-      <div class="card-details collapsed" id="${cardId}-details">
-        ${hiddenContent}
-      </div>
-      <button class="card-details-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>
-      ` : ''}
-    </div>
-    <div class="card-overlay">
-      <div class="card-overlay-title">${name} ATTACHMENTS</div>
-      <div class="card-overlay-list">
-        ${attachmentsHTML}
-      </div>
-    </div>
-  </div>`;
+  const contractHtml = formatPrice(item.contractPrice);
+  const headlineHtml = contractHtml ? `<div class="val-price-row"><span class="val-price-label">Contract Price</span><span class="val-price-value">${contractHtml}</span></div>` : '';
+
+  return makeUniversalCard(item, {
+    folder, rarityKey,
+    headlineHtml,
+    extraBodyHtml: `${visibleContent || ''}${hiddenContent || ''}`,
+    showButton: item.showMoreButton !== false && (hiddenContent || '').trim() !== '',
+    overlayHtml: attachmentsHTML,
+    overlayLabel: 'ATTACHMENTS'
+  });
 }
 
 function renderEventCard(item, visibleContent, hiddenContent, folder = 'events') {
-  const name = item.title || item.name || "";
-  const slug = item.id || generateSlug(name);
-  const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 9)}`;
-  const showButton = item.showMoreButton !== false && hiddenContent && hiddenContent.trim() !== '';
-  const imagePath = `images/${folder}/${slug}.jpg`;
+  const name    = item.title || item.name || '';
+  const imgSlug = item.image || item.id || generateSlug(name);
+  const cardId  = `card-${imgSlug}-${Math.random().toString(36).substr(2, 8)}`;
+  const imgSrc  = `images/${folder}/${imgSlug}.jpg`;
+
+  const dc = item.dateColor   ? `color:${item.dateColor};`   : '';
+  const ds = item.dateOutline ? `border-color:${item.dateOutline};box-shadow:0 0 8px ${item.dateOutline};text-shadow:0 0 5px ${item.dateOutline};` : '';
+  const dateTagHtml = item.date ? `<span class="val-rarity-tag" style="${dc}${ds}">${item.date}</span>` : '';
+
+  const hasHidden  = (hiddenContent || '').trim() !== '';
+  const showButton = item.showMoreButton !== false && hasHidden;
+  const hiddenBlock = hasHidden ? `<div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">${hiddenContent}</div>` : '';
+  const toggleBtn   = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
 
   return `
-    <div class="card card-large">
-      <img src="${imagePath}" alt="${name}" loading="lazy" 
-           style="width:100%; height:auto; margin-bottom:15px; border-radius:4px; 
-                  box-shadow:0 0 10px rgba(255,255,255,0.2);"
-           onerror="this.onerror=null; this.src='images/favicon.png'; this.style.opacity='0.5'; this.style.objectFit='contain'; this.style.height='150px';">
-      ${item.date ? `
-        <div class="rarity" style="${item.dateColor ? `color: ${item.dateColor};` : ''} ${item.dateOutline ? `border-color: ${item.dateOutline}; box-shadow: 0 0 8px ${item.dateOutline}; text-shadow: 0 0 5px ${item.dateOutline};` : ''}">
-          ${item.date}
-        </div>` : ''}
-      ${visibleContent}
-      ${hiddenContent && hiddenContent.trim() !== '' ? `
-      <div class="card-details ${showButton ? 'collapsed' : ''}" id="${cardId}-details">
-        ${hiddenContent}
-      </div>` : ''}
-      ${showButton ? `
-      <button class="card-details-toggle" onclick="toggleCardDetails('${cardId}', this)">
-        Show more...
-      </button>` : ''}
+    <div class="val-card val-card-wide">
+      <div class="val-rarity-bar" style="background:linear-gradient(90deg,${item.dateOutline||'#fff'},${item.dateColor||'#fff'},${item.dateOutline||'#fff'});"></div>
+      <div class="val-img-wrap">
+        <img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img" style="object-fit:cover;"
+          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');">
+        ${dateTagHtml}
+      </div>
+      <div class="val-body">
+        <h3 class="val-name">${name}</h3>
+        ${visibleContent || ''}
+        ${hiddenBlock}
+        ${toggleBtn}
+      </div>
     </div>`;
-}
+}

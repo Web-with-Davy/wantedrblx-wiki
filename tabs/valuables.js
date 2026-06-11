@@ -1,77 +1,140 @@
-function renderValuables(sort = "high") {
-  const renderStatSuffix = (label, val, suffix) =>
-    val !== undefined && val !== null ? renderStat(label, `${val}${suffix}`) : '';
+function makeValuableCard(item) {
+  const name   = item.name  || '';
+  const slug   = item.id    || generateSlug(name);
+  const imgSrc = `images/valuables/${slug}.jpg`;
+
+  const rarity      = RARITIES[item.rarity];
+  const rarityName  = rarity ? rarity.name  : '';
+  const rarityClass = rarity ? rarity.class : '';
+
+  const priceHtml = formatPrice(item.price) || '—';
+
+  const perKgHtml = (item.weight > 0 && typeof item.price === 'number')
+    ? `<span class="val-per-kg">${Math.round(item.price / item.weight).toLocaleString()} $/kg</span>`
+    : '';
+
+  const weightHtml = (item.weight !== undefined && item.weight !== null)
+    ? `<div class="val-stat"><span class="val-stat-label">Weight</span><span class="val-stat-value">${item.weight} kg</span></div>`
+    : '';
+
+  const locationHtml = item.commonLocation
+    ? `<div class="val-stat"><span class="val-stat-label">Location</span><span class="val-stat-value">${item.commonLocation}</span></div>`
+    : '';
+
+  const hiddenStats  = weightHtml + locationHtml;
+  const showButton   = item.showMoreButton !== false && hiddenStats.trim() !== '';
+  const cardId       = `val-card-${slug}-${Math.random().toString(36).substr(2, 8)}`;
+
+  const hiddenBlock = hiddenStats ? `
+    <div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">
+      ${hiddenStats}
+    </div>` : '';
+
+  const toggleBtn = showButton ? `
+    <button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
+
+  const nonContractBadge = item.priceNonContract
+    ? `<span class="val-badge val-badge-nc">Non-Contract</span>` : '';
+
+  return `
+    <div class="val-card" data-rarity="${item.rarity || ''}">
+      <div class="val-rarity-bar ${rarityClass}"></div>
+      <div class="val-img-wrap">
+        <img
+          src="${imgSrc}"
+          alt="${name}"
+          loading="lazy"
+          class="val-img"
+          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');"
+        >
+        ${rarityName ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
+        ${perKgHtml}
+      </div>
+      <div class="val-body">
+        <h3 class="val-name">${name}</h3>
+        ${nonContractBadge}
+        <div class="val-price-row">
+          <span class="val-price-label">Sell Price</span>
+          <span class="val-price-value">${priceHtml}</span>
+        </div>
+        ${hiddenBlock}
+        ${toggleBtn}
+      </div>
+    </div>`;
+}
+
+function renderValuables(sort = 'high') {
 
   const sortedRegular = [...VALUABLES_DATA].sort((a, b) => {
     const priceA = a.priceNonContract ? 0 : a.price;
     const priceB = b.priceNonContract ? 0 : b.price;
 
-    if (priceA > 0 && priceB > 0) return sort === "high" ? priceB - priceA : priceA - priceB;
+    if (priceA > 0 && priceB > 0) return sort === 'high' ? priceB - priceA : priceA - priceB;
     if (priceA > 0) return -1;
     if (priceB > 0) return 1;
-    return sort === "high" ? b.price - a.price : a.price - b.price;
+    return sort === 'high' ? b.price - a.price : a.price - b.price;
   });
 
   const categories = [
-    { type: 'Gems', label: 'Gems' },
-    { type: 'Jewelry', label: 'Jewelry' },
-    { type: 'Electronics', label: 'Electronics' },
-    { type: 'Tech', label: 'Tech' },
-    { type: 'Shoes', label: 'Shoes' },
+    { type: 'Gems',          label: 'Gems'          },
+    { type: 'Jewelry',       label: 'Jewelry'       },
+    { type: 'Electronics',   label: 'Electronics'   },
+    { type: 'Tech',          label: 'Tech'          },
+    { type: 'Shoes',         label: 'Shoes'         },
     { type: 'Miscellaneous', label: 'Miscellaneous' },
     { type: 'Mission Items', label: 'Mission Items' },
-    { type: 'Easter', label: 'Easter' },
+    { type: 'Easter',        label: 'Easter'        },
   ];
 
-  const makeValuableCard = (item) => {
-    const visibleContent = `
-      <h3>${item.name}</h3>
-      ${renderStat('Sell Price', formatPrice(item.price))}
-    `;
-    const hiddenContent = `
-      ${renderStatSuffix('Weight', item.weight, ' kg')}
-      ${renderStat('Common Location', item.commonLocation)}
-    `;
-    return renderExpandableCardJPG(item, item.rarity, visibleContent, hiddenContent, 'valuables');
-  };
-
   const sections = categories.map((cat, index) => {
-    const itemsInCategory = sortedRegular.filter(item => item.category === cat.type);
-    if (itemsInCategory.length === 0) return '';
+    const items = sortedRegular.filter(item => item.category === cat.type);
+    if (items.length === 0) return '';
 
-    const cards = itemsInCategory.map(makeValuableCard);
-    const divider = index > 0 ? '<div style="margin: 40px 0; border-bottom: 2px solid #fff; opacity: 0.3;"></div>' : '';
+    const divider  = index > 0 ? '<div class="val-section-divider"></div>' : '';
+    const anchorId = `val-cat-${generateSlug(cat.type)}`;
 
     return `
       ${divider}
-      <h3 style="margin: 20px 0 10px;">${cat.label}</h3>
-      <div class="card-grid">${cards.join('')}</div>
-    `;
+      <div class="val-section-header" id="${anchorId}">
+        <h3 class="val-section-title">${cat.label}</h3>
+        <span class="val-section-count">${items.length} items</span>
+      </div>
+      <div class="val-grid">${items.map(makeValuableCard).join('')}</div>`;
   }).join('');
 
-  const christmasCards = [...CHRISTMAS_VALUABLES_DATA]
-    .sort((a, b) => sort === "high" ? b.price - a.price : a.price - b.price)
-    .map(makeValuableCard);
+  const christmasItems = [...CHRISTMAS_VALUABLES_DATA]
+    .sort((a, b) => sort === 'high' ? b.price - a.price : a.price - b.price);
 
-  const christmasSection = `
-    <div style="margin: 40px 0; border-bottom: 2px solid #fff; opacity: 0.3;"></div>
-    <h3 style="margin: 20px 0 10px;">Christmas Limited</h3>
-    <div class="card-grid">${christmasCards.join('')}</div>
-  `;
+  const christmasSection = christmasItems.length > 0 ? `
+    <div class="val-section-divider"></div>
+    <div class="val-section-header" id="val-cat-christmas">
+      <h3 class="val-section-title">Christmas Limited</h3>
+      <span class="val-section-count">${christmasItems.length} items</span>
+    </div>
+    <div class="val-grid">${christmasItems.map(makeValuableCard).join('')}</div>` : '';
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortValuables('high')" },
-    { label: 'Cheapest first', value: 'low', onClick: "sortValuables('low')" }
+    { label: 'Cheapest first',       value: 'low',  onClick: "sortValuables('low')"  }
   ], sort);
 
+  const jumpLinks = categories
+    .filter(cat => sortedRegular.some(item => item.category === cat.type))
+    .map(cat => `<a onclick="document.getElementById('val-cat-${generateSlug(cat.type)}')?.scrollIntoView({behavior:'smooth',block:'start'})">${cat.label}</a>`)
+    .join('');
+  const xmasLink = christmasItems.length > 0
+    ? `<a onclick="document.getElementById('val-cat-christmas')?.scrollIntoView({behavior:'smooth',block:'start'})">Christmas</a>`
+    : '';
+  const jumpNav = `<div class="page-jump-nav">${jumpLinks}${xmasLink}</div>`;
+
   return `
-    <h2>${'VALUABLES'}</h2>
+    <h2>VALUABLES</h2>
     ${sortButtons}
+    ${jumpNav}
     ${sections}
-    ${christmasSection}
-  `;
+    ${christmasSection}`;
 }
 
 function sortValuables(order) {
-  document.getElementById("page-container").innerHTML = renderValuables(order);
+  document.getElementById('page-container').innerHTML = renderValuables(order);
 }

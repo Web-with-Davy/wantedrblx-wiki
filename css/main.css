@@ -749,7 +749,7 @@ body.low-end-mode .sidebar-box {
 }
 
 body.low-end-mode .card:hover {
-    transform: translateY(-2px) !important;
+    transform: translateY(-2px) skew(-2deg) !important;
     border-color: #fff !important;
 }
 
@@ -3030,3 +3030,615 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
     transform: none !important;
     z-index: auto !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGATION — breadcrumb / active-page indicator
+══════════════════════════════════════════════════════════════════ */
+
+/* Subtle active-tab underline glow */
+.tab.active {
+    position: relative;
+}
+.tab.active::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+    border-radius: 1px;
+    pointer-events: none;
+}
+
+/* Current-page breadcrumb strip */
+#page-breadcrumb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 1001;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+#page-breadcrumb.visible {
+    opacity: 1;
+}
+
+/* Page title beneath the header (visible breadcrumb) */
+#page-label {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 900;
+    background: rgba(0,0,0,0.75);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.5);
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 5px 12px;
+    text-transform: uppercase;
+    pointer-events: none;
+    backdrop-filter: blur(6px);
+    transition: opacity 0.4s;
+}
+
+/* Category jump-links inside a page */
+.page-jump-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 0 0 24px;
+}
+.page-jump-nav a {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.55);
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.page-jump-nav a:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VALUABLES — rebuilt card system
+══════════════════════════════════════════════════════════════════ */
+
+/* Section header */
+.val-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 12px;
+}
+.val-section-title {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+}
+.val-section-count {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+.val-section-divider {
+    margin: 36px 0 28px;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+}
+.val-section-divider::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.5);
+}
+
+/* Grid */
+.val-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-min-size, 200px), 1fr));
+    gap: 18px;
+    overflow: visible;
+    margin-bottom: 8px;
+}
+
+/* ── Card shell ─────────────────────────────────────────────── */
+.val-card {
+    transform: skew(-2deg);
+    margin-left: 2px;
+    margin-right: 2px;
+    position: relative;
+    background: linear-gradient(160deg, #161616 0%, #0c0c0c 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.23,1,0.32,1),
+                border-color 0.3s,
+                box-shadow 0.3s;
+    will-change: transform;
+}
+.val-card:hover {
+    transform: translateY(-6px) scale(1.015) skew(-2deg);
+    border-color: rgba(255,255,255,0.35);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.6), 0 0 20px rgba(255,255,255,0.05);
+}
+
+/* Rarity top accent bar */
+.val-rarity-bar {
+    height: 3px;
+    width: 100%;
+    flex-shrink: 0;
+}
+.val-rarity-bar.rarity-common        { background: #999; }
+.val-rarity-bar.rarity-uncommon      { background: #00ff00; box-shadow: 0 0 6px #0f0; }
+.val-rarity-bar.rarity-epic          { background: #cc00ff; box-shadow: 0 0 6px #c0f; }
+.val-rarity-bar.rarity-mythic        { background: #ff2222; box-shadow: 0 0 6px #f00; }
+.val-rarity-bar.rarity-legendary     { background: #ffee00; box-shadow: 0 0 8px #ff0; }
+.val-rarity-bar.rarity-mission       { background: #9999ff; box-shadow: 0 0 6px #99f; }
+.val-rarity-bar.rarity-unobtainable  { background: linear-gradient(90deg,#555,#fff,#555); }
+.val-rarity-bar.rarity-christmas-limited { background: linear-gradient(90deg,#f00,#0f0); }
+.val-rarity-bar.rarity-easter        { background: linear-gradient(90deg,#ff50c2,#a0f,#ff50c2); }
+
+/* Image wrapper */
+.val-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #0a0a0a;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.val-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+    display: block;
+}
+.val-card:hover .val-img {
+    transform: scale(1.06);
+}
+.val-img.val-img-fallback {
+    opacity: 0.4;
+    object-fit: contain;
+}
+
+/* Rarity tag overlaid on image */
+.val-rarity-tag {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 2px 7px;
+    font-size: 0.58rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+/* $/kg badge overlaid on image */
+.val-per-kg {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    padding: 2px 7px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    background: rgba(0,0,0,0.82);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 2px;
+    color: #39ff14;
+    text-shadow: 0 0 6px #39ff14;
+    pointer-events: none;
+}
+
+/* Card body */
+.val-body {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+.val-name {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Price row */
+.val-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.val-price-label {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.val-price-value {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #39ff14;
+    text-shadow: 0 0 8px rgba(57,255,20,0.4);
+    font-family: 'Courier New', monospace;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Hidden stats block */
+.val-hidden {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+    max-height: 200px;
+    opacity: 1;
+    transition: max-height 0.35s cubic-bezier(0.23,1,0.32,1), opacity 0.3s;
+}
+.val-hidden.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+body.always-show-more .val-hidden.collapsed {
+    max-height: 200px !important;
+    opacity: 1 !important;
+}
+body.always-show-more .val-toggle {
+    display: none !important;
+}
+
+/* Stat row inside hidden block */
+.val-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.val-stat:last-child { border-bottom: none; }
+.val-stat-label {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.38);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+.val-stat-value {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Courier New', monospace;
+    text-align: right;
+    word-break: break-word;
+}
+
+/* Badge — non-contract */
+.val-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 0.55rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    align-self: flex-start;
+}
+.val-badge-nc {
+    background: rgba(255,200,0,0.12);
+    border: 1px solid rgba(255,200,0,0.4);
+    color: #ffc800;
+}
+
+/* Show-more toggle button */
+.val-toggle {
+    width: 100%;
+    padding: 6px 10px;
+    margin-top: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.4);
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-radius: 1px;
+}
+.val-toggle:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.4);
+    color: #fff;
+}
+
+/* Low-end mode — strip animations */
+body.low-end-mode .val-card {
+    transform: skew(-2deg);
+    margin-left: 2px;
+    margin-right: 2px;
+    transition: none !important;
+}
+body.low-end-mode .val-card:hover {
+    transform: translateY(-2px) skew(-2deg) !important;
+    box-shadow: none !important;
+}
+body.low-end-mode .val-card:hover .val-img {
+    transform: none !important;
+}
+body.low-end-mode .val-rarity-bar {
+    box-shadow: none !important;
+}
+.emoji-style {
+    filter: grayscale(100%) brightness(1000%) !important;
+}
+
+.page-jump-nav {
+    text-align: center;
+    margin: 0 0 20px;
+    display: block;
+}
+.page-jump-nav a {
+    display: inline-block;
+    margin: 0 4px 6px;
+    padding: 5px 12px;
+    background: #000;
+    border: 1px solid #666;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Courier New', monospace;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
+    transform: skew(-15deg);
+    border-radius: 0;
+    box-shadow: none;
+}
+.page-jump-nav a:hover {
+    background: #333;
+    border-color: var(--fg);
+    color: #fff;
+    box-shadow: 0 0 10px var(--fg);
+}
+
+.val-card-wide {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+.val-card-wide .val-img-wrap {
+    aspect-ratio: 16 / 7;
+}
+.val-card-wide .val-img {
+    object-fit: cover;
+    padding: 0;
+}
+
+.val-grid-events {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+}
+
+.val-card {
+    transform: skew(-2deg);
+    margin-left: 2px;
+    margin-right: 2px;
+    position: relative;
+    overflow: hidden;
+}
+.val-card .card-overlay-button {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    bottom: auto;
+    right: auto;
+    z-index: 20;
+    padding: 3px 8px;
+    font-size: .6rem;
+    font-weight: bold;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    border-radius: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    font-family: inherit;
+    box-shadow: none;
+    text-shadow: none;
+}
+.val-card .card-overlay-button:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+.val-card .card-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.96);
+    z-index: 15;
+    overflow-y: auto;
+    padding: 14px;
+    box-sizing: border-box;
+}
+.val-card .card-overlay.active {
+    display: block;
+}
+.val-card .card-overlay-title {
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+.val-card .val-body.hidden {
+    display: none;
+}
+
+.val-stat-highlight {
+    color: #39ff14 !important;
+    text-shadow: 0 0 8px rgba(57,255,20,0.4);
+}
+
+.val-card .val-overlay-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 20;
+    padding: 3px 8px;
+    font-size: .6rem;
+    font-weight: bold;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    border-radius: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    font-family: inherit;
+    box-shadow: none;
+    text-shadow: none;
+}
+.val-card .val-overlay-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+.val-card .val-overlay-panel {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.96);
+    z-index: 30;
+    overflow-y: auto;
+    padding: 14px;
+    box-sizing: border-box;
+}
+.val-card .val-overlay-panel.active {
+    display: block;
+}
+.val-card .val-overlay-title {
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+.val-overlay-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-family: 'Courier New', monospace;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+.val-overlay-close:hover {
+    opacity: 1;
+    color: #ff3333;
+}
+.page-jump-nav {
+    text-align: center;
+    margin: 0 0 20px;
+    display: block;
+}
+.page-jump-nav a {
+    display: inline-block;
+    margin: 0 4px 6px;
+    padding: 5px 12px;
+    background: #000;
+    border: 1px solid #666;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Courier New', monospace;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
+    transform: skew(-15deg);
+    border-radius: 0;
+    box-shadow: none;
+}
+.page-jump-nav a:hover {
+    background: #333;
+    border-color: var(--fg);
+    color: #fff;
+    box-shadow: 0 0 10px var(--fg);
+}
+

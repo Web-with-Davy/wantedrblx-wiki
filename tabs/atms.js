@@ -9,42 +9,66 @@ function renderATMs(sort = "high") {
     return sort === "high" ? avgB - avgA : avgA - avgB;
   });
 
-  const atmCards = sortedATMs.map(item => {
-    const visibleContent = `
-      <h3>${item.name}</h3>
-      ${renderStat('Cash', formatPrice(item.price))}
-    `;
-    const hiddenContent = renderStat('Rarity', item.rarityPercent);
-    return renderExpandableCardJPG(item, item.rarity, visibleContent, hiddenContent, 'atms');
-  });
+  const makeATMCard = (item) => {
+    const cashHtml = formatPrice(item.price);
+    return makeUniversalCard(item, {
+      folder: 'atms',
+      rarityKey: item.rarity,
+      visibleStats: [
+        cashHtml ? { label: 'Cash', value: cashHtml } : null,
+      ].filter(Boolean),
+      hiddenStats: [
+        { label: 'Rarity', value: item.rarityPercent },
+      ].filter(s => s.value),
+      showButton: item.showMoreButton !== false && !!item.rarityPercent
+    });
+  };
 
-  const vaultCards = sortedVaults.map(item => {
+  const makeVaultCard = (item) => {
     const priceDisplay = (typeof item.priceMin === 'number' && typeof item.priceMax === 'number')
-      ? `${formatPrice(item.priceMin)} - ${formatPrice(item.priceMax)}`
-      : '? - ?';
-    const visibleContent = `
-      <h3>${item.name}</h3>
-      ${renderStat('Cash', priceDisplay)}
-    `;
-    const hiddenContent = renderStat('Rarity', item.rarityPercent);
-    return renderExpandableCardJPG(item, item.rarity, visibleContent, hiddenContent, 'atms');
-  });
+      ? `${formatPrice(item.priceMin)} – ${formatPrice(item.priceMax)}`
+      : '? – ?';
+    return makeUniversalCard(item, {
+      folder: 'atms',
+      rarityKey: item.rarity,
+      visibleStats: [
+        { label: 'Cash Range', value: priceDisplay },
+      ],
+      hiddenStats: [
+        { label: 'Rarity', value: item.rarityPercent },
+      ].filter(s => s.value),
+      showButton: item.showMoreButton !== false && !!item.rarityPercent
+    });
+  };
+
+  const atmCards   = sortedATMs.map(makeATMCard).join('');
+  const vaultCards = sortedVaults.map(makeVaultCard).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortATMs('high')" },
-    { label: 'Cheapest first',     value: 'low',  onClick: "sortATMs('low')" }
+    { label: 'Cheapest first',       value: 'low',  onClick: "sortATMs('low')"  }
   ], sort);
 
-  const divider = `<div style="margin: 40px 0; border-bottom: 2px solid #fff; opacity: 0.3;"></div>`;
+  const jumpNav = `<div class="page-jump-nav">
+    <a onclick="document.getElementById('atms-atms')?.scrollIntoView({behavior:'smooth'})">ATMs</a>
+    <a onclick="document.getElementById('atms-vaults')?.scrollIntoView({behavior:'smooth'})">Vaults</a>
+  </div>`;
 
   return `
-    <h2>${'ATMs & VAULTS'}</h2>
+    <h2>ATMs &amp; VAULTS</h2>
     ${sortButtons}
-    <h3 style="margin: 20px 0 10px;">ATMs</h3>
-    <div class="card-grid">${atmCards.join('')}</div>
-    ${divider}
-    <h3 style="margin: 20px 0 10px;">Vaults</h3>
-    <div class="card-grid">${vaultCards.join('')}</div>
+    ${jumpNav}
+    <div class="val-section-header" id="atms-atms">
+      <h3 class="val-section-title">ATMs</h3>
+      <span class="val-section-count">${sortedATMs.length} items</span>
+    </div>
+    <div class="val-grid">${atmCards}</div>
+    <div class="val-section-divider"></div>
+    <div class="val-section-header" id="atms-vaults">
+      <h3 class="val-section-title">Vaults</h3>
+      <span class="val-section-count">${sortedVaults.length} items</span>
+    </div>
+    <div class="val-grid">${vaultCards}</div>
   `;
 }
 
