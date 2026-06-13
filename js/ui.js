@@ -194,6 +194,33 @@ function initCountdownTimer() {
 
     const targetDate = window.COUNTDOWN_TARGET || new Date('2026-03-06T17:00:00Z');
 
+    // Build the static skeleton once, then only update text nodes each tick
+    countdownDisplay.innerHTML = `
+        <div class="countdown-units">
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cd-days">--</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cd-hours">--</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cd-mins">--</div>
+                <div class="countdown-label">Mins</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cd-secs">--</div>
+                <div class="countdown-label">Secs</div>
+            </div>
+        </div>
+    `;
+
+    const daysEl  = document.getElementById('cd-days');
+    const hoursEl = document.getElementById('cd-hours');
+    const minsEl  = document.getElementById('cd-mins');
+    const secsEl  = document.getElementById('cd-secs');
+
     function updateCountdown() {
         const now = new Date();
         const timeRemaining = targetDate - now;
@@ -203,31 +230,15 @@ function initCountdownTimer() {
             return;
         }
 
-        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const days    = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours   = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        countdownDisplay.innerHTML = `
-            <div class="countdown-units">
-                <div class="countdown-unit">
-                    <div class="countdown-number">${days.toString().padStart(2, '0')}</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-number">${hours.toString().padStart(2, '0')}</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-number">${minutes.toString().padStart(2, '0')}</div>
-                    <div class="countdown-label">Mins</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-number">${seconds.toString().padStart(2, '0')}</div>
-                    <div class="countdown-label">Secs</div>
-                </div>
-            </div>
-        `;
+        daysEl.textContent  = days.toString().padStart(2, '0');
+        hoursEl.textContent = hours.toString().padStart(2, '0');
+        minsEl.textContent  = minutes.toString().padStart(2, '0');
+        secsEl.textContent  = seconds.toString().padStart(2, '0');
 
         window.countdownTimerTimeout = setTimeout(updateCountdown, 1000);
     }

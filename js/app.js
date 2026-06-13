@@ -6,18 +6,25 @@ const hoverSfx = document.getElementById("sfx-hover");
 const volumeSlider = document.getElementById("bgm-volume");
 const sizeSlider = document.getElementById("card-size-slider");
 
-
 window.audioUnlocked = false;
 
 window.loadPage = loadPage;
 window.toggleCardDetails = toggleCardDetails;
 
+// Cached at module scope — avoids recreating on every call
+const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
+const PAGE_NAMES = {
+    home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
+    weapons: 'WEAPONS', vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES',
+    missions: 'MISSIONS', npcs: 'NPCs', locations: 'LOCATIONS',
+    store: 'STORE', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
+};
+
 function getCurrentPage() {
-    const validPages = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
     const hash = window.location.hash.replace(/^#/, '');
     const path = window.location.pathname.replace(/\/$/, '').split('/').pop().replace('.html', '');
-    if (validPages.includes(hash)) return hash;
-    if (validPages.includes(path)) return path;
+    if (VALID_PAGES.includes(hash)) return hash;
+    if (VALID_PAGES.includes(path)) return path;
     return 'home';
 }
 window.getCurrentPage = getCurrentPage;
@@ -78,22 +85,14 @@ function loadPage(page, saveToHistory = true) {
 
         container.innerHTML = content;
 
-        // ── Update breadcrumb / page-label ──────────────────────
-        const pageNames = {
-            home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
-            weapons: 'WEAPONS', vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES',
-            missions: 'MISSIONS', npcs: 'NPCs', locations: 'LOCATIONS',
-            store: 'STORE', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
-        };
         const pageLabel = document.getElementById('page-label');
-        if (pageLabel) pageLabel.textContent = pageNames[page] || page.toUpperCase();
+        if (pageLabel) pageLabel.textContent = PAGE_NAMES[page] || page.toUpperCase();
         const breadcrumb = document.getElementById('page-breadcrumb');
         if (breadcrumb) {
             breadcrumb.classList.add('visible');
             clearTimeout(breadcrumb._hideTimer);
             breadcrumb._hideTimer = setTimeout(() => breadcrumb.classList.remove('visible'), 1200);
         }
-        // ─────────────────────────────────────────────────────────
 
         if (saveToHistory) {
             try {
@@ -146,14 +145,13 @@ function loadPage(page, saveToHistory = true) {
 }
 
 window.addEventListener("popstate", (event) => {
-    const validPages = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
     let page = (event.state && event.state.page);
 
     if (!page) {
         const hash = window.location.hash.replace(/^#/, '');
         const path = window.location.pathname.replace(/\/$/, '').split('/').pop().replace('.html', '');
-        if (validPages.includes(hash)) page = hash;
-        else if (validPages.includes(path)) page = path;
+        if (VALID_PAGES.includes(hash)) page = hash;
+        else if (VALID_PAGES.includes(path)) page = path;
         else page = "home";
     }
 
@@ -292,13 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
         initGarage((skipped) => {
             window.audioUnlocked = true;
 
-            const validPages = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
             const hash = window.location.hash.replace(/^#/, '');
             const path = window.location.pathname.replace(/\/$/, '').split('/').pop().replace('.html', '');
 
             let initialPage = "home";
-            if (validPages.includes(hash)) initialPage = hash;
-            else if (validPages.includes(path)) initialPage = path;
+            if (VALID_PAGES.includes(hash)) initialPage = hash;
+            else if (VALID_PAGES.includes(path)) initialPage = path;
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
             if (targetTab) {
@@ -385,43 +382,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgmResetBtn = document.getElementById("bgm-reset-btn");
     const bgmUpload = document.getElementById("bgm-upload");
 
+    // Shared IndexedDB helper — opens the DB once and reuses it
+    let _audioDB = null;
+    const getAudioDB = () => new Promise((resolve, reject) => {
+        if (_audioDB) { resolve(_audioDB); return; }
+        const req = indexedDB.open("audioStorage", 1);
+        req.onupgradeneeded = (e) => e.target.result.createObjectStore("audio");
+        req.onsuccess = (e) => { _audioDB = e.target.result; resolve(_audioDB); };
+        req.onerror = () => reject(req.error);
+    });
+
     const getCustomMusic = async () => {
-        return new Promise((resolve) => {
-            const request = indexedDB.open("audioStorage", 1);
-            request.onupgradeneeded = (e) => e.target.result.createObjectStore("audio");
-            request.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction("audio", "readonly");
-                const getReq = tx.objectStore("audio").get("custom_bgm");
+        try {
+            const db = await getAudioDB();
+            return new Promise((resolve) => {
+                const getReq = db.transaction("audio", "readonly").objectStore("audio").get("custom_bgm");
                 getReq.onsuccess = () => resolve(getReq.result);
                 getReq.onerror = () => resolve(null);
-            };
-            request.onerror = () => resolve(null);
-        });
+            });
+        } catch (_) { return null; }
     };
 
     const saveCustomMusic = async (data) => {
+        const db = await getAudioDB();
         return new Promise((resolve) => {
-            const request = indexedDB.open("audioStorage", 1);
-            request.onupgradeneeded = (e) => e.target.result.createObjectStore("audio");
-            request.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction("audio", "readwrite");
-                tx.objectStore("audio").put(data, "custom_bgm");
-                tx.oncomplete = () => resolve();
-            };
+            const tx = db.transaction("audio", "readwrite");
+            tx.objectStore("audio").put(data, "custom_bgm");
+            tx.oncomplete = () => resolve();
         });
     };
 
     const deleteCustomMusic = async () => {
+        const db = await getAudioDB();
         return new Promise((resolve) => {
-            const request = indexedDB.open("audioStorage", 1);
-            request.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction("audio", "readwrite");
-                tx.objectStore("audio").delete("custom_bgm");
-                tx.oncomplete = () => resolve();
-            };
+            const tx = db.transaction("audio", "readwrite");
+            tx.objectStore("audio").delete("custom_bgm");
+            tx.oncomplete = () => resolve();
         });
     };
 
