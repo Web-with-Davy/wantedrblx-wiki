@@ -1,5 +1,5 @@
 const UPDATES = [
-    { version: "D.13/M.06/Y.2026", description: "Robbery Revamp", color: "#ff0000ff", color2: "#ffffffff" },
+    { version: "D.14/M.06/Y.2026", description: "Robbery Revamp", color: "#ff0000ff", color2: "#ffffffff" },
     { version: "D.30/M.05/Y.2026", description: "Robbery & Crates", color: "#ff0000ff", color2: "#ffffffff" },
     { version: "D.18/M.04/Y.2026", description: "Bayview Revamp", color: "#006affff", color2: "#ffffffff" },
     // version: "D.03/M.04/Y.2026", description: "Easter Event", color: "#ff80f7ff", color2: "#ffffffff" },
@@ -9,7 +9,7 @@ const UPDATES = [
     // { version: "D.12/M.12/Y.2025", description: "Christmas Event", color: "#00ffaaff", color2: "#ffffffff" }
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-06-13T22:00:00+03:00');
+const COUNTDOWN_TARGET = new Date('2026-06-14T22:00:00+03:00');
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
 
 function renderHome() {
