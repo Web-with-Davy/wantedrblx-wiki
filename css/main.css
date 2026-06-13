@@ -3642,3 +3642,374 @@ body.low-end-mode .val-rarity-bar {
     box-shadow: 0 0 10px var(--fg);
 }
 
+
+/* =============================================================
+   INTERACTIVE MAP (Locations Tab)
+   ============================================================= */
+
+/* ── Root layout ─────────────────────────────────────────── */
+.map-page-root {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 170px);
+    min-height: 480px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.map-sidebar {
+    width: 230px;
+    min-width: 200px;
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.92);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.map-sidebar-header {
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+}
+
+.map-sidebar-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+}
+
+.map-legend {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.12) transparent;
+}
+
+.map-legend::-webkit-scrollbar { width: 4px; }
+.map-legend::-webkit-scrollbar-track { background: transparent; }
+.map-legend::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+.map-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 7px 14px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    border-left: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-legend-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--pin-color, #fff);
+    opacity: 0;
+    transition: opacity 0.18s;
+    pointer-events: none;
+}
+
+.map-legend-item:hover::before { opacity: 0.06; }
+.map-legend-item:hover { color: rgba(255,255,255,0.85); }
+
+.map-legend-item.active {
+    color: rgba(255,255,255,0.9);
+    border-left-color: var(--pin-color, rgba(255,255,255,0.3));
+}
+
+.map-legend-item.active::before { opacity: 0.04; }
+
+.map-legend-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity 0.18s, filter 0.18s;
+    filter: grayscale(50%);
+}
+
+.map-legend-item.active .map-legend-icon {
+    opacity: 1;
+    filter: none;
+}
+
+.map-legend-name {
+    flex: 1;
+    line-height: 1.3;
+}
+
+.map-legend-badge {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+}
+
+.map-legend-item.active .map-legend-badge {
+    color: var(--pin-color, rgba(255,255,255,0.5));
+}
+
+/* ── Viewport wrapper ────────────────────────────────────── */
+.map-viewport-wrap {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #040404;
+    background-image:
+        radial-gradient(circle at 30% 70%, rgba(0,80,160,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(160,0,0,0.06) 0%, transparent 50%);
+}
+
+/* ── Zoom controls ───────────────────────────────────────── */
+.map-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.map-ctrl-btn {
+    width: 34px;
+    height: 34px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    border-radius: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.map-ctrl-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.45);
+    box-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
+.map-ctrl-btn:active {
+    transform: scale(0.95);
+}
+
+/* ── Scrollable viewport ─────────────────────────────────── */
+.map-viewport {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.map-viewport:active { cursor: grabbing; }
+
+/* ── Canvas (tiles + pins) ───────────────────────────────── */
+.map-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 800px;
+    height: 800px;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+/* ── Map tiles ───────────────────────────────────────────── */
+.map-tile {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* ── Zone labels ─────────────────────────────────────────── */
+.map-zone-label {
+    position: absolute;
+    transform: translate(-50%, -50%) scale(var(--zone-display-scale, 1));
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    pointer-events: none;
+    line-height: 1.6;
+    white-space: nowrap;
+    text-shadow:
+        0 0 6px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.7),
+        1px 1px 0 rgba(0, 0, 0, 0.8),
+        -1px -1px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* ── Location pins ───────────────────────────────────────── */
+.map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: opacity 0.2s ease, filter 0.15s ease;
+    z-index: 10;
+    transform-origin: center center;
+}
+
+.map-pin-svg {
+    display: block;
+    width: 36px;
+    height: 36px;
+    transition: transform 0.15s cubic-bezier(0.23,1,0.32,1);
+    filter: drop-shadow(0 0 4px var(--pin-color, #fff));
+}
+
+.map-pin:hover {
+    z-index: 50;
+}
+
+.map-pin:hover .map-pin-svg {
+    transform: scale(1.25);
+}
+
+/* ── Tooltip ─────────────────────────────────────────────── */
+.map-pin-tooltip {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(0,0,0,0.92);
+    border: 1px solid var(--pin-color, rgba(255,255,255,0.25));
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 5px 10px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+    z-index: 100;
+    box-shadow: 0 0 12px var(--pin-color, transparent);
+}
+
+.map-pin-tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--pin-color, rgba(255,255,255,0.25));
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .map-page-root {
+        flex-direction: column;
+        height: calc(100vh - 150px);
+        min-height: 400px;
+    }
+
+    .map-sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 140px;
+        flex-shrink: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .map-legend {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 12px;
+        gap: 8px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .map-legend::-webkit-scrollbar {
+        display: none;
+    }
+
+    .map-legend-item {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        padding: 6px 14px;
+        border-left: none;
+        border-bottom: none;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 20px;
+        background: rgba(255,255,255,0.03);
+    }
+
+    .map-legend-item::before {
+        border-radius: inherit;
+    }
+
+    .map-legend-item.active {
+        border-left: none;
+        border-bottom: none;
+        border-color: var(--pin-color, rgba(255,255,255,0.3));
+        background: rgba(255,255,255,0.08);
+    }
+
+    .map-viewport-wrap {
+        flex: 1;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+    }
+}
+
+/* low-end: disable pin glow */
+body.low-end-mode .map-pin-svg {
+    filter: none !important;
+}
+
+body.low-end-mode .map-ctrl-btn {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}

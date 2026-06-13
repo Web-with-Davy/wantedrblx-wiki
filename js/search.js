@@ -185,7 +185,8 @@ function performSearch(query, container, renderSearchItem) {
     checkData((typeof VALUABLES_DATA !== 'undefined' ? VALUABLES_DATA : window.VALUABLES), 'valuable', 'VALUABLE');
     checkData((typeof MISSIONS_DATA !== 'undefined' ? MISSIONS_DATA : window.MISSIONS), 'mission', 'MISSION');
     checkData((typeof NPCS_DATA !== 'undefined' ? NPCS_DATA : window.NPCS), 'npc', 'NPC');
-    checkData((typeof LOCATIONS_DATA !== 'undefined' ? LOCATIONS_DATA : window.LOCATIONS), 'location', 'LOCATION');
+    const locationsForSearch = (typeof MAP_PINS !== 'undefined' ? MAP_PINS.map(p => ({ name: p.name })) : []);
+    checkData(locationsForSearch, 'location', 'LOCATION');
     checkData((typeof EVENTS_DATA !== 'undefined' ? EVENTS_DATA : []), 'event', 'EVENT');
 
     if (results.length === 0) {
