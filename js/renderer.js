@@ -1,3 +1,11 @@
+// Module-scope card counter — cheaper and more deterministic than Math.random()
+let _cardIdCounter = 0;
+
+const buildStatRow = ({label, value}) => {
+  if (!value && value !== 0) return '';
+  return `<div class="val-stat"><span class="val-stat-label">${label}</span><span class="val-stat-value">${value}</span></div>`;
+};
+
 function makeUniversalCard(item, opts = {}) {
   const name    = item.name || item.title || item.code || '';
   const slug    = item.id   || generateSlug(name);
@@ -21,12 +29,7 @@ function makeUniversalCard(item, opts = {}) {
     dateTagHtml = `<span class="val-rarity-tag" style="${dc}${ds}">${opts.dateTag}</span>`;
   }
 
-  const cardId = `card-${slug}-${Math.random().toString(36).substr(2, 8)}`;
-
-  const buildStatRow = ({label, value}) => {
-    if (!value && value !== 0) return '';
-    return `<div class="val-stat"><span class="val-stat-label">${label}</span><span class="val-stat-value">${value}</span></div>`;
-  };
+  const cardId = `card-${slug}-${++_cardIdCounter}`;
 
   const visibleRows = (opts.visibleStats || []).map(buildStatRow).join('');
   const hiddenRows  = (opts.hiddenStats  || []).map(buildStatRow).join('');
@@ -194,7 +197,7 @@ function renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder
 function renderEventCard(item, visibleContent, hiddenContent, folder = 'events') {
   const name    = item.title || item.name || '';
   const imgSlug = item.image || item.id || generateSlug(name);
-  const cardId  = `card-${imgSlug}-${Math.random().toString(36).substr(2, 8)}`;
+  const cardId  = `card-${imgSlug}-${++_cardIdCounter}`;
   const imgSrc  = `images/${folder}/${imgSlug}.jpg`;
 
   const dc = item.dateColor   ? `color:${item.dateColor};`   : '';

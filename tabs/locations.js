@@ -272,15 +272,17 @@ function renderLocations() {
     canvas.style.transform = `translate(${s.offsetX}px, ${s.offsetY}px) scale(${s.scale})`;
     canvas.style.transformOrigin = '0 0';
 
+    // Cache pin/label collections on first use — avoids repeated DOM queries
+    if (!s._pinEls || s._pinEls.length === 0) s._pinEls = canvas.querySelectorAll('.map-pin');
+    if (!s._zoneEls || s._zoneEls.length === 0) s._zoneEls = canvas.querySelectorAll('.map-zone-label');
 
     const pinScale = Math.min(2.2, Math.max(0.5, 1 / Math.sqrt(s.scale)));
-    canvas.querySelectorAll('.map-pin').forEach(pin => {
+    s._pinEls.forEach(pin => {
       pin.style.transform = `translate(-50%, -50%) scale(${pinScale})`;
     });
 
-
     const zoneScale = Math.min(1.8, Math.max(0.6, 1 / s.scale));
-    canvas.querySelectorAll('.map-zone-label').forEach(label => {
+    s._zoneEls.forEach(label => {
       label.style.transform = `translate(-50%, -50%) scale(${zoneScale})`;
     });
   }
@@ -344,14 +346,19 @@ function renderLocations() {
     if (vp) vp.style.cursor = 'grabbing';
   };
 
+  let _dragRafId = null;
   window.mapDragMove = function (e) {
     const s = window._mapState;
     if (!s.dragging) return;
-    s.offsetX += e.clientX - s.lastX;
-    s.offsetY += e.clientY - s.lastY;
-    s.lastX = e.clientX;
-    s.lastY = e.clientY;
-    applyTransform(false);
+    if (_dragRafId) return;
+    _dragRafId = requestAnimationFrame(() => {
+      s.offsetX += e.clientX - s.lastX;
+      s.offsetY += e.clientY - s.lastY;
+      s.lastX = e.clientX;
+      s.lastY = e.clientY;
+      applyTransform(false);
+      _dragRafId = null;
+    });
   };
 
   window.mapDragEnd = function (e) {
@@ -493,7 +500,6 @@ function renderLocations() {
     const vpW = vp.clientWidth;
     const vpH = vp.clientHeight;
     if (vpW < 10 || vpH < 10) {
-
       setTimeout(tryInit, 60);
       return;
     }
@@ -502,6 +508,9 @@ function renderLocations() {
     s.scale = Math.min(vpW / canvasSize, vpH / canvasSize) * 0.9;
     s.offsetX = (vpW - canvasSize * s.scale) / 2;
     s.offsetY = (vpH - canvasSize * s.scale) / 2;
+    // Invalidate cached element lists so applyTransform re-queries after new DOM
+    s._pinEls = null;
+    s._zoneEls = null;
     applyTransform(true);
   }
 

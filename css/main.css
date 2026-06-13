@@ -2371,6 +2371,55 @@ a.header-discord-btn.header-icon-btn:hover {
     }
 }
 
+/* ── Mobile dropdown overrides: in-flow, vertical expand ─────── */
+@media (max-width: 1024px) {
+    .dropdown {
+        width: 100%;
+        display: block;
+    }
+
+    .dropdown-content {
+        position: static;
+        min-width: 100%;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0;
+        padding: 0;
+        backdrop-filter: none;
+        /* Use max-height expand instead of translateY */
+        transform: none !important;
+        transition: opacity 0.2s ease, max-height 0.25s cubic-bezier(0.23,1,0.32,1), visibility 0.2s;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .dropdown.open .dropdown-content {
+        max-height: 400px;
+        transform: none !important;
+    }
+
+    /* Remove the hover-bridge on mobile */
+    .dropdown-content::before {
+        display: none;
+    }
+
+    .dropdown-content .dropdown-tab {
+        text-align: center;
+        justify-content: center;
+        padding: 14px 16px;
+    }
+
+    .dropdown-content .dropdown-tab:hover {
+        padding-left: 16px;
+    }
+
+    .dropdown-content .dropdown-tab::after {
+        display: none;
+    }
+}
+
 .card-details {
     max-height: 500px;
     overflow-y: auto;
@@ -2877,33 +2926,63 @@ body.always-show-more .card-details-toggle {
     cursor: pointer;
 }
 
+/* Rotate the ▼ arrow when dropdown is open or hovered */
+.dropdown:hover .dropdown-btn > span::after,
+.dropdown.open .dropdown-btn > span::after {
+    transform: rotate(180deg);
+}
+
 .dropdown-content {
-    display: none;
+    /* Animate instead of display:none toggle — this preserves pointer events during transition */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.95);
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+    background-color: rgba(5, 5, 5, 0.97);
+    min-width: 200px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255,255,255,0.08);
     z-index: 999999;
-    top: 100%;
+    top: calc(100% + 4px);
     left: 0;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-top: 2px solid rgba(255,255,255,0.35);
     flex-direction: column;
-    padding: 0;
+    padding: 4px 0;
     margin-top: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.23,1,0.32,1), visibility 0.18s;
+    display: flex;
+    backdrop-filter: blur(12px);
+    border-radius: 0 0 4px 4px;
+}
+
+/* Transparent bridge fills the gap between trigger and panel so the mouse can travel without losing hover */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: transparent;
+    display: block;
 }
 
 .dropdown-content .dropdown-tab {
     margin: 0;
     border: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     transform: none;
-    padding: 12px 16px;
+    padding: 15px 20px;
     background: transparent;
     font-size: 0.8rem;
     height: auto;
     width: 100%;
-    text-align: center;
-    justify-content: center;
+    text-align: left;
+    justify-content: flex-start;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .dropdown-btn span {
@@ -2927,13 +3006,36 @@ body.always-show-more .card-details-toggle {
 }
 
 .dropdown-content .dropdown-tab:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.08);
     transform: none;
+    padding-left: 26px;
+    color: #fff !important;
+}
+
+/* Left accent bar on hover */
+.dropdown-content .dropdown-tab::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 2px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+}
+.dropdown-content .dropdown-tab:hover::after {
+    opacity: 1;
 }
 
 .dropdown:hover .dropdown-content,
 .dropdown.open .dropdown-content {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 body.left-sidebar-mode .dropdown {
@@ -2947,13 +3049,23 @@ body.left-sidebar-mode .dropdown {
 }
 
 body.left-sidebar-mode .dropdown-content {
+    /* In sidebar mode the sub-panel flies out to the right */
     top: 0;
-    left: 100%;
-    transform: none;
+    left: calc(100% + 4px);
+    transform: translateX(-6px);
+    transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.23,1,0.32,1), visibility 0.18s;
     margin-top: 0;
-    margin-left: 4px;
-    min-width: 160px;
+    margin-left: 0;
+    min-width: 170px;
     width: auto;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-left: 2px solid rgba(255,255,255,0.35);
+    border-radius: 0 4px 4px 0;
+}
+
+body.left-sidebar-mode .dropdown:hover .dropdown-content,
+body.left-sidebar-mode .dropdown.open .dropdown-content {
+    transform: translateX(0);
 }
 
 body.left-sidebar-mode .dropdown-content::before {
@@ -2972,16 +3084,21 @@ body.left-sidebar-mode .dropdown-btn {
 }
 
 body.left-sidebar-mode .dropdown-content .dropdown-tab {
-    justify-content: center !important;
-    text-align: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
     width: 100%;
-    padding: 12px 16px;
+    padding: 15px 20px;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
 }
 
-body.left-sidebar-mode .dropdown-content .dropdown-tab::before {
-    display: none !important;
-    content: none !important;
-    width: 0 !important;
+body.left-sidebar-mode .dropdown-content .dropdown-tab:hover {
+    padding-left: 26px;
+}
+
+/* Re-enable the accent bar in sidebar flyout — same as topbar */
+body.left-sidebar-mode .dropdown-content .dropdown-tab::after {
+    display: block !important;
+    content: '' !important;
 }
 
 body.left-sidebar-mode .mobile-controls-group {

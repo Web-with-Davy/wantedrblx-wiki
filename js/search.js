@@ -1,3 +1,16 @@
+// Module-scope constant — created once, not per render call
+const SEARCH_FOLDER_MAP = {
+    'weapon': 'weapons',
+    'vehicle': 'vehicles',
+    'atm': 'atms',
+    'valuable': 'valuables',
+    'guncrate': 'crates',
+    'mission': 'missions',
+    'npc': 'npcs',
+    'location': 'locations',
+    'event': 'events'
+};
+
 function initSearch(container, renderSearchItem) {
     const searchInput = document.getElementById("search-input");
     if (!searchInput) return;
@@ -25,18 +38,7 @@ function renderSearchItem(item) {
     let rarityKey = item.rarity || item.difficulty || item.team || null;
     let type = item.searchType;
 
-    const folderMap = {
-        'weapon': 'weapons',
-        'vehicle': 'vehicles',
-        'atm': 'atms',
-        'valuable': 'valuables',
-        'guncrate': 'crates',
-        'mission': 'missions',
-        'npc': 'npcs',
-        'location': 'locations',
-        'event': 'events'
-    };
-    const folder = folderMap[type];
+    const folder = SEARCH_FOLDER_MAP[type];
 
     if (type === 'weapon') {
         const hasAttachments = item.attachments && Object.keys(item.attachments).length > 0;
@@ -194,10 +196,10 @@ function performSearch(query, container, renderSearchItem) {
         return;
     }
 
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     const cardsHTML = results.map(item => {
-        const regex = new RegExp(`(${query})`, 'gi');
         const highlightedName = item.name.replace(regex, '<span class="highlight">$1</span>');
-        const itemWithHighlight = { ...item, highlightedName: highlightedName };
+        const itemWithHighlight = { ...item, highlightedName };
         return renderSearchItem(itemWithHighlight);
     }).join('');
 
