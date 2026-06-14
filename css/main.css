@@ -4183,11 +4183,9 @@ body.low-end-mode .val-rarity-bar {
     }
 }
 
-
 body.low-end-mode .map-pin-svg {
     filter: none !important;
 }
-
 
 body.low-end-mode .map-ctrl-btn {
     box-shadow: none !important;
