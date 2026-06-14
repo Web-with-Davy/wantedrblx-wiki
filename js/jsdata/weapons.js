@@ -10,6 +10,7 @@ const GUNS_DATA = [
   ...WEAPON_UMP_45,
   ...WEAPON_SKORPION,
   ...WEAPON_KRISS_VECTOR,
+  ...WEAPON_MP5K,
 
   // Shotguns
   ...WEAPON_MODEL_870,
