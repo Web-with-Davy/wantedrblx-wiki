@@ -308,6 +308,7 @@ body::after {
     box-shadow: none;
     transition: all 0.2s ease;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    transform: skew(-2deg);
 }
 
 .card-large {
@@ -354,7 +355,7 @@ body::after {
 .card:hover {
     border-color: white;
     background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-5px);
+    transform: translateY(-5px) skew(-2deg);
     box-shadow: none;
 }
 
@@ -692,7 +693,8 @@ body.low-end-mode .settings-content {
 }
 
 body.low-end-mode .sidebar-box,
-body.low-end-mode .featured-video-card {
+body.low-end-mode .featured-video-card,
+body.low-end-mode .card {
     backdrop-filter: none !important;
     background: #0a0a0a !important;
     box-shadow: none !important;
@@ -707,7 +709,8 @@ body.low-end-mode .updates-box::before,
 body.low-end-mode .countdown-box::before,
 body.low-end-mode .sidebar-box::before,
 body.low-end-mode .featured-video-card::after,
-body.low-end-mode .home-category-card::before {
+body.low-end-mode .home-category-card::before,
+body.low-end-mode .card::before {
     display: none !important;
 }
 
@@ -746,7 +749,7 @@ body.low-end-mode .sidebar-box {
 }
 
 body.low-end-mode .card:hover {
-    transform: translateY(-2px) skew(-2deg) !important;
+    transform: translateY(-2px) !important;
     border-color: #fff !important;
 }
 
@@ -3274,6 +3277,7 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
     flex-direction: column;
     transition: all 0.2s ease;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    transform: skew(-2deg);
 }
 
 .val-card::before {
@@ -3294,7 +3298,7 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
 .val-card:hover {
     border-color: white;
     background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-5px);
+    transform: translateY(-5px) skew(-2deg);
     box-shadow: none;
 }
 
@@ -3554,14 +3558,22 @@ body.always-show-more .val-toggle {
 }
 
 body.low-end-mode .val-card {
-    transform: skew(-2deg);
-    margin-left: 2px;
-    margin-right: 2px;
+    backdrop-filter: none !important;
+    background: #0a0a0a !important;
+    box-shadow: none !important;
+    border-color: #333 !important;
+    clip-path: none !important;
+    border-radius: 0 !important;
     transition: none !important;
+    transform: none !important;
+}
+
+body.low-end-mode .val-card::before {
+    display: none !important;
 }
 
 body.low-end-mode .val-card:hover {
-    transform: translateY(-2px) skew(-2deg) !important;
+    transform: translateY(-2px) !important;
     box-shadow: none !important;
 }
 
