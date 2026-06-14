@@ -23,6 +23,7 @@ const VEHICLES_DATA = [
   ...VEHICLE_PULSE_477_RS,
   ...VEHICLE_EMPYREAN,
   ...VEHICLE_FALCON_GT,
+  ...VEHICLE_RIVAL,
 
   // Flying Vehicles
   ...VEHICLE_MINI_BIRD,
