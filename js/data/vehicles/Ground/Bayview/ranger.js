@@ -9,9 +9,9 @@ const VEHICLE_RANGER = [
     repairPriceGarage: 180,
     contractPrice: 8000,
     stats: {
-      topSpeed: 29,
-      acceleration: 29,
-      braking: 44,
+      topSpeed: 28,
+      acceleration: 28,
+      braking: 42,
       Health: "Body-300/Wheels-100/Windows-100",
       armor: 0
     }

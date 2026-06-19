@@ -9,11 +9,11 @@ const VEHICLE_G_CRUISER = [
     repairPriceGarage: 450,
     contractPrice: 280000,
     stats: {
-      topSpeed: 42,
-      acceleration: 29,
-      braking: 49,
-      Health: "Body-400/Wheels-100/Windows-100",
-      armor: 2
+      topSpeed: 41,
+      acceleration: 28,
+      braking: 46,
+      Health: "Body-500/Wheels-100/Windows-100",
+      armor: 3
     }
   },
 

@@ -9,7 +9,7 @@ const VEHICLE_EMPYREAN = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
-      topSpeed: 72,
+      topSpeed: 77,
       acceleration: 67,
       braking: 80,
       Health: "Body-250/Wheels-100/Windows-100",

@@ -10,10 +10,10 @@ const VEHICLE_NOMAD = [
     contractPrice: 24000,
     stats: {
       topSpeed: 32,
-      acceleration: 28,
-      braking: 49,
-      Health: "Body-200/Wheels-100/Windows-100",
-      armor: 1
+      acceleration: 29,
+      braking: 46,
+      Health: "Body-400/Wheels-100/Windows-100",
+      armor: 2
     }
   },
 

@@ -357,7 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem("alwaysShowMore", active);
 
             const activeTab = document.querySelector(".tab.active");
-            if (activeTab) loadPage(activeTab.dataset.page);
+            const pageToReload = (activeTab && activeTab.dataset.page) || getCurrentPage();
+            if (pageToReload) loadPage(pageToReload);
         });
     }
 

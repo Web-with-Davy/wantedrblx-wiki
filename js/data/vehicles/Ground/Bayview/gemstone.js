@@ -9,9 +9,9 @@ const VEHICLE_GEMSTONE = [
     repairPriceGarage: 450,
     contractPrice: 400000,
     stats: {
-      topSpeed: 48,
-      acceleration: 37,
-      braking: 59,
+      topSpeed: 46,
+      acceleration: 35,
+      braking: 56,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }

@@ -3,16 +3,16 @@ const WEAPON_MP5K = [
   {
     name: "MP5K",
     showMoreButton: true,
-    reBuyPrice: "?",
-    sellPrice: "?",
+    reBuyPrice: 4500,
+    sellPrice: 1350,
     contractPrice: "Un-Buyable",
     stats: {
-      ammo: "?",
-      ammoPrice: "?",
-      damage: "?",
-      firerate: "?",
-      reload: "?",
-      accuracy: "?"
+      ammo: "30/240",
+      ammoPrice: "$150 for 30",
+      damage: "Head-7/Torso-6/Limbs-5",
+      firerate: 967,
+      reload: 2,
+      accuracy: "±1.50m @ 50m"
     },
     attachments: {
       Optics: [

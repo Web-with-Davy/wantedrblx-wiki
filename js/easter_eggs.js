@@ -64,7 +64,7 @@
             action: () => {
                 const audio = new Audio("sounds/michael-dont-leave-me-here.mp3");
                 audio.play().catch(() => { });
-                showOverlay("name-jumpscare", "images/name.jpg", 5000, "fire");
+                showOverlay("name-jumpscare", "images/name.webp", 5000, "fire");
             }
         }
     ];

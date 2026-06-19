@@ -9,9 +9,9 @@ const VEHICLE_CONTENDER = [
     repairPriceGarage: 180,
     contractPrice: 65000,
     stats: {
-      topSpeed: 41,
-      acceleration: 33,
-      braking: 56,
+      topSpeed: 40,
+      acceleration: 31,
+      braking: 53,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }

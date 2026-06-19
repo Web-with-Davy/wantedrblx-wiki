@@ -9,9 +9,9 @@ const VEHICLE_CRUISER = [
     repairPriceGarage: 0,
     contractPrice: 1000,
     stats: {
-      topSpeed: 38,
-      acceleration: 31,
-      braking: 53,
+      topSpeed: 37,
+      acceleration: 30,
+      braking: 51,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }

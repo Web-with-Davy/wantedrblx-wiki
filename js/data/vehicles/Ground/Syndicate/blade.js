@@ -9,9 +9,9 @@ const VEHICLE_BLADE = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
-      topSpeed: 57,
-      acceleration: 44,
-      braking: 64,
+      topSpeed: 55,
+      acceleration: 42,
+      braking: 61,
       Health: "Body-1,000/Wheels-300/Windows-400",
       armor: 5
     }

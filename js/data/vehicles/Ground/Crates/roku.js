@@ -9,8 +9,8 @@ const VEHICLE_ROKU = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
-      topSpeed: 37,
-      acceleration: 32,
+      topSpeed: 36,
+      acceleration: 33,
       braking: 51,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0

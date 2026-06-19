@@ -2,8 +2,8 @@ function renderEvents() {
   const cards = EVENTS_DATA.map(event => {
     const name    = event.title || event.name || '';
     const imgSlug = event.image || event.id || generateSlug(name);
-    const cardId  = `card-${imgSlug}-${Math.random().toString(36).substr(2, 8)}`;
-    const imgSrc  = `images/events/${imgSlug}.jpg`;
+    const cardId  = `card-${imgSlug}-${++_cardIdCounter}`;
+    const imgSrc  = `images/events/${imgSlug}.${CARD_IMG_EXT}`;
 
     const dc = event.dateColor   ? `color:${event.dateColor};`   : '';
     const ds = event.dateOutline

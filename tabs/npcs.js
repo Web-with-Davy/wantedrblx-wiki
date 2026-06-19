@@ -15,7 +15,6 @@ function renderNPCs(order = "az") {
     if (!hasDialogues) {
       return makeUniversalCard(item, {
         folder: 'npcs',
-        ext: 'png',
         rarityKey: item.team,
         visibleStats: [],
         hiddenStats,
@@ -43,7 +42,6 @@ function renderNPCs(order = "az") {
 
     return makeUniversalCard(item, {
       folder: 'npcs',
-      ext: 'png',
       rarityKey: item.team,
       visibleStats: [],
       hiddenStats,

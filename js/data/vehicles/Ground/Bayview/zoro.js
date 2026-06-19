@@ -9,9 +9,9 @@ const VEHICLE_ZORO = [
     repairPriceGarage: 900,
     contractPrice: 900000,
     stats: {
-      topSpeed: 50,
-      acceleration: 40,
-      braking: 53,
+      topSpeed: 48,
+      acceleration: 38,
+      braking: 51,
       Health: "Body-400/Wheels-100/Windows-100",
       armor: 2
     }

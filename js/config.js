@@ -30,18 +30,17 @@ const generateSlug = (name) => {
 
 const formatPrice = (price) => {
   if (price === undefined || price === null) return undefined;
-  // Coerce numeric strings (e.g. "300000") to numbers
+  if (price === 0) return 'Free';
   const num = typeof price === 'number' ? price : Number(price);
-  if (!isNaN(num)) {
-    return `<img src="images/cash.png" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">${num.toLocaleString()}`;
+  if (!isNaN(num) && num !== 0) {
+    return `<img src="images/cash.webp" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">${num.toLocaleString()}`;
   }
-  // Non-numeric string (e.g. "Un-Buyable", "Contract only") — return as-is
   return String(price);
 };
 
 const formatReward = (reward) => {
   if (typeof reward !== 'string') return reward;
-  return reward.replace(/\$/g, '<img src="images/cash.png" alt="$" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">');
+  return reward.replace(/\$/g, '<img src="images/cash.webp" alt="$" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">');
 };
 
 if (typeof module !== 'undefined' && module.exports) {

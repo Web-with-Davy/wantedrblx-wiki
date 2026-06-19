@@ -9,7 +9,7 @@ const VEHICLE_TEMPORO = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
-      topSpeed: 66,
+      topSpeed: 63,
       acceleration: 57,
       braking: 72,
       Health: "Body-250/Wheels-100/Windows-100",

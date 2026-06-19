@@ -9,9 +9,9 @@ const VEHICLE_VANGUARD = [
     repairPriceGarage: 900,
     contractPrice: 750000,
     stats: {
-      topSpeed: 55,
-      acceleration: 37,
-      braking: 60,
+      topSpeed: 53,
+      acceleration: 36,
+      braking: 57,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }
