@@ -1,6 +1,9 @@
 // Module-scope card counter — cheaper and more deterministic than Math.random()
 let _cardIdCounter = 0;
 
+// Change this one value to update ALL card images across ALL tabs
+const CARD_IMG_EXT = 'webp';
+
 const buildStatRow = ({label, value}) => {
   if (!value && value !== 0) return '';
   return `<div class="val-stat"><span class="val-stat-label">${label}</span><span class="val-stat-value">${value}</span></div>`;
@@ -9,9 +12,10 @@ const buildStatRow = ({label, value}) => {
 function makeUniversalCard(item, opts = {}) {
   const name    = item.name || item.title || item.code || '';
   const slug    = item.id   || generateSlug(name);
-  const ext     = opts.ext    || 'jpg';
+  const ext     = opts.ext    || CARD_IMG_EXT;
   const folder  = opts.folder || '';
   const imgSrc  = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
+  const codeText = opts.codeText || null;
 
   const rarityKey   = opts.rarityKey;
   const rarity      = rarityKey ? (RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey]) : null;
@@ -64,8 +68,14 @@ function makeUniversalCard(item, opts = {}) {
     <div class="val-card${wideClass}" data-rarity="${rarityKey || ''}">
       <div class="val-rarity-bar ${rarityClass}" ${accentStyle}></div>
       <div class="val-img-wrap">
-        <img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img"
-          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');">
+        ${codeText
+          ? (() => {
+              const fs = Math.max(0.55, Math.min(1.8, 9 / codeText.length)) + 'rem';
+              return `<div class="val-code-display" style="--code-accent:${opts.accentColor||'#fff'};"><span class="val-code-text" style="font-size:${fs};">${codeText}</span></div>`;
+            })()
+          : `<img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img"
+          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');">`
+        }
         ${rarityName && !opts.dateTag ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
         ${dateTagHtml}
         ${badgeHtml}
@@ -90,7 +100,7 @@ function toggleValCardOverlay(btn) {
 }
 
 function renderCard(item, rarityKey, content, folder = null) {
-  return makeUniversalCard(item, { folder, rarityKey, ext: 'png', extraBodyHtml: content });
+  return makeUniversalCard(item, { folder, rarityKey, extraBodyHtml: content });
 }
 
 function renderCardJPG(item, rarityKey, content, folder = null) {
@@ -120,7 +130,7 @@ function renderStatSuffix(label, val, suffix) {
   return val !== undefined && val !== null ? renderStat(label, `${val}${suffix}`) : '';
 }
 
-function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ext = 'jpg', folder = null) {
+function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ext = CARD_IMG_EXT, folder = null) {
   return makeUniversalCard(item, {
     folder, rarityKey, ext,
     extraBodyHtml: `${visibleContent || ''}${hiddenContent || ''}`,
@@ -129,7 +139,7 @@ function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ex
 }
 
 function renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder = null) {
-  return renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, 'jpg', folder);
+  return renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, CARD_IMG_EXT, folder);
 }
 
 function renderExpandableCardPNG(item, rarityKey, visibleContent, hiddenContent, folder = null) {
@@ -150,7 +160,7 @@ function renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder = 
   const hasDialogues = dialogueData && Object.keys(dialogueData).length > 0;
 
   if (!hasDialogues) {
-    return renderExpandableCardPNG(item, rarityKey, visibleContent, hiddenContent, folder);
+    return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
   }
 
   const dialoguesHTML = Object.entries(dialogueData).map(([category, items]) => {
@@ -160,7 +170,7 @@ function renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder = 
   }).join('');
 
   return makeUniversalCard(item, {
-    folder, rarityKey, ext: 'png',
+    folder, rarityKey,
     extraBodyHtml: `${visibleContent || ''}${hiddenContent || ''}`,
     showButton: item.showMoreButton !== false && (hiddenContent || '').trim() !== '',
     overlayHtml: dialoguesHTML,
@@ -198,7 +208,7 @@ function renderEventCard(item, visibleContent, hiddenContent, folder = 'events')
   const name    = item.title || item.name || '';
   const imgSlug = item.image || item.id || generateSlug(name);
   const cardId  = `card-${imgSlug}-${++_cardIdCounter}`;
-  const imgSrc  = `images/${folder}/${imgSlug}.jpg`;
+  const imgSrc  = `images/${folder}/${imgSlug}.${CARD_IMG_EXT}`;
 
   const dc = item.dateColor   ? `color:${item.dateColor};`   : '';
   const ds = item.dateOutline ? `border-color:${item.dateOutline};box-shadow:0 0 8px ${item.dateOutline};text-shadow:0 0 5px ${item.dateOutline};` : '';

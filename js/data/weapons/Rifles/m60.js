@@ -5,7 +5,7 @@ const WEAPON_M60 = [
     showMoreButton: true,
     reBuyPrice: 10000,
     sellPrice: 3000,
-    contractPrice: 4200000,
+    contractPrice: 6400000,
     stats: {
       ammo: "100/800",
       ammoPrice: "$1000 for 100",

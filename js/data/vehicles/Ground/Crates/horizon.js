@@ -9,8 +9,8 @@ const VEHICLE_HORIZON = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
-      topSpeed: 45,
-      acceleration: 34,
+      topSpeed: 46,
+      acceleration: 36,
       braking: 55,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0

@@ -2,7 +2,7 @@ const GUN_CRATE_AWM = [
 
   {
     id: "awm-crate",
-    showMoreButton: true,
+    showMoreButton: false,
     name: "AWM Crate",
     gun: "Default AWM",
     cooldown: "5 Days",

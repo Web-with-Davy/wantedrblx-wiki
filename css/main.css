@@ -31,7 +31,7 @@ body {
 }
 
 body {
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/background.webp');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -3381,6 +3381,63 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
     object-fit: contain;
 }
 
+/* Promo code text-as-image display */
+.val-code-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(255, 255, 255, 0.02) 3px, rgba(255, 255, 255, 0.02) 4px),
+        radial-gradient(ellipse at center, rgba(var(--code-accent-rgb, 255, 255, 255), 0.06) 0%, transparent 70%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s ease;
+}
+
+.val-code-display::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, var(--code-accent, #fff) 0%, transparent 65%);
+    opacity: 0.07;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.val-card:hover .val-code-display::before {
+    opacity: 0.13;
+}
+
+.val-code-text {
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow:
+        0 0 8px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff;
+    white-space: nowrap;
+    text-align: center;
+    padding: 12px 10px;
+    line-height: 1.2;
+    transition: text-shadow 0.4s ease, letter-spacing 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.val-card:hover .val-code-text {
+    letter-spacing: 0.15em;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 28px #fff,
+        0 0 55px #fff;
+}
+
 .val-rarity-tag {
     position: absolute;
     top: 6px;
@@ -3467,7 +3524,7 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
     flex-direction: column;
     gap: 4px;
     overflow: hidden;
-    max-height: 200px;
+    max-height: 1000px;
     opacity: 1;
     transition: max-height 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s;
 }
@@ -3478,7 +3535,7 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
 }
 
 body.always-show-more .val-hidden.collapsed {
-    max-height: 200px !important;
+    max-height: 1000px !important;
     opacity: 1 !important;
 }
 
@@ -3493,6 +3550,7 @@ body.always-show-more .val-toggle {
     gap: 8px;
     padding: 3px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.8);
 }
 
 .val-stat:last-child {
@@ -3514,6 +3572,8 @@ body.always-show-more .val-toggle {
     font-family: 'Courier New', monospace;
     text-align: right;
     word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
 }
 
 .val-badge {

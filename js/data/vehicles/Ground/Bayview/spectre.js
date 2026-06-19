@@ -9,9 +9,9 @@ const VEHICLE_SPECTRE = [
     repairPriceGarage: 2250,
     contractPrice: 8000000,
     stats: {
-      topSpeed: 77,
+      topSpeed: 74,
       acceleration: 67,
-      braking: 80,
+      braking: 76,
       Health: "Body-250/Wheels-100/Windows-100",
       armor: 0
     }

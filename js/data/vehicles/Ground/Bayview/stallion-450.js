@@ -9,9 +9,9 @@ const VEHICLE_STALLION_450 = [
     repairPriceGarage: 180,
     contractPrice: 185000,
     stats: {
-      topSpeed: 47,
-      acceleration: 36,
-      braking: 57,
+      topSpeed: 45,
+      acceleration: 34,
+      braking: 54,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }

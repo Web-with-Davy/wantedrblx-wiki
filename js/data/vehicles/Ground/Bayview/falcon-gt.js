@@ -9,7 +9,7 @@ const VEHICLE_FALCON_GT = [
     repairPriceGarage: 2250,
     contractPrice: 6200000,
     stats: {
-      topSpeed: 73,
+      topSpeed: 70,
       acceleration: 62,
       braking: 74,
       Health: "Body-250/Wheels-100/Windows-100",

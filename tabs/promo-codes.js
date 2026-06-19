@@ -9,7 +9,7 @@ function renderPromoCodes(filter = "all") {
     const statusHtml  = `<span style="color:${statusColor};text-shadow:0 0 5px ${statusColor};">${statusText}</span>`;
 
     return makeUniversalCard(item, {
-      folder: 'promocodes',
+      codeText: item.code,
       rarityKey: null,
       accentColor: statusColor,
       visibleStats: [

@@ -13,28 +13,28 @@ function renderVehicles(sort = "high") {
 
   const makeVehicleCard = (item, isFlying) => {
     const contractHtml = formatPrice(item.contractPrice);
-    const repairHtml   = formatPrice(item.repairPrice);
-    const garageHtml   = formatPrice(item.repairPriceGarage);
+    const repairHtml = formatPrice(item.repairPrice);
+    const garageHtml = formatPrice(item.repairPriceGarage);
 
     const visibleStats = [
       contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
     ].filter(Boolean);
 
     const hiddenStats = [
-      { label: 'Obtaining',      value: item.obtaining },
-      repairHtml ? { label: 'Repair Price',   value: repairHtml } : null,
-      garageHtml ? { label: 'Garage Repair',  value: garageHtml } : null,
+      { label: 'Obtaining', value: item.obtaining },
+      repairHtml ? { label: 'Repair Price', value: repairHtml } : null,
+      garageHtml ? { label: 'Garage Repair', value: garageHtml } : null,
       isFlying
-        ? { label: 'Top Speed',    value: item.stats.topSpeed   != null ? `${item.stats.topSpeed}%`    : null }
-        : { label: 'Top Speed',    value: item.stats.topSpeed   != null ? `${item.stats.topSpeed} MPH` : null },
+        ? { label: 'Top Speed', value: item.stats.topSpeed != null ? `${item.stats.topSpeed}%` : null }
+        : { label: 'Top Speed', value: item.stats.topSpeed != null ? `${item.stats.topSpeed}%` : null },
       !isFlying
         ? { label: 'Acceleration', value: item.stats.acceleration != null ? `${item.stats.acceleration}%` : null }
-        : { label: 'Spool Time',   value: item.stats.spoolTime   != null ? `${item.stats.spoolTime}s`    : null },
+        : { label: 'Spool Time', value: item.stats.spoolTime != null ? `${item.stats.spoolTime}s` : null },
       !isFlying
-        ? { label: 'Braking',      value: item.stats.braking   != null ? `${item.stats.braking}%`   : null }
-        : { label: 'Handling',     value: item.stats.handling  != null ? `${item.stats.handling}%`  : null },
+        ? { label: 'Braking', value: item.stats.braking != null ? `${item.stats.braking}%` : null }
+        : { label: 'Handling', value: item.stats.handling != null ? `${item.stats.handling}%` : null },
       { label: 'Health', value: item.stats.Health },
-      { label: 'Armor',  value: item.stats.armor != null ? String(item.stats.armor) : null },
+      { label: 'Armor', value: item.stats.armor != null ? String(item.stats.armor) : null },
     ].filter(s => s && s.value !== undefined && s.value !== null && s.value !== '');
 
     return makeUniversalCard(item, {
@@ -51,7 +51,7 @@ function renderVehicles(sort = "high") {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortVehicles('high')" },
-    { label: 'Cheapest first',       value: 'low',  onClick: "sortVehicles('low')"  }
+    { label: 'Cheapest first', value: 'low', onClick: "sortVehicles('low')" }
   ], sort);
 
   const jumpNav = `<div class="page-jump-nav">

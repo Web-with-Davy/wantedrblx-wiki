@@ -5,7 +5,7 @@ const WEAPON_ARX_160 = [
     showMoreButton: true,
     reBuyPrice: 8000,
     sellPrice: 2400,
-    contractPrice: 1800000,
+    contractPrice: 2500000,
     stats: {
       ammo: "30/300",
       ammoPrice: "$450 for 30",

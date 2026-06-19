@@ -9,9 +9,9 @@ const VEHICLE_ZORVELLO = [
     repairPriceGarage: 2250,
     contractPrice: 5000000,
     stats: {
-      topSpeed: 70,
-      acceleration: 64,
-      braking: 75,
+      topSpeed: 67,
+      acceleration: 62,
+      braking: 71,
       Health: "Body-250/Wheels-100/Windows-100",
       armor: 0
     }

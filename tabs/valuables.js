@@ -1,7 +1,7 @@
 function makeValuableCard(item) {
   const name   = item.name  || '';
   const slug   = item.id    || generateSlug(name);
-  const imgSrc = `images/valuables/${slug}.jpg`;
+  const imgSrc = `images/valuables/${slug}.${CARD_IMG_EXT}`;
 
   const rarity      = RARITIES[item.rarity];
   const rarityName  = rarity ? rarity.name  : '';
@@ -23,7 +23,7 @@ function makeValuableCard(item) {
 
   const hiddenStats  = weightHtml + locationHtml;
   const showButton   = item.showMoreButton !== false && hiddenStats.trim() !== '';
-  const cardId       = `val-card-${slug}-${Math.random().toString(36).substr(2, 8)}`;
+  const cardId       = `val-card-${slug}-${++_cardIdCounter}`;
 
   const hiddenBlock = hiddenStats ? `
     <div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">

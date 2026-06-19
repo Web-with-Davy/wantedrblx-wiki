@@ -9,9 +9,9 @@ const VEHICLE_CROWLINE = [
     repairPriceGarage: 180,
     contractPrice: 120000,
     stats: {
-      topSpeed: 35,
-      acceleration: 32,
-      braking: 53,
+      topSpeed: 34,
+      acceleration: 30,
+      braking: 51,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 1
     }

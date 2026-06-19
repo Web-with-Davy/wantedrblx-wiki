@@ -48,7 +48,7 @@ function renderHome() {
 
         return `
             <div class="staff-inline-item">
-                <img src="images/contributors/${filenameName}.jpg" alt="${person.name}" class="staff-inline-avatar" onerror="this.src='images/wikiadmin.png'">
+                <img src="images/contributors/${filenameName}.webp" alt="${person.name}" class="staff-inline-avatar" onerror="this.src='images/wikiadmin.png'">
                 <div class="staff-inline-name" ${nameColorStyle}>${person.name}</div>
                 <div class="staff-inline-role">${roleText}</div>
             </div>

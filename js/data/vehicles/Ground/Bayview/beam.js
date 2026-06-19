@@ -9,9 +9,9 @@ const VEHICLE_BEAM = [
     repairPriceGarage: 180,
     contractPrice: 85000,
     stats: {
-      topSpeed: 44,
-      acceleration: 35,
-      braking: 58,
+      topSpeed: 42,
+      acceleration: 33,
+      braking: 55,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }

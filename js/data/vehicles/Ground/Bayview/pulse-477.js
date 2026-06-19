@@ -9,9 +9,9 @@ const VEHICLE_PULSE_477 = [
     repairPriceGarage: 900,
     contractPrice: 2400000,
     stats: {
-      topSpeed: 62,
-      acceleration: 47,
-      braking: 67,
+      topSpeed: 60,
+      acceleration: 45,
+      braking: 63,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }
