@@ -24,37 +24,18 @@
 html,
 body {
     height: 100%;
-    background: var(--bg);
+    background: transparent;
     color: var(--fg);
     font-family: 'Courier New', monospace;
     overflow-x: hidden;
 }
 
+/* Rain canvas at z-index:0 — page content sits above it via position:relative */
 body {
-    background-image: url('../images/background.webp');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: #05060a; /* dark fallback if canvas hasn't painted yet */
 }
 
-@media (max-width: 1024px) {
-    body {
-        background-attachment: scroll;
-    }
-}
-
-@media (min-aspect-ratio: 21/9) {
-    body {
-        background-size: 100% auto;
-    }
-}
-
-@media (max-aspect-ratio: 9/16) {
-    body {
-        background-size: auto 100%;
-    }
-}
+/* Window frame and rain are drawn on canvas — no CSS pseudo-elements needed */
 
 .stripes,
 .static {
@@ -77,24 +58,25 @@ body {
     background-repeat: repeat;
 }
 
-body::before,
-body::after {
+/* Police flash lights — rendered as dedicated divs (body::before/after are used for window frame) */
+.police-flash-red,
+.police-flash-blue {
     content: "";
     position: fixed;
     inset: 0;
     z-index: 200;
     pointer-events: none;
     mix-blend-mode: screen;
-    animation: policeFlash 8s infinite;
     will-change: opacity;
     contain: layout style paint;
+    animation: policeFlash 8s infinite;
 }
 
-body::before {
+.police-flash-red {
     background: radial-gradient(circle at 20% 50%, rgba(255, 0, 0, .3), transparent 40%);
 }
 
-body::after {
+.police-flash-blue {
     background: radial-gradient(circle at 80% 50%, rgba(0, 100, 255, .3), transparent 40%);
     animation-delay: 4s;
 }
@@ -284,6 +266,8 @@ body::after {
     padding: 180px 0 60px;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .content {
@@ -675,6 +659,9 @@ body.low-end-mode {
 
 body.low-end-mode .stripes,
 body.low-end-mode .static,
+body.low-end-mode #rain-canvas,
+body.low-end-mode .police-flash-red,
+body.low-end-mode .police-flash-blue,
 body.low-end-mode::before,
 body.low-end-mode::after {
     display: none !important;
