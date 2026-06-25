@@ -4,7 +4,7 @@ const VEHICLE_RIVAL = [
     name: "Rival",
     showMoreButton: true,
     type: "ground",
-    obtaining: "Daily Login Reward",
+    obtaining: "Daily Rewards Day 3",
     repairPrice: 600,
     repairPriceGarage: 180,
     contractPrice: "Un-Buyable",
