@@ -1,16 +1,16 @@
 const UPDATES = [
-    { version: "D.27/M.06/Y.2026", description: "New Guns & Vehicles", color: "#ff0000ff", color2: "#ffffffff" },
+    { version: "D.27/M.06/Y.2026", description: "New Guns & Vehicles", color: "#0091ffff", color2: "#ffffffff" },
     // { version: "D.13/M.06/Y.2026", description: "Robbery Revamp", color: "#ff0000ff", color2: "#ffffffff" },
     // { version: "D.30/M.05/Y.2026", description: "Robbery & Crates", color: "#ff0000ff", color2: "#ffffffff" },
     // { version: "D.18/M.04/Y.2026", description: "Bayview Revamp", color: "#006affff", color2: "#ffffffff" },
-    // version: "D.03/M.04/Y.2026", description: "Easter Event", color: "#ff80f7ff", color2: "#ffffffff" },
+    // {version: "D.03/M.04/Y.2026", description: "Easter Event", color: "#ff80f7ff", color2: "#ffffffff" },
     // { version: "D.20/M.03/Y.2026", description: "Airdrop Update", color: "#ff0000ff", color2: "#ffffffff" },
     // { version: "D.06/M.03/Y.2026", description: "Zoro and Zorvello Cars Update", color: "#f97316ff", color2: "#ffffffff" },
     // { version: "D.20/M.02/Y.2026", description: "Docks & Jewerly Update", color: "#00e1ffff", color2: "#ffffffff" },
     // { version: "D.12/M.12/Y.2025", description: "Christmas Event", color: "#00ffaaff", color2: "#ffffffff" }
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-06-14T22:00:00+03:00');
+const COUNTDOWN_TARGET = new Date('2026-06-27T20:00:00+03:00');
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
 
 function renderHome() {
