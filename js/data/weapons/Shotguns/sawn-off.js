@@ -1,0 +1,19 @@
+const WEAPON_SAWNOFF = [
+
+  {
+    name: "Sawn Off",
+    showMoreButton: true,
+    reBuyPrice: 150,
+    sellPrice: 45,
+    contractPrice: 800,
+    stats: {
+      ammo: "2/30",
+      ammoPrice: "$20 for 2",
+      damage: "Head-7/Torso-6/Limbs-4",
+      firerate: 193,
+      reload: 3.8,
+      accuracy: "±18.20m @ 25m"
+    }
+  }
+
+];

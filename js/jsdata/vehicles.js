@@ -24,6 +24,7 @@ const VEHICLES_DATA = [
   ...VEHICLE_EMPYREAN,
   ...VEHICLE_FALCON_GT,
   ...VEHICLE_RIVAL,
+  ...VEHICLE_MOCHI,
 
   // Flying Vehicles
   ...VEHICLE_MINI_BIRD,
