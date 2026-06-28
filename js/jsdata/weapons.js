@@ -16,6 +16,7 @@ const GUNS_DATA = [
   ...WEAPON_MODEL_870,
   ...WEAPON_BENELLI_M1014,
   ...WEAPON_SPAS_12,
+  ...WEAPON_SAWNOFF,
 
   // Rifles
   ...WEAPON_AUG_A1,
@@ -24,6 +25,7 @@ const GUNS_DATA = [
   ...WEAPON_ARX_160,
   ...WEAPON_M60,
   ...WEAPON_FN_FAL,
+  ...WEAPON_LIGHTCARBINE,
 
   // Snipers
   ...WEAPON_AWM,
