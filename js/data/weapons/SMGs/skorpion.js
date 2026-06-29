@@ -3,8 +3,8 @@ const WEAPON_SKORPION = [
   {
     name: "Skorpion",
     showMoreButton: true,
-    reBuyPrice: 4000,
-    sellPrice: 1200,
+    reBuyPrice: 1000,
+    sellPrice: 300,
     contractPrice: 100000,
     stats: {
       ammo: "20/220",

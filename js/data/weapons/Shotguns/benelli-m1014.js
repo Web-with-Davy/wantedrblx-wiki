@@ -3,8 +3,8 @@ const WEAPON_BENELLI_M1014 = [
   {
     name: "Benelli M1014",
     showMoreButton: true,
-    reBuyPrice: 6000,
-    sellPrice: 1800,
+    reBuyPrice: 4000,
+    sellPrice: 1200,
     contractPrice: 550000,
     stats: {
       ammo: "30/270",

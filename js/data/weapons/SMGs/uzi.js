@@ -3,8 +3,8 @@ const WEAPON_UZI = [
   {
     name: "Uzi",
     showMoreButton: true,
-    reBuyPrice: 2500,
-    sellPrice: 750,
+    reBuyPrice: 500,
+    sellPrice: 150,
     contractPrice: 25000,
     stats: {
       ammo: "25/250",

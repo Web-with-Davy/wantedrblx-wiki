@@ -3,8 +3,8 @@ const WEAPON_UMP_45 = [
   {
     name: "UMP 45",
     showMoreButton: true,
-    reBuyPrice: 3000,
-    sellPrice: 900,
+    reBuyPrice: 1250,
+    sellPrice: 375,
     contractPrice: 40000,
     stats: {
       ammo: "30/240",

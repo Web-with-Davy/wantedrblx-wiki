@@ -3,8 +3,8 @@ const EXPLOSIVES_DATA = [
   {
     name: "C4",
     showMoreButton: true,
-    reBuyPrice: 1000,
-    sellPrice: 300,
+    reBuyPrice: 250,
+    sellPrice: 75,
     contractPrice: 50000,
     stats: {
       ammo: "1/10",
@@ -18,8 +18,8 @@ const EXPLOSIVES_DATA = [
   {
     name: "M67",
     showMoreButton: true,
-    reBuyPrice: 1000,
-    sellPrice: 300,
+    reBuyPrice: 750,
+    sellPrice: 225,
     contractPrice: 80000,
     stats: {
       ammo: "1/3",

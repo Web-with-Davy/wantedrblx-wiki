@@ -3,8 +3,8 @@ const WEAPON_AUG_A1 = [
   {
     name: "AUG A1",
     showMoreButton: true,
-    reBuyPrice: 5000,
-    sellPrice: 1500,
+    reBuyPrice: 1750,
+    sellPrice: 525,
     contractPrice: 350000,
     stats: {
       ammo: "30/270",

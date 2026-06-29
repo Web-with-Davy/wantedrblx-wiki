@@ -3,8 +3,8 @@ const WEAPON_ARX_160 = [
   {
     name: "ARX-160",
     showMoreButton: true,
-    reBuyPrice: 8000,
-    sellPrice: 2400,
+    reBuyPrice: 9000,
+    sellPrice: 2700,
     contractPrice: 2500000,
     stats: {
       ammo: "30/300",
