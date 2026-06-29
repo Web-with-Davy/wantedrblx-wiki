@@ -10,7 +10,7 @@ const VEHICLE_PULSE_477_RS = [
     contractPrice: "Un-Buyable",
     stats: {
       topSpeed: 66,
-      acceleration: 54,
+      acceleration: 60,
       braking: 67,
       Health: "Body-250/Wheels-100/Windows-100",
       armor: 0

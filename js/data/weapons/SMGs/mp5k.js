@@ -4,8 +4,8 @@ const WEAPON_MP5K = [
     name: "MP5K",
     showMoreButton: true,
     obtaining: "Daily Rewards Day 4",
-    reBuyPrice: 4500,
-    sellPrice: 1350,
+    reBuyPrice: 1500,
+    sellPrice: 450,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "30/240",

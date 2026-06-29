@@ -3,8 +3,8 @@ const WEAPON_MODEL_870 = [
   {
     name: "Model 870",
     showMoreButton: true,
-    reBuyPrice: 2000,
-    sellPrice: 600,
+    reBuyPrice: 750,
+    sellPrice: 225,
     contractPrice: 20000,
     stats: {
       ammo: "4/80",

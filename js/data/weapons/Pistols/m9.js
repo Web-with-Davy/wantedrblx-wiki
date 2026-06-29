@@ -3,8 +3,8 @@ const WEAPON_M9 = [
   {
     name: "M9",
     showMoreButton: true,
-    reBuyPrice: 200,
-    sellPrice: 60,
+    reBuyPrice: 100,
+    sellPrice: 30,
     contractPrice: 0,
     stats: {
       ammo: "15/300",

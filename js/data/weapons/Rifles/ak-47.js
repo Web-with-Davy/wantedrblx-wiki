@@ -3,8 +3,8 @@ const WEAPON_AK_47 = [
   {
     name: "AK-47",
     showMoreButton: true,
-    reBuyPrice: 6500,
-    sellPrice: 1950,
+    reBuyPrice: 3500,
+    sellPrice: 1050,
     contractPrice: 800000,
     stats: {
       ammo: "30/300",
