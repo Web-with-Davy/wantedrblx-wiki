@@ -1,4 +1,4 @@
-const BIRTHDAY_ENABLED = false;
+const BIRTHDAY_ENABLED = true;
 
 (function () {
     'use strict';
@@ -33,7 +33,7 @@ const BIRTHDAY_ENABLED = false;
 
         const bdayText = document.createElement('div');
         bdayText.id = 'birthday-text';
-        bdayText.textContent = 'Happy Birthday Username! 🎉';
+        bdayText.textContent = 'Happy Birthday Davy!! 🎉';
         document.body.appendChild(bdayText);
 
         const shockwave = document.createElement('div');
