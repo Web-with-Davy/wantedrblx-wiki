@@ -33,7 +33,7 @@ const BIRTHDAY_ENABLED = true;
 
         const bdayText = document.createElement('div');
         bdayText.id = 'birthday-text';
-        bdayText.textContent = 'Happy Birthday Davy! 🎉';
+        bdayText.textContent = 'Happy Birthday Davy!! 🎉';
         document.body.appendChild(bdayText);
 
         const shockwave = document.createElement('div');
