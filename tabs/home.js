@@ -296,4 +296,5 @@ function goToTab(tabId) {
     }
 }
 
+
 window.goToTab = goToTab;
