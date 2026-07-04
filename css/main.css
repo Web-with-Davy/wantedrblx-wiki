@@ -32,7 +32,8 @@ body {
 
 /* Rain canvas at z-index:0 — page content sits above it via position:relative */
 body {
-    background: #05060a; /* dark fallback if canvas hasn't painted yet */
+    background: #05060a;
+    /* dark fallback if canvas hasn't painted yet */
 }
 
 /* Window frame and rain are drawn on canvas — no CSS pseudo-elements needed */
@@ -450,12 +451,20 @@ body {
 
 .rarity-christmas-limited {
     color: #0f0;
-    border-color: #f00
+    border-color: #f00;
+    text-shadow: 0 0 10px #f00
 }
 
 .rarity-easter {
-    color: rgb(255, 255, 255);
-    border-color: rgb(255, 80, 194)
+    color: rgb(255, 80, 194);
+    border-color: rgb(255, 80, 194);
+    text-shadow: 0 0 10px rgb(255, 80, 194)
+}
+
+.rarity-4th-of-july {
+    color: #e53935;
+    border-color: #e53935;
+    text-shadow: 0 0 10px #e53935;
 }
 
 h2 {
@@ -3338,6 +3347,11 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
 
 .val-rarity-bar.rarity-easter {
     background: linear-gradient(90deg, #ff50c2, #a0f, #ff50c2);
+}
+
+.val-rarity-bar.rarity-4th-of-july {
+    background: linear-gradient(90deg, #b22234, #fff, #3c3b6e, #fff, #b22234);
+    box-shadow: 0 0 6px #b22234;
 }
 
 .val-img-wrap {
