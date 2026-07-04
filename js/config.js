@@ -7,7 +7,8 @@ const RARITIES = {
   LEGENDARY: { name: "Legendary", class: "rarity-legendary", color: "#ff0" },
   UNOBTAINABLE: { name: "Unobtainable", class: "rarity-unobtainable", color: "#000000ff" },
   CHRISTMAS: { name: "Christmas-Limited", class: "rarity-christmas-limited", color: "#0f0" },
-  EASTER: { name: "Easter-Limited", class: "rarity-easter", color: "#ff50c2" }
+  EASTER: { name: "Easter-Limited", class: "rarity-easter", color: "#ff50c2" },
+  "4TH_OF_JULY": { name: "4th of July Limited", class: "rarity-4th-of-july", color: "#b22234" }
 };
 
 const DIFFICULTIES = {
