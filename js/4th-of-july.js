@@ -116,12 +116,14 @@ const FOURTH_OF_JULY_ENABLED = true;
         }
 
         function cleanupFourthOfJuly() {
+            stopConfettiLoop();
+            stopFireworks();
+
+            while (overlay.firstChild) overlay.removeChild(overlay.firstChild);
+
             [flag, overlay, julyText, dimmer].forEach(el => {
                 el.classList.add('july-fade-out');
             });
-
-            stopConfettiLoop();
-            stopFireworks();
 
             setTimeout(() => {
                 [flag, overlay, julyText, dimmer, shockwave].forEach(el => {
@@ -160,7 +162,7 @@ const FOURTH_OF_JULY_ENABLED = true;
                 if (!sessionStorage.getItem('fourthOfJulySurpriseDone')) {
                     cleanupFourthOfJuly();
                 }
-            }, 60000);
+            }, 12000);
         }
 
         let flagClicked = false;
