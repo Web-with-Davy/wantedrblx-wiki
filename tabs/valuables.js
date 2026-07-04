@@ -113,6 +113,17 @@ function renderValuables(sort = 'high') {
     </div>
     <div class="val-grid">${christmasItems.map(makeValuableCard).join('')}</div>` : '';
 
+  const fourthOfJulyItems = [...FOURTH_OF_JULY_VALUABLES_DATA]
+    .sort((a, b) => sort === 'high' ? b.price - a.price : a.price - b.price);
+
+  const fourthOfJulySection = fourthOfJulyItems.length > 0 ? `
+    <div class="val-section-divider"></div>
+    <div class="val-section-header" id="val-cat-4th-of-july">
+      <h3 class="val-section-title">4th of July Limited</h3>
+      <span class="val-section-count">${fourthOfJulyItems.length} items</span>
+    </div>
+    <div class="val-grid">${fourthOfJulyItems.map(makeValuableCard).join('')}</div>` : '';
+
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortValuables('high')" },
     { label: 'Cheapest first',       value: 'low',  onClick: "sortValuables('low')"  }
@@ -125,14 +136,18 @@ function renderValuables(sort = 'high') {
   const xmasLink = christmasItems.length > 0
     ? `<a onclick="document.getElementById('val-cat-christmas')?.scrollIntoView({behavior:'smooth',block:'start'})">Christmas</a>`
     : '';
-  const jumpNav = `<div class="page-jump-nav">${jumpLinks}${xmasLink}</div>`;
+  const fourthLink = fourthOfJulyItems.length > 0
+    ? `<a onclick="document.getElementById('val-cat-4th-of-july')?.scrollIntoView({behavior:'smooth',block:'start'})">4th of July</a>`
+    : '';
+  const jumpNav = `<div class="page-jump-nav">${jumpLinks}${xmasLink}${fourthLink}</div>`;
 
   return `
     <h2>VALUABLES</h2>
     ${sortButtons}
     ${jumpNav}
     ${sections}
-    ${christmasSection}`;
+    ${christmasSection}
+    ${fourthOfJulySection}`;
 }
 
 function sortValuables(order) {
