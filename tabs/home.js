@@ -12,7 +12,7 @@ const UPDATES = [
     // { version: "D.12/M.12/Y.2025", description: "Christmas Event", color: "#00ffaaff", color2: "#ffffffff" }
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-07-20T20:00:00+03:00');
+const COUNTDOWN_TARGET = new Date('2026-07-25T20:00:00+03:00');
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
 
 function renderHome() {
