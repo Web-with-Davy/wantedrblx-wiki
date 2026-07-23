@@ -22,9 +22,7 @@ const PAGE_NAMES = {
 
 function getCurrentPage() {
     const hash = window.location.hash.replace(/^#/, '');
-    const path = window.location.pathname.replace(/\/$/, '').split('/').pop().replace('.html', '');
     if (VALID_PAGES.includes(hash)) return hash;
-    if (VALID_PAGES.includes(path)) return path;
     return 'home';
 }
 window.getCurrentPage = getCurrentPage;
@@ -95,16 +93,8 @@ function loadPage(page, saveToHistory = true) {
         }
 
         if (saveToHistory) {
-            try {
-                const isFileProtocol = window.location.protocol === 'file:';
-                const url = isFileProtocol
-                    ? (page === "home" ? "#" : `#${page}`)
-                    : (page === "home" ? "/" : `/${page}`);
-                window.history.pushState({ page }, "", url);
-            } catch (e) {
-                console.warn("History API pushState failed, falling back to hash.");
-                window.location.hash = page === "home" ? "" : page;
-            }
+            const url = page === "home" ? "#" : `#${page}`;
+            window.history.pushState({ page }, "", url);
         }
 
         if (page === "home") {
@@ -149,10 +139,7 @@ window.addEventListener("popstate", (event) => {
 
     if (!page) {
         const hash = window.location.hash.replace(/^#/, '');
-        const path = window.location.pathname.replace(/\/$/, '').split('/').pop().replace('.html', '');
-        if (VALID_PAGES.includes(hash)) page = hash;
-        else if (VALID_PAGES.includes(path)) page = path;
-        else page = "home";
+        page = VALID_PAGES.includes(hash) ? hash : "home";
     }
 
     loadPage(page, false);
@@ -291,11 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.audioUnlocked = true;
 
             const hash = window.location.hash.replace(/^#/, '');
-            const path = window.location.pathname.replace(/\/$/, '').split('/').pop().replace('.html', '');
-
-            let initialPage = "home";
-            if (VALID_PAGES.includes(hash)) initialPage = hash;
-            else if (VALID_PAGES.includes(path)) initialPage = path;
+            const initialPage = VALID_PAGES.includes(hash) ? hash : "home";
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
             if (targetTab) {
