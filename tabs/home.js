@@ -1,5 +1,5 @@
 const UPDATES = [
-    { version: "D.20/M.07/Y.2026", description: "Police Update", color: "#0091ffff", color2: "#0056b3ff" },
+    { version: "D.25/M.07/Y.2026", description: "Police Update", color: "#0091ffff", color2: "#0056b3ff" },
     { version: "D.04/M.07/Y.2026", description: "4th of July 2026 Event", color: "#ff0000ff", color2: "#ffffffff" },
     // { version: "D.27/M.06/Y.2026", description: "New Guns & Vehicles", color: "#0091ffff", color2: "#ffffffff" },
     // { version: "D.13/M.06/Y.2026", description: "Robbery Revamp", color: "#ff0000ff", color2: "#ffffffff" },
