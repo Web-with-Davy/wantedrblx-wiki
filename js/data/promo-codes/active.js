@@ -9,5 +9,5 @@ const PROMO_CODES_ACTIVE = [
   { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Tier 1 Vehicle Crates", description: "Free Sawn Off Shotgun and 2x Tier 1 Vehicle Crates", active: true },
   { code: "USA250", reward: "2026 Firework Wrap", description: "Free 2026 Firework Wrap", active: true },
   { code: "FIREWORKS", reward: "10x Fireworks", description: "Free 10 Fireworks", active: true },
-  { code: "LEO", reward: "1x Tier 1 Vehicle Crate", description: "Free 1 Tier 1 Vehicle Crate", active: true }
+  { code: "POLICE", reward: "x2 Tier 1 Vehicle Crates", description: "Free 2 Tier 1 Vehicle Crates", active: true }
 ];
