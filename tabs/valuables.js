@@ -1,10 +1,10 @@
 function makeValuableCard(item) {
-  const name   = item.name  || '';
-  const slug   = item.id    || generateSlug(name);
+  const name = item.name || '';
+  const slug = item.id || generateSlug(name);
   const imgSrc = `images/valuables/${slug}.${CARD_IMG_EXT}`;
 
-  const rarity      = RARITIES[item.rarity];
-  const rarityName  = rarity ? rarity.name  : '';
+  const rarity = RARITIES[item.rarity];
+  const rarityName = rarity ? rarity.name : '';
   const rarityClass = rarity ? rarity.class : '';
 
   const priceHtml = formatPrice(item.price) || '—';
@@ -21,9 +21,9 @@ function makeValuableCard(item) {
     ? `<div class="val-stat"><span class="val-stat-label">Location</span><span class="val-stat-value">${item.commonLocation}</span></div>`
     : '';
 
-  const hiddenStats  = weightHtml + locationHtml;
-  const showButton   = item.showMoreButton !== false && hiddenStats.trim() !== '';
-  const cardId       = `val-card-${slug}-${++_cardIdCounter}`;
+  const hiddenStats = weightHtml + locationHtml;
+  const showButton = item.showMoreButton !== false && hiddenStats.trim() !== '';
+  const cardId = `val-card-${slug}-${++_cardIdCounter}`;
 
   const hiddenBlock = hiddenStats ? `
     <div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">
@@ -45,7 +45,7 @@ function makeValuableCard(item) {
           alt="${name}"
           loading="lazy"
           class="val-img"
-          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');"
+          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');"
         >
         ${rarityName ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
         ${perKgHtml}
@@ -76,21 +76,21 @@ function renderValuables(sort = 'high') {
   });
 
   const categories = [
-    { type: 'Gems',          label: 'Gems'          },
-    { type: 'Jewelry',       label: 'Jewelry'       },
-    { type: 'Electronics',   label: 'Electronics'   },
-    { type: 'Tech',          label: 'Tech'          },
-    { type: 'Shoes',         label: 'Shoes'         },
+    { type: 'Gems', label: 'Gems' },
+    { type: 'Jewelry', label: 'Jewelry' },
+    { type: 'Electronics', label: 'Electronics' },
+    { type: 'Tech', label: 'Tech' },
+    { type: 'Shoes', label: 'Shoes' },
     { type: 'Miscellaneous', label: 'Miscellaneous' },
     { type: 'Mission Items', label: 'Mission Items' },
-    { type: 'Easter',        label: 'Easter'        },
+    { type: 'Easter', label: 'Easter' },
   ];
 
   const sections = categories.map((cat, index) => {
     const items = sortedRegular.filter(item => item.category === cat.type);
     if (items.length === 0) return '';
 
-    const divider  = index > 0 ? '<div class="val-section-divider"></div>' : '';
+    const divider = index > 0 ? '<div class="val-section-divider"></div>' : '';
     const anchorId = `val-cat-${generateSlug(cat.type)}`;
 
     return `
@@ -126,7 +126,7 @@ function renderValuables(sort = 'high') {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortValuables('high')" },
-    { label: 'Cheapest first',       value: 'low',  onClick: "sortValuables('low')"  }
+    { label: 'Cheapest first', value: 'low', onClick: "sortValuables('low')" }
   ], sort);
 
   const jumpLinks = categories

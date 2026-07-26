@@ -289,7 +289,7 @@
 #july-overlay.july-fade-out,
 #july-text.july-fade-out,
 #july-dimmer.july-fade-out {
-    animation: julyFadeOutAll 1.5s ease-out forwards !important;
+    animation: julyFadeOutAll 1.5s ease-out forwards;
 }
 
 @keyframes julyFadeOutAll {

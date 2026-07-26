@@ -1,13 +1,14 @@
-const YOUTUBER_ENABLED = false;
+const YOUTUBER_ENABLED = true;
 
 (function () {
     'use strict';
 
     if (!YOUTUBER_ENABLED) return;
 
-    const REDIRECT_URL = 'videolink';
-    const HAIR_IMAGE = 'imagelink;
+    const REDIRECT_URL = 'https://www.youtube.com/watch?v=FCzSsipvnlc';
+    const HAIR_IMAGE = 'https://tr.rbxcdn.com/180DAY-224bb55411c9176a317711b4fd30b7ab/420/420/HairAccessory/Webp/noFilter';
     const FALL_MS = 7000;
+    const DELAY_MS = 2000;
 
     const style = document.createElement('style');
     style.textContent = `
@@ -52,7 +53,7 @@ const YOUTUBER_ENABLED = false;
         setTimeout(() => {
             link.remove();
             setTimeout(spawnHair, DELAY_MS);
-        }, FALL_MS + 200);
+        }, 100000);
     }
 
     function init() {

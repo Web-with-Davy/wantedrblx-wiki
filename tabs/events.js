@@ -1,11 +1,11 @@
 function renderEvents() {
   const cards = EVENTS_DATA.map(event => {
-    const name    = event.title || event.name || '';
+    const name = event.title || event.name || '';
     const imgSlug = event.image || event.id || generateSlug(name);
-    const cardId  = `card-${imgSlug}-${++_cardIdCounter}`;
-    const imgSrc  = `images/events/${imgSlug}.${CARD_IMG_EXT}`;
+    const cardId = `card-${imgSlug}-${++_cardIdCounter}`;
+    const imgSrc = `images/events/${imgSlug}.${CARD_IMG_EXT}`;
 
-    const dc = event.dateColor   ? `color:${event.dateColor};`   : '';
+    const dc = event.dateColor ? `color:${event.dateColor};` : '';
     const ds = event.dateOutline
       ? `border-color:${event.dateOutline};box-shadow:0 0 8px ${event.dateOutline};text-shadow:0 0 5px ${event.dateOutline};`
       : '';
@@ -14,7 +14,7 @@ function renderEvents() {
       : '';
 
     const accentColor1 = event.dateOutline || '#ffffff';
-    const accentColor2 = event.dateColor   || '#ffffff';
+    const accentColor2 = event.dateColor || '#ffffff';
 
     const featuresHtml = event.features && event.features.length > 0 ? `
       <div class="val-stat" style="flex-direction:column;align-items:flex-start;gap:6px;">
@@ -44,7 +44,7 @@ function renderEvents() {
             loading="lazy"
             class="val-img"
             style="object-fit:cover;"
-            onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');"
+            onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');"
           >
           ${dateTag}
         </div>

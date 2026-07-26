@@ -5,31 +5,32 @@ function renderWeapons(sort = "high") {
     return sort === "high" ? valB - valA : valA - valB;
   };
 
-  const sortedGuns       = [...GUNS_DATA].sort(sortFn);
+  const sortedGuns = [...GUNS_DATA].sort(sortFn);
   const sortedExplosives = [...EXPLOSIVES_DATA].sort(sortFn);
-  const sortedTools      = [...TOOLS_DATA].sort(sortFn);
+  const sortedEquipment = [...EQUIPMENT_DATA].sort(sortFn);
+  const sortedTools = [...TOOLS_DATA].sort(sortFn);
 
   function makeWeaponCard(item) {
     const hasAttachments = item.attachments && Object.keys(item.attachments).length > 0;
-    const contractHtml   = formatPrice(item.contractPrice);
-    const sellHtml       = formatPrice(item.sellPrice);
-    const reBuyHtml      = formatPrice(item.reBuyPrice);
+    const contractHtml = formatPrice(item.contractPrice);
+    const sellHtml = formatPrice(item.sellPrice);
+    const reBuyHtml = formatPrice(item.reBuyPrice);
 
     const visibleStats = [
       contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
     ].filter(Boolean);
 
     const hiddenStats = [
-      { label: 'Obtaining',    value: item.obtaining },
-      { label: 'Location',     value: item.location || (item.stats && item.stats.location) },
+      { label: 'Obtaining', value: item.obtaining },
+      { label: 'Location', value: item.location || (item.stats && item.stats.location) },
       reBuyHtml ? { label: 'Re-Buy Price', value: reBuyHtml } : null,
-      sellHtml  ? { label: 'Sell Price',   value: sellHtml  } : null,
-      { label: 'Ammo',         value: item.stats && item.stats.ammo },
-      { label: 'Ammo Cost',    value: item.stats && item.stats.ammoPrice },
-      { label: 'Damage',       value: item.stats && item.stats.damage },
-      { label: 'Fire Rate',    value: item.stats && item.stats.firerate },
+      sellHtml ? { label: 'Sell Price', value: sellHtml } : null,
+      { label: 'Ammo', value: item.stats && item.stats.ammo },
+      { label: 'Ammo Cost', value: item.stats && item.stats.ammoPrice },
+      { label: 'Damage', value: item.stats && item.stats.damage },
+      { label: 'Fire Rate', value: item.stats && item.stats.firerate },
       { label: 'Reload Speed', value: item.stats && item.stats.reload ? `${item.stats.reload}s` : null },
-      { label: 'Accuracy',     value: item.stats && item.stats.accuracy },
+      { label: 'Accuracy', value: item.stats && item.stats.accuracy },
     ].filter(s => s && s.value !== undefined && s.value !== null && s.value !== '');
 
     if (!hasAttachments) {
@@ -63,12 +64,13 @@ function renderWeapons(sort = "high") {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortWeapons('high')" },
-    { label: 'Cheapest first',       value: 'low',  onClick: "sortWeapons('low')"  }
+    { label: 'Cheapest first', value: 'low', onClick: "sortWeapons('low')" }
   ], sort);
 
   const jumpNav = `<div class="page-jump-nav">
     <a onclick="document.getElementById('weapons-guns')?.scrollIntoView({behavior:'smooth'})">Guns</a>
     <a onclick="document.getElementById('weapons-explosives')?.scrollIntoView({behavior:'smooth'})">Explosives</a>
+    <a onclick="document.getElementById('weapons-equipment')?.scrollIntoView({behavior:'smooth'})">Equipment</a>
     <a onclick="document.getElementById('weapons-tools')?.scrollIntoView({behavior:'smooth'})">Tools</a>
   </div>`;
 
@@ -83,11 +85,13 @@ function renderWeapons(sort = "high") {
     <h2>WEAPONS</h2>
     ${sortButtons}
     ${jumpNav}
-    ${section('weapons-guns',       'Guns',       makeSectionCards(sortedGuns))}
+    ${section('weapons-guns', 'Guns', makeSectionCards(sortedGuns))}
     <div class="val-section-divider"></div>
     ${section('weapons-explosives', 'Explosives', makeSectionCards(sortedExplosives))}
     <div class="val-section-divider"></div>
-    ${section('weapons-tools',      'Tools',      makeSectionCards(sortedTools))}
+    ${section('weapons-equipment', 'Equipment', makeSectionCards(sortedEquipment))}
+    <div class="val-section-divider"></div>
+    ${section('weapons-tools', 'Tools', makeSectionCards(sortedTools))}
   `;
 }
 

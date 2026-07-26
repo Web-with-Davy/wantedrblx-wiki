@@ -289,7 +289,7 @@
 #birthday-overlay.fade-out,
 #birthday-text.fade-out,
 #birthday-dimmer.fade-out {
-    animation: fadeOutAll 1.5s ease-out forwards !important;
+    animation: fadeOutAll 1.5s ease-out forwards;
 }
 
 @keyframes fadeOutAll {

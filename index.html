@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanted Wiki - Roblox Wanted Game Wiki</title>
 
-    <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="images/logo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
+    <link rel="icon" type="image/x-icon" href="images/logo.webp">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/logo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.webp">
     <link rel="manifest" href="site.webmanifest">
     <link rel="canonical" href="https://wantedrblx.com/">
 
@@ -20,16 +20,15 @@
         content="Wanted Roblox Wiki, Roblox Wanted, Wanted Wiki, Wanted weapons, Wanted vehicles, Wanted missions, Wanted promo codes, Wanted ATMs, Wanted locations, Wanted NPCs, Wanted valuables, Wanted gun crates">
     <meta name="robots" content="index, follow">
 
-    <meta name="thumbnail" content="https://wantedrblx.com/images/logo.png">
+    <meta name="thumbnail" content="https://wantedrblx.com/images/logo.webp">
 
     <meta property="og:title" content="Wanted Wiki - Roblox Wanted Game Wiki">
     <meta property="og:description"
         content="The Roblox Wanted Wiki — find all ATMs, Events, Gun Crates, Locations, Missions, NPCs, Promo Codes, Store, Valuables, Vehicles, Weapons and more!">
     <meta property="og:url" content="https://wantedrblx.com/">
-    <meta property="og:image" content="https://wantedrblx.com/images/logo.png">
+    <meta property="og:image" content="https://wantedrblx.com/images/logo.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Wanted Wiki — The Ultimate Roblox Wanted Guide">
     <meta property="og:site_name" content="Wanted Wiki">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#000001">
@@ -44,7 +43,7 @@
             "description": "The ultimate Wanted Roblox wiki. Find all weapons, vehicles, missions, NPCs, valuables, locations, ATMs, vaults, promo codes and gun crates in the Roblox game Wanted.",
             "image": {
                 "@type": "ImageObject",
-                "url": "https://wantedrblx.com/images/favicon.png",
+                "url": "https://wantedrblx.com/images/logo.webp",
                 "width": 1080,
                 "height": 1080
             },
@@ -298,16 +297,28 @@
     <audio id="sfx-hover" src="sounds/hover.mp3" preload="auto"></audio>
     <audio id="sfx-load" src="sounds/load.mp3" preload="auto"></audio>
 
+    <!-- Core -->
     <script src="js/rain-bg.js"></script>
-
     <script defer src="js/config.js"></script>
 
-    <!-- ATMs & Vaults -->
+    <!-- Data: ATMs -->
     <script defer src="js/data/atms/atms.js"></script>
     <script defer src="js/data/atms/vaults.js"></script>
     <script defer src="js/jsdata/atms.js"></script>
 
-    <!-- Gun Crates -->
+    <!-- Data: Contributors -->
+    <script defer src="js/data/contributors/contributors.js"></script>
+    <script defer src="js/data/contributors/managers.js"></script>
+    <script defer src="js/data/contributors/staff.js"></script>
+    <script defer src="js/jsdata/contributors.js"></script>
+
+    <!-- Data: Events -->
+    <script defer src="js/data/events/christmas-2025.js"></script>
+    <script defer src="js/data/events/easter-2026.js"></script>
+    <script defer src="js/data/events/july-4th.js"></script>
+    <script defer src="js/jsdata/events.js"></script>
+
+    <!-- Data: Gun Crates -->
     <script defer src="js/data/gun-crates/ak-47-crate.js"></script>
     <script defer src="js/data/gun-crates/aug-a1-crate.js"></script>
     <script defer src="js/data/gun-crates/awm-crate.js"></script>
@@ -319,10 +330,13 @@
     <script defer src="js/data/gun-crates/uzi-crate.js"></script>
     <script defer src="js/jsdata/gun-crates.js"></script>
 
-
-    <!-- Missions -->
+    <!-- Data: Missions -->
     <script defer src="js/data/missions/Bert/bounty-hunt.js"></script>
     <script defer src="js/data/missions/Bert/loyalty-test.js"></script>
+    <script defer src="js/data/missions/Bert/community-outreach.js"></script>
+    <script defer src="js/data/missions/Bert/stolen-goods.js"></script>
+    <script defer src="js/data/missions/Bert/service-fee.js"></script>
+    <script defer src="js/data/missions/Bert/counter-intel.js"></script>
     <script defer src="js/data/missions/Christmas/jingle-balls.js"></script>
     <script defer src="js/data/missions/Christmas/santas-helper.js"></script>
     <script defer src="js/data/missions/Christmas/toy-drive.js"></script>
@@ -365,27 +379,57 @@
     <script defer src="js/data/missions/Sir B/weapons-cache.js"></script>
     <script defer src="js/jsdata/missions.js"></script>
 
-    <!-- Valuables -->
+    <!-- Data: NPCs -->
+    <script defer src="js/data/npcs/bert.js"></script>
+    <script defer src="js/data/npcs/cody.js"></script>
+    <script defer src="js/data/npcs/dan.js"></script>
+    <script defer src="js/data/npcs/davy.js"></script>
+    <script defer src="js/data/npcs/erik.js"></script>
+    <script defer src="js/data/npcs/justin.js"></script>
+    <script defer src="js/data/npcs/ofy.js"></script>
+    <script defer src="js/data/npcs/rod.js"></script>
+    <script defer src="js/data/npcs/sir-b.js"></script>
+    <script defer src="js/data/npcs/softy.js"></script>
+    <script defer src="js/jsdata/npcs.js"></script>
+
+    <!-- Data: Promo Codes -->
+    <script defer src="js/data/promo-codes/active.js"></script>
+    <script defer src="js/data/promo-codes/expired.js"></script>
+    <script defer src="js/jsdata/promo-codes.js"></script>
+
+    <!-- Data: Store -->
+    <script defer src="js/data/store/bag-boosts.js"></script>
+    <script defer src="js/data/store/cash.js"></script>
+    <script defer src="js/data/store/money-printers.js"></script>
+    <script defer src="js/data/store/other.js"></script>
+    <script defer src="js/data/store/packs.js"></script>
+    <script defer src="js/jsdata/store.js"></script>
+
+    <!-- Data: Valuables -->
+    <script defer src="js/data/valuables/4th-of-july.js"></script>
+    <script defer src="js/data/valuables/christmas.js"></script>
+    <script defer src="js/data/valuables/easter.js"></script>
+    <script defer src="js/data/valuables/electronics.js"></script>
     <script defer src="js/data/valuables/gems.js"></script>
     <script defer src="js/data/valuables/jewelry.js"></script>
-    <script defer src="js/data/valuables/electronics.js"></script>
-    <script defer src="js/data/valuables/tech.js"></script>
-    <script defer src="js/data/valuables/shoes.js"></script>
     <script defer src="js/data/valuables/miscellaneous.js"></script>
     <script defer src="js/data/valuables/mission-items.js"></script>
-    <script defer src="js/data/valuables/easter.js"></script>
-    <script defer src="js/data/valuables/christmas.js"></script>
-    <script defer src="js/data/valuables/4th-of-july.js"></script>
+    <script defer src="js/data/valuables/shoes.js"></script>
+    <script defer src="js/data/valuables/tech.js"></script>
     <script defer src="js/jsdata/valuables.js"></script>
 
-    <!-- Vehicles -->
+    <!-- Data: Vehicles -->
+    <script defer src="js/data/vehicles/Flying/Crates/panther.js"></script>
+    <script defer src="js/data/vehicles/Flying/Davis/maverick.js"></script>
+    <script defer src="js/data/vehicles/Flying/Davis/mini-bird.js"></script>
+    <script defer src="js/data/vehicles/Flying/Davis/scout.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/beam.js"></script>
-    <script defer src="js/data/vehicles/Ground/Syndicate/blade.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/contender.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/crowline.js"></script>
-    <script defer src="js/data/vehicles/Ground/Starter/cruiser.js"></script>
+    <script defer src="js/data/vehicles/Ground/Bayview/falcon-gt.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/g-cruiser.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/gemstone.js"></script>
+    <script defer src="js/data/vehicles/Ground/Bayview/mochi.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/nomad.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/pulse-477.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/ranger.js"></script>
@@ -395,116 +439,88 @@
     <script defer src="js/data/vehicles/Ground/Bayview/vanguard.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/zoro.js"></script>
     <script defer src="js/data/vehicles/Ground/Bayview/zorvello.js"></script>
-    <script defer src="js/data/vehicles/Ground/Bayview/falcon-gt.js"></script>
-    <script defer src="js/data/vehicles/Ground/Crates/roku.js"></script>
-    <script defer src="js/data/vehicles/Ground/Crates/horizon.js"></script>
-    <script defer src="js/data/vehicles/Ground/Crates/temporo.js"></script>
-    <script defer src="js/data/vehicles/Ground/Crates/pulse-477-rs.js"></script>
     <script defer src="js/data/vehicles/Ground/Crates/empyrean.js"></script>
+    <script defer src="js/data/vehicles/Ground/Crates/horizon.js"></script>
+    <script defer src="js/data/vehicles/Ground/Crates/pulse-477-rs.js"></script>
+    <script defer src="js/data/vehicles/Ground/Crates/roku.js"></script>
+    <script defer src="js/data/vehicles/Ground/Crates/temporo.js"></script>
     <script defer src="js/data/vehicles/Ground/Daily/rival.js"></script>
-    <script defer src="js/data/vehicles/Ground/Bayview/mochi.js"></script>
-    <script defer src="js/data/vehicles/Flying/Davis/mini-bird.js"></script>
-    <script defer src="js/data/vehicles/Flying/Crates/panther.js"></script>
-    <script defer src="js/data/vehicles/Flying/Davis/scout.js"></script>
+    <script defer src="js/data/vehicles/Ground/Police/interceptor.js"></script>
+    <script defer src="js/data/vehicles/Ground/Police/warden.js"></script>
+    <script defer src="js/data/vehicles/Ground/Starter/cruiser.js"></script>
+    <script defer src="js/data/vehicles/Ground/Syndicate/blade.js"></script>
     <script defer src="js/jsdata/vehicles.js"></script>
 
-    <!-- Weapons -->
-    <script defer src="js/data/weapons/Pistols/deagle.js"></script>
-    <script defer src="js/data/weapons/Pistols/glock-18c.js"></script>
-    <script defer src="js/data/weapons/Pistols/m9.js"></script>
-    <script defer src="js/data/weapons/SMGs/kriss-vector.js"></script>
-    <script defer src="js/data/weapons/SMGs/skorpion.js"></script>
-    <script defer src="js/data/weapons/SMGs/ump-45.js"></script>
-    <script defer src="js/data/weapons/SMGs/uzi.js"></script>
-    <script defer src="js/data/weapons/SMGs/mp5k.js"></script>
-    <script defer src="js/data/weapons/Shotguns/benelli-m1014.js"></script>
-    <script defer src="js/data/weapons/Shotguns/model-870.js"></script>
-    <script defer src="js/data/weapons/Shotguns/spas-12.js"></script>
-    <script defer src="js/data/weapons/Rifles/ak-47.js"></script>
-    <script defer src="js/data/weapons/Rifles/arx-160.js"></script>
-    <script defer src="js/data/weapons/Rifles/aug-a1.js"></script>
-    <script defer src="js/data/weapons/Rifles/fn-fal.js"></script>
-    <script defer src="js/data/weapons/Rifles/m4a1.js"></script>
-    <script defer src="js/data/weapons/Rifles/m60.js"></script>
-    <script defer src="js/data/weapons/Snipers/awm.js"></script>
-    <script defer src="js/data/weapons/Snipers/svd.js"></script>
-    <script defer src="js/data/weapons/Airdrop/barrett-m82.js"></script>
-    <script defer src="js/data/weapons/Airdrop/golden-ak-47.js"></script>
-    <script defer src="js/data/weapons/Airdrop/golden-barrett-m82.js"></script>
-    <script defer src="js/data/weapons/Airdrop/golden-deagle.js"></script>
-    <script defer src="js/data/weapons/Explosives/explosives.js"></script>
-    <script defer src="js/data/weapons/Tools/tools.js"></script>
-    <script defer src="js/data/weapons/Shotguns/sawn-off.js"></script>
-    <script defer src="js/data/weapons/Rifles/light-carbine.js"></script>
-    <script defer src="js/jsdata/weapons.js"></script>
-
-    <!-- Store -->
-    <script defer src="js/data/store/bag-boosts.js"></script>
-    <script defer src="js/data/store/cash.js"></script>
-    <script defer src="js/data/store/money-printers.js"></script>
-    <script defer src="js/data/store/other.js"></script>
-    <script defer src="js/data/store/packs.js"></script>
-    <script defer src="js/jsdata/store.js"></script>
-
-    <!-- Contributors -->
-    <script defer src="js/data/contributors/managers.js"></script>
-    <script defer src="js/data/contributors/staff.js"></script>
-    <script defer src="js/data/contributors/contributors.js"></script>
-    <script defer src="js/jsdata/contributors.js"></script>
-
-    <!-- Videos -->
+    <!-- Data: Videos -->
     <script defer src="js/data/videos/a.js"></script>
     <script defer src="js/data/videos/b.js"></script>
     <script defer src="js/data/videos/c.js"></script>
     <script defer src="js/jsdata/videos.js"></script>
 
-    <!-- NPCs -->
-    <script defer src="js/data/npcs/erik.js"></script>
-    <script defer src="js/data/npcs/dan.js"></script>
-    <script defer src="js/data/npcs/sir-b.js"></script>
-    <script defer src="js/data/npcs/bert.js"></script>
-    <script defer src="js/data/npcs/softy.js"></script>
-    <script defer src="js/data/npcs/justin.js"></script>
-    <script defer src="js/data/npcs/cody.js"></script>
-    <script defer src="js/data/npcs/davy.js"></script>
-    <script defer src="js/data/npcs/rod.js"></script>
-    <script defer src="js/data/npcs/ofy.js"></script>
-    <script defer src="js/jsdata/npcs.js"></script>
+    <!-- Data: Weapons -->
+    <script defer src="js/data/weapons/Airdrop/barrett-m82.js"></script>
+    <script defer src="js/data/weapons/Airdrop/golden-ak-47.js"></script>
+    <script defer src="js/data/weapons/Airdrop/golden-barrett-m82.js"></script>
+    <script defer src="js/data/weapons/Airdrop/golden-deagle.js"></script>
+    <script defer src="js/data/weapons/Equipment/ballistic-shield.js"></script>
+    <script defer src="js/data/weapons/Explosives/c4.js"></script>
+    <script defer src="js/data/weapons/Explosives/flashbang.js"></script>
+    <script defer src="js/data/weapons/Explosives/grenade-launcher.js"></script>
+    <script defer src="js/data/weapons/Explosives/m67.js"></script>
+    <script defer src="js/data/weapons/Explosives/rpg-7.js"></script>
+    <script defer src="js/data/weapons/Pistols/deagle.js"></script>
+    <script defer src="js/data/weapons/Pistols/glock-18c.js"></script>
+    <script defer src="js/data/weapons/Pistols/m9.js"></script>
+    <script defer src="js/data/weapons/Rifles/ak-47.js"></script>
+    <script defer src="js/data/weapons/Rifles/arx-160.js"></script>
+    <script defer src="js/data/weapons/Rifles/aug-a1.js"></script>
+    <script defer src="js/data/weapons/Rifles/fn-fal.js"></script>
+    <script defer src="js/data/weapons/Rifles/light-carbine.js"></script>
+    <script defer src="js/data/weapons/Rifles/m4a1.js"></script>
+    <script defer src="js/data/weapons/Rifles/m60.js"></script>
+    <script defer src="js/data/weapons/SMGs/kriss-vector.js"></script>
+    <script defer src="js/data/weapons/SMGs/mp5k.js"></script>
+    <script defer src="js/data/weapons/SMGs/p90.js"></script>
+    <script defer src="js/data/weapons/SMGs/skorpion.js"></script>
+    <script defer src="js/data/weapons/SMGs/ump-45.js"></script>
+    <script defer src="js/data/weapons/SMGs/uzi.js"></script>
+    <script defer src="js/data/weapons/Shotguns/benelli-m1014.js"></script>
+    <script defer src="js/data/weapons/Shotguns/model-870.js"></script>
+    <script defer src="js/data/weapons/Shotguns/sawn-off.js"></script>
+    <script defer src="js/data/weapons/Shotguns/spas-12.js"></script>
+    <script defer src="js/data/weapons/Snipers/awm.js"></script>
+    <script defer src="js/data/weapons/Snipers/svd.js"></script>
+    <script defer src="js/data/weapons/Tools/buzzsaw.js"></script>
+    <script defer src="js/data/weapons/Tools/vault-cracker.js"></script>
+    <script defer src="js/jsdata/weapons.js"></script>
 
-    <!-- Promo Codes -->
-    <script defer src="js/data/promo-codes/active.js"></script>
-    <script defer src="js/data/promo-codes/expired.js"></script>
-    <script defer src="js/jsdata/promo-codes.js"></script>
-
-    <!-- Events -->
-    <script defer src="js/data/events/christmas-2025.js"></script>
-    <script defer src="js/data/events/easter-2026.js"></script>
-    <script defer src="js/data/events/july-4th.js"></script>
-    <script defer src="js/jsdata/events.js"></script>
-    <script defer src="js/renderer.js"></script>
+    <!-- App: Tabs -->
     <script defer src="tabs/atms.js"></script>
+    <script defer src="tabs/events.js"></script>
     <script defer src="tabs/gun-crates.js"></script>
+    <script defer src="tabs/home.js"></script>
     <script defer src="tabs/locations.js"></script>
     <script defer src="tabs/missions.js"></script>
     <script defer src="tabs/npcs.js"></script>
+    <script defer src="tabs/promo-codes.js"></script>
+    <script defer src="tabs/store.js"></script>
     <script defer src="tabs/valuables.js"></script>
     <script defer src="tabs/vehicles.js"></script>
     <script defer src="tabs/weapons.js"></script>
-    <script defer src="tabs/store.js"></script>
-    <script defer src="tabs/home.js"></script>
-    <script defer src="tabs/events.js"></script>
-    <script defer src="tabs/promo-codes.js"></script>
+
+    <!-- App: Features -->
+    <script defer src="js/renderer.js"></script>
     <script defer src="js/ui.js"></script>
     <script defer src="js/settings.js"></script>
     <script defer src="js/garage.js"></script>
     <script defer src="js/visitor.js"></script>
     <script defer src="js/search.js"></script>
     <script defer src="js/easter_eggs.js"></script>
-    <script defer src="js/app.js"></script>
     <script defer src="js/birthday.js"></script>
     <script defer src="js/4th-of-july.js"></script>
     <script defer src="js/youtuber.js"></script>
     <script defer src="js/tutorial.js"></script>
+    <script defer src="js/app.js"></script>
     <script>
         (function () {
             function isMobile() {

@@ -4,22 +4,22 @@ let _cardIdCounter = 0;
 // Change this one value to update ALL card images across ALL tabs
 const CARD_IMG_EXT = 'webp';
 
-const buildStatRow = ({label, value}) => {
+const buildStatRow = ({ label, value }) => {
   if (!value && value !== 0) return '';
   return `<div class="val-stat"><span class="val-stat-label">${label}</span><span class="val-stat-value">${value}</span></div>`;
 };
 
 function makeUniversalCard(item, opts = {}) {
-  const name    = item.name || item.title || item.code || '';
-  const slug    = item.id   || generateSlug(name);
-  const ext     = opts.ext    || CARD_IMG_EXT;
-  const folder  = opts.folder || '';
-  const imgSrc  = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
+  const name = item.name || item.title || item.code || '';
+  const slug = item.id || generateSlug(name);
+  const ext = opts.ext || CARD_IMG_EXT;
+  const folder = opts.folder || '';
+  const imgSrc = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
   const codeText = opts.codeText || null;
 
-  const rarityKey   = opts.rarityKey;
-  const rarity      = rarityKey ? (RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey]) : null;
-  const rarityName  = rarity ? rarity.name  : '';
+  const rarityKey = opts.rarityKey;
+  const rarity = rarityKey ? (RARITIES[rarityKey] || DIFFICULTIES[rarityKey] || TEAMS[rarityKey]) : null;
+  const rarityName = rarity ? rarity.name : '';
   const rarityClass = rarity ? rarity.class : '';
 
   const accentStyle = opts.accentColor
@@ -28,7 +28,7 @@ function makeUniversalCard(item, opts = {}) {
 
   let dateTagHtml = '';
   if (opts.dateTag) {
-    const dc = opts.dateColor   ? `color:${opts.dateColor};`   : '';
+    const dc = opts.dateColor ? `color:${opts.dateColor};` : '';
     const ds = opts.dateOutline ? `border-color:${opts.dateOutline};box-shadow:0 0 8px ${opts.dateOutline};text-shadow:0 0 5px ${opts.dateOutline};` : '';
     dateTagHtml = `<span class="val-rarity-tag" style="${dc}${ds}">${opts.dateTag}</span>`;
   }
@@ -36,17 +36,17 @@ function makeUniversalCard(item, opts = {}) {
   const cardId = `card-${slug}-${++_cardIdCounter}`;
 
   const visibleRows = (opts.visibleStats || []).map(buildStatRow).join('');
-  const hiddenRows  = (opts.hiddenStats  || []).map(buildStatRow).join('');
+  const hiddenRows = (opts.hiddenStats || []).map(buildStatRow).join('');
 
-  const hasHidden  = hiddenRows.trim() !== '' || (opts.extraBodyHtml || '').trim() !== '';
+  const hasHidden = hiddenRows.trim() !== '' || (opts.extraBodyHtml || '').trim() !== '';
   const showButton = opts.showButton !== undefined
     ? opts.showButton
     : (item.showMoreButton !== false && hasHidden);
 
   const hiddenBlock = hasHidden ? `<div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">${hiddenRows}${opts.extraBodyHtml || ''}</div>` : '';
-  const toggleBtn   = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
+  const toggleBtn = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
 
-  const overlayHtml  = opts.overlayHtml  || '';
+  const overlayHtml = opts.overlayHtml || '';
   const overlayLabel = opts.overlayLabel || 'VIEW';
 
   const overlayBtn = overlayHtml
@@ -61,21 +61,21 @@ function makeUniversalCard(item, opts = {}) {
     </div>` : '';
 
   const headlineHtml = opts.headlineHtml || '';
-  const badgeHtml    = opts.badgeHtml    || '';
-  const wideClass    = opts.wide ? ' val-card-wide' : '';
+  const badgeHtml = opts.badgeHtml || '';
+  const wideClass = opts.wide ? ' val-card-wide' : '';
 
   return `
     <div class="val-card${wideClass}" data-rarity="${rarityKey || ''}">
       <div class="val-rarity-bar ${rarityClass}" ${accentStyle}></div>
       <div class="val-img-wrap">
         ${codeText
-          ? (() => {
-              const fs = Math.max(0.55, Math.min(1.8, 9 / codeText.length)) + 'rem';
-              return `<div class="val-code-display" style="--code-accent:${opts.accentColor||'#fff'};"><span class="val-code-text" style="font-size:${fs};">${codeText}</span></div>`;
-            })()
-          : `<img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img"
-          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');">`
-        }
+      ? (() => {
+        const fs = Math.max(0.55, Math.min(1.8, 9 / codeText.length)) + 'rem';
+        return `<div class="val-code-display" style="--code-accent:${opts.accentColor || '#fff'};"><span class="val-code-text" style="font-size:${fs};">${codeText}</span></div>`;
+      })()
+      : `<img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img"
+          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');">`
+    }
         ${rarityName && !opts.dateTag ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
         ${dateTagHtml}
         ${badgeHtml}
@@ -205,26 +205,26 @@ function renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder
 }
 
 function renderEventCard(item, visibleContent, hiddenContent, folder = 'events') {
-  const name    = item.title || item.name || '';
+  const name = item.title || item.name || '';
   const imgSlug = item.image || item.id || generateSlug(name);
-  const cardId  = `card-${imgSlug}-${++_cardIdCounter}`;
-  const imgSrc  = `images/${folder}/${imgSlug}.${CARD_IMG_EXT}`;
+  const cardId = `card-${imgSlug}-${++_cardIdCounter}`;
+  const imgSrc = `images/${folder}/${imgSlug}.${CARD_IMG_EXT}`;
 
-  const dc = item.dateColor   ? `color:${item.dateColor};`   : '';
+  const dc = item.dateColor ? `color:${item.dateColor};` : '';
   const ds = item.dateOutline ? `border-color:${item.dateOutline};box-shadow:0 0 8px ${item.dateOutline};text-shadow:0 0 5px ${item.dateOutline};` : '';
   const dateTagHtml = item.date ? `<span class="val-rarity-tag" style="${dc}${ds}">${item.date}</span>` : '';
 
-  const hasHidden  = (hiddenContent || '').trim() !== '';
+  const hasHidden = (hiddenContent || '').trim() !== '';
   const showButton = item.showMoreButton !== false && hasHidden;
   const hiddenBlock = hasHidden ? `<div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">${hiddenContent}</div>` : '';
-  const toggleBtn   = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
+  const toggleBtn = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
 
   return `
     <div class="val-card val-card-wide">
-      <div class="val-rarity-bar" style="background:linear-gradient(90deg,${item.dateOutline||'#fff'},${item.dateColor||'#fff'},${item.dateOutline||'#fff'});"></div>
+      <div class="val-rarity-bar" style="background:linear-gradient(90deg,${item.dateOutline || '#fff'},${item.dateColor || '#fff'},${item.dateOutline || '#fff'});"></div>
       <div class="val-img-wrap">
         <img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img" style="object-fit:cover;"
-          onerror="this.onerror=null;this.src='images/favicon.png';this.classList.add('val-img-fallback');">
+          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');">
         ${dateTagHtml}
       </div>
       <div class="val-body">
