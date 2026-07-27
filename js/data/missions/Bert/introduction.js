@@ -1,4 +1,4 @@
-const MISSIONS_BERT_INTRODUCTION_BERT = [
+const MISSIONS_BERT_INTRODUCTION = [
 
   {
     id: "introduction-bert",
