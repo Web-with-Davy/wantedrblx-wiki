@@ -1,67 +1,139 @@
-const MISSIONS_DATA = [
-  // Game Missions
-  ...MISSIONS_GAME_BANK_HEIST,
-  ...MISSIONS_GAME_GET_ROLLING,
-
-  // Bert Missions
-  ...MISSIONS_BERT_COMMUNITY_OUTREACH,
-  ...MISSIONS_BERT_STOLEN_GOODS,
-  ...MISSIONS_BERT_SERVICE_FEE,
-  ...MISSIONS_BERT_COUNTER_INTEL,
-  ...MISSIONS_BERT_HOT_PURSUIT,
-  ...MISSIONS_BERT_FIRST_RESPONDER,
-  ...MISSIONS_BERT_ON_PATROL,
-  ...MISSIONS_BERT_BULLETPROOF,
-  ...MISSIONS_BERT_PUBLIC_RELATIONS,
-  ...MISSIONS_BERT_COP_KILLER,
-  ...MISSIONS_BERT_DIRTY_MONEY,
-  ...MISSIONS_BERT_INTRODUCTION,
-
-  // Erik Missions
-  ...MISSIONS_ERIK_ARTISAN,
-
-  // Dan Missions
-  ...MISSIONS_DAN_FORBIDDEN_MEAT,
-
-  // Sir B Missions
-  ...MISSIONS_SIR_B_CONTRABAND,
-  ...MISSIONS_SIR_B_CRIME_SQUAD,
-  ...MISSIONS_SIR_B_DATA_DISK,
-  ...MISSIONS_SIR_B_FENCE,
-  ...MISSIONS_SIR_B_FRONT_TOWARD_ENEMY,
-  ...MISSIONS_SIR_B_FUEL_DEPOT,
-  ...MISSIONS_SIR_B_GEM_COLLECTOR,
-  ...MISSIONS_SIR_B_GOING_LOUD,
-  ...MISSIONS_SIR_B_HIDDEN_CARGO,
-  ...MISSIONS_SIR_B_INCRIMINATING_DATA,
-  ...MISSIONS_SIR_B_LIGHTS_OUT,
-  ...MISSIONS_SIR_B_LOCKPICKER,
-  ...MISSIONS_SIR_B_MOST_WANTED,
-  ...MISSIONS_SIR_B_NIGHTSTALKER,
-  ...MISSIONS_SIR_B_OASIS_ELEVEN,
-  ...MISSIONS_SIR_B_PAYDAY,
-  ...MISSIONS_SIR_B_PHANTOM,
-  ...MISSIONS_SIR_B_RING_COLLECTOR,
-  ...MISSIONS_SIR_B_SMUGGLER,
-  ...MISSIONS_SIR_B_STEALTH_PILOT,
-  ...MISSIONS_SIR_B_SYNDICATE_DOGS,
-  ...MISSIONS_SIR_B_SUBMARINER,
-  ...MISSIONS_SIR_B_TELLER,
-  ...MISSIONS_SIR_B_THE_DEPOSIT,
-  ...MISSIONS_SIR_B_THE_ESTATE,
-  ...MISSIONS_SIR_B_THE_FILES,
-  ...MISSIONS_SIR_B_THE_HEAVIEST_BAG,
-  ...MISSIONS_SIR_B_TIMEPIECE,
-  ...MISSIONS_SIR_B_UPGRADE,
-  ...MISSIONS_SIR_B_WARGAMES,
-  ...MISSIONS_SIR_B_WEAPONS_CACHE,
-
-  // Easter Missions
-  ...MISSIONS_EASTER_THE_EGG_HUNT,
-  ...MISSIONS_EASTER_SYNDICEGG,
-
-  // Christmas Missions
-  ...MISSIONS_CHRISTMAS_SANTAS_HELPER,
-  ...MISSIONS_CHRISTMAS_TOY_DRIVE,
-  ...MISSIONS_CHRISTMAS_JINGLE_BALLS,
+const __MANIFEST_missions = [
+  "js/data/missions/Bert/bounty-hunt.js",
+  "js/data/missions/Bert/loyalty-test.js",
+  "js/data/missions/Bert/introduction-bert.js",
+  "js/data/missions/Bert/community-outreach.js",
+  "js/data/missions/Bert/stolen-goods.js",
+  "js/data/missions/Bert/service-fee.js",
+  "js/data/missions/Bert/counter-intel.js",
+  "js/data/missions/Bert/hot-pursuit.js",
+  "js/data/missions/Bert/first-responder.js",
+  "js/data/missions/Bert/on-patrol.js",
+  "js/data/missions/Bert/bulletproof.js",
+  "js/data/missions/Bert/public-relations.js",
+  "js/data/missions/Bert/cop-killer.js",
+  "js/data/missions/Bert/dirty-money.js",
+  "js/data/missions/Bert/introduction.js",
+  "js/data/missions/Bert/search-and-seizure.js",
+  "js/data/missions/Bert/smash-and-grab.js",
+  "js/data/missions/Bert/loss-prevention.js",
+  "js/data/missions/Christmas/jingle-balls.js",
+  "js/data/missions/Christmas/santas-helper.js",
+  "js/data/missions/Christmas/toy-drive.js",
+  "js/data/missions/Dan/forbidden-meat.js",
+  "js/data/missions/Easter/syndicegg.js",
+  "js/data/missions/Easter/the-egg-hunt.js",
+  "js/data/missions/Erik/artisan.js",
+  "js/data/missions/Game/bank-heist.js",
+  "js/data/missions/Game/get-rolling.js",
+  "js/data/missions/Sir B/contraband.js",
+  "js/data/missions/Sir B/crime-squad.js",
+  "js/data/missions/Sir B/data-disk.js",
+  "js/data/missions/Sir B/fence.js",
+  "js/data/missions/Sir B/front-toward-enemy.js",
+  "js/data/missions/Sir B/fuel-depot.js",
+  "js/data/missions/Sir B/gem-collector.js",
+  "js/data/missions/Sir B/going-loud.js",
+  "js/data/missions/Sir B/hidden-cargo.js",
+  "js/data/missions/Sir B/incriminating-data.js",
+  "js/data/missions/Sir B/lights-out.js",
+  "js/data/missions/Sir B/lockpicker.js",
+  "js/data/missions/Sir B/most-wanted.js",
+  "js/data/missions/Sir B/nightstalker.js",
+  "js/data/missions/Sir B/oasis-eleven.js",
+  "js/data/missions/Sir B/payday.js",
+  "js/data/missions/Sir B/phantom.js",
+  "js/data/missions/Sir B/ring-collector.js",
+  "js/data/missions/Sir B/smuggler.js",
+  "js/data/missions/Sir B/stealth-pilot.js",
+  "js/data/missions/Sir B/submariner.js",
+  "js/data/missions/Sir B/syndicate-dogs.js",
+  "js/data/missions/Sir B/teller.js",
+  "js/data/missions/Sir B/the-deposit.js",
+  "js/data/missions/Sir B/the-estate.js",
+  "js/data/missions/Sir B/the-files.js",
+  "js/data/missions/Sir B/the-heaviest-bag.js",
+  "js/data/missions/Sir B/timepiece.js",
+  "js/data/missions/Sir B/upgrade.js",
+  "js/data/missions/Sir B/wargames.js",
+  "js/data/missions/Sir B/weapons-cache.js"
 ];
+
+window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
+window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_missions).then(() => {
+  try {
+    window.MISSIONS_DATA = [
+      // Game Missions
+      ...MISSIONS_GAME_BANK_HEIST,
+      ...MISSIONS_GAME_GET_ROLLING,
+
+      // Bert Missions
+      ...MISSIONS_BERT_COMMUNITY_OUTREACH,
+      ...MISSIONS_BERT_STOLEN_GOODS,
+      ...MISSIONS_BERT_SERVICE_FEE,
+      ...MISSIONS_BERT_COUNTER_INTEL,
+      ...MISSIONS_BERT_HOT_PURSUIT,
+      ...MISSIONS_BERT_FIRST_RESPONDER,
+      ...MISSIONS_BERT_ON_PATROL,
+      ...MISSIONS_BERT_BULLETPROOF,
+      ...MISSIONS_BERT_PUBLIC_RELATIONS,
+      ...MISSIONS_BERT_COP_KILLER,
+      ...MISSIONS_BERT_DIRTY_MONEY,
+      ...MISSIONS_BERT_INTRODUCTION,
+      ...MISSIONS_BERT_SMASH_AND_GRAB,
+      ...MISSIONS_BERT_SEARCH_AND_SEIZURE,
+      ...MISSIONS_BERT_LOSS_PREVENTION,
+
+      // Erik Missions
+      ...MISSIONS_ERIK_ARTISAN,
+
+      // Dan Missions
+      ...MISSIONS_DAN_FORBIDDEN_MEAT,
+
+      // Sir B Missions
+      ...MISSIONS_SIR_B_CONTRABAND,
+      ...MISSIONS_SIR_B_CRIME_SQUAD,
+      ...MISSIONS_SIR_B_DATA_DISK,
+      ...MISSIONS_SIR_B_FENCE,
+      ...MISSIONS_SIR_B_FRONT_TOWARD_ENEMY,
+      ...MISSIONS_SIR_B_FUEL_DEPOT,
+      ...MISSIONS_SIR_B_GEM_COLLECTOR,
+      ...MISSIONS_SIR_B_GOING_LOUD,
+      ...MISSIONS_SIR_B_HIDDEN_CARGO,
+      ...MISSIONS_SIR_B_INCRIMINATING_DATA,
+      ...MISSIONS_SIR_B_LIGHTS_OUT,
+      ...MISSIONS_SIR_B_LOCKPICKER,
+      ...MISSIONS_SIR_B_MOST_WANTED,
+      ...MISSIONS_SIR_B_NIGHTSTALKER,
+      ...MISSIONS_SIR_B_OASIS_ELEVEN,
+      ...MISSIONS_SIR_B_PAYDAY,
+      ...MISSIONS_SIR_B_PHANTOM,
+      ...MISSIONS_SIR_B_RING_COLLECTOR,
+      ...MISSIONS_SIR_B_SMUGGLER,
+      ...MISSIONS_SIR_B_STEALTH_PILOT,
+      ...MISSIONS_SIR_B_SYNDICATE_DOGS,
+      ...MISSIONS_SIR_B_SUBMARINER,
+      ...MISSIONS_SIR_B_TELLER,
+      ...MISSIONS_SIR_B_THE_DEPOSIT,
+      ...MISSIONS_SIR_B_THE_ESTATE,
+      ...MISSIONS_SIR_B_THE_FILES,
+      ...MISSIONS_SIR_B_THE_HEAVIEST_BAG,
+      ...MISSIONS_SIR_B_TIMEPIECE,
+      ...MISSIONS_SIR_B_UPGRADE,
+      ...MISSIONS_SIR_B_WARGAMES,
+      ...MISSIONS_SIR_B_WEAPONS_CACHE,
+
+      // Easter Missions
+      ...MISSIONS_EASTER_THE_EGG_HUNT,
+      ...MISSIONS_EASTER_SYNDICEGG,
+
+      // Christmas Missions
+      ...MISSIONS_CHRISTMAS_SANTAS_HELPER,
+      ...MISSIONS_CHRISTMAS_TOY_DRIVE,
+      ...MISSIONS_CHRISTMAS_JINGLE_BALLS,
+    ];
+
+  } catch (err) {
+    console.error("Failed building data for js/jsdata/missions.js:", err);
+  }
+}));

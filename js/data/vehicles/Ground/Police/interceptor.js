@@ -6,6 +6,8 @@ const VEHICLE_INTERCEPTOR = [
     type: "ground",
     obtaining: "Police Level 1",
     contractPrice: "Un-Buyable",
+    repairPrice: 900,
+    repairPriceGarage: 200,
     stats: {
       topSpeed: 40,
       acceleration: 31,
