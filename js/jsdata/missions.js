@@ -17,6 +17,11 @@ const __MANIFEST_missions = [
   "js/data/missions/Bert/search-and-seizure.js",
   "js/data/missions/Bert/smash-and-grab.js",
   "js/data/missions/Bert/loss-prevention.js",
+  "js/data/missions/Bert/bang-and-clear.js",
+  "js/data/missions/Bert/officer-down.js",
+  "js/data/missions/Bert/night-shift.js",
+  "js/data/missions/Bert/the-italian-job.js",
+  "js/data/missions/Bert/air-support.js",
   "js/data/missions/Christmas/jingle-balls.js",
   "js/data/missions/Christmas/santas-helper.js",
   "js/data/missions/Christmas/toy-drive.js",
@@ -83,6 +88,11 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_missions).then(() => {
       ...MISSIONS_BERT_SMASH_AND_GRAB,
       ...MISSIONS_BERT_SEARCH_AND_SEIZURE,
       ...MISSIONS_BERT_LOSS_PREVENTION,
+      ...MISSIONS_BERT_BANG_AND_CLEAR,
+      ...MISSIONS_BERT_OFFICER_DOWN,
+      ...MISSIONS_BERT_NIGHT_SHIFT,
+      ...MISSIONS_BERT_THE_ITALIAN_JOB,
+      ...MISSIONS_BERT_AIR_SUPPORT,
 
       // Erik Missions
       ...MISSIONS_ERIK_ARTISAN,

@@ -22,4 +22,15 @@ const MISSIONS_BERT_DIRTY_MONEY = [
     missionType: "Bert",
     rewards: ["750 Police XP", "$10,500"]
   },
+  {
+    id: "dirty-money-3",
+    showMoreButton: true,
+    title: "Dirty Money - Part 3",
+    location: "Police Station – Talk to Bert",
+    description: "Buck is using the bank to launder his dirty money. Every so often he gets a big shipment of rare jewels and stores them in the main vault downtown. Raid the vault and bring back any evidence you find.",
+    howToComplete: "Seize the inventory Sapphire Files and Ruby Files",
+    difficulty: "EASY",
+    missionType: "Bert",
+    rewards: ["1,500 Police XP", "$50,500"]
+  },
 ];
