@@ -1078,6 +1078,143 @@ body.low-end-mode * {
     background: rgba(0, 0, 0, 0.6);
 }
 
+/* ===== Content Creators (Youtuber) Section ===== */
+.youtuber-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 15px;
+}
+
+.youtuber-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.youtuber-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    max-width: 100%;
+    text-decoration: none;
+    color: white;
+    background: transparent;
+    border: 2px solid rgba(255, 40, 40, 0.45);
+    padding: 10px 18px 10px 12px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.youtuber-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top: 2px solid rgba(255, 40, 40, 0.45);
+    transform: rotate(-45deg) translate(10px, 10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.youtuber-header:hover {
+    border-color: #ff3b3b;
+    background: rgba(255, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+.youtuber-header:hover::after {
+    border-top-color: #ff3b3b;
+}
+
+.youtuber-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: #111;
+    flex-shrink: 0;
+}
+
+.youtuber-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.youtuber-name {
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.youtuber-subtext {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    color: #ff6b6b;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 3px;
+}
+
+.yt-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.youtuber-header:hover .yt-arrow {
+    transform: translate(2px, -2px);
+}
+
+.youtuber-videos {
+    justify-content: flex-start;
+    padding-left: 2px;
+}
+
+@media (max-width: 600px) {
+
+    .youtuber-list {
+        gap: 18px;
+    }
+
+    .youtuber-header {
+        padding: 8px 14px 8px 8px;
+        gap: 10px;
+    }
+
+    .youtuber-avatar {
+        width: 44px;
+        height: 44px;
+    }
+
+    .youtuber-name {
+        font-size: 0.85rem;
+    }
+
+    .youtuber-subtext {
+        font-size: 0.58rem;
+    }
+
+    .youtuber-videos {
+        justify-content: center;
+    }
+}
+
 .home-admin-sidebar {
     width: 275px;
     height: auto;

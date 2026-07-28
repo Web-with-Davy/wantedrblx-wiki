@@ -58,15 +58,33 @@ function renderHome() {
         `;
     };
 
-    const videosHTML = (window.VIDEOS_DATA || VIDEOS_DATA || []).map(v => `
-        <a href="${v.link}" target="_blank" class="featured-video-card">
+    const renderYoutuberVideo = (v) => `
+        <a href="${v.link}" target="_blank" rel="noopener" class="featured-video-card">
             <div class="video-thumb-container">
-                <img src="${v.thumbnail}" alt="${v.title}" class="video-thumbnail">
+                <img src="${v.thumbnail}" alt="${v.title}" class="video-thumbnail" loading="lazy">
                 <div class="video-play-overlay"><span>▶</span></div>
             </div>
             <div class="video-title-card">${v.title}</div>
         </a>
-    `).join('');
+    `;
+
+    const youtubersHTML = (window.YOUTUBERS_DATA || YOUTUBERS_DATA || []).map(yt => {
+        const videosHTML = (yt.videos || []).slice(0, 3).map(renderYoutuberVideo).join('');
+
+        return `
+            <div class="youtuber-block">
+                <a href="${yt.channelUrl}" target="_blank" rel="noopener" class="youtuber-header">
+                    <img src="${yt.avatar}" alt="${yt.name}" class="youtuber-avatar"
+                        onerror="this.src='images/logo.webp'">
+                    <div class="youtuber-info">
+                        <div class="youtuber-name">${yt.name}</div>
+                        <div class="youtuber-subtext">VIEW CHANNEL <span class="yt-arrow">&#8599;</span></div>
+                    </div>
+                </a>
+                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : ''}
+            </div>
+        `;
+    }).join('');
 
     const managersHTML = (window.CONTRIBUTORS_DATA?.managers || CONTRIBUTORS_DATA?.managers || []).map(p => renderStaffItem(p, 'manager')).join('');
     const staffHTML = (window.CONTRIBUTORS_DATA?.staff || CONTRIBUTORS_DATA?.staff || []).map(p => renderStaffItem(p, 'staff')).join('');
@@ -207,9 +225,9 @@ function renderHome() {
 
                 <div class="videos-section">
                     <div class="sidebar-block" style="width: 100%;">
-                        <h2 class="sidebar-title">FEATURED VIDEOS</h2>
-                        <div class="video-list-container video-row-flex">
-                            ${videosHTML}
+                        <h2 class="sidebar-title">CONTENT CREATORS</h2>
+                        <div class="youtuber-list">
+                            ${youtubersHTML}
                         </div>
                     </div>
                 </div>
