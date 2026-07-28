@@ -13,7 +13,7 @@ const YOUTUBER_ENABLED = true;
     const FALL_MS = 7000;
     const DELAY_MS = 2000;
     const LIVE_CHECK_INTERVAL_MS = 3 * 60 * 1000;
-    const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+    const CORS_PROXY = 'https://corsproxy.io/?url=';
 
     let activeMatch = null;
     let spawnActive = false;
