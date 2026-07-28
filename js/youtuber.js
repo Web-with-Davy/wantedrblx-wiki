@@ -12,42 +12,30 @@ const YOUTUBER_ENABLED = true;
 
     const FALL_MS = 7000;
     const DELAY_MS = 2000;
+
     const LIVE_CHECK_INTERVAL_MS = 3 * 60 * 1000;
-    const CORS_PROXY = 'https://corsproxy.io/?url=';
+    const WORKER_URL = 'https://wanted-live-check.the-davy-devv.workers.dev/';
 
     let activeMatch = null;
     let spawnActive = false;
     let pendingTimeoutId = null;
     let currentElement = null;
 
-    function decodeEntities(str) {
-        const el = document.createElement('textarea');
-        el.innerHTML = str;
-        return el.value;
-    }
-
     async function checkChannelLive(handle) {
         try {
-            const targetUrl = `https://www.youtube.com/@${handle}/live`;
-            const res = await fetch(CORS_PROXY + encodeURIComponent(targetUrl));
+            const res = await fetch(`${WORKER_URL}?handle=${encodeURIComponent(handle)}`);
             if (!res.ok) return null;
-            const html = await res.text();
+            const data = await res.json();
 
-            const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)">/);
-            const canonicalHref = canonicalMatch ? canonicalMatch[1] : '';
-            const videoIdMatch = canonicalHref.match(/watch\?v=([\w-]+)/);
-            if (!videoIdMatch) return null;
+            if (!data.live) return null;
 
-            const videoId = videoIdMatch[1];
-            const titleMatch = html.match(/<meta property="og:title" content="([^"]*)"/);
-            const title = titleMatch ? decodeEntities(titleMatch[1]) : '';
-
+            const title = data.title || '';
             if (title.toLowerCase().includes(LIVE_TITLE_MATCH.toLowerCase())) {
                 return {
                     handle,
-                    videoId,
+                    videoId: data.videoId,
                     title,
-                    url: `https://www.youtube.com/watch?v=${videoId}`,
+                    url: data.url,
                 };
             }
             return null;
@@ -155,7 +143,6 @@ const YOUTUBER_ENABLED = true;
 
     function init() {
         if (!document.body) return;
-
         refreshLiveState();
         setInterval(refreshLiveState, LIVE_CHECK_INTERVAL_MS);
     }
