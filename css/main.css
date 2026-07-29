@@ -2490,30 +2490,13 @@ a.header-discord-btn.header-icon-btn:hover {
     .dropdown {
         width: 100%;
         display: block;
+        position: static;
     }
 
     .top-tabs .dropdown-content {
-        position: static;
-        min-width: 100%;
+        left: 0;
         width: 100%;
-        box-shadow: none;
-        border: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 0;
-        padding: 0;
-        backdrop-filter: none;
-
-        transform: none;
-        transition: opacity 0.2s ease, max-height 0.25s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.2s;
-        max-height: 0;
-        overflow: hidden;
-    }
-
-    .top-tabs .dropdown.open .dropdown-content {
-        max-height: 400px;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        min-width: 100%;
     }
 
     .top-tabs .dropdown-content::before {

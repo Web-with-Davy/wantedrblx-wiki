@@ -68,7 +68,13 @@ function renderHome() {
         </a>
     `;
 
-    const youtubersHTML = (window.YOUTUBERS_DATA || YOUTUBERS_DATA || []).map(yt => {
+    const youtubersList = [...(window.YOUTUBERS_DATA || YOUTUBERS_DATA || [])];
+    for (let i = youtubersList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [youtubersList[i], youtubersList[j]] = [youtubersList[j], youtubersList[i]];
+    }
+
+    const youtubersHTML = youtubersList.map(yt => {
         const videosHTML = (yt.videos || []).slice(0, 3).map(renderYoutuberVideo).join('');
 
         return `
