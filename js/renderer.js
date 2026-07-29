@@ -1,7 +1,5 @@
-// Module-scope card counter — cheaper and more deterministic than Math.random()
 let _cardIdCounter = 0;
 
-// Change this one value to update ALL card images across ALL tabs
 const CARD_IMG_EXT = 'webp';
 
 const buildStatRow = ({ label, value }) => {

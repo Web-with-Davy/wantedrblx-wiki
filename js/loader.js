@@ -1,7 +1,3 @@
-// Sequentially loads a list of classic scripts, preserving order.
-// A missing/404 file is logged and skipped rather than aborting
-// everything after it (matches how independent <script defer> tags
-// used to behave).
 function loadScripts(paths) {
   return paths.reduce(
     (chain, src) =>

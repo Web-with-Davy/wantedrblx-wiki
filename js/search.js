@@ -1,4 +1,3 @@
-// Module-scope constant — created once, not per render call
 const SEARCH_FOLDER_MAP = {
     'weapon': 'weapons',
     'vehicle': 'vehicles',
@@ -47,17 +46,17 @@ function renderSearchItem(item) {
             <h3>${displayName}</h3>
         `;
         hiddenContent = `
-            ${renderStat('Obtaining',  item.obtaining)}
-            ${renderStat('Location',   item.location || (item.stats && item.stats.location))}
-            ${renderStat('Re-Buy Price',      formatPrice(item.reBuyPrice))}
-            ${renderStat('Sell Price',       formatPrice(item.sellPrice))}
+            ${renderStat('Obtaining', item.obtaining)}
+            ${renderStat('Location', item.location || (item.stats && item.stats.location))}
+            ${renderStat('Re-Buy Price', formatPrice(item.reBuyPrice))}
+            ${renderStat('Sell Price', formatPrice(item.sellPrice))}
             ${item.stats ? `
-                ${renderStat('Ammo',       item.stats.ammo)}
-                ${renderStat('Ammo Cost',  item.stats.ammoPrice)}
-                ${renderStat('Damage',     item.stats.damage)}
-                ${renderStat('Fire Rate',        item.stats.firerate)}
+                ${renderStat('Ammo', item.stats.ammo)}
+                ${renderStat('Ammo Cost', item.stats.ammoPrice)}
+                ${renderStat('Damage', item.stats.damage)}
+                ${renderStat('Fire Rate', item.stats.firerate)}
                 ${item.stats.reload ? renderStat('Reload Speed', `${item.stats.reload}s`) : ''}
-                ${renderStat('Accuracy',   item.stats.accuracy)}
+                ${renderStat('Accuracy', item.stats.accuracy)}
             ` : ''}
         `;
         return renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder);
@@ -69,19 +68,19 @@ function renderSearchItem(item) {
         `;
         const isFlying = item.type === 'flying';
         hiddenContent = `
-            ${renderStat('Obtaining',     item.obtaining)}
-            ${renderStat('Repair Price',        formatPrice(item.repairPrice))}
+            ${renderStat('Obtaining', item.obtaining)}
+            ${renderStat('Repair Price', formatPrice(item.repairPrice))}
             ${renderStat('Garage Repair Price', formatPrice(item.repairPriceGarage))}
-            ${renderStatSuffix('Top Speed',   item.stats.topSpeed, isFlying ? '%' : ' MPH')}
+            ${renderStatSuffix('Top Speed', item.stats.topSpeed, isFlying ? '%' : ' MPH')}
             ${isFlying ? `
-                ${renderStatSuffix('Handling',    item.stats.handling, '%')}
-                ${renderStatSuffix('Spool Time',  item.stats.spoolTime, 's')}
+                ${renderStatSuffix('Handling', item.stats.handling, '%')}
+                ${renderStatSuffix('Spool Time', item.stats.spoolTime, 's')}
             ` : `
-                ${renderStatSuffix('Acceleration',item.stats.acceleration, '%')}
-                ${renderStatSuffix('Braking',     item.stats.braking, '%')}
+                ${renderStatSuffix('Acceleration', item.stats.acceleration, '%')}
+                ${renderStatSuffix('Braking', item.stats.braking, '%')}
             `}
             ${renderStat('Health', item.stats.Health)}
-            ${renderStat('Armor',      item.stats.armor)}
+            ${renderStat('Armor', item.stats.armor)}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
 
@@ -90,7 +89,7 @@ function renderSearchItem(item) {
         const location = item.location;
         const description = item.description;
         const howToComplete = item.howToComplete;
-        
+
         const formattedRewards = (item.rewards || []).map(formatReward).join(', ');
 
         visibleContent = `
@@ -148,17 +147,16 @@ function renderSearchItem(item) {
             <h3>${name}</h3>
         `;
         hiddenContent = `
-            ${renderStat('Content',  gun)}
+            ${renderStat('Content', gun)}
             ${renderStat('Cooldown', cooldown)}
             ${renderStat('Location', location)}
         `;
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);
 
     } else {
-        // Fallback for location or unknown types
         const name = item.name || item.title;
         const description = item.description;
-        
+
         visibleContent = `<h3>${name}</h3>`;
         hiddenContent = description ? renderStat('Description', description) : '';
         return renderExpandableCardJPG(item, rarityKey, visibleContent, hiddenContent, folder);

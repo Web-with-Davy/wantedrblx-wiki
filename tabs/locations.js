@@ -272,7 +272,6 @@ function renderLocations() {
     canvas.style.transform = `translate(${s.offsetX}px, ${s.offsetY}px) scale(${s.scale})`;
     canvas.style.transformOrigin = '0 0';
 
-    // Cache pin/label collections on first use — avoids repeated DOM queries
     if (!s._pinEls || s._pinEls.length === 0) s._pinEls = canvas.querySelectorAll('.map-pin');
     if (!s._zoneEls || s._zoneEls.length === 0) s._zoneEls = canvas.querySelectorAll('.map-zone-label');
 
@@ -437,7 +436,7 @@ function renderLocations() {
     const tip = el.querySelector('.map-pin-tooltip');
     if (!tip) return;
     const isVisible = tip.style.opacity === '1';
-    
+
     document.querySelectorAll('.map-pin').forEach(pin => {
       if (pin !== el) mapPinHover(pin, false);
     });
@@ -508,7 +507,6 @@ function renderLocations() {
     s.scale = Math.min(vpW / canvasSize, vpH / canvasSize) * 0.9;
     s.offsetX = (vpW - canvasSize * s.scale) / 2;
     s.offsetY = (vpH - canvasSize * s.scale) / 2;
-    // Invalidate cached element lists so applyTransform re-queries after new DOM
     s._pinEls = null;
     s._zoneEls = null;
     applyTransform(true);

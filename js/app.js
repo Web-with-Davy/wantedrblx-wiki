@@ -11,7 +11,6 @@ window.audioUnlocked = false;
 window.loadPage = loadPage;
 window.toggleCardDetails = toggleCardDetails;
 
-// Cached at module scope — avoids recreating on every call
 const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
 const PAGE_NAMES = {
     home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
@@ -361,12 +360,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Custom Background Music Logic
     const bgmUploadBtn = document.getElementById("bgm-upload-btn");
     const bgmResetBtn = document.getElementById("bgm-reset-btn");
     const bgmUpload = document.getElementById("bgm-upload");
 
-    // Shared IndexedDB helper — opens the DB once and reuses it
     let _audioDB = null;
     const getAudioDB = () => new Promise((resolve, reject) => {
         if (_audioDB) { resolve(_audioDB); return; }
