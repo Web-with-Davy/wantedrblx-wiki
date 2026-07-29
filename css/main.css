@@ -30,13 +30,9 @@ body {
     overflow-x: hidden;
 }
 
-/* Rain canvas at z-index:0 — page content sits above it via position:relative */
 body {
     background: #05060a;
-    /* dark fallback if canvas hasn't painted yet */
 }
-
-/* Window frame and rain are drawn on canvas — no CSS pseudo-elements needed */
 
 .stripes,
 .static {
@@ -59,7 +55,6 @@ body {
     background-repeat: repeat;
 }
 
-/* Police flash lights — rendered as dedicated divs (body::before/after are used for window frame) */
 .police-flash-red,
 .police-flash-blue {
     content: "";
@@ -1078,7 +1073,6 @@ body.low-end-mode * {
     background: rgba(0, 0, 0, 0.6);
 }
 
-/* ===== Content Creators (Youtuber) Section ===== */
 .youtuber-list {
     display: flex;
     flex-direction: column;
@@ -2498,7 +2492,7 @@ a.header-discord-btn.header-icon-btn:hover {
         display: block;
     }
 
-    .dropdown-content {
+    .top-tabs .dropdown-content {
         position: static;
         min-width: 100%;
         width: 100%;
@@ -2515,26 +2509,26 @@ a.header-discord-btn.header-icon-btn:hover {
         overflow: hidden;
     }
 
-    .dropdown.open .dropdown-content {
+    .top-tabs .dropdown.open .dropdown-content {
         max-height: 400px;
         transform: none;
     }
 
-    .dropdown-content::before {
+    .top-tabs .dropdown-content::before {
         display: none;
     }
 
-    .dropdown-content .dropdown-tab {
+    .top-tabs .dropdown-content .dropdown-tab {
         text-align: center;
         justify-content: center;
         padding: 14px 16px;
     }
 
-    .dropdown-content .dropdown-tab:hover {
+    .top-tabs .dropdown-content .dropdown-tab:hover {
         padding-left: 16px;
     }
 
-    .dropdown-content .dropdown-tab::after {
+    .top-tabs .dropdown-content .dropdown-tab::after {
         display: none;
     }
 }
@@ -3519,7 +3513,6 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
     object-fit: contain;
 }
 
-/* Promo code text-as-image display */
 .val-code-display {
     width: 100%;
     height: 100%;
