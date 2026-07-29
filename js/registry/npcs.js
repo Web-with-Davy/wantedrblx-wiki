@@ -25,7 +25,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_npcs).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/npcs.js:", err);
+    console.error("Failed building data for js/registry/npcs.js:", err);
   }
 }));
 

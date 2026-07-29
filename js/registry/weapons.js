@@ -63,6 +63,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_weapons).then(() => {
     window.EXPLOSIVES_DATA = byCategory['Explosives'] || [];
     window.TOOLS_DATA = byCategory['Tools'] || [];
   } catch (err) {
-    console.error("Failed building data for js/jsdata/weapons.js:", err);
+    console.error("Failed building data for js/registry/weapons.js:", err);
   }
 }));

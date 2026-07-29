@@ -20,6 +20,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_store).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/store.js:", err);
+    console.error("Failed building data for js/registry/store.js:", err);
   }
 }));

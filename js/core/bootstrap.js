@@ -12,18 +12,18 @@
     "tabs/valuables.js",
     "tabs/vehicles.js",
     "tabs/weapons.js",
-    "js/renderer.js",
-    "js/ui.js",
-    "js/settings.js",
-    "js/garage.js",
-    "js/visitor.js",
-    "js/search.js",
-    "js/easter_eggs.js",
-    "js/birthday.js",
-    "js/4th-of-july.js",
-    "js/youtuber.js",
-    "js/tutorial.js",
-    "js/app.js"
+    "js/core/renderer.js",
+    "js/core/ui.js",
+    "js/features/settings.js",
+    "js/features/garage.js",
+    "js/features/visitor.js",
+    "js/features/search.js",
+    "js/events/easter_eggs.js",
+    "js/events/birthday.js",
+    "js/events/4th-of-july.js",
+    "js/features/youtuber.js",
+    "js/features/tutorial.js",
+    "js/core/app.js"
   ];
 
   Promise.all(window.__WANTED_LOADERS || [])

@@ -17,7 +17,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_atms).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/atms.js:", err);
+    console.error("Failed building data for js/registry/atms.js:", err);
   }
 }));
 

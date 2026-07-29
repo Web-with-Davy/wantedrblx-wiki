@@ -12,6 +12,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_promo_codes).then(() => {
     ];
 
   } catch (err) {
-    console.error("Failed building data for js/jsdata/promo-codes.js:", err);
+    console.error("Failed building data for js/registry/promo-codes.js:", err);
   }
 }));

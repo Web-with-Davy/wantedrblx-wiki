@@ -24,7 +24,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_gun_crates).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/gun-crates.js:", err);
+    console.error("Failed building data for js/registry/gun-crates.js:", err);
   }
 }));
 

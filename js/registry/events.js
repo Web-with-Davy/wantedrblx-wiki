@@ -1,7 +1,7 @@
 const __MANIFEST_events = [
   "js/data/events/christmas-2025.js",
   "js/data/events/easter-2026.js",
-  "js/data/events/july-4th.js"
+  "js/data/events/july-4th-2026.js"
 ];
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
@@ -10,7 +10,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_events).then(() => {
     window.EVENTS_DATA = __MANIFEST_events.flatMap(path => {
       const filename = path.split('/').pop().replace('.js', '');
       const varName = 'EVENT_' + filename.toUpperCase().replace(/-/g, '_');
-      let data; try { data = eval(varName); } catch(_) {}
+      let data; try { data = eval(varName); } catch (_) { }
       if (!data) {
         console.warn(`events.js: expected "${varName}" from "${path}" but it was not found.`);
         return [];
@@ -18,7 +18,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_events).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/events.js:", err);
+    console.error("Failed building data for js/registry/events.js:", err);
   }
 }));
 

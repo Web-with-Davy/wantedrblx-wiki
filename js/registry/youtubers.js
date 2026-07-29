@@ -18,6 +18,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(() => {
       return [data];
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/youtubers.js:", err);
+    console.error("Failed building data for js/registry/youtubers.js:", err);
   }
 }));

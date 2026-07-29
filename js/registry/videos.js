@@ -18,6 +18,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_videos).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/videos.js:", err);
+    console.error("Failed building data for js/registry/videos.js:", err);
   }
 }));

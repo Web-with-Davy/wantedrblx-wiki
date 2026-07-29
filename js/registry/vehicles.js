@@ -48,6 +48,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_vehicles).then(() => {
       return data;
     });
   } catch (err) {
-    console.error("Failed building data for js/jsdata/vehicles.js:", err);
+    console.error("Failed building data for js/registry/vehicles.js:", err);
   }
 }));

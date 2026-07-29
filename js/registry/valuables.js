@@ -32,6 +32,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_valuables).then(() => {
     try { window.CHRISTMAS_VALUABLES_DATA = VALUABLES_CHRISTMAS; } catch(_) { window.CHRISTMAS_VALUABLES_DATA = []; }
     try { window.FOURTH_OF_JULY_VALUABLES_DATA = VALUABLES_4TH_OF_JULY; } catch(_) { window.FOURTH_OF_JULY_VALUABLES_DATA = []; }
   } catch (err) {
-    console.error("Failed building data for js/jsdata/valuables.js:", err);
+    console.error("Failed building data for js/registry/valuables.js:", err);
   }
 }));
