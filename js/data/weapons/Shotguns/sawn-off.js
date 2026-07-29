@@ -1,4 +1,4 @@
-const WEAPON_SAWNOFF = [
+const WEAPON_SAWN_OFF = [
 
   {
     name: "Sawn Off",

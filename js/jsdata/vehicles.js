@@ -34,43 +34,19 @@ const __MANIFEST_vehicles = [
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_vehicles).then(() => {
   try {
-    window.VEHICLES_DATA = [
-
-      // Ground Vehicles
-      ...VEHICLE_CRUISER,
-      ...VEHICLE_NOMAD,
-      ...VEHICLE_RANGER,
-      ...VEHICLE_CONTENDER,
-      ...VEHICLE_BEAM,
-      ...VEHICLE_CROWLINE,
-      ...VEHICLE_STALLION_450,
-      ...VEHICLE_G_CRUISER,
-      ...VEHICLE_GEMSTONE,
-      ...VEHICLE_VANGUARD,
-      ...VEHICLE_ZORO,
-      ...VEHICLE_PULSE_477,
-      ...VEHICLE_RAZOR,
-      ...VEHICLE_ZORVELLO,
-      ...VEHICLE_SPECTRE,
-      ...VEHICLE_BLADE,
-      ...VEHICLE_ROKU,
-      ...VEHICLE_HORIZON,
-      ...VEHICLE_TEMPORO,
-      ...VEHICLE_PULSE_477_RS,
-      ...VEHICLE_EMPYREAN,
-      ...VEHICLE_FALCON_GT,
-      ...VEHICLE_RIVAL,
-      ...VEHICLE_MOCHI,
-      ...VEHICLE_WARDEN,
-      ...VEHICLE_INTERCEPTOR,
-
-      // Flying Vehicles
-      ...VEHICLE_MINI_BIRD,
-      ...VEHICLE_SCOUT,
-      ...VEHICLE_PANTHER,
-      ...VEHICLE_MAVERICK,
-
-    ];
+    // Auto-build VEHICLES_DATA from the manifest.
+    // Each file exports a const named VEHICLE_<FILENAME_UPPERCASED>
+    // e.g. "js/data/vehicles/Ground/Bayview/beam.js" -> VEHICLE_BEAM
+    window.VEHICLES_DATA = __MANIFEST_vehicles.flatMap(path => {
+      const filename = path.split('/').pop().replace('.js', '');
+      const varName = 'VEHICLE_' + filename.toUpperCase().replace(/-/g, '_');
+      let data; try { data = eval(varName); } catch(_) {}
+      if (!data) {
+        console.warn(`vehicles.js: expected "${varName}" from "${path}" but it was not found.`);
+        return [];
+      }
+      return data;
+    });
   } catch (err) {
     console.error("Failed building data for js/jsdata/vehicles.js:", err);
   }

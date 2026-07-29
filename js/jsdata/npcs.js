@@ -14,19 +14,18 @@ const __MANIFEST_npcs = [
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_npcs).then(() => {
   try {
-    window.NPCS_DATA = [
-      ...NPC_ERIK,
-      ...NPC_DAN,
-      ...NPC_SIRB,
-      ...NPC_BERT,
-      ...NPC_SOFTY,
-      ...NPC_JUSTIN,
-      ...NPC_CODY,
-      ...NPC_DAVY,
-      ...NPC_ROD,
-      ...NPC_OFY,
-    ];
+    window.NPCS_DATA = __MANIFEST_npcs.flatMap(path => {
+      const filename = path.split('/').pop().replace('.js', '');
+      const varName = 'NPC_' + filename.toUpperCase().replace(/-/g, '');
+      let data; try { data = eval(varName); } catch(_) {}
+      if (!data) {
+        console.warn(`npcs.js: expected "${varName}" from "${path}" but it was not found.`);
+        return [];
+      }
+      return data;
+    });
   } catch (err) {
     console.error("Failed building data for js/jsdata/npcs.js:", err);
   }
 }));
+

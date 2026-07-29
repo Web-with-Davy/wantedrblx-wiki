@@ -317,53 +317,7 @@
     <script defer src="js/jsdata/weapons.js"></script>
 
     <script defer src="js/bootstrap.js"></script>
-    <script>
-        (function () {
-            function isMobile() {
-                return window.matchMedia('(max-width: 1024px)').matches;
-            }
 
-            document.addEventListener('DOMContentLoaded', function () {
-                var hamburger = document.getElementById('hamburger');
-                var nav = document.getElementById('top-tabs');
-                var header = document.querySelector('.fixed-header');
-
-                header.addEventListener('click', function (e) {
-                    if (!isMobile()) return;
-                    var isHamburger = hamburger && (e.target === hamburger || hamburger.contains(e.target));
-                    if (isHamburger) return;
-                    if (e.target.closest('.header-icon-btn') || e.target.closest('#settings-panel') || e.target.closest('.tab')) return;
-                    e.stopImmediatePropagation();
-                }, true);
-
-                document.querySelectorAll('.dropdown-btn').forEach(function (btn) {
-                    btn.addEventListener('pointerdown', function (e) {
-                        if (!isMobile()) return;
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        const dropdown = btn.closest('.dropdown');
-                        document.querySelectorAll('.dropdown.open').forEach(d => {
-                            if (d !== dropdown) d.classList.remove('open');
-                        });
-
-                        dropdown.classList.toggle('open');
-                    });
-
-                    document.addEventListener('click', function (e) {
-                        if (
-                            !e.target.closest('.dropdown') &&
-                            !e.target.closest('.dropdown-content')
-                        ) {
-                            document.querySelectorAll('.dropdown.open').forEach(function (d) {
-                                d.classList.remove('open');
-                            });
-                        }
-                    });
-                });
-            });
-        })();
-    </script>
 </body>
 
 </html>

@@ -1,7 +1,4 @@
 const __MANIFEST_missions = [
-  "js/data/missions/Bert/bounty-hunt.js",
-  "js/data/missions/Bert/loyalty-test.js",
-  "js/data/missions/Bert/introduction-bert.js",
   "js/data/missions/Bert/community-outreach.js",
   "js/data/missions/Bert/stolen-goods.js",
   "js/data/missions/Bert/service-fee.js",
@@ -67,83 +64,20 @@ const __MANIFEST_missions = [
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_missions).then(() => {
   try {
-    window.MISSIONS_DATA = [
-      // Game Missions
-      ...MISSIONS_GAME_BANK_HEIST,
-      ...MISSIONS_GAME_GET_ROLLING,
-
-      // Bert Missions
-      ...MISSIONS_BERT_COMMUNITY_OUTREACH,
-      ...MISSIONS_BERT_STOLEN_GOODS,
-      ...MISSIONS_BERT_SERVICE_FEE,
-      ...MISSIONS_BERT_COUNTER_INTEL,
-      ...MISSIONS_BERT_HOT_PURSUIT,
-      ...MISSIONS_BERT_FIRST_RESPONDER,
-      ...MISSIONS_BERT_ON_PATROL,
-      ...MISSIONS_BERT_BULLETPROOF,
-      ...MISSIONS_BERT_PUBLIC_RELATIONS,
-      ...MISSIONS_BERT_COP_KILLER,
-      ...MISSIONS_BERT_DIRTY_MONEY,
-      ...MISSIONS_BERT_INTRODUCTION,
-      ...MISSIONS_BERT_SMASH_AND_GRAB,
-      ...MISSIONS_BERT_SEARCH_AND_SEIZURE,
-      ...MISSIONS_BERT_LOSS_PREVENTION,
-      ...MISSIONS_BERT_BANG_AND_CLEAR,
-      ...MISSIONS_BERT_OFFICER_DOWN,
-      ...MISSIONS_BERT_NIGHT_SHIFT,
-      ...MISSIONS_BERT_THE_ITALIAN_JOB,
-      ...MISSIONS_BERT_AIR_SUPPORT,
-
-      // Erik Missions
-      ...MISSIONS_ERIK_ARTISAN,
-
-      // Dan Missions
-      ...MISSIONS_DAN_FORBIDDEN_MEAT,
-
-      // Sir B Missions
-      ...MISSIONS_SIR_B_CONTRABAND,
-      ...MISSIONS_SIR_B_CRIME_SQUAD,
-      ...MISSIONS_SIR_B_DATA_DISK,
-      ...MISSIONS_SIR_B_FENCE,
-      ...MISSIONS_SIR_B_FRONT_TOWARD_ENEMY,
-      ...MISSIONS_SIR_B_FUEL_DEPOT,
-      ...MISSIONS_SIR_B_GEM_COLLECTOR,
-      ...MISSIONS_SIR_B_GOING_LOUD,
-      ...MISSIONS_SIR_B_HIDDEN_CARGO,
-      ...MISSIONS_SIR_B_INCRIMINATING_DATA,
-      ...MISSIONS_SIR_B_LIGHTS_OUT,
-      ...MISSIONS_SIR_B_LOCKPICKER,
-      ...MISSIONS_SIR_B_MOST_WANTED,
-      ...MISSIONS_SIR_B_NIGHTSTALKER,
-      ...MISSIONS_SIR_B_OASIS_ELEVEN,
-      ...MISSIONS_SIR_B_PAYDAY,
-      ...MISSIONS_SIR_B_PHANTOM,
-      ...MISSIONS_SIR_B_RING_COLLECTOR,
-      ...MISSIONS_SIR_B_SMUGGLER,
-      ...MISSIONS_SIR_B_STEALTH_PILOT,
-      ...MISSIONS_SIR_B_SYNDICATE_DOGS,
-      ...MISSIONS_SIR_B_SUBMARINER,
-      ...MISSIONS_SIR_B_TELLER,
-      ...MISSIONS_SIR_B_THE_DEPOSIT,
-      ...MISSIONS_SIR_B_THE_ESTATE,
-      ...MISSIONS_SIR_B_THE_FILES,
-      ...MISSIONS_SIR_B_THE_HEAVIEST_BAG,
-      ...MISSIONS_SIR_B_TIMEPIECE,
-      ...MISSIONS_SIR_B_UPGRADE,
-      ...MISSIONS_SIR_B_WARGAMES,
-      ...MISSIONS_SIR_B_WEAPONS_CACHE,
-
-      // Easter Missions
-      ...MISSIONS_EASTER_THE_EGG_HUNT,
-      ...MISSIONS_EASTER_SYNDICEGG,
-
-      // Christmas Missions
-      ...MISSIONS_CHRISTMAS_SANTAS_HELPER,
-      ...MISSIONS_CHRISTMAS_TOY_DRIVE,
-      ...MISSIONS_CHRISTMAS_JINGLE_BALLS,
-    ];
-
+    window.MISSIONS_DATA = __MANIFEST_missions.flatMap(path => {
+      const parts = path.split('/');
+      const folder = parts[parts.length - 2].toUpperCase().replace(/[\s-]/g, '_');
+      const filename = parts[parts.length - 1].replace('.js', '').toUpperCase().replace(/-/g, '_');
+      const varName = 'MISSIONS_' + folder + '_' + filename;
+      let data; try { data = eval(varName); } catch(_) {}
+      if (!data) {
+        console.warn(`missions.js: expected "${varName}" from "${path}" but it was not found.`);
+        return [];
+      }
+      return data;
+    });
   } catch (err) {
     console.error("Failed building data for js/jsdata/missions.js:", err);
   }
 }));
+

@@ -38,64 +38,30 @@ const __MANIFEST_weapons = [
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_weapons).then(() => {
   try {
-    window.GUNS_DATA = [
+    const GUN_CATEGORIES = new Set(['Pistols', 'SMGs', 'Shotguns', 'Rifles', 'Snipers', 'Airdrop']);
 
-      // Pistols
-      ...WEAPON_M9,
-      ...WEAPON_GLOCK_18C,
-      ...WEAPON_DEAGLE,
+    const byCategory = {};
+    __MANIFEST_weapons.forEach(path => {
+      const parts = path.split('/');
+      const category = parts[parts.length - 2];
+      const filename = parts[parts.length - 1].replace('.js', '');
+      const varName = 'WEAPON_' + filename.toUpperCase().replace(/-/g, '_');
+      let data; try { data = eval(varName); } catch(_) {}
+      if (!data) {
+        console.warn(`weapons.js: expected "${varName}" from "${path}" but it was not found.`);
+        return;
+      }
+      if (!byCategory[category]) byCategory[category] = [];
+      byCategory[category].push(...data);
+    });
 
-      // SMGs
-      ...WEAPON_UZI,
-      ...WEAPON_UMP_45,
-      ...WEAPON_SKORPION,
-      ...WEAPON_KRISS_VECTOR,
-      ...WEAPON_MP5K,
-      ...WEAPON_P90,
+    window.GUNS_DATA = Object.entries(byCategory)
+      .filter(([cat]) => GUN_CATEGORIES.has(cat))
+      .flatMap(([, items]) => items);
 
-      // Shotguns
-      ...WEAPON_MODEL_870,
-      ...WEAPON_BENELLI_M1014,
-      ...WEAPON_SPAS_12,
-      ...WEAPON_SAWNOFF,
-
-      // Rifles
-      ...WEAPON_AUG_A1,
-      ...WEAPON_AK_47,
-      ...WEAPON_M4A1,
-      ...WEAPON_ARX_160,
-      ...WEAPON_M60,
-      ...WEAPON_FN_FAL,
-      ...WEAPON_LIGHTCARBINE,
-
-      // Snipers
-      ...WEAPON_AWM,
-      ...WEAPON_SVD,
-
-      // Airdrop
-      ...WEAPON_BARRETT_M82,
-      ...WEAPON_GOLDEN_BARRETT_M82,
-      ...WEAPON_GOLDEN_AK_47,
-      ...WEAPON_GOLDEN_DEAGLE,
-
-    ];
-
-    window.EQUIPMENT_DATA = [
-      ...WEAPON_BALLISTIC_SHIELD,
-    ];
-
-    window.EXPLOSIVES_DATA = [
-      ...WEAPON_C4,
-      ...WEAPON_FLASHBANG,
-      ...WEAPON_GRENADE_LAUNCHER,
-      ...WEAPON_M67,
-      ...WEAPON_RPG_7,
-    ];
-
-    window.TOOLS_DATA = [
-      ...WEAPON_BUZZSAW,
-      ...WEAPON_VAULT_CRACKER,
-    ];
+    window.EQUIPMENT_DATA = byCategory['Equipment'] || [];
+    window.EXPLOSIVES_DATA = byCategory['Explosives'] || [];
+    window.TOOLS_DATA = byCategory['Tools'] || [];
   } catch (err) {
     console.error("Failed building data for js/jsdata/weapons.js:", err);
   }

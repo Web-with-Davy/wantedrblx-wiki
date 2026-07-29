@@ -7,13 +7,18 @@ const __MANIFEST_events = [
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_events).then(() => {
   try {
-    window.EVENTS_DATA = [
-      ...EVENT_JULY_4TH_2026,
-      ...EVENT_EASTER_2026,
-      ...EVENT_CHRISTMAS_2025,
-    ];
-
+    window.EVENTS_DATA = __MANIFEST_events.flatMap(path => {
+      const filename = path.split('/').pop().replace('.js', '');
+      const varName = 'EVENT_' + filename.toUpperCase().replace(/-/g, '_');
+      let data; try { data = eval(varName); } catch(_) {}
+      if (!data) {
+        console.warn(`events.js: expected "${varName}" from "${path}" but it was not found.`);
+        return [];
+      }
+      return data;
+    });
   } catch (err) {
     console.error("Failed building data for js/jsdata/events.js:", err);
   }
 }));
+

@@ -1,4 +1,4 @@
-const WEAPON_LIGHTCARBINE = [
+const WEAPON_LIGHT_CARBINE = [
 
   {
     name: "Light Carbine",

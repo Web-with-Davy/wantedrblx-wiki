@@ -9,14 +9,16 @@ const __MANIFEST_store = [
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_store).then(() => {
   try {
-    window.STORE_DATA = [
-      ...STORE_OTHER,
-      ...STORE_BAG_BOOSTS,
-      ...STORE_PACKS,
-      ...STORE_MONEY_PRINTERS,
-      ...STORE_CASH,
-    ];
-
+    window.STORE_DATA = __MANIFEST_store.flatMap(path => {
+      const filename = path.split('/').pop().replace('.js', '');
+      const varName = 'STORE_' + filename.toUpperCase().replace(/-/g, '_');
+      let data; try { data = eval(varName); } catch(_) {}
+      if (!data) {
+        console.warn(`store.js: expected "${varName}" from "${path}" but it was not found.`);
+        return [];
+      }
+      return data;
+    });
   } catch (err) {
     console.error("Failed building data for js/jsdata/store.js:", err);
   }

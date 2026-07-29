@@ -25,6 +25,30 @@ function initMobileMenu() {
             nav.classList.remove('active');
         }
     });
+
+    const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
+
+    document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (!isMobile()) return;
+            e.preventDefault();
+
+            const dropdown = btn.closest('.dropdown');
+            document.querySelectorAll('.dropdown.open').forEach(d => {
+                if (d !== dropdown) d.classList.remove('open');
+            });
+
+            dropdown.classList.toggle('open');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.open').forEach(d => {
+                d.classList.remove('open');
+            });
+        }
+    });
 }
 
 function initHeaderResize() {

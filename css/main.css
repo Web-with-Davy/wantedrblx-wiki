@@ -2511,7 +2511,9 @@ a.header-discord-btn.header-icon-btn:hover {
 
     .top-tabs .dropdown.open .dropdown-content {
         max-height: 400px;
-        transform: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .top-tabs .dropdown-content::before {
