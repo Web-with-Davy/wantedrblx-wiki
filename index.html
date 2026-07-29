@@ -337,24 +337,29 @@
                 }, true);
 
                 document.querySelectorAll('.dropdown-btn').forEach(function (btn) {
-                    btn.addEventListener('click', function (e) {
+                    btn.addEventListener('pointerdown', function (e) {
                         if (!isMobile()) return;
                         e.preventDefault();
-                        var dropdown = btn.closest('.dropdown');
-                        var isOpen = dropdown.classList.contains('open');
-                        document.querySelectorAll('.dropdown.open').forEach(function (d) {
+                        e.stopPropagation();
+
+                        const dropdown = btn.closest('.dropdown');
+                        document.querySelectorAll('.dropdown.open').forEach(d => {
                             if (d !== dropdown) d.classList.remove('open');
                         });
-                        dropdown.classList.toggle('open', !isOpen);
-                    });
-                });
 
-                document.addEventListener('click', function (e) {
-                    if (!header.contains(e.target)) {
-                        document.querySelectorAll('.dropdown.open').forEach(function (d) {
-                            d.classList.remove('open');
-                        });
-                    }
+                        dropdown.classList.toggle('open');
+                    });
+
+                    document.addEventListener('click', function (e) {
+                        if (
+                            !e.target.closest('.dropdown') &&
+                            !e.target.closest('.dropdown-content')
+                        ) {
+                            document.querySelectorAll('.dropdown.open').forEach(function (d) {
+                                d.classList.remove('open');
+                            });
+                        }
+                    });
                 });
             });
         })();
