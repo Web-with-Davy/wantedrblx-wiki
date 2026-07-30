@@ -49,7 +49,7 @@ function renderMissions(order = "hard") {
     const missionsInCategory = allMissions.filter(m => m.missionType === cat.type);
     if (missionsInCategory.length === 0) return '';
     const sortedMissions = sortMissionsList(missionsInCategory);
-    const cards = sortedMissions.map(makeMissionCard).join('');
+    const cards = sortedMissions.map(item => makeMissionCard(item)).join('');
     const divider = index > 0 ? '<div class="val-section-divider"></div>' : '';
     return `
       ${divider}

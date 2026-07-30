@@ -36,7 +36,7 @@ function renderWeapons(sort = "high") {
 
 
 
-  const makeSectionCards = (data) => data.map(makeWeaponCard).join('');
+  const makeSectionCards = (data) => data.map(item => makeWeaponCard(item)).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortWeapons('high')" },

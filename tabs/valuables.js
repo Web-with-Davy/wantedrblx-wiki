@@ -80,7 +80,7 @@ function renderValuables(sort = 'high') {
         <h3 class="val-section-title">${cat.label}</h3>
         <span class="val-section-count">${items.length} items</span>
       </div>
-      <div class="val-grid">${items.map(makeValuableCard).join('')}</div>`;
+      <div class="val-grid">${items.map(item => makeValuableCard(item)).join('')}</div>`;
   }).join('');
 
   const christmasItems = [...CHRISTMAS_VALUABLES_DATA]
@@ -92,7 +92,7 @@ function renderValuables(sort = 'high') {
       <h3 class="val-section-title">Christmas Limited</h3>
       <span class="val-section-count">${christmasItems.length} items</span>
     </div>
-    <div class="val-grid">${christmasItems.map(makeValuableCard).join('')}</div>` : '';
+    <div class="val-grid">${christmasItems.map(item => makeValuableCard(item)).join('')}</div>` : '';
 
   const fourthOfJulyItems = [...FOURTH_OF_JULY_VALUABLES_DATA]
     .sort((a, b) => sort === 'high' ? b.price - a.price : a.price - b.price);
@@ -103,7 +103,7 @@ function renderValuables(sort = 'high') {
       <h3 class="val-section-title">4th of July Limited</h3>
       <span class="val-section-count">${fourthOfJulyItems.length} items</span>
     </div>
-    <div class="val-grid">${fourthOfJulyItems.map(makeValuableCard).join('')}</div>` : '';
+    <div class="val-grid">${fourthOfJulyItems.map(item => makeValuableCard(item)).join('')}</div>` : '';
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortValuables('high')" },

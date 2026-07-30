@@ -42,8 +42,8 @@ function renderATMs(sort = "high") {
   });
 
 
-  const atmCards   = sortedATMs.map(makeATMCard).join('');
-  const vaultCards = sortedVaults.map(makeVaultCard).join('');
+  const atmCards   = sortedATMs.map(item => makeATMCard(item)).join('');
+  const vaultCards = sortedVaults.map(item => makeVaultCard(item)).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortATMs('high')" },
