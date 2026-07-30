@@ -9,6 +9,7 @@ const __MANIFEST_missions = [
   "js/data/missions/Bert/bulletproof.js",
   "js/data/missions/Bert/public-relations.js",
   "js/data/missions/Bert/police-sharpshooter.js",
+  "js/data/missions/Bert/calling-all-units.js",
   "js/data/missions/Bert/cop-killer.js",
   "js/data/missions/Bert/dirty-money.js",
   "js/data/missions/Bert/introduction.js",
