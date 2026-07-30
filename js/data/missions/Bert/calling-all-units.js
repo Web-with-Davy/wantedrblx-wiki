@@ -1,6 +1,6 @@
 const MISSIONS_BERT_CALLING_ALL_UNITS = [
   {
-    id: "calling-all-units-1",
+    id: "calling-all-units",
     title: "Calling All Units",
     location: "Police Station – Talk to Bert",
     description: "We're seeing new reports of increased Syndicate activity. They're running together in bigger numbers now. You're going to need a big squad in order to deal with them safely.",
