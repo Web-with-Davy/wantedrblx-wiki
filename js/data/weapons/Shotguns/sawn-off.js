@@ -2,7 +2,7 @@ const WEAPON_SAWN_OFF = [
 
   {
     name: "Sawn Off",
-    showMoreButton: true,
+    description: "Yeah you wont do much with this one",
     reBuyPrice: 150,
     sellPrice: 45,
     contractPrice: 800,

@@ -1,0 +1,465 @@
+.map-page-root {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 170px);
+    min-height: 480px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+}
+
+.map-page-root::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(-45deg) translate(17px, 17px);
+    pointer-events: none;
+    z-index: 100;
+    transition: border-color 0.2s ease;
+}
+
+.map-sidebar {
+    width: 240px;
+    min-width: 210px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.95);
+    border-right: 2px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.map-sidebar-header {
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.map-sidebar-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.map-sidebar-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.map-legend {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+.map-legend::-webkit-scrollbar {
+    width: 3px;
+}
+
+.map-legend::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.map-legend::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+}
+
+.map-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: calc(100% - 16px);
+    margin: 3px 8px;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+    transform: skew(-1deg);
+}
+
+.map-legend-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--pin-color, #fff);
+    opacity: 0;
+    transition: opacity 0.18s;
+    pointer-events: none;
+}
+
+.map-legend-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-45deg) translate(6px, 6px);
+    pointer-events: none;
+    transition: border-color 0.18s;
+}
+
+.map-legend-item:hover::before {
+    opacity: 0.08;
+}
+
+.map-legend-item:hover {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: var(--pin-color, rgba(255, 255, 255, 0.4));
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.06), inset 0 0 0 0 transparent;
+}
+
+.map-legend-item:hover::after {
+    border-top-color: var(--pin-color, rgba(255, 255, 255, 0.4));
+}
+
+.map-legend-item.active {
+    color: #fff;
+    border-color: var(--pin-color, rgba(255, 255, 255, 0.6));
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--pin-color, #fff) 20%, transparent),
+        inset 0 0 8px color-mix(in srgb, var(--pin-color, #fff) 5%, transparent);
+    text-shadow: 0 0 8px color-mix(in srgb, var(--pin-color, #fff) 60%, transparent);
+}
+
+.map-legend-item.active::before {
+    opacity: 0.06;
+}
+
+.map-legend-item.active::after {
+    border-top-color: var(--pin-color, rgba(255, 255, 255, 0.6));
+}
+
+.map-legend-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.45;
+    transition: opacity 0.18s, filter 0.18s;
+    filter: grayscale(60%);
+}
+
+.map-legend-item:hover .map-legend-icon {
+    opacity: 0.75;
+    filter: grayscale(20%);
+}
+
+.map-legend-item.active .map-legend-icon {
+    opacity: 1;
+    filter: none;
+    filter: drop-shadow(0 0 4px var(--pin-color, #fff));
+}
+
+.map-legend-name {
+    flex: 1;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.map-legend-badge {
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition: color 0.18s;
+}
+
+.map-legend-item.active .map-legend-badge {
+    color: var(--pin-color, rgba(255, 255, 255, 0.6));
+    text-shadow: 0 0 6px var(--pin-color, transparent);
+}
+
+.map-viewport-wrap {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #030508;
+    background-image:
+        radial-gradient(circle at 25% 75%, rgba(0, 60, 140, 0.1) 0%, transparent 55%),
+        radial-gradient(circle at 80% 20%, rgba(120, 0, 0, 0.07) 0%, transparent 45%);
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.map-ctrl-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    border-radius: 0;
+    padding: 0;
+    line-height: 1;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+
+.map-ctrl-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.map-ctrl-btn:active {
+    transform: scale(0.93);
+}
+
+.map-viewport {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.map-viewport:active {
+    cursor: grabbing;
+}
+
+.map-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 800px;
+    height: 800px;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+.map-tile {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.map-zone-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    pointer-events: none;
+    line-height: 1.6;
+    white-space: nowrap;
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 1),
+        0 0 14px rgba(0, 0, 0, 0.8),
+        1px 1px 0 rgba(0, 0, 0, 0.9),
+        -1px -1px 0 rgba(0, 0, 0, 0.9);
+}
+
+.map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: opacity 0.2s ease, filter 0.15s ease;
+    z-index: 10;
+    transform-origin: center center;
+}
+
+.map-pin-svg {
+    display: block;
+    width: 36px;
+    height: 36px;
+    transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: drop-shadow(0 0 5px var(--pin-color, #fff));
+}
+
+.map-pin:hover {
+    z-index: 50;
+}
+
+.map-pin:hover .map-pin-svg {
+    transform: scale(1.3);
+}
+
+.map-pin-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid var(--pin-color, rgba(255, 255, 255, 0.3));
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 5px 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+    z-index: 100;
+    box-shadow: 0 0 16px var(--pin-color, transparent),
+        0 2px 8px rgba(0, 0, 0, 0.8);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+}
+
+.map-pin-tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--pin-color, rgba(255, 255, 255, 0.3));
+}
+
+@media (max-width: 768px) {
+    .map-page-root {
+        flex-direction: column;
+        height: calc(100vh - 150px);
+        min-height: 400px;
+        clip-path: none;
+    }
+
+    .map-page-root::after {
+        display: none;
+    }
+
+    .map-sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 130px;
+        flex-shrink: 0;
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .map-legend {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 8px 10px;
+        gap: 6px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .map-legend::-webkit-scrollbar {
+        display: none;
+    }
+
+    .map-legend-item {
+        width: max-content;
+        flex-shrink: 0;
+        margin: 0;
+        padding: 5px 12px;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+        transform: skew(-1deg);
+    }
+
+    .map-viewport-wrap {
+        flex: 1;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+    }
+}
+
+body.low-end-mode .map-page-root {
+    clip-path: none;
+    border-color: #333;
+}
+
+body.low-end-mode .map-page-root::after,
+body.low-end-mode .map-legend-item::after {
+    display: none;
+}
+
+body.low-end-mode .map-legend-item {
+    clip-path: none;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+}
+
+body.low-end-mode .map-legend-item.active {
+    box-shadow: none;
+    text-shadow: none;
+}
+
+body.low-end-mode .map-pin-svg {
+    filter: none;
+}
+
+body.low-end-mode .map-ctrl-btn {
+    clip-path: none;
+    box-shadow: none;
+    text-shadow: none;
+    transition: none;
+}
+
+body.low-end-mode .map-pin-tooltip {
+    clip-path: none;
+    box-shadow: none;
+}

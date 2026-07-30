@@ -3,7 +3,7 @@ const VEHICLE_CRUISER = [
   {
     name: "Cruiser",
     obtaining: "Starter",
-    showMoreButton: true,
+    description: "Your first car, brings back memories",
     type: "ground",
     repairPrice: 0,
     repairPriceGarage: 0,

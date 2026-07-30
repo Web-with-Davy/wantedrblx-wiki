@@ -3,7 +3,7 @@ const VEHICLE_G_CRUISER = [
   {
     name: "G-Cruiser",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "The G-Cruiser is a heavily armored SUV, used by teams",
     type: "ground",
     repairPrice: 1500,
     repairPriceGarage: 450,

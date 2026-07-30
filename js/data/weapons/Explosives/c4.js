@@ -1,7 +1,7 @@
 const WEAPON_C4 = [
   {
     name: "C4",
-    showMoreButton: true,
+    description: "Explosive used for destroying vault doors",
     reBuyPrice: 250,
     sellPrice: 75,
     contractPrice: 50000,

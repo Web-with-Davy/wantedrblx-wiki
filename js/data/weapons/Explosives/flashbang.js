@@ -1,7 +1,7 @@
 const WEAPON_FLASHBANG = [
   {
     name: "Flashbang",
-    showMoreButton: true,
+    description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",
     obtaining: "Police Level 3",
     reBuyPrice: "?",
     sellPrice: "?",

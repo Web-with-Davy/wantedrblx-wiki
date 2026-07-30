@@ -2,7 +2,7 @@ const VEHICLE_EMPYREAN = [
 
   {
     name: "Empyrean",
-    showMoreButton: true,
+    description: "Fastest ground vehicle in the game, flex rights",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 7500,

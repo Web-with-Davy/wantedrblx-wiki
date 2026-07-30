@@ -2,7 +2,7 @@ const VEHICLE_TEMPORO = [
 
   {
     name: "Temporo",
-    showMoreButton: true,
+    description: "Looks like a car made out of legos, its very speedy tho",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 7500,

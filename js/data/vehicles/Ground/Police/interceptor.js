@@ -2,7 +2,7 @@ const VEHICLE_INTERCEPTOR = [
 
   {
     name: "Interceptor",
-    showMoreButton: true,
+    description: "Pretty fast car for a police vehicle",
     type: "ground",
     obtaining: "Police Level 1",
     contractPrice: "Un-Buyable",

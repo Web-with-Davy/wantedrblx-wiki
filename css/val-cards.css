@@ -1,0 +1,631 @@
+.val-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 12px;
+}
+
+.val-section-title {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+}
+
+.val-section-count {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.val-section-divider {
+    margin: 36px 0 28px;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+}
+
+.val-section-divider::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.val-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-min-size, 200px), 1fr));
+    gap: 18px;
+    overflow: visible;
+    margin-bottom: 8px;
+}
+
+.val-card {
+    margin-left: 2px;
+    margin-right: 2px;
+    position: relative;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    transform: skew(-2deg);
+}
+
+.val-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(-45deg) translate(14px, 14px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.val-card:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px) skew(-2deg);
+    box-shadow: none;
+}
+
+.val-card:hover::before {
+    border-top-color: white;
+}
+
+.val-rarity-bar {
+    height: 3px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.val-rarity-bar.rarity-common {
+    background: #999;
+}
+
+.val-rarity-bar.rarity-uncommon {
+    background: #00ff00;
+    box-shadow: 0 0 6px #0f0;
+}
+
+.val-rarity-bar.rarity-epic {
+    background: #cc00ff;
+    box-shadow: 0 0 6px #c0f;
+}
+
+.val-rarity-bar.rarity-mythic {
+    background: #ff2222;
+    box-shadow: 0 0 6px #f00;
+}
+
+.val-rarity-bar.rarity-legendary {
+    background: #ffee00;
+    box-shadow: 0 0 8px #ff0;
+}
+
+.val-rarity-bar.rarity-mission {
+    background: #9999ff;
+    box-shadow: 0 0 6px #99f;
+}
+
+.val-rarity-bar.rarity-unobtainable {
+    background: linear-gradient(90deg, #555, #fff, #555);
+}
+
+.val-rarity-bar.rarity-christmas-limited {
+    background: linear-gradient(90deg, #f00, #0f0);
+}
+
+.val-rarity-bar.rarity-easter {
+    background: linear-gradient(90deg, #ff50c2, #a0f, #ff50c2);
+}
+
+.val-rarity-bar.rarity-4th-of-july {
+    background: linear-gradient(90deg, #b22234, #fff, #3c3b6e, #fff, #b22234);
+    box-shadow: 0 0 6px #b22234;
+}
+
+.val-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    flex-shrink: 0;
+    background:
+        radial-gradient(ellipse at 50% 60%, rgba(255, 255, 255, 0.04) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.val-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), filter 0.3s ease;
+    display: block;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.val-card:hover .val-img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6)) brightness(1.05);
+}
+
+.val-img.val-img-fallback {
+    opacity: 0.4;
+    object-fit: contain;
+}
+
+.val-code-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(255, 255, 255, 0.02) 3px, rgba(255, 255, 255, 0.02) 4px),
+        radial-gradient(ellipse at center, rgba(var(--code-accent-rgb, 255, 255, 255), 0.06) 0%, transparent 70%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s ease;
+}
+
+.val-code-display::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, var(--code-accent, #fff) 0%, transparent 65%);
+    opacity: 0.07;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.val-card:hover .val-code-display::before {
+    opacity: 0.13;
+}
+
+.val-code-text {
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow:
+        0 0 8px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff;
+    white-space: nowrap;
+    text-align: center;
+    padding: 12px 10px;
+    line-height: 1.2;
+    transition: text-shadow 0.4s ease, letter-spacing 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.val-card:hover .val-code-text {
+    letter-spacing: 0.15em;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 28px #fff,
+        0 0 55px #fff;
+}
+
+.val-rarity-tag {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 2px 7px;
+    font-size: 0.58rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.val-per-kg {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    padding: 2px 7px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    background: rgba(0, 0, 0, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    color: #39ff14;
+    text-shadow: 0 0 6px #39ff14;
+    pointer-events: none;
+}
+
+.val-body {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.val-name {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.val-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.val-price-label {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.val-price-value {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #39ff14;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+    font-family: 'Courier New', monospace;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.val-hidden {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s;
+}
+
+.val-hidden.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+body.always-show-more .val-hidden.collapsed {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+body.always-show-more .val-toggle {
+    display: none;
+}
+
+.val-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.8);
+}
+
+.val-stat:last-child {
+    border-bottom: none;
+}
+
+.val-stat-label {
+    font-size: 0.62rem;
+    color: rgba(255, 255, 255, 0.38);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.val-stat-value {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'Courier New', monospace;
+    text-align: right;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
+}
+
+.val-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 0.55rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    align-self: flex-start;
+}
+
+.val-badge-nc {
+    background: rgba(255, 200, 0, 0.12);
+    border: 1px solid rgba(255, 200, 0, 0.4);
+    color: #ffc800;
+}
+
+.val-toggle {
+    width: 100%;
+    padding: 6px 10px;
+    margin-top: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-radius: 1px;
+}
+
+.val-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.val-see-more-btn {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-radius: 1px;
+}
+
+.val-see-more-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.low-end-mode .val-card {
+    backdrop-filter: none;
+    background: #0a0a0a;
+    box-shadow: none;
+    border-color: #333;
+    clip-path: none;
+    border-radius: 0;
+    transition: none;
+    transform: none;
+}
+
+body.low-end-mode .val-card::before {
+    display: none;
+}
+
+body.low-end-mode .val-card:hover {
+    transform: translateY(-2px);
+    box-shadow: none;
+}
+
+body.low-end-mode .val-card:hover .val-img {
+    transform: none;
+}
+
+body.low-end-mode .val-rarity-bar {
+    box-shadow: none;
+}
+
+.emoji-style {
+    filter: grayscale(100%) brightness(1000%);
+    margin-right: 4px;
+    display: inline-block;
+}
+.val-card-wide {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.val-card-wide .val-img-wrap {
+    aspect-ratio: 16 / 7;
+}
+
+.val-card-wide .val-img {
+    object-fit: cover;
+    padding: 0;
+}
+
+.val-grid-events {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+}
+
+.val-card {
+    margin-left: 2px;
+    margin-right: 2px;
+    position: relative;
+}
+
+.val-card .card-overlay-button {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    bottom: auto;
+    right: auto;
+    z-index: 20;
+    padding: 3px 8px;
+    font-size: .6rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    border-radius: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    font-family: inherit;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.val-card .card-overlay-button:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.val-card .card-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    z-index: 15;
+    overflow-y: auto;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.val-card .card-overlay.active {
+    display: block;
+}
+
+.val-card .card-overlay-title {
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.val-card .val-body.hidden {
+    display: none;
+}
+
+.val-stat-highlight {
+    color: #39ff14;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+}
+
+.val-card .val-overlay-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 20;
+    padding: 3px 8px;
+    font-size: .6rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    border-radius: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    font-family: inherit;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.val-card .val-overlay-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.val-card .val-overlay-panel {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    z-index: 30;
+    overflow-y: auto;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.val-card .val-overlay-panel.active {
+    display: block;
+}
+
+.val-card .val-overlay-title {
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.val-overlay-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-family: 'Courier New', monospace;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.val-overlay-close:hover {
+    opacity: 1;
+    color: #ff3333;
+}

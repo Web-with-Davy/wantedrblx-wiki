@@ -2,7 +2,7 @@ const WEAPON_DEAGLE = [
 
   {
     name: "Deagle",
-    showMoreButton: true,
+    description: "A powerful pistol with high damage and recoil",
     obtaining: "Syndicate Level 3",
     reBuyPrice: 3500,
     sellPrice: 1050,

@@ -1,7 +1,6 @@
 const NPC_ROD = [
   {
     name: "Rod",
-    showMoreButton: true,
     team: "CRIMINAL",
     location: "Oasis City Port",
     description: "The current manager of Oasis City Port, specializing in across the sea trading. You can sell guns to him for 35% of the guns re-buy price, get info on loot crates, and buy the vault crackers from him.",

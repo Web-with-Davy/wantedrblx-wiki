@@ -2,7 +2,7 @@ const VEHICLE_PULSE_477_RS = [
 
   {
     name: "Pulse 477 RS",
-    showMoreButton: true,
+    description: "Fast but not the fastest, its a speedy car but lets be honest u wanted the empyrean",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 3000,

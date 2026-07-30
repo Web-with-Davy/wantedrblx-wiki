@@ -18,8 +18,7 @@ function renderPromoCodes(filter = "all") {
       ].filter(s => s.value),
       hiddenStats: [
         { label: 'Description', value: item.description },
-      ].filter(s => s.value),
-      showButton: item.showMoreButton !== false && !!item.description
+      ].filter(s => s.value)
     });
   }).join('');
 

@@ -1,53 +1,44 @@
+function makeVehicleCard(item, displayName) {
+  const contractHtml = formatPrice(item.contractPrice);
+
+  const visibleStats = [
+    contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
+  ].filter(Boolean);
+
+  return makeUniversalCard(item, {
+    folder: 'vehicles',
+    rarityKey: null,
+    displayName: displayName || undefined,
+    visibleStats,
+    hiddenStats: [],
+    itemCategory: 'vehicles',
+    showButton: false
+  });
+}
+
 function renderVehicles(sort = "high") {
   const groundVehicles = VEHICLES_DATA.filter(v => v.type === 'ground');
   const flyingVehicles = VEHICLES_DATA.filter(v => v.type === 'flying');
 
   const sortFn = (a, b) => {
-    const pA = typeof a.contractPrice === 'number' ? a.contractPrice : 0;
-    const pB = typeof b.contractPrice === 'number' ? b.contractPrice : 0;
+    const isUnA = typeof a.contractPrice !== 'number';
+    const isUnB = typeof b.contractPrice !== 'number';
+    if (isUnA && !isUnB) return 1;
+    if (!isUnA && isUnB) return -1;
+    if (isUnA && isUnB) return (a.name || '').localeCompare(b.name || '');
+
+    const pA = a.contractPrice;
+    const pB = b.contractPrice;
     return sort === "high" ? pB - pA : pA - pB;
   };
 
   const sortedGround = [...groundVehicles].sort(sortFn);
   const sortedFlying = [...flyingVehicles].sort(sortFn);
 
-  const makeVehicleCard = (item, isFlying) => {
-    const contractHtml = formatPrice(item.contractPrice);
-    const repairHtml = formatPrice(item.repairPrice);
-    const garageHtml = formatPrice(item.repairPriceGarage);
 
-    const visibleStats = [
-      contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
-    ].filter(Boolean);
 
-    const hiddenStats = [
-      { label: 'Obtaining', value: item.obtaining },
-      repairHtml ? { label: 'Repair Price', value: repairHtml } : null,
-      garageHtml ? { label: 'Garage Repair', value: garageHtml } : null,
-      isFlying
-        ? { label: 'Top Speed', value: item.stats.topSpeed != null ? `${item.stats.topSpeed}%` : null }
-        : { label: 'Top Speed', value: item.stats.topSpeed != null ? `${item.stats.topSpeed}%` : null },
-      !isFlying
-        ? { label: 'Acceleration', value: item.stats.acceleration != null ? `${item.stats.acceleration}%` : null }
-        : { label: 'Spool Time', value: item.stats.spoolTime != null ? `${item.stats.spoolTime}s` : null },
-      !isFlying
-        ? { label: 'Braking', value: item.stats.braking != null ? `${item.stats.braking}%` : null }
-        : { label: 'Handling', value: item.stats.handling != null ? `${item.stats.handling}%` : null },
-      { label: 'Health', value: item.stats.Health },
-      { label: 'Armor', value: item.stats.armor != null ? String(item.stats.armor) : null },
-    ].filter(s => s && s.value !== undefined && s.value !== null && s.value !== '');
-
-    return makeUniversalCard(item, {
-      folder: 'vehicles',
-      rarityKey: null,
-      visibleStats,
-      hiddenStats,
-      showButton: item.showMoreButton !== false && hiddenStats.length > 0
-    });
-  };
-
-  const groundCards = sortedGround.map(v => makeVehicleCard(v, false)).join('');
-  const flyingCards = sortedFlying.map(v => makeVehicleCard(v, true)).join('');
+  const groundCards = sortedGround.map(v => makeVehicleCard(v)).join('');
+  const flyingCards = sortedFlying.map(v => makeVehicleCard(v)).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortVehicles('high')" },

@@ -9,7 +9,6 @@ const sizeSlider = document.getElementById("card-size-slider");
 window.audioUnlocked = false;
 
 window.loadPage = loadPage;
-window.toggleCardDetails = toggleCardDetails;
 
 const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
 const PAGE_NAMES = {
@@ -21,6 +20,7 @@ const PAGE_NAMES = {
 
 function getCurrentPage() {
     const hash = window.location.hash.replace(/^#/, '');
+    if (hash.startsWith('item/')) return null;
     if (VALID_PAGES.includes(hash)) return hash;
     return 'home';
 }
@@ -101,7 +101,7 @@ function loadPage(page, saveToHistory = true) {
             if (typeof updateVisitorDisplay === "function") updateVisitorDisplay(window.visitorCountCached || "---");
         }
 
-        const cards = container.querySelectorAll('.card');
+        const cards = container.querySelectorAll('.val-card');
 
         if (isLowEnd) {
             container.style.opacity = '1';
@@ -134,10 +134,14 @@ function loadPage(page, saveToHistory = true) {
 }
 
 window.addEventListener("popstate", (event) => {
-    let page = (event.state && event.state.page);
+    const hash = window.location.hash.replace(/^#/, '');
 
+    if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
+        if (_handleItemPageHash(hash)) return;
+    }
+
+    let page = (event.state && event.state.page);
     if (!page) {
-        const hash = window.location.hash.replace(/^#/, '');
         page = VALID_PAGES.includes(hash) ? hash : "home";
     }
 
@@ -152,14 +156,6 @@ function updateVisitorDisplay(count) {
     }
 }
 
-function toggleCardDetails(cardId, btn) {
-    const detailsElement = document.getElementById(`${cardId}-details`);
-    const button = btn || (window.event ? window.event.target : null);
-    if (!detailsElement || !button) return;
-
-    const isCollapsed = detailsElement.classList.toggle('collapsed');
-    button.textContent = isCollapsed ? 'Show more...' : 'Show less';
-}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -277,6 +273,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.audioUnlocked = true;
 
             const hash = window.location.hash.replace(/^#/, '');
+
+            if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
+                if (!skipped && bgm) bgm.play().catch(() => { });
+                setTimeout(() => _handleItemPageHash(hash), skipped ? 0 : 400);
+                return;
+            }
+
             const initialPage = VALID_PAGES.includes(hash) ? hash : "home";
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
@@ -323,26 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const showMoreToggle = document.getElementById("always-show-more-toggle");
-    const showMoreStatus = document.getElementById("always-show-more-status");
-    if (showMoreToggle && showMoreStatus) {
-        const isAlwaysShow = localStorage.getItem("alwaysShowMore") === "true";
-        if (isAlwaysShow) {
-            document.body.classList.add("always-show-more");
-            showMoreToggle.classList.add("active");
-            showMoreStatus.textContent = 'ON';
-        }
-        showMoreToggle.addEventListener("click", () => {
-            const active = document.body.classList.toggle("always-show-more");
-            showMoreToggle.classList.toggle("active", active);
-            showMoreStatus.textContent = active ? 'ON' : 'OFF';
-            localStorage.setItem("alwaysShowMore", active);
-
-            const activeTab = document.querySelector(".tab.active");
-            const pageToReload = (activeTab && activeTab.dataset.page) || getCurrentPage();
-            if (pageToReload) loadPage(pageToReload);
-        });
-    }
 
     const introToggle = document.getElementById("intro-toggle");
     const introStatus = document.getElementById("intro-status");

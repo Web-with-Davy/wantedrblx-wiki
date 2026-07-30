@@ -2,7 +2,7 @@ const WEAPON_ARX_160 = [
 
   {
     name: "ARX-160",
-    showMoreButton: true,
+    description: "A very fast rifle",
     reBuyPrice: 9000,
     sellPrice: 2700,
     contractPrice: 2500000,

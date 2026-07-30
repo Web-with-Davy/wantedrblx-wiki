@@ -3,7 +3,7 @@ const VEHICLE_RAZOR = [
   {
     name: "Razor",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "The Razor is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
     repairPrice: 7500,
     repairPriceGarage: 2250,

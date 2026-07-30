@@ -2,7 +2,7 @@ const WEAPON_SVD = [
 
   {
     name: "SVD",
-    showMoreButton: true,
+    description: "The SVD is a semi-automatic sniper rifle that balances power and rate of fire, making it effective for both aggressive and defensive playstyles.",
     reBuyPrice: 10000,
     sellPrice: 3000,
     contractPrice: 5000000,

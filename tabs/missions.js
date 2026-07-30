@@ -1,3 +1,20 @@
+function makeMissionCard(item, displayName) {
+  const formattedRewards = (item.rewards || []).map(formatReward).join(', ');
+  const visibleStats = [
+    formattedRewards ? { label: 'Reward', value: formattedRewards } : null,
+  ].filter(Boolean);
+
+  return makeUniversalCard(item, {
+    folder: 'missions',
+    rarityKey: item.difficulty,
+    displayName: displayName || undefined,
+    visibleStats,
+    hiddenStats: [],
+    itemCategory: 'missions',
+    showButton: false
+  });
+}
+
 function renderMissions(order = "hard") {
   const allMissions = [...MISSIONS_DATA];
 
@@ -12,29 +29,14 @@ function renderMissions(order = "hard") {
     return order === "hard" ? diffB.order - diffA.order : diffA.order - diffB.order;
   });
 
-  const makeMissionCard = (item) => {
-    const formattedRewards = (item.rewards || []).map(formatReward).join(', ');
-    return makeUniversalCard(item, {
-      folder: 'missions',
-      rarityKey: item.difficulty,
-      visibleStats: [],
-      hiddenStats: [
-        { label: 'Location',    value: item.location },
-        { label: 'Description', value: item.description },
-        { label: 'How To',      value: item.howToComplete },
-        formattedRewards ? { label: 'Reward', value: formattedRewards } : null,
-      ].filter(s => s && s.value),
-      showButton: item.showMoreButton !== false
-    });
-  };
 
   const categories = [
-    { type: 'Game',      label: 'Game Missions',      id: 'missions-game'      },
-    { type: 'Erik',      label: "Erik's Missions",    id: 'missions-erik'      },
-    { type: 'Dan',       label: "Dan's Missions",     id: 'missions-dan'       },
-    { type: 'Sir. B',    label: "Sir. B's Missions",  id: 'missions-sirb'      },
-    { type: 'Bert',      label: "Bert's Missions",    id: 'missions-bert'      },
-    { type: 'Easter',    label: 'Easter Missions',    id: 'missions-easter'    },
+    { type: 'Game', label: 'Game Missions', id: 'missions-game' },
+    { type: 'Erik', label: "Erik's Missions", id: 'missions-erik' },
+    { type: 'Dan', label: "Dan's Missions", id: 'missions-dan' },
+    { type: 'Sir. B', label: "Sir. B's Missions", id: 'missions-sirb' },
+    { type: 'Bert', label: "Bert's Missions", id: 'missions-bert' },
+    { type: 'Easter', label: 'Easter Missions', id: 'missions-easter' },
     { type: 'Christmas', label: 'Christmas Missions', id: 'missions-christmas' },
   ];
 

@@ -37,12 +37,8 @@ function makeUniversalCard(item, opts = {}) {
   const hiddenRows = (opts.hiddenStats || []).map(buildStatRow).join('');
 
   const hasHidden = hiddenRows.trim() !== '' || (opts.extraBodyHtml || '').trim() !== '';
-  const showButton = opts.showButton !== undefined
-    ? opts.showButton
-    : (item.showMoreButton !== false && hasHidden);
-
-  const hiddenBlock = hasHidden ? `<div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">${hiddenRows}${opts.extraBodyHtml || ''}</div>` : '';
-  const toggleBtn = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
+  const hiddenBlock = hasHidden ? `<div class="val-hidden" id="${cardId}-details">${hiddenRows}${opts.extraBodyHtml || ''}</div>` : '';
+  const toggleBtn = '';
 
   const overlayHtml = opts.overlayHtml || '';
   const overlayLabel = opts.overlayLabel || 'VIEW';
@@ -60,7 +56,13 @@ function makeUniversalCard(item, opts = {}) {
 
   const headlineHtml = opts.headlineHtml || '';
   const badgeHtml = opts.badgeHtml || '';
+  const displayName = opts.displayName || name;
   const wideClass = opts.wide ? ' val-card-wide' : '';
+
+  const itemCategory = opts.itemCategory || null;
+  const seeMoreBtn = (itemCategory && typeof makeSeeMoreBtn === 'function')
+    ? makeSeeMoreBtn(itemCategory, item)
+    : '';
 
   return `
     <div class="val-card${wideClass}" data-rarity="${rarityKey || ''}">
@@ -81,10 +83,11 @@ function makeUniversalCard(item, opts = {}) {
       </div>
       <div class="val-body">
         ${headlineHtml}
-        <h3 class="val-name">${name}</h3>
+        <h3 class="val-name">${displayName}</h3>
         ${visibleRows}
         ${hiddenBlock}
         ${toggleBtn}
+        ${seeMoreBtn}
       </div>
       ${overlayPanel}
     </div>`;
@@ -132,7 +135,7 @@ function renderExpandableCard(item, rarityKey, visibleContent, hiddenContent, ex
   return makeUniversalCard(item, {
     folder, rarityKey, ext,
     extraBodyHtml: `${visibleContent || ''}${hiddenContent || ''}`,
-    showButton: item.showMoreButton !== false && (hiddenContent || '').trim() !== ''
+    showButton: (hiddenContent || '').trim() !== ''
   });
 }
 
@@ -213,9 +216,8 @@ function renderEventCard(item, visibleContent, hiddenContent, folder = 'events')
   const dateTagHtml = item.date ? `<span class="val-rarity-tag" style="${dc}${ds}">${item.date}</span>` : '';
 
   const hasHidden = (hiddenContent || '').trim() !== '';
-  const showButton = item.showMoreButton !== false && hasHidden;
-  const hiddenBlock = hasHidden ? `<div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">${hiddenContent}</div>` : '';
-  const toggleBtn = showButton ? `<button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
+  const hiddenBlock = hasHidden ? `<div class="val-hidden" id="${cardId}-details">${hiddenContent}</div>` : '';
+  const toggleBtn = '';
 
   return `
     <div class="val-card val-card-wide">

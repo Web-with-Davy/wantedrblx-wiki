@@ -3,7 +3,7 @@ const VEHICLE_BEAM = [
   {
     name: "Beam",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "ITs a very cool car, but not many players have bought it due to there being better options at a similar price",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

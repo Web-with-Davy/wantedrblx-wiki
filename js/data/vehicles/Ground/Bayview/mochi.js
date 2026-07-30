@@ -3,7 +3,7 @@ const VEHICLE_MOCHI = [
   {
     name: "Mochi",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "Flippy floppy lights, but not bad for a beginner car",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

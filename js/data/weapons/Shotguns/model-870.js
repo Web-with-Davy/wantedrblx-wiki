@@ -2,7 +2,7 @@ const WEAPON_MODEL_870 = [
 
   {
     name: "Model 870",
-    showMoreButton: true,
+    description: "Its a shotgun, very bad and boring gun",
     reBuyPrice: 750,
     sellPrice: 225,
     contractPrice: 20000,

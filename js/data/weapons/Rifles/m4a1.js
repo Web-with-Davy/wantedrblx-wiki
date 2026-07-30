@@ -2,7 +2,7 @@ const WEAPON_M4A1 = [
 
   {
     name: "M4A1",
-    showMoreButton: true,
+    description: "The M4A1 is a lightweight and versatile carbine known for its high rate of fire and low recoil. It’s a perfect all-rounder for players who need a reliable weapon in close-quarters combat and mid-range engagements.",
     reBuyPrice: 8000,
     sellPrice: 2400,
     contractPrice: 1600000,

@@ -1,7 +1,7 @@
 const WEAPON_VAULT_CRACKER = [
   {
     name: "Vault Cracker",
-    showMoreButton: false,
+    description: "Used to open the Jewelry Store vaults, very useful",
     location: "Oasis City Port",
     contractPrice: 5000,
     stats: {

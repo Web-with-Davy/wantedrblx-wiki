@@ -2,7 +2,7 @@ const WEAPON_AWM = [
 
   {
     name: "AWM",
-    showMoreButton: true,
+    description: "The AWM is a bolt-action sniper rifle renowned for its exceptional range and high damage output, making it a favorite among long-distance marksmen.",
     reBuyPrice: 8000,
     sellPrice: 2400,
     contractPrice: 2500000,

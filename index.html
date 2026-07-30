@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Resource hints for faster connections -->
+    <link rel="dns-prefetch" href="https://www.clarity.ms">
+    <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
     <title>Wanted Wiki - Roblox Wanted Game Wiki</title>
 
     <link rel="icon" type="image/x-icon" href="images/logo.webp">
@@ -87,12 +91,35 @@
     ]
     </script>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/features/garage.css">
-    <link rel="stylesheet" href="css/features/settings.css">
-    <link rel="stylesheet" href="css/events/birthday.css">
-    <link rel="stylesheet" href="css/events/4th-of-july.css">
-    <link rel="stylesheet" href="css/features/tutorial.css">
+    <!-- Critical CSS: loaded synchronously -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+
+    <!-- Non-critical CSS: loaded asynchronously to unblock render -->
+    <link rel="stylesheet" href="css/home.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/val-cards.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/map.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/item-page.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/features/garage.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/features/settings.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/events/birthday.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/events/4th-of-july.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/features/tutorial.css" media="print" onload="this.media='all'">
+    <!-- Fallback for browsers that don't support onload on link -->
+    <noscript>
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/val-cards.css">
+        <link rel="stylesheet" href="css/map.css">
+        <link rel="stylesheet" href="css/item-page.css">
+        <link rel="stylesheet" href="css/features/garage.css">
+        <link rel="stylesheet" href="css/features/settings.css">
+        <link rel="stylesheet" href="css/events/birthday.css">
+        <link rel="stylesheet" href="css/events/4th-of-july.css">
+        <link rel="stylesheet" href="css/features/tutorial.css">
+    </noscript>
 
     <script>
         if (localStorage.getItem("skipGarageIntro") === "true") {
@@ -128,8 +155,7 @@
             }
         })();
     </script>
-    <div class="stripes"></div>
-    <div class="static"></div>
+
     <div class="police-flash-red"></div>
     <div class="police-flash-blue"></div>
 
@@ -264,14 +290,7 @@
                         <span class="toggle-text"><span>Left Sidebar</span>: <span id="sidebar-status">OFF</span></span>
                     </button>
                 </div>
-                <div class="setting-item setting-item-toggle">
-                    <button id="always-show-more-toggle" class="always-show-more-toggle setting-toggle-btn"
-                        title="Toggle Always Show More">
-                        <span class="toggle-icon">▼</span>
-                        <span class="toggle-text"><span>Always Show More</span>: <span
-                                id="always-show-more-status">OFF</span></span>
-                    </button>
-                </div>
+
                 <div class="setting-item setting-item-toggle">
                     <button id="intro-toggle" class="intro-toggle setting-toggle-btn" title="Toggle Intro">
                         <span class="toggle-icon">🚪</span>
@@ -298,7 +317,7 @@
     <audio id="sfx-load" src="sounds/load.mp3" preload="auto"></audio>
 
     <!-- Core -->
-    <script src="js/features/rain-bg.js"></script>
+    <script defer src="js/features/rain-bg.js"></script>
     <script defer src="js/core/config.js"></script>
 
     <script defer src="js/core/loader.js"></script>

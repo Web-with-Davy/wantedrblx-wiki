@@ -2,7 +2,7 @@ const WEAPON_GOLDEN_BARRETT_M82 = [
 
   {
     name: "Golden Barrett M82",
-    showMoreButton: true,
+    description: "Its a golden colored barrett m82, VERY EXPENSIVE!",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
     sellPrice: "300000",

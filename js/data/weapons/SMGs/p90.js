@@ -2,7 +2,7 @@ const WEAPON_P90 = [
 
   {
     name: "P90",
-    showMoreButton: true,
+    description: "The P90 is a fan favorite SMG known for its iconic bullpup design and massive 50-round magazine, allowing for sustained fire and quick reloads.",
     obtaining: "Police Level 3",
     reBuyPrice: "?",
     sellPrice: "?",

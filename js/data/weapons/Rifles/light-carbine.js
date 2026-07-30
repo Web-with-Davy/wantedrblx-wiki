@@ -2,7 +2,7 @@ const WEAPON_LIGHT_CARBINE = [
 
   {
     name: "Light Carbine",
-    showMoreButton: true,
+    description: "A beginner friendly rifle",
     reBuyPrice: 300,
     sellPrice: 90,
     contractPrice: 2500,

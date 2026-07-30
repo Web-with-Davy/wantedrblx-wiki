@@ -3,7 +3,7 @@ const VEHICLE_CROWLINE = [
   {
     name: "Crowline",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "Not many players buy this one, but it looks very nice and old style",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

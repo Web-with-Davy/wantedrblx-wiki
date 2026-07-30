@@ -2,7 +2,7 @@ const VEHICLE_WARDEN = [
 
   {
     name: "Warden",
-    showMoreButton: true,
+    description: "The Warden is a heavily armored police car that is used by the police to patrol the city",
     type: "ground",
     obtaining: "Police Level 5",
     repairPrice: 3000,

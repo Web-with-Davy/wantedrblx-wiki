@@ -3,8 +3,8 @@ const VEHICLE_SPECTRE = [
   {
     name: "Spectre",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
     type: "ground",
+    description: "The most expensive car in the game, bought for flex and speed",
     repairPrice: 7500,
     repairPriceGarage: 2250,
     contractPrice: 8000000,

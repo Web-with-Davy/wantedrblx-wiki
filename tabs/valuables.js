@@ -1,4 +1,4 @@
-function makeValuableCard(item) {
+function makeValuableCard(item, displayName) {
   const name = item.name || '';
   const slug = item.id || generateSlug(name);
   const imgSrc = `images/valuables/${slug}.${CARD_IMG_EXT}`;
@@ -13,28 +13,10 @@ function makeValuableCard(item) {
     ? `<span class="val-per-kg">${Math.round(item.price / item.weight).toLocaleString()} $/kg</span>`
     : '';
 
-  const weightHtml = (item.weight !== undefined && item.weight !== null)
-    ? `<div class="val-stat"><span class="val-stat-label">Weight</span><span class="val-stat-value">${item.weight} kg</span></div>`
-    : '';
-
-  const locationHtml = item.commonLocation
-    ? `<div class="val-stat"><span class="val-stat-label">Location</span><span class="val-stat-value">${item.commonLocation}</span></div>`
-    : '';
-
-  const hiddenStats = weightHtml + locationHtml;
-  const showButton = item.showMoreButton !== false && hiddenStats.trim() !== '';
-  const cardId = `val-card-${slug}-${++_cardIdCounter}`;
-
-  const hiddenBlock = hiddenStats ? `
-    <div class="val-hidden ${showButton ? 'collapsed' : ''}" id="${cardId}-details">
-      ${hiddenStats}
-    </div>` : '';
-
-  const toggleBtn = showButton ? `
-    <button class="val-toggle" onclick="toggleCardDetails('${cardId}', this)">Show more...</button>` : '';
-
   const nonContractBadge = item.priceNonContract
     ? `<span class="val-badge val-badge-nc">Non-Contract</span>` : '';
+
+  const seeMoreBtn = typeof makeSeeMoreBtn === 'function' ? makeSeeMoreBtn('valuables', item) : '';
 
   return `
     <div class="val-card" data-rarity="${item.rarity || ''}">
@@ -51,14 +33,13 @@ function makeValuableCard(item) {
         ${perKgHtml}
       </div>
       <div class="val-body">
-        <h3 class="val-name">${name}</h3>
+        <h3 class="val-name">${displayName || name}</h3>
         ${nonContractBadge}
         <div class="val-price-row">
           <span class="val-price-label">Sell Price</span>
           <span class="val-price-value">${priceHtml}</span>
         </div>
-        ${hiddenBlock}
-        ${toggleBtn}
+        ${seeMoreBtn}
       </div>
     </div>`;
 }

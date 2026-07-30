@@ -3,7 +3,7 @@ const VEHICLE_PULSE_477 = [
   {
     name: "Pulse 477",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "The Pulse 477 is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
     repairPrice: 3000,
     repairPriceGarage: 900,

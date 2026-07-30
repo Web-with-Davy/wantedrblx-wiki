@@ -2,7 +2,7 @@ const VEHICLE_FALCON_GT = [
 
   {
     name: "Falcon GT",
-    showMoreButton: true,
+    description: "The Falcon GT is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
     obtaining: "Bayview Motors",
     repairPrice: 7500,

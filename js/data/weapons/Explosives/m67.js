@@ -1,7 +1,7 @@
 const WEAPON_M67 = [
   {
     name: "M67",
-    showMoreButton: true,
+    description: "A throwable grenade that explodes after a few seconds",
     reBuyPrice: 750,
     sellPrice: 225,
     contractPrice: 80000,

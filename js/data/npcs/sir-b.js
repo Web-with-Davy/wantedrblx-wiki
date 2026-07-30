@@ -1,7 +1,6 @@
 const NPC_SIRB = [
   {
     name: "Sir.B",
-    showMoreButton: true,
     team: "CRIMINAL",
     location: "Syndicate Headquarters",
     description: "Syndicate leader directing operations against law enforcement and specializing in black market dealing.",

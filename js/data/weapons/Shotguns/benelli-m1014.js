@@ -2,7 +2,7 @@ const WEAPON_BENELLI_M1014 = [
 
   {
     name: "Benelli M1014",
-    showMoreButton: true,
+    description: "Too beginner friendly, too annoying",
     reBuyPrice: 4000,
     sellPrice: 1200,
     contractPrice: 550000,

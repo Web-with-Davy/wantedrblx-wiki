@@ -3,7 +3,7 @@ const VEHICLE_PANTHER = [
   {
     name: "Panther",
     obtaining: "Vehicle Crates",
-    showMoreButton: true,
+    description: "The Panther is a flying vehicle that is obtained from Vehicle Crates. It is a fast and maneuverable vehicle that is perfect for transportation and combat",
     type: "flying",
     repairPrice: 0,
     repairPriceGarage: 0,

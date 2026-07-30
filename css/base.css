@@ -1,0 +1,225 @@
+:root {
+    --bg: #000;
+    --fg: #fff;
+    --fg2: #000;
+    --panel: #111;
+    --border: #444;
+    --glow: #fff;
+    --card-min-size: 200px;
+    --header-scale: 1;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --card-min-size: 150px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background: transparent;
+    color: var(--fg);
+    font-family: 'Courier New', monospace;
+    overflow-x: hidden;
+}
+
+body {
+    background: #05060a;
+}
+
+
+
+.police-flash-red,
+.police-flash-blue {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    will-change: opacity;
+    contain: layout style paint;
+    animation: policeFlash 8s infinite;
+}
+
+.police-flash-red {
+    background: radial-gradient(circle at 20% 50%, rgba(255, 0, 0, .3), transparent 40%);
+}
+
+.police-flash-blue {
+    background: radial-gradient(circle at 80% 50%, rgba(0, 100, 255, .3), transparent 40%);
+    animation-delay: 4s;
+}
+
+.loading {
+    padding: 60px 0;
+    text-align: center;
+    font-size: 1.8rem;
+    animation: loading-glitch 1s infinite;
+}
+
+.emoji-style {
+    filter: grayscale(100%) brightness(1000%);
+    margin-right: 4px;
+    display: inline-block;
+}
+
+.highlight {
+    background-color: rgba(255, 255, 0, 0.3);
+    color: #fff;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+@keyframes policeFlash {
+    0% {
+        opacity: 0
+    }
+
+    10% {
+        opacity: 1
+    }
+
+    25%,
+    50%,
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .6
+    }
+}
+
+@keyframes loading-glitch {
+    0% {
+        opacity: 0;
+        transform: none
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(-2px, 2px)
+    }
+
+    40% {
+        opacity: .8;
+        transform: translate(2px, -2px)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate(-2px, -2px)
+    }
+
+    80% {
+        opacity: .6;
+        transform: translate(2px, 2px)
+    }
+
+    100% {
+        opacity: 0;
+        transform: none
+    }
+}
+
+@media(max-width:1024px) {
+    .page-wrapper {
+        padding-top: 160px
+    }
+}
+
+@media(max-width:500px) {
+    .page-wrapper {
+        padding-top: 220px
+    }
+}
+
+@keyframes flicker {
+
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        opacity: 1;
+    }
+
+    20%,
+    24%,
+    55% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rainbow-move {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes ipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rainbow-text {
+    background: linear-gradient(90deg, var(--color-1), var(--color-2), var(--color-1));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-move 3s linear infinite;
+    font-weight: 800;
+    text-shadow: none;
+
+}
+
+@keyframes rainbow-move {
+    to {
+        background-position: 200% center;
+    }
+}

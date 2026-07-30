@@ -1,8 +1,32 @@
+function makeWeaponCard(item, displayName) {
+    const contractHtml = formatPrice(item.contractPrice);
+
+    const visibleStats = [
+      contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
+    ].filter(Boolean);
+
+    return makeUniversalCard(item, {
+      folder: 'weapons',
+      rarityKey: null,
+      displayName: displayName || undefined,
+      visibleStats,
+      hiddenStats: [],
+      itemCategory: 'weapons',
+      showButton: false
+    });
+}
+
 function renderWeapons(sort = "high") {
   const sortFn = (a, b) => {
-    const valA = typeof a.contractPrice === 'number' ? a.contractPrice : 0;
-    const valB = typeof b.contractPrice === 'number' ? b.contractPrice : 0;
-    return sort === "high" ? valB - valA : valA - valB;
+    const isUnA = typeof a.contractPrice !== 'number';
+    const isUnB = typeof b.contractPrice !== 'number';
+    if (isUnA && !isUnB) return 1;
+    if (!isUnA && isUnB) return -1;
+    if (isUnA && isUnB) return (a.name || '').localeCompare(b.name || '');
+
+    const pA = a.contractPrice;
+    const pB = b.contractPrice;
+    return sort === "high" ? pB - pA : pA - pB;
   };
 
   const sortedGuns = [...GUNS_DATA].sort(sortFn);
@@ -10,55 +34,7 @@ function renderWeapons(sort = "high") {
   const sortedEquipment = [...EQUIPMENT_DATA].sort(sortFn);
   const sortedTools = [...TOOLS_DATA].sort(sortFn);
 
-  function makeWeaponCard(item) {
-    const hasAttachments = item.attachments && Object.keys(item.attachments).length > 0;
-    const contractHtml = formatPrice(item.contractPrice);
-    const sellHtml = formatPrice(item.sellPrice);
-    const reBuyHtml = formatPrice(item.reBuyPrice);
 
-    const visibleStats = [
-      contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
-    ].filter(Boolean);
-
-    const hiddenStats = [
-      { label: 'Obtaining', value: item.obtaining },
-      { label: 'Location', value: item.location || (item.stats && item.stats.location) },
-      reBuyHtml ? { label: 'Re-Buy Price', value: reBuyHtml } : null,
-      sellHtml ? { label: 'Sell Price', value: sellHtml } : null,
-      { label: 'Ammo', value: item.stats && item.stats.ammo },
-      { label: 'Ammo Cost', value: item.stats && item.stats.ammoPrice },
-      { label: 'Damage', value: item.stats && item.stats.damage },
-      { label: 'Fire Rate', value: item.stats && item.stats.firerate },
-      { label: 'Reload Speed', value: item.stats && item.stats.reload ? `${item.stats.reload}s` : null },
-      { label: 'Accuracy', value: item.stats && item.stats.accuracy },
-    ].filter(s => s && s.value !== undefined && s.value !== null && s.value !== '');
-
-    if (!hasAttachments) {
-      return makeUniversalCard(item, {
-        folder: 'weapons',
-        rarityKey: null,
-        visibleStats,
-        hiddenStats,
-        showButton: item.showMoreButton !== false && hiddenStats.length > 0
-      });
-    }
-
-    const attachmentsHTML = Object.entries(item.attachments || {}).map(([category, items]) => {
-      if (!items || items.length === 0) return '';
-      const itemsHTML = items.map(att => `<div class="card-overlay-item"><p><strong>${att.name}:</strong> ${att.price === 0 ? `<span style="color:#666">Free</span>` : formatPrice(att.price)}</p></div>`).join('');
-      return `<div class="attachment-group"><div class="attachment-category-header" onclick="toggleAttachmentCategory(this)"><span>${category}</span><span class="attachment-chevron">▼</span></div><div class="attachment-category-items">${itemsHTML}</div></div>`;
-    }).join('');
-
-    return makeUniversalCard(item, {
-      folder: 'weapons',
-      rarityKey: null,
-      visibleStats,
-      hiddenStats,
-      showButton: item.showMoreButton !== false && hiddenStats.length > 0,
-      overlayHtml: attachmentsHTML,
-      overlayLabel: 'ATTACHMENTS'
-    });
-  }
 
   const makeSectionCards = (data) => data.map(makeWeaponCard).join('');
 

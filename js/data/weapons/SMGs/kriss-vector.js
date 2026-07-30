@@ -2,7 +2,7 @@ const WEAPON_KRISS_VECTOR = [
 
   {
     name: "Kriss Vector",
-    showMoreButton: true,
+    description: "Very fast firing SMG with good damage",
     reBuyPrice: 8000,
     sellPrice: 2400,
     contractPrice: 3600000,

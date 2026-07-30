@@ -13,6 +13,7 @@
     "tabs/vehicles.js",
     "tabs/weapons.js",
     "js/core/renderer.js",
+    "js/core/item-page.js",
     "js/core/ui.js",
     "js/features/settings.js",
     "js/features/garage.js",

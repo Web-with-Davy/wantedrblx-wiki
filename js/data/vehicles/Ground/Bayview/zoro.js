@@ -3,7 +3,7 @@ const VEHICLE_ZORO = [
   {
     name: "Zoro",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "The Zoro is a very strong car but it lacks speed",
     type: "ground",
     repairPrice: 3000,
     repairPriceGarage: 900,

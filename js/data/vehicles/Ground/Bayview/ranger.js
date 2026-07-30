@@ -3,7 +3,7 @@ const VEHICLE_RANGER = [
   {
     name: "Ranger",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "One of the cheapest cars in the game, it mostly looks good for new players tho",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

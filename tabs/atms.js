@@ -1,3 +1,35 @@
+function makeATMCard(item, displayName) {
+  const cashHtml = formatPrice(item.price);
+  return makeUniversalCard(item, {
+    folder: 'atms',
+    rarityKey: item.rarity,
+    displayName: displayName || undefined,
+    visibleStats: [
+      cashHtml ? { label: 'Cash', value: cashHtml } : null,
+    ].filter(Boolean),
+    hiddenStats: [
+      { label: 'Rarity', value: item.rarityPercent },
+    ].filter(s => s.value)
+  });
+}
+
+function makeVaultCard(item, displayName) {
+  const priceDisplay = (typeof item.priceMin === 'number' && typeof item.priceMax === 'number')
+    ? `${formatPrice(item.priceMin)} – ${formatPrice(item.priceMax)}`
+    : '? – ?';
+  return makeUniversalCard(item, {
+    folder: 'atms',
+    rarityKey: item.rarity,
+    displayName: displayName || undefined,
+    visibleStats: [
+      { label: 'Cash Range', value: priceDisplay },
+    ],
+    hiddenStats: [
+      { label: 'Rarity', value: item.rarityPercent },
+    ].filter(s => s.value)
+  });
+}
+
 function renderATMs(sort = "high") {
   const sortedATMs = [...ATMS_DATA].sort((a, b) =>
     sort === "high" ? b.price - a.price : a.price - b.price
@@ -9,37 +41,6 @@ function renderATMs(sort = "high") {
     return sort === "high" ? avgB - avgA : avgA - avgB;
   });
 
-  const makeATMCard = (item) => {
-    const cashHtml = formatPrice(item.price);
-    return makeUniversalCard(item, {
-      folder: 'atms',
-      rarityKey: item.rarity,
-      visibleStats: [
-        cashHtml ? { label: 'Cash', value: cashHtml } : null,
-      ].filter(Boolean),
-      hiddenStats: [
-        { label: 'Rarity', value: item.rarityPercent },
-      ].filter(s => s.value),
-      showButton: item.showMoreButton !== false && !!item.rarityPercent
-    });
-  };
-
-  const makeVaultCard = (item) => {
-    const priceDisplay = (typeof item.priceMin === 'number' && typeof item.priceMax === 'number')
-      ? `${formatPrice(item.priceMin)} – ${formatPrice(item.priceMax)}`
-      : '? – ?';
-    return makeUniversalCard(item, {
-      folder: 'atms',
-      rarityKey: item.rarity,
-      visibleStats: [
-        { label: 'Cash Range', value: priceDisplay },
-      ],
-      hiddenStats: [
-        { label: 'Rarity', value: item.rarityPercent },
-      ].filter(s => s.value),
-      showButton: item.showMoreButton !== false && !!item.rarityPercent
-    });
-  };
 
   const atmCards   = sortedATMs.map(makeATMCard).join('');
   const vaultCards = sortedVaults.map(makeVaultCard).join('');

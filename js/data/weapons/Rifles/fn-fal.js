@@ -2,7 +2,7 @@ const WEAPON_FN_FAL = [
 
   {
     name: "FN FAL",
-    showMoreButton: true,
+    description: "The FN FAL is a heavy-hitting automatic rifle with excellent range and damage, making it a favorite for mid-to-long range engagements. It features moderate recoil and a solid magazine capacity, balancing power with control.",
     obtaining: "Syndicate Level 4",
     reBuyPrice: 9000,
     sellPrice: 2700,

@@ -259,6 +259,9 @@ function renderLocations() {
     lastTouchDist: null,
     lastTouchMidX: 0,
     lastTouchMidY: 0,
+
+    pinCycleIndex: {},
+    activePinId: null,
   };
 
   function getCanvas() { return document.getElementById('map-canvas'); }
@@ -452,27 +455,33 @@ function renderLocations() {
     const pinData = MAP_PINS.find(p => p.id === pinId);
     if (!pinData || !pinData.positions.length) return;
 
-    let avgX = 0;
-    let avgY = 0;
-    pinData.positions.forEach(pos => {
-      avgX += pos.x;
-      avgY += pos.y;
-    });
-    avgX /= pinData.positions.length;
-    avgY /= pinData.positions.length;
-
     const canvasSize = 800;
-    const canvasX = (avgX / MAP_SIZE) * canvasSize;
-    const canvasY = (avgY / MAP_SIZE) * canvasSize;
-
-    const targetScale = pinData.positions.length > 1 ? 1.6 : 2.8;
-
     const s = window._mapState;
+
+    if (s.activePinId !== pinId) {
+      s.pinCycleIndex[pinId] = 0;
+      s.activePinId = pinId;
+    }
+
+    const idx = s.pinCycleIndex[pinId] ?? 0;
+    s.pinCycleIndex[pinId] = (idx + 1) % pinData.positions.length;
+
+    const pos = pinData.positions[idx];
+    const canvasX = (pos.x / MAP_SIZE) * canvasSize;
+    const canvasY = (pos.y / MAP_SIZE) * canvasSize;
+    const targetScale = 2.8;
+
     s.scale = targetScale;
     s.offsetX = (vp.clientWidth / 2) - (canvasX * targetScale);
     s.offsetY = (vp.clientHeight / 2) - (canvasY * targetScale);
+
     clampOffset();
     applyTransform(true);
+
+    const badge = btn.querySelector('.map-legend-badge');
+    if (badge && pinData.positions.length > 1) {
+      badge.textContent = `${idx + 1}/${pinData.positions.length}`;
+    }
 
     document.querySelectorAll('.map-legend-item').forEach(el => {
       el.classList.remove('active');
@@ -482,9 +491,14 @@ function renderLocations() {
     document.querySelectorAll('.map-pin').forEach(pin => {
       pin.style.opacity = '1';
       pin.style.pointerEvents = 'auto';
-      if (pin.getAttribute('data-pin-id') === pinId) {
+      const samePinId = pin.getAttribute('data-pin-id') === pinId;
+      const pinIdx = parseInt(pin.id.split('-').pop(), 10);
+      if (samePinId && pinIdx === idx) {
         pin.style.zIndex = '40';
         pin.style.filter = 'brightness(1.5) drop-shadow(0 0 8px var(--pin-color))';
+      } else if (samePinId) {
+        pin.style.zIndex = '20';
+        pin.style.filter = 'brightness(0.7)';
       } else {
         pin.style.zIndex = '10';
         pin.style.filter = '';

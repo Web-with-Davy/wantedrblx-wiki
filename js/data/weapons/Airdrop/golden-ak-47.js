@@ -2,7 +2,7 @@ const WEAPON_GOLDEN_AK_47 = [
 
   {
     name: "Golden AK-47",
-    showMoreButton: true,
+    description: "Its golden colored ak, not much else to say",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
     sellPrice: 60000,

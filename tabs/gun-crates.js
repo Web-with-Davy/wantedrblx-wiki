@@ -1,18 +1,23 @@
+function makeGunCrateCard(item, displayName) {
+  return makeUniversalCard(item, {
+    folder: 'crates',
+    rarityKey: null,
+    displayName: displayName || undefined,
+    visibleStats: [
+      { label: 'Location', value: item.location },
+    ].filter(s => s.value),
+    hiddenStats: [],
+    itemCategory: 'gun-crates',
+    showButton: false
+  });
+}
+
 function renderGunCrates(sort = "a-z") {
   let sorted = [...GUN_CRATES_DATA];
   if (sort === "a-z") sorted.sort((a, b) => a.name.localeCompare(b.name));
-  else                sorted.sort((a, b) => b.name.localeCompare(a.name));
+  else sorted.sort((a, b) => b.name.localeCompare(a.name));
 
-  const cards = sorted.map(item => makeUniversalCard(item, {
-    folder: 'crates',
-    rarityKey: null,
-    visibleStats: [],
-    hiddenStats: [
-      { label: 'Content',  value: item.gun      },
-      { label: 'Location', value: item.location },
-    ].filter(s => s.value),
-    showButton: item.showMoreButton !== false
-  })).join('');
+  const cards = sorted.map(item => makeGunCrateCard(item)).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'A-Z', value: 'a-z', onClick: "sortGunCrates('a-z')" },

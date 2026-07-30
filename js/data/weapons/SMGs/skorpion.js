@@ -2,7 +2,7 @@ const WEAPON_SKORPION = [
 
   {
     name: "Skorpion",
-    showMoreButton: true,
+    description: "Its a meh gun, not too good, not too bad",
     reBuyPrice: 1000,
     sellPrice: 300,
     contractPrice: 100000,

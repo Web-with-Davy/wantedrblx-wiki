@@ -2,7 +2,7 @@ const WEAPON_AUG_A1 = [
 
   {
     name: "AUG A1",
-    showMoreButton: true,
+    description: "SUCKS, VERY BAD GUN",
     reBuyPrice: 1750,
     sellPrice: 525,
     contractPrice: 350000,

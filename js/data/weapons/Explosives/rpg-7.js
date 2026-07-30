@@ -1,7 +1,7 @@
 const WEAPON_RPG_7 = [
   {
     name: "RPG-7",
-    showMoreButton: true,
+    description: "A rocket launcher that shoots rockets",
     reBuyPrice: 10000,
     sellPrice: 3000,
     contractPrice: 1250000,

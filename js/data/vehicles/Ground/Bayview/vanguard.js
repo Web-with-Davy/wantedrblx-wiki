@@ -3,7 +3,7 @@ const VEHICLE_VANGUARD = [
   {
     name: "Vanguard",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "Lets be honest you bought it for the mission or got it from the robux pack",
     type: "ground",
     repairPrice: 3000,
     repairPriceGarage: 900,

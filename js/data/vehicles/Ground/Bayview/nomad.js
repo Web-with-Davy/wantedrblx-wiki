@@ -3,7 +3,7 @@ const VEHICLE_NOMAD = [
   {
     name: "Nomad",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "The nomad is mostly bough for teams that dont have too much money to get anything better",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

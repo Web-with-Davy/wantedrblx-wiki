@@ -2,7 +2,7 @@ const WEAPON_UMP_45 = [
 
   {
     name: "UMP 45",
-    showMoreButton: true,
+    description: "Police SMG, its ok I guess",
     reBuyPrice: 1250,
     sellPrice: 375,
     contractPrice: 40000,

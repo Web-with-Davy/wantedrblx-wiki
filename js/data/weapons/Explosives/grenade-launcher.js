@@ -1,7 +1,7 @@
 const WEAPON_GRENADE_LAUNCHER = [
   {
     name: "Grenade Launcher",
-    showMoreButton: true,
+    description: "A grenade launcher that shoots grenades",
     obtaining: "Police Level 4",
     reBuyPrice: "?",
     sellPrice: "?",

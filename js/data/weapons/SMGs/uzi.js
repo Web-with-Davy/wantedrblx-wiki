@@ -2,7 +2,7 @@ const WEAPON_UZI = [
 
   {
     name: "Uzi",
-    showMoreButton: true,
+    description: "Very annoying to go against",
     reBuyPrice: 500,
     sellPrice: 150,
     contractPrice: 25000,

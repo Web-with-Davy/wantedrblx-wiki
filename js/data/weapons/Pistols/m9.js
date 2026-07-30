@@ -2,7 +2,7 @@ const WEAPON_M9 = [
 
   {
     name: "M9",
-    showMoreButton: true,
+    description: "A beginner friendly pistol",
     reBuyPrice: 100,
     sellPrice: 30,
     contractPrice: 0,

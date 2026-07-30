@@ -2,7 +2,7 @@ const WEAPON_GLOCK_18C = [
 
   {
     name: "Glock 18c",
-    showMoreButton: true,
+    description: "A fully automatic pistol with high fire rate",
     reBuyPrice: 3500,
     sellPrice: 1050,
     contractPrice: 1100000,

@@ -2,7 +2,7 @@ const WEAPON_M60 = [
 
   {
     name: "M60",
-    showMoreButton: true,
+    description: "Most used gun in the game, very OP",
     reBuyPrice: 10000,
     sellPrice: 3000,
     contractPrice: 6400000,

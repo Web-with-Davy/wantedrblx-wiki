@@ -3,7 +3,7 @@ const VEHICLE_STALLION_450 = [
   {
     name: "Stallion 450",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "Its  a very cool looking car, most beginer friendly and affordable car in the game",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

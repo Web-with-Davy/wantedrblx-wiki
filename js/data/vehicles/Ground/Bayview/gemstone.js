@@ -3,7 +3,7 @@ const VEHICLE_GEMSTONE = [
   {
     name: "Gemstone",
     obtaining: "Bayview Motors",
-    showMoreButton: true,
+    description: "Only bought for the cool design, its not too good at anything and theres better options at a similar price",
     type: "ground",
     repairPrice: 1500,
     repairPriceGarage: 450,

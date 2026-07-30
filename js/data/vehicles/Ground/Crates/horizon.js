@@ -2,7 +2,7 @@ const VEHICLE_HORIZON = [
 
   {
     name: "Horizon",
-    showMoreButton: true,
+    description: "Begginer friendly, tho its hard to get from crates so I dont know if its worth it",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 3000,

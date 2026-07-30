@@ -2,7 +2,7 @@ const VEHICLE_RIVAL = [
 
   {
     name: "Rival",
-    showMoreButton: true,
+    description: "Decent acceleration and speed, pretty decent for beginners",
     type: "ground",
     obtaining: "Daily Rewards Day 3",
     repairPrice: 600,

@@ -2,7 +2,7 @@ const VEHICLE_BLADE = [
 
   {
     name: "Blade",
-    showMoreButton: true,
+    description: "Blade is a fast and very armored car, which makes it good at both escaping and chasing",
     type: "ground",
     obtaining: "Syndicate Level 5",
     repairPrice: 3000,

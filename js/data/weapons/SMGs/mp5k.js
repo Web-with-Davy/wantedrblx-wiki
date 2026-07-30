@@ -2,7 +2,7 @@ const WEAPON_MP5K = [
 
   {
     name: "MP5K",
-    showMoreButton: true,
+    description: "A very fast SMG with good damage",
     obtaining: "Daily Rewards Day 4",
     reBuyPrice: 1500,
     sellPrice: 450,

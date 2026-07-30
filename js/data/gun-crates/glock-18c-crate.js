@@ -2,11 +2,11 @@ const GUN_CRATE_GLOCK_18C = [
 
   {
     id: "glock-18c-crate",
-    showMoreButton: false,
+    description: "It is a crate that gives you a free Glock 18c with a Reflex Sight, Pistol Suppresor and Pistol Stock pre-attached",
     name: "Glock 18c Crate",
-    gun: "Glock 18c with Reflex Sight, Pistol Suppresor and Pistol Stock",
+    gun: "Glock 18c",
     cooldown: "2 Days",
-    location: "Docks near Harris Airport"
+    location: "Inside one of the warehouses in the Port"
   },
 
 ];

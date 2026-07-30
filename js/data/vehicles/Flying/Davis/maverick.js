@@ -3,7 +3,7 @@ const VEHICLE_MAVERICK = [
   {
     name: "Maverick",
     obtaining: "Davis' Heliport",
-    showMoreButton: true,
+    description: "The Maverick is a fast and agile helicopter that is perfect for transportation and combat. It is a fan favorite among players for its speed and maneuverability",
     type: "flying",
     repairPrice: 0,
     repairPriceGarage: 0,

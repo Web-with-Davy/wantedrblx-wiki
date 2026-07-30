@@ -3,7 +3,7 @@ const VEHICLE_SCOUT = [
   {
     name: "Scout",
     obtaining: "Davis' Heliport",
-    showMoreButton: true,
+    description: "It is a fast and agile helicopter that is perfect for transportation and combat",
     type: "flying",
     repairPrice: 0,
     repairPriceGarage: 0,

@@ -1,7 +1,7 @@
 const WEAPON_BUZZSAW = [
   {
     name: "Buzzsaw",
-    showMoreButton: false,
+    description: "Used to break the cglass in the jewerly store, decent melee weapon",
     location: "Ofy's Value Pawn",
     contractPrice: 2000,
     stats: {

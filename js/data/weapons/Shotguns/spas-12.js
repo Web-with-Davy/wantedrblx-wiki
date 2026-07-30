@@ -2,7 +2,7 @@ const WEAPON_SPAS_12 = [
 
   {
     name: "SPAS-12",
-    showMoreButton: true,
+    description: "Its somehow more expensive than the benelli and weaker than the benelli",
     reBuyPrice: 8000,
     sellPrice: 2400,
     contractPrice: 2000000,

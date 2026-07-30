@@ -2,7 +2,7 @@ const WEAPON_AK_47 = [
 
   {
     name: "AK-47",
-    showMoreButton: true,
+    description: "A very powerful rifle, but it lacks speed",
     reBuyPrice: 3500,
     sellPrice: 1050,
     contractPrice: 800000,
