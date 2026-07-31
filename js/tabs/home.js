@@ -96,6 +96,49 @@ function renderHome() {
     const staffHTML = (window.CONTRIBUTORS_DATA?.staff || CONTRIBUTORS_DATA?.staff || []).map(p => renderStaffItem(p, 'staff')).join('');
     const inlineContributorsHTML = (window.CONTRIBUTORS_DATA?.contributors || CONTRIBUTORS_DATA?.contributors || []).map(p => renderStaffItem(p, 'contributor')).join('');
 
+    const totalWeapons = (window.GUNS_DATA?.length || 0) + (window.EQUIPMENT_DATA?.length || 0) + (window.EXPLOSIVES_DATA?.length || 0) + (window.TOOLS_DATA?.length || 0);
+    const totalVehicles = window.VEHICLES_DATA?.length || 0;
+    const totalMissions = window.MISSIONS_DATA?.length || 0;
+    const totalValuables = window.VALUABLES_DATA?.length || 0;
+
+    const wikiStatsHTML = [
+        { icon: '🔫', label: 'Weapons', count: totalWeapons },
+        { icon: '🚗', label: 'Vehicles', count: totalVehicles },
+        { icon: '📋', label: 'Missions', count: totalMissions },
+        { icon: '💎', label: 'Valuables', count: totalValuables },
+    ]
+        .sort((a, b) => a.count - b.count)
+        .map(s => `
+        <div class="wiki-stat-row">
+            <span class="wiki-stat-icon">${s.icon}</span>
+            <span class="wiki-stat-label">${s.label}</span>
+            <span class="wiki-stat-value">${s.count || '?'}</span>
+        </div>
+    `).join('');
+
+    const activeCodes = (window.PROMO_CODES_DATA || []).filter(c => c.active);
+    const activeCodesHTML = activeCodes.length > 0
+        ? activeCodes.map(c => `
+            <div class="sidebar-code-row">
+                <div class="sidebar-code-tag">${c.code}</div>
+                <div class="sidebar-code-reward">${c.reward}</div>
+            </div>
+        `).join('')
+        : `<div style="color:#888;font-size:0.8rem;">No active codes at this time.</div>`;
+
+    const makeCatCard = (title, emoji, desc, tab, imgSrc) => `
+        <div class="home-category-card home-category-card--img" onclick="goToTab('${tab}')">
+            ${imgSrc ? `<img src="${imgSrc}" class="cat-bg-img" alt="" loading="lazy">` : ''}
+            <div class="cat-content">
+                <div class="cat-header">
+                    <h3 class="cat-title">${title}</h3>
+                    <span class="cat-icon">${emoji}</span>
+                </div>
+                <p class="cat-desc">${desc}</p>
+            </div>
+        </div>
+    `;
+
     return `
         <div class="home-container">
             <div class="home-main-content">
@@ -109,9 +152,7 @@ function renderHome() {
                         Welcome to the ultimate <strong>Wanted Wiki</strong>.<br>Here we document all information about the Roblox game Wanted.<br><br>
                         <em>Note: This wiki is community-managed and is not affiliated with Roblox, the game Wanted, or DevvGames.</em>
                     </p>
-                    <div class="play-btn-container">
-                        <a href="https://www.roblox.com/games/14438406081/Wanted" target="_blank" class="play-btn">PLAY HERE</a>
-                    </div>
+
                 </div>
 
                 <div class="main-grid-container">
@@ -124,27 +165,9 @@ function renderHome() {
                             </div>
                         </div>
                         <div class="inner-card-grid" id="grid-combat">
-                            <div class="home-category-card" onclick="goToTab('weapons')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">WEAPONS</h3>
-                                    <span class="cat-icon">🔫</span>
-                                </div>
-                                <p class="cat-desc">Weapon stats, attachments and prices.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('vehicles')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">VEHICLES</h3>
-                                    <span class="cat-icon">🚗</span>
-                                </div>
-                                <p class="cat-desc">Vehicle stats, handling and modifications (coming soon).</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('gun-crates')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">GUN CRATES</h3>
-                                    <span class="cat-icon">📦</span>
-                                </div>
-                                <p class="cat-desc">Gun crates and their locations.</p>
-                            </div>
+                            ${makeCatCard('WEAPONS', '🔫', 'Weapon stats, attachments and prices.', 'weapons', 'images/weapons/ak-47.webp')}
+                            ${makeCatCard('VEHICLES', '🚗', 'Vehicle stats, handling and modifications.', 'vehicles', 'images/vehicles/razor.webp')}
+                            ${makeCatCard('GUN CRATES', '📦', 'Gun crates and their locations.', 'gun-crates', 'images/crates/ak-47-crate.webp')}
                         </div>
                     </div>
 
@@ -157,34 +180,10 @@ function renderHome() {
                             </div>
                         </div>
                         <div class="inner-card-grid" id="grid-world">
-                            <div class="home-category-card" onclick="goToTab('locations')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">LOCATIONS</h3>
-                                    <span class="cat-icon">🗺️</span>
-                                </div>
-                                <p class="cat-desc">The map of key locations.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('npcs')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">NPCs</h3>
-                                    <span class="cat-icon">👥</span>
-                                </div>
-                                <p class="cat-desc">NPCs and their dialogues.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('missions')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">MISSIONS</h3>
-                                    <span class="cat-icon">📋</span>
-                                </div>
-                                <p class="cat-desc">Info on missions and how to complete them.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('events')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">EVENTS</h3>
-                                    <span class="cat-icon">🌍</span>
-                                </div>
-                                <p class="cat-desc">Info on festive game events.</p>
-                            </div>
+                            ${makeCatCard('LOCATIONS', '🗺️', 'The map of key locations.', 'locations', 'images/map/TopLeft.png')}
+                            ${makeCatCard('NPCs', '👥', 'NPCs and their dialogues.', 'npcs', '')}
+                            ${makeCatCard('MISSIONS', '📋', 'Info on missions and how to complete them.', 'missions', 'images/missions/bank-heist.webp')}
+                            ${makeCatCard('EVENTS', '🌍', 'Info on festive game events.', 'events', '')}
                         </div>
                     </div>
 
@@ -197,34 +196,10 @@ function renderHome() {
                             </div>
                         </div>
                         <div class="inner-card-grid" id="grid-economy">
-                            <div class="home-category-card" onclick="goToTab('atms')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">ATMs & VAULTS</h3>
-                                    <span class="cat-icon">🏧</span>
-                                </div>
-                                <p class="cat-desc">Info on ATMs and Vaults.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('store')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">STORE</h3>
-                                    <span class="cat-icon">🛒</span>
-                                </div>
-                                <p class="cat-desc">Info on the in-game store.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('valuables')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">VALUABLES</h3>
-                                    <span class="cat-icon">💎</span>
-                                </div>
-                                <p class="cat-desc">Info on valuables and their prices.</p>
-                            </div>
-                            <div class="home-category-card" onclick="goToTab('promo-codes')">
-                                <div class="cat-header">
-                                    <h3 class="cat-title">PROMO CODES</h3>
-                                    <span class="cat-icon">🏷️</span>
-                                </div>
-                                <p class="cat-desc">Active promo codes and rewards.</p>
-                            </div>
+                            ${makeCatCard('ATMs & VAULTS', '🏧', 'Info on ATMs and Vaults.', 'atms', 'images/cash.webp')}
+                            ${makeCatCard('STORE', '🛒', 'Info on the in-game store.', 'store', '')}
+                            ${makeCatCard('VALUABLES', '💎', 'Info on valuables and their prices.', 'valuables', 'images/valuables/diamond.webp')}
+                            ${makeCatCard('PROMO CODES', '🏷️', 'Active promo codes and rewards.', 'promo-codes', 'images/cash.webp')}
                         </div>
                     </div>
                 </div>
@@ -241,6 +216,37 @@ function renderHome() {
 
             <div class="home-admin-sidebar">
                 <div class="admin-section">
+
+                    <div class="sidebar-block">
+                        <h2 class="sidebar-title">OFFICIAL LINKS</h2>
+                        <div class="official-links-grid">
+                            <a href="https://www.roblox.com/games/14438406081/Wanted" target="_blank" rel="noopener" class="official-link-btn official-link-btn--roblox">
+                                <span class="official-link-icon">🎮</span>
+                                <span>PLAY GAME</span>
+                            </a>
+                            <a href="https://discord.gg/wanted" target="_blank" rel="noopener" class="official-link-btn official-link-btn--discord">
+                                <span class="official-link-icon">📡</span>
+                                <span>DISCORD</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-block">
+                        <h2 class="sidebar-title">WIKI DISCORD SERVER</h2>
+                        <div class="discord-widget-box">
+                            <div class="discord-widget-header">
+                                <span class="discord-widget-icon">📡</span>
+                                <div class="discord-widget-info">
+                                    <div class="discord-widget-name">Wanted Wiki</div>
+                                    <div class="discord-widget-status"><span class="discord-dot"></span>Community &amp; Support</div>
+                                </div>
+                            </div>
+                            <a href="https://discord.gg/3NqFCz5sRx" target="_blank" rel="noopener" class="discord-join-btn">
+                                JOIN SERVER
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="sidebar-block">
                         <h2 class="sidebar-title">RECENT UPDATES</h2>
                         <div class="sidebar-box">
@@ -259,6 +265,21 @@ function renderHome() {
                             <div id="countdown-display" class="countdown-display">
                                 <div class="countdown-time">Calculating...</div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-block">
+                        <h2 class="sidebar-title">ACTIVE CODES</h2>
+                        <div class="sidebar-box sidebar-codes-box">
+                            ${activeCodesHTML}
+                            <button class="sidebar-codes-more" onclick="goToTab('promo-codes')">SEE ALL CODES →</button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-block">
+                        <h2 class="sidebar-title">WIKI STATS</h2>
+                        <div class="sidebar-box wiki-stats-box">
+                            ${wikiStatsHTML}
                         </div>
                     </div>
 

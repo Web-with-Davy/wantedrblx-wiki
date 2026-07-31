@@ -10,7 +10,7 @@ const YOUTUBER_CREATOR_2 = {
     },
     {
       title: "5 SECRETS In Wanted's POLICE UPDATE!",
-      thumbnail: "https://i.ytimg.com/vi/Qp1RK5xVutM/hqdefault_custom_3.jpg?sqp=CJT3rNMG-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA5FvcU5vIWarHrnLl0QK7txyWmig",
+      thumbnail: "https://i.ytimg.com/vi/p3W9XIy540A/hqdefault_custom_1.jpg?sqp=CIibs9MG-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB9yCUYUpFZ_IT1sBDFiyDcS-7GFQ",
       link: "https://www.youtube.com/watch?v=p3W9XIy540A"
     },
     {

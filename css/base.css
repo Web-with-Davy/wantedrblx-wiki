@@ -50,11 +50,11 @@ body {
 }
 
 .police-flash-red {
-    background: radial-gradient(circle at 20% 50%, rgba(255, 0, 0, .3), transparent 40%);
+    background: radial-gradient(circle at 20% 50%, rgba(255, 0, 0, .12), transparent 40%);
 }
 
 .police-flash-blue {
-    background: radial-gradient(circle at 80% 50%, rgba(0, 100, 255, .3), transparent 40%);
+    background: radial-gradient(circle at 80% 50%, rgba(0, 100, 255, .12), transparent 40%);
     animation-delay: 4s;
 }
 
@@ -84,7 +84,7 @@ body {
     }
 
     10% {
-        opacity: 1
+        opacity: 0.5
     }
 
     25%,
