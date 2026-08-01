@@ -8,7 +8,7 @@ const MAP_ZONES = [
   { name: "Bayview", x: 1101, y: 1226 },
   { name: "Downtown", x: 1358, y: 740 },
   { name: "Fort\nEmberreach", x: 1328, y: 1477 },
-  { name: "Harris Intl.", x: 538, y: 471 },
+  { name: "Harris Intl.", x: 538, y: 450 },
   { name: "Oakwood\nEstates", x: 872, y: 572 },
   { name: "Suncrest\nHills", x: 1659, y: 407 },
 ];
@@ -22,7 +22,7 @@ const MAP_PINS = [
     color: "#31955d",
     icon: "images/map/Markers/Port.webp",
     iconSize: 30,
-    positions: [{ x: 743, y: 265 }],
+    positions: [{ x: 690, y: 225 }],
   },
   {
     id: "airport",
@@ -30,7 +30,7 @@ const MAP_PINS = [
     color: "#95ceff",
     icon: "images/map/Markers/Airport.webp",
     iconSize: 30,
-    positions: [{ x: 508, y: 479 }],
+    positions: [{ x: 508, y: 495 }],
   },
   {
     id: "jewelry",
@@ -144,6 +144,8 @@ const MAP_PINS = [
       { x: 1075, y: 1167 },
       { x: 1188, y: 1659 },
       { x: 580, y: 1286 },
+      { x: 590, y: 550 },
+      { x: 1690, y: 820 }
     ],
   },
 ];
