@@ -366,7 +366,20 @@
     }
 
     window.addEventListener('resize', () => { resize(); initDrops(); });
-    resize();
-    initDrops();
-    loop();
+
+    // Defer ALL heavy canvas initialization until browser is idle after first paint.
+    // resize() calls buildCity() + bakeReflection() (blur filter — expensive).
+    // This avoids any canvas work competing with LCP.
+    function startRain() {
+        resize();
+        initDrops();
+        loop();
+    }
+
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(startRain, { timeout: 500 });
+    } else {
+        setTimeout(startRain, 200);
+    }
 })();
+
