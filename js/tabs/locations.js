@@ -20,7 +20,7 @@ const MAP_PINS = [
     id: "port",
     name: "Oasis City Port",
     color: "#31955d",
-    icon: "images/map/Markers/Port.png",
+    icon: "images/map/Markers/Port.webp",
     iconSize: 30,
     positions: [{ x: 743, y: 265 }],
   },
@@ -28,7 +28,7 @@ const MAP_PINS = [
     id: "airport",
     name: "Harris International Airport",
     color: "#95ceff",
-    icon: "images/map/Markers/Airport.png",
+    icon: "images/map/Markers/Airport.webp",
     iconSize: 30,
     positions: [{ x: 508, y: 479 }],
   },
@@ -36,7 +36,7 @@ const MAP_PINS = [
     id: "jewelry",
     name: "Oasis City Jewelry",
     color: "#01ddff",
-    icon: "images/map/Markers/Jewerly.png",
+    icon: "images/map/Markers/Jewerly.webp",
     iconSize: 36,
     positions: [{ x: 1301, y: 584 }],
   },
@@ -44,7 +44,7 @@ const MAP_PINS = [
     id: "casino",
     name: "Crystal Club & Resort",
     color: "#aaffff",
-    icon: "images/map/Markers/Casino.png",
+    icon: "images/map/Markers/Casino.webp",
     iconSize: 36,
     positions: [{ x: 1200, y: 607 }],
   },
@@ -52,7 +52,7 @@ const MAP_PINS = [
     id: "pearstore",
     name: "Pear Store",
     color: "#d1e231",
-    icon: "images/map/Markers/PearShop.png",
+    icon: "images/map/Markers/PearShop.webp",
     iconSize: 30,
     positions: [{ x: 1310, y: 806 }],
   },
@@ -60,7 +60,7 @@ const MAP_PINS = [
     id: "fort",
     name: "Fort Emberreach",
     color: "#ffff00",
-    icon: "images/map/Markers/Fort.png",
+    icon: "images/map/Markers/Fort.webp",
     iconSize: 36,
     positions: [{ x: 1330, y: 1524 }],
   },
@@ -68,7 +68,7 @@ const MAP_PINS = [
     id: "observatory",
     name: "Orrery Observatory",
     color: "#b67bff",
-    icon: "images/map/Markers/Observatory.png",
+    icon: "images/map/Markers/Observatory.webp",
     iconSize: 36,
     positions: [{ x: 962, y: 1060 }],
   },
@@ -76,7 +76,7 @@ const MAP_PINS = [
     id: "pawn",
     name: "Ofy's Value Pawn",
     color: "#ff2d03",
-    icon: "images/map/Markers/Pawn.png",
+    icon: "images/map/Markers/Pawn.webp",
     iconSize: 36,
     positions: [{ x: 1092, y: 1316 }],
   },
@@ -84,7 +84,7 @@ const MAP_PINS = [
     id: "dealership",
     name: "Bayview Motors",
     color: "#009cfe",
-    icon: "images/map/Markers/Dealership.png",
+    icon: "images/map/Markers/Dealership.webp",
     iconSize: 36,
     positions: [{ x: 1062, y: 1257 }],
   },
@@ -92,7 +92,7 @@ const MAP_PINS = [
     id: "heliport",
     name: "Davis Heliport",
     color: "#ff5500",
-    icon: "images/map/Markers/Heliport.png",
+    icon: "images/map/Markers/Heliport.webp",
     iconSize: 36,
     positions: [{ x: 1540, y: 1149 }],
   },
@@ -100,7 +100,7 @@ const MAP_PINS = [
     id: "bank",
     name: "Bank of Oasis",
     color: "#00e200",
-    icon: "images/map/Markers/Bank.png",
+    icon: "images/map/Markers/Bank.webp",
     iconSize: 40,
     positions: [{ x: 1372, y: 835 }],
   },
@@ -108,7 +108,7 @@ const MAP_PINS = [
     id: "police",
     name: "Oasis City Police Station",
     color: "#ffffff",
-    icon: "images/map/Markers/Police.png",
+    icon: "images/map/Markers/Police.webp",
     iconSize: 36,
     positions: [{ x: 1660, y: 849 }],
   },
@@ -116,7 +116,7 @@ const MAP_PINS = [
     id: "syndicate",
     name: "Syndicate Base",
     color: "#c85500",
-    icon: "images/map/Markers/Syndicate.png",
+    icon: "images/map/Markers/Syndicate.webp",
     iconSize: 36,
     positions: [{ x: 330, y: 1357 }],
   },
@@ -124,7 +124,7 @@ const MAP_PINS = [
     id: "armory",
     name: "Lock n' Load Armory",
     color: "#ffad08",
-    icon: "images/map/Markers/Armory.png",
+    icon: "images/map/Markers/Armory.webp",
     iconSize: 36,
     positions: [
       { x: 1107, y: 1278 },
@@ -136,7 +136,7 @@ const MAP_PINS = [
     id: "autoshop",
     name: "Auto Shop & Repairs",
     color: "#d0c4c3",
-    icon: "images/map/Markers/Garage.png",
+    icon: "images/map/Markers/Garage.webp",
     iconSize: 36,
     positions: [
       { x: 1420, y: 560 },
@@ -193,10 +193,10 @@ function renderLocations() {
     >
       <div class="map-canvas" id="map-canvas">
         <!-- Map tiles -->
-        <img src="images/map/TopLeft.png"     class="map-tile" style="left:0;    top:0;"    alt="" draggable="false">
-        <img src="images/map/TopRight.png"    class="map-tile" style="left:50%;  top:0;"    alt="" draggable="false">
-        <img src="images/map/BottomLeft.png"  class="map-tile" style="left:0;    top:50%;"  alt="" draggable="false">
-        <img src="images/map/BottomRight.png" class="map-tile" style="left:50%;  top:50%;"  alt="" draggable="false">
+        <img src="images/map/TopLeft.webp"     class="map-tile" style="left:0;    top:0;"    alt="" draggable="false">
+        <img src="images/map/TopRight.webp"    class="map-tile" style="left:50%;  top:0;"    alt="" draggable="false">
+        <img src="images/map/BottomLeft.webp"  class="map-tile" style="left:0;    top:50%;"  alt="" draggable="false">
+        <img src="images/map/BottomRight.webp" class="map-tile" style="left:50%;  top:50%;"  alt="" draggable="false">
 
         <!-- Zone labels -->
         ${MAP_ZONES.map(z => `
@@ -232,7 +232,7 @@ function renderLocations() {
                 </filter>
               </defs>
               <polygon points="36,2 70,36 36,70 2,36" fill="#161616" stroke="${pin.color}" stroke-width="1" stroke-opacity="0.4"/>
-              <image href="images/map/Markers/BORDER.png" x="5" y="5" width="62" height="62" filter="url(#bc-${pin.id}-${posIdx})"/>
+              <image href="images/map/Markers/BORDER.webp" x="5" y="5" width="62" height="62" filter="url(#bc-${pin.id}-${posIdx})"/>
               <image href="${pin.icon}" x="${(72 - (pin.iconSize || 36)) / 2}" y="${(72 - (pin.iconSize || 36)) / 2}" width="${pin.iconSize || 36}" height="${pin.iconSize || 36}"/>
             </svg>
           </div>
