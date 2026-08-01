@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateBGM = async () => {
         const customData = await getCustomMusic();
         if (customData && bgm) {
-            const blob = new Blob([customData], { type: 'audio/mpeg' });
+            const blob = new Blob([customData], { type: 'audio/aac' });
             const url = URL.createObjectURL(blob);
             if (bgm.dataset.customUrl) URL.revokeObjectURL(bgm.dataset.customUrl);
             bgm.src = url;
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bgm) {
                 if (bgm.dataset.customUrl) URL.revokeObjectURL(bgm.dataset.customUrl);
                 delete bgm.dataset.customUrl;
-                bgm.src = "sounds/background.mp3";
+                bgm.src = "sounds/background.aac";
                 if (window.audioUnlocked) bgm.play().catch(() => { });
             }
         });

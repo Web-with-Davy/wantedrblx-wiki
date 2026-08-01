@@ -40,7 +40,7 @@ const BIRTHDAY_ENABLED = false;
         shockwave.id = 'birthday-shockwave';
         document.body.appendChild(shockwave);
 
-        const birthdayAudio = new Audio('sounds/birthday.mp3');
+        const birthdayAudio = new Audio('sounds/birthday.aac');
         birthdayAudio.preload = 'auto';
 
         function spawnConfetti(count) {

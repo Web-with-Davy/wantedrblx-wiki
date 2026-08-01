@@ -62,7 +62,7 @@
         {
             word: "name",
             action: () => {
-                const audio = new Audio("sounds/michael-dont-leave-me-here.mp3");
+                const audio = new Audio("sounds/michael-dont-leave-me-here.aac");
                 audio.play().catch(() => { });
                 showOverlay("name-jumpscare", "images/name.webp", 5000, "fire");
             }
