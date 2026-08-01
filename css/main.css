@@ -1331,6 +1331,8 @@ body.low-end-mode * {
 .hero-logo {
     max-width: min(300px, 80%);
     width: 100%;
+    height: auto;
+    aspect-ratio: 1066 / 852;
     filter: grayscale(100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
@@ -1346,6 +1348,8 @@ body.low-end-mode * {
     animation: flicker 4s infinite alternate;
     word-break: break-word;
     overflow-wrap: break-word;
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 .hero-text {

@@ -127,8 +127,7 @@ function renderHome() {
         : `<div style="color:#888;font-size:0.8rem;">No active codes at this time.</div>`;
 
     const makeCatCard = (title, emoji, desc, tab, imgSrc) => `
-        <div class="home-category-card home-category-card--img" onclick="goToTab('${tab}')">
-            ${imgSrc ? `<img src="${imgSrc}" class="cat-bg-img" alt="" loading="lazy">` : ''}
+        <div class="home-category-card" onclick="goToTab('${tab}')">
             <div class="cat-content">
                 <div class="cat-header">
                     <h3 class="cat-title">${title}</h3>
@@ -145,7 +144,7 @@ function renderHome() {
                 <div class="hero-section">
                     <div class="hero-bg"></div>
                     <div class="hero-logo-container">
-                        <img src="images/logo.webp" alt="WANTED Logo" class="hero-logo">
+                        <img src="images/logo.webp" alt="WANTED Logo" class="hero-logo" width="1066" height="852">
                     </div>
                     <h1 class="hero-title">WANTED WIKI</h1>
                     <p class="hero-text">

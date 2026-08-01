@@ -375,6 +375,8 @@
 .hero-logo {
     max-width: min(300px, 80%);
     width: 100%;
+    height: auto;
+    aspect-ratio: 1066 / 852;
     filter: grayscale(100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
@@ -390,6 +392,8 @@
     animation: flicker 4s infinite alternate;
     word-break: break-word;
     overflow-wrap: break-word;
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 .hero-text {
@@ -1340,7 +1344,7 @@ body.low-end-mode * {
     justify-content: center;
     gap: 6px;
     padding: 12px 8px;
-    border: 2px solid rgba(255,255,255,0.35);
+    border: 2px solid rgba(255, 255, 255, 0.35);
     background: transparent;
     color: white;
     text-decoration: none;
@@ -1358,10 +1362,12 @@ body.low-end-mode * {
 .official-link-btn::after {
     content: '';
     position: absolute;
-    bottom: 0; right: 0;
-    width: 18px; height: 18px;
-    border-top: 2px solid rgba(255,255,255,0.35);
-    transform: rotate(-45deg) translate(9px,9px);
+    bottom: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    border-top: 2px solid rgba(255, 255, 255, 0.35);
+    transform: rotate(-45deg) translate(9px, 9px);
     transition: border-color 0.2s;
     pointer-events: none;
 }
@@ -1372,17 +1378,23 @@ body.low-end-mode * {
 
 .official-link-btn--roblox:hover {
     border-color: #39ff14;
-    background: rgba(57,255,20,0.07);
-    box-shadow: 0 0 12px rgba(57,255,20,0.2);
+    background: rgba(57, 255, 20, 0.07);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.2);
 }
-.official-link-btn--roblox:hover::after { border-top-color: #39ff14; }
+
+.official-link-btn--roblox:hover::after {
+    border-top-color: #39ff14;
+}
 
 .official-link-btn--discord:hover {
     border-color: #5865f2;
-    background: rgba(88,101,242,0.1);
-    box-shadow: 0 0 12px rgba(88,101,242,0.3);
+    background: rgba(88, 101, 242, 0.1);
+    box-shadow: 0 0 12px rgba(88, 101, 242, 0.3);
 }
-.official-link-btn--discord:hover::after { border-top-color: #5865f2; }
+
+.official-link-btn--discord:hover::after {
+    border-top-color: #5865f2;
+}
 
 .official-link-icon {
     font-size: 1.4rem;
@@ -1402,8 +1414,8 @@ body.low-end-mode * {
 
 .sidebar-code-tag {
     flex-shrink: 0;
-    background: rgba(57,255,20,0.12);
-    border: 1px solid rgba(57,255,20,0.4);
+    background: rgba(57, 255, 20, 0.12);
+    border: 1px solid rgba(57, 255, 20, 0.4);
     color: #39ff14;
     font-family: 'Courier New', monospace;
     font-size: 0.65rem;
@@ -1423,8 +1435,8 @@ body.low-end-mode * {
     margin-top: 4px;
     width: 100%;
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.25);
-    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.7);
     font-family: 'Courier New', monospace;
     font-size: 0.65rem;
     font-weight: 700;
@@ -1439,7 +1451,7 @@ body.low-end-mode * {
 .sidebar-codes-more:hover {
     border-color: white;
     color: white;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .wiki-stats-box {
@@ -1454,7 +1466,7 @@ body.low-end-mode * {
     align-items: center;
     gap: 8px;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .wiki-stat-row:last-child {
@@ -1483,7 +1495,7 @@ body.low-end-mode * {
     font-size: 0.9rem;
     font-weight: 800;
     color: white;
-    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     letter-spacing: 0.05em;
 }
 
@@ -1535,8 +1547,10 @@ body.low-end-mode .cat-bg-img {
 .discord-widget-box::before {
     content: '';
     position: absolute;
-    bottom: 0; right: 0;
-    width: 22px; height: 22px;
+    bottom: 0;
+    right: 0;
+    width: 22px;
+    height: 22px;
     border-top: 2px solid rgba(255, 255, 255, 0.4);
     transform: rotate(-45deg) translate(11px, 11px);
     transition: border-color 0.2s;
@@ -1598,7 +1612,7 @@ body.low-end-mode .cat-bg-img {
     display: block;
     text-align: center;
     background: transparent;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-family: 'Courier New', monospace;
     font-size: 0.75rem;
@@ -1607,7 +1621,7 @@ body.low-end-mode .cat-bg-img {
     text-transform: uppercase;
     padding: 9px 12px;
     transition: all 0.2s ease;
-    border: 1px solid rgba(255,255,255,0.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
     position: relative;
 }
@@ -1615,16 +1629,18 @@ body.low-end-mode .cat-bg-img {
 .discord-join-btn::after {
     content: '';
     position: absolute;
-    bottom: 0; right: 0;
-    width: 14px; height: 14px;
-    border-top: 1px solid rgba(255,255,255,0.35);
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
     transform: rotate(-45deg) translate(7px, 7px);
     pointer-events: none;
     transition: border-color 0.2s;
 }
 
 .discord-join-btn:hover {
-    background: rgba(255,255,255,0.07);
+    background: rgba(255, 255, 255, 0.07);
     border-color: white;
     color: white;
     box-shadow: none;

@@ -139,7 +139,8 @@
     </div>
     <script>
         (function () {
-            if (localStorage.getItem("sidebarMode") === "true") {
+            const isSidebar = localStorage.getItem("sidebarMode") === "true";
+            if (isSidebar) {
                 document.body.classList.add("left-sidebar-mode");
                 document.documentElement.classList.add("left-sidebar-mode");
             }
@@ -148,6 +149,26 @@
             }
             if (localStorage.getItem("alwaysShowMore") === "true") {
                 document.body.classList.add("always-show-more");
+            }
+
+            const savedHeight = parseInt(localStorage.getItem('headerHeight')) || 180;
+            const savedWidth = parseInt(localStorage.getItem('headerWidth')) || 250;
+            let styles = '';
+
+            if (isSidebar) {
+                const scale = Math.max(0.4, Math.min(1.2, savedWidth / 250));
+                styles += `:root { --sidebar-scale: ${scale}; }\n`;
+                styles += `body.left-sidebar-mode .fixed-header { width: ${savedWidth}px; }\n`;
+                styles += `body.left-sidebar-mode .page-wrapper { padding-left: ${savedWidth + 30}px; padding-top: 20px; }\n`;
+            } else if (window.innerWidth > 1024) {
+                const scale = Math.max(0.5, Math.min(1, savedHeight / 180));
+                styles += `:root { --header-scale: ${scale}; }\n`;
+                styles += `.fixed-header { height: ${savedHeight}px; }\n`;
+                styles += `.page-wrapper { padding-top: ${savedHeight + 30}px; }\n`;
+            }
+
+            if (styles) {
+                document.write('<style id="initial-layout-styles">' + styles + '</style>');
             }
         })();
     </script>
@@ -297,7 +318,7 @@
     <div class="page-wrapper">
         <main class="content">
             <div id="page-container">
-                <div class="loading glitch">ARCHIVE OFFLINE</div>
+                <div class="loading glitch">ARCHIVE LOADING</div>
             </div>
         </main>
     </div>
