@@ -74,7 +74,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_missions).then(() => {
       const folder = parts[parts.length - 2].toUpperCase().replace(/[\s-]/g, '_');
       const filename = parts[parts.length - 1].replace('.js', '').toUpperCase().replace(/-/g, '_');
       const varName = 'MISSIONS_' + folder + '_' + filename;
-      let data; try { data = eval(varName); } catch(_) {}
+      const data = window[varName];
       if (!data) {
         console.warn(`missions.js: expected "${varName}" from "${path}" but it was not found.`);
         return [];

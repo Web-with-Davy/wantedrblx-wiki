@@ -9,7 +9,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_atms).then(() => {
     window.ATMS_AND_VAULTS_DATA = __MANIFEST_atms.flatMap(path => {
       const filename = path.split('/').pop().replace('.js', '');
       const varName = filename.toUpperCase().replace(/-/g, '_') + '_DATA';
-      let data; try { data = eval(varName); } catch(_) {}
+      const data = window[varName];
       if (!data) {
         console.warn(`atms.js: expected "${varName}" from "${path}" but it was not found.`);
         return [];

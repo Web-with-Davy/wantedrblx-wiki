@@ -20,7 +20,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_valuables).then(() => {
       const filename = path.split('/').pop().replace('.js', '');
       if (SEASONAL.has(filename)) return [];
       const varName = 'VALUABLES_' + filename.toUpperCase().replace(/-/g, '_');
-      let data; try { data = eval(varName); } catch(_) {}
+      const data = window[varName];
       if (!data) {
         console.warn(`valuables.js: expected "${varName}" from "${path}" but it was not found.`);
         return [];
@@ -28,9 +28,9 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_valuables).then(() => {
       return data;
     });
 
-    try { window.EASTER_VALUABLES_DATA = VALUABLES_EASTER; } catch(_) { window.EASTER_VALUABLES_DATA = []; }
-    try { window.CHRISTMAS_VALUABLES_DATA = VALUABLES_CHRISTMAS; } catch(_) { window.CHRISTMAS_VALUABLES_DATA = []; }
-    try { window.FOURTH_OF_JULY_VALUABLES_DATA = VALUABLES_4TH_OF_JULY; } catch(_) { window.FOURTH_OF_JULY_VALUABLES_DATA = []; }
+    window.EASTER_VALUABLES_DATA = window.VALUABLES_EASTER || [];
+    window.CHRISTMAS_VALUABLES_DATA = window.VALUABLES_CHRISTMAS || [];
+    window.FOURTH_OF_JULY_VALUABLES_DATA = window.VALUABLES_4TH_OF_JULY || [];
   } catch (err) {
     console.error("Failed building data for js/registry/valuables.js:", err);
   }

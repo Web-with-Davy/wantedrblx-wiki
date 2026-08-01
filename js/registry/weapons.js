@@ -46,7 +46,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_weapons).then(() => {
       const category = parts[parts.length - 2];
       const filename = parts[parts.length - 1].replace('.js', '');
       const varName = 'WEAPON_' + filename.toUpperCase().replace(/-/g, '_');
-      let data; try { data = eval(varName); } catch(_) {}
+      const data = window[varName];
       if (!data) {
         console.warn(`weapons.js: expected "${varName}" from "${path}" but it was not found.`);
         return;
