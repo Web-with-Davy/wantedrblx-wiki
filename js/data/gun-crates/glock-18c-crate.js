@@ -1,4 +1,4 @@
-const GUN_CRATE_GLOCK_18C = [
+window.GUN_CRATE_GLOCK_18C = [
 
   {
     id: "glock-18c-crate",

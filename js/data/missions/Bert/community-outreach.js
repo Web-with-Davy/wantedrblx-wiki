@@ -1,4 +1,4 @@
-const MISSIONS_BERT_COMMUNITY_OUTREACH = [
+window.MISSIONS_BERT_COMMUNITY_OUTREACH = [
 
   {
     id: "community-outreach",

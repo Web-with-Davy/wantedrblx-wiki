@@ -1,4 +1,4 @@
-const MISSIONS_DAN_FORBIDDEN_MEAT = [
+window.MISSIONS_DAN_FORBIDDEN_MEAT = [
 
   {
     id: "forbidden-meat",

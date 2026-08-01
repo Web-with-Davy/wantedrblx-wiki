@@ -1,4 +1,4 @@
-const GUN_CRATE_M4A1 = [
+window.GUN_CRATE_M4A1 = [
 
   {
     id: "m4a1-crate",

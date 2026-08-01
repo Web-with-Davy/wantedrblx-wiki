@@ -1,4 +1,4 @@
-const MISSIONS_BERT_NIGHT_SHIFT = [
+window.MISSIONS_BERT_NIGHT_SHIFT = [
 
   {
     id: "night-shift",

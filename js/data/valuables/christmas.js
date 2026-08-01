@@ -1,4 +1,4 @@
-const VALUABLES_CHRISTMAS = [
+window.VALUABLES_CHRISTMAS = [
 
   { name: "Green Ornament", description: "", rarity: "CHRISTMAS", price: 75, priceNonContract: false, weight: 1, commonLocation: "Small Presents" },
   { name: "Blue Ornament", description: "", rarity: "CHRISTMAS", price: 100, priceNonContract: false, weight: 1, commonLocation: "Small Presents" },

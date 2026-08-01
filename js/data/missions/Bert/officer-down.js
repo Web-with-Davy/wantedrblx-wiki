@@ -1,4 +1,4 @@
-const MISSIONS_BERT_OFFICER_DOWN = [
+window.MISSIONS_BERT_OFFICER_DOWN = [
 
   {
     id: "officer-down",

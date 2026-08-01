@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_TELLER = [
+window.MISSIONS_SIR_B_TELLER = [
 
   {
     id: "teller",

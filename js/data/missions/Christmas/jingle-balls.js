@@ -1,4 +1,4 @@
-const MISSIONS_CHRISTMAS_JINGLE_BALLS = [
+window.MISSIONS_CHRISTMAS_JINGLE_BALLS = [
 
   {
     id: "jingle-balls",

@@ -1,4 +1,4 @@
-const VALUABLES_JEWELRY = [
+window.VALUABLES_JEWELRY = [
 
   { name: "Silver Ring", description: "", rarity: "COMMON", category: "Jewelry", price: 100, weight: 1, commonLocation: "Oasis City Jewelry" },
   { name: "Gold Ring", description: "", rarity: "UNCOMMON", category: "Jewelry", price: 200, weight: 1, commonLocation: "Oasis City Jewelry" },

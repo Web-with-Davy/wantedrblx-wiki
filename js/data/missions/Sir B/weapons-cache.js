@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_WEAPONS_CACHE = [
+window.MISSIONS_SIR_B_WEAPONS_CACHE = [
 
   {
     id: "weapons-cache",

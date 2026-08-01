@@ -1,4 +1,4 @@
-const WEAPON_AWM = [
+window.WEAPON_AWM = [
 
   {
     name: "AWM",

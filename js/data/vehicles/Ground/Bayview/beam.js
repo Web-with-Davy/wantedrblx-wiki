@@ -1,4 +1,4 @@
-const VEHICLE_BEAM = [
+window.VEHICLE_BEAM = [
 
   {
     name: "Beam",

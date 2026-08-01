@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_GEM_COLLECTOR = [
+window.MISSIONS_SIR_B_GEM_COLLECTOR = [
 
   {
     id: "gem-collector",

@@ -1,4 +1,4 @@
-const CONTRIBUTORS_CONTRIBUTORS = [
+window.CONTRIBUTORS_CONTRIBUTORS = [
   { name: "Justin", contributions: "Financial Support" },
   { name: "RedRuby", contributions: "Vault Images" },
   { name: "Borgaboo", contributions: "Deagle and FN-FAL Images" },

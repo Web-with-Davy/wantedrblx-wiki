@@ -1,4 +1,4 @@
-const STORE_OTHER = [
+window.STORE_OTHER = [
   { name: "Restore Lost Items", robuxPrice: 19, description: "Restores items lost after death." },
   { name: "x10 Tier 1 Vehicle Crate", robuxPrice: 198, description: "Gives 10 Tier 1 Vehicle Crates" },
   { name: "x50 Tier 1 Vehicle Crate", robuxPrice: 849, description: "Gives 50 Tier 1 Vehicle Crates" },

@@ -1,4 +1,4 @@
-const MISSIONS_BERT_AIR_SUPPORT = [
+window.MISSIONS_BERT_AIR_SUPPORT = [
 
   {
     id: "air-support",

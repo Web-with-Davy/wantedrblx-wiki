@@ -1,4 +1,4 @@
-const NPC_ROD = [
+window.NPC_ROD = [
   {
     name: "Rod",
     team: "CRIMINAL",

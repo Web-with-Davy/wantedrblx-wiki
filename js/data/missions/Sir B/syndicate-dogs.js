@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_SYNDICATE_DOGS = [
+window.MISSIONS_SIR_B_SYNDICATE_DOGS = [
 
   {
     id: "syndicate-dogs",

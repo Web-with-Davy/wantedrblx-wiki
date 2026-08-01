@@ -1,4 +1,4 @@
-const WEAPON_FLASHBANG = [
+window.WEAPON_FLASHBANG = [
   {
     name: "Flashbang",
     description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",

@@ -1,4 +1,4 @@
-const MISSIONS_BERT_HOT_PURSUIT = [
+window.MISSIONS_BERT_HOT_PURSUIT = [
 
   {
     id: "hot-pursuit",

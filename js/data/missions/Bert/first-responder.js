@@ -1,4 +1,4 @@
-const MISSIONS_BERT_FIRST_RESPONDER = [
+window.MISSIONS_BERT_FIRST_RESPONDER = [
 
   {
     id: "first-responder",

@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_WARGAMES = [
+window.MISSIONS_SIR_B_WARGAMES = [
 
   {
     id: "wargames",

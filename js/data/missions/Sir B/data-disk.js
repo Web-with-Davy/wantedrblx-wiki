@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_DATA_DISK = [
+window.MISSIONS_SIR_B_DATA_DISK = [
 
   {
     id: "data-disk",

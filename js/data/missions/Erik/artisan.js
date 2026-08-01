@@ -1,4 +1,4 @@
-const MISSIONS_ERIK_ARTISAN = [
+window.MISSIONS_ERIK_ARTISAN = [
 
   {
     id: "artisan",

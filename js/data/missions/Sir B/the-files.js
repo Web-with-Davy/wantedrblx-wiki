@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_THE_FILES = [
+window.MISSIONS_SIR_B_THE_FILES = [
 
   {
     id: "the-files",

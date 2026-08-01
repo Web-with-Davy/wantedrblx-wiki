@@ -1,4 +1,4 @@
-const WEAPON_FN_FAL = [
+window.WEAPON_FN_FAL = [
 
   {
     name: "FN FAL",

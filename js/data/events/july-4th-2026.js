@@ -1,4 +1,4 @@
-const EVENT_JULY_4TH_2026 = [
+window.EVENT_JULY_4TH_2026 = [
   {
     id: "july-4th-2026",
     title: "4th of July 2026",

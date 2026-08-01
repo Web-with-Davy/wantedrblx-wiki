@@ -1,4 +1,4 @@
-const VALUABLES_EASTER = [
+window.VALUABLES_EASTER = [
 
   { name: "Planetary Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden within the Orrery Observatory (Requires 1 Diamond)" },
   { name: "Pear Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Found inside the Pear Store" },

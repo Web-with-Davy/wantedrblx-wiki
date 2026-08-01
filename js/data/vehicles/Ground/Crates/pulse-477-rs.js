@@ -1,4 +1,4 @@
-const VEHICLE_PULSE_477_RS = [
+window.VEHICLE_PULSE_477_RS = [
 
   {
     name: "Pulse 477 RS",

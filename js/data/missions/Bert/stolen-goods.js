@@ -1,4 +1,4 @@
-const MISSIONS_BERT_STOLEN_GOODS = [
+window.MISSIONS_BERT_STOLEN_GOODS = [
 
   {
     id: "stolen-goods",

@@ -1,4 +1,4 @@
-const GUN_CRATE_AK_47 = [
+window.GUN_CRATE_AK_47 = [
 
   {
     id: "ak-47-crate",

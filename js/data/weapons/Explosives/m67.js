@@ -1,4 +1,4 @@
-const WEAPON_M67 = [
+window.WEAPON_M67 = [
   {
     name: "M67",
     description: "A throwable grenade that explodes after a few seconds",

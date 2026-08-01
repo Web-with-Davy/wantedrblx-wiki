@@ -1,4 +1,4 @@
-const MISSIONS_BERT_THE_ITALIAN_JOB = [
+window.MISSIONS_BERT_THE_ITALIAN_JOB = [
 
   {
     id: "the-italian-job",

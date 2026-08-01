@@ -1,4 +1,4 @@
-const VEHICLE_RIVAL = [
+window.VEHICLE_RIVAL = [
 
   {
     name: "Rival",

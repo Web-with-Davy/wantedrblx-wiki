@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_OASIS_ELEVEN = [
+window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
   {
     id: "oasis-eleven",

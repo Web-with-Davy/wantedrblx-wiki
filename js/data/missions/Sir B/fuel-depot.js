@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_FUEL_DEPOT = [
+window.MISSIONS_SIR_B_FUEL_DEPOT = [
 
   {
     id: "fuel-depot",

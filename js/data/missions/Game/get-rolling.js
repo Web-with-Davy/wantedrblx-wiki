@@ -1,4 +1,4 @@
-const MISSIONS_GAME_GET_ROLLING = [
+window.MISSIONS_GAME_GET_ROLLING = [
 
   {
     id: "get-rolling",

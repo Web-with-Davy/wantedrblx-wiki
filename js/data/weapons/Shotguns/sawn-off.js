@@ -1,4 +1,4 @@
-const WEAPON_SAWN_OFF = [
+window.WEAPON_SAWN_OFF = [
 
   {
     name: "Sawn Off",

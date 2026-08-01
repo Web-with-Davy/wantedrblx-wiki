@@ -1,4 +1,4 @@
-const WEAPON_ARX_160 = [
+window.WEAPON_ARX_160 = [
 
   {
     name: "ARX-160",

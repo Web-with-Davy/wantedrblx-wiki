@@ -1,4 +1,4 @@
-const MISSIONS_BERT_COP_KILLER = [
+window.MISSIONS_BERT_COP_KILLER = [
 
   {
     id: "cop-killer",

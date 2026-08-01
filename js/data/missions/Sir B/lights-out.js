@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_LIGHTS_OUT = [
+window.MISSIONS_SIR_B_LIGHTS_OUT = [
 
   {
     id: "lights-out",

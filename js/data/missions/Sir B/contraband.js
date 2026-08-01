@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_CONTRABAND = [
+window.MISSIONS_SIR_B_CONTRABAND = [
 
   {
     id: "contraband",

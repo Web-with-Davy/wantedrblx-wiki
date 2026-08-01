@@ -1,4 +1,4 @@
-const MISSIONS_BERT_TACTICAL_UNIT = [
+window.MISSIONS_BERT_TACTICAL_UNIT = [
 
   {
     id: "tactical-unit",

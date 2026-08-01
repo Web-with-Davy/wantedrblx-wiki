@@ -1,4 +1,4 @@
-const VALUABLES_GEMS = [
+window.VALUABLES_GEMS = [
 
   { name: "Silver Bar", rarity: "COMMON", category: "Gems", price: 250, weight: 2, commonLocation: "Bank of Oasis",
     description: "" },

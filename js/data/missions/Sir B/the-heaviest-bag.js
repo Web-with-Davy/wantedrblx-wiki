@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_THE_HEAVIEST_BAG = [
+window.MISSIONS_SIR_B_THE_HEAVIEST_BAG = [
 
   {
     id: "the-heaviest-bag",

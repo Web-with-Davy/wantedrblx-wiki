@@ -1,4 +1,4 @@
-const WEAPON_MP5K = [
+window.WEAPON_MP5K = [
 
   {
     name: "MP5K",

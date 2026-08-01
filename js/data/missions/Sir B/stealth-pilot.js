@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_STEALTH_PILOT = [
+window.MISSIONS_SIR_B_STEALTH_PILOT = [
 
   {
     id: "stealth-pilot",

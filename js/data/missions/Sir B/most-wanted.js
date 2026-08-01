@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_MOST_WANTED = [
+window.MISSIONS_SIR_B_MOST_WANTED = [
 
   {
     id: "most-wanted",

@@ -1,4 +1,4 @@
-const WEAPON_AUG_A1 = [
+window.WEAPON_AUG_A1 = [
 
   {
     name: "AUG A1",

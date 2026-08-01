@@ -1,4 +1,4 @@
-const NPC_SIRB = [
+window.NPC_SIRB = [
   {
     name: "Sir.B",
     team: "CRIMINAL",

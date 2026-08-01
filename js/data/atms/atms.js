@@ -1,4 +1,4 @@
-const ATMS_DATA = [
+window.ATMS_DATA = [
 
   { name: "Green ATM", rarity: "COMMON", rarityPercent: "1 in 2 [calculated]", price: 200 },
   { name: "Blue ATM", rarity: "COMMON", rarityPercent: "1 in 3 [calculated]", price: 300 },

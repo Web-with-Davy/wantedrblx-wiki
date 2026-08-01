@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_UPGRADE = [
+window.MISSIONS_SIR_B_UPGRADE = [
 
   {
     id: "upgrade",

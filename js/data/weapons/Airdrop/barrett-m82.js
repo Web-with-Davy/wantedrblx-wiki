@@ -1,4 +1,4 @@
-const WEAPON_BARRETT_M82 = [
+window.WEAPON_BARRETT_M82 = [
 
   {
     name: "Barrett M82",

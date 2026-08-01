@@ -1,4 +1,4 @@
-const VEHICLE_RAZOR = [
+window.VEHICLE_RAZOR = [
 
   {
     name: "Razor",

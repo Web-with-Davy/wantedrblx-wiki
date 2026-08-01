@@ -1,4 +1,4 @@
-const VEHICLE_CONTENDER = [
+window.VEHICLE_CONTENDER = [
 
   {
     name: "Contender",

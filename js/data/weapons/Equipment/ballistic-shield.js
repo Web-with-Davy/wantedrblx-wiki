@@ -1,4 +1,4 @@
-const WEAPON_BALLISTIC_SHIELD = [
+window.WEAPON_BALLISTIC_SHIELD = [
   {
     name: "Ballistic Shield",
     description: "Shield that can block bullets",

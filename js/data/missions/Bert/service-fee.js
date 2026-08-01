@@ -1,4 +1,4 @@
-const MISSIONS_BERT_SERVICE_FEE = [
+window.MISSIONS_BERT_SERVICE_FEE = [
 
   {
     id: "service-fee",

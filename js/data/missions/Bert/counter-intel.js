@@ -1,4 +1,4 @@
-const MISSIONS_BERT_COUNTER_INTEL = [
+window.MISSIONS_BERT_COUNTER_INTEL = [
 
   {
     id: "counter-intel",

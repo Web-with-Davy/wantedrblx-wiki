@@ -1,4 +1,4 @@
-const MISSIONS_BERT_DIRTY_MONEY = [
+window.MISSIONS_BERT_DIRTY_MONEY = [
 
   {
     id: "dirty-money-1",

@@ -1,4 +1,4 @@
-const VALUABLES_TECH = [
+window.VALUABLES_TECH = [
 
   { name: "TPU", description: "", rarity: "LEGENDARY", category: "Tech", price: 15000, weight: 4, commonLocation: "Tech Shack Store" },
   { name: "Cheap Laptop", description: "", rarity: "UNCOMMON", category: "Tech", price: 200, weight: 2, commonLocation: "Tech Shack Store" },

@@ -1,4 +1,4 @@
-const VEHICLE_INTERCEPTOR = [
+window.VEHICLE_INTERCEPTOR = [
 
   {
     name: "Interceptor",

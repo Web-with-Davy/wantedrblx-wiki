@@ -1,4 +1,4 @@
-const MISSIONS_EASTER_THE_EGG_HUNT = [
+window.MISSIONS_EASTER_THE_EGG_HUNT = [
 
   {
     id: "the-egg-hunt",

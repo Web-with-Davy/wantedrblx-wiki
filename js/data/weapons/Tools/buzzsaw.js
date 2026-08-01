@@ -1,4 +1,4 @@
-const WEAPON_BUZZSAW = [
+window.WEAPON_BUZZSAW = [
   {
     name: "Buzzsaw",
     description: "Used to break the cglass in the jewerly store, decent melee weapon",

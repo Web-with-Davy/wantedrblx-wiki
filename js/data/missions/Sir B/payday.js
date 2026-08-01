@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_PAYDAY = [
+window.MISSIONS_SIR_B_PAYDAY = [
 
   {
     id: "payday",

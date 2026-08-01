@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_NIGHTSTALKER = [
+window.MISSIONS_SIR_B_NIGHTSTALKER = [
 
   {
     id: "nightstalker",

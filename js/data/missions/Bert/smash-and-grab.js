@@ -1,4 +1,4 @@
-const MISSIONS_BERT_SMASH_AND_GRAB = [
+window.MISSIONS_BERT_SMASH_AND_GRAB = [
 
   {
     id: "smash-and-grab",

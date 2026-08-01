@@ -1,4 +1,4 @@
-const VEHICLE_CROWLINE = [
+window.VEHICLE_CROWLINE = [
 
   {
     name: "Crowline",

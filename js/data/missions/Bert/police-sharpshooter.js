@@ -1,4 +1,4 @@
-const MISSIONS_BERT_POLICE_SHARPSHOOTER = [
+window.MISSIONS_BERT_POLICE_SHARPSHOOTER = [
   {
     id: "police-sharpshooter",
     title: "Police Sharpshooter - Part 1",

@@ -1,4 +1,4 @@
-const VEHICLE_ZORVELLO = [
+window.VEHICLE_ZORVELLO = [
 
   {
     name: "Zorvello",

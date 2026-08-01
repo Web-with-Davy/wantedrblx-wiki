@@ -1,4 +1,4 @@
-const VEHICLE_ROKU = [
+window.VEHICLE_ROKU = [
 
   {
     name: "Roku",

@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_THE_DEPOSIT = [
+window.MISSIONS_SIR_B_THE_DEPOSIT = [
 
   {
     id: "the-deposit",

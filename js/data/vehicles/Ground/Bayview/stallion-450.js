@@ -1,4 +1,4 @@
-const VEHICLE_STALLION_450 = [
+window.VEHICLE_STALLION_450 = [
 
   {
     name: "Stallion 450",

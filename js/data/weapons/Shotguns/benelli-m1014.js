@@ -1,4 +1,4 @@
-const WEAPON_BENELLI_M1014 = [
+window.WEAPON_BENELLI_M1014 = [
 
   {
     name: "Benelli M1014",

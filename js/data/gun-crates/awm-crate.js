@@ -1,4 +1,4 @@
-const GUN_CRATE_AWM = [
+window.GUN_CRATE_AWM = [
 
   {
     id: "awm-crate",

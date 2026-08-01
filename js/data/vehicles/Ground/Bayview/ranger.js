@@ -1,4 +1,4 @@
-const VEHICLE_RANGER = [
+window.VEHICLE_RANGER = [
 
   {
     name: "Ranger",

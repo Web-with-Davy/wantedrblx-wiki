@@ -1,4 +1,4 @@
-const VEHICLE_BLADE = [
+window.VEHICLE_BLADE = [
 
   {
     name: "Blade",

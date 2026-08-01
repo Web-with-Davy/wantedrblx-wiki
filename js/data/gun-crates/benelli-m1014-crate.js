@@ -1,4 +1,4 @@
-const GUN_CRATE_BENELLI_M1014 = [
+window.GUN_CRATE_BENELLI_M1014 = [
 
   {
     id: "benelli-m1014-crate",

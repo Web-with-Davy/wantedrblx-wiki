@@ -1,4 +1,4 @@
-const CONTRIBUTORS_STAFF = [
+window.CONTRIBUTORS_STAFF = [
   { name: "Dedsec", title: "Wiki Staff" },
   { name: "MeepMeep", title: "Wiki Staff" },
   { name: "Emperor", title: "Wiki Staff" },

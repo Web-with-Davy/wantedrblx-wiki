@@ -1,4 +1,4 @@
-const WEAPON_RPG_7 = [
+window.WEAPON_RPG_7 = [
   {
     name: "RPG-7",
     description: "A rocket launcher that shoots rockets",

@@ -1,4 +1,4 @@
-const MISSIONS_CHRISTMAS_TOY_DRIVE = [
+window.MISSIONS_CHRISTMAS_TOY_DRIVE = [
 
   {
     id: "1-toy-drive",

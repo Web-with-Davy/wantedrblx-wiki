@@ -1,4 +1,4 @@
-const WEAPON_SVD = [
+window.WEAPON_SVD = [
 
   {
     name: "SVD",

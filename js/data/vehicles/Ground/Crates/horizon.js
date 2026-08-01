@@ -1,4 +1,4 @@
-const VEHICLE_HORIZON = [
+window.VEHICLE_HORIZON = [
 
   {
     name: "Horizon",

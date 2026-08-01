@@ -1,4 +1,4 @@
-const VALUABLES_ELECTRONICS = [
+window.VALUABLES_ELECTRONICS = [
 
   { name: "PearWatch", description: "", rarity: "COMMON", category: "Electronics", price: 200, weight: 2, commonLocation: "Pear Store" },
   { name: "PearPods", description: "", rarity: "COMMON", category: "Electronics", price: 300, weight: 3, commonLocation: "Pear Store" },

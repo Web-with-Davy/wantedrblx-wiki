@@ -1,4 +1,4 @@
-const NPC_BERT = [
+window.NPC_BERT = [
   {
     name: "Bert",
     team: "POLICE",

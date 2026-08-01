@@ -1,4 +1,4 @@
-const MISSIONS_BERT_CON_AIR = [
+window.MISSIONS_BERT_CON_AIR = [
 
   {
     id: "con-air",

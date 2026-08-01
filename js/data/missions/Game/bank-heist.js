@@ -1,4 +1,4 @@
-const MISSIONS_GAME_BANK_HEIST = [
+window.MISSIONS_GAME_BANK_HEIST = [
 
   {
     id: "bank-heist",

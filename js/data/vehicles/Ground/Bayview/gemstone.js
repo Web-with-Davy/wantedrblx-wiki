@@ -1,4 +1,4 @@
-const VEHICLE_GEMSTONE = [
+window.VEHICLE_GEMSTONE = [
 
   {
     name: "Gemstone",

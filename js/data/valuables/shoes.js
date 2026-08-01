@@ -1,4 +1,4 @@
-const VALUABLES_SHOES = [
+window.VALUABLES_SHOES = [
 
   { name: "Sky James Golds", description: "", rarity: "EPIC", category: "Shoes", price: 400, weight: 4, commonLocation: "Shoe Locker Store" },
   { name: "Sky James Reds", description: "", rarity: "EPIC", category: "Shoes", price: 200, weight: 4, commonLocation: "Shoe Locker Store" },

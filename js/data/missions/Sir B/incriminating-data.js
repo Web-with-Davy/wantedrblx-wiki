@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_INCRIMINATING_DATA = [
+window.MISSIONS_SIR_B_INCRIMINATING_DATA = [
 
   {
     id: "incriminating-data",

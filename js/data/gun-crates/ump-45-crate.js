@@ -1,4 +1,4 @@
-const GUN_CRATE_UMP_45 = [
+window.GUN_CRATE_UMP_45 = [
 
   {
     id: "ump-45-crate",

@@ -1,4 +1,4 @@
-const WEAPON_UMP_45 = [
+window.WEAPON_UMP_45 = [
 
   {
     name: "UMP 45",

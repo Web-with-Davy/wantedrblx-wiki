@@ -1,4 +1,4 @@
-const MISSIONS_EASTER_SYNDICEGG = [
+window.MISSIONS_EASTER_SYNDICEGG = [
 
   {
     id: "syndicegg",

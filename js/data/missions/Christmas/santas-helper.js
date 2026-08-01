@@ -1,4 +1,4 @@
-const MISSIONS_CHRISTMAS_SANTAS_HELPER = [
+window.MISSIONS_CHRISTMAS_SANTAS_HELPER = [
 
   {
     id: "santas-helper",

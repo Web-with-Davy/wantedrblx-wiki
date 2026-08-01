@@ -1,4 +1,4 @@
-const VAULTS_DATA = [
+window.VAULTS_DATA = [
 
   { name: "Regular Vault", rarity: "COMMON", rarityPercent: "1 in 1.86 [calculated]", priceMin: 5000, priceMax: 7500 },
   { name: "Silver Vault", rarity: "COMMON", rarityPercent: "1 in 3.76 [calculated]", priceMin: 7500, priceMax: 9000 },

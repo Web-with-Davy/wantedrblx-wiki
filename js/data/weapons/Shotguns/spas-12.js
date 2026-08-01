@@ -1,4 +1,4 @@
-const WEAPON_SPAS_12 = [
+window.WEAPON_SPAS_12 = [
 
   {
     name: "SPAS-12",

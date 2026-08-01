@@ -1,4 +1,4 @@
-const MISSIONS_BERT_ON_PATROL = [
+window.MISSIONS_BERT_ON_PATROL = [
 
   {
     id: "on-patrol",

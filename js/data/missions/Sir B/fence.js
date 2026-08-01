@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_FENCE = [
+window.MISSIONS_SIR_B_FENCE = [
 
   {
     id: "fence",

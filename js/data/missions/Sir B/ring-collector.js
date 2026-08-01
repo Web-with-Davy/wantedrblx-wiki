@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_RING_COLLECTOR = [
+window.MISSIONS_SIR_B_RING_COLLECTOR = [
 
   {
     id: "ring-collector",

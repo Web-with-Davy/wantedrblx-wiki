@@ -1,4 +1,4 @@
-const VEHICLE_WARDEN = [
+window.VEHICLE_WARDEN = [
 
   {
     name: "Warden",

@@ -1,4 +1,4 @@
-const WEAPON_GLOCK_18C = [
+window.WEAPON_GLOCK_18C = [
 
   {
     name: "Glock 18c",

@@ -1,4 +1,4 @@
-const MISSIONS_BERT_TEMPLATE = [
+window.MISSIONS_BERT_TEMPLATE = [
 
   {
     id: "template",

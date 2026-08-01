@@ -1,4 +1,4 @@
-const VEHICLE_ZORO = [
+window.VEHICLE_ZORO = [
 
   {
     name: "Zoro",

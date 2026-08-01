@@ -1,4 +1,4 @@
-const GUN_CRATE_AUG_A1 = [
+window.GUN_CRATE_AUG_A1 = [
 
   {
     id: "aug-a1-crate",

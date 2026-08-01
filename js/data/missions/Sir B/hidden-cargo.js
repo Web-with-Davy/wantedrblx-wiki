@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_HIDDEN_CARGO = [
+window.MISSIONS_SIR_B_HIDDEN_CARGO = [
 
   {
     id: "hidden-cargo",

@@ -1,4 +1,4 @@
-const GUN_CRATE_UZI = [
+window.GUN_CRATE_UZI = [
 
   {
     id: "uzi-crate",

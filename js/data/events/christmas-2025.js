@@ -1,4 +1,4 @@
-const EVENT_CHRISTMAS_2025 = [
+window.EVENT_CHRISTMAS_2025 = [
   {
     id: "christmas-2025",
     title: "Christmas 2025",

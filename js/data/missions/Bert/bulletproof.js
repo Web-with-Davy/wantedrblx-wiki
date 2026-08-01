@@ -1,4 +1,4 @@
-const MISSIONS_BERT_BULLETPROOF = [
+window.MISSIONS_BERT_BULLETPROOF = [
 
   {
     id: "bulletproof",

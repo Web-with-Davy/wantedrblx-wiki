@@ -1,4 +1,4 @@
-const WEAPON_M9 = [
+window.WEAPON_M9 = [
 
   {
     name: "M9",

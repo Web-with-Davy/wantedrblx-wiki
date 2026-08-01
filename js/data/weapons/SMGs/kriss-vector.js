@@ -1,4 +1,4 @@
-const WEAPON_KRISS_VECTOR = [
+window.WEAPON_KRISS_VECTOR = [
 
   {
     name: "Kriss Vector",

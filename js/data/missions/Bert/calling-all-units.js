@@ -1,4 +1,4 @@
-const MISSIONS_BERT_CALLING_ALL_UNITS = [
+window.MISSIONS_BERT_CALLING_ALL_UNITS = [
   {
     id: "calling-all-units",
     title: "Calling All Units",

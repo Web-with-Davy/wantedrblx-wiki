@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_LOCKPICKER = [
+window.MISSIONS_SIR_B_LOCKPICKER = [
 
   {
     id: "lockpicker",

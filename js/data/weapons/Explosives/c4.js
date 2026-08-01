@@ -1,4 +1,4 @@
-const WEAPON_C4 = [
+window.WEAPON_C4 = [
   {
     name: "C4",
     description: "Explosive used for destroying vault doors",

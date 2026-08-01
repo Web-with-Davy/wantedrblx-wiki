@@ -1,4 +1,4 @@
-const WEAPON_GRENADE_LAUNCHER = [
+window.WEAPON_GRENADE_LAUNCHER = [
   {
     name: "Grenade Launcher",
     description: "A grenade launcher that shoots grenades",

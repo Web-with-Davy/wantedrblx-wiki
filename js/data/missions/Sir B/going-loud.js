@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_GOING_LOUD = [
+window.MISSIONS_SIR_B_GOING_LOUD = [
 
   {
     id: "going-loud",

@@ -1,4 +1,4 @@
-const MISSIONS_BERT_ALL_POINTS_BULLETIN = [
+window.MISSIONS_BERT_ALL_POINTS_BULLETIN = [
 
   {
     id: "all-points-bulletin",

@@ -1,4 +1,4 @@
-const PROMO_CODES_ACTIVE = [
+window.PROMO_CODES_ACTIVE = [
   { code: "DEVV", reward: "DEVV Tire Rims", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
   { code: "WANTED", reward: "$10,000 Cash", active: true },

@@ -1,4 +1,4 @@
-const MISSIONS_SIR_B_FRONT_TOWARD_ENEMY = [
+window.MISSIONS_SIR_B_FRONT_TOWARD_ENEMY = [
 
   {
     id: "front-toward-enemy",

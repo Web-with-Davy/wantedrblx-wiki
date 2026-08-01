@@ -1,4 +1,4 @@
-const VEHICLE_MOCHI = [
+window.VEHICLE_MOCHI = [
 
   {
     name: "Mochi",

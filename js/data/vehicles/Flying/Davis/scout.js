@@ -1,4 +1,4 @@
-const VEHICLE_SCOUT = [
+window.VEHICLE_SCOUT = [
 
   {
     name: "Scout",

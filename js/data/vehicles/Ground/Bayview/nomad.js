@@ -1,4 +1,4 @@
-const VEHICLE_NOMAD = [
+window.VEHICLE_NOMAD = [
 
   {
     name: "Nomad",

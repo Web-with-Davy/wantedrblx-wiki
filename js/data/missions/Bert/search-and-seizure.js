@@ -1,4 +1,4 @@
-const MISSIONS_BERT_SEARCH_AND_SEIZURE = [
+window.MISSIONS_BERT_SEARCH_AND_SEIZURE = [
 
   {
     id: "search-and-seizure",

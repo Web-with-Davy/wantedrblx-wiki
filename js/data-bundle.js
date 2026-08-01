@@ -1,7 +1,7 @@
 /* AUTO-GENERATED — do not edit directly. Run ./build-bundle.sh to regenerate. */
 
 /* --- js/data/atms/atms.js --- */
-const ATMS_DATA = [
+window.ATMS_DATA = [
 
   { name: "Green ATM", rarity: "COMMON", rarityPercent: "1 in 2 [calculated]", price: 200 },
   { name: "Blue ATM", rarity: "COMMON", rarityPercent: "1 in 3 [calculated]", price: 300 },
@@ -14,7 +14,7 @@ const ATMS_DATA = [
 ];
 
 /* --- js/data/atms/vaults.js --- */
-const VAULTS_DATA = [
+window.VAULTS_DATA = [
 
   { name: "Regular Vault", rarity: "COMMON", rarityPercent: "1 in 1.86 [calculated]", priceMin: 5000, priceMax: 7500 },
   { name: "Silver Vault", rarity: "COMMON", rarityPercent: "1 in 3.76 [calculated]", priceMin: 7500, priceMax: 9000 },
@@ -28,7 +28,7 @@ const VAULTS_DATA = [
 ];
 
 /* --- js/data/contributors/contributors.js --- */
-const CONTRIBUTORS_CONTRIBUTORS = [
+window.CONTRIBUTORS_CONTRIBUTORS = [
   { name: "Justin", contributions: "Financial Support" },
   { name: "RedRuby", contributions: "Vault Images" },
   { name: "Borgaboo", contributions: "Deagle and FN-FAL Images" },
@@ -38,12 +38,12 @@ const CONTRIBUTORS_CONTRIBUTORS = [
 ];
 
 /* --- js/data/contributors/managers.js --- */
-const CONTRIBUTORS_MANAGERS = [
+window.CONTRIBUTORS_MANAGERS = [
   { name: "Davy", title: "Wiki Manager" }
 ];
 
 /* --- js/data/contributors/staff.js --- */
-const CONTRIBUTORS_STAFF = [
+window.CONTRIBUTORS_STAFF = [
   { name: "Dedsec", title: "Wiki Staff" },
   { name: "MeepMeep", title: "Wiki Staff" },
   { name: "Emperor", title: "Wiki Staff" },
@@ -55,7 +55,7 @@ const CONTRIBUTORS_STAFF = [
 ];
 
 /* --- js/data/events/christmas-2025.js --- */
-const EVENT_CHRISTMAS_2025 = [
+window.EVENT_CHRISTMAS_2025 = [
   {
     id: "christmas-2025",
     title: "Christmas 2025",
@@ -74,7 +74,7 @@ const EVENT_CHRISTMAS_2025 = [
 ];
 
 /* --- js/data/events/easter-2026.js --- */
-const EVENT_EASTER_2026 = [
+window.EVENT_EASTER_2026 = [
   {
     id: "easter-2026",
     title: "Easter 2026",
@@ -93,7 +93,7 @@ const EVENT_EASTER_2026 = [
 ];
 
 /* --- js/data/events/july-4th-2026.js --- */
-const EVENT_JULY_4TH_2026 = [
+window.EVENT_JULY_4TH_2026 = [
   {
     id: "july-4th-2026",
     title: "4th of July 2026",
@@ -111,7 +111,7 @@ const EVENT_JULY_4TH_2026 = [
 ];
 
 /* --- js/data/gun-crates/ak-47-crate.js --- */
-const GUN_CRATE_AK_47 = [
+window.GUN_CRATE_AK_47 = [
 
   {
     id: "ak-47-crate",
@@ -126,7 +126,7 @@ const GUN_CRATE_AK_47 = [
 
 
 /* --- js/data/gun-crates/aug-a1-crate.js --- */
-const GUN_CRATE_AUG_A1 = [
+window.GUN_CRATE_AUG_A1 = [
 
   {
     id: "aug-a1-crate",
@@ -140,7 +140,7 @@ const GUN_CRATE_AUG_A1 = [
 ];
 
 /* --- js/data/gun-crates/awm-crate.js --- */
-const GUN_CRATE_AWM = [
+window.GUN_CRATE_AWM = [
 
   {
     id: "awm-crate",
@@ -154,7 +154,7 @@ const GUN_CRATE_AWM = [
 ];
 
 /* --- js/data/gun-crates/benelli-m1014-crate.js --- */
-const GUN_CRATE_BENELLI_M1014 = [
+window.GUN_CRATE_BENELLI_M1014 = [
 
   {
     id: "benelli-m1014-crate",
@@ -168,7 +168,7 @@ const GUN_CRATE_BENELLI_M1014 = [
 ];
 
 /* --- js/data/gun-crates/glock-18c-crate.js --- */
-const GUN_CRATE_GLOCK_18C = [
+window.GUN_CRATE_GLOCK_18C = [
 
   {
     id: "glock-18c-crate",
@@ -182,7 +182,7 @@ const GUN_CRATE_GLOCK_18C = [
 ];
 
 /* --- js/data/gun-crates/m4a1-crate.js --- */
-const GUN_CRATE_M4A1 = [
+window.GUN_CRATE_M4A1 = [
 
   {
     id: "m4a1-crate",
@@ -197,7 +197,7 @@ const GUN_CRATE_M4A1 = [
 ];
 
 /* --- js/data/gun-crates/rpg-7-crate.js --- */
-const GUN_CRATE_RPG_7 = [
+window.GUN_CRATE_RPG_7 = [
 
   {
     id: "rpg-7-crate",
@@ -212,7 +212,7 @@ const GUN_CRATE_RPG_7 = [
 ];
 
 /* --- js/data/gun-crates/ump-45-crate.js --- */
-const GUN_CRATE_UMP_45 = [
+window.GUN_CRATE_UMP_45 = [
 
   {
     id: "ump-45-crate",
@@ -226,7 +226,7 @@ const GUN_CRATE_UMP_45 = [
 ];
 
 /* --- js/data/gun-crates/uzi-crate.js --- */
-const GUN_CRATE_UZI = [
+window.GUN_CRATE_UZI = [
 
   {
     id: "uzi-crate",
@@ -240,7 +240,7 @@ const GUN_CRATE_UZI = [
 ];
 
 /* --- js/data/missions/Bert/air-support.js --- */
-const MISSIONS_BERT_AIR_SUPPORT = [
+window.MISSIONS_BERT_AIR_SUPPORT = [
 
   {
     id: "air-support",
@@ -257,7 +257,7 @@ const MISSIONS_BERT_AIR_SUPPORT = [
 ];
 
 /* --- js/data/missions/Bert/all-points-bulletin.js --- */
-const MISSIONS_BERT_ALL_POINTS_BULLETIN = [
+window.MISSIONS_BERT_ALL_POINTS_BULLETIN = [
 
   {
     id: "all-points-bulletin",
@@ -274,7 +274,7 @@ const MISSIONS_BERT_ALL_POINTS_BULLETIN = [
 ];
 
 /* --- js/data/missions/Bert/bang-and-clear.js --- */
-const MISSIONS_BERT_BANG_AND_CLEAR = [
+window.MISSIONS_BERT_BANG_AND_CLEAR = [
 
   {
     id: "bang-and-clear",
@@ -302,7 +302,7 @@ const MISSIONS_BERT_BANG_AND_CLEAR = [
 ];
 
 /* --- js/data/missions/Bert/bulletproof.js --- */
-const MISSIONS_BERT_BULLETPROOF = [
+window.MISSIONS_BERT_BULLETPROOF = [
 
   {
     id: "bulletproof",
@@ -319,7 +319,7 @@ const MISSIONS_BERT_BULLETPROOF = [
 ];
 
 /* --- js/data/missions/Bert/calling-all-units.js --- */
-const MISSIONS_BERT_CALLING_ALL_UNITS = [
+window.MISSIONS_BERT_CALLING_ALL_UNITS = [
   {
     id: "calling-all-units",
     title: "Calling All Units",
@@ -334,7 +334,7 @@ const MISSIONS_BERT_CALLING_ALL_UNITS = [
 ];
 
 /* --- js/data/missions/Bert/community-outreach.js --- */
-const MISSIONS_BERT_COMMUNITY_OUTREACH = [
+window.MISSIONS_BERT_COMMUNITY_OUTREACH = [
 
   {
     id: "community-outreach",
@@ -351,7 +351,7 @@ const MISSIONS_BERT_COMMUNITY_OUTREACH = [
 ];
 
 /* --- js/data/missions/Bert/con-air.js --- */
-const MISSIONS_BERT_CON_AIR = [
+window.MISSIONS_BERT_CON_AIR = [
 
   {
     id: "con-air",
@@ -368,7 +368,7 @@ const MISSIONS_BERT_CON_AIR = [
 ];
 
 /* --- js/data/missions/Bert/cop-killer.js --- */
-const MISSIONS_BERT_COP_KILLER = [
+window.MISSIONS_BERT_COP_KILLER = [
 
   {
     id: "cop-killer",
@@ -385,7 +385,7 @@ const MISSIONS_BERT_COP_KILLER = [
 ];
 
 /* --- js/data/missions/Bert/counter-intel.js --- */
-const MISSIONS_BERT_COUNTER_INTEL = [
+window.MISSIONS_BERT_COUNTER_INTEL = [
 
   {
     id: "counter-intel",
@@ -402,7 +402,7 @@ const MISSIONS_BERT_COUNTER_INTEL = [
 ];
 
 /* --- js/data/missions/Bert/dirty-money.js --- */
-const MISSIONS_BERT_DIRTY_MONEY = [
+window.MISSIONS_BERT_DIRTY_MONEY = [
 
   {
     id: "dirty-money-1",
@@ -440,7 +440,7 @@ const MISSIONS_BERT_DIRTY_MONEY = [
 ];
 
 /* --- js/data/missions/Bert/first-responder.js --- */
-const MISSIONS_BERT_FIRST_RESPONDER = [
+window.MISSIONS_BERT_FIRST_RESPONDER = [
 
   {
     id: "first-responder",
@@ -480,7 +480,7 @@ const MISSIONS_BERT_FIRST_RESPONDER = [
 ];
 
 /* --- js/data/missions/Bert/hot-pursuit.js --- */
-const MISSIONS_BERT_HOT_PURSUIT = [
+window.MISSIONS_BERT_HOT_PURSUIT = [
 
   {
     id: "hot-pursuit",
@@ -497,7 +497,7 @@ const MISSIONS_BERT_HOT_PURSUIT = [
 ];
 
 /* --- js/data/missions/Bert/introduction.js --- */
-const MISSIONS_BERT_INTRODUCTION = [
+window.MISSIONS_BERT_INTRODUCTION = [
 
   {
     id: "introduction-bert",
@@ -514,7 +514,7 @@ const MISSIONS_BERT_INTRODUCTION = [
 ];
 
 /* --- js/data/missions/Bert/loss-prevention.js --- */
-const MISSIONS_BERT_LOSS_PREVENTION = [
+window.MISSIONS_BERT_LOSS_PREVENTION = [
 
   {
     id: "loss-prevention",
@@ -542,7 +542,7 @@ const MISSIONS_BERT_LOSS_PREVENTION = [
 ];
 
 /* --- js/data/missions/Bert/night-shift.js --- */
-const MISSIONS_BERT_NIGHT_SHIFT = [
+window.MISSIONS_BERT_NIGHT_SHIFT = [
 
   {
     id: "night-shift",
@@ -559,7 +559,7 @@ const MISSIONS_BERT_NIGHT_SHIFT = [
 ];
 
 /* --- js/data/missions/Bert/officer-down.js --- */
-const MISSIONS_BERT_OFFICER_DOWN = [
+window.MISSIONS_BERT_OFFICER_DOWN = [
 
   {
     id: "officer-down",
@@ -576,7 +576,7 @@ const MISSIONS_BERT_OFFICER_DOWN = [
 ];
 
 /* --- js/data/missions/Bert/on-patrol.js --- */
-const MISSIONS_BERT_ON_PATROL = [
+window.MISSIONS_BERT_ON_PATROL = [
 
   {
     id: "on-patrol",
@@ -617,7 +617,7 @@ const MISSIONS_BERT_ON_PATROL = [
 ];
 
 /* --- js/data/missions/Bert/police-sharpshooter.js --- */
-const MISSIONS_BERT_POLICE_SHARPSHOOTER = [
+window.MISSIONS_BERT_POLICE_SHARPSHOOTER = [
   {
     id: "police-sharpshooter",
     title: "Police Sharpshooter - Part 1",
@@ -632,7 +632,7 @@ const MISSIONS_BERT_POLICE_SHARPSHOOTER = [
 ];
 
 /* --- js/data/missions/Bert/public-relations.js --- */
-const MISSIONS_BERT_PUBLIC_RELATIONS = [
+window.MISSIONS_BERT_PUBLIC_RELATIONS = [
 
   {
     id: "public-relations-1",
@@ -684,7 +684,7 @@ const MISSIONS_BERT_PUBLIC_RELATIONS = [
 ];
 
 /* --- js/data/missions/Bert/search-and-seizure.js --- */
-const MISSIONS_BERT_SEARCH_AND_SEIZURE = [
+window.MISSIONS_BERT_SEARCH_AND_SEIZURE = [
 
   {
     id: "search-and-seizure",
@@ -701,7 +701,7 @@ const MISSIONS_BERT_SEARCH_AND_SEIZURE = [
 ];
 
 /* --- js/data/missions/Bert/service-fee.js --- */
-const MISSIONS_BERT_SERVICE_FEE = [
+window.MISSIONS_BERT_SERVICE_FEE = [
 
   {
     id: "service-fee",
@@ -718,7 +718,7 @@ const MISSIONS_BERT_SERVICE_FEE = [
 ];
 
 /* --- js/data/missions/Bert/smash-and-grab.js --- */
-const MISSIONS_BERT_SMASH_AND_GRAB = [
+window.MISSIONS_BERT_SMASH_AND_GRAB = [
 
   {
     id: "smash-and-grab",
@@ -735,7 +735,7 @@ const MISSIONS_BERT_SMASH_AND_GRAB = [
 ];
 
 /* --- js/data/missions/Bert/stolen-goods.js --- */
-const MISSIONS_BERT_STOLEN_GOODS = [
+window.MISSIONS_BERT_STOLEN_GOODS = [
 
   {
     id: "stolen-goods",
@@ -752,7 +752,7 @@ const MISSIONS_BERT_STOLEN_GOODS = [
 ];
 
 /* --- js/data/missions/Bert/tactical-unit.js --- */
-const MISSIONS_BERT_TACTICAL_UNIT = [
+window.MISSIONS_BERT_TACTICAL_UNIT = [
 
   {
     id: "tactical-unit",
@@ -769,7 +769,7 @@ const MISSIONS_BERT_TACTICAL_UNIT = [
 ];
 
 /* --- js/data/missions/Bert/template.js --- */
-const MISSIONS_BERT_TEMPLATE = [
+window.MISSIONS_BERT_TEMPLATE = [
 
   {
     id: "template",
@@ -786,7 +786,7 @@ const MISSIONS_BERT_TEMPLATE = [
 ];
 
 /* --- js/data/missions/Bert/the-italian-job.js --- */
-const MISSIONS_BERT_THE_ITALIAN_JOB = [
+window.MISSIONS_BERT_THE_ITALIAN_JOB = [
 
   {
     id: "the-italian-job",
@@ -803,7 +803,7 @@ const MISSIONS_BERT_THE_ITALIAN_JOB = [
 ];
 
 /* --- js/data/missions/Christmas/jingle-balls.js --- */
-const MISSIONS_CHRISTMAS_JINGLE_BALLS = [
+window.MISSIONS_CHRISTMAS_JINGLE_BALLS = [
 
   {
     id: "jingle-balls",
@@ -832,7 +832,7 @@ const MISSIONS_CHRISTMAS_JINGLE_BALLS = [
 ];
 
 /* --- js/data/missions/Christmas/santas-helper.js --- */
-const MISSIONS_CHRISTMAS_SANTAS_HELPER = [
+window.MISSIONS_CHRISTMAS_SANTAS_HELPER = [
 
   {
     id: "santas-helper",
@@ -849,7 +849,7 @@ const MISSIONS_CHRISTMAS_SANTAS_HELPER = [
 ];
 
 /* --- js/data/missions/Christmas/toy-drive.js --- */
-const MISSIONS_CHRISTMAS_TOY_DRIVE = [
+window.MISSIONS_CHRISTMAS_TOY_DRIVE = [
 
   {
     id: "1-toy-drive",
@@ -878,7 +878,7 @@ const MISSIONS_CHRISTMAS_TOY_DRIVE = [
 ];
 
 /* --- js/data/missions/Dan/forbidden-meat.js --- */
-const MISSIONS_DAN_FORBIDDEN_MEAT = [
+window.MISSIONS_DAN_FORBIDDEN_MEAT = [
 
   {
     id: "forbidden-meat",
@@ -895,7 +895,7 @@ const MISSIONS_DAN_FORBIDDEN_MEAT = [
 ];
 
 /* --- js/data/missions/Easter/syndicegg.js --- */
-const MISSIONS_EASTER_SYNDICEGG = [
+window.MISSIONS_EASTER_SYNDICEGG = [
 
   {
     id: "syndicegg",
@@ -912,7 +912,7 @@ const MISSIONS_EASTER_SYNDICEGG = [
 ];
 
 /* --- js/data/missions/Easter/the-egg-hunt.js --- */
-const MISSIONS_EASTER_THE_EGG_HUNT = [
+window.MISSIONS_EASTER_THE_EGG_HUNT = [
 
   {
     id: "the-egg-hunt",
@@ -953,7 +953,7 @@ const MISSIONS_EASTER_THE_EGG_HUNT = [
 ];
 
 /* --- js/data/missions/Erik/artisan.js --- */
-const MISSIONS_ERIK_ARTISAN = [
+window.MISSIONS_ERIK_ARTISAN = [
 
   {
     id: "artisan",
@@ -1054,7 +1054,7 @@ const MISSIONS_ERIK_ARTISAN = [
 ];
 
 /* --- js/data/missions/Game/bank-heist.js --- */
-const MISSIONS_GAME_BANK_HEIST = [
+window.MISSIONS_GAME_BANK_HEIST = [
 
   {
     id: "bank-heist",
@@ -1071,7 +1071,7 @@ const MISSIONS_GAME_BANK_HEIST = [
 ];
 
 /* --- js/data/missions/Game/get-rolling.js --- */
-const MISSIONS_GAME_GET_ROLLING = [
+window.MISSIONS_GAME_GET_ROLLING = [
 
   {
     id: "get-rolling",
@@ -1088,7 +1088,7 @@ const MISSIONS_GAME_GET_ROLLING = [
 ];
 
 /* --- js/data/missions/Sir B/contraband.js --- */
-const MISSIONS_SIR_B_CONTRABAND = [
+window.MISSIONS_SIR_B_CONTRABAND = [
 
   {
     id: "contraband",
@@ -1129,7 +1129,7 @@ const MISSIONS_SIR_B_CONTRABAND = [
 ];
 
 /* --- js/data/missions/Sir B/crime-squad.js --- */
-const MISSIONS_SIR_B_CRIME_SQUAD = [
+window.MISSIONS_SIR_B_CRIME_SQUAD = [
 
   {
     id: "crime-squad",
@@ -1194,7 +1194,7 @@ const MISSIONS_SIR_B_CRIME_SQUAD = [
 ];
 
 /* --- js/data/missions/Sir B/data-disk.js --- */
-const MISSIONS_SIR_B_DATA_DISK = [
+window.MISSIONS_SIR_B_DATA_DISK = [
 
   {
     id: "data-disk",
@@ -1211,7 +1211,7 @@ const MISSIONS_SIR_B_DATA_DISK = [
 ];
 
 /* --- js/data/missions/Sir B/fence.js --- */
-const MISSIONS_SIR_B_FENCE = [
+window.MISSIONS_SIR_B_FENCE = [
 
   {
     id: "fence",
@@ -1240,7 +1240,7 @@ const MISSIONS_SIR_B_FENCE = [
 ];
 
 /* --- js/data/missions/Sir B/front-toward-enemy.js --- */
-const MISSIONS_SIR_B_FRONT_TOWARD_ENEMY = [
+window.MISSIONS_SIR_B_FRONT_TOWARD_ENEMY = [
 
   {
     id: "front-toward-enemy",
@@ -1257,7 +1257,7 @@ const MISSIONS_SIR_B_FRONT_TOWARD_ENEMY = [
 ];
 
 /* --- js/data/missions/Sir B/fuel-depot.js --- */
-const MISSIONS_SIR_B_FUEL_DEPOT = [
+window.MISSIONS_SIR_B_FUEL_DEPOT = [
 
   {
     id: "fuel-depot",
@@ -1274,7 +1274,7 @@ const MISSIONS_SIR_B_FUEL_DEPOT = [
 ];
 
 /* --- js/data/missions/Sir B/gem-collector.js --- */
-const MISSIONS_SIR_B_GEM_COLLECTOR = [
+window.MISSIONS_SIR_B_GEM_COLLECTOR = [
 
   {
     id: "gem-collector",
@@ -1339,7 +1339,7 @@ const MISSIONS_SIR_B_GEM_COLLECTOR = [
 ];
 
 /* --- js/data/missions/Sir B/going-loud.js --- */
-const MISSIONS_SIR_B_GOING_LOUD = [
+window.MISSIONS_SIR_B_GOING_LOUD = [
 
   {
     id: "going-loud",
@@ -1356,7 +1356,7 @@ const MISSIONS_SIR_B_GOING_LOUD = [
 ];
 
 /* --- js/data/missions/Sir B/hidden-cargo.js --- */
-const MISSIONS_SIR_B_HIDDEN_CARGO = [
+window.MISSIONS_SIR_B_HIDDEN_CARGO = [
 
   {
     id: "hidden-cargo",
@@ -1373,7 +1373,7 @@ const MISSIONS_SIR_B_HIDDEN_CARGO = [
 ];
 
 /* --- js/data/missions/Sir B/incriminating-data.js --- */
-const MISSIONS_SIR_B_INCRIMINATING_DATA = [
+window.MISSIONS_SIR_B_INCRIMINATING_DATA = [
 
   {
     id: "incriminating-data",
@@ -1390,7 +1390,7 @@ const MISSIONS_SIR_B_INCRIMINATING_DATA = [
 ];
 
 /* --- js/data/missions/Sir B/lights-out.js --- */
-const MISSIONS_SIR_B_LIGHTS_OUT = [
+window.MISSIONS_SIR_B_LIGHTS_OUT = [
 
   {
     id: "lights-out",
@@ -1407,7 +1407,7 @@ const MISSIONS_SIR_B_LIGHTS_OUT = [
 ];
 
 /* --- js/data/missions/Sir B/lockpicker.js --- */
-const MISSIONS_SIR_B_LOCKPICKER = [
+window.MISSIONS_SIR_B_LOCKPICKER = [
 
   {
     id: "lockpicker",
@@ -1448,7 +1448,7 @@ const MISSIONS_SIR_B_LOCKPICKER = [
 ];
 
 /* --- js/data/missions/Sir B/most-wanted.js --- */
-const MISSIONS_SIR_B_MOST_WANTED = [
+window.MISSIONS_SIR_B_MOST_WANTED = [
 
   {
     id: "most-wanted",
@@ -1465,7 +1465,7 @@ const MISSIONS_SIR_B_MOST_WANTED = [
 ];
 
 /* --- js/data/missions/Sir B/nightstalker.js --- */
-const MISSIONS_SIR_B_NIGHTSTALKER = [
+window.MISSIONS_SIR_B_NIGHTSTALKER = [
 
   {
     id: "nightstalker",
@@ -1482,7 +1482,7 @@ const MISSIONS_SIR_B_NIGHTSTALKER = [
 ];
 
 /* --- js/data/missions/Sir B/oasis-eleven.js --- */
-const MISSIONS_SIR_B_OASIS_ELEVEN = [
+window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
   {
     id: "oasis-eleven",
@@ -1547,7 +1547,7 @@ const MISSIONS_SIR_B_OASIS_ELEVEN = [
 ];
 
 /* --- js/data/missions/Sir B/payday.js --- */
-const MISSIONS_SIR_B_PAYDAY = [
+window.MISSIONS_SIR_B_PAYDAY = [
 
   {
     id: "payday",
@@ -1564,7 +1564,7 @@ const MISSIONS_SIR_B_PAYDAY = [
 ];
 
 /* --- js/data/missions/Sir B/phantom.js --- */
-const MISSIONS_SIR_B_PHANTOM = [
+window.MISSIONS_SIR_B_PHANTOM = [
 
   {
     id: "phantom",
@@ -1581,7 +1581,7 @@ const MISSIONS_SIR_B_PHANTOM = [
 ];
 
 /* --- js/data/missions/Sir B/ring-collector.js --- */
-const MISSIONS_SIR_B_RING_COLLECTOR = [
+window.MISSIONS_SIR_B_RING_COLLECTOR = [
 
   {
     id: "ring-collector",
@@ -1598,7 +1598,7 @@ const MISSIONS_SIR_B_RING_COLLECTOR = [
 ];
 
 /* --- js/data/missions/Sir B/smuggler.js --- */
-const MISSIONS_SIR_B_SMUGGLER = [
+window.MISSIONS_SIR_B_SMUGGLER = [
 
   {
     id: "smuggler",
@@ -1687,7 +1687,7 @@ const MISSIONS_SIR_B_SMUGGLER = [
 ];
 
 /* --- js/data/missions/Sir B/stealth-pilot.js --- */
-const MISSIONS_SIR_B_STEALTH_PILOT = [
+window.MISSIONS_SIR_B_STEALTH_PILOT = [
 
   {
     id: "stealth-pilot",
@@ -1704,7 +1704,7 @@ const MISSIONS_SIR_B_STEALTH_PILOT = [
 ];
 
 /* --- js/data/missions/Sir B/submariner.js --- */
-const MISSIONS_SIR_B_SUBMARINER = [
+window.MISSIONS_SIR_B_SUBMARINER = [
 
   {
     id: "submariner",
@@ -1721,7 +1721,7 @@ const MISSIONS_SIR_B_SUBMARINER = [
 ];
 
 /* --- js/data/missions/Sir B/syndicate-dogs.js --- */
-const MISSIONS_SIR_B_SYNDICATE_DOGS = [
+window.MISSIONS_SIR_B_SYNDICATE_DOGS = [
 
   {
     id: "syndicate-dogs",
@@ -1750,7 +1750,7 @@ const MISSIONS_SIR_B_SYNDICATE_DOGS = [
 ];
 
 /* --- js/data/missions/Sir B/teller.js --- */
-const MISSIONS_SIR_B_TELLER = [
+window.MISSIONS_SIR_B_TELLER = [
 
   {
     id: "teller",
@@ -1779,7 +1779,7 @@ const MISSIONS_SIR_B_TELLER = [
 ];
 
 /* --- js/data/missions/Sir B/the-deposit.js --- */
-const MISSIONS_SIR_B_THE_DEPOSIT = [
+window.MISSIONS_SIR_B_THE_DEPOSIT = [
 
   {
     id: "the-deposit",
@@ -1796,7 +1796,7 @@ const MISSIONS_SIR_B_THE_DEPOSIT = [
 ];
 
 /* --- js/data/missions/Sir B/the-estate.js --- */
-const MISSIONS_SIR_B_THE_ESTATE = [
+window.MISSIONS_SIR_B_THE_ESTATE = [
 
   {
     id: "the-estate",
@@ -1813,7 +1813,7 @@ const MISSIONS_SIR_B_THE_ESTATE = [
 ];
 
 /* --- js/data/missions/Sir B/the-files.js --- */
-const MISSIONS_SIR_B_THE_FILES = [
+window.MISSIONS_SIR_B_THE_FILES = [
 
   {
     id: "the-files",
@@ -1830,7 +1830,7 @@ const MISSIONS_SIR_B_THE_FILES = [
 ];
 
 /* --- js/data/missions/Sir B/the-heaviest-bag.js --- */
-const MISSIONS_SIR_B_THE_HEAVIEST_BAG = [
+window.MISSIONS_SIR_B_THE_HEAVIEST_BAG = [
 
   {
     id: "the-heaviest-bag",
@@ -1847,7 +1847,7 @@ const MISSIONS_SIR_B_THE_HEAVIEST_BAG = [
 ];
 
 /* --- js/data/missions/Sir B/timepiece.js --- */
-const MISSIONS_SIR_B_TIMEPIECE = [
+window.MISSIONS_SIR_B_TIMEPIECE = [
 
   {
     id: "timepiece",
@@ -1864,7 +1864,7 @@ const MISSIONS_SIR_B_TIMEPIECE = [
 ];
 
 /* --- js/data/missions/Sir B/upgrade.js --- */
-const MISSIONS_SIR_B_UPGRADE = [
+window.MISSIONS_SIR_B_UPGRADE = [
 
   {
     id: "upgrade",
@@ -1905,7 +1905,7 @@ const MISSIONS_SIR_B_UPGRADE = [
 ];
 
 /* --- js/data/missions/Sir B/wargames.js --- */
-const MISSIONS_SIR_B_WARGAMES = [
+window.MISSIONS_SIR_B_WARGAMES = [
 
   {
     id: "wargames",
@@ -1934,7 +1934,7 @@ const MISSIONS_SIR_B_WARGAMES = [
 ];
 
 /* --- js/data/missions/Sir B/weapons-cache.js --- */
-const MISSIONS_SIR_B_WEAPONS_CACHE = [
+window.MISSIONS_SIR_B_WEAPONS_CACHE = [
 
   {
     id: "weapons-cache",
@@ -1963,7 +1963,7 @@ const MISSIONS_SIR_B_WEAPONS_CACHE = [
 ];
 
 /* --- js/data/npcs/bert.js --- */
-const NPC_BERT = [
+window.NPC_BERT = [
   {
     name: "Bert",
     team: "POLICE",
@@ -1973,7 +1973,7 @@ const NPC_BERT = [
 ];
 
 /* --- js/data/npcs/cody.js --- */
-const NPC_CODY = [
+window.NPC_CODY = [
   {
     name: "Cody",
     team: "NEUTRAL",
@@ -1983,7 +1983,7 @@ const NPC_CODY = [
 ];
 
 /* --- js/data/npcs/dan.js --- */
-const NPC_DAN = [
+window.NPC_DAN = [
   {
     name: "Dan",
     team: "NEUTRAL",
@@ -1993,7 +1993,7 @@ const NPC_DAN = [
 ];
 
 /* --- js/data/npcs/davy.js --- */
-const NPC_DAVY = [
+window.NPC_DAVY = [
   {
     name: "Davy",
     team: "NEUTRAL",
@@ -2003,7 +2003,7 @@ const NPC_DAVY = [
 ];
 
 /* --- js/data/npcs/erik.js --- */
-const NPC_ERIK = [
+window.NPC_ERIK = [
   {
     name: "Erik",
     team: "CRIMINAL",
@@ -2013,7 +2013,7 @@ const NPC_ERIK = [
 ];
 
 /* --- js/data/npcs/justin.js --- */
-const NPC_JUSTIN = [
+window.NPC_JUSTIN = [
   {
     name: "Justin",
     team: "NEUTRAL",
@@ -2023,7 +2023,7 @@ const NPC_JUSTIN = [
 ];
 
 /* --- js/data/npcs/ofy.js --- */
-const NPC_OFY = [
+window.NPC_OFY = [
   {
     name: "Ofy",
     team: "CRIMINAL",
@@ -2033,7 +2033,7 @@ const NPC_OFY = [
 ];
 
 /* --- js/data/npcs/rod.js --- */
-const NPC_ROD = [
+window.NPC_ROD = [
   {
     name: "Rod",
     team: "CRIMINAL",
@@ -2071,7 +2071,7 @@ const NPC_ROD = [
 ];
 
 /* --- js/data/npcs/sir-b.js --- */
-const NPC_SIRB = [
+window.NPC_SIRB = [
   {
     name: "Sir.B",
     team: "CRIMINAL",
@@ -2097,7 +2097,7 @@ const NPC_SIRB = [
 ];
 
 /* --- js/data/npcs/softy.js --- */
-const NPC_SOFTY = [
+window.NPC_SOFTY = [
   {
     name: "Softy",
     team: "NEUTRAL",
@@ -2107,7 +2107,7 @@ const NPC_SOFTY = [
 ];
 
 /* --- js/data/promo-codes/active.js --- */
-const PROMO_CODES_ACTIVE = [
+window.PROMO_CODES_ACTIVE = [
   { code: "DEVV", reward: "DEVV Tire Rims", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
   { code: "WANTED", reward: "$10,000 Cash", active: true },
@@ -2120,7 +2120,7 @@ const PROMO_CODES_ACTIVE = [
 ];
 
 /* --- js/data/promo-codes/expired.js --- */
-const PROMO_CODES_EXPIRED = [
+window.PROMO_CODES_EXPIRED = [
   { code: "SANTA", reward: "$10,000 Cash", active: false },
   { code: "ZORVELLO", reward: "Zorvello Chair Funiture", active: false },
   { code: "EASTER", reward: "Egg Display Furniture", active: false },
@@ -2130,7 +2130,7 @@ const PROMO_CODES_EXPIRED = [
 ];
 
 /* --- js/data/store/bag-boosts.js --- */
-const STORE_BAG_BOOSTS = [
+window.STORE_BAG_BOOSTS = [
   { name: " +30 Bag Boost: 12 Hours", robuxPrice: 999, description: "Increases your bag capacity by 30 for 12 hours. [Time goes down even when not in-game]" },
   { name: " +20 Bag Boost: 12 Hours", robuxPrice: 699, description: "Increases your bag capacity by 20 for 12 hours. [Time goes down even when not in-game]" },
   { name: "+15 Bag Boost: 12 Hours", robuxPrice: 399, description: "Increases your bag capacity by 15 for 12 hours. [Time goes down even when not in-game]" },
@@ -2139,7 +2139,7 @@ const STORE_BAG_BOOSTS = [
 ];
 
 /* --- js/data/store/cash.js --- */
-const STORE_CASH = [
+window.STORE_CASH = [
   { name: "Get 2,500,000 Cash", robuxPrice: 3999, description: "Instantly adds 2,500,000 cash to your account." },
   { name: "Get 1,000,000 Cash", robuxPrice: 1749, description: "Instantly adds 1,000,000 cash to your account." },
   { name: "Get 400,000 Cash", robuxPrice: 749, description: "Instantly adds 400,000 cash to your account." },
@@ -2148,14 +2148,14 @@ const STORE_CASH = [
 ];
 
 /* --- js/data/store/money-printers.js --- */
-const STORE_MONEY_PRINTERS = [
+window.STORE_MONEY_PRINTERS = [
   { name: "Daily Printer", robuxPrice: 36, description: "Gives x1 Money Printera at 50% the price." },
   { name: "x11 Money Printers", robuxPrice: 675, description: "Gives x11 Money Printers and an extra 2 for first purchase." },
   { name: "Money Printer", robuxPrice: 75, description: "Gives x1 Money Printer." }
 ];
 
 /* --- js/data/store/other.js --- */
-const STORE_OTHER = [
+window.STORE_OTHER = [
   { name: "Restore Lost Items", robuxPrice: 19, description: "Restores items lost after death." },
   { name: "x10 Tier 1 Vehicle Crate", robuxPrice: 198, description: "Gives 10 Tier 1 Vehicle Crates" },
   { name: "x50 Tier 1 Vehicle Crate", robuxPrice: 849, description: "Gives 50 Tier 1 Vehicle Crates" },
@@ -2166,7 +2166,7 @@ const STORE_OTHER = [
 ];
 
 /* --- js/data/store/packs.js --- */
-const STORE_PACKS = [
+window.STORE_PACKS = [
   { name: "Zoro + Zorvello", robuxPrice: 2499, description: "Unlocks the Zoro & Zorvello car." },
   { name: "Weapon Pack", robuxPrice: 199, description: "A bundle of weapons containing the RPG, Benelli M1014, UMP 45 and Uzi." },
   { name: "Mini-Vec Pack", robuxPrice: 649, description: "Includes the Mini Bird helicopter and Kriss Vector " },
@@ -2174,14 +2174,14 @@ const STORE_PACKS = [
 ];
 
 /* --- js/data/valuables/4th-of-july.js --- */
-const VALUABLES_4TH_OF_JULY = [
+window.VALUABLES_4TH_OF_JULY = [
 
   { name: "USA Flag", description: "", rarity: "4TH_OF_JULY", price: 10000, priceNonContract: false, weight: 2, commonLocation: "4th of July Event" },
 
 ];
 
 /* --- js/data/valuables/christmas.js --- */
-const VALUABLES_CHRISTMAS = [
+window.VALUABLES_CHRISTMAS = [
 
   { name: "Green Ornament", description: "", rarity: "CHRISTMAS", price: 75, priceNonContract: false, weight: 1, commonLocation: "Small Presents" },
   { name: "Blue Ornament", description: "", rarity: "CHRISTMAS", price: 100, priceNonContract: false, weight: 1, commonLocation: "Small Presents" },
@@ -2196,7 +2196,7 @@ const VALUABLES_CHRISTMAS = [
 ];
 
 /* --- js/data/valuables/easter.js --- */
-const VALUABLES_EASTER = [
+window.VALUABLES_EASTER = [
 
   { name: "Planetary Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden within the Orrery Observatory (Requires 1 Diamond)" },
   { name: "Pear Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Found inside the Pear Store" },
@@ -2220,7 +2220,7 @@ const VALUABLES_EASTER = [
 ];
 
 /* --- js/data/valuables/electronics.js --- */
-const VALUABLES_ELECTRONICS = [
+window.VALUABLES_ELECTRONICS = [
 
   { name: "PearWatch", description: "", rarity: "COMMON", category: "Electronics", price: 200, weight: 2, commonLocation: "Pear Store" },
   { name: "PearPods", description: "", rarity: "COMMON", category: "Electronics", price: 300, weight: 3, commonLocation: "Pear Store" },
@@ -2240,7 +2240,7 @@ const VALUABLES_ELECTRONICS = [
 ];
 
 /* --- js/data/valuables/gems.js --- */
-const VALUABLES_GEMS = [
+window.VALUABLES_GEMS = [
 
   { name: "Silver Bar", rarity: "COMMON", category: "Gems", price: 250, weight: 2, commonLocation: "Bank of Oasis",
     description: "" },
@@ -2263,7 +2263,7 @@ const VALUABLES_GEMS = [
 
 
 /* --- js/data/valuables/jewelry.js --- */
-const VALUABLES_JEWELRY = [
+window.VALUABLES_JEWELRY = [
 
   { name: "Silver Ring", description: "", rarity: "COMMON", category: "Jewelry", price: 100, weight: 1, commonLocation: "Oasis City Jewelry" },
   { name: "Gold Ring", description: "", rarity: "UNCOMMON", category: "Jewelry", price: 200, weight: 1, commonLocation: "Oasis City Jewelry" },
@@ -2280,7 +2280,7 @@ const VALUABLES_JEWELRY = [
 ];
 
 /* --- js/data/valuables/miscellaneous.js --- */
-const VALUABLES_MISCELLANEOUS = [
+window.VALUABLES_MISCELLANEOUS = [
 
   { name: "Bank Cash Pile", description: "", rarity: "COMMON", category: "Miscellaneous", price: 200, weight: 0, commonLocation: "Bank of Oasis" },
   { name: "Military Cash Pile", description: "", rarity: "EPIC", category: "Miscellaneous", price: 2500, weight: 0, commonLocation: "Fort Emberreach" },
@@ -2290,7 +2290,7 @@ const VALUABLES_MISCELLANEOUS = [
 ];
 
 /* --- js/data/valuables/mission-items.js --- */
-const VALUABLES_MISSION_ITEMS = [
+window.VALUABLES_MISSION_ITEMS = [
 
   { name: "Priceless Watch", description: "", rarity: "MISSION", category: "Mission Items", price: 0, weight: 1, commonLocation: "Buck Moneymaker's Office at Bank of Oasis" },
   { name: "Data Disk", description: "", rarity: "MISSION", category: "Mission Items", price: 0, weight: 1, commonLocation: "Crash Site at Snowy Mountain" },
@@ -2298,7 +2298,7 @@ const VALUABLES_MISSION_ITEMS = [
 ];
 
 /* --- js/data/valuables/shoes.js --- */
-const VALUABLES_SHOES = [
+window.VALUABLES_SHOES = [
 
   { name: "Sky James Golds", description: "", rarity: "EPIC", category: "Shoes", price: 400, weight: 4, commonLocation: "Shoe Locker Store" },
   { name: "Sky James Reds", description: "", rarity: "EPIC", category: "Shoes", price: 200, weight: 4, commonLocation: "Shoe Locker Store" },
@@ -2311,7 +2311,7 @@ const VALUABLES_SHOES = [
 ];
 
 /* --- js/data/valuables/tech.js --- */
-const VALUABLES_TECH = [
+window.VALUABLES_TECH = [
 
   { name: "TPU", description: "", rarity: "LEGENDARY", category: "Tech", price: 15000, weight: 4, commonLocation: "Tech Shack Store" },
   { name: "Cheap Laptop", description: "", rarity: "UNCOMMON", category: "Tech", price: 200, weight: 2, commonLocation: "Tech Shack Store" },
@@ -2324,7 +2324,7 @@ const VALUABLES_TECH = [
 ];
 
 /* --- js/data/vehicles/Flying/Crates/panther.js --- */
-const VEHICLE_PANTHER = [
+window.VEHICLE_PANTHER = [
 
   {
     name: "Panther",
@@ -2346,7 +2346,7 @@ const VEHICLE_PANTHER = [
 ];
 
 /* --- js/data/vehicles/Flying/Davis/maverick.js --- */
-const VEHICLE_MAVERICK = [
+window.VEHICLE_MAVERICK = [
 
   {
     name: "Maverick",
@@ -2368,7 +2368,7 @@ const VEHICLE_MAVERICK = [
 ];
 
 /* --- js/data/vehicles/Flying/Davis/mini-bird.js --- */
-const VEHICLE_MINI_BIRD = [
+window.VEHICLE_MINI_BIRD = [
 
   {
     name: "Mini Bird",
@@ -2390,7 +2390,7 @@ const VEHICLE_MINI_BIRD = [
 ];
 
 /* --- js/data/vehicles/Flying/Davis/scout.js --- */
-const VEHICLE_SCOUT = [
+window.VEHICLE_SCOUT = [
 
   {
     name: "Scout",
@@ -2412,7 +2412,7 @@ const VEHICLE_SCOUT = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/beam.js --- */
-const VEHICLE_BEAM = [
+window.VEHICLE_BEAM = [
 
   {
     name: "Beam",
@@ -2434,7 +2434,7 @@ const VEHICLE_BEAM = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/contender.js --- */
-const VEHICLE_CONTENDER = [
+window.VEHICLE_CONTENDER = [
 
   {
     name: "Contender",
@@ -2456,7 +2456,7 @@ const VEHICLE_CONTENDER = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/crowline.js --- */
-const VEHICLE_CROWLINE = [
+window.VEHICLE_CROWLINE = [
 
   {
     name: "Crowline",
@@ -2478,7 +2478,7 @@ const VEHICLE_CROWLINE = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/falcon-gt.js --- */
-const VEHICLE_FALCON_GT = [
+window.VEHICLE_FALCON_GT = [
 
   {
     name: "Falcon GT",
@@ -2500,7 +2500,7 @@ const VEHICLE_FALCON_GT = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/g-cruiser.js --- */
-const VEHICLE_G_CRUISER = [
+window.VEHICLE_G_CRUISER = [
 
   {
     name: "G-Cruiser",
@@ -2522,7 +2522,7 @@ const VEHICLE_G_CRUISER = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/gemstone.js --- */
-const VEHICLE_GEMSTONE = [
+window.VEHICLE_GEMSTONE = [
 
   {
     name: "Gemstone",
@@ -2544,7 +2544,7 @@ const VEHICLE_GEMSTONE = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/mochi.js --- */
-const VEHICLE_MOCHI = [
+window.VEHICLE_MOCHI = [
 
   {
     name: "Mochi",
@@ -2566,7 +2566,7 @@ const VEHICLE_MOCHI = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/nomad.js --- */
-const VEHICLE_NOMAD = [
+window.VEHICLE_NOMAD = [
 
   {
     name: "Nomad",
@@ -2588,7 +2588,7 @@ const VEHICLE_NOMAD = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/pulse-477.js --- */
-const VEHICLE_PULSE_477 = [
+window.VEHICLE_PULSE_477 = [
 
   {
     name: "Pulse 477",
@@ -2610,7 +2610,7 @@ const VEHICLE_PULSE_477 = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/ranger.js --- */
-const VEHICLE_RANGER = [
+window.VEHICLE_RANGER = [
 
   {
     name: "Ranger",
@@ -2632,7 +2632,7 @@ const VEHICLE_RANGER = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/razor.js --- */
-const VEHICLE_RAZOR = [
+window.VEHICLE_RAZOR = [
 
   {
     name: "Razor",
@@ -2654,7 +2654,7 @@ const VEHICLE_RAZOR = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/spectre.js --- */
-const VEHICLE_SPECTRE = [
+window.VEHICLE_SPECTRE = [
 
   {
     name: "Spectre",
@@ -2676,7 +2676,7 @@ const VEHICLE_SPECTRE = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/stallion-450.js --- */
-const VEHICLE_STALLION_450 = [
+window.VEHICLE_STALLION_450 = [
 
   {
     name: "Stallion 450",
@@ -2698,7 +2698,7 @@ const VEHICLE_STALLION_450 = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/vanguard.js --- */
-const VEHICLE_VANGUARD = [
+window.VEHICLE_VANGUARD = [
 
   {
     name: "Vanguard",
@@ -2720,7 +2720,7 @@ const VEHICLE_VANGUARD = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/zoro.js --- */
-const VEHICLE_ZORO = [
+window.VEHICLE_ZORO = [
 
   {
     name: "Zoro",
@@ -2742,7 +2742,7 @@ const VEHICLE_ZORO = [
 ];
 
 /* --- js/data/vehicles/Ground/Bayview/zorvello.js --- */
-const VEHICLE_ZORVELLO = [
+window.VEHICLE_ZORVELLO = [
 
   {
     name: "Zorvello",
@@ -2764,7 +2764,7 @@ const VEHICLE_ZORVELLO = [
 ];
 
 /* --- js/data/vehicles/Ground/Crates/empyrean.js --- */
-const VEHICLE_EMPYREAN = [
+window.VEHICLE_EMPYREAN = [
 
   {
     name: "Empyrean",
@@ -2786,7 +2786,7 @@ const VEHICLE_EMPYREAN = [
 ];
 
 /* --- js/data/vehicles/Ground/Crates/horizon.js --- */
-const VEHICLE_HORIZON = [
+window.VEHICLE_HORIZON = [
 
   {
     name: "Horizon",
@@ -2808,7 +2808,7 @@ const VEHICLE_HORIZON = [
 ];
 
 /* --- js/data/vehicles/Ground/Crates/pulse-477-rs.js --- */
-const VEHICLE_PULSE_477_RS = [
+window.VEHICLE_PULSE_477_RS = [
 
   {
     name: "Pulse 477 RS",
@@ -2830,7 +2830,7 @@ const VEHICLE_PULSE_477_RS = [
 ];
 
 /* --- js/data/vehicles/Ground/Crates/roku.js --- */
-const VEHICLE_ROKU = [
+window.VEHICLE_ROKU = [
 
   {
     name: "Roku",
@@ -2852,7 +2852,7 @@ const VEHICLE_ROKU = [
 ];
 
 /* --- js/data/vehicles/Ground/Crates/temporo.js --- */
-const VEHICLE_TEMPORO = [
+window.VEHICLE_TEMPORO = [
 
   {
     name: "Temporo",
@@ -2874,7 +2874,7 @@ const VEHICLE_TEMPORO = [
 ];
 
 /* --- js/data/vehicles/Ground/Daily/rival.js --- */
-const VEHICLE_RIVAL = [
+window.VEHICLE_RIVAL = [
 
   {
     name: "Rival",
@@ -2896,7 +2896,7 @@ const VEHICLE_RIVAL = [
 ];
 
 /* --- js/data/vehicles/Ground/Police/interceptor.js --- */
-const VEHICLE_INTERCEPTOR = [
+window.VEHICLE_INTERCEPTOR = [
 
   {
     name: "Interceptor",
@@ -2918,7 +2918,7 @@ const VEHICLE_INTERCEPTOR = [
 ];
 
 /* --- js/data/vehicles/Ground/Police/warden.js --- */
-const VEHICLE_WARDEN = [
+window.VEHICLE_WARDEN = [
 
   {
     name: "Warden",
@@ -2940,7 +2940,7 @@ const VEHICLE_WARDEN = [
 ];
 
 /* --- js/data/vehicles/Ground/Starter/cruiser.js --- */
-const VEHICLE_CRUISER = [
+window.VEHICLE_CRUISER = [
 
   {
     name: "Cruiser",
@@ -2962,7 +2962,7 @@ const VEHICLE_CRUISER = [
 ];
 
 /* --- js/data/vehicles/Ground/Syndicate/blade.js --- */
-const VEHICLE_BLADE = [
+window.VEHICLE_BLADE = [
 
   {
     name: "Blade",
@@ -2984,7 +2984,7 @@ const VEHICLE_BLADE = [
 ];
 
 /* --- js/data/weapons/Airdrop/barrett-m82.js --- */
-const WEAPON_BARRETT_M82 = [
+window.WEAPON_BARRETT_M82 = [
 
   {
     name: "Barrett M82",
@@ -3021,7 +3021,7 @@ const WEAPON_BARRETT_M82 = [
 ];
 
 /* --- js/data/weapons/Airdrop/golden-ak-47.js --- */
-const WEAPON_GOLDEN_AK_47 = [
+window.WEAPON_GOLDEN_AK_47 = [
 
   {
     name: "Golden AK-47",
@@ -3059,7 +3059,7 @@ const WEAPON_GOLDEN_AK_47 = [
 ];
 
 /* --- js/data/weapons/Airdrop/golden-barrett-m82.js --- */
-const WEAPON_GOLDEN_BARRETT_M82 = [
+window.WEAPON_GOLDEN_BARRETT_M82 = [
 
   {
     name: "Golden Barrett M82",
@@ -3096,7 +3096,7 @@ const WEAPON_GOLDEN_BARRETT_M82 = [
 ];
 
 /* --- js/data/weapons/Airdrop/golden-deagle.js --- */
-const WEAPON_GOLDEN_DEAGLE = [
+window.WEAPON_GOLDEN_DEAGLE = [
 
   {
     name: "Golden Deagle",
@@ -3129,7 +3129,7 @@ const WEAPON_GOLDEN_DEAGLE = [
 ];
 
 /* --- js/data/weapons/Equipment/ballistic-shield.js --- */
-const WEAPON_BALLISTIC_SHIELD = [
+window.WEAPON_BALLISTIC_SHIELD = [
   {
     name: "Ballistic Shield",
     description: "Shield that can block bullets",
@@ -3140,7 +3140,7 @@ const WEAPON_BALLISTIC_SHIELD = [
 ];
 
 /* --- js/data/weapons/Explosives/c4.js --- */
-const WEAPON_C4 = [
+window.WEAPON_C4 = [
   {
     name: "C4",
     description: "Explosive used for destroying vault doors",
@@ -3159,7 +3159,7 @@ const WEAPON_C4 = [
 ];
 
 /* --- js/data/weapons/Explosives/flashbang.js --- */
-const WEAPON_FLASHBANG = [
+window.WEAPON_FLASHBANG = [
   {
     name: "Flashbang",
     description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",
@@ -3179,7 +3179,7 @@ const WEAPON_FLASHBANG = [
 ];
 
 /* --- js/data/weapons/Explosives/grenade-launcher.js --- */
-const WEAPON_GRENADE_LAUNCHER = [
+window.WEAPON_GRENADE_LAUNCHER = [
   {
     name: "Grenade Launcher",
     description: "A grenade launcher that shoots grenades",
@@ -3199,7 +3199,7 @@ const WEAPON_GRENADE_LAUNCHER = [
 ];
 
 /* --- js/data/weapons/Explosives/m67.js --- */
-const WEAPON_M67 = [
+window.WEAPON_M67 = [
   {
     name: "M67",
     description: "A throwable grenade that explodes after a few seconds",
@@ -3218,7 +3218,7 @@ const WEAPON_M67 = [
 ];
 
 /* --- js/data/weapons/Explosives/rpg-7.js --- */
-const WEAPON_RPG_7 = [
+window.WEAPON_RPG_7 = [
   {
     name: "RPG-7",
     description: "A rocket launcher that shoots rockets",
@@ -3237,7 +3237,7 @@ const WEAPON_RPG_7 = [
 ];
 
 /* --- js/data/weapons/Pistols/deagle.js --- */
-const WEAPON_DEAGLE = [
+window.WEAPON_DEAGLE = [
 
   {
     name: "Deagle",
@@ -3271,7 +3271,7 @@ const WEAPON_DEAGLE = [
 ];
 
 /* --- js/data/weapons/Pistols/glock-18c.js --- */
-const WEAPON_GLOCK_18C = [
+window.WEAPON_GLOCK_18C = [
 
   {
     name: "Glock 18c",
@@ -3307,7 +3307,7 @@ const WEAPON_GLOCK_18C = [
 ];
 
 /* --- js/data/weapons/Pistols/m9.js --- */
-const WEAPON_M9 = [
+window.WEAPON_M9 = [
 
   {
     name: "M9",
@@ -3340,7 +3340,7 @@ const WEAPON_M9 = [
 ];
 
 /* --- js/data/weapons/Rifles/ak-47.js --- */
-const WEAPON_AK_47 = [
+window.WEAPON_AK_47 = [
 
   {
     name: "AK-47",
@@ -3378,7 +3378,7 @@ const WEAPON_AK_47 = [
 ];
 
 /* --- js/data/weapons/Rifles/arx-160.js --- */
-const WEAPON_ARX_160 = [
+window.WEAPON_ARX_160 = [
 
   {
     name: "ARX-160",
@@ -3416,7 +3416,7 @@ const WEAPON_ARX_160 = [
 ];
 
 /* --- js/data/weapons/Rifles/aug-a1.js --- */
-const WEAPON_AUG_A1 = [
+window.WEAPON_AUG_A1 = [
 
   {
     name: "AUG A1",
@@ -3448,7 +3448,7 @@ const WEAPON_AUG_A1 = [
 ];
 
 /* --- js/data/weapons/Rifles/fn-fal.js --- */
-const WEAPON_FN_FAL = [
+window.WEAPON_FN_FAL = [
 
   {
     name: "FN FAL",
@@ -3487,7 +3487,7 @@ const WEAPON_FN_FAL = [
 ];
 
 /* --- js/data/weapons/Rifles/light-carbine.js --- */
-const WEAPON_LIGHT_CARBINE = [
+window.WEAPON_LIGHT_CARBINE = [
 
   {
     name: "Light Carbine",
@@ -3525,7 +3525,7 @@ const WEAPON_LIGHT_CARBINE = [
 ];
 
 /* --- js/data/weapons/Rifles/m4a1.js --- */
-const WEAPON_M4A1 = [
+window.WEAPON_M4A1 = [
 
   {
     name: "M4A1",
@@ -3563,7 +3563,7 @@ const WEAPON_M4A1 = [
 ];
 
 /* --- js/data/weapons/Rifles/m60.js --- */
-const WEAPON_M60 = [
+window.WEAPON_M60 = [
 
   {
     name: "M60",
@@ -3601,7 +3601,7 @@ const WEAPON_M60 = [
 ];
 
 /* --- js/data/weapons/Shotguns/benelli-m1014.js --- */
-const WEAPON_BENELLI_M1014 = [
+window.WEAPON_BENELLI_M1014 = [
 
   {
     name: "Benelli M1014",
@@ -3642,7 +3642,7 @@ const WEAPON_BENELLI_M1014 = [
 ];
 
 /* --- js/data/weapons/Shotguns/model-870.js --- */
-const WEAPON_MODEL_870 = [
+window.WEAPON_MODEL_870 = [
 
   {
     name: "Model 870",
@@ -3685,7 +3685,7 @@ const WEAPON_MODEL_870 = [
 ];
 
 /* --- js/data/weapons/Shotguns/sawn-off.js --- */
-const WEAPON_SAWN_OFF = [
+window.WEAPON_SAWN_OFF = [
 
   {
     name: "Sawn Off",
@@ -3706,7 +3706,7 @@ const WEAPON_SAWN_OFF = [
 ];
 
 /* --- js/data/weapons/Shotguns/spas-12.js --- */
-const WEAPON_SPAS_12 = [
+window.WEAPON_SPAS_12 = [
 
   {
     name: "SPAS-12",
@@ -3749,7 +3749,7 @@ const WEAPON_SPAS_12 = [
 ];
 
 /* --- js/data/weapons/SMGs/kriss-vector.js --- */
-const WEAPON_KRISS_VECTOR = [
+window.WEAPON_KRISS_VECTOR = [
 
   {
     name: "Kriss Vector",
@@ -3787,7 +3787,7 @@ const WEAPON_KRISS_VECTOR = [
 ];
 
 /* --- js/data/weapons/SMGs/mp5k.js --- */
-const WEAPON_MP5K = [
+window.WEAPON_MP5K = [
 
   {
     name: "MP5K",
@@ -3826,7 +3826,7 @@ const WEAPON_MP5K = [
 ];
 
 /* --- js/data/weapons/SMGs/p90.js --- */
-const WEAPON_P90 = [
+window.WEAPON_P90 = [
 
   {
     name: "P90",
@@ -3861,7 +3861,7 @@ const WEAPON_P90 = [
 ];
 
 /* --- js/data/weapons/SMGs/skorpion.js --- */
-const WEAPON_SKORPION = [
+window.WEAPON_SKORPION = [
 
   {
     name: "Skorpion",
@@ -3887,7 +3887,7 @@ const WEAPON_SKORPION = [
 ];
 
 /* --- js/data/weapons/SMGs/ump-45.js --- */
-const WEAPON_UMP_45 = [
+window.WEAPON_UMP_45 = [
 
   {
     name: "UMP 45",
@@ -3925,7 +3925,7 @@ const WEAPON_UMP_45 = [
 ];
 
 /* --- js/data/weapons/SMGs/uzi.js --- */
-const WEAPON_UZI = [
+window.WEAPON_UZI = [
 
   {
     name: "Uzi",
@@ -3954,7 +3954,7 @@ const WEAPON_UZI = [
 ];
 
 /* --- js/data/weapons/Snipers/awm.js --- */
-const WEAPON_AWM = [
+window.WEAPON_AWM = [
 
   {
     name: "AWM",
@@ -3993,7 +3993,7 @@ const WEAPON_AWM = [
 ];
 
 /* --- js/data/weapons/Snipers/svd.js --- */
-const WEAPON_SVD = [
+window.WEAPON_SVD = [
 
   {
     name: "SVD",
@@ -4032,7 +4032,7 @@ const WEAPON_SVD = [
 ];
 
 /* --- js/data/weapons/Tools/buzzsaw.js --- */
-const WEAPON_BUZZSAW = [
+window.WEAPON_BUZZSAW = [
   {
     name: "Buzzsaw",
     description: "Used to break the cglass in the jewerly store, decent melee weapon",
@@ -4047,7 +4047,7 @@ const WEAPON_BUZZSAW = [
 ];
 
 /* --- js/data/weapons/Tools/vault-cracker.js --- */
-const WEAPON_VAULT_CRACKER = [
+window.WEAPON_VAULT_CRACKER = [
   {
     name: "Vault Cracker",
     description: "Used to open the Jewelry Store vaults, very useful",
@@ -4061,7 +4061,7 @@ const WEAPON_VAULT_CRACKER = [
 ];
 
 /* --- js/data/youtubers/creator-1.js --- */
-const YOUTUBER_CREATOR_1 = {
+window.YOUTUBER_CREATOR_1 = {
   name: "Borgaboo",
   avatar: "https://yt3.googleusercontent.com/adKTSc9DL4b5Wv78tcpJ1L_4HqfX4T-tJ9qCQxYaOvtKXQPvctmKECx5j0l1dOtp4y9Jgdqndg=s160-c-k-c0x00ffffff-no-rj",
   channelUrl: "https://www.youtube.com/@Borgaboo",
@@ -4085,7 +4085,7 @@ const YOUTUBER_CREATOR_1 = {
 };
 
 /* --- js/data/youtubers/creator-2.js --- */
-const YOUTUBER_CREATOR_2 = {
+window.YOUTUBER_CREATOR_2 = {
   name: "CeeJay",
   avatar: "https://yt3.googleusercontent.com/h96rFd8Wmn8XvX1PkMMn9xHtEJbU5eZtxFC5Hj2V95BzFfc59Qpxf0RGOUMhyNbPyKIFIIxXC4U=s160-c-k-c0x00ffffff-no-rj",
   channelUrl: "https://www.youtube.com/@CeeJay_",
@@ -4109,7 +4109,7 @@ const YOUTUBER_CREATOR_2 = {
 };
 
 /* --- js/data/youtubers/creator-3.js --- */
-const YOUTUBER_CREATOR_3 = {
+window.YOUTUBER_CREATOR_3 = {
   name: "ZDMD",
   avatar: "https://yt3.googleusercontent.com/jHDVD4hC7ZVbXe-zxCJc8OD4-ixUaTfTnB4bEvd-P-xfAvowPRzKwDISfNX5EpoNy-Q15dc4zQ=s160-c-k-c0x00ffffff-no-rj",
   channelUrl: "https://www.youtube.com/@ZDMD",

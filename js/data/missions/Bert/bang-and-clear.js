@@ -1,4 +1,4 @@
-const MISSIONS_BERT_BANG_AND_CLEAR = [
+window.MISSIONS_BERT_BANG_AND_CLEAR = [
 
   {
     id: "bang-and-clear",

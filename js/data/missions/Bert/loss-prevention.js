@@ -1,4 +1,4 @@
-const MISSIONS_BERT_LOSS_PREVENTION = [
+window.MISSIONS_BERT_LOSS_PREVENTION = [
 
   {
     id: "loss-prevention",

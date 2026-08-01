@@ -1,4 +1,4 @@
-const VEHICLE_TEMPORO = [
+window.VEHICLE_TEMPORO = [
 
   {
     name: "Temporo",

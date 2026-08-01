@@ -1,4 +1,4 @@
-const VEHICLE_MINI_BIRD = [
+window.VEHICLE_MINI_BIRD = [
 
   {
     name: "Mini Bird",

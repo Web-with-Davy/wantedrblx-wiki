@@ -1,4 +1,4 @@
-const VEHICLE_SPECTRE = [
+window.VEHICLE_SPECTRE = [
 
   {
     name: "Spectre",

@@ -1,4 +1,4 @@
-const WEAPON_GOLDEN_AK_47 = [
+window.WEAPON_GOLDEN_AK_47 = [
 
   {
     name: "Golden AK-47",

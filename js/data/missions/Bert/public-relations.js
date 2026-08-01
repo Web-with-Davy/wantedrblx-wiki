@@ -1,4 +1,4 @@
-const MISSIONS_BERT_PUBLIC_RELATIONS = [
+window.MISSIONS_BERT_PUBLIC_RELATIONS = [
 
   {
     id: "public-relations-1",
