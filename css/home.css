@@ -3,7 +3,7 @@
     background: transparent;
     display: flex;
     flex-direction: row;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     align-items: flex-start;
 }
 
@@ -808,7 +808,7 @@
 }
 
 .views-count {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 1.6rem;
     font-weight: bold;
     color: #ffffff;
@@ -912,7 +912,7 @@
 }
 
 .countdown-time {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 1.1rem;
     font-weight: bold;
     color: #ffffff;
@@ -941,7 +941,7 @@
 }
 
 .countdown-number {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 1.8rem;
     font-weight: bold;
     color: #ffffff;
@@ -1348,7 +1348,7 @@ body.low-end-mode * {
     background: transparent;
     color: white;
     text-decoration: none;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -1417,7 +1417,7 @@ body.low-end-mode * {
     background: rgba(57, 255, 20, 0.12);
     border: 1px solid rgba(57, 255, 20, 0.4);
     color: #39ff14;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -1437,7 +1437,7 @@ body.low-end-mode * {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -1491,7 +1491,7 @@ body.low-end-mode * {
 }
 
 .wiki-stat-value {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.9rem;
     font-weight: 800;
     color: white;
@@ -1587,7 +1587,7 @@ body.low-end-mode .cat-bg-img {
 }
 
 .discord-widget-name {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.85rem;
     font-weight: 800;
     color: white;
@@ -1614,7 +1614,7 @@ body.low-end-mode .cat-bg-img {
     background: transparent;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.1em;

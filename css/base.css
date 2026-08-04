@@ -19,6 +19,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Geist Pixel', system-ui !important;
 }
 
 html,
@@ -26,12 +27,12 @@ body {
     height: 100%;
     background: transparent;
     color: var(--fg);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     overflow-x: hidden;
 }
 
 body {
-    background: #05060a;
+    background: #000;
 }
 
 

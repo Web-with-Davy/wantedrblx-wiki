@@ -6,7 +6,7 @@
 }
 
 .val-section-title {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: clamp(1rem, 2vw, 1.2rem);
     font-weight: 800;
     letter-spacing: 2px;
@@ -18,7 +18,7 @@
 .val-section-count {
     font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.35);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 1px;
 }
 
@@ -204,7 +204,7 @@
 }
 
 .val-code-text {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-weight: 900;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -237,7 +237,7 @@
     padding: 2px 7px;
     font-size: 0.58rem;
     font-weight: 800;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 1px;
     text-transform: uppercase;
     background: rgba(0, 0, 0, 0.85);
@@ -254,7 +254,7 @@
     padding: 2px 7px;
     font-size: 0.6rem;
     font-weight: 800;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 0.5px;
     background: rgba(0, 0, 0, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -273,7 +273,7 @@
 }
 
 .val-name {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.85rem;
     font-weight: 800;
     letter-spacing: 1px;
@@ -295,7 +295,7 @@
 .val-price-label {
     font-size: 0.65rem;
     color: rgba(255, 255, 255, 0.4);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -305,7 +305,7 @@
     font-weight: 800;
     color: #39ff14;
     text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     display: flex;
     align-items: center;
     gap: 2px;
@@ -352,7 +352,7 @@ body.always-show-more .val-toggle {
 .val-stat-label {
     font-size: 0.62rem;
     color: rgba(255, 255, 255, 0.38);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 1px;
     text-transform: uppercase;
     flex-shrink: 0;
@@ -361,7 +361,7 @@ body.always-show-more .val-toggle {
 .val-stat-value {
     font-size: 0.72rem;
     color: rgba(255, 255, 255, 0.75);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     text-align: right;
     word-break: break-word;
     overflow-wrap: anywhere;
@@ -373,7 +373,7 @@ body.always-show-more .val-toggle {
     padding: 2px 6px;
     font-size: 0.55rem;
     font-weight: 800;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 2px;
@@ -393,7 +393,7 @@ body.always-show-more .val-toggle {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.4);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 1px;
@@ -416,7 +416,7 @@ body.always-show-more .val-toggle {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 2px;
@@ -546,7 +546,7 @@ body.low-end-mode .val-rarity-bar {
     margin-bottom: 10px;
     color: #fff;
     text-align: center;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
 }
 
 .val-card .val-body.hidden {
@@ -554,8 +554,9 @@ body.low-end-mode .val-rarity-bar {
 }
 
 .val-stat-highlight {
-    color: #39ff14;
+    color: #39ff14 !important;
     text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+    -webkit-text-stroke: 0 !important;
 }
 
 .val-card .val-overlay-btn {
@@ -608,7 +609,7 @@ body.low-end-mode .val-rarity-bar {
     margin-bottom: 10px;
     color: #fff;
     text-align: center;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
 }
 
 .val-overlay-close {
@@ -620,7 +621,7 @@ body.low-end-mode .val-rarity-bar {
     color: #fff;
     cursor: pointer;
     font-size: 0.7rem;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     opacity: 0.7;
     transition: 0.2s;
 }

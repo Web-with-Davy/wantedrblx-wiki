@@ -35,9 +35,9 @@ function makeValuableCard(item, displayName) {
       <div class="val-body">
         <h3 class="val-name">${displayName || name}</h3>
         ${nonContractBadge}
-        <div class="val-price-row">
-          <span class="val-price-label">Sell Price</span>
-          <span class="val-price-value">${priceHtml}</span>
+        <div class="val-stat">
+          <span class="val-stat-label">Sell Price</span>
+          <span class="val-stat-value">${priceHtml}</span>
         </div>
         ${seeMoreBtn}
       </div>

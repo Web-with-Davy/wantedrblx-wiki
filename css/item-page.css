@@ -22,7 +22,7 @@
     background: transparent;
     border: 1px solid rgba(255,255,255,0.3);
     color: rgba(255,255,255,0.65);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -138,7 +138,7 @@
 }
 
 .ip-desc-block {
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.95rem;
     line-height: 1.6;
     color: rgba(255,255,255,0.7);
@@ -317,7 +317,7 @@ body.low-end-mode .val-img-wrap {
 .ip-att-cat {
     font-size: 0.62rem;
     color: rgba(255, 255, 255, 0.38);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 2px;

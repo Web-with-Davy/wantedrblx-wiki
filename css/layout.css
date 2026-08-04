@@ -711,7 +711,7 @@ body.left-sidebar-mode .search-input:focus {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border);
     color: #888;
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.75rem;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -954,7 +954,7 @@ body.always-show-more .card-details-toggle {
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.5);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 2px;
@@ -979,7 +979,7 @@ body.always-show-more .card-details-toggle {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.55);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 1px;
@@ -1010,7 +1010,7 @@ body.always-show-more .card-details-toggle {
     background: #000;
     border: 1px solid #666;
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: .8rem;
     font-weight: 800;
     letter-spacing: 1px;
@@ -1043,7 +1043,7 @@ body.always-show-more .card-details-toggle {
     background: #000;
     border: 1px solid #666;
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Courier New', monospace;
+    font-family: 'Geist Pixel', system-ui;
     font-size: .8rem;
     font-weight: 800;
     letter-spacing: 1px;

@@ -34,14 +34,14 @@ const formatPrice = (price) => {
   if (price === 0) return 'Free';
   const num = typeof price === 'number' ? price : Number(price);
   if (!isNaN(num) && num !== 0) {
-    return `<img src="images/cash.webp" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">${num.toLocaleString()}`;
+    return `<img src="images/cash.webp" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">${num.toLocaleString()}</span>`;
   }
   return String(price);
 };
 
 const formatReward = (reward) => {
   if (typeof reward !== 'string') return reward;
-  return reward.replace(/\$/g, '<img src="images/cash.webp" alt="$" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;">');
+  return reward.replace(/\$([\d,.]+)/g, '<img src="images/cash.webp" alt="$" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">$1</span>');
 };
 
 if (typeof module !== 'undefined' && module.exports) {
