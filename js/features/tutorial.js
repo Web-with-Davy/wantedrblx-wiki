@@ -1,15 +1,15 @@
 const tutorialSteps = [
     {
-        title: "Wiki Tutorial",
-        body: "Welcome, I've detected you as a new user, would you like a tutorial?",
+        title: "Welcome to the Wiki",
+        body: "Hey there! Looks like you're new here. Want a quick tour to get you started?",
         target: ".neon-title",
         action: (cursor, highlight, animate) => {
             highlight.style.opacity = '0';
         }
     },
     {
-        title: "The Website",
-        body: "This is the title of the website, it holds the navigation bar, which allows you to navigate through the website.",
+        title: "Navigation Bar",
+        body: "This is the site header. It contains the navigation tabs you'll use to jump between different sections of the wiki.",
         target: ".neon-title",
         action: (cursor, highlight, animate, toggleButtons) => {
             animate(cursor, ".neon-title", false, () => toggleButtons(true));
@@ -17,7 +17,7 @@ const tutorialSteps = [
     },
     {
         title: "Search Bar",
-        body: "This is the search bar, it allows you to search for specific items.",
+        body: "Use the search bar to quickly find any weapon, vehicle, NPC, or item across the entire wiki.",
         target: "#search-input",
         action: (cursor, highlight, animate, toggleButtons) => {
             const isMobile = window.matchMedia("(max-width: 1024px)").matches;
@@ -68,8 +68,8 @@ const tutorialSteps = [
         }
     },
     {
-        title: "Navigation",
-        body: "Use the dropdown categories to browse weapons, vehicles, and world locations.",
+        title: "Navigation Menus",
+        body: "The dropdown menus group the wiki into three areas: Combat (weapons, vehicles), World (locations, missions), and Economy (ATMs, store, codes).",
         target: window.matchMedia("(max-width: 1024px)").matches ? ".dropdown-btn" : ".dropdown-btn",
         action: (cursor, highlight, animate, toggleButtons) => {
             const isMobile = window.matchMedia("(max-width: 1024px)").matches;
@@ -118,8 +118,8 @@ const tutorialSteps = [
         }
     },
     {
-        title: "Cards",
-        body: "Each entry contains details. Select a card to view more information.",
+        title: "Info Cards",
+        body: "Every item in the wiki has its own card. Click the 'More Info' button on any card to expand stats, prices, and other details.",
         target: "#page-container",
         action: (cursor, highlight, animate, toggleButtons) => {
             const isMobile = window.matchMedia("(max-width: 1024px)").matches;
@@ -172,7 +172,7 @@ const tutorialSteps = [
     },
     {
         title: "Settings",
-        body: "Access the websites settings to customize your experience.",
+        body: "Open Settings to adjust music volume, card size, switch to sidebar mode, or upload your own background music.",
         target: "#settings-toggle",
         action: (cursor, highlight, animate, toggleButtons) => {
             const isMobile = window.matchMedia("(max-width: 1024px)").matches;
@@ -190,16 +190,16 @@ const tutorialSteps = [
         }
     },
     {
-        title: "Exit Settings",
-        body: "You can now exit the settings.",
+        title: "Close Settings",
+        body: "When you're done tweaking, close the panel with the X button and get back to exploring!",
         target: "#settings-close",
         action: (cursor, highlight, animate, toggleButtons) => {
             animate(cursor, "#settings-close", true, () => toggleButtons(true));
         }
     },
     {
-        title: "Tutorial Complete",
-        body: "You are now prepared to explore the wiki.",
+        title: "All Done!",
+        body: "You're all set! Head back to the Home page any time to find what you need. Happy exploring!",
         target: '.tab[data-page="home"]',
         action: (cursor, highlight, animate, toggleButtons) => {
             const isMobile = window.matchMedia("(max-width: 1024px)").matches;
@@ -321,16 +321,19 @@ function initTutorial() {
         document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
         cursor.classList.remove('active');
 
+        const progressPct = Math.round(((currentStep) / (tutorialSteps.length - 1)) * 100);
+
         content.innerHTML = `
-            <div class="tutorial-step-indicator">SYSTEM LOG: PHASE ${currentStep + 1} / ${tutorialSteps.length}</div>
+            ${currentStep > 0 ? `<div class="tutorial-progress-track"><div class="tutorial-progress-fill" style="width:${progressPct}%"></div></div>` : ''}
+            <div class="tutorial-step-indicator">${currentStep > 0 ? `STEP ${currentStep} OF ${tutorialSteps.length - 1}` : 'NEW USER DETECTED'}</div>
             <div class="tutorial-header">${step.title}</div>
             <div class="tutorial-body">${step.body}</div>
             <div class="tutorial-controls">
-                ${currentStep > 0 ? '<button id="tutorial-prev" class="tutorial-btn btn-prev">Back</button>' : ''}
-                <button id="tutorial-next" class="tutorial-btn">${currentStep === 0 ? 'Start Briefing' : (currentStep === tutorialSteps.length - 1 ? 'Finish' : 'Next')}</button>
+                ${currentStep > 0 ? '<button id="tutorial-prev" class="tutorial-btn btn-prev">← Back</button>' : ''}
+                <button id="tutorial-next" class="tutorial-btn btn-primary">${currentStep === 0 ? 'Start Tour →' : (currentStep === tutorialSteps.length - 1 ? 'Finish ✓' : 'Next →')}</button>
             </div>
-            ${currentStep === 0 ? '' : '<button id="tutorial-skip" class="tutorial-skip">Skip Briefing</button>'}
-            ${currentStep === 0 ? '<button id="tutorial-skip-intro" class="tutorial-skip" style="text-align:center; margin-top:20px; font-size:12px; color:var(--fg);">No thanks, I know the drill.</button>' : ''}
+            ${currentStep === 0 ? '' : '<button id="tutorial-skip" class="tutorial-skip">Skip tour</button>'}
+            ${currentStep === 0 ? '<button id="tutorial-skip-intro" class="tutorial-skip" style="text-align:center; margin-top:14px; font-size:10px; opacity:0.5;">No thanks, I already know my way around.</button>' : ''}
         `;
 
         document.getElementById('tutorial-next').onclick = () => {
@@ -377,12 +380,19 @@ function initTutorial() {
             highlight.style.opacity = '0';
             content.style.top = '50%';
             content.style.left = '50%';
+            content.style.right = 'auto';
+            content.style.bottom = 'auto';
             content.style.transform = 'translate(-50%, -50%)';
             content.style.opacity = '1';
             return;
         }
 
         content.style.transform = 'none';
+        content.style.top = 'auto';
+        content.style.left = 'auto';
+        content.style.right = '24px';
+        content.style.bottom = '24px';
+        content.style.opacity = '1';
 
         if (targetEl) {
             const rect = targetEl.getBoundingClientRect();
@@ -393,35 +403,15 @@ function initTutorial() {
             highlight.style.height = `${rect.height + 8}px`;
             highlight.classList.add('active');
 
-            let top = rect.bottom + 40;
-            let left = rect.left;
-
-            if (step.title === "Navigation" && !window.matchMedia("(max-width: 1024px)").matches) {
-                left = rect.right + 100;
-                top = rect.top;
-            } else {
-                if (top + 200 > window.innerHeight) {
-                    top = rect.top - 200 - 40;
-                }
-                if (left + 280 > window.innerWidth) {
-                    left = window.innerWidth - 300;
-                }
-            }
-
-            content.style.top = `${Math.max(40, top)}px`;
-            content.style.left = `${Math.max(20, left)}px`;
-            content.style.opacity = '1';
-
-            if (step.title !== "Intelligence") {
-                const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
-                if (!isVisible) {
-                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+            const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+            if (!isVisible) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         } else {
             highlight.classList.remove('active');
         }
     };
+
 
     function completeTutorial() {
         window.removeEventListener('resize', updatePosition);
@@ -453,29 +443,42 @@ function initTutorial() {
     }, 200);
 }
 
-window.addEventListener('load', () => {
+(function () {
     const isTutorialDone = localStorage.getItem('tutorial_completed');
 
     if (isTutorialDone === 'true') {
-        console.log("Tutorial already completed. Skipping...");
         return;
     }
 
-    const checkReady = setInterval(() => {
-        if (window.audioUnlocked) {
-            clearInterval(checkReady);
+    let tutorialStarted = false;
 
-            const intro = document.getElementById('garage-intro');
-            if (intro && getComputedStyle(intro).display !== 'none') {
-                const checkIntroDone = setInterval(() => {
-                    if (intro.classList.contains('open')) {
-                        clearInterval(checkIntroDone);
-                        setTimeout(initTutorial, 300);
-                    }
-                }, 200);
-            } else {
-                initTutorial();
-            }
+    const startTutorial = () => {
+        if (tutorialStarted) return;
+        tutorialStarted = true;
+
+        const intro = document.getElementById('garage-intro');
+        if (intro && getComputedStyle(intro).display !== 'none') {
+            const checkIntroDone = setInterval(() => {
+                if (intro.classList.contains('open')) {
+                    clearInterval(checkIntroDone);
+                    setTimeout(initTutorial, 300);
+                }
+            }, 200);
+        } else {
+            initTutorial();
         }
-    }, 200);
-});
+    };
+
+    if (window.audioUnlocked) {
+        startTutorial();
+    } else {
+        const fallback = setTimeout(startTutorial, 5000);
+        const checkReady = setInterval(() => {
+            if (window.audioUnlocked) {
+                clearInterval(checkReady);
+                clearTimeout(fallback);
+                startTutorial();
+            }
+        }, 200);
+    }
+})();
