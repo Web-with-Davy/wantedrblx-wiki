@@ -260,24 +260,46 @@
     }
 }
 
+/* ── Desktop default: centred (intro) ──────────────────────── */
+.tutorial-content.is-intro {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
     .tutorial-content {
-        width: calc(100vw - 32px);
-        max-width: 340px;
-        padding: 20px 20px 16px;
-        bottom: 20px;
+        /* Bottom-centred, always within viewport */
         left: 50%;
-        transform: translateX(-50%);
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        right: auto;
         top: auto;
+        transform: translateX(-50%);
+        width: calc(100vw - 32px);
+        max-width: 400px;
+        max-height: calc(100dvh - 80px);
+        overflow-y: auto;
+        padding: 20px 20px 16px;
+    }
+
+    /* Intro step: centred vertically too */
+    .tutorial-content.is-intro {
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        max-height: calc(100dvh - 48px);
     }
 
     @keyframes tutorialBoxEntry {
         from {
-            transform: translate(-50%, 20px);
+            transform: translateX(-50%) translateY(20px);
             opacity: 0;
         }
         to {
-            transform: translate(-50%, 0);
+            transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
     }

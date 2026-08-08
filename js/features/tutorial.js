@@ -374,25 +374,40 @@ function initTutorial() {
     const updatePosition = () => {
         const step = tutorialSteps[currentStep];
         const targetEl = document.querySelector(step.target);
+        const isMobile = window.matchMedia('(max-width: 1024px)').matches;
 
         if (currentStep === 0) {
             highlight.classList.remove('active');
             highlight.style.opacity = '0';
-            content.style.top = '50%';
-            content.style.left = '50%';
-            content.style.right = 'auto';
-            content.style.bottom = 'auto';
-            content.style.transform = 'translate(-50%, -50%)';
+            // Centred via CSS on all screen sizes — clear any residual inline styles.
+            content.style.top = '';
+            content.style.left = '';
+            content.style.right = '';
+            content.style.bottom = '';
+            content.style.transform = '';
+            content.classList.add('is-intro');
             content.style.opacity = '1';
             return;
         }
 
-        content.style.transform = 'none';
-        content.style.top = 'auto';
-        content.style.left = 'auto';
-        content.style.right = '24px';
-        content.style.bottom = '24px';
+        content.classList.remove('is-intro');
         content.style.opacity = '1';
+
+        if (!isMobile) {
+            // Desktop: pin to bottom-right.
+            content.style.transform = 'none';
+            content.style.top = 'auto';
+            content.style.left = 'auto';
+            content.style.right = '24px';
+            content.style.bottom = '24px';
+        } else {
+            // Mobile: CSS handles bottom-centre positioning; clear any desktop overrides.
+            content.style.transform = '';
+            content.style.top = '';
+            content.style.left = '';
+            content.style.right = '';
+            content.style.bottom = '';
+        }
 
         if (targetEl) {
             const rect = targetEl.getBoundingClientRect();
