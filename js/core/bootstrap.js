@@ -35,10 +35,14 @@
   ];
 
   function loadDeferred() {
+    const doLoad = () =>
+      loadScripts(DEFERRED_SCRIPTS).then(() => {
+        document.dispatchEvent(new Event('wantedDeferredReady'));
+      });
     if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(() => loadScripts(DEFERRED_SCRIPTS), { timeout: 2000 });
+      requestIdleCallback(doLoad, { timeout: 2000 });
     } else {
-      setTimeout(() => loadScripts(DEFERRED_SCRIPTS), 500);
+      setTimeout(doLoad, 500);
     }
   }
 

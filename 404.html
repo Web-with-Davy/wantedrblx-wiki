@@ -4,19 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanted Wiki - Redirecting...</title>
+    <title>Wanted Wiki - Page Not Found</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.webp">
     <link rel="canonical" href="https://wantedrblx.com/">
 
     <meta name="robots" content="noindex, nofollow">
 
+    <!-- Redirect to homepage for any genuinely unknown paths -->
     <script>
-        (function () {
-            var validPages = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
-            var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').replace('.html', '');
-            var hash = validPages.includes(path) ? '#' + path : '';
-            window.location.replace('/' + hash);
-        })();
+        window.location.replace('/');
     </script>
 
     <style>

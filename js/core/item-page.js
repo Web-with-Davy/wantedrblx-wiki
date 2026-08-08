@@ -326,7 +326,7 @@ function renderATMDetails(item) {
 
 function loadItemPage(category, id, returnTab) {
   const back = returnTab || category;
-  window.history.pushState({ itemPage: true, category, id, back }, '', `#item/${category}/${id}`);
+  window.history.pushState({ itemPage: true, category, id, back }, '', `/item/${category}/${id}`);
   _renderItemPage(category, id, back);
 }
 window.loadItemPage = loadItemPage;
@@ -416,8 +416,8 @@ function _renderItemPage(category, id, back) {
   }, isLowEnd ? 0 : 120);
 }
 
-function _handleItemPageHash(hash) {
-  const match = hash.match(/^item\/([^/]+)\/(.+)$/);
+function _handleItemPageHash(route) {
+  const match = route.match(/^item\/([^/]+)\/(.+)$/);
   if (!match) return false;
   const [, category, id] = match;
   _renderItemPage(category, id, category);
