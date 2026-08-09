@@ -19,11 +19,6 @@ const PAGE_NAMES = {
 };
 
 function getCurrentPage() {
-    // Support both path-based (/weapons) and legacy hash-based (#weapons) routing.
-    const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
-    if (path.startsWith('item/')) return null;
-    if (VALID_PAGES.includes(path)) return path;
-    // Fallback: honour hash fragments from old links/bookmarks.
     const hash = window.location.hash.replace(/^#/, '');
     if (hash.startsWith('item/')) return null;
     if (VALID_PAGES.includes(hash)) return hash;
@@ -97,7 +92,7 @@ function loadPage(page, saveToHistory = true) {
         }
 
         if (saveToHistory) {
-            const url = page === "home" ? "/" : `/${page}`;
+            const url = page === "home" ? "#" : `#${page}`;
             window.history.pushState({ page }, "", url);
         }
 
@@ -139,17 +134,15 @@ function loadPage(page, saveToHistory = true) {
 }
 
 window.addEventListener("popstate", (event) => {
-    const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
     const hash = window.location.hash.replace(/^#/, '');
-    const routeKey = path || hash;
 
-    if (routeKey.startsWith('item/') && typeof _handleItemPageHash === 'function') {
-        if (_handleItemPageHash(routeKey)) return;
+    if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
+        if (_handleItemPageHash(hash)) return;
     }
 
     let page = (event.state && event.state.page);
     if (!page) {
-        page = VALID_PAGES.includes(routeKey) ? routeKey : "home";
+        page = VALID_PAGES.includes(hash) ? hash : "home";
     }
 
     loadPage(page, false);
@@ -278,42 +271,51 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pages whose renderers are loaded in the deferred (non-critical) bundle.
     const DEFERRED_PAGES = ["atms", "events", "gun-crates", "locations", "missions", "npcs", "store", "valuables", "vehicles", "weapons"];
 
+    // Top-level listener registered BEFORE the garage runs — immune to race conditions.
+    // When deferred scripts finish, load any page that was parked during the garage phase.
+    document.addEventListener('wantedDeferredReady', () => {
+        if (window.__pendingDeferredPage) {
+            const page = window.__pendingDeferredPage;
+            window.__pendingDeferredPage = null;
+            loadPage(page, false);
+        }
+    }, { once: true });
+
     if (typeof initGarage === 'function') {
         initGarage((skipped) => {
             window.audioUnlocked = true;
 
-            // Support both new path routing (/weapons) and legacy hash routing (#weapons).
-            const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
             const hash = window.location.hash.replace(/^#/, '');
-            const routeKey = path || hash;
 
-            if (routeKey.startsWith('item/') && typeof _handleItemPageHash === 'function') {
+            if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
                 if (!skipped && bgm) bgm.play().catch(() => { });
-                setTimeout(() => _handleItemPageHash(routeKey), skipped ? 0 : 400);
+                setTimeout(() => _handleItemPageHash(hash), skipped ? 0 : 400);
                 return;
             }
 
-            const initialPage = VALID_PAGES.includes(routeKey) ? routeKey : "home";
+            const initialPage = VALID_PAGES.includes(hash) ? hash : "home";
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
             if (targetTab) {
                 targetTab.classList.add("active");
             }
 
-            const doLoad = () => {
+            const rendererName = `render${initialPage.charAt(0).toUpperCase() + initialPage.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`;
+            const rendererReady = !DEFERRED_PAGES.includes(initialPage) || typeof window[rendererName] === 'function';
+
+            if (!rendererReady) {
+                // Renderer not loaded yet — park it. The top-level wantedDeferredReady
+                // listener above will pick it up the moment deferred scripts finish.
+                window.__pendingDeferredPage = initialPage;
+                if (!skipped && bgm) bgm.play().catch(() => { });
+            } else {
+                // Renderer already available — load immediately.
                 if (skipped) {
                     loadPage(initialPage, false);
                 } else {
                     if (bgm) bgm.play().catch(() => { });
                     setTimeout(() => loadPage(initialPage, false), 400);
                 }
-            };
-
-            // If the target page is a deferred tab, wait for its renderer to be ready.
-            if (DEFERRED_PAGES.includes(initialPage) && typeof window[`render${initialPage.charAt(0).toUpperCase() + initialPage.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`] !== 'function') {
-                document.addEventListener('wantedDeferredReady', doLoad, { once: true });
-            } else {
-                doLoad();
             }
         });
     }

@@ -326,7 +326,7 @@ function renderATMDetails(item) {
 
 function loadItemPage(category, id, returnTab) {
   const back = returnTab || category;
-  window.history.pushState({ itemPage: true, category, id, back }, '', `/item/${category}/${id}`);
+  window.history.pushState({ itemPage: true, category, id, back }, '', `#item/${category}/${id}`);
   _renderItemPage(category, id, back);
 }
 window.loadItemPage = loadItemPage;
