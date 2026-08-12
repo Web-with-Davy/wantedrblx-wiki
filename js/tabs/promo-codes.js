@@ -7,6 +7,8 @@ function renderPromoCodes(filter = "all") {
     const statusColor = item.active ? '#00ffaa' : '#ff3333';
     const statusText  = item.active ? 'Active'  : 'Expired';
     const statusHtml  = `<span style="color:${statusColor};text-shadow:0 0 5px ${statusColor};">${statusText}</span>`;
+    const expiredClass = item.active ? '' : ' expired-code';
+    const copyBtnHtml = `<button class="val-copy-btn${expiredClass}" onclick="copyPromoCode('${item.code}', this)">⎘ Copy Code</button>`;
 
     return makeUniversalCard(item, {
       codeText: item.code,
@@ -18,7 +20,8 @@ function renderPromoCodes(filter = "all") {
       ].filter(s => s.value),
       hiddenStats: [
         { label: 'Description', value: item.description },
-      ].filter(s => s.value)
+      ].filter(s => s.value),
+      extraBodyHtml: copyBtnHtml
     });
   }).join('');
 

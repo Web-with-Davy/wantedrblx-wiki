@@ -211,23 +211,19 @@
     color: #fff;
     text-shadow:
         0 0 8px #fff,
-        0 0 20px #fff,
-        0 0 40px #fff;
+        0 0 20px #fff;
     white-space: nowrap;
     text-align: center;
     padding: 12px 10px;
     line-height: 1.2;
-    transition: text-shadow 0.4s ease, letter-spacing 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     z-index: 1;
+    transform: scale(1);
 }
 
 .val-card:hover .val-code-text {
-    letter-spacing: 0.15em;
-    text-shadow:
-        0 0 10px #fff,
-        0 0 28px #fff,
-        0 0 55px #fff;
+    transform: scale(1.08);
 }
 
 .val-rarity-tag {

@@ -118,6 +118,7 @@
     <link rel="stylesheet" href="css/dropdown.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/features/settings.css">
+    <link rel="stylesheet" href="css/features/wiki-ux.css">
 
     <!-- Non-critical CSS: loaded asynchronously to unblock render -->
     <link rel="stylesheet" href="css/features/garage.css" media="print" onload="this.media='all'">
@@ -280,7 +281,8 @@
 
             <div class="mobile-controls-group">
                 <div class="search-container">
-                    <input type="text" id="search-input" class="search-input" placeholder="Search archive...">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search... (/)">
+                    <span class="search-shortcut-hint">/</span>
                 </div>
                 <div class="header-actions">
                     <button id="settings-toggle" class="settings-toggle header-icon-btn"
@@ -378,6 +380,34 @@
 
     <div id="page-label">HOME</div>
 
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+    <div id="copy-toast"></div>
+
+    <nav id="mobile-bottom-nav" aria-label="Quick navigation">
+        <div class="mobile-nav-items">
+            <button class="mobile-nav-item active" data-page="home">
+                <span class="mobile-nav-icon">🏠</span>
+                <span class="mobile-nav-label">Home</span>
+            </button>
+            <button class="mobile-nav-item" data-page="weapons">
+                <span class="mobile-nav-icon">🔫</span>
+                <span class="mobile-nav-label">Weapons</span>
+            </button>
+            <button class="mobile-nav-item" data-page="vehicles">
+                <span class="mobile-nav-icon">🚗</span>
+                <span class="mobile-nav-label">Vehicles</span>
+            </button>
+            <button class="mobile-nav-item" data-page="missions">
+                <span class="mobile-nav-icon">📜</span>
+                <span class="mobile-nav-label">Missions</span>
+            </button>
+            <button class="mobile-nav-item" data-page="promo-codes">
+                <span class="mobile-nav-icon">🎟️</span>
+                <span class="mobile-nav-label">Codes</span>
+            </button>
+        </div>
+    </nav>
+
     <!-- BGM: preload=none — 2.1MB file; loaded on demand after first interaction -->
     <audio id="bgm" src="sounds/background.aac" loop preload="none"></audio>
     <!-- SFX: preload=metadata — tiny files, only fetch headers upfront -->
@@ -409,6 +439,7 @@
     <script defer src="js/registry/youtubers.js"></script>
     <script defer src="js/registry/weapons.js"></script>
 
+    <script defer src="js/features/wiki-ux.js"></script>
     <script defer src="js/core/bootstrap.js"></script>
 
 

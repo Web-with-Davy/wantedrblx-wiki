@@ -50,6 +50,9 @@ function loadPage(page, saveToHistory = true) {
     }
 
     setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
         container.innerHTML = '<div class="loading glitch" data-text="LOADING...">LOADING ARCHIVE...</div>';
 
         if (window.audioUnlocked && loadSfx) {
@@ -95,6 +98,8 @@ function loadPage(page, saveToHistory = true) {
             const url = page === "home" ? "#" : `#${page}`;
             window.history.pushState({ page }, "", url);
         }
+
+        document.dispatchEvent(new CustomEvent('wantedPageChanged', { detail: { page } }));
 
         if (page === "home") {
             if (typeof initCountdownTimer === "function") initCountdownTimer();
