@@ -2411,6 +2411,28 @@ window.VEHICLE_SCOUT = [
 
 ];
 
+/* --- js/data/vehicles/Ground/Bayview/aegis.js --- */
+window.VEHICLE_AEGIS = [
+
+  {
+    name: "Aegis",
+    obtaining: "Bayview Motors",
+    description: "A very sturdy and expensive vehicle.",
+    type: "ground",
+    repairPrice: 3000,
+    repairPriceGarage: 900,
+    contractPrice: 2500000,
+    stats: {
+      topSpeed: 44,
+      acceleration: 31,
+      braking: 51,
+      Health: "Body-750/Wheels-100/Windows-100",
+      armor: 3
+    }
+  }
+
+];
+
 /* --- js/data/vehicles/Ground/Bayview/beam.js --- */
 window.VEHICLE_BEAM = [
 
@@ -4097,7 +4119,7 @@ window.YOUTUBER_CREATOR_2 = {
     },
     {
       title: "5 SECRETS In Wanted's POLICE UPDATE!",
-      thumbnail: "https://i.ytimg.com/vi/p3W9XIy540A/hqdefault_custom_1.jpg?sqp=CIibs9MG-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB9yCUYUpFZ_IT1sBDFiyDcS-7GFQ",
+      thumbnail: "https://i.ytimg.com/vi/p3W9XIy540A/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ7vfRk08T54t8G5ryhM6quvFdxA",
       link: "https://www.youtube.com/watch?v=p3W9XIy540A"
     },
     {
