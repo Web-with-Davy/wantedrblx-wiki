@@ -129,6 +129,19 @@ window.GUN_CRATE_AK_47 = [
 ];
 
 
+/* --- js/data/gun-crates/arx-160-crate.js --- */
+window.GUN_CRATE_ARX_160 = [
+
+  {
+    id: "arx-160-crate",
+    name: "ARX-160 Crate",
+    gun: "ARX-160",
+    cooldown: "Unknown",
+    location: "Bayview - Back of the Laundromat next to Oofy's Value Pawn"
+  },
+
+];
+
 /* --- js/data/gun-crates/aug-a1-crate.js --- */
 window.GUN_CRATE_AUG_A1 = [
 
@@ -185,6 +198,19 @@ window.GUN_CRATE_GLOCK_18C = [
 
 ];
 
+/* --- js/data/gun-crates/light-carbine-crate.js --- */
+window.GUN_CRATE_LIGHT_CARBINE = [
+
+  {
+    id: "light-carbine-crate",
+    name: "Light Carbine Crate",
+    gun: "Light Carbine",
+    cooldown: "Unknown",
+    location: "Oasis City - Middle of the Oasis Bank laser obstacle course"
+  },
+
+];
+
 /* --- js/data/gun-crates/m4a1-crate.js --- */
 window.GUN_CRATE_M4A1 = [
 
@@ -200,6 +226,19 @@ window.GUN_CRATE_M4A1 = [
 
 ];
 
+/* --- js/data/gun-crates/model-870-crate.js --- */
+window.GUN_CRATE_MODEL_870 = [
+
+  {
+    id: "model-870-crate",
+    name: "Model 870 Crate",
+    gun: "Model 870",
+    cooldown: "Unknown",
+    location: "Bayview Sewers"
+  },
+
+];
+
 /* --- js/data/gun-crates/rpg-7-crate.js --- */
 window.GUN_CRATE_RPG_7 = [
 
@@ -211,6 +250,32 @@ window.GUN_CRATE_RPG_7 = [
     gun: "RPG-7",
     cooldown: "5 Days",
     location: "Inside Fort Emberreach's tower"
+  },
+
+];
+
+/* --- js/data/gun-crates/sawn-off-crate.js --- */
+window.GUN_CRATE_SAWN_OFF = [
+
+  {
+    id: "sawn-off-crate",
+    name: "Sawn-Off Crate",
+    gun: "Sawn-Off",
+    cooldown: "Unknown",
+    location: "Bayview - Inside Oofy's Value Pawn"
+  },
+
+];
+
+/* --- js/data/gun-crates/skorpion-crate.js --- */
+window.GUN_CRATE_SKORPION = [
+
+  {
+    id: "skorpion-crate",
+    name: "Skorpion Crate",
+    gun: "Skorpion",
+    cooldown: "Unknown",
+    location: "Bayview - Behind Oofy's Value Pawn, inside the middle storage room"
   },
 
 ];

@@ -9,10 +9,11 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-    background: rgba(0, 0, 0, .98);
-    border-bottom: 2px solid var(--border);
-    border-top: 2px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    background: rgba(4, 4, 4, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255,255,255,0.04) inset;
     min-height: 100px;
 }
 
@@ -41,12 +42,12 @@
 
 .header-resize-handle {
     position: absolute;
-    bottom: -5px;
+    bottom: -3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 10px;
-    background: var(--border);
+    width: 36px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
     cursor: ns-resize;
     z-index: 1000;
     transition: all 0.2s ease;
@@ -54,25 +55,13 @@
 }
 
 .header-resize-handle::before {
-    content: '⋮⋮⋮';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #666;
-    font-size: 10px;
-    letter-spacing: 2px;
-    pointer-events: none;
+    display: none;
 }
 
 .header-resize-handle:hover {
-    background: var(--fg);
-    box-shadow: 0 0 10px var(--fg);
-    height: 12px;
-}
-
-.header-resize-handle:hover::before {
-    color: #000;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    height: 5px;
 }
 
 @media (max-width: 1024px) {
@@ -121,24 +110,23 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: calc(12px * var(--header-scale));
-    margin-top: calc(10px * var(--header-scale));
-    padding: calc(8px * var(--header-scale)) calc(10px * var(--header-scale));
+    gap: calc(20px * var(--header-scale));
+    margin-top: calc(8px * var(--header-scale));
+    padding: calc(6px * var(--header-scale)) calc(10px * var(--header-scale));
 }
 
 .tab {
     position: relative;
-    padding: calc(10px * var(--header-scale)) calc(14px * var(--header-scale));
+    padding: calc(8px * var(--header-scale)) calc(14px * var(--header-scale));
     background: transparent;
     border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: calc(0.72rem * var(--header-scale));
     font-weight: 800;
-    letter-spacing: calc(2px * var(--header-scale));
+    letter-spacing: calc(1.5px * var(--header-scale));
     cursor: pointer;
-    transition: .3s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: none;
-    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    color: rgba(255, 255, 255, 0.4);
     overflow: visible;
     display: flex;
     align-items: center;
@@ -151,7 +139,6 @@
 
 .tab span {
     display: inline-block;
-    transform: none;
 }
 
 .emoji-style {
@@ -160,17 +147,15 @@
     display: inline-block;
 }
 
-.tab:hover,
-.tab.active {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.07);
-    transform: none;
-    box-shadow: none;
+.tab:hover {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .tab.active {
-    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.09);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -561,9 +546,9 @@ body.left-sidebar-mode .top-tabs {
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
     margin-top: 0;
-    padding: 8px 0;
+    padding: 6px 0;
     width: 100%;
     flex: 1;
     overflow: visible;
@@ -578,7 +563,7 @@ body.left-sidebar-mode .mobile-controls-group {
     padding: 12px 10px 14px;
     margin-top: 0;
     flex-shrink: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     margin-bottom: 4px;
     order: -1;
 }
@@ -589,12 +574,11 @@ body.left-sidebar-mode .tab {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: calc(10px * var(--sidebar-scale, 1)) calc(14px * var(--sidebar-scale, 1));
-    font-size: calc(0.72rem * var(--sidebar-scale, 1));
-    letter-spacing: calc(2px * var(--sidebar-scale, 1));
-    transform: none;
+    padding: calc(9px * var(--sidebar-scale, 1)) calc(14px * var(--sidebar-scale, 1));
+    font-size: calc(0.7rem * var(--sidebar-scale, 1));
+    letter-spacing: calc(1.5px * var(--sidebar-scale, 1));
     text-align: left;
-    width: 88%;
+    width: 90%;
     margin: 0;
     min-width: 0;
     max-width: none;
@@ -602,11 +586,12 @@ body.left-sidebar-mode .tab {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: 4px;
-    border-color: transparent;
+    border-radius: 6px;
+    border: 1px solid transparent;
     background: transparent;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.4);
     gap: 10px;
+    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
 body.left-sidebar-mode .tab span {
@@ -626,18 +611,17 @@ body.left-sidebar-mode a.tab[data-page="home"] {
     justify-content: center;
 }
 
-body.left-sidebar-mode .tab:hover,
-body.left-sidebar-mode .tab.active {
-    transform: none;
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    box-shadow: none;
+body.left-sidebar-mode .tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 body.left-sidebar-mode .tab.active {
-    background: rgba(255, 255, 255, 0.1);
-    border-left: 2px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
 }
 
 body.left-sidebar-mode .tab.active::after {
@@ -919,12 +903,12 @@ body.always-show-more .card-details-toggle {
 .tab.active::before {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
     border-radius: 1px;
     pointer-events: none;
 }

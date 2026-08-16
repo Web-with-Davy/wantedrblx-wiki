@@ -1,11 +1,16 @@
 const __MANIFEST_gun_crates = [
   "js/data/gun-crates/ak-47-crate.js",
+  "js/data/gun-crates/arx-160-crate.js",
   "js/data/gun-crates/aug-a1-crate.js",
   "js/data/gun-crates/awm-crate.js",
   "js/data/gun-crates/benelli-m1014-crate.js",
   "js/data/gun-crates/glock-18c-crate.js",
+  "js/data/gun-crates/light-carbine-crate.js",
   "js/data/gun-crates/m4a1-crate.js",
+  "js/data/gun-crates/model-870-crate.js",
   "js/data/gun-crates/rpg-7-crate.js",
+  "js/data/gun-crates/sawn-off-crate.js",
+  "js/data/gun-crates/skorpion-crate.js",
   "js/data/gun-crates/ump-45-crate.js",
   "js/data/gun-crates/uzi-crate.js"
 ];
