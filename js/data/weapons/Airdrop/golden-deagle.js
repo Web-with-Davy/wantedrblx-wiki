@@ -9,7 +9,7 @@ window.WEAPON_GOLDEN_DEAGLE = [
     stats: {
       ammo: "8/160",
       ammoPrice: "$160 for 8",
-      damage: "Head-80/Torso-50/Limbs-40",
+      damage: "Head-40/Torso-25/Limbs-20",
       firerate: 200,
       reload: 3,
       accuracy: "±0.70m @ 25m"

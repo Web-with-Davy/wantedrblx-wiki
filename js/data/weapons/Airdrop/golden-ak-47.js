@@ -9,7 +9,7 @@ window.WEAPON_GOLDEN_AK_47 = [
     stats: {
       ammo: "30/300",
       ammoPrice: "$600 for 10",
-      damage: "Head-15/Torso-12/Limbs-12",
+      damage: "Head-10/Torso-8/Limbs-8",
       firerate: 750,
       reload: 2,
       accuracy: "±1.50m @ 50m"

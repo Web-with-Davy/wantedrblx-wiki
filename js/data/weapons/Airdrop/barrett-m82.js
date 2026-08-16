@@ -9,7 +9,7 @@ window.WEAPON_BARRETT_M82 = [
     stats: {
       ammo: "5/30",
       ammoPrice: "$1000 for 5",
-      damage: "Head-200/Torso-80/Limbs-80",
+      damage: "Head-150/Torso-80/Limbs-80",
       firerate: 30,
       reload: 3.5,
       accuracy: "±0.40m @ 50m"

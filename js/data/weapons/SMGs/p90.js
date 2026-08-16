@@ -10,7 +10,7 @@ window.WEAPON_P90 = [
     stats: {
       ammo: "50/700",
       ammoPrice: "? for ?",
-      damage: "Head-10/Torso-8/Limbs-7",
+      damage: "Head-9/Torso-7/Limbs-7",
       firerate: 909,
       reload: 3.8,
       accuracy: "±0.70m @ 50m"

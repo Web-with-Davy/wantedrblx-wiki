@@ -3,13 +3,17 @@
 /* --- js/data/atms/atms.js --- */
 window.ATMS_DATA = [
 
-  { name: "Green ATM", rarity: "COMMON", rarityPercent: "1 in 2 [calculated]", price: 200 },
-  { name: "Blue ATM", rarity: "COMMON", rarityPercent: "1 in 3 [calculated]", price: 300 },
-  { name: "Purple ATM", rarity: "UNCOMMON", rarityPercent: "1 in 6 [calculated]", price: 400 },
-  { name: "Red ATM", rarity: "EPIC", rarityPercent: "1 in 20 [calculated]", price: 650 },
-  { name: "Gold ATM", rarity: "MYTHIC", rarityPercent: "1 in 500 [calculated]", price: 10000 },
-  { name: "Diamond ATM", rarity: "LEGENDARY", rarityPercent: "1 in 1500 [calculated]", price: 100000 },
-  { name: "Void ATM", rarity: "LEGENDARY", rarityPercent: "1 in 10000 [calculated]", price: 500000 },
+  { name: "Green ATM", rarity: "COMMON", rarityPercent: "40.06%", price: 100 },
+  { name: "Blue ATM", rarity: "COMMON", rarityPercent: "28.04%", price: 200 },
+  { name: "Purple ATM", rarity: "UNCOMMON", rarityPercent: "16.02%", price: 400 },
+  { name: "Red ATM", rarity: "UNCOMMON", rarityPercent: "10.02%", price: 500 },
+  { name: "Gold ATM", rarity: "EPIC", rarityPercent: "4.01%", price: 1000 },
+  { name: "Sapphire ATM", rarity: "EPIC", rarityPercent: "1.20%", price: 1500 },
+  { name: "Ruby ATM", rarity: "MYTHIC", rarityPercent: "0.40%", price: 2500 },
+  { name: "Emerald ATM", rarity: "MYTHIC", rarityPercent: "0.20%", price: 5000 },
+  { name: "Amethyst ATM", rarity: "LEGENDARY", rarityPercent: "0.04%", price: 10000 },
+  { name: "Diamond ATM", rarity: "LEGENDARY", rarityPercent: "0.004%", price: 100000 },
+  { name: "Void ATM", rarity: "LEGENDARY", rarityPercent: "0.0004%", price: 500000 },
 
 ];
 
@@ -3017,7 +3021,7 @@ window.WEAPON_BARRETT_M82 = [
     stats: {
       ammo: "5/30",
       ammoPrice: "$1000 for 5",
-      damage: "Head-200/Torso-80/Limbs-80",
+      damage: "Head-150/Torso-80/Limbs-80",
       firerate: 30,
       reload: 3.5,
       accuracy: "±0.40m @ 50m"
@@ -3054,7 +3058,7 @@ window.WEAPON_GOLDEN_AK_47 = [
     stats: {
       ammo: "30/300",
       ammoPrice: "$600 for 10",
-      damage: "Head-15/Torso-12/Limbs-12",
+      damage: "Head-10/Torso-8/Limbs-8",
       firerate: 750,
       reload: 2,
       accuracy: "±1.50m @ 50m"
@@ -3129,7 +3133,7 @@ window.WEAPON_GOLDEN_DEAGLE = [
     stats: {
       ammo: "8/160",
       ammoPrice: "$160 for 8",
-      damage: "Head-80/Torso-50/Limbs-40",
+      damage: "Head-40/Torso-25/Limbs-20",
       firerate: 200,
       reload: 3,
       accuracy: "±0.70m @ 25m"
@@ -3860,7 +3864,7 @@ window.WEAPON_P90 = [
     stats: {
       ammo: "50/700",
       ammoPrice: "? for ?",
-      damage: "Head-10/Torso-8/Limbs-7",
+      damage: "Head-9/Torso-7/Limbs-7",
       firerate: 909,
       reload: 3.8,
       accuracy: "±0.70m @ 50m"
