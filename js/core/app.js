@@ -245,14 +245,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sizeSlider) {
-        const isMobile = window.matchMedia('(max-width: 1024px)').matches;
-        const savedSize = isMobile ? 150 : (localStorage.getItem("cardSize") || 200);
+        const savedSize = localStorage.getItem("cardSize") || 150;
         sizeSlider.value = savedSize;
         document.documentElement.style.setProperty('--card-min-size', `${savedSize}px`);
 
         sizeSlider.addEventListener("input", () => {
             document.documentElement.style.setProperty('--card-min-size', `${sizeSlider.value}px`);
-            if (!isMobile) localStorage.setItem("cardSize", sizeSlider.value);
+            localStorage.setItem("cardSize", sizeSlider.value);
         });
     }
 
