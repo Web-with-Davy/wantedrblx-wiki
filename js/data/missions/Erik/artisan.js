@@ -13,7 +13,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-2",
     title: "Artisan - Part 2",
     location: "Criminal Outpost – Talk to Erik",
     description: "Back for more? Let's get to it. Same as last time: set up the gun, test it out, and head back here. Mod the Model 870 with 12 Gauge Slugs and Vertical Foregrip.",
@@ -25,7 +25,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-3",
     title: "Artisan - Part 3",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Mod Uzi with Mono Suppressor and Uzi Stock.",
@@ -37,7 +37,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-4",
     title: "Artisan - Part 4",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded AK-47 with Mono Suppressor, Tactical Laser, and Horizontal Foregrip.",
@@ -49,7 +49,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-5",
     title: "Artisan - Part 5",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded Glock 18c with Pistol Suppressor, Reflex Sight and Glock Stock.",
@@ -61,7 +61,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-6",
     title: "Artisan - Part 6",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded M4A1 with ACOG, Horizontal Foregrip, and Tactical Laser.",
@@ -73,7 +73,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-7",
     title: "Artisan - Part 7",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded AWM with Reflex Sight, Mono Suppressor and Tactical Laser.",
@@ -85,7 +85,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-8",
     title: "Artisan - Part 8",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded M60 with Rifle Scope and M60 Bipod.",

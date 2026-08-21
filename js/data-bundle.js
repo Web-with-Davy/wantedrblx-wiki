@@ -358,7 +358,7 @@ window.MISSIONS_BERT_BANG_AND_CLEAR = [
   },
 
   {
-    id: "bang-and-clear",
+    id: "bang-and-clear-2",
     title: "Bang & Clear - Part 2",
     location: "Police Station – Talk to Bert",
     description: "Every raid is a risk: that's why we have to use every tool at our disposal. We use these non-lethal munitions to keep ourselves safe. Every once in a while a stun grenade ends up in a crib and people complain. That's life though. The baby probably had it coming to them.",
@@ -524,7 +524,7 @@ window.MISSIONS_BERT_FIRST_RESPONDER = [
   },
 
   {
-    id: "first-responder",
+    id: "first-responder-2",
     title: "First Responder - Part 2",
     location: "Police Station – Talk to Bert",
     description: "Sometimes you're gonna be first on the scene. You won't have time to wait - you'll just have to act. People will need you to step up. Their lives will be in your hands.",
@@ -536,7 +536,7 @@ window.MISSIONS_BERT_FIRST_RESPONDER = [
   },
 
   {
-    id: "first-responder",
+    id: "first-responder-3",
     title: "First Responder - Part 3",
     location: "Police Station – Talk to Bert",
     description: "Sometimes you're gonna be first on the scene. You won't have time to wait - you'll just have to act. People will need you to step up. Their lives will be in your hands.",
@@ -598,7 +598,7 @@ window.MISSIONS_BERT_LOSS_PREVENTION = [
   },
 
   {
-    id: "loss-prevention",
+    id: "loss-prevention-2",
     title: "Loss Prevention - Part 2",
     location: "Police Station – Talk to Bert",
     description: "We got a tip that a crew is going to hit the Pear Store. Go stake it out and roll in when they least expect it.",
@@ -660,7 +660,7 @@ window.MISSIONS_BERT_ON_PATROL = [
   },
 
   {
-    id: "on-patrol",
+    id: "on-patrol-2",
     title: "On Patrol - Part 2",
     location: "Police Station – Talk to Bert",
     description: "You're only as effective as the man sitting next to you. Surround yourself with the best and you will become the best. Build a crew of people that have your back, soldiers you trust. Then you'll be invincible.",
@@ -672,7 +672,7 @@ window.MISSIONS_BERT_ON_PATROL = [
   },
 
   {
-    id: "on-patrol",
+    id: "on-patrol-3",
     title: "On Patrol - Part 3",
     location: "Police Station – Talk to Bert",
     description: "You're only as effective as the man sitting next to you. Surround yourself with the best and you will become the best. Build a crew of people that have your back, soldiers you trust. Then you'll be invincible.",
@@ -887,7 +887,7 @@ window.MISSIONS_CHRISTMAS_JINGLE_BALLS = [
   },
 
   {
-    id: "jingle-balls",
+    id: "jingle-balls-2",
     title: "Jingle Balls - Part 2",
     location: "Park – Talk to Santa",
     description: "Mrs. Claus doesn't think our tree is fancy enough... In the spirit of Christmas, can you find me some extra expensive ornaments?",
@@ -996,7 +996,7 @@ window.MISSIONS_EASTER_THE_EGG_HUNT = [
   },
 
   {
-    id: "the-egg-hunt",
+    id: "the-egg-hunt-2",
     title: "The Egg Hunt - Part 2",
     location: "Park – Talk to The Easter Bunny",
     description: "i'm looking for my eggs, have you seen them??? i've been looking all over!! if you can find them, i have lots of cool rewards!!! :O",
@@ -1008,7 +1008,7 @@ window.MISSIONS_EASTER_THE_EGG_HUNT = [
   },
 
   {
-    id: "the-egg-hunt",
+    id: "the-egg-hunt-3",
     title: "The Egg Hunt - Part 3",
     location: "Park – Talk to The Easter Bunny",
     description: "i'm looking for my eggs, have you seen them??? i've been looking all over!! if you can find them, i have lots of cool rewards!!! :O",
@@ -1037,7 +1037,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-2",
     title: "Artisan - Part 2",
     location: "Criminal Outpost – Talk to Erik",
     description: "Back for more? Let's get to it. Same as last time: set up the gun, test it out, and head back here. Mod the Model 870 with 12 Gauge Slugs and Vertical Foregrip.",
@@ -1049,7 +1049,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-3",
     title: "Artisan - Part 3",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Mod Uzi with Mono Suppressor and Uzi Stock.",
@@ -1061,7 +1061,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-4",
     title: "Artisan - Part 4",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded AK-47 with Mono Suppressor, Tactical Laser, and Horizontal Foregrip.",
@@ -1073,7 +1073,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-5",
     title: "Artisan - Part 5",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded Glock 18c with Pistol Suppressor, Reflex Sight and Glock Stock.",
@@ -1085,7 +1085,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-6",
     title: "Artisan - Part 6",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded M4A1 with ACOG, Horizontal Foregrip, and Tactical Laser.",
@@ -1097,7 +1097,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-7",
     title: "Artisan - Part 7",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded AWM with Reflex Sight, Mono Suppressor and Tactical Laser.",
@@ -1109,7 +1109,7 @@ window.MISSIONS_ERIK_ARTISAN = [
   },
 
   {
-    id: "artisan",
+    id: "artisan-8",
     title: "Artisan - Part 8",
     location: "Criminal Outpost – Talk to Erik",
     description: "Let's get right into it. Set up the gun, test it out, and come back: Bring me a modded M60 with Rifle Scope and M60 Bipod.",
@@ -1172,7 +1172,7 @@ window.MISSIONS_SIR_B_CONTRABAND = [
   },
 
   {
-    id: "contraband",
+    id: "contraband-2",
     title: "Contraband - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "We have some clients looking to procure powerful firearms. Ghost guns only, no serial numbers, nothing store bought. When you find them, sell them to Rod at the port. He'll facilitate the transaction.",
@@ -1184,7 +1184,7 @@ window.MISSIONS_SIR_B_CONTRABAND = [
   },
 
   {
-    id: "contraband",
+    id: "contraband-3",
     title: "Contraband - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "We have some clients looking to procure powerful firearms. Ghost guns only, no serial numbers, nothing store bought. When you find them, sell them to Rod at the port. He'll facilitate the transaction.",
@@ -1213,7 +1213,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
   },
 
   {
-    id: "crime-squad",
+    id: "crime-squad-2",
     title: "Crime Squad - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "You're part of a brotherhood now. From now on until the day you die, wherever you are, every member of the Syndicate is your brother. People die. The Syndicate lives forever.",
@@ -1225,7 +1225,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
   },
 
   {
-    id: "crime-squad",
+    id: "crime-squad-3",
     title: "Crime Squad - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Your squad has been selected for a special operation. Hit the big ones: the bank and the jewelry store.",
@@ -1237,7 +1237,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
   },
 
   {
-    id: "crime-squad",
+    id: "crime-squad-4",
     title: "Crime Squad - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Your squad is being deployed on a jewelry store operation. Crack the vault and kill any cops standing in your way.",
@@ -1249,7 +1249,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
   },
 
   {
-    id: "crime-squad",
+    id: "crime-squad-5",
     title: "Crime Squad - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Today you're being sent directly into enemy territory. Deploy your squad to Fort Emberreach and hack the secure crates. Kill everyone you see.",
@@ -1295,7 +1295,7 @@ window.MISSIONS_SIR_B_FENCE = [
   },
 
   {
-    id: "fence",
+    id: "fence-2",
     title: "Fence - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "That was a good start, but now let's up the ante. This time, sell $30,000 worth of stolen goods through the pawn shop. Pull off biggers jobs, get paid more. That's the name of the game.",
@@ -1358,7 +1358,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-2",
     title: "Gem Collector - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -1370,7 +1370,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-3",
     title: "Gem Collector - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -1382,7 +1382,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-4",
     title: "Gem Collector - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -1394,7 +1394,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-5",
     title: "Gem Collector - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -1491,7 +1491,7 @@ window.MISSIONS_SIR_B_LOCKPICKER = [
   },
 
   {
-    id: "lockpicker",
+    id: "lockpicker-2",
     title: "Lockpicker - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every safe can be cracked, it just depends how skilled you are. Those luxury homes were more lucrative than I'd realized. Rob 30 more house safes and see what you find.",
@@ -1503,7 +1503,7 @@ window.MISSIONS_SIR_B_LOCKPICKER = [
   },
 
   {
-    id: "lockpicker",
+    id: "lockpicker-3",
     title: "Lockpicker - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "No lock is pick-proof, but high-security cylinders raise time, skill, and tool requirements significantly. Practice makes perfect - crack 50 house safes. Then you'll be a master locksmith.",
@@ -1566,7 +1566,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
   },
 
   {
-    id: "oasis-eleven",
+    id: "oasis-eleven-2",
     title: "Oasis Eleven - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. This time, there's going to be a shipment of gems: sapphires. Steal as many as you can. ",
@@ -1578,7 +1578,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
   },
 
   {
-    id: "oasis-eleven",
+    id: "oasis-eleven-3",
     title: "Oasis Eleven - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. Ruby Vaults are particularly valuable. Comes with a larger amount of cash too. ",
@@ -1590,7 +1590,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
   },
 
   {
-    id: "oasis-eleven",
+    id: "oasis-eleven-4",
     title: "Oasis Eleven - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. Emeralds are among the rarest and most expensive gems. Bring back as many as you can.",
@@ -1602,7 +1602,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
   },
 
   {
-    id: "oasis-eleven",
+    id: "oasis-eleven-5",
     title: "Oasis Eleven - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. Amethysts are as rare as it gets. Pulling off just one Amethyst heist will make you rich.",
@@ -1682,7 +1682,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
   },
 
   {
-    id: "smuggler",
+    id: "smuggler-2",
     title: "Smuggler - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "I have buyers waiting, so let's do some more business together. Up the volume to $100,000 this time. The more we flip, the more you're paid.",
@@ -1694,7 +1694,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
   },
 
   {
-    id: "smuggler",
+    id: "smuggler-3",
     title: "Smuggler - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "You've proven yourself capable, now let's really get serious. $300,000 of volume this time. My buyers are waiting - don't disappoint me.",
@@ -1706,7 +1706,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
   },
 
   {
-    id: "smuggler",
+    id: "smuggler-4",
     title: "Smuggler - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "You didn't seem to have any trouble with that, let's make it $500,000 this time. Remember, time is money. My money.",
@@ -1718,7 +1718,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
   },
 
   {
-    id: "smuggler",
+    id: "smuggler-5",
     title: "Smuggler - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "We're in the big leagues now: seven figures. One million. You know what they say: the first million is always the hardest.",
@@ -1730,7 +1730,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
   },
 
   {
-    id: "smuggler",
+    id: "smuggler-6",
     title: "Smuggler - Part 6",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "You're probably wondering by now why I keep badgering you to make money. That's because the Syndicate is an expensive operation - it takes a lot of money to keep our little rebellion afloat. You're a key player now. Don't disappoint us.",
@@ -1742,7 +1742,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
   },
 
   {
-    id: "smuggler",
+    id: "smuggler-7",
     title: "Smuggler - Part 7",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Financing an operation like this is no easy task. We need all the money we can get. This one is a hefty price tag, but you'll be paid handsomely if you succeed.",
@@ -1805,7 +1805,7 @@ window.MISSIONS_SIR_B_SYNDICATE_DOGS = [
   },
 
   {
-    id: "syndicate-dogs",
+    id: "syndicate-dogs-2",
     title: "Syndicate Dogs - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "The jewelry vault is reinforced - high explosives won't cut it. You'll need a specialized drill. Go see Rod at the Port. He'll have what you need to break in.",
@@ -1834,7 +1834,7 @@ window.MISSIONS_SIR_B_TELLER = [
   },
 
   {
-    id: "teller",
+    id: "teller-2",
     title: "Teller - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "If people actually had any understanding of our banking and monetary system, there would be a revolution by tomorrow morning. You work hard, and your money gets deposited into a bank. They're stealing from you, too.",
@@ -1948,7 +1948,7 @@ window.MISSIONS_SIR_B_UPGRADE = [
   },
 
   {
-    id: "upgrade",
+    id: "upgrade-2",
     title: "Upgrade - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "I have a client that wants to buy tech, but only in bulk. All or nothing. Sell me a bag containing 2 GoldPads, 1 HDD, 1 PSU, and 1 GPU.",
@@ -1960,7 +1960,7 @@ window.MISSIONS_SIR_B_UPGRADE = [
   },
 
   {
-    id: "upgrade",
+    id: "upgrade-3",
     title: "Upgrade - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "I have a client that wants to buy tech, but only in bulk. All or nothing. Sell me a bag containing 2 GoldBooks, 2 GoldPhones, 1 GoldPods, and 1 Bitcoin",
@@ -1989,7 +1989,7 @@ window.MISSIONS_SIR_B_WARGAMES = [
   },
 
   {
-    id: "wargames",
+    id: "wargames-2",
     title: "WarGames - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Fort Emberreach is at the heart of the entire government operation. Raze the base. This raid will be a bullet straight though their hearts.",
@@ -2018,7 +2018,7 @@ window.MISSIONS_SIR_B_WEAPONS_CACHE = [
   },
 
   {
-    id: "weapons-cache",
+    id: "weapons-cache-2",
     title: "Weapons Cache - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "The Syndicate has hidden various weapons caches around the Oasis, but we've lost track of some of them. If you can locate them, I'll be in your debt.",

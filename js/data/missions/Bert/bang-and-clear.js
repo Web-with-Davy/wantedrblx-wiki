@@ -13,7 +13,7 @@ window.MISSIONS_BERT_BANG_AND_CLEAR = [
   },
 
   {
-    id: "bang-and-clear",
+    id: "bang-and-clear-2",
     title: "Bang & Clear - Part 2",
     location: "Police Station – Talk to Bert",
     description: "Every raid is a risk: that's why we have to use every tool at our disposal. We use these non-lethal munitions to keep ourselves safe. Every once in a while a stun grenade ends up in a crib and people complain. That's life though. The baby probably had it coming to them.",

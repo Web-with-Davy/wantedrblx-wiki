@@ -13,7 +13,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-2",
     title: "Gem Collector - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -25,7 +25,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-3",
     title: "Gem Collector - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -37,7 +37,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-4",
     title: "Gem Collector - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",
@@ -49,7 +49,7 @@ window.MISSIONS_SIR_B_GEM_COLLECTOR = [
   },
 
   {
-    id: "gem-collector",
+    id: "gem-collector-5",
     title: "Gem Collector - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "There's high demand for rare gems on the black market. If you can bring me some, I'll make it worth your while.",

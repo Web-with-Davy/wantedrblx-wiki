@@ -13,7 +13,7 @@ window.MISSIONS_SIR_B_FENCE = [
   },
 
   {
-    id: "fence",
+    id: "fence-2",
     title: "Fence - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "That was a good start, but now let's up the ante. This time, sell $30,000 worth of stolen goods through the pawn shop. Pull off biggers jobs, get paid more. That's the name of the game.",

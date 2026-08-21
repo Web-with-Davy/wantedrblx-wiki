@@ -13,7 +13,7 @@ window.MISSIONS_CHRISTMAS_JINGLE_BALLS = [
   },
 
   {
-    id: "jingle-balls",
+    id: "jingle-balls-2",
     title: "Jingle Balls - Part 2",
     location: "Park – Talk to Santa",
     description: "Mrs. Claus doesn't think our tree is fancy enough... In the spirit of Christmas, can you find me some extra expensive ornaments?",

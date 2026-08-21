@@ -13,7 +13,7 @@ window.MISSIONS_SIR_B_UPGRADE = [
   },
 
   {
-    id: "upgrade",
+    id: "upgrade-2",
     title: "Upgrade - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "I have a client that wants to buy tech, but only in bulk. All or nothing. Sell me a bag containing 2 GoldPads, 1 HDD, 1 PSU, and 1 GPU.",
@@ -25,7 +25,7 @@ window.MISSIONS_SIR_B_UPGRADE = [
   },
 
   {
-    id: "upgrade",
+    id: "upgrade-3",
     title: "Upgrade - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "I have a client that wants to buy tech, but only in bulk. All or nothing. Sell me a bag containing 2 GoldBooks, 2 GoldPhones, 1 GoldPods, and 1 Bitcoin",
