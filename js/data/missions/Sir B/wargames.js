@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_WARGAMES = [
 
   {
     id: "wargames-2",
+    image: "wargames",
     title: "WarGames - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Fort Emberreach is at the heart of the entire government operation. Raze the base. This raid will be a bullet straight though their hearts.",

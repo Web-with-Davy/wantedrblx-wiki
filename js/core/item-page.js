@@ -359,8 +359,9 @@ function _renderItemPage(category, id, back) {
 
     const name = item.name || item.title || item.code || id;
     const slug = item.id || _ipSlug(name);
+    const imgSlug = item.image || slug;
     const ext = reg.ext || 'webp';
-    const imgSrc = reg.folder ? `images/${reg.folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
+    const imgSrc = reg.folder ? `images/${reg.folder}/${imgSlug}.${ext}` : `images/${imgSlug}.${ext}`;
 
     const rarityKey = item.rarity || item.difficulty || item.team || null;
     const rarityData = rarityKey

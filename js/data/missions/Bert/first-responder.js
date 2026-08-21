@@ -14,6 +14,7 @@ window.MISSIONS_BERT_FIRST_RESPONDER = [
 
   {
     id: "first-responder-2",
+    image: "first-responder",
     title: "First Responder - Part 2",
     location: "Police Station – Talk to Bert",
     description: "Sometimes you're gonna be first on the scene. You won't have time to wait - you'll just have to act. People will need you to step up. Their lives will be in your hands.",
@@ -26,6 +27,7 @@ window.MISSIONS_BERT_FIRST_RESPONDER = [
 
   {
     id: "first-responder-3",
+    image: "first-responder",
     title: "First Responder - Part 3",
     location: "Police Station – Talk to Bert",
     description: "Sometimes you're gonna be first on the scene. You won't have time to wait - you'll just have to act. People will need you to step up. Their lives will be in your hands.",

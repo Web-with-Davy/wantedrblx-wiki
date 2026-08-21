@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
   {
     id: "oasis-eleven-2",
+    image: "oasis-eleven",
     title: "Oasis Eleven - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. This time, there's going to be a shipment of gems: sapphires. Steal as many as you can. ",
@@ -26,6 +27,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
   {
     id: "oasis-eleven-3",
+    image: "oasis-eleven",
     title: "Oasis Eleven - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. Ruby Vaults are particularly valuable. Comes with a larger amount of cash too. ",
@@ -38,6 +40,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
   {
     id: "oasis-eleven-4",
+    image: "oasis-eleven",
     title: "Oasis Eleven - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. Emeralds are among the rarest and most expensive gems. Bring back as many as you can.",
@@ -50,6 +53,7 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
   {
     id: "oasis-eleven-5",
+    image: "oasis-eleven",
     title: "Oasis Eleven - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every so often, a huge shipment of valuables comes through the bank. Amethysts are as rare as it gets. Pulling off just one Amethyst heist will make you rich.",

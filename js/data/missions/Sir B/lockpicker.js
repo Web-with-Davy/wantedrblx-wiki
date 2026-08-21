@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_LOCKPICKER = [
 
   {
     id: "lockpicker-2",
+    image: "lockpicker",
     title: "Lockpicker - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Every safe can be cracked, it just depends how skilled you are. Those luxury homes were more lucrative than I'd realized. Rob 30 more house safes and see what you find.",
@@ -26,6 +27,7 @@ window.MISSIONS_SIR_B_LOCKPICKER = [
 
   {
     id: "lockpicker-3",
+    image: "lockpicker",
     title: "Lockpicker - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "No lock is pick-proof, but high-security cylinders raise time, skill, and tool requirements significantly. Practice makes perfect - crack 50 house safes. Then you'll be a master locksmith.",

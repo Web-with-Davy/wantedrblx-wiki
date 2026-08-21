@@ -10,9 +10,10 @@ const buildStatRow = ({ label, value }) => {
 function makeUniversalCard(item, opts = {}) {
   const name = item.name || item.title || item.code || '';
   const slug = item.id || generateSlug(name);
+  const imgSlug = item.image || slug;
   const ext = opts.ext || CARD_IMG_EXT;
   const folder = opts.folder || '';
-  const imgSrc = folder ? `images/${folder}/${slug}.${ext}` : `images/${slug}.${ext}`;
+  const imgSrc = folder ? `images/${folder}/${imgSlug}.${ext}` : `images/${imgSlug}.${ext}`;
   const codeText = opts.codeText || null;
 
   const rarityKey = opts.rarityKey;

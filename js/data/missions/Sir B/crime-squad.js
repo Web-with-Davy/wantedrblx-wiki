@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
 
   {
     id: "crime-squad-2",
+    image: "crime-squad",
     title: "Crime Squad - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "You're part of a brotherhood now. From now on until the day you die, wherever you are, every member of the Syndicate is your brother. People die. The Syndicate lives forever.",
@@ -26,6 +27,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
 
   {
     id: "crime-squad-3",
+    image: "crime-squad",
     title: "Crime Squad - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Your squad has been selected for a special operation. Hit the big ones: the bank and the jewelry store.",
@@ -38,6 +40,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
 
   {
     id: "crime-squad-4",
+    image: "crime-squad",
     title: "Crime Squad - Part 4",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Your squad is being deployed on a jewelry store operation. Crack the vault and kill any cops standing in your way.",
@@ -50,6 +53,7 @@ window.MISSIONS_SIR_B_CRIME_SQUAD = [
 
   {
     id: "crime-squad-5",
+    image: "crime-squad",
     title: "Crime Squad - Part 5",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "Today you're being sent directly into enemy territory. Deploy your squad to Fort Emberreach and hack the secure crates. Kill everyone you see.",

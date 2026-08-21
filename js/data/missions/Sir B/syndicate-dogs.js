@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_SYNDICATE_DOGS = [
 
   {
     id: "syndicate-dogs-2",
+    image: "syndicate-dogs",
     title: "Syndicate Dogs - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "The jewelry vault is reinforced - high explosives won't cut it. You'll need a specialized drill. Go see Rod at the Port. He'll have what you need to break in.",

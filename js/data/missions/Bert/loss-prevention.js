@@ -14,6 +14,7 @@ window.MISSIONS_BERT_LOSS_PREVENTION = [
 
   {
     id: "loss-prevention-2",
+    image: "loss-prevention",
     title: "Loss Prevention - Part 2",
     location: "Police Station – Talk to Bert",
     description: "We got a tip that a crew is going to hit the Pear Store. Go stake it out and roll in when they least expect it.",

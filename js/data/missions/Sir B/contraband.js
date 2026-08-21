@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_CONTRABAND = [
 
   {
     id: "contraband-2",
+    image: "contraband",
     title: "Contraband - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "We have some clients looking to procure powerful firearms. Ghost guns only, no serial numbers, nothing store bought. When you find them, sell them to Rod at the port. He'll facilitate the transaction.",
@@ -26,6 +27,7 @@ window.MISSIONS_SIR_B_CONTRABAND = [
 
   {
     id: "contraband-3",
+    image: "contraband",
     title: "Contraband - Part 3",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "We have some clients looking to procure powerful firearms. Ghost guns only, no serial numbers, nothing store bought. When you find them, sell them to Rod at the port. He'll facilitate the transaction.",

@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_TELLER = [
 
   {
     id: "teller-2",
+    image: "teller",
     title: "Teller - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "If people actually had any understanding of our banking and monetary system, there would be a revolution by tomorrow morning. You work hard, and your money gets deposited into a bank. They're stealing from you, too.",

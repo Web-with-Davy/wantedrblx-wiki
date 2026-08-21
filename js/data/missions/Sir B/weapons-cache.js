@@ -14,6 +14,7 @@ window.MISSIONS_SIR_B_WEAPONS_CACHE = [
 
   {
     id: "weapons-cache-2",
+    image: "weapons-cache",
     title: "Weapons Cache - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
     description: "The Syndicate has hidden various weapons caches around the Oasis, but we've lost track of some of them. If you can locate them, I'll be in your debt.",
