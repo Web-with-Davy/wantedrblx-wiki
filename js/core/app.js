@@ -276,7 +276,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Top-level listener registered BEFORE the garage runs — immune to race conditions.
     // When deferred scripts finish, load any page that was parked during the garage phase.
+    window.__deferredReady = false;
     document.addEventListener('wantedDeferredReady', () => {
+        window.__deferredReady = true;
         if (window.__pendingDeferredPage) {
             const page = window.__pendingDeferredPage;
             window.__pendingDeferredPage = null;
@@ -303,14 +305,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetTab.classList.add("active");
             }
 
-            const rendererName = `render${initialPage.charAt(0).toUpperCase() + initialPage.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`;
+            // Check renderer readiness using the actual function names (avoids case mismatch like renderAtms vs renderATMs).
+            const RENDERER_MAP = {
+                home: 'renderHome', valuables: 'renderValuables', atms: 'renderATMs',
+                weapons: 'renderWeapons', vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates',
+                missions: 'renderMissions', npcs: 'renderNPCs', locations: 'renderLocations',
+                store: 'renderStore', events: 'renderEvents', 'promo-codes': 'renderPromoCodes'
+            };
+            const rendererName = RENDERER_MAP[initialPage] || '';
             const rendererReady = !DEFERRED_PAGES.includes(initialPage) || typeof window[rendererName] === 'function';
 
             if (!rendererReady) {
-                // Renderer not loaded yet — park it. The top-level wantedDeferredReady
-                // listener above will pick it up the moment deferred scripts finish.
-                window.__pendingDeferredPage = initialPage;
-                if (!skipped && bgm) bgm.play().catch(() => { });
+                // Renderer not loaded yet — park it.
+                // If wantedDeferredReady already fired (race condition), load immediately.
+                if (window.__deferredReady) {
+                    if (skipped) {
+                        loadPage(initialPage, false);
+                    } else {
+                        if (bgm) bgm.play().catch(() => { });
+                        setTimeout(() => loadPage(initialPage, false), 400);
+                    }
+                } else {
+                    window.__pendingDeferredPage = initialPage;
+                    if (!skipped && bgm) bgm.play().catch(() => { });
+                }
             } else {
                 // Renderer already available — load immediately.
                 if (skipped) {
