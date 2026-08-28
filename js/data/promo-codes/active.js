@@ -7,5 +7,6 @@ window.PROMO_CODES_ACTIVE = [
   { code: "FREECRATE", reward: "x1 Tier 1 Vehicle Crate", active: true },
   { code: "PITY", reward: "x2 Tier 1 Vehicle Crates", active: true },
   { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Tier 1 Vehicle Crates", active: true },
-  { code: "POLICE", reward: "x2 Tier 1 Vehicle Crates", active: true }
+  { code: "POLICE", reward: "x2 Tier 1 Vehicle Crates", active: true },
+  { code: "EVIDENCE", reward: "x2 Tier 2 Vehicle Crates", active: true }
 ];
