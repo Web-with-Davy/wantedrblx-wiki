@@ -5,7 +5,7 @@ window.GUN_CRATE_ARX_160 = [
     name: "ARX-160 Crate",
     gun: "ARX-160",
     cooldown: "Unknown",
-    location: "Bayview - Back of the Laundromat next to Oofy's Value Pawn"
+    location: "Bayview - Back of the Laundromat next to Ofy's Value Pawn"
   },
 
 ];

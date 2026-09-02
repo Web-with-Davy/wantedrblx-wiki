@@ -5,7 +5,7 @@ window.GUN_CRATE_SAWN_OFF = [
     name: "Sawn-Off Crate",
     gun: "Sawn-Off",
     cooldown: "Unknown",
-    location: "Bayview - Inside Oofy's Value Pawn"
+    location: "Bayview - Inside Ofy's Value Pawn"
   },
 
 ];

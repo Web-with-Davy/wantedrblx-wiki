@@ -137,7 +137,7 @@ window.GUN_CRATE_ARX_160 = [
     name: "ARX-160 Crate",
     gun: "ARX-160",
     cooldown: "Unknown",
-    location: "Bayview - Back of the Laundromat next to Oofy's Value Pawn"
+    location: "Bayview - Back of the Laundromat next to Ofy's Value Pawn"
   },
 
 ];
@@ -262,7 +262,7 @@ window.GUN_CRATE_SAWN_OFF = [
     name: "Sawn-Off Crate",
     gun: "Sawn-Off",
     cooldown: "Unknown",
-    location: "Bayview - Inside Oofy's Value Pawn"
+    location: "Bayview - Inside Ofy's Value Pawn"
   },
 
 ];
@@ -275,7 +275,7 @@ window.GUN_CRATE_SKORPION = [
     name: "Skorpion Crate",
     gun: "Skorpion",
     cooldown: "Unknown",
-    location: "Bayview - Behind Oofy's Value Pawn, inside the middle storage room"
+    location: "Bayview - Behind Ofy's Value Pawn, inside the middle storage room"
   },
 
 ];
