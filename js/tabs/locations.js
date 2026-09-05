@@ -121,6 +121,14 @@ const MAP_PINS = [
     positions: [{ x: 330, y: 1357 }],
   },
   {
+    id: "motorshop",
+    name: "Randys Motorshop",
+    color: "#893f4c",
+    icon: "images/map/Markers/Motorshop.webp",
+    iconSize: 36,
+    positions: [{ x: 520, y: 1350 }],
+  },
+  {
     id: "armory",
     name: "Lock n' Load Armory",
     color: "#ffad08",

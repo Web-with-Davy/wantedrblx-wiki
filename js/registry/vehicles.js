@@ -29,7 +29,11 @@ const __MANIFEST_vehicles = [
   "js/data/vehicles/Ground/Police/interceptor.js",
   "js/data/vehicles/Ground/Police/warden.js",
   "js/data/vehicles/Ground/Starter/cruiser.js",
-  "js/data/vehicles/Ground/Syndicate/blade.js"
+  "js/data/vehicles/Ground/Syndicate/blade.js",
+  "js/data/vehicles/Ground/Badlands/rooster.js",
+  "js/data/vehicles/Ground/Badlands/road-hog.js",
+  "js/data/vehicles/Ground/Badlands/shinobi.js",
+  "js/data/vehicles/Ground/Badlands/rift.js"
 ];
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];

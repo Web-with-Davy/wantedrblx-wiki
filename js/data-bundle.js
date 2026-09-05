@@ -2227,13 +2227,9 @@ window.PROMO_CODES_ACTIVE = [
   { code: "WANTED", reward: "$10,000 Cash", active: true },
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
-  { code: "FREECRATE", reward: "x1 Tier 1 Vehicle Crate", active: true },
-  { code: "PITY", reward: "x2 Tier 1 Vehicle Crates", active: true },
-  { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Tier 1 Vehicle Crates", active: true },
-  { code: "POLICE", reward: "x2 Tier 1 Vehicle Crates", active: true },
-  { code: "EVIDENCE", reward: "x2 Tier 2 Vehicle Crates", active: true }
+  { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
+  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
 ];
-
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
   { code: "SANTA", reward: "$10,000 Cash", active: false },
@@ -2241,7 +2237,11 @@ window.PROMO_CODES_EXPIRED = [
   { code: "EASTER", reward: "Egg Display Furniture", active: false },
   { code: "ADMINABUSE", reward: "Sir. B's Car Cowboy Hat", active: false },
   { code: "USA250", reward: "2026 Firework Wrap", active: false },
-  { code: "FIREWORKS", reward: "10x Fireworks", active: false }
+  { code: "FIREWORKS", reward: "10x Fireworks", active: false },
+  { code: "PITY", reward: "x2 Basic Vehicle Crates", active: false },
+  { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Basic Vehicle Crates", active: salse },
+  { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: salse },
+  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
 ];
 
 /* --- js/data/store/bag-boosts.js --- */
@@ -2523,6 +2523,94 @@ window.VEHICLE_SCOUT = [
       armor: 1
     }
   },
+
+];
+
+/* --- js/data/vehicles/Ground/Badlands/rift.js --- */
+window.VEHICLE_RIFT = [
+
+  {
+    name: "Rift",
+    obtaining: "Randys Motorshop",
+    description: "The best and rarest motorcycle",
+    type: "ground",
+    repairPrice: 7500,
+    repairPriceGarage: 2250,
+    contractPrice: "Un-Buyable",
+    stats: {
+      topSpeed: 79,
+      acceleration: 68,
+      braking: 77,
+      Health: "Body-250/Wheels-100",
+      armor: 0
+    }
+  }
+
+];
+
+/* --- js/data/vehicles/Ground/Badlands/road_hog.js --- */
+window.VEHICLE_ROAD_HOG = [
+
+  {
+    name: "Road Hog",
+    obtaining: "Randys Motorshop",
+    description: "Begginer friendly motorcycles",
+    type: "ground",
+    repairPrice: 600,
+    repairPriceGarage: 180,
+    contractPrice: 30000,
+    stats: {
+      topSpeed: 36,
+      acceleration: 31,
+      braking: 51,
+      Health: "Body-200/Wheels-100",
+      armor: 0
+    }
+  }
+
+];
+
+/* --- js/data/vehicles/Ground/Badlands/rooster.js --- */
+window.VEHICLE_ROOSTER = [
+
+  {
+    name: "Rooster",
+    obtaining: "Randys Motorshop",
+    description: "Cheapest of the motorcycles, gets the job done",
+    type: "ground",
+    repairPrice: 600,
+    repairPriceGarage: 180,
+    contractPrice: 1000,
+    stats: {
+      topSpeed: 26,
+      acceleration: 31,
+      braking: 46,
+      Health: "Body-200/Wheels-100",
+      armor: 0
+    }
+  }
+
+];
+
+/* --- js/data/vehicles/Ground/Badlands/shinobi.js --- */
+window.VEHICLE_SHINOBI = [
+
+  {
+    name: "Shinobi",
+    obtaining: "Randys Motorshop",
+    description: "Most expensive motorcycle, not the rarest",
+    type: "ground",
+    repairPrice: 3000,
+    repairPriceGarage: 900,
+    contractPrice: 700000,
+    stats: {
+      topSpeed: 61,
+      acceleration: 44,
+      braking: 59,
+      Health: "Body-200/Wheels-100/Windows-100",
+      armor: 0
+    }
+  }
 
 ];
 
