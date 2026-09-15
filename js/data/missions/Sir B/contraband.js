@@ -38,4 +38,17 @@ window.MISSIONS_SIR_B_CONTRABAND = [
     tipsAndInfo: []
   },
 
+  {
+    id: "contraband-4",
+    image: "contraband",
+    title: "Contraband - Part 4",
+    location: "Criminal Outpost – Talk to Sir. B",
+    description: "We have some clients looking to procure powerful firearms. Ghost guns only, no serial numbers, nothing store bought. When you find them, sell them to Rod at the port. He'll facilitate the transaction.",
+    howToComplete: "Sell 1 found M60 and 1 found Kriss Vector to Rod at the port.",
+    difficulty: "HARD",
+    missionType: "Sir. B",
+    rewards: ["1,400 Syndicate XP", "$50,000"],
+    tipsAndInfo: []
+  },
+
 ];

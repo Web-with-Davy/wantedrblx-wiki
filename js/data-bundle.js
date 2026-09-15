@@ -758,6 +758,23 @@ window.MISSIONS_BERT_PUBLIC_RELATIONS = [
   }
 ];
 
+/* --- js/data/missions/Bert/rought-cargo.js --- */
+window.MISSIONS_BERT_ROUGH_CARGO = [
+
+  {
+    id: "rough-cargo",
+    title: "Rough Cargo",
+    location: "Police Station – Talk to Bert",
+    description: "Word around town is the Syndicate is going after military airdrops. We can't let them get access to that kind of hardware. Go to the airport and seize the flight log so we can make it there first.",
+    howToComplete: "Seize the fligh logs at the airport inside the tower and arrest 15 criminals near an airdrop",
+    difficulty: "EASY",
+    missionType: "Bert",
+    rewards: ["1700 Police XP", "$100,000"],
+    tipsAndInfo: []
+  },
+
+];
+
 /* --- js/data/missions/Bert/search-and-seizure.js --- */
 window.MISSIONS_BERT_SEARCH_AND_SEIZURE = [
 
@@ -1213,6 +1230,19 @@ window.MISSIONS_SIR_B_CONTRABAND = [
     tipsAndInfo: []
   },
 
+  {
+    id: "contraband-4",
+    image: "contraband",
+    title: "Contraband - Part 4",
+    location: "Criminal Outpost – Talk to Sir. B",
+    description: "We have some clients looking to procure powerful firearms. Ghost guns only, no serial numbers, nothing store bought. When you find them, sell them to Rod at the port. He'll facilitate the transaction.",
+    howToComplete: "Sell 1 found M60 and 1 found Kriss Vector to Rod at the port.",
+    difficulty: "HARD",
+    missionType: "Sir. B",
+    rewards: ["1,400 Syndicate XP", "$50,000"],
+    tipsAndInfo: []
+  },
+
 ];
 
 /* --- js/data/missions/Sir B/crime-squad.js --- */
@@ -1296,6 +1326,23 @@ window.MISSIONS_SIR_B_DATA_DISK = [
     difficulty: "EASY",
     missionType: "Sir. B",
     rewards: ["200 Syndicate XP", "$5,000"],
+    tipsAndInfo: []
+  },
+
+];
+
+/* --- js/data/missions/Sir B/diamonds-and-pearls.js --- */
+window.MISSIONS_SIR_B_DIAMONDS_AND_PEARLS = [
+
+  {
+    id: "diamonds-and-pearls",
+    title: "Diamonds And Pearls",
+    location: "Criminal Outpost – Talk to Sir. B",
+    description: "Another order for Ofy. Sell a bag to Ofy containing 6 Pearl Necklaces and 2 Diamonds - all at once.",
+    howToComplete: "Sell Ofy a bag containing 6 Pearl Necklaces and 2 Diamonds, all at once.",
+    difficulty: "HARD",
+    missionType: "Sir. B",
+    rewards: ["2,200 Syndicate XP", "$50,000"],
     tipsAndInfo: []
   },
 
@@ -2228,7 +2275,7 @@ window.PROMO_CODES_ACTIVE = [
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
   { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
-  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
+  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true }
 ];
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
@@ -2239,9 +2286,9 @@ window.PROMO_CODES_EXPIRED = [
   { code: "USA250", reward: "2026 Firework Wrap", active: false },
   { code: "FIREWORKS", reward: "10x Fireworks", active: false },
   { code: "PITY", reward: "x2 Basic Vehicle Crates", active: false },
-  { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Basic Vehicle Crates", active: salse },
-  { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: salse },
-  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
+  { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Basic Vehicle Crates", active: false },
+  { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: false },
+  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false }
 ];
 
 /* --- js/data/store/bag-boosts.js --- */
