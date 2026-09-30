@@ -26,7 +26,6 @@ const VAULT_GUESSER_META = {
     'Amethyst Vault': { image: 'images/atms/amethyst-vault.webp', color: '#a855f7' },
 };
 const VAULT_GUESSER_SLOT_MS = 20 * 60 * 1000;
-const VAULT_GUESSER_STORAGE_PREFIX = 'wanted_wiki_vault_guesser_slot_';
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
 
 function getVaultGuesserSlotStart(date = new Date()) {
@@ -59,26 +58,8 @@ function formatVaultGuessTime(date = new Date()) {
 function getVaultGuessForSlot(date = new Date()) {
     const slotStart = getVaultGuesserSlotStart(date);
     const slotIndex = Math.floor(slotStart.getTime() / VAULT_GUESSER_SLOT_MS);
-    const storageKey = `${VAULT_GUESSER_STORAGE_PREFIX}${slotIndex}`;
-
-    try {
-        const saved = localStorage.getItem(storageKey);
-        if (saved && VAULT_GUESSER_OPTIONS.includes(saved)) {
-            return saved;
-        }
-    } catch (error) {
-        console.warn('Vault guesser storage unavailable:', error);
-    }
-
-    const guessedVault = VAULT_GUESSER_OPTIONS[Math.floor(Math.random() * VAULT_GUESSER_OPTIONS.length)];
-
-    try {
-        localStorage.setItem(storageKey, guessedVault);
-    } catch (error) {
-        console.warn('Vault guesser save failed:', error);
-    }
-
-    return guessedVault;
+    const slotHash = Math.imul(slotIndex, 2654435761) >>> 0;
+    return VAULT_GUESSER_OPTIONS[slotHash % VAULT_GUESSER_OPTIONS.length];
 }
 
 function getVaultGuessForNextSlot(date = new Date()) {
