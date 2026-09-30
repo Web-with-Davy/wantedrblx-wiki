@@ -16,6 +16,7 @@ const UPDATES = [
 
 const COUNTDOWN_TARGET = new Date('2026-10-02T20:00:00+03:00');
 const VAULT_GUESSER_OPTIONS = ['Regular Vault', 'Silver Vault', 'Gold Vault', 'Sapphire Vault', 'Ruby Vault', 'Emerald Vault', 'Amethyst Vault'];
+const VAULT_GUESSER_WEIGHTS = [5354, 2634, 1696, 219, 61, 28, 9];
 const VAULT_GUESSER_META = {
     'Regular Vault': { image: 'images/atms/regular-vault.webp', color: '#a7b2bf' },
     'Silver Vault': { image: 'images/atms/silver-vault.webp', color: '#dfe7f0' },
@@ -59,7 +60,15 @@ function getVaultGuessForSlot(date = new Date()) {
     const slotStart = getVaultGuesserSlotStart(date);
     const slotIndex = Math.floor(slotStart.getTime() / VAULT_GUESSER_SLOT_MS);
     const slotHash = Math.imul(slotIndex, 2654435761) >>> 0;
-    return VAULT_GUESSER_OPTIONS[slotHash % VAULT_GUESSER_OPTIONS.length];
+    const weightTotal = VAULT_GUESSER_WEIGHTS.reduce((total, weight) => total + weight, 0);
+    let weightedSlot = slotHash % weightTotal;
+
+    for (let index = 0; index < VAULT_GUESSER_OPTIONS.length; index++) {
+        weightedSlot -= VAULT_GUESSER_WEIGHTS[index];
+        if (weightedSlot < 0) return VAULT_GUESSER_OPTIONS[index];
+    }
+
+    return VAULT_GUESSER_OPTIONS[VAULT_GUESSER_OPTIONS.length - 1];
 }
 
 function getVaultGuessForNextSlot(date = new Date()) {
