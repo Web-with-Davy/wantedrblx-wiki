@@ -1,4 +1,6 @@
 const UPDATES = [
+    { version: "D.05/M.09/Y.2026", description: "Motorcycle Update", color: "rgb(255, 60, 0)", color2: "rgb(161, 179, 0)" },
+    { version: "D.15/M.08/Y.2026", description: "Evidence Room Update", color: "rgb(0, 42, 255)", color2: "rgb(179, 140, 0)" },
     { version: "D.26/M.07/Y.2026", description: "Police Update", color: "#0091ffff", color2: "#0056b3ff" },
     { version: "D.04/M.07/Y.2026", description: "4th of July 2026 Event", color: "#ff0000ff", color2: "#ffffffff" },
     // { version: "D.27/M.06/Y.2026", description: "New Guns & Vehicles", color: "#0091ffff", color2: "#ffffffff" },
@@ -12,8 +14,112 @@ const UPDATES = [
     // { version: "D.12/M.12/Y.2025", description: "Christmas Event", color: "#00ffaaff", color2: "#ffffffff" }
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-07-26T20:00:00+03:00');
+const COUNTDOWN_TARGET = new Date('2026-10-02T20:00:00+03:00');
+const VAULT_GUESSER_OPTIONS = ['Regular Vault', 'Silver Vault', 'Gold Vault', 'Sapphire Vault', 'Ruby Vault', 'Emerald Vault', 'Amethyst Vault'];
+const VAULT_GUESSER_META = {
+    'Regular Vault': { image: 'images/atms/regular-vault.webp', color: '#a7b2bf' },
+    'Silver Vault': { image: 'images/atms/silver-vault.webp', color: '#dfe7f0' },
+    'Gold Vault': { image: 'images/atms/gold-vault.webp', color: '#f5c542' },
+    'Sapphire Vault': { image: 'images/atms/sapphire-vault.webp', color: '#4b82ff' },
+    'Ruby Vault': { image: 'images/atms/ruby-vault.webp', color: '#f43f5e' },
+    'Emerald Vault': { image: 'images/atms/emerald-vault.webp', color: '#19d38c' },
+    'Amethyst Vault': { image: 'images/atms/amethyst-vault.webp', color: '#a855f7' },
+};
+const VAULT_GUESSER_SLOT_MS = 20 * 60 * 1000;
+const VAULT_GUESSER_STORAGE_PREFIX = 'wanted_wiki_vault_guesser_slot_';
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
+
+function getVaultGuesserSlotStart(date = new Date()) {
+    const slotDate = new Date(date);
+    slotDate.setSeconds(0, 0);
+    const minutes = slotDate.getMinutes();
+    slotDate.setMinutes(minutes - (minutes % 20));
+    return slotDate;
+}
+
+function getNextVaultGuesserTime(date = new Date()) {
+    const nextTime = new Date(date);
+    nextTime.setSeconds(0, 0);
+    const minutes = nextTime.getMinutes();
+    const remainder = minutes % 20;
+
+    if (remainder === 0) {
+        nextTime.setMinutes(minutes + 20);
+    } else {
+        nextTime.setMinutes(minutes + (20 - remainder));
+    }
+
+    return nextTime;
+}
+
+function formatVaultGuessTime(date = new Date()) {
+    return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+}
+
+function getVaultGuessForSlot(date = new Date()) {
+    const slotStart = getVaultGuesserSlotStart(date);
+    const slotIndex = Math.floor(slotStart.getTime() / VAULT_GUESSER_SLOT_MS);
+    const storageKey = `${VAULT_GUESSER_STORAGE_PREFIX}${slotIndex}`;
+
+    try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved && VAULT_GUESSER_OPTIONS.includes(saved)) {
+            return saved;
+        }
+    } catch (error) {
+        console.warn('Vault guesser storage unavailable:', error);
+    }
+
+    const guessedVault = VAULT_GUESSER_OPTIONS[Math.floor(Math.random() * VAULT_GUESSER_OPTIONS.length)];
+
+    try {
+        localStorage.setItem(storageKey, guessedVault);
+    } catch (error) {
+        console.warn('Vault guesser save failed:', error);
+    }
+
+    return guessedVault;
+}
+
+function getVaultGuessForNextSlot(date = new Date()) {
+    return getVaultGuessForSlot(getNextVaultGuesserTime(date));
+}
+
+function initVaultGuesser() {
+    const resultEl = document.getElementById('vault-guesser-result');
+    const nextEl = document.getElementById('vault-guesser-next');
+    if (!resultEl || !nextEl) return;
+
+    if (window.__vaultGuesserTimer) {
+        clearTimeout(window.__vaultGuesserTimer);
+    }
+
+    const refreshGuess = () => {
+        const now = new Date();
+        const nextGuessTime = getNextVaultGuesserTime(now);
+        const guessedVault = getVaultGuessForNextSlot(now);
+        const meta = VAULT_GUESSER_META[guessedVault] || VAULT_GUESSER_META['Regular Vault'];
+        const color = meta.color || '#ffffff';
+
+        resultEl.innerHTML = `
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+                <div style="font-size:0.68rem;letter-spacing:0.16em;color:#d8d8d8;text-transform:uppercase;">THE NEXT VAULT WILL BE</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+                    <img src="${meta.image}" alt="${guessedVault}" style="width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 10px ${color});">
+                    <span style="color:${color};text-shadow:0 0 12px ${color};letter-spacing:0.08em;font-weight:700;">${guessedVault}</span>
+                </div>
+            </div>
+        `;
+        nextEl.textContent = `NEXT GUESS: ${formatVaultGuessTime(nextGuessTime)}`;
+
+        const waitMs = Math.max(1000, nextGuessTime.getTime() - now.getTime());
+        window.__vaultGuesserTimer = setTimeout(() => {
+            refreshGuess();
+        }, waitMs);
+    };
+
+    refreshGuess();
+}
 
 function renderHome() {
 
@@ -297,11 +403,11 @@ function renderHome() {
                     <div class="sidebar-block">
                         <div class="sidebar-box views-box" style="width: 100%;">
                             <div class="views-header" style="justify-content: center;">
-                                <h3 class="views-title">VIEWER COUNTER</h3>
+                                <h3 class="views-title">VAULT GUESSER</h3>
                             </div>
                             <div class="views-display">
-                                <div id="visitor-count" class="views-count">---</div>
-                                <div class="views-subtext">UNIQUE IDENTITIES RECORDED</div>
+                                <div id="vault-guesser-result" class="views-count">Loading...</div>
+                                <div id="vault-guesser-next" class="views-subtext">NEXT GUESS: --:--</div>
                             </div>
                         </div>
                     </div>

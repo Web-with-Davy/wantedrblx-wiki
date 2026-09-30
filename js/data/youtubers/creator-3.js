@@ -4,19 +4,19 @@ window.YOUTUBER_CREATOR_3 = {
   channelUrl: "https://www.youtube.com/@ZDMD",
   videos: [
     {
-      title: "FASTEST WAY To COMPLETE Wanted POLICE CAREER! (ROBLOX)",
-      thumbnail: "https://i.ytimg.com/vi/qJHYA887ANs/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCM772JSdTJF1K2Sq6zwP5djxPLRA",
-      link: "https://www.youtube.com/watch?v=qJHYA887ANs"
+      title: "FASTEST WAY To UNLOCK SIR B In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/ISHUoDupU2A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCy81yTDxXixPSc6H-0bntW1t7K3g",
+      link: "https://www.youtube.com/watch?v=ISHUoDupU2A"
     },
     {
-      title: "EVERYTHING NEW In Wanted POLICE UPDATE! (ROBLOX)",
-      thumbnail: "https://i.ytimg.com/vi/i_xuNfd3SW0/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAlgH_BRlxUIKbu3DNQ5FjmI7eIaA",
-      link: "https://www.youtube.com/watch?v=i_xuNfd3SW0"
+      title: "250K/HOUR METHOD In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/epJFAUJF6kM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDffR4Vu0fnEZz9H8TyAQBpT5mEUg",
+      link: "https://www.youtube.com/watch?v=epJFAUJF6kM"
     },
     {
-      title: "EVEN MORE SECRETS In Wanted! (ROBLOX)",
-      thumbnail: "https://i.ytimg.com/vi/Zg_vhQKSIlM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBIGbPAN18p8VokA68ZXT3Q_3bE-A",
-      link: "https://www.youtube.com/watch?v=Zg_vhQKSIlM"
+      title: "Rift VS Empyrean In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/cGfE4XCHF7Q/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCvUQSEuabAR9gZD2g7mDP7jjVutw",
+      link: "https://www.youtube.com/watch?v=cGfE4XCHF7Q"
     }
   ]
 };

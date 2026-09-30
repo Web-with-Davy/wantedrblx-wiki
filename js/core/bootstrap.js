@@ -27,7 +27,6 @@
     "js/tabs/valuables.js",
     "js/tabs/vehicles.js",
     "js/tabs/weapons.js",
-    "js/features/visitor.js",
     "js/events/easter_eggs.js",
     "js/events/birthday.js",
     "js/events/4th-of-july.js",

@@ -4,19 +4,19 @@ window.YOUTUBER_CREATOR_2 = {
   channelUrl: "https://www.youtube.com/@CeeJay_",
   videos: [
     {
-      title: "EASY MONEY METHOD In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/iaC3Fd5pT8k/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBA3p3yWiHxYJa-Ls9ij-3-wanfGw",
-      link: "https://www.youtube.com/watch?v=iaC3Fd5pT8k"
+      title: "MONEY LAUNDERING UPDATE CONFIRMED In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/WUX7E0-Tc9A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCZHA6lYdDmWY5wwI0iL2HtqaAuDg",
+      link: "https://www.youtube.com/watch?v=WUX7E0-Tc9A"
     },
     {
-      title: "5 SECRETS In Wanted's POLICE UPDATE!",
-      thumbnail: "https://i.ytimg.com/vi/p3W9XIy540A/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ7vfRk08T54t8G5ryhM6quvFdxA",
-      link: "https://www.youtube.com/watch?v=p3W9XIy540A"
+      title: "FISHING UPDATE CONFIRMED In Wanted?",
+      thumbnail: "https://i.ytimg.com/vi/NhuJl4QTBrQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCdjJKgsQeA10rhVtDxdydaA_-IUw",
+      link: "https://www.youtube.com/watch?v=NhuJl4QTBrQ"
     },
     {
-      title: "POLICE CAREER + MISSIONS UPDATE In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/HFKLxruj4bM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBBMCr5ONWqwnVeKHbdtUVUsJNZIQ",
-      link: "https://www.youtube.com/watch?v=HFKLxruj4bM"
+      title: "RIFT REVIEW in Wanted",
+      thumbnail: "https://i.ytimg.com/vi/PLVb5I8WZ5c/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFntHmJ80nHXRiVjDgsP-kjY164w",
+      link: "https://www.youtube.com/watch?v=PLVb5I8WZ5c"
     }
   ]
 };

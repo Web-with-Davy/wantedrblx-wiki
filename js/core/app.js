@@ -103,7 +103,7 @@ function loadPage(page, saveToHistory = true) {
 
         if (page === "home") {
             if (typeof initCountdownTimer === "function") initCountdownTimer();
-            if (typeof updateVisitorDisplay === "function") updateVisitorDisplay(window.visitorCountCached || "---");
+            if (typeof initVaultGuesser === "function") initVaultGuesser();
         }
 
         const cards = container.querySelectorAll('.val-card');
@@ -152,15 +152,6 @@ window.addEventListener("popstate", (event) => {
 
     loadPage(page, false);
 });
-
-function updateVisitorDisplay(count) {
-    window.visitorCountCached = count;
-    const counterValue = document.getElementById('visitor-count');
-    if (counterValue) {
-        counterValue.textContent = count;
-    }
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -230,8 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initGlobalSounds();
-
-    if (typeof trackVisit === 'function') trackVisit(updateVisitorDisplay);
 
     if (bgm && volumeSlider) {
         const savedVol = localStorage.getItem("bgmVolume") || 0.4;

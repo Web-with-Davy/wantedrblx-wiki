@@ -20,13 +20,13 @@ window.ATMS_DATA = [
 /* --- js/data/atms/vaults.js --- */
 window.VAULTS_DATA = [
 
-  { name: "Regular Vault",  rarity: "COMMON",      rarityPercent: "53.76%",          priceMin: 5000,   priceMax: 7500   },
-  { name: "Silver Vault",   rarity: "COMMON",      rarityPercent: "26.60%",          priceMin: 7500,   priceMax: 9000   },
-  { name: "Gold Vault",     rarity: "UNCOMMON",    rarityPercent: "16.67%",          priceMin: 10000,  priceMax: 20000  },
-  { name: "Sapphire Vault", rarity: "EPIC",        rarityPercent: "2.11%",           priceMin: 30000,  priceMax: 40000  },
-  { name: "Ruby Vault",     rarity: "MYTHIC",      rarityPercent: "0.43%",           priceMin: 60000,  priceMax: 70000  },
-  { name: "Emerald Vault",  rarity: "LEGENDARY",   rarityPercent: "0.25%",           priceMin: 100000, priceMax: 150000 },
-  { name: "Amethyst Vault", rarity: "LEGENDARY",   rarityPercent: "0.062%",          priceMin: 250000, priceMax: 275000 },
+  { name: "Regular Vault",  rarity: "COMMON",      rarityPercent: "53.54%",          priceMin: 5000,   priceMax: 7500   },
+  { name: "Silver Vault",   rarity: "COMMON",      rarityPercent: "26.34%",          priceMin: 7500,   priceMax: 9000   },
+  { name: "Gold Vault",     rarity: "UNCOMMON",    rarityPercent: "16.96%",          priceMin: 10000,  priceMax: 20000  },
+  { name: "Sapphire Vault", rarity: "EPIC",        rarityPercent: "2.19%",           priceMin: 30000,  priceMax: 40000  },
+  { name: "Ruby Vault",     rarity: "MYTHIC",      rarityPercent: "0.61%",           priceMin: 60000,  priceMax: 70000  },
+  { name: "Emerald Vault",  rarity: "LEGENDARY",   rarityPercent: "0.28%",           priceMin: 100000, priceMax: 150000 },
+  { name: "Amethyst Vault", rarity: "LEGENDARY",   rarityPercent: "0.09%",           priceMin: 250000, priceMax: 275000 },
   { name: "Diamond Vault",  rarity: "UNOBTAINABLE",rarityPercent: "Admin Abuse Only",priceMin: 300000, priceMax: 325000 },
 
 ];
@@ -4363,19 +4363,19 @@ window.YOUTUBER_CREATOR_2 = {
   channelUrl: "https://www.youtube.com/@CeeJay_",
   videos: [
     {
-      title: "EASY MONEY METHOD In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/iaC3Fd5pT8k/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBA3p3yWiHxYJa-Ls9ij-3-wanfGw",
-      link: "https://www.youtube.com/watch?v=iaC3Fd5pT8k"
+      title: "MONEY LAUNDERING UPDATE CONFIRMED In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/WUX7E0-Tc9A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCZHA6lYdDmWY5wwI0iL2HtqaAuDg",
+      link: "https://www.youtube.com/watch?v=WUX7E0-Tc9A"
     },
     {
-      title: "5 SECRETS In Wanted's POLICE UPDATE!",
-      thumbnail: "https://i.ytimg.com/vi/p3W9XIy540A/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ7vfRk08T54t8G5ryhM6quvFdxA",
-      link: "https://www.youtube.com/watch?v=p3W9XIy540A"
+      title: "FISHING UPDATE CONFIRMED In Wanted?",
+      thumbnail: "https://i.ytimg.com/vi/NhuJl4QTBrQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCdjJKgsQeA10rhVtDxdydaA_-IUw",
+      link: "https://www.youtube.com/watch?v=NhuJl4QTBrQ"
     },
     {
-      title: "POLICE CAREER + MISSIONS UPDATE In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/HFKLxruj4bM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBBMCr5ONWqwnVeKHbdtUVUsJNZIQ",
-      link: "https://www.youtube.com/watch?v=HFKLxruj4bM"
+      title: "RIFT REVIEW in Wanted",
+      thumbnail: "https://i.ytimg.com/vi/PLVb5I8WZ5c/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFntHmJ80nHXRiVjDgsP-kjY164w",
+      link: "https://www.youtube.com/watch?v=PLVb5I8WZ5c"
     }
   ]
 };
@@ -4387,19 +4387,19 @@ window.YOUTUBER_CREATOR_3 = {
   channelUrl: "https://www.youtube.com/@ZDMD",
   videos: [
     {
-      title: "FASTEST WAY To COMPLETE Wanted POLICE CAREER! (ROBLOX)",
-      thumbnail: "https://i.ytimg.com/vi/qJHYA887ANs/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCM772JSdTJF1K2Sq6zwP5djxPLRA",
-      link: "https://www.youtube.com/watch?v=qJHYA887ANs"
+      title: "FASTEST WAY To UNLOCK SIR B In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/ISHUoDupU2A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCy81yTDxXixPSc6H-0bntW1t7K3g",
+      link: "https://www.youtube.com/watch?v=ISHUoDupU2A"
     },
     {
-      title: "EVERYTHING NEW In Wanted POLICE UPDATE! (ROBLOX)",
-      thumbnail: "https://i.ytimg.com/vi/i_xuNfd3SW0/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAlgH_BRlxUIKbu3DNQ5FjmI7eIaA",
-      link: "https://www.youtube.com/watch?v=i_xuNfd3SW0"
+      title: "250K/HOUR METHOD In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/epJFAUJF6kM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDffR4Vu0fnEZz9H8TyAQBpT5mEUg",
+      link: "https://www.youtube.com/watch?v=epJFAUJF6kM"
     },
     {
-      title: "EVEN MORE SECRETS In Wanted! (ROBLOX)",
-      thumbnail: "https://i.ytimg.com/vi/Zg_vhQKSIlM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBIGbPAN18p8VokA68ZXT3Q_3bE-A",
-      link: "https://www.youtube.com/watch?v=Zg_vhQKSIlM"
+      title: "Rift VS Empyrean In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/cGfE4XCHF7Q/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCvUQSEuabAR9gZD2g7mDP7jjVutw",
+      link: "https://www.youtube.com/watch?v=cGfE4XCHF7Q"
     }
   ]
 };
