@@ -1,0 +1,1094 @@
+body.frutiger-aero {
+    --aero-ink: #123d58;
+    --aero-muted: #315a70;
+    --aero-glass: rgba(236, 250, 255, 0.9);
+    --aero-edge: rgba(255, 255, 255, 0.94);
+    --aero-shadow: 0 12px 30px rgba(9, 71, 112, 0.2), inset 0 1px rgba(255, 255, 255, 0.92);
+    color: var(--aero-ink);
+    background: #1685d2;
+}
+
+body.frutiger-aero .police-flash-red,
+body.frutiger-aero .police-flash-blue {
+    display: none !important;
+}
+
+body.frutiger-aero .fixed-header,
+body.frutiger-aero #mobile-bottom-nav,
+body.frutiger-aero .dropdown-content,
+body.frutiger-aero .settings-content,
+body.frutiger-aero .settings-toggle,
+body.frutiger-aero #back-to-top,
+body.frutiger-aero #copy-toast {
+    color: var(--aero-ink);
+    background: rgba(226, 248, 255, 0.9);
+    border-color: var(--aero-edge);
+    box-shadow: var(--aero-shadow);
+    backdrop-filter: blur(18px) saturate(145%);
+    -webkit-backdrop-filter: blur(18px) saturate(145%);
+}
+
+body.frutiger-aero .fixed-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.94);
+}
+
+body.frutiger-aero .header-top {
+    border-bottom-color: rgba(18, 108, 145, 0.16);
+}
+
+body.frutiger-aero .neon-title {
+    color: #086f9b;
+    background-image: none;
+    text-shadow: 0 1px #fff, 0 3px 12px rgba(22, 143, 190, 0.32);
+}
+
+body.frutiger-aero .neon-title::after {
+    color: #317c98;
+}
+
+body.frutiger-aero .tab,
+body.frutiger-aero .mobile-nav-item {
+    color: rgba(12, 67, 96, 0.86);
+}
+
+body.frutiger-aero .tab:hover,
+body.frutiger-aero .tab.active,
+body.frutiger-aero .mobile-nav-item.active,
+body.frutiger-aero .mobile-nav-item:active {
+    color: #075578;
+    background: rgba(255, 255, 255, 0.66);
+    border-color: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 3px 14px rgba(0, 91, 128, 0.15), inset 0 1px #fff;
+}
+
+body.frutiger-aero .mobile-nav-item.active::after {
+    background: linear-gradient(90deg, #0a9bd0, #41c8d5, #8bdc78);
+}
+
+body.frutiger-aero .emoji-style,
+body.frutiger-aero .cat-icon,
+body.frutiger-aero .wiki-stat-icon,
+body.frutiger-aero .official-link-icon,
+body.frutiger-aero .setting-icon,
+body.frutiger-aero .toggle-icon,
+body.frutiger-aero .ip-emoji,
+body.frutiger-aero .mobile-nav-icon,
+body.frutiger-aero .countdown-icon,
+body.frutiger-aero .views-icon,
+body.frutiger-aero .updates-icon,
+body.frutiger-aero .discord-widget-icon,
+body.frutiger-aero .official-link-icon,
+body.frutiger-aero .vault-icon,
+body.frutiger-aero .setting-icon,
+body.frutiger-aero .toggle-icon {
+    filter: none;
+    text-shadow: 0 2px 4px rgba(18, 80, 116, 0.24);
+}
+
+body.frutiger-aero .emoji-style,
+body.frutiger-aero .mobile-nav-icon,
+body.frutiger-aero .cat-icon,
+body.frutiger-aero .wiki-stat-icon,
+body.frutiger-aero .official-link-icon,
+body.frutiger-aero .setting-icon,
+body.frutiger-aero .toggle-icon,
+body.frutiger-aero .ip-emoji,
+body.frutiger-aero .countdown-icon,
+body.frutiger-aero .views-icon,
+body.frutiger-aero .updates-icon,
+body.frutiger-aero .discord-widget-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 1.8em;
+    height: 1.8em;
+    min-width: 1.8em;
+    min-height: 1.8em;
+    flex: 0 0 1.8em;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.35) 44%, rgba(94, 190, 230, 0.26));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.95), 0 2px 6px rgba(20, 87, 121, 0.16);
+}
+
+body.frutiger-aero .grid-title .cat-icon,
+body.frutiger-aero .sidebar-title .cat-icon,
+body.frutiger-aero .countdown-header .countdown-icon,
+body.frutiger-aero .views-header .views-icon,
+body.frutiger-aero .updates-header .updates-icon,
+body.frutiger-aero .discord-widget-icon {
+    font-size: 0.95em;
+}
+
+body.frutiger-aero .search-input,
+body.frutiger-aero .setting-select,
+body.frutiger-aero .setting-toggle-btn,
+body.frutiger-aero .sort-btn,
+body.frutiger-aero .page-jump-nav a,
+body.frutiger-aero .ip-back-btn,
+body.frutiger-aero .discord-join-btn,
+body.frutiger-aero .sidebar-codes-more {
+    color: var(--aero-ink);
+    background: rgba(246, 253, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.96);
+    box-shadow: 0 4px 12px rgba(11, 81, 121, 0.12), inset 0 1px #fff;
+}
+
+body.frutiger-aero .search-input::placeholder,
+body.frutiger-aero .setting-label,
+body.frutiger-aero .settings-header h2,
+body.frutiger-aero .toggle-text {
+    color: var(--aero-ink);
+}
+
+body.frutiger-aero .setting-select {
+    color-scheme: light;
+}
+
+body.frutiger-aero .setting-select option {
+    color: var(--aero-ink);
+    background: #effaff;
+}
+
+body.frutiger-aero .content,
+body.frutiger-aero .page-wrapper,
+body.frutiger-aero .ip-wrap {
+    color: var(--aero-ink);
+}
+
+body.frutiger-aero .content h1,
+body.frutiger-aero .content h2,
+body.frutiger-aero .content h3,
+body.frutiger-aero .content h4,
+body.frutiger-aero .ip-title,
+body.frutiger-aero .ip-section-header,
+body.frutiger-aero .val-section-title,
+body.frutiger-aero .grid-title {
+    color: #104b69;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.88), 0 2px 9px rgba(255, 255, 255, 0.5);
+}
+
+body.frutiger-aero .hero-logo-container {
+    position: relative;
+    width: min(344px, 100%);
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.frutiger-aero .hero-logo {
+    content: url('../../images/logo-frutiger-aero.webp');
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 7px 14px rgba(3, 73, 117, 0.42));
+}
+
+body.frutiger-aero .hero-text {
+    max-width: min(760px, 96%);
+    padding: 12px 18px;
+    color: #082f48;
+    background: rgba(246, 253, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.94);
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(10, 71, 108, 0.16), inset 0 1px rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px) saturate(125%);
+    -webkit-backdrop-filter: blur(12px) saturate(125%);
+    text-shadow: none;
+}
+
+body.frutiger-aero .content :is(p, li, span, small, label, strong, time, dt, dd):not(.emoji-style):not(.cat-icon):not(.wiki-stat-icon):not(.official-link-icon):not(.setting-icon):not(.toggle-icon):not(.ip-emoji):not(.mobile-nav-icon):not(.sidebar-code-tag):not(.val-stat-highlight):not([class*="rarity"]):not(.price-tag):not(.rainbow-text):not(.update-version) {
+    color: #0b2d46;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.72);
+}
+
+body.frutiger-aero .card,
+body.frutiger-aero .val-card,
+body.frutiger-aero .sidebar-box,
+body.frutiger-aero .views-box,
+body.frutiger-aero .updates-box,
+body.frutiger-aero .countdown-box,
+body.frutiger-aero .home-category-card,
+body.frutiger-aero .featured-video-card,
+body.frutiger-aero .discord-widget-box,
+body.frutiger-aero .official-link-btn,
+body.frutiger-aero .ip-dialogue-item,
+body.frutiger-aero .ip-how-to,
+body.frutiger-aero .ip-tip,
+body.frutiger-aero .ip-section-body .val-stat {
+    color: var(--aero-ink);
+    background: linear-gradient(145deg, rgba(248, 254, 255, 0.93), rgba(214, 242, 252, 0.86));
+    border: 1px solid var(--aero-edge);
+    border-radius: 12px;
+    box-shadow: var(--aero-shadow);
+    backdrop-filter: blur(12px) saturate(135%);
+    -webkit-backdrop-filter: blur(12px) saturate(135%);
+    clip-path: none;
+    transform: none;
+}
+
+body.frutiger-aero .card:hover,
+body.frutiger-aero .val-card:hover,
+body.frutiger-aero .sidebar-box:hover,
+body.frutiger-aero .views-box:hover,
+body.frutiger-aero .updates-box:hover,
+body.frutiger-aero .countdown-box:hover,
+body.frutiger-aero .home-category-card:hover,
+body.frutiger-aero .featured-video-card:hover,
+body.frutiger-aero .discord-widget-box:hover,
+body.frutiger-aero .official-link-btn:hover {
+    color: #083d5b;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(194, 234, 250, 0.92));
+    border-color: #fff;
+    box-shadow: 0 15px 32px rgba(9, 71, 112, 0.25), inset 0 1px #fff;
+    transform: translateY(-3px);
+}
+
+body.frutiger-aero .card::before,
+body.frutiger-aero .val-card::before,
+body.frutiger-aero .home-category-card::before,
+body.frutiger-aero .sidebar-box::before,
+body.frutiger-aero .views-box::before,
+body.frutiger-aero .updates-box::before,
+body.frutiger-aero .countdown-box::before,
+body.frutiger-aero .featured-video-card::after,
+body.frutiger-aero .discord-widget-box::before,
+body.frutiger-aero .official-link-btn::after {
+    display: none;
+}
+
+body.frutiger-aero .card :is(h1, h2, h3, h4, p, span, small, label, strong, .val-stat-label, .val-stat-value, .val-name, .val-hidden, .val-desc):not(.rarity):not(.price-tag),
+body.frutiger-aero .val-card :is(h1, h2, h3, h4, p, span, small, label, strong, .val-stat-label, .val-stat-value, .val-name, .val-hidden, .val-desc):not(.rarity):not(.price-tag),
+body.frutiger-aero .ip-wrap :is(h1, h2, h3, h4, p, li, .ip-dialogue-label, .ip-dialogue-text, .ip-desc-block, .ip-breadcrumb-current, .ip-breadcrumb-sep) {
+    color: #092b44;
+    text-shadow: none;
+}
+
+body.frutiger-aero .val-card :is(.val-name, .val-hidden, .val-stat, .val-stat-label, .val-stat-value, .val-price-label, .val-price-value, .val-desc),
+body.frutiger-aero .ip-wrap :is(.ip-title, .ip-desc-block, .ip-section-header, .ip-how-to, .ip-tip, .ip-list li, .ip-dialogue-label, .ip-dialogue-text, .ip-empty, .val-stat, .val-stat-label, .val-stat-value) {
+    color: #082941 !important;
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+}
+
+body.frutiger-aero .val-price-value {
+    color: #176044 !important;
+}
+
+body.frutiger-aero .ip-how-to,
+body.frutiger-aero .ip-tip,
+body.frutiger-aero .ip-section-body .val-stat {
+    background: rgba(246, 253, 255, 0.96);
+    border-color: rgba(255, 255, 255, 0.98);
+}
+
+body.frutiger-aero .ip-att-group {
+    color: #103b55;
+    background: linear-gradient(145deg, rgba(250, 254, 255, 0.97), rgba(218, 242, 252, 0.94));
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 5px 14px rgba(9, 71, 112, 0.12), inset 0 1px #fff;
+    transform: translateY(0);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.frutiger-aero .ip-att-group:hover {
+    color: #082e48;
+    background: linear-gradient(145deg, #fff, rgba(198, 235, 250, 0.98));
+    border-color: #fff;
+    box-shadow: 0 10px 22px rgba(9, 71, 112, 0.2), inset 0 1px #fff;
+    transform: translateY(-3px);
+}
+
+body.frutiger-aero .ip-att-cat {
+    color: #244d65;
+    border-bottom-color: rgba(38, 112, 148, 0.22);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+body.frutiger-aero .ip-att-row {
+    color: #123d58;
+    border-color: rgba(35, 105, 140, 0.16);
+    transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+body.frutiger-aero .ip-att-row:hover {
+    color: #082e48;
+    background: rgba(181, 228, 246, 0.36);
+}
+
+body.frutiger-aero .ip-att-group .val-stat-label,
+body.frutiger-aero .ip-att-group .val-stat-value {
+    color: #123d58 !important;
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+}
+
+body.frutiger-aero .ip-att-group .val-stat-value > span[style*="rgba(255,255,255"] {
+    color: #526f80 !important;
+    text-shadow: none !important;
+}
+
+body.frutiger-aero .rarity,
+body.frutiger-aero .price-tag {
+    background: rgba(245, 253, 255, 0.97);
+    text-shadow: none;
+    box-shadow: 0 2px 8px rgba(9, 71, 112, 0.14);
+}
+
+body.frutiger-aero .val-rarity-tag {
+    color: var(--aero-ink);
+    background: rgba(239, 250, 255, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.96);
+    border-radius: 999px;
+    text-shadow: none;
+    box-shadow: 0 3px 8px rgba(9, 71, 112, 0.16);
+}
+
+body.frutiger-aero .val-stat-highlight {
+    color: #176347 !important;
+    background: rgba(175, 239, 205, 0.6);
+    border: 1px solid rgba(69, 175, 121, 0.32);
+    border-radius: 999px;
+    padding: 2px 6px;
+    text-shadow: none;
+}
+
+body.frutiger-aero .val-img-wrap,
+body.frutiger-aero .ip-hero-img-wrap {
+    background: radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.94), rgba(206, 238, 249, 0.84));
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 1px #fff, 0 4px 14px rgba(9, 71, 112, 0.12);
+}
+
+body.frutiger-aero .val-img,
+body.frutiger-aero .ip-hero-img {
+    filter: drop-shadow(0 5px 9px rgba(11, 61, 88, 0.24));
+}
+
+body.frutiger-aero .video-title-card {
+    color: var(--aero-ink);
+    background: rgba(241, 251, 255, 0.94);
+}
+
+body.frutiger-aero .sidebar-title,
+body.frutiger-aero .sidebar-code-reward,
+body.frutiger-aero .wiki-stat-label,
+body.frutiger-aero .update-desc,
+body.frutiger-aero .views-subtext,
+body.frutiger-aero .countdown-label,
+body.frutiger-aero .staff-inline-role,
+body.frutiger-aero .val-section-count {
+    color: var(--aero-muted);
+}
+
+body.frutiger-aero .sidebar-title,
+body.frutiger-aero .grid-header,
+body.frutiger-aero .val-section-divider {
+    border-color: rgba(255, 255, 255, 0.82);
+}
+
+body.frutiger-aero .staff-inline-avatar {
+    border-color: rgba(255, 255, 255, 0.92);
+    background: rgba(232, 249, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(9, 71, 112, 0.16);
+}
+
+body.frutiger-aero .discord-widget-name,
+body.frutiger-aero .views-title,
+body.frutiger-aero .updates-title,
+body.frutiger-aero .countdown-title,
+body.frutiger-aero .views-count,
+body.frutiger-aero .countdown-time,
+body.frutiger-aero .countdown-number {
+    color: #104b69;
+    text-shadow: 0 1px #fff;
+}
+
+body.frutiger-aero .page-jump-nav a:hover,
+body.frutiger-aero .sort-btn:hover,
+body.frutiger-aero .sort-btn.active,
+body.frutiger-aero .ip-back-btn:hover,
+body.frutiger-aero .setting-toggle-btn:hover,
+body.frutiger-aero .setting-toggle-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #138cc3, #27b4c2);
+    border-color: rgba(255, 255, 255, 0.98);
+}
+
+body.frutiger-aero .dropdown-content .dropdown-tab {
+    color: var(--aero-ink);
+}
+
+body.frutiger-aero .dropdown-content .dropdown-tab:hover {
+    color: #084866;
+    background: rgba(255, 255, 255, 0.78);
+}
+
+body.frutiger-aero .content :is(.val-toggle, .val-see-more-btn, .card-details-toggle, .card-overlay-button, .back-to-card-btn, .val-copy-btn, .map-ctrl-btn, .tutorial-btn, .attachment-category-header) {
+    min-height: 36px;
+    color: var(--aero-ink);
+    background: rgba(243, 251, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(11, 81, 121, 0.14), inset 0 1px #fff;
+    clip-path: none;
+    text-shadow: none;
+}
+
+body.frutiger-aero .content :is(.val-toggle, .val-see-more-btn, .card-details-toggle, .card-overlay-button, .back-to-card-btn, .val-copy-btn, .map-ctrl-btn, .tutorial-btn, .attachment-category-header):hover {
+    color: #fff;
+    background: linear-gradient(135deg, #138cc3, #27b4c2);
+    border-color: #fff;
+    box-shadow: 0 6px 15px rgba(9, 71, 112, 0.2), inset 0 1px rgba(255, 255, 255, 0.72);
+}
+
+body.frutiger-aero .content .val-copy-btn.copied {
+    color: #145b42;
+    background: rgba(191, 245, 216, 0.96);
+}
+
+body.frutiger-aero .header-icon-btn,
+body.frutiger-aero .settings-close {
+    color: var(--aero-ink);
+    background: rgba(247, 253, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 3px 10px rgba(9, 71, 112, 0.12), inset 0 1px #fff;
+}
+
+body.frutiger-aero .hamburger span {
+    background: #126487;
+    box-shadow: 0 1px rgba(255, 255, 255, 0.8);
+}
+
+body.frutiger-aero .map-page-root {
+    background: linear-gradient(145deg, #c9f2ff, #8cdaef 55%, #65c5df);
+    border: 1px solid rgba(255, 255, 255, 0.94);
+    border-radius: 14px;
+    clip-path: none;
+    box-shadow: var(--aero-shadow);
+}
+
+body.frutiger-aero .map-sidebar {
+    color: var(--aero-ink);
+    background: rgba(225, 246, 255, 0.94);
+    border-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px) saturate(135%);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+
+body.frutiger-aero .map-sidebar-header {
+    background: rgba(255, 255, 255, 0.48);
+    border-bottom-color: rgba(25, 105, 141, 0.18);
+}
+
+body.frutiger-aero .map-sidebar-title {
+    color: #124c69;
+}
+
+body.frutiger-aero .map-viewport-wrap {
+    background: linear-gradient(180deg, #8fdcf2, #c9f2f8 42%, #75cee7);
+    background-image:
+        radial-gradient(ellipse at 54% 12%, rgba(255, 255, 255, 0.72), transparent 30%),
+        linear-gradient(180deg, #78cbea, #d5f4f4 54%, #a4e0df);
+}
+
+body.frutiger-aero .map-canvas {
+    filter: saturate(1.14) brightness(1.08) contrast(1.02);
+}
+
+body.frutiger-aero .map-viewport-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 14%;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(221, 250, 255, 0.24), transparent);
+}
+
+body.frutiger-aero .map-sidebar-emoji {
+    display: inline-grid;
+    place-items: center;
+    width: 1.8em;
+    height: 1.8em;
+    flex: 0 0 1.8em;
+    border: 1px solid rgba(255, 255, 255, 0.96);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, #fff, rgba(255, 255, 255, 0.54) 48%, rgba(93, 194, 226, 0.28));
+    box-shadow: inset 0 1px #fff, 0 3px 8px rgba(13, 85, 124, 0.18);
+    filter: none;
+    text-shadow: 0 1px 3px rgba(13, 85, 124, 0.28);
+}
+
+body.frutiger-aero .ip-hero.sidebar-box {
+    color: #123d58;
+    background: linear-gradient(145deg, rgba(250, 254, 255, 0.97), rgba(212, 240, 251, 0.92));
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 26px rgba(9, 71, 112, 0.17), inset 0 1px #fff;
+    transition: background 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+}
+
+body.frutiger-aero .ip-hero.sidebar-box:hover {
+    color: #082e48;
+    background: linear-gradient(145deg, #fff, rgba(192, 233, 249, 0.98));
+    border-color: #fff;
+    box-shadow: 0 16px 34px rgba(9, 71, 112, 0.26), inset 0 1px #fff;
+    transform: translateY(-3px);
+}
+
+body.frutiger-aero .ip-hero.sidebar-box:hover .ip-hero-img-wrap {
+    background: radial-gradient(ellipse at 50% 38%, #fff, rgba(199, 235, 249, 0.9));
+    border-color: rgba(255, 255, 255, 0.98);
+}
+
+body.frutiger-aero .ip-hero.sidebar-box:hover .ip-hero-img {
+    filter: drop-shadow(0 8px 16px rgba(8, 65, 98, 0.28)) brightness(1.04);
+}
+
+body.frutiger-aero .map-legend-item {
+    color: #19475f;
+    background: rgba(250, 254, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.94);
+    border-radius: 9px;
+    clip-path: none;
+    transform: none;
+    text-shadow: none;
+}
+
+body.frutiger-aero .map-legend-item:hover {
+    color: #0e5575;
+    background: rgba(255, 255, 255, 0.94);
+    border-color: var(--pin-color, #fff);
+}
+
+body.frutiger-aero .map-legend-item.active {
+    color: #fff;
+    background: linear-gradient(135deg, #138cc3, #27b4c2);
+    border-color: #fff;
+    text-shadow: 0 1px rgba(0, 58, 90, 0.35);
+}
+
+body.frutiger-aero .map-legend-icon {
+    opacity: 0.9;
+    filter: none;
+}
+
+body.frutiger-aero .map-legend-badge {
+    color: #43677a;
+}
+
+body.frutiger-aero .map-legend-item.active .map-legend-badge {
+    color: #fff;
+}
+
+body.frutiger-aero .map-controls .map-ctrl-btn {
+    color: #125373;
+    background: rgba(241, 251, 255, 0.94);
+}
+
+body.frutiger-aero .map-zone-label {
+    color: #f7feff;
+    text-shadow: 0 1px 3px rgba(3, 46, 70, 0.95), 0 0 9px rgba(3, 46, 70, 0.86);
+}
+
+body.frutiger-aero .map-pin-tooltip {
+    color: #103b55;
+    background: rgba(246, 253, 255, 0.98);
+    border-color: var(--pin-color, rgba(255, 255, 255, 0.8));
+    border-radius: 9px;
+    box-shadow: 0 5px 15px rgba(9, 71, 112, 0.2);
+    clip-path: none;
+}
+
+body.low-end-mode.frutiger-aero .card,
+body.low-end-mode.frutiger-aero .val-card,
+body.low-end-mode.frutiger-aero .sidebar-box,
+body.low-end-mode.frutiger-aero .views-box,
+body.low-end-mode.frutiger-aero .updates-box,
+body.low-end-mode.frutiger-aero .countdown-box,
+body.low-end-mode.frutiger-aero .home-category-card,
+body.low-end-mode.frutiger-aero .featured-video-card,
+body.low-end-mode.frutiger-aero .discord-widget-box,
+body.low-end-mode.frutiger-aero .official-link-btn {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+@media (max-width: 1024px) {
+    body.frutiger-aero {
+        background-attachment: scroll, scroll, scroll;
+        background-position: center 38%;
+    }
+
+    body.frutiger-aero .fixed-header {
+        background: rgba(226, 248, 255, 0.95);
+    }
+
+    body.frutiger-aero #mobile-bottom-nav {
+        height: calc(66px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: rgba(226, 248, 255, 0.96);
+        border-top-color: rgba(255, 255, 255, 0.98);
+    }
+
+    body.frutiger-aero .mobile-nav-item {
+        min-width: 0;
+        gap: 2px;
+        padding: 4px 2px;
+        font-size: 0.65rem;
+    }
+
+    body.frutiger-aero .mobile-nav-icon {
+        font-size: 1rem;
+    }
+
+    body.frutiger-aero .home-container {
+        min-height: calc(100vh - 120px);
+    }
+
+    body.frutiger-aero .hero-logo {
+        content: url('../../images/logo-frutiger-aero.webp');
+        filter: drop-shadow(0 5px 10px rgba(3, 73, 117, 0.42));
+    }
+}
+
+@media (max-width: 600px) {
+    body.frutiger-aero .content {
+        width: calc(100% - 20px);
+    }
+
+    body.frutiger-aero .settings-content {
+        width: min(95vw, 480px);
+        max-height: calc(100dvh - 24px);
+        overflow-y: auto;
+        border-radius: 16px;
+    }
+
+    body.frutiger-aero .settings-body {
+        padding: 16px;
+    }
+
+    body.frutiger-aero .hero-text {
+        width: min(100%, 520px);
+        padding: 10px 12px;
+        line-height: 1.55;
+    }
+
+    body.frutiger-aero .hero-logo-container {
+        width: min(224px, 100%);
+        padding: 0;
+    }
+
+    body.frutiger-aero .val-grid,
+    body.frutiger-aero .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 155px), 1fr));
+        gap: 12px;
+    }
+
+    body.frutiger-aero .ip-section-body {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    body.frutiger-aero .fixed-header,
+    body.frutiger-aero #mobile-bottom-nav,
+    body.frutiger-aero .dropdown-content,
+    body.frutiger-aero .settings-content,
+    body.frutiger-aero .card,
+    body.frutiger-aero .val-card,
+    body.frutiger-aero .sidebar-box,
+    body.frutiger-aero .views-box,
+    body.frutiger-aero .updates-box,
+    body.frutiger-aero .countdown-box,
+    body.frutiger-aero .home-category-card,
+    body.frutiger-aero .featured-video-card {
+        background: rgba(240, 251, 255, 0.97);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+body:not(.frutiger-aero) .cat-icon,
+body:not(.frutiger-aero) .wiki-stat-icon,
+body:not(.frutiger-aero) .official-link-icon,
+body:not(.frutiger-aero) .countdown-icon,
+body:not(.frutiger-aero) .views-icon,
+body:not(.frutiger-aero) .updates-icon,
+body:not(.frutiger-aero) .discord-widget-icon,
+body:not(.frutiger-aero) .ip-emoji,
+body:not(.frutiger-aero) .mobile-nav-icon,
+body:not(.frutiger-aero) .setting-icon,
+body:not(.frutiger-aero) .toggle-icon {
+    filter: grayscale(1) brightness(10);
+}
+
+body:not(.frutiger-aero) .cat-icon,
+body:not(.frutiger-aero) .wiki-stat-icon,
+body:not(.frutiger-aero) .official-link-icon,
+body:not(.frutiger-aero) .countdown-icon,
+body:not(.frutiger-aero) .views-icon,
+body:not(.frutiger-aero) .updates-icon,
+body:not(.frutiger-aero) .discord-widget-icon,
+body:not(.frutiger-aero) .ip-emoji,
+body:not(.frutiger-aero) .mobile-nav-icon,
+body:not(.frutiger-aero) .setting-icon,
+body:not(.frutiger-aero) .toggle-icon {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+body.frutiger-aero .youtuber-header {
+    color: #103b55;
+    background: linear-gradient(145deg, rgba(250, 254, 255, 0.96), rgba(217, 242, 252, 0.92));
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(9, 71, 112, 0.16), inset 0 1px #fff;
+    clip-path: none;
+}
+
+body.frutiger-aero .youtuber-header::after {
+    display: none;
+}
+
+body.frutiger-aero .youtuber-header:hover {
+    color: #082e48;
+    background: linear-gradient(145deg, #fff, rgba(190, 235, 250, 0.96));
+    border-color: #fff;
+    box-shadow: 0 12px 25px rgba(9, 71, 112, 0.24), inset 0 1px #fff;
+    transform: translateY(-3px);
+}
+
+body.frutiger-aero .youtuber-name {
+    color: #103b55;
+    text-shadow: none;
+}
+
+body.frutiger-aero .youtuber-subtext {
+    color: #08759a;
+    text-shadow: none;
+}
+
+body.frutiger-aero .youtuber-avatar {
+    border-color: rgba(255, 255, 255, 0.98);
+    background: #dff5fc;
+    box-shadow: 0 3px 10px rgba(9, 71, 112, 0.2);
+}
+
+body.frutiger-aero .featured-video-card {
+    color: #103b55;
+}
+
+body.frutiger-aero .video-title-card {
+    color: #082e48;
+    text-shadow: none;
+}
+
+body.frutiger-aero .youtuber-live-badge,
+body.frutiger-aero .live-badge,
+body.frutiger-aero .discord-widget-status {
+    color: #174e39;
+    text-shadow: none;
+}
+
+body.frutiger-aero .rarity,
+body.frutiger-aero .price-tag,
+body.frutiger-aero .val-rarity-tag,
+body.frutiger-aero .val-per-kg,
+body.frutiger-aero .val-badge {
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    text-shadow: none;
+    box-shadow: 0 2px 8px rgba(9, 54, 83, 0.14), inset 0 1px rgba(255, 255, 255, 0.8);
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-common {
+    color: #405a6a !important;
+    background: #e6f0f5;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-uncommon,
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-easy,
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-neutral {
+    color: #205a32 !important;
+    background: #dff3df;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-epic {
+    color: #63338a !important;
+    background: #f0e3fa;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-mythic,
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-hard,
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-criminal {
+    color: #922d38 !important;
+    background: #fbe5e6;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-legendary,
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-medium {
+    color: #72500c !important;
+    background: #fff1c8;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-unobtainable {
+    color: #304b5e !important;
+    background: #e4eef5;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-mission {
+    color: #384b87 !important;
+    background: #e5eaff;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-police {
+    color: #175b89 !important;
+    background: #e0f2ff;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-christmas-limited {
+    color: #25613b !important;
+    background: #e2f4e3;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-easter {
+    color: #873d78 !important;
+    background: #fae8f5;
+}
+
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-4th-of-july {
+    color: #8b343b !important;
+    background: #f9e7e8;
+}
+
+body.frutiger-aero .price-tag {
+    color: #684b11 !important;
+    background: #fff2ca;
+}
+
+body.frutiger-aero .val-per-kg {
+    color: #205b35;
+    background: #e4f5e5;
+}
+
+body.frutiger-aero .val-badge-nc {
+    color: #72510d;
+    background: #fff1c8;
+    border-color: #dbb85e;
+}
+
+body.frutiger-aero .update-version,
+body.frutiger-aero .staff-inline-name,
+body.frutiger-aero .sidebar-code-tag,
+body.frutiger-aero .val-stat-highlight {
+    text-shadow: 0 1px rgba(255, 255, 255, 0.72);
+}
+
+body.frutiger-aero .staff-inline-name {
+    padding: 2px 5px;
+    border-radius: 999px;
+    background: rgba(246, 253, 255, 0.86);
+}
+
+body.frutiger-aero .sidebar-code-tag {
+    color: #175b35;
+    background: #e3f5e6;
+    border-color: #82c394;
+    text-shadow: none;
+}
+
+body.frutiger-aero #vault-guesser-result span,
+body.frutiger-aero #vault-guesser-result > div > div:first-child {
+    color: #123d58 !important;
+    text-shadow: none !important;
+}
+
+body.frutiger-aero #vault-guesser-result img {
+    filter: drop-shadow(0 2px 5px rgba(14, 70, 102, 0.3)) !important;
+}
+
+body.frutiger-aero .val-rarity-tag {
+    color: #173f58 !important;
+    background: rgba(245, 253, 255, 0.97);
+    border-color: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 3px 9px rgba(9, 54, 83, 0.2);
+}
+
+body.frutiger-aero .val-stat-value > span[style*="#00ffaa"] {
+    color: #176044 !important;
+    background: #e3f5e8;
+    border: 1px solid #a6d4b3;
+    border-radius: 999px;
+    padding: 2px 6px;
+    text-shadow: none !important;
+}
+
+body.frutiger-aero .val-stat-value > span[style*="#ff6464"],
+body.frutiger-aero .val-stat-value > span[style*="#ff3232"] {
+    color: #8c3038 !important;
+    background: #fae8e8;
+    border: 1px solid #e7b7bb;
+    border-radius: 999px;
+    padding: 2px 6px;
+    text-shadow: none !important;
+}
+
+body.frutiger-aero .home-category-card,
+body.frutiger-aero .featured-video-card,
+body.frutiger-aero .sidebar-box,
+body.frutiger-aero .val-card,
+body.frutiger-aero .card,
+body.frutiger-aero .official-link-btn,
+body.frutiger-aero .discord-join-btn,
+body.frutiger-aero .tab,
+body.frutiger-aero .dropdown-btn,
+body.frutiger-aero .sort-btn,
+body.frutiger-aero .page-jump-nav a,
+body.frutiger-aero .setting-toggle-btn,
+body.frutiger-aero .settings-close,
+body.frutiger-aero .header-icon-btn,
+body.frutiger-aero .map-legend-item,
+body.frutiger-aero .mobile-nav-item {
+    transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+body.frutiger-aero #settings-toggle.header-icon-btn,
+body.frutiger-aero .settings-toggle.header-icon-btn,
+body.frutiger-aero .settings-toggle,
+body.frutiger-aero .header-icon-btn {
+    color: #104866 !important;
+    background: rgba(246, 253, 255, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 3px 10px rgba(9, 71, 112, 0.14), inset 0 1px #fff;
+}
+
+body.frutiger-aero #settings-toggle.header-icon-btn:hover,
+body.frutiger-aero .settings-toggle:hover,
+body.frutiger-aero .header-icon-btn:hover {
+    color: #fff !important;
+    background: linear-gradient(135deg, #087db0, #25a9bb) !important;
+    border-color: #fff !important;
+}
+
+body.frutiger-aero .garage-intro {
+    background: linear-gradient(180deg, #087fc7, #8ce5f4 52%, #84d954 53%, #278d41);
+}
+
+body.frutiger-aero .door-panel {
+    background-color: #258fb3;
+    background-image:
+        linear-gradient(90deg, transparent 0 4%, rgba(255, 255, 255, 0.34) 5%, transparent 6%),
+        linear-gradient(to top, rgba(8, 67, 105, 0.22), transparent 55%),
+        linear-gradient(180deg, rgba(206, 250, 255, 0.48), rgba(38, 149, 187, 0.58));
+    border-bottom: 2px solid rgba(236, 255, 255, 0.7);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.24);
+    filter: none;
+}
+
+body.frutiger-aero .panel4::after {
+    background: repeating-linear-gradient(45deg, #bdf28a, #bdf28a 15px, #238f56 15px, #238f56 30px);
+    border-top-color: rgba(247, 255, 255, 0.95);
+}
+
+body.frutiger-aero .garage-intro::after {
+    background: linear-gradient(to top, rgba(224, 255, 249, 0.82), transparent);
+}
+
+@media (max-width: 1024px) {
+    body.frutiger-aero .top-tabs {
+        background: rgba(225, 247, 255, 0.98);
+        border-top: 1px solid rgba(255, 255, 255, 0.98);
+        box-shadow: 0 12px 28px rgba(7, 57, 91, 0.22);
+        backdrop-filter: blur(18px) saturate(145%);
+        -webkit-backdrop-filter: blur(18px) saturate(145%);
+    }
+
+    body.frutiger-aero .top-tabs.active {
+        background: rgba(225, 247, 255, 0.98);
+    }
+
+    body.frutiger-aero .top-tabs .tab,
+    body.frutiger-aero .top-tabs .dropdown-btn {
+        color: #103d58;
+        background: rgba(250, 254, 255, 0.72);
+        border: 1px solid rgba(35, 124, 159, 0.2);
+        border-radius: 9px;
+    }
+
+    body.frutiger-aero .top-tabs .tab:hover,
+    body.frutiger-aero .top-tabs .tab.active,
+    body.frutiger-aero .top-tabs .dropdown.open > .dropdown-btn {
+        color: #fff;
+        background: linear-gradient(135deg, #087db0, #25a9bb);
+        border-color: #fff;
+        box-shadow: 0 4px 12px rgba(9, 71, 112, 0.18);
+    }
+
+    body.frutiger-aero .top-tabs .dropdown-content {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        padding: 5px;
+        background: rgba(211, 239, 250, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.98);
+        border-radius: 10px;
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    body.frutiger-aero .top-tabs .dropdown-content .dropdown-tab {
+        color: #103d58;
+        background: rgba(250, 254, 255, 0.86);
+        border-radius: 7px;
+    }
+
+    body.frutiger-aero .top-tabs .dropdown-content .dropdown-tab:hover,
+    body.frutiger-aero .top-tabs .dropdown-content .dropdown-tab.active {
+        color: #fff;
+        background: #087fae;
+    }
+
+    body.frutiger-aero .hamburger {
+        width: 48px;
+        height: 48px;
+        padding: 11px;
+        border: 1px solid rgba(255, 255, 255, 0.98);
+        border-radius: 12px;
+        background: rgba(246, 253, 255, 0.94);
+        box-shadow: 0 3px 10px rgba(9, 71, 112, 0.14), inset 0 1px #fff;
+        transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    }
+
+    body.frutiger-aero .hamburger span {
+        height: 3px;
+        border-radius: 999px;
+        background: #105273;
+        box-shadow: none;
+    }
+
+    body.frutiger-aero .hamburger:hover,
+    body.frutiger-aero .hamburger.active {
+        background: linear-gradient(135deg, #087db0, #25a9bb);
+        border-color: #fff;
+        box-shadow: 0 5px 14px rgba(9, 71, 112, 0.22), inset 0 1px rgba(255, 255, 255, 0.45);
+    }
+
+    body.frutiger-aero .hamburger:active {
+        transform: scale(0.95);
+    }
+
+    body.frutiger-aero .hamburger:focus-visible {
+        outline: 3px solid #0b78a3;
+        outline-offset: 3px;
+    }
+
+    body.frutiger-aero .hamburger:hover span,
+    body.frutiger-aero .hamburger.active span {
+        background: #fff;
+    }
+}

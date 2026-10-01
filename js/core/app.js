@@ -155,6 +155,21 @@ window.addEventListener("popstate", (event) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    const themeSelect = document.getElementById('theme-select');
+    if (themeSelect) {
+        const savedTheme = localStorage.getItem('visualTheme') === 'frutiger-aero' ? 'frutiger-aero' : 'classic';
+        themeSelect.value = savedTheme;
+        const applyTheme = (theme) => {
+            const useAeroTheme = theme === 'frutiger-aero';
+            document.body.classList.toggle('frutiger-aero', useAeroTheme);
+            localStorage.setItem('visualTheme', useAeroTheme ? 'frutiger-aero' : 'classic');
+            document.dispatchEvent(new CustomEvent('wantedThemeChanged', { detail: { theme: useAeroTheme ? 'frutiger-aero' : 'classic' } }));
+        };
+
+        applyTheme(savedTheme);
+        themeSelect.addEventListener('change', () => applyTheme(themeSelect.value));
+    }
+
     if (typeof initMobileMenu === 'function') initMobileMenu();
     if (typeof initDropdownNav === 'function') initDropdownNav();
     if (typeof initSettingsPanel === 'function') initSettingsPanel(clickSfx);
@@ -414,6 +429,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const setThemeTrack = (theme) => {
+        if (!bgm || bgm.dataset.customUrl) return;
+
+        const nextTrack = theme === 'frutiger-aero' ? 'sounds/aero-background.aac' : 'sounds/background.aac';
+        if (bgm.getAttribute('src') === nextTrack) return;
+
+        const resumePlayback = window.audioUnlocked && !bgm.paused;
+        bgm.pause();
+        bgm.src = nextTrack;
+        bgm.load();
+        if (resumePlayback) bgm.play().catch(() => { });
+    };
+
     const updateBGM = async () => {
         const customData = await getCustomMusic();
         if (customData && bgm) {
@@ -423,8 +451,15 @@ document.addEventListener('DOMContentLoaded', () => {
             bgm.src = url;
             bgm.dataset.customUrl = url;
             if (window.audioUnlocked) bgm.play().catch(() => { });
+        } else {
+            setThemeTrack(localStorage.getItem('visualTheme'));
         }
     };
+
+    document.addEventListener('wantedThemeChanged', async (event) => {
+        if (await getCustomMusic()) return;
+        setThemeTrack(event.detail.theme);
+    });
 
     if (bgmUploadBtn && bgmUpload) {
         bgmUploadBtn.addEventListener("click", () => bgmUpload.click());
@@ -447,7 +482,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bgm) {
                 if (bgm.dataset.customUrl) URL.revokeObjectURL(bgm.dataset.customUrl);
                 delete bgm.dataset.customUrl;
-                bgm.src = "sounds/background.aac";
+                bgm.src = localStorage.getItem('visualTheme') === 'frutiger-aero'
+                    ? "sounds/aero-background.aac"
+                    : "sounds/background.aac";
                 if (window.audioUnlocked) bgm.play().catch(() => { });
             }
         });

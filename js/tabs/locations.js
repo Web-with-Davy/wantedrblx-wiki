@@ -164,7 +164,7 @@ function renderLocations() {
 <div class="map-page-root">
   <div class="map-sidebar" id="map-sidebar">
     <div class="map-sidebar-header">
-      <span class="map-sidebar-title">📍 LOCATIONS</span>
+      <span class="map-sidebar-title"><span class="map-sidebar-emoji" aria-hidden="true">📍</span> LOCATIONS</span>
     </div>
     <div class="map-legend" id="map-legend">
       ${MAP_PINS.map(pin => `

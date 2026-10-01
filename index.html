@@ -116,7 +116,7 @@
     <link rel="stylesheet" href="css/controls.css">
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/dropdown.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home.css?v=20261001-2">
     <link rel="stylesheet" href="css/features/settings.css">
     <link rel="stylesheet" href="css/features/wiki-ux.css">
 
@@ -128,6 +128,7 @@
     <link rel="stylesheet" href="css/item-page.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/events/birthday.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/events/4th-of-july.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/features/frutiger-aero.css?v=20261001-12">
     <!-- Fallback for browsers that don't support onload on link -->
     <noscript>
         <link rel="stylesheet" href="css/features/garage.css">
@@ -177,6 +178,9 @@
     <script>
         (function () {
             const isSidebar = localStorage.getItem("sidebarMode") === "true";
+            if (localStorage.getItem("visualTheme") === "frutiger-aero") {
+                document.body.classList.add("frutiger-aero");
+            }
             if (isSidebar) {
                 document.body.classList.add("left-sidebar-mode");
                 document.documentElement.classList.add("left-sidebar-mode");
@@ -330,6 +334,17 @@
                         value="150">
                 </div>
 
+                <div class="setting-item">
+                    <label class="setting-label" for="theme-select">
+                        <span class="setting-icon">◐</span>
+                        <span class="setting-name">Visual Theme</span>
+                    </label>
+                    <select id="theme-select" class="setting-select">
+                        <option value="classic">Classic</option>
+                        <option value="frutiger-aero">Frutiger Aero</option>
+                    </select>
+                </div>
+
                 <div class="setting-item setting-item-toggle">
                     <button id="low-end-toggle" class="low-end-toggle setting-toggle-btn" title="Toggle Low-End Mode">
                         <span class="toggle-icon">⚡</span>
@@ -416,7 +431,7 @@
     <audio id="sfx-load" src="sounds/load.aac" preload="metadata"></audio>
 
     <!-- Core: loader must come before data-bundle and registries -->
-    <script defer src="js/features/rain-bg.js"></script>
+    <script defer src="js/features/rain-bg.js?v=20261001-2"></script>
     <script defer src="js/core/config.js"></script>
     <script defer src="js/core/loader.js"></script>
 
@@ -440,7 +455,7 @@
     <script defer src="js/registry/weapons.js"></script>
 
     <script defer src="js/features/wiki-ux.js"></script>
-    <script defer src="js/core/bootstrap.js"></script>
+    <script defer src="js/core/bootstrap.js?v=20261001-4"></script>
 
 
 </body>

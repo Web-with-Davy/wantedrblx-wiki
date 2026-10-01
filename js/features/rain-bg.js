@@ -90,25 +90,26 @@
     }
 
     function drawRooftop(b) {
+        const aeroTheme = document.body.classList.contains('frutiger-aero');
         const cx = b.bx + b.bw * 0.5;
         const roofY = b.by;
         switch (b.style) {
             case 1: {
                 const t1h = Math.max(4, b.bh * 0.06);
                 const t2h = Math.max(3, b.bh * 0.05);
-                ctx.fillStyle = '#0e0e0e';
+                ctx.fillStyle = aeroTheme ? '#237b9b' : '#0e0e0e';
                 ctx.fillRect(b.bx + b.bw * 0.12, roofY - t1h, b.bw * 0.76, t1h);
-                ctx.fillStyle = '#0a0a0a';
+                ctx.fillStyle = aeroTheme ? '#d8fbff' : '#0a0a0a';
                 ctx.fillRect(b.bx + b.bw * 0.28, roofY - t1h - t2h, b.bw * 0.44, t2h);
                 break;
             }
             case 2: {
                 const mastH = Math.min(H * 0.06, b.bw * 0.8);
-                ctx.strokeStyle = 'rgba(200,200,200,0.50)';
+                ctx.strokeStyle = aeroTheme ? 'rgba(236,255,255,0.8)' : 'rgba(200,200,200,0.50)';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath(); ctx.moveTo(cx, roofY); ctx.lineTo(cx, roofY - mastH); ctx.stroke();
                 ctx.lineWidth = 1;
-                ctx.strokeStyle = 'rgba(180,180,180,0.30)';
+                ctx.strokeStyle = aeroTheme ? 'rgba(35,132,170,0.6)' : 'rgba(180,180,180,0.30)';
                 [0.35, 0.60, 0.85].forEach(f => {
                     const ay = roofY - mastH * f, hw = 5 + (1 - f) * 5;
                     ctx.beginPath(); ctx.moveTo(cx - hw, ay); ctx.lineTo(cx + hw, ay); ctx.stroke();
@@ -118,11 +119,11 @@
             case 3: {
                 const twR = Math.max(5, b.bw * 0.11), twH = twR * 1.4;
                 const ty = roofY - Math.max(4, twH * 0.55) - twH;
-                ctx.fillStyle = '#111';
+                ctx.fillStyle = aeroTheme ? '#287f9d' : '#111';
                 ctx.fillRect(cx - twR, ty, twR * 2, twH);
                 ctx.beginPath(); ctx.ellipse(cx, ty, twR, twR * 0.3, 0, Math.PI, 0);
-                ctx.fillStyle = '#1a1a1a'; ctx.fill();
-                ctx.strokeStyle = 'rgba(160,160,160,0.28)'; ctx.lineWidth = 1;
+                ctx.fillStyle = aeroTheme ? '#b9f3fa' : '#1a1a1a'; ctx.fill();
+                ctx.strokeStyle = aeroTheme ? 'rgba(238,255,255,0.72)' : 'rgba(160,160,160,0.28)'; ctx.lineWidth = 1;
                 [-1, 0, 1].forEach(p => {
                     ctx.beginPath();
                     ctx.moveTo(cx + p * twR * 0.7, ty + twH);
@@ -134,15 +135,15 @@
             case 4: {
                 const bw2 = Math.min(b.bw * 0.55, 60), bh2 = bw2 * 0.38;
                 const bx2 = cx - bw2 * 0.5, by2 = roofY - Math.max(6, b.bw * 0.06) - bh2;
-                ctx.strokeStyle = 'rgba(160,160,160,0.38)'; ctx.lineWidth = 1.5;
+                ctx.strokeStyle = aeroTheme ? 'rgba(232,255,255,0.78)' : 'rgba(160,160,160,0.38)'; ctx.lineWidth = 1.5;
                 [0.25, 0.75].forEach(f => {
                     ctx.beginPath();
                     ctx.moveTo(bx2 + bw2 * f, roofY);
                     ctx.lineTo(bx2 + bw2 * f, by2 + bh2);
                     ctx.stroke();
                 });
-                ctx.fillStyle = '#0d0d0d'; ctx.fillRect(bx2, by2, bw2, bh2);
-                ctx.strokeStyle = 'rgba(200,200,200,0.18)'; ctx.lineWidth = 1;
+                ctx.fillStyle = aeroTheme ? '#2882a0' : '#0d0d0d'; ctx.fillRect(bx2, by2, bw2, bh2);
+                ctx.strokeStyle = aeroTheme ? 'rgba(238,255,255,0.72)' : 'rgba(200,200,200,0.18)'; ctx.lineWidth = 1;
                 ctx.strokeRect(bx2, by2, bw2, bh2);
                 break;
             }
@@ -151,20 +152,27 @@
 
     function drawBuildingLayer(list, alpha, brightness) {
         const now = Date.now();
-        const bodyColor = brightness < 1
-            ? `rgb(${Math.round(10 * brightness)},${Math.round(10 * brightness)},${Math.round(10 * brightness)})`
-            : '#111';
-        const rimVal = Math.round(42 * brightness);
+        const aeroTheme = document.body.classList.contains('frutiger-aero');
+        const bodyColor = aeroTheme
+            ? `rgba(${Math.round(30 * brightness)},${Math.round(119 * brightness)},${Math.round(151 * brightness)},0.78)`
+            : brightness < 1
+                ? `rgb(${Math.round(10 * brightness)},${Math.round(10 * brightness)},${Math.round(10 * brightness)})`
+                : '#111';
+        const rimVal = aeroTheme ? 220 : Math.round(42 * brightness);
         ctx.globalAlpha = alpha;
         list.forEach(b => {
             ctx.fillStyle = bodyColor;
-            ctx.fillRect(b.bx, b.by, b.bw, b.bh + H * 0.5);
-            ctx.fillStyle = `rgba(${rimVal},${rimVal},${rimVal},0.5)`;
+            ctx.fillRect(b.bx, b.by, b.bw, b.bh + (aeroTheme ? 0 : H * 0.5));
+            ctx.fillStyle = aeroTheme
+                ? `rgba(238,255,255,${0.42 * alpha})`
+                : `rgba(${rimVal},${rimVal},${rimVal},0.5)`;
             ctx.fillRect(b.bx, b.by, b.bw, 1);
             drawRooftop(b);
             b.wins.forEach(w => {
                 if (w.flicker && Math.sin(now * 0.0001 + w.x) <= 0) return;
-                ctx.fillStyle = `rgba(215,215,215,${(0.38 + rng(w.x * 0.1) * 0.30) * alpha})`;
+                ctx.fillStyle = aeroTheme
+                    ? `rgba(220,255,255,${(0.55 + rng(w.x * 0.1) * 0.35) * alpha})`
+                    : `rgba(215,215,215,${(0.38 + rng(w.x * 0.1) * 0.30) * alpha})`;
                 ctx.fillRect(w.x, w.y, 5, 8);
             });
         });
@@ -172,6 +180,11 @@
     }
 
     function drawCity() {
+        if (document.body.classList.contains('frutiger-aero')) {
+            drawAeroCity();
+            return;
+        }
+
         const mx = W * 0.78, my = H * 0.14, mr = H * 0.038;
         const mg = ctx.createRadialGradient(mx - mr * 0.3, my - mr * 0.3, 0, mx, my, mr * 1.1);
         mg.addColorStop(0, 'rgba(255,255,255,0.95)');
@@ -266,6 +279,79 @@
         ctx.fillStyle = fog; ctx.fillRect(0, 0, W, H);
     }
 
+    function drawAeroCity() {
+        const sky = ctx.createLinearGradient(0, 0, 0, H * 0.72);
+        sky.addColorStop(0, '#0786df');
+        sky.addColorStop(0.48, '#32b9ec');
+        sky.addColorStop(0.82, '#b6f3ff');
+        sky.addColorStop(1, '#f0ffff');
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, W, H);
+
+        const sunX = W * 0.8;
+        const sunY = H * 0.14;
+        const sunRadius = H * 0.11;
+        const sunGlow = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunRadius);
+        sunGlow.addColorStop(0, 'rgba(255,255,235,0.98)');
+        sunGlow.addColorStop(0.22, 'rgba(255,255,226,0.72)');
+        sunGlow.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = sunGlow;
+        ctx.fillRect(sunX - sunRadius, sunY - sunRadius, sunRadius * 2, sunRadius * 2);
+
+        const drawCloud = (centerX, centerY, scale) => {
+            const cloud = ctx.createRadialGradient(centerX, centerY, scale * 0.08, centerX, centerY, scale);
+            cloud.addColorStop(0, 'rgba(255,255,255,0.82)');
+            cloud.addColorStop(0.72, 'rgba(255,255,255,0.56)');
+            cloud.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = cloud;
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, scale, scale * 0.34, 0, 0, Math.PI * 2);
+            ctx.ellipse(centerX - scale * 0.35, centerY - scale * 0.16, scale * 0.52, scale * 0.34, 0, 0, Math.PI * 2);
+            ctx.ellipse(centerX + scale * 0.28, centerY - scale * 0.21, scale * 0.58, scale * 0.4, 0, 0, Math.PI * 2);
+            ctx.fill();
+        };
+
+        drawCloud(W * 0.18, H * 0.3, W * 0.13);
+        drawCloud(W * 0.55, H * 0.43, W * 0.19);
+        drawCloud(W * 0.88, H * 0.4, W * 0.14);
+
+        drawBuildingLayer(farBuildings, 0.72, 0.82);
+        drawBuildingLayer(nearBuildings, 0.98, 1.12);
+
+        const groundY = H * 0.65;
+        const meadow = ctx.createLinearGradient(0, groundY, 0, H);
+        meadow.addColorStop(0, '#75d947');
+        meadow.addColorStop(0.12, '#4fbd37');
+        meadow.addColorStop(1, '#178b35');
+        ctx.fillStyle = meadow;
+        ctx.fillRect(0, groundY, W, H - groundY);
+
+        ctx.fillStyle = 'rgba(228,255,178,0.62)';
+        ctx.fillRect(0, groundY, W, Math.max(2, H * 0.004));
+
+        ctx.save();
+        ctx.globalAlpha = 0.24;
+        for (let i = 0; i < 160; i++) {
+            const x = rng(i * 17) * W;
+            const y = groundY + rng(i * 29 + 3) * (H - groundY);
+            const length = 3 + rng(i * 31 + 8) * Math.min(16, H * 0.018);
+            ctx.strokeStyle = i % 3 === 0 ? '#d8ff9c' : '#176d31';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + length * 0.25, y - length);
+            ctx.stroke();
+        }
+        ctx.restore();
+
+        const glassGleam = ctx.createLinearGradient(0, groundY - H * 0.025, 0, groundY + H * 0.035);
+        glassGleam.addColorStop(0, 'rgba(255,255,255,0)');
+        glassGleam.addColorStop(0.5, 'rgba(255,255,255,0.34)');
+        glassGleam.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = glassGleam;
+        ctx.fillRect(0, groundY - H * 0.025, W, H * 0.06);
+    }
+
     const ripples = [];
     function addRipple(x) {
         if (ripples.length >= 28) ripples.shift();
@@ -314,6 +400,11 @@
     }
 
     function draw() {
+        if (document.body.classList.contains('frutiger-aero')) {
+            drawAeroCity();
+            return;
+        }
+
         const sky = ctx.createLinearGradient(0, 0, 0, H);
         sky.addColorStop(0, '#030406');
         sky.addColorStop(0.45, '#07090e');

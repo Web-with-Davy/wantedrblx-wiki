@@ -11,7 +11,7 @@
     "js/features/garage.js",
     "js/features/search.js",
     "js/features/youtuber.js",
-    "js/core/app.js"
+    "js/core/app.js?v=20261001-3"
   ];
 
   // Phase 2: Scripts for secondary tabs and non-critical features.
@@ -20,7 +20,7 @@
     "js/tabs/atms.js",
     "js/tabs/events.js",
     "js/tabs/gun-crates.js",
-    "js/tabs/locations.js",
+    "js/tabs/locations.js?v=20261001-2",
     "js/tabs/missions.js",
     "js/tabs/npcs.js",
     "js/tabs/store.js",
