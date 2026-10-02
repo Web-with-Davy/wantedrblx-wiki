@@ -633,6 +633,10 @@ body.low-end-mode.frutiger-aero .ip-tip {
     transition: none;
 }
 
+body.low-end-mode.frutiger-aero {
+    background-color: #62fbff;
+}
+
 body.low-end-mode.frutiger-aero .card,
 body.low-end-mode.frutiger-aero .val-card,
 body.low-end-mode.frutiger-aero .sidebar-box,
