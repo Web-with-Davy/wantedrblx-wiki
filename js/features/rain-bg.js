@@ -179,6 +179,18 @@
         ctx.globalAlpha = 1;
     }
 
+    function drawLowEndBackground() {
+        const aeroTheme = document.body.classList.contains('frutiger-aero');
+        ctx.fillStyle = aeroTheme ? '#32b9ec' : '#07090e';
+        ctx.fillRect(0, 0, W, H);
+
+        drawBuildingLayer(farBuildings, 0.72, aeroTheme ? 0.82 : 0.72);
+        drawBuildingLayer(nearBuildings, 0.98, aeroTheme ? 1.12 : 1);
+
+        ctx.fillStyle = aeroTheme ? '#4fbd37' : '#14161d';
+        ctx.fillRect(0, H * 0.65, W, H * 0.35);
+    }
+
     function drawCity() {
         if (document.body.classList.contains('frutiger-aero')) {
             drawAeroCity();
@@ -443,28 +455,62 @@
     }
 
     let paused = false;
-    function syncPause() { paused = document.body.classList.contains('low-end-mode'); }
+    let animationFrame = null;
+    function loop() {
+        animationFrame = null;
+        if (paused) return;
+        draw();
+        animationFrame = requestAnimationFrame(loop);
+    }
+    function startAnimation() {
+        if (!paused && animationFrame === null) {
+            animationFrame = requestAnimationFrame(loop);
+        }
+    }
+    function syncPause() {
+        const shouldPause = document.body.classList.contains('low-end-mode');
+        if (paused === shouldPause) return;
+        paused = shouldPause;
+        if (paused) {
+            if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+            if (W && H) drawLowEndBackground();
+        } else {
+            bakeReflection();
+            initDrops();
+            startAnimation();
+        }
+    }
     new MutationObserver(syncPause).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     syncPause();
-
-    function loop() { if (!paused) draw(); requestAnimationFrame(loop); }
 
     function resize() {
         W = canvas.width = window.innerWidth;
         H = canvas.height = window.innerHeight;
         buildCity();
-        bakeReflection();
+        if (paused) {
+            drawLowEndBackground();
+        } else {
+            bakeReflection();
+        }
     }
 
-    window.addEventListener('resize', () => { resize(); initDrops(); });
+    window.addEventListener('resize', () => {
+        resize();
+        if (!paused) initDrops();
+    });
 
     // Defer ALL heavy canvas initialization until browser is idle after first paint.
     // resize() calls buildCity() + bakeReflection() (blur filter — expensive).
     // This avoids any canvas work competing with LCP.
     function startRain() {
         resize();
-        initDrops();
-        loop();
+        if (paused) {
+            drawLowEndBackground();
+        } else {
+            initDrops();
+            startAnimation();
+        }
     }
 
     if (typeof requestIdleCallback === 'function') {

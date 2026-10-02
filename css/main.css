@@ -663,7 +663,6 @@ body.low-end-mode {
 
 body.low-end-mode .stripes,
 body.low-end-mode .static,
-body.low-end-mode #rain-canvas,
 body.low-end-mode .police-flash-red,
 body.low-end-mode .police-flash-blue,
 body.low-end-mode::before,
@@ -773,8 +772,17 @@ body.low-end-mode .glitch::before {
     display: none;
 }
 
-body.low-end-mode * {
+body.low-end-mode *,
+body.low-end-mode *::before,
+body.low-end-mode *::after {
     will-change: auto;
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
 
 .volume-control::before {
