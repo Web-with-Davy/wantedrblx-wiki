@@ -5,7 +5,7 @@ body.frutiger-aero {
     --aero-edge: rgba(255, 255, 255, 0.94);
     --aero-shadow: 0 12px 30px rgba(9, 71, 112, 0.2), inset 0 1px rgba(255, 255, 255, 0.92);
     color: var(--aero-ink);
-    background: #1685d2;
+    background: #62fbff;
 }
 
 body.frutiger-aero .police-flash-red,
@@ -613,9 +613,68 @@ body.low-end-mode.frutiger-aero .countdown-box,
 body.low-end-mode.frutiger-aero .home-category-card,
 body.low-end-mode.frutiger-aero .featured-video-card,
 body.low-end-mode.frutiger-aero .discord-widget-box,
-body.low-end-mode.frutiger-aero .official-link-btn {
+body.low-end-mode.frutiger-aero .official-link-btn,
+body.low-end-mode.frutiger-aero .staff-card,
+body.low-end-mode.frutiger-aero .contributor-card,
+body.low-end-mode.frutiger-aero .fixed-header,
+body.low-end-mode.frutiger-aero #mobile-bottom-nav,
+body.low-end-mode.frutiger-aero .dropdown-content,
+body.low-end-mode.frutiger-aero .settings-content,
+body.low-end-mode.frutiger-aero .settings-toggle,
+body.low-end-mode.frutiger-aero #back-to-top,
+body.low-end-mode.frutiger-aero #copy-toast,
+body.low-end-mode.frutiger-aero .map-sidebar,
+body.low-end-mode.frutiger-aero .ip-dialogue-item,
+body.low-end-mode.frutiger-aero .ip-how-to,
+body.low-end-mode.frutiger-aero .ip-tip {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    box-shadow: none;
+    transition: none;
+}
+
+body.low-end-mode.frutiger-aero .card,
+body.low-end-mode.frutiger-aero .val-card,
+body.low-end-mode.frutiger-aero .sidebar-box,
+body.low-end-mode.frutiger-aero .views-box,
+body.low-end-mode.frutiger-aero .updates-box,
+body.low-end-mode.frutiger-aero .countdown-box,
+body.low-end-mode.frutiger-aero .home-category-card,
+body.low-end-mode.frutiger-aero .featured-video-card,
+body.low-end-mode.frutiger-aero .discord-widget-box,
+body.low-end-mode.frutiger-aero .official-link-btn,
+body.low-end-mode.frutiger-aero .staff-card,
+body.low-end-mode.frutiger-aero .contributor-card,
+body.low-end-mode.frutiger-aero .settings-content {
+    color: var(--aero-ink);
+    background: #eaf7fb;
+    border-color: #b7dce8;
+}
+
+body.low-end-mode.frutiger-aero .ip-hero.sidebar-box {
+    color: var(--aero-ink);
+    background: #eaf7fb;
+    border-color: #b7dce8;
+}
+
+body.low-end-mode.frutiger-aero .ip-hero-img-wrap {
+    background: #dff3f8;
+}
+
+body.low-end-mode.frutiger-aero .map-page-root {
+    border-color: rgba(255, 255, 255, 0.94);
+}
+
+body.low-end-mode.frutiger-aero :is(.card, .val-card, .sidebar-box, .views-box, .updates-box, .countdown-box, .home-category-card, .featured-video-card, .discord-widget-box, .official-link-btn, .ip-hero.sidebar-box, .youtuber-header):hover {
+    transform: none;
+    box-shadow: none;
+}
+
+body.low-end-mode.frutiger-aero .hero-logo,
+body.low-end-mode.frutiger-aero .val-img,
+body.low-end-mode.frutiger-aero .ip-hero-img,
+body.low-end-mode.frutiger-aero .map-canvas {
+    filter: none;
 }
 
 @media (max-width: 1024px) {
