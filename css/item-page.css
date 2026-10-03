@@ -204,6 +204,65 @@
     background: rgba(255,255,255,0.08);
 }
 
+.ip-section-body .weapon-dps-stat {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.weapon-dps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.weapon-dps-part {
+    display: grid;
+    gap: 6px;
+    justify-items: center;
+    padding: 4px 8px;
+    text-align: center;
+}
+
+.weapon-dps-part + .weapon-dps-part {
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.weapon-dps-part > span {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+}
+
+.weapon-dps-part > strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.78rem;
+    font-weight: normal;
+}
+
+.weapon-dps-part > small {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.62rem;
+}
+
+.weapon-dps-average {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 12px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+.weapon-dps-average strong {
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
 .ip-list {
     margin: 0;
     padding: 0 0 0 20px;

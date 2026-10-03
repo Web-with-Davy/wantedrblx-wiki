@@ -185,7 +185,15 @@
                 document.body.classList.add("left-sidebar-mode");
                 document.documentElement.classList.add("left-sidebar-mode");
             }
-            if (localStorage.getItem("lowEndMode") === "true") {
+            const savedLowEndMode = localStorage.getItem("lowEndMode");
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const hasLowCoreCount = Number.isFinite(navigator.hardwareConcurrency)
+                && navigator.hardwareConcurrency > 0
+                && navigator.hardwareConcurrency <= 4;
+            const hasLowMemory = Number.isFinite(navigator.deviceMemory)
+                && navigator.deviceMemory <= 4;
+            const shouldEnableLowEnd = hasLowCoreCount || hasLowMemory || Boolean(connection && connection.saveData);
+            if (savedLowEndMode === "true" || (savedLowEndMode === null && shouldEnableLowEnd)) {
                 document.body.classList.add("low-end-mode");
             }
             if (localStorage.getItem("alwaysShowMore") === "true") {

@@ -85,6 +85,38 @@ function _stat(label, value) {
     </div>`;
 }
 
+function _weaponDps(item) {
+  if (!(window.GUNS_DATA || []).includes(item)) return null;
+
+  const stats = item.stats || {};
+  const fireRate = Number(stats.firerate);
+  if (!Number.isFinite(fireRate) || fireRate <= 0) return [];
+
+  const damage = String(stats.damage || '');
+  const labeledDamage = [...damage.matchAll(/(Head|Torso|Limbs?)-(\d+(?:\.\d+)?)/gi)];
+  const damageValues = labeledDamage.length
+    ? labeledDamage.map(([, part, value]) => [part, Number(value)])
+    : damage.match(/^\s*(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*$/)
+      ?.slice(1).map((value, index) => [['Head', 'Torso', 'Limbs'][index], Number(value)]);
+
+  if (!damageValues || !damageValues.length) return null;
+
+  const parts = damageValues.map(([part, damage]) => {
+    const shotsToKill = damage > 0 ? Math.ceil(200 / damage) : Infinity;
+    return {
+      part,
+      dps: damage * 1000 / fireRate,
+      ttk: Number.isFinite(shotsToKill) ? Math.max(0, shotsToKill - 1) * fireRate / 1000 : Infinity,
+    };
+  });
+
+  return {
+    parts,
+    averageDps: parts.reduce((total, part) => total + part.dps, 0) / parts.length,
+    averageTtk: parts.reduce((total, part) => total + part.ttk, 0) / parts.length,
+  };
+}
+
 function _section(title, bodyHtml) {
   if (!bodyHtml || !bodyHtml.trim()) return '';
   const match = title.match(/^([\uD800-\uDBFF][\uDC00-\uDFFF]|\p{Emoji})\s*(.*)$/u);
@@ -106,6 +138,23 @@ function _descBlock(text) {
 
 function renderWeaponDetails(item) {
   const f = typeof formatPrice === 'function' ? formatPrice : (v => v);
+  const dpsStats = _weaponDps(item);
+  const dpsHtml = dpsStats && dpsStats.parts.length ? `
+    <div class="val-stat weapon-dps-stat">
+      <span class="val-stat-label">Damage Per Second / Time To Kill (200 HP)</span>
+      <div class="weapon-dps-grid">
+        ${dpsStats.parts.map(({ part, dps, ttk }) => `
+          <div class="weapon-dps-part">
+            <span>${part}</span>
+            <strong>${dps.toFixed(1)} DPS</strong>
+            <small>${Number.isFinite(ttk) ? `${ttk.toFixed(2)}s TTK` : 'No damage'}</small>
+          </div>`).join('')}
+      </div>
+      <div class="weapon-dps-average">
+        <span>Average DPS <strong>${dpsStats.averageDps.toFixed(1)}</strong></span>
+        <span>Average TTK <strong>${Number.isFinite(dpsStats.averageTtk) ? `${dpsStats.averageTtk.toFixed(2)}s` : 'N/A'}</strong></span>
+      </div>
+    </div>` : '';
 
   const statsHtml = [
     _stat('Obtaining', item.obtaining),
@@ -119,6 +168,7 @@ function renderWeaponDetails(item) {
     _stat('Fire Rate', item.stats && item.stats.firerate),
     _stat('Reload Speed', item.stats && item.stats.reload ? `${item.stats.reload}s` : null),
     _stat('Accuracy', item.stats && item.stats.accuracy),
+    dpsHtml,
   ].join('');
 
   let attachmentsHtml = '';

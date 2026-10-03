@@ -3223,7 +3223,7 @@ window.VEHICLE_CRUISER = [
     type: "ground",
     repairPrice: 0,
     repairPriceGarage: 0,
-    contractPrice: 1000,
+    contractPrice: 500,
     stats: {
       topSpeed: 37,
       acceleration: 30,

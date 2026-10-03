@@ -356,12 +356,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const lowEndToggle = document.getElementById("low-end-toggle");
     const lowEndStatus = document.getElementById("low-end-status");
     if (lowEndToggle && lowEndStatus) {
-        const isLowEnd = localStorage.getItem("lowEndMode") === "true";
-        if (isLowEnd) {
-            document.body.classList.add("low-end-mode");
-            lowEndToggle.classList.add("active");
-            lowEndStatus.textContent = 'ON';
-        }
+        const isLowEnd = document.body.classList.contains("low-end-mode");
+        lowEndToggle.classList.toggle("active", isLowEnd);
+        lowEndStatus.textContent = isLowEnd ? 'ON' : 'OFF';
         lowEndToggle.addEventListener("click", () => {
             const active = document.body.classList.toggle("low-end-mode");
             lowEndToggle.classList.toggle("active", active);
