@@ -9,8 +9,9 @@ window.VEHICLE_NOMAD = [
     repairPriceGarage: 180,
     contractPrice: 24000,
     stats: {
-      topSpeed: 32,
-      acceleration: 29,
+      seats: 4,
+      topSpeed: 33,
+      acceleration: 31,
       braking: 46,
       Health: "Body-400/Wheels-100/Windows-100",
       armor: 2

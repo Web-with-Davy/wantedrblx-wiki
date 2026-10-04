@@ -9,6 +9,7 @@ window.VEHICLE_STALLION_450 = [
     repairPriceGarage: 180,
     contractPrice: 185000,
     stats: {
+      seats: 2,
       topSpeed: 45,
       acceleration: 34,
       braking: 54,

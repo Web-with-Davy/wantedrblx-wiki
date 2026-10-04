@@ -9,6 +9,7 @@ window.VEHICLE_PULSE_477 = [
     repairPriceGarage: 900,
     contractPrice: 2400000,
     stats: {
+      seats: 2,
       topSpeed: 60,
       acceleration: 45,
       braking: 63,

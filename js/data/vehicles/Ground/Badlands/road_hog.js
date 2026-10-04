@@ -9,6 +9,7 @@ window.VEHICLE_ROAD_HOG = [
     repairPriceGarage: 180,
     contractPrice: 30000,
     stats: {
+      seats: 2,
       topSpeed: 36,
       acceleration: 31,
       braking: 51,

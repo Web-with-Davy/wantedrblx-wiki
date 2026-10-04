@@ -9,6 +9,7 @@ window.VEHICLE_MAVERICK = [
     repairPriceGarage: 0,
     contractPrice: 8000000,
     stats: {
+      seats: 0,
       topSpeed: 76,
       handling: 62,
       spoolTime: 3.5,

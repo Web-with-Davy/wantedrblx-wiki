@@ -9,6 +9,7 @@ window.VEHICLE_HORIZON = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 46,
       acceleration: 36,
       braking: 55,

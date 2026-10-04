@@ -2463,14 +2463,14 @@ window.VALUABLES_MISSION_ITEMS = [
 
 /* --- js/data/valuables/shoes.js --- */
 window.VALUABLES_SHOES = [
-
-  { name: "Sky James Golds", description: "", rarity: "EPIC", category: "Shoes", price: 400, weight: 4, commonLocation: "Shoe Locker Store" },
-  { name: "Sky James Reds", description: "", rarity: "EPIC", category: "Shoes", price: 200, weight: 4, commonLocation: "Shoe Locker Store" },
-  { name: "Black Boots", description: "", rarity: "UNCOMMON", category: "Shoes", price: 50, weight: 4, commonLocation: "Shoe Locker Store" },
+  { name: "Future Sneakers", description: "", rarity: "EPIC", category: "Shoes", price: 900, weight: 4, commonLocation: "Shoe Locker Store" },
+  { name: "Sky James Golds", description: "", rarity: "UNCOMMON", category: "Shoes", price: 600, weight: 4, commonLocation: "Shoe Locker Store" },
+  { name: "Sky James Reds", description: "", rarity: "UNCOMMON", category: "Shoes", price: 400, weight: 4, commonLocation: "Shoe Locker Store" },
+  { name: "Black Boots", description: "", rarity: "UNCOMMON", category: "Shoes", price: 80, weight: 4, commonLocation: "Shoe Locker Store" },
   { name: "Brown Boots", description: "", rarity: "UNCOMMON", category: "Shoes", price: 80, weight: 4, commonLocation: "Shoe Locker Store" },
-  { name: "Cheap White Sneakers", description: "", rarity: "COMMON", category: "Shoes", price: 30, weight: 2, commonLocation: "Shoe Locker Store" },
-  { name: "Cheap Black Sneakers", description: "", rarity: "COMMON", category: "Shoes", price: 30, weight: 2, commonLocation: "Shoe Locker Store" },
-  { name: "Cheap Brown Sneakers", description: "", rarity: "COMMON", category: "Shoes", price: 30, weight: 2, commonLocation: "Shoe Locker Store" },
+  { name: "Cheap White Sneakers", description: "", rarity: "COMMON", category: "Shoes", price: 40, weight: 2, commonLocation: "Shoe Locker Store" },
+  { name: "Cheap Black Sneakers", description: "", rarity: "COMMON", category: "Shoes", price: 40, weight: 2, commonLocation: "Shoe Locker Store" },
+  { name: "Cheap Brown Sneakers", description: "", rarity: "COMMON", category: "Shoes", price: 40, weight: 2, commonLocation: "Shoe Locker Store" },
 
 ];
 
@@ -2499,6 +2499,7 @@ window.VEHICLE_PANTHER = [
     repairPriceGarage: 0,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 0,
       topSpeed: 100,
       handling: 100,
       spoolTime: 4,
@@ -2521,6 +2522,7 @@ window.VEHICLE_MAVERICK = [
     repairPriceGarage: 0,
     contractPrice: 8000000,
     stats: {
+      seats: 0,
       topSpeed: 76,
       handling: 62,
       spoolTime: 3.5,
@@ -2543,6 +2545,7 @@ window.VEHICLE_MINI_BIRD = [
     repairPriceGarage: 0,
     contractPrice: 1400000,
     stats: {
+      seats: 0,
       topSpeed: 58,
       handling: 50,
       spoolTime: 3,
@@ -2565,6 +2568,7 @@ window.VEHICLE_SCOUT = [
     repairPriceGarage: 0,
     contractPrice: 3200000,
     stats: {
+      seats: 0,
       topSpeed: 100,
       handling: 100,
       spoolTime: 5,
@@ -2587,6 +2591,7 @@ window.VEHICLE_RIFT = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 79,
       acceleration: 68,
       braking: 77,
@@ -2609,6 +2614,7 @@ window.VEHICLE_ROAD_HOG = [
     repairPriceGarage: 180,
     contractPrice: 30000,
     stats: {
+      seats: 2,
       topSpeed: 36,
       acceleration: 31,
       braking: 51,
@@ -2631,6 +2637,7 @@ window.VEHICLE_ROOSTER = [
     repairPriceGarage: 180,
     contractPrice: 1000,
     stats: {
+      seats: 2,
       topSpeed: 26,
       acceleration: 31,
       braking: 46,
@@ -2653,6 +2660,7 @@ window.VEHICLE_SHINOBI = [
     repairPriceGarage: 900,
     contractPrice: 700000,
     stats: {
+      seats: 2,
       topSpeed: 61,
       acceleration: 44,
       braking: 59,
@@ -2675,6 +2683,7 @@ window.VEHICLE_AEGIS = [
     repairPriceGarage: 900,
     contractPrice: 2500000,
     stats: {
+      seats: 8,
       topSpeed: 44,
       acceleration: 31,
       braking: 51,
@@ -2697,6 +2706,7 @@ window.VEHICLE_BEAM = [
     repairPriceGarage: 180,
     contractPrice: 85000,
     stats: {
+      seats: 4,
       topSpeed: 42,
       acceleration: 33,
       braking: 55,
@@ -2719,6 +2729,7 @@ window.VEHICLE_CONTENDER = [
     repairPriceGarage: 180,
     contractPrice: 65000,
     stats: {
+      seats: 2,
       topSpeed: 40,
       acceleration: 31,
       braking: 53,
@@ -2741,6 +2752,7 @@ window.VEHICLE_CROWLINE = [
     repairPriceGarage: 180,
     contractPrice: 120000,
     stats: {
+      seats: 4,
       topSpeed: 34,
       acceleration: 30,
       braking: 51,
@@ -2763,6 +2775,7 @@ window.VEHICLE_FALCON_GT = [
     repairPriceGarage: 2250,
     contractPrice: 6200000,
     stats: {
+      seats: 2,
       topSpeed: 70,
       acceleration: 62,
       braking: 74,
@@ -2785,6 +2798,7 @@ window.VEHICLE_G_CRUISER = [
     repairPriceGarage: 450,
     contractPrice: 280000,
     stats: {
+      seats: 4,
       topSpeed: 41,
       acceleration: 28,
       braking: 46,
@@ -2807,6 +2821,7 @@ window.VEHICLE_GEMSTONE = [
     repairPriceGarage: 450,
     contractPrice: 400000,
     stats: {
+      seats: 4,
       topSpeed: 46,
       acceleration: 35,
       braking: 56,
@@ -2829,6 +2844,7 @@ window.VEHICLE_MOCHI = [
     repairPriceGarage: 180,
     contractPrice: 6000,
     stats: {
+      seats: 2,
       topSpeed: 39,
       acceleration: 30,
       braking: 52,
@@ -2851,8 +2867,9 @@ window.VEHICLE_NOMAD = [
     repairPriceGarage: 180,
     contractPrice: 24000,
     stats: {
-      topSpeed: 32,
-      acceleration: 29,
+      seats: 4,
+      topSpeed: 33,
+      acceleration: 31,
       braking: 46,
       Health: "Body-400/Wheels-100/Windows-100",
       armor: 2
@@ -2873,6 +2890,7 @@ window.VEHICLE_PULSE_477 = [
     repairPriceGarage: 900,
     contractPrice: 2400000,
     stats: {
+      seats: 2,
       topSpeed: 60,
       acceleration: 45,
       braking: 63,
@@ -2895,9 +2913,10 @@ window.VEHICLE_RANGER = [
     repairPriceGarage: 180,
     contractPrice: 3000,
     stats: {
-      topSpeed: 28,
-      acceleration: 28,
-      braking: 42,
+      seats: 4,
+      topSpeed: 30,
+      acceleration: 29,
+      braking: 44,
       Health: "Body-300/Wheels-100/Windows-100",
       armor: 0
     }
@@ -2917,6 +2936,7 @@ window.VEHICLE_RAZOR = [
     repairPriceGarage: 2250,
     contractPrice: 3500000,
     stats: {
+      seats: 2,
       topSpeed: 63,
       acceleration: 55,
       braking: 67,
@@ -2939,6 +2959,7 @@ window.VEHICLE_SPECTRE = [
     repairPriceGarage: 2250,
     contractPrice: 8000000,
     stats: {
+      seats: 2,
       topSpeed: 74,
       acceleration: 67,
       braking: 76,
@@ -2961,6 +2982,7 @@ window.VEHICLE_STALLION_450 = [
     repairPriceGarage: 180,
     contractPrice: 185000,
     stats: {
+      seats: 2,
       topSpeed: 45,
       acceleration: 34,
       braking: 54,
@@ -2968,6 +2990,29 @@ window.VEHICLE_STALLION_450 = [
       armor: 0
     }
   },
+
+];
+
+/* --- js/data/vehicles/Ground/Bayview/trackstar.js --- */
+window.VEHICLE_TRACKSTAR = [
+
+  {
+    name: "Trackstar",
+    obtaining: "Bayview Motors",
+    description: "A very sturdy vehicle.",
+    type: "ground",
+    repairPrice: 1500,
+    repairPriceGarage: 450,
+    contractPrice: 220000,
+    stats: {
+      seats: 4,
+      topSpeed: 47,
+      acceleration: 36,
+      braking: 50,
+      Health: "Body-300/Wheels-100/Windows-100",
+      armor: 2
+    }
+  }
 
 ];
 
@@ -2983,6 +3028,7 @@ window.VEHICLE_VANGUARD = [
     repairPriceGarage: 900,
     contractPrice: 750000,
     stats: {
+      seats: 2,
       topSpeed: 53,
       acceleration: 36,
       braking: 57,
@@ -3005,6 +3051,7 @@ window.VEHICLE_ZORO = [
     repairPriceGarage: 900,
     contractPrice: 900000,
     stats: {
+      seats: 4,
       topSpeed: 48,
       acceleration: 38,
       braking: 51,
@@ -3027,6 +3074,7 @@ window.VEHICLE_ZORVELLO = [
     repairPriceGarage: 2250,
     contractPrice: 5000000,
     stats: {
+      seats: 2,
       topSpeed: 67,
       acceleration: 62,
       braking: 71,
@@ -3049,6 +3097,7 @@ window.VEHICLE_EMPYREAN = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 77,
       acceleration: 67,
       braking: 80,
@@ -3071,6 +3120,7 @@ window.VEHICLE_HORIZON = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 46,
       acceleration: 36,
       braking: 55,
@@ -3093,6 +3143,7 @@ window.VEHICLE_PULSE_477_RS = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 66,
       acceleration: 60,
       braking: 67,
@@ -3115,6 +3166,7 @@ window.VEHICLE_ROKU = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 36,
       acceleration: 33,
       braking: 51,
@@ -3137,6 +3189,7 @@ window.VEHICLE_TEMPORO = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 71,
       acceleration: 62,
       braking: 72,
@@ -3159,6 +3212,7 @@ window.VEHICLE_RIVAL = [
     repairPriceGarage: 180,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 39,
       acceleration: 31,
       braking: 53,
@@ -3180,6 +3234,7 @@ window.VEHICLE_INTERCEPTOR = [
     contractPrice: "Un-Buyable",
     repairPrice: 900,
     repairPriceGarage: 200,
+    seats: 4,
     stats: {
       topSpeed: 40,
       acceleration: 31,
@@ -3203,6 +3258,7 @@ window.VEHICLE_WARDEN = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 8,
       topSpeed: 47,
       acceleration: 31,
       braking: 53,
@@ -3225,6 +3281,7 @@ window.VEHICLE_CRUISER = [
     repairPriceGarage: 0,
     contractPrice: 500,
     stats: {
+      seats: 4,
       topSpeed: 37,
       acceleration: 30,
       braking: 51,
@@ -3247,8 +3304,9 @@ window.VEHICLE_BLADE = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 55,
-      acceleration: 42,
+      acceleration: 44,
       braking: 61,
       Health: "Body-1,000/Wheels-300/Windows-400",
       armor: 5

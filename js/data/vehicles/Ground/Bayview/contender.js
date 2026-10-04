@@ -9,6 +9,7 @@ window.VEHICLE_CONTENDER = [
     repairPriceGarage: 180,
     contractPrice: 65000,
     stats: {
+      seats: 2,
       topSpeed: 40,
       acceleration: 31,
       braking: 53,

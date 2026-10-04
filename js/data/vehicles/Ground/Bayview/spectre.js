@@ -9,6 +9,7 @@ window.VEHICLE_SPECTRE = [
     repairPriceGarage: 2250,
     contractPrice: 8000000,
     stats: {
+      seats: 2,
       topSpeed: 74,
       acceleration: 67,
       braking: 76,

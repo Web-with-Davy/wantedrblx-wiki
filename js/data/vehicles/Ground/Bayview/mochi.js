@@ -9,6 +9,7 @@ window.VEHICLE_MOCHI = [
     repairPriceGarage: 180,
     contractPrice: 6000,
     stats: {
+      seats: 2,
       topSpeed: 39,
       acceleration: 30,
       braking: 52,

@@ -204,6 +204,7 @@ function renderVehicleDetails(item) {
   const statsHtml = [
     _stat('Type', item.type ? (item.type.charAt(0).toUpperCase() + item.type.slice(1)) : null),
     _stat('Obtaining', item.obtaining),
+    _stat('Seats', item.stats && item.stats.seats != null ? String(item.stats.seats) : null),
     _stat('Buy Price', f(item.contractPrice)),
     _stat('Repair Price', f(item.repairPrice)),
     _stat('Garage Repair', f(item.repairPriceGarage)),

@@ -8,6 +8,7 @@ window.VEHICLE_INTERCEPTOR = [
     contractPrice: "Un-Buyable",
     repairPrice: 900,
     repairPriceGarage: 200,
+    seats: 4,
     stats: {
       topSpeed: 40,
       acceleration: 31,

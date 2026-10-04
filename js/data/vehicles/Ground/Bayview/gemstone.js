@@ -9,6 +9,7 @@ window.VEHICLE_GEMSTONE = [
     repairPriceGarage: 450,
     contractPrice: 400000,
     stats: {
+      seats: 4,
       topSpeed: 46,
       acceleration: 35,
       braking: 56,

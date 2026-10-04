@@ -9,6 +9,7 @@ window.VEHICLE_ZORO = [
     repairPriceGarage: 900,
     contractPrice: 900000,
     stats: {
+      seats: 4,
       topSpeed: 48,
       acceleration: 38,
       braking: 51,

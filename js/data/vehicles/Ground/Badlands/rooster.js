@@ -9,6 +9,7 @@ window.VEHICLE_ROOSTER = [
     repairPriceGarage: 180,
     contractPrice: 1000,
     stats: {
+      seats: 2,
       topSpeed: 26,
       acceleration: 31,
       braking: 46,

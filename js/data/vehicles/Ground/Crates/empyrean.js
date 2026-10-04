@@ -9,6 +9,7 @@ window.VEHICLE_EMPYREAN = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 2,
       topSpeed: 77,
       acceleration: 67,
       braking: 80,

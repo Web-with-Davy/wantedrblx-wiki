@@ -9,6 +9,7 @@ window.VEHICLE_PANTHER = [
     repairPriceGarage: 0,
     contractPrice: "Un-Buyable",
     stats: {
+      seats: 0,
       topSpeed: 100,
       handling: 100,
       spoolTime: 4,

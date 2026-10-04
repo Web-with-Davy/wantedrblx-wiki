@@ -9,6 +9,7 @@ window.VEHICLE_MINI_BIRD = [
     repairPriceGarage: 0,
     contractPrice: 1400000,
     stats: {
+      seats: 0,
       topSpeed: 58,
       handling: 50,
       spoolTime: 3,

@@ -9,6 +9,7 @@ window.VEHICLE_CROWLINE = [
     repairPriceGarage: 180,
     contractPrice: 120000,
     stats: {
+      seats: 4,
       topSpeed: 34,
       acceleration: 30,
       braking: 51,

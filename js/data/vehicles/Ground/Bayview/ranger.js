@@ -9,9 +9,10 @@ window.VEHICLE_RANGER = [
     repairPriceGarage: 180,
     contractPrice: 3000,
     stats: {
-      topSpeed: 28,
-      acceleration: 28,
-      braking: 42,
+      seats: 4,
+      topSpeed: 30,
+      acceleration: 29,
+      braking: 44,
       Health: "Body-300/Wheels-100/Windows-100",
       armor: 0
     }

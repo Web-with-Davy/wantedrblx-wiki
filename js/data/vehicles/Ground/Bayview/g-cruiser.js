@@ -9,6 +9,7 @@ window.VEHICLE_G_CRUISER = [
     repairPriceGarage: 450,
     contractPrice: 280000,
     stats: {
+      seats: 4,
       topSpeed: 41,
       acceleration: 28,
       braking: 46,
