@@ -7,7 +7,7 @@ window.WEAPON_RPG_7 = [
     contractPrice: 1250000,
     stats: {
       ammo: "1/6",
-      ammoPrice: "$2000 for 1",
+      ammoPrice: "$1000 for 1",
       damage: "80",
       firerate: 8,
       reload: 7,

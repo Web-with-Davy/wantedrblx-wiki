@@ -9,7 +9,7 @@ window.WEAPON_DEAGLE = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "8/160",
-      ammoPrice: "$0 for 0",
+      ammoPrice: "$80 for 8",
       damage: "Head-40/Torso-25/Limbs-20",
       firerate: 200,
       reload: 3,

@@ -8,7 +8,7 @@ window.WEAPON_FLASHBANG = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "?/?",
-      ammoPrice: "? for ?",
+      ammoPrice: "1500 for 1",
       damage: "Head-0/Torso-0/Limbs-0",
       firerate: 0,
       reload: 0,

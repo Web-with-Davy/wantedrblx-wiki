@@ -8,7 +8,7 @@ window.WEAPON_GRENADE_LAUNCHER = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "1/6",
-      ammoPrice: "? for ?",
+      ammoPrice: "Cant buy ammo",
       damage: "80",
       firerate: 13,
       reload: 4.5,

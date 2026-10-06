@@ -7,7 +7,7 @@ window.WEAPON_C4 = [
     contractPrice: 50000,
     stats: {
       ammo: "1/10",
-      ammoPrice: "$1000 for 1",
+      ammoPrice: "$250 for 1",
       damage: "35",
       firerate: 0,
       reload: 0,

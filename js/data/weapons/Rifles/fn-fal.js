@@ -9,7 +9,7 @@ window.WEAPON_FN_FAL = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "20/280",
-      ammoPrice: "$0 for 0",
+      ammoPrice: "$200 for 20",
       damage: "Head-14/Torso-10/Limbs-9",
       firerate: 705,
       reload: 2.5,
