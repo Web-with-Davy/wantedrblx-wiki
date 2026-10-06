@@ -10,6 +10,7 @@ window.WEAPON_SAWN_OFF = [
       ammo: "2/30",
       ammoPrice: "$20 for 2",
       damage: "Head-7/Torso-6/Limbs-4",
+      pellets: 8,
       firerate: 193,
       reload: 3.8,
       accuracy: "±18.20m @ 25m"
