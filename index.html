@@ -192,8 +192,13 @@
                 && navigator.hardwareConcurrency <= 4;
             const hasLowMemory = Number.isFinite(navigator.deviceMemory)
                 && navigator.deviceMemory <= 4;
-            const shouldEnableLowEnd = hasLowCoreCount || hasLowMemory || Boolean(connection && connection.saveData);
-            if (savedLowEndMode === "true" || (savedLowEndMode === null && shouldEnableLowEnd)) {
+            const hasModeratelyLimitedHardware = Number.isFinite(navigator.hardwareConcurrency)
+                && Number.isFinite(navigator.deviceMemory)
+                && navigator.hardwareConcurrency <= 6
+                && navigator.deviceMemory <= 6;
+            const shouldEnableLowEnd = hasLowCoreCount || hasLowMemory || hasModeratelyLimitedHardware
+                || Boolean(connection && connection.saveData);
+            if (savedLowEndMode === "true" || (savedLowEndMode !== "false" && shouldEnableLowEnd)) {
                 document.body.classList.add("low-end-mode");
             }
             if (localStorage.getItem("alwaysShowMore") === "true") {
