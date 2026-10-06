@@ -89,8 +89,9 @@ function _weaponDps(item) {
   if (!(window.GUNS_DATA || []).includes(item)) return null;
 
   const stats = item.stats || {};
-  const fireRate = Number(stats.firerate);
-  if (!Number.isFinite(fireRate) || fireRate <= 0) return [];
+  const roundsPerMinute = Number(stats.firerate);
+  if (!Number.isFinite(roundsPerMinute) || roundsPerMinute <= 0) return [];
+  const secondsPerShot = 60 / roundsPerMinute;
 
   const damage = String(stats.damage || '');
   const labeledDamage = [...damage.matchAll(/(Head|Torso|Limbs?)-(\d+(?:\.\d+)?)/gi)];
@@ -105,8 +106,8 @@ function _weaponDps(item) {
     const shotsToKill = damage > 0 ? Math.ceil(200 / damage) : Infinity;
     return {
       part,
-      dps: damage * 1000 / fireRate,
-      ttk: Number.isFinite(shotsToKill) ? Math.max(0, shotsToKill - 1) * fireRate / 1000 : Infinity,
+      dps: damage / secondsPerShot,
+      ttk: Number.isFinite(shotsToKill) ? Math.max(0, shotsToKill - 1) * secondsPerShot : Infinity,
     };
   });
 
@@ -165,7 +166,7 @@ function renderWeaponDetails(item) {
     _stat('Ammo', item.stats && item.stats.ammo),
     _stat('Ammo Cost', item.stats && item.stats.ammoPrice),
     _stat('Damage', item.stats && item.stats.damage),
-    _stat('Fire Rate', item.stats && item.stats.firerate),
+    _stat('Fire Rate (RPM)', item.stats && item.stats.firerate),
     _stat('Reload Speed', item.stats && item.stats.reload ? `${item.stats.reload}s` : null),
     _stat('Accuracy', item.stats && item.stats.accuracy),
     dpsHtml,

@@ -8,7 +8,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
     sellPrice: "300000",
     stats: {
       ammo: "5/30",
-      ammoPrice: "2000? for 5",
+      ammoPrice: "$2000 for 5",
       damage: "Head-200/Torso-80/Limbs-80",
       firerate: 30,
       reload: 3.5,
