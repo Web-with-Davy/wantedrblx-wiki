@@ -10,6 +10,7 @@ window.WEAPON_MODEL_870 = [
       ammo: "4/80",
       ammoPrice: "$60 for 4",
       damage: "Head-7/Torso-6/Limbs-4",
+      pellets: 7,
       firerate: 66,
       reload: 0.8,
       accuracy: "±3.50m @ 25m"

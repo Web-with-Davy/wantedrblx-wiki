@@ -92,6 +92,9 @@ function _weaponDps(item) {
   const roundsPerMinute = Number(stats.firerate);
   if (!Number.isFinite(roundsPerMinute) || roundsPerMinute <= 0) return [];
   const secondsPerShot = 60 / roundsPerMinute;
+  const pelletsPerShot = Number(stats.pellets) > 0 ? Number(stats.pellets) : 1;
+  const magazineSize = Number(String(stats.ammo || '').match(/^\s*(\d+)/)?.[1]);
+  const reloadSeconds = Number(stats.reload);
 
   const damage = String(stats.damage || '');
   const labeledDamage = [...damage.matchAll(/(Head|Torso|Limbs?)-(\d+(?:\.\d+)?)/gi)];
@@ -103,11 +106,24 @@ function _weaponDps(item) {
   if (!damageValues || !damageValues.length) return null;
 
   const parts = damageValues.map(([part, damage]) => {
-    const shotsToKill = damage > 0 ? Math.ceil(200 / damage) : Infinity;
+    const damagePerShot = damage * pelletsPerShot;
+    const shotsToKill = damagePerShot > 0 ? Math.ceil(200 / damagePerShot) : Infinity;
+    const reloads = Number.isFinite(shotsToKill) && Number.isFinite(magazineSize) && magazineSize > 0
+      ? Math.floor((shotsToKill - 1) / magazineSize)
+      : 0;
+    const reloadDelay = Number.isFinite(reloadSeconds) && reloadSeconds > 0
+      ? Math.max(0, reloadSeconds - secondsPerShot)
+      : 0;
     return {
       part,
-      dps: damage / secondsPerShot,
-      ttk: Number.isFinite(shotsToKill) ? Math.max(0, shotsToKill - 1) * secondsPerShot : Infinity,
+      dps: damagePerShot / secondsPerShot,
+      shotsToKill,
+      pelletsToKill: shotsToKill * pelletsPerShot,
+      ttk: Number.isFinite(shotsToKill)
+        ? Math.max(0, shotsToKill - 1) * secondsPerShot + reloads * reloadDelay
+        : Infinity,
+      reloads,
+      reloadTime: reloads * (Number.isFinite(reloadSeconds) && reloadSeconds > 0 ? reloadSeconds : 0),
     };
   });
 
@@ -144,11 +160,13 @@ function renderWeaponDetails(item) {
     <div class="val-stat weapon-dps-stat">
       <span class="val-stat-label">Damage Per Second / Time To Kill (200 HP)</span>
       <div class="weapon-dps-grid">
-        ${dpsStats.parts.map(({ part, dps, ttk }) => `
+        ${dpsStats.parts.map(({ part, dps, shotsToKill, pelletsToKill, ttk, reloads, reloadTime }) => `
           <div class="weapon-dps-part">
             <span>${part}</span>
             <strong>${dps.toFixed(1)} DPS</strong>
-            <small>${Number.isFinite(ttk) ? `${ttk.toFixed(2)}s TTK` : 'No damage'}</small>
+            <small>${Number.isFinite(ttk)
+              ? `${shotsToKill} shot${shotsToKill === 1 ? '' : 's'}${pelletsToKill !== shotsToKill ? ` / ${pelletsToKill} pellets` : ''} to kill · ${ttk.toFixed(2)}s TTK${reloads ? ` · ${reloads} reload${reloads === 1 ? '' : 's'} (${reloadTime.toFixed(2)}s)` : ''}`
+              : 'No damage'}</small>
           </div>`).join('')}
       </div>
       <div class="weapon-dps-average">
@@ -164,6 +182,7 @@ function renderWeaponDetails(item) {
     _stat('Re-Buy Price', f(item.reBuyPrice)),
     _stat('Sell Price', f(item.sellPrice)),
     _stat('Ammo', item.stats && item.stats.ammo),
+    _stat('Pellets Per Shot', item.stats && item.stats.pellets),
     _stat('Ammo Cost', item.stats && item.stats.ammoPrice),
     _stat('Damage', item.stats && item.stats.damage),
     _stat('Fire Rate (RPM)', item.stats && item.stats.firerate),

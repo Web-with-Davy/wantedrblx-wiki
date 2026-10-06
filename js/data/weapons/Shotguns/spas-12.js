@@ -10,6 +10,7 @@ window.WEAPON_SPAS_12 = [
       ammo: "6/90",
       ammoPrice: "$360 for 6",
       damage: "Head-7/Torso-5/Limbs-4",
+      pellets: 8,
       firerate: 200,
       reload: 0.8,
       accuracy: "±3.50m @ 25m"

@@ -3945,6 +3945,7 @@ window.WEAPON_BENELLI_M1014 = [
       ammo: "30/270",
       ammoPrice: "$120 for 6",
       damage: "Head-5/Torso-4/Limbs-3",
+      pellets: 8,
       firerate: 230,
       reload: 0.8,
       accuracy: "±3.50m @ 25m"
@@ -3986,6 +3987,7 @@ window.WEAPON_MODEL_870 = [
       ammo: "4/80",
       ammoPrice: "$60 for 4",
       damage: "Head-7/Torso-6/Limbs-4",
+      pellets: 7,
       firerate: 66,
       reload: 0.8,
       accuracy: "±3.50m @ 25m"
@@ -4050,6 +4052,7 @@ window.WEAPON_SPAS_12 = [
       ammo: "6/90",
       ammoPrice: "$360 for 6",
       damage: "Head-7/Torso-5/Limbs-4",
+      pellets: 8,
       firerate: 200,
       reload: 0.8,
       accuracy: "±3.50m @ 25m"

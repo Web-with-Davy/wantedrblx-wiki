@@ -10,6 +10,7 @@ window.WEAPON_BENELLI_M1014 = [
       ammo: "30/270",
       ammoPrice: "$120 for 6",
       damage: "Head-5/Torso-4/Limbs-3",
+      pellets: 8,
       firerate: 230,
       reload: 0.8,
       accuracy: "±3.50m @ 25m"
