@@ -3481,7 +3481,7 @@ window.WEAPON_C4 = [
     contractPrice: 50000,
     stats: {
       ammo: "1/10",
-      ammoPrice: "$1000 for 1",
+      ammoPrice: "$250 for 1",
       damage: "35",
       firerate: 0,
       reload: 0,
@@ -3501,7 +3501,7 @@ window.WEAPON_FLASHBANG = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "?/?",
-      ammoPrice: "? for ?",
+      ammoPrice: "1500 for 1",
       damage: "Head-0/Torso-0/Limbs-0",
       firerate: 0,
       reload: 0,
@@ -3521,7 +3521,7 @@ window.WEAPON_GRENADE_LAUNCHER = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "1/6",
-      ammoPrice: "? for ?",
+      ammoPrice: "Cant buy ammo",
       damage: "80",
       firerate: 13,
       reload: 4.5,
@@ -3540,7 +3540,7 @@ window.WEAPON_M67 = [
     contractPrice: 80000,
     stats: {
       ammo: "1/3",
-      ammoPrice: "$1000 for 1",
+      ammoPrice: "$1500 for 1",
       damage: "Head-100/Torso-100/Limbs-100",
       firerate: 0,
       reload: 0,
@@ -3559,7 +3559,7 @@ window.WEAPON_RPG_7 = [
     contractPrice: 1250000,
     stats: {
       ammo: "1/6",
-      ammoPrice: "$2000 for 1",
+      ammoPrice: "$1000 for 1",
       damage: "80",
       firerate: 8,
       reload: 7,
@@ -3580,7 +3580,7 @@ window.WEAPON_DEAGLE = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "8/160",
-      ammoPrice: "$0 for 0",
+      ammoPrice: "$80 for 8",
       damage: "Head-40/Torso-25/Limbs-20",
       firerate: 200,
       reload: 3,
@@ -3791,7 +3791,7 @@ window.WEAPON_FN_FAL = [
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "20/280",
-      ammoPrice: "$0 for 0",
+      ammoPrice: "$200 for 20",
       damage: "Head-14/Torso-10/Limbs-9",
       firerate: 705,
       reload: 2.5,
@@ -4031,6 +4031,7 @@ window.WEAPON_SAWN_OFF = [
       ammo: "2/30",
       ammoPrice: "$20 for 2",
       damage: "Head-7/Torso-6/Limbs-4",
+      pellets: 8,
       firerate: 193,
       reload: 3.8,
       accuracy: "±18.20m @ 25m"
@@ -4167,12 +4168,12 @@ window.WEAPON_P90 = [
     name: "P90",
     description: "The P90 is a fan favorite SMG known for its iconic bullpup design and massive 50-round magazine, allowing for sustained fire and quick reloads.",
     obtaining: "Police Level 3",
-    reBuyPrice: "?",
-    sellPrice: "?",
+    reBuyPrice: "5000",
+    sellPrice: "1500",
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "50/700",
-      ammoPrice: "? for ?",
+      ammoPrice: "$500 for 50",
       damage: "Head-9/Torso-7/Limbs-7",
       firerate: 909,
       reload: 3.8,
