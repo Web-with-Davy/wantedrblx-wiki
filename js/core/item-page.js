@@ -157,9 +157,9 @@ function renderWeaponDetails(item) {
   const f = typeof formatPrice === 'function' ? formatPrice : (v => v);
   const dpsStats = _weaponDps(item);
   const roundsPerMinute = Number(item.stats && item.stats.firerate);
-  const shotsPerSecond = Number.isFinite(roundsPerMinute) && roundsPerMinute > 0
-    ? `${(roundsPerMinute / 60).toFixed(2)} shots/s`
-    : null;
+  const fireRateDisplay = Number.isFinite(roundsPerMinute) && roundsPerMinute > 0
+    ? `${roundsPerMinute} RPM / 1 bullet every ${(60 / roundsPerMinute).toFixed(2)}s`
+    : item.stats && item.stats.firerate;
   const dpsHtml = dpsStats && dpsStats.parts.length ? `
     <div class="val-stat weapon-dps-stat">
       <span class="val-stat-label">Damage Per Second / Time To Kill (200 HP)</span>
@@ -189,8 +189,7 @@ function renderWeaponDetails(item) {
     _stat('Pellets Per Shot', item.stats && item.stats.pellets),
     _stat('Ammo Cost', item.stats && item.stats.ammoPrice),
     _stat('Damage', item.stats && item.stats.damage),
-    _stat('Fire Rate (RPM)', item.stats && item.stats.firerate),
-    _stat('Shots Per Second', shotsPerSecond),
+    _stat('Fire Rate', fireRateDisplay),
     _stat('Reload Speed', item.stats && item.stats.reload ? `${item.stats.reload}s` : null),
     _stat('Accuracy', item.stats && item.stats.accuracy),
     dpsHtml,
