@@ -1,7 +1,7 @@
-window.WEAPON_BUZZSAW = [
+window.ITEM_TOOLS_BUZZSAW = [
   {
     name: "Buzzsaw",
-    description: "Used to break the cglass in the jewerly store, decent melee weapon",
+    description: "Used to break the reinforced glass, decent melee weapon",
     location: "Ofy's Value Pawn",
     contractPrice: 2000,
     stats: {

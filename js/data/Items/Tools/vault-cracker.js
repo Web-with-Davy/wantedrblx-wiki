@@ -1,4 +1,4 @@
-window.WEAPON_VAULT_CRACKER = [
+window.ITEM_TOOLS_VAULT_CRACKER = [
   {
     name: "Vault Cracker",
     description: "Used to open the Jewelry Store vaults, very useful",

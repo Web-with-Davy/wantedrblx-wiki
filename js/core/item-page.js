@@ -1,8 +1,14 @@
 const ITEM_PAGE_REGISTRY = {
   weapons: {
     label: 'WEAPONS', emoji: '🔫',
-    getData: () => [...(window.GUNS_DATA || []), ...(window.EXPLOSIVES_DATA || []), ...(window.EQUIPMENT_DATA || []), ...(window.TOOLS_DATA || [])],
+    getData: () => [...(window.GUNS_DATA || []), ...(window.EXPLOSIVES_DATA || []), ...(window.EQUIPMENT_DATA || [])],
     folder: 'weapons',
+    renderDetails: renderWeaponDetails,
+  },
+  items: {
+    label: 'ITEMS', emoji: '🧰',
+    getData: () => window.ITEMS_DATA || [],
+    folder: 'items',
     renderDetails: renderWeaponDetails,
   },
   vehicles: {
@@ -179,6 +185,52 @@ function renderWeaponDetails(item) {
       </div>
     </div>` : '';
 
+  const printerStats = item.printerStats;
+  const printerYieldHtml = printerStats ? (() => {
+    const cashChanceTotal = printerStats.cashOutcomes.reduce((total, outcome) => total + outcome.chance, 0);
+    const printChanceTotal = printerStats.printOutcomes.reduce((total, outcome) => total + outcome.chance, 0);
+    const averageCash = printerStats.cashOutcomes.reduce((total, outcome) => total + outcome.amount * outcome.chance, 0) / cashChanceTotal;
+    const averagePrints = printerStats.printOutcomes.reduce((total, outcome) => total + outcome.count * outcome.chance, 0) / printChanceTotal;
+    const expectedLifetimeCash = averageCash * averagePrints;
+    const expectedRuntime = averagePrints * printerStats.intervalSeconds;
+    const oddsRows = (outcomes, valueKey, valueFormatter) => outcomes.map(outcome => {
+      const chance = Number.isInteger(outcome.chance) ? outcome.chance.toFixed(1) : outcome.chance;
+      return `<tr><td>${valueFormatter(outcome[valueKey])}</td><td>${chance}%</td></tr>`;
+    }).join('');
+
+    return `
+      <div class="weapon-dps-stat printer-yield-stat">
+        <span class="val-stat-label">Money Printer Yield</span>
+        <div class="printer-yield-summary">
+          <div><span>Print interval</span><strong>${printerStats.intervalSeconds}s</strong></div>
+          <div><span>Average prints before breaking</span><strong>${averagePrints.toFixed(1)}</strong></div>
+          <div><span>Average cash per printer</span><strong>${f(Math.round(expectedLifetimeCash))}</strong></div>
+          <div><span>Average operating time</span><strong>${(expectedRuntime / 60).toFixed(1)} min</strong></div>
+        </div>
+        <div class="printer-odds-grid">
+          <div>
+            <h4>Cash per print</h4>
+            <table class="printer-odds-table"><tbody>${oddsRows(printerStats.cashOutcomes, 'amount', amount => f(amount))}</tbody></table>
+            <small>Listed odds total ${cashChanceTotal.toFixed(2)}%; normalized for expected value.</small>
+          </div>
+          <div>
+            <h4>Prints before breaking</h4>
+            <table class="printer-odds-table"><tbody>${oddsRows(printerStats.printOutcomes, 'count', count => count)}</tbody></table>
+            <small>Listed odds total ${printChanceTotal.toFixed(2)}%; normalized for expected value.</small>
+          </div>
+        </div>
+      </div>`;
+  })() : '';
+
+  const possibleDropsHtml = Array.isArray(item.possibleDrops) ? `
+    <div class="weapon-dps-stat printer-yield-stat">
+      <span class="val-stat-label">Possible Item Drops</span>
+      <table class="printer-odds-table">
+        <thead><tr><th>Item</th><th>Drop chance</th></tr></thead>
+        <tbody>${item.possibleDrops.map(drop => `<tr><td>${drop}</td><td>Unknown</td></tr>`).join('')}</tbody>
+      </table>
+    </div>` : '';
+
   const statsHtml = [
     _stat('Obtaining', item.obtaining),
     _stat('Location', item.location || (item.stats && item.stats.location)),
@@ -193,6 +245,8 @@ function renderWeaponDetails(item) {
     _stat('Reload Speed', item.stats && item.stats.reload ? `${item.stats.reload}s` : null),
     _stat('Accuracy', item.stats && item.stats.accuracy),
     dpsHtml,
+    printerYieldHtml,
+    possibleDropsHtml,
   ].join('');
 
   let attachmentsHtml = '';

@@ -10,12 +10,12 @@ window.audioUnlocked = false;
 
 window.loadPage = loadPage;
 
-const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
+const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "items", "events", "promo-codes"];
 const PAGE_NAMES = {
     home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
     weapons: 'WEAPONS', vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES',
     missions: 'MISSIONS', npcs: 'NPCs', locations: 'LOCATIONS',
-    store: 'STORE', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
+    store: 'STORE', items: 'ITEMS', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
 };
 
 function getCurrentPage() {
@@ -74,6 +74,7 @@ function loadPage(page, saveToHistory = true) {
                 case "npcs": content = typeof renderNPCs === "function" ? renderNPCs() : ""; break;
                 case "locations": content = typeof renderLocations === "function" ? renderLocations() : ""; break;
                 case "store": content = typeof renderStore === "function" ? renderStore() : ""; break;
+                case "items": content = typeof renderItems === "function" ? renderItems() : ""; break;
                 case "events": content = typeof renderEvents === "function" ? renderEvents() : ""; break;
                 case "promo-codes": content = typeof renderPromoCodes === "function" ? renderPromoCodes() : ""; break;
                 default: content = `<h2>Work In Progress</h2><p>Under construction...</p>`;
@@ -276,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Pages whose renderers are loaded in the deferred (non-critical) bundle.
-    const DEFERRED_PAGES = ["atms", "events", "gun-crates", "locations", "missions", "npcs", "store", "valuables", "vehicles", "weapons"];
+    const DEFERRED_PAGES = ["atms", "events", "gun-crates", "items", "locations", "missions", "npcs", "store", "valuables", "vehicles", "weapons"];
 
     // Top-level listener registered BEFORE the garage runs — immune to race conditions.
     // When deferred scripts finish, load any page that was parked during the garage phase.
@@ -314,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 home: 'renderHome', valuables: 'renderValuables', atms: 'renderATMs',
                 weapons: 'renderWeapons', vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates',
                 missions: 'renderMissions', npcs: 'renderNPCs', locations: 'renderLocations',
-                store: 'renderStore', events: 'renderEvents', 'promo-codes': 'renderPromoCodes'
+                store: 'renderStore', items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes'
             };
             const rendererName = RENDERER_MAP[initialPage] || '';
             const rendererReady = !DEFERRED_PAGES.includes(initialPage) || typeof window[rendererName] === 'function';

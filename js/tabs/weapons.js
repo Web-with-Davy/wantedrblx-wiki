@@ -32,10 +32,6 @@ function renderWeapons(sort = "high") {
   const sortedGuns = [...GUNS_DATA].sort(sortFn);
   const sortedExplosives = [...EXPLOSIVES_DATA].sort(sortFn);
   const sortedEquipment = [...EQUIPMENT_DATA].sort(sortFn);
-  const sortedTools = [...TOOLS_DATA].sort(sortFn);
-
-
-
   const makeSectionCards = (data) => data.map(item => makeWeaponCard(item)).join('');
 
   const sortButtons = renderSortButtons([
@@ -47,7 +43,6 @@ function renderWeapons(sort = "high") {
     <a onclick="document.getElementById('weapons-guns')?.scrollIntoView({behavior:'smooth'})">Guns</a>
     <a onclick="document.getElementById('weapons-explosives')?.scrollIntoView({behavior:'smooth'})">Explosives</a>
     <a onclick="document.getElementById('weapons-equipment')?.scrollIntoView({behavior:'smooth'})">Equipment</a>
-    <a onclick="document.getElementById('weapons-tools')?.scrollIntoView({behavior:'smooth'})">Tools</a>
   </div>`;
 
   const section = (id, label, cards) => `
@@ -66,8 +61,6 @@ function renderWeapons(sort = "high") {
     ${section('weapons-explosives', 'Explosives', makeSectionCards(sortedExplosives))}
     <div class="val-section-divider"></div>
     ${section('weapons-equipment', 'Equipment', makeSectionCards(sortedEquipment))}
-    <div class="val-section-divider"></div>
-    ${section('weapons-tools', 'Tools', makeSectionCards(sortedTools))}
   `;
 }
 

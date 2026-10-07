@@ -20,6 +20,7 @@
     "js/tabs/atms.js",
     "js/tabs/events.js",
     "js/tabs/gun-crates.js",
+    "js/tabs/items.js",
     "js/tabs/locations.js?v=20261001-2",
     "js/tabs/missions.js",
     "js/tabs/npcs.js",

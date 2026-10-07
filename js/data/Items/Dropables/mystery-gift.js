@@ -1,0 +1,27 @@
+window.ITEM_DROPABLES_MYSTERY_GIFT = [
+  {
+    name: "Mystery Gift",
+    description: "A mysterious gift with very good content",
+    location: "Daily login reward",
+    possibleDrops: [
+      "Golden Deagle",
+      "Golden AK-47",
+      "Golden Barrett M82",
+      "50k Cash",
+      "100k Cash",
+      "1mil Cash",
+      "GoldBook",
+      "Pearl Necklace",
+      "GPU",
+      "Amethyst Ring",
+      "Diamond Ring",
+      "Rollie",
+      "Sapphire",
+      "Ruby",
+      "Emerald",
+      "Amethyst",
+      "Diamond",
+      "Money Printer",
+    ],
+  }
+];

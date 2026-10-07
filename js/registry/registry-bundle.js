@@ -152,7 +152,12 @@
             .flatMap(([, items]) => items);
         window.EQUIPMENT_DATA = byCategory['Equipment'] || [];
         window.EXPLOSIVES_DATA = byCategory['Explosives'] || [];
-        window.TOOLS_DATA = byCategory['Tools'] || [];
+        const itemVars = Object.keys(window).filter(k => k.startsWith('ITEM_'));
+        window.ITEMS_BY_CATEGORY = {
+            Tools: itemVars.filter(k => k.startsWith('ITEM_TOOLS_')).flatMap(k => window[k] || []),
+            Dropables: itemVars.filter(k => k.startsWith('ITEM_DROPABLES_')).flatMap(k => window[k] || [])
+        };
+        window.ITEMS_DATA = Object.values(window.ITEMS_BY_CATEGORY).flat();
     });
 
     // ----- Youtubers -----

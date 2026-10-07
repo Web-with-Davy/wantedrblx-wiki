@@ -203,6 +203,11 @@ body.frutiger-aero .content :is(p, li, span, small, label, strong, time, dt, dd)
     text-shadow: 0 1px rgba(255, 255, 255, 0.72);
 }
 
+body.frutiger-aero .content table :is(td, th) {
+    color: var(--aero-ink) !important;
+    text-shadow: none !important;
+}
+
 body.frutiger-aero .card,
 body.frutiger-aero .val-card,
 body.frutiger-aero .sidebar-box,

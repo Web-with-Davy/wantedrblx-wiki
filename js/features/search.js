@@ -35,6 +35,7 @@ function renderSearchItem(item) {
     const displayName = item.highlightedName || item.name || item.title || '';
 
     if (type === 'weapon' && typeof makeWeaponCard === 'function') return makeWeaponCard(item, displayName);
+    if (type === 'item' && typeof makeItemCard === 'function') return makeItemCard(item, displayName);
     if (type === 'vehicle' && typeof makeVehicleCard === 'function') return makeVehicleCard(item, displayName);
     if (type === 'mission' && typeof makeMissionCard === 'function') return makeMissionCard(item, displayName);
     if (type === 'valuable' && typeof makeValuableCard === 'function') return makeValuableCard(item, displayName);
@@ -70,7 +71,7 @@ function performSearch(query, container, renderSearchItem) {
 
     checkData((typeof GUNS_DATA !== 'undefined' ? GUNS_DATA : []), 'weapon', 'WEAPON');
     checkData((typeof EXPLOSIVES_DATA !== 'undefined' ? EXPLOSIVES_DATA : []), 'weapon', 'WEAPON');
-    checkData((typeof TOOLS_DATA !== 'undefined' ? TOOLS_DATA : []), 'weapon', 'WEAPON');
+    checkData((typeof ITEMS_DATA !== 'undefined' ? ITEMS_DATA : []), 'item', 'ITEM');
     checkData((typeof VEHICLES_DATA !== 'undefined' ? VEHICLES_DATA : window.VEHICLES), 'vehicle', 'VEHICLE');
     checkData((typeof ATMS_DATA !== 'undefined' ? ATMS_DATA : window.ATMS), 'atm', 'ATM');
     checkData((typeof VAULTS_DATA !== 'undefined' ? VAULTS_DATA : []), 'vault', 'VAULT');

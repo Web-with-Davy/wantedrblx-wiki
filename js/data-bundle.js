@@ -308,6 +308,96 @@ window.GUN_CRATE_UZI = [
 
 ];
 
+/* --- js/data/Items/Dropables/mystery-gift.js --- */
+window.ITEM_DROPABLES_MYSTERY_GIFT = [
+  {
+    name: "Mystery Gift",
+    description: "A mysterious gift with very good content",
+    location: "Daily login reward",
+    possibleDrops: [
+      "Golden Deagle",
+      "Golden AK-47",
+      "Golden Barrett M82",
+      "50k Cash",
+      "100k Cash",
+      "1mil Cash",
+      "GoldBook",
+      "Pearl Necklace",
+      "GPU",
+      "Amethyst Ring",
+      "Diamond Ring",
+      "Rollie",
+      "Sapphire",
+      "Ruby",
+      "Emerald",
+      "Amethyst",
+      "Diamond",
+      "Money Printer",
+    ],
+  }
+];
+/* --- js/data/Items/Dropables/printer.js --- */
+window.ITEM_DROPABLES_PRINTER = [
+  {
+    name: "Money Printer",
+    description: "Most used economy item, prints money for you",
+    location: "Robux store, daily login reward, or the wheel at crystal club & resort",
+    printerStats: {
+      intervalSeconds: 30,
+      cashOutcomes: [
+        { amount: 2000, chance: 41.0 },
+        { amount: 2250, chance: 28.7 },
+        { amount: 2500, chance: 12.3 },
+        { amount: 2750, chance: 6.2 },
+        { amount: 3000, chance: 4.1 },
+        { amount: 3500, chance: 2.5 },
+        { amount: 4000, chance: 1.6 },
+        { amount: 5000, chance: 0.8 },
+        { amount: 7500, chance: 0.4 },
+        { amount: 10000, chance: 0.2 },
+        { amount: 12500, chance: 0.1 },
+        { amount: 15000, chance: 0.04 },
+      ],
+      printOutcomes: [
+        { count: 20, chance: 58.0 },
+        { count: 30, chance: 23.2 },
+        { count: 40, chance: 8.7 },
+        { count: 50, chance: 4.6 },
+        { count: 60, chance: 3.5 },
+        { count: 100, chance: 1.2 },
+        { count: 150, chance: 0.6 },
+        { count: 200, chance: 0.3 },
+      ],
+    },
+  }
+];
+/* --- js/data/Items/Tools/buzzsaw.js --- */
+window.ITEM_TOOLS_BUZZSAW = [
+  {
+    name: "Buzzsaw",
+    description: "Used to break the reinforced glass, decent melee weapon",
+    location: "Ofy's Value Pawn",
+    contractPrice: 2000,
+    stats: {
+      ammo: "1/8",
+      ammoPrice: "$250 for 1",
+      damage: "10 per 0.2s",
+    }
+  }
+];
+/* --- js/data/Items/Tools/vault-cracker.js --- */
+window.ITEM_TOOLS_VAULT_CRACKER = [
+  {
+    name: "Vault Cracker",
+    description: "Used to open the Jewelry Store vaults, very useful",
+    location: "Oasis City Port",
+    contractPrice: 5000,
+    stats: {
+      ammo: "1/2",
+      ammoPrice: "$5000 for 1",
+    }
+  }
+];
 /* --- js/data/missions/Bert/air-support.js --- */
 window.MISSIONS_BERT_AIR_SUPPORT = [
 
@@ -4365,35 +4455,6 @@ window.WEAPON_SVD = [
     }
   },
 
-];
-
-/* --- js/data/weapons/Tools/buzzsaw.js --- */
-window.WEAPON_BUZZSAW = [
-  {
-    name: "Buzzsaw",
-    description: "Used to break the cglass in the jewerly store, decent melee weapon",
-    location: "Ofy's Value Pawn",
-    contractPrice: 2000,
-    stats: {
-      ammo: "1/8",
-      ammoPrice: "$250 for 1",
-      damage: "10 per 0.2s",
-    }
-  }
-];
-
-/* --- js/data/weapons/Tools/vault-cracker.js --- */
-window.WEAPON_VAULT_CRACKER = [
-  {
-    name: "Vault Cracker",
-    description: "Used to open the Jewelry Store vaults, very useful",
-    location: "Oasis City Port",
-    contractPrice: 5000,
-    stats: {
-      ammo: "1/2",
-      ammoPrice: "$5000 for 1",
-    }
-  }
 ];
 
 /* --- js/data/youtubers/creator-1.js --- */

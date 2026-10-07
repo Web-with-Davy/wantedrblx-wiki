@@ -30,9 +30,7 @@ const __MANIFEST_weapons = [
   "js/data/weapons/Shotguns/sawn-off.js",
   "js/data/weapons/Shotguns/spas-12.js",
   "js/data/weapons/Snipers/awm.js",
-  "js/data/weapons/Snipers/svd.js",
-  "js/data/weapons/Tools/buzzsaw.js",
-  "js/data/weapons/Tools/vault-cracker.js"
+  "js/data/weapons/Snipers/svd.js"
 ];
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
@@ -61,7 +59,6 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_weapons).then(() => {
 
     window.EQUIPMENT_DATA = byCategory['Equipment'] || [];
     window.EXPLOSIVES_DATA = byCategory['Explosives'] || [];
-    window.TOOLS_DATA = byCategory['Tools'] || [];
   } catch (err) {
     console.error("Failed building data for js/registry/weapons.js:", err);
   }

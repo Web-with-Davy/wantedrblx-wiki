@@ -192,13 +192,15 @@ function renderHome() {
     const staffHTML = (window.CONTRIBUTORS_DATA?.staff || CONTRIBUTORS_DATA?.staff || []).map(p => renderStaffItem(p, 'staff')).join('');
     const inlineContributorsHTML = (window.CONTRIBUTORS_DATA?.contributors || CONTRIBUTORS_DATA?.contributors || []).map(p => renderStaffItem(p, 'contributor')).join('');
 
-    const totalWeapons = (window.GUNS_DATA?.length || 0) + (window.EQUIPMENT_DATA?.length || 0) + (window.EXPLOSIVES_DATA?.length || 0) + (window.TOOLS_DATA?.length || 0);
+    const totalWeapons = (window.GUNS_DATA?.length || 0) + (window.EQUIPMENT_DATA?.length || 0) + (window.EXPLOSIVES_DATA?.length || 0);
+    const totalItems = window.ITEMS_DATA?.length || 0;
     const totalVehicles = window.VEHICLES_DATA?.length || 0;
     const totalMissions = window.MISSIONS_DATA?.length || 0;
     const totalValuables = window.VALUABLES_DATA?.length || 0;
 
     const wikiStatsHTML = [
         { icon: '🔫', label: 'Weapons', count: totalWeapons },
+        { icon: '🧰', label: 'Items', count: totalItems },
         { icon: '🚗', label: 'Vehicles', count: totalVehicles },
         { icon: '📋', label: 'Missions', count: totalMissions },
         { icon: '💎', label: 'Valuables', count: totalValuables },
@@ -293,6 +295,7 @@ function renderHome() {
                         <div class="inner-card-grid" id="grid-economy">
                             ${makeCatCard('ATMs & VAULTS', '🏧', 'Info on ATMs and Vaults.', 'atms', 'images/cash.webp')}
                             ${makeCatCard('STORE', '🛒', 'Info on the in-game store.', 'store', '')}
+                            ${makeCatCard('ITEMS', '🧰', 'Tools and useful items.', 'items', 'images/items/buzzsaw.webp')}
                             ${makeCatCard('VALUABLES', '💎', 'Info on valuables and their prices.', 'valuables', 'images/valuables/diamond.webp')}
                             ${makeCatCard('PROMO CODES', '🏷️', 'Active promo codes and rewards.', 'promo-codes', 'images/cash.webp')}
                         </div>
