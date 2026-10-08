@@ -6,6 +6,7 @@ window.ITEM_DROPABLES_MYSTERY_GIFT = [
     possibleDrops: [
       "Golden Deagle",
       "Golden AK-47",
+      "Barrett M82",
       "Golden Barrett M82",
       "50k Cash",
       "100k Cash",
@@ -21,6 +22,8 @@ window.ITEM_DROPABLES_MYSTERY_GIFT = [
       "Emerald",
       "Amethyst",
       "Diamond",
+      "Airdrop Marker",
+      "Airstrike Marker",
       "Money Printer",
     ],
   }

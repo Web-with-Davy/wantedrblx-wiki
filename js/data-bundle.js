@@ -317,6 +317,7 @@ window.ITEM_DROPABLES_MYSTERY_GIFT = [
     possibleDrops: [
       "Golden Deagle",
       "Golden AK-47",
+      "Barrett M82",
       "Golden Barrett M82",
       "50k Cash",
       "100k Cash",
@@ -332,6 +333,8 @@ window.ITEM_DROPABLES_MYSTERY_GIFT = [
       "Emerald",
       "Amethyst",
       "Diamond",
+      "Airdrop Marker",
+      "Airstrike Marker",
       "Money Printer",
     ],
   }
@@ -2553,6 +2556,8 @@ window.VALUABLES_MISSION_ITEMS = [
 
 /* --- js/data/valuables/shoes.js --- */
 window.VALUABLES_SHOES = [
+  { name: "Solid Gold Slides ", description: "", rarity: "LEGENDARY", category: "Shoes", price: 14000, weight: 2, commonLocation: "Shoe Locker Store" },
+  { name: "Luxury Slides ", description: "", rarity: "EPIC", category: "Shoes", price: 1400, weight: 2, commonLocation: "Shoe Locker Store" },
   { name: "Future Sneakers", description: "", rarity: "EPIC", category: "Shoes", price: 900, weight: 4, commonLocation: "Shoe Locker Store" },
   { name: "Sky James Golds", description: "", rarity: "UNCOMMON", category: "Shoes", price: 600, weight: 4, commonLocation: "Shoe Locker Store" },
   { name: "Sky James Reds", description: "", rarity: "UNCOMMON", category: "Shoes", price: 400, weight: 4, commonLocation: "Shoe Locker Store" },
