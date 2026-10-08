@@ -8,5 +8,6 @@ window.PROMO_CODES_EXPIRED = [
   { code: "PITY", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Basic Vehicle Crates", active: false },
   { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: false },
-  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false }
+  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
+  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
 ];

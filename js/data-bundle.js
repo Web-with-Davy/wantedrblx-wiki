@@ -2368,7 +2368,7 @@ window.PROMO_CODES_ACTIVE = [
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
   { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
-  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true }
+  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true }
 ];
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
@@ -2381,7 +2381,8 @@ window.PROMO_CODES_EXPIRED = [
   { code: "PITY", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Basic Vehicle Crates", active: false },
   { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: false },
-  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false }
+  { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
+  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
 ];
 
 /* --- js/data/store/bag-boosts.js --- */
@@ -2411,6 +2412,7 @@ window.STORE_MONEY_PRINTERS = [
 
 /* --- js/data/store/other.js --- */
 window.STORE_OTHER = [
+  { name: "Restore Daily Login Streak", robuxPrice: 49, description: "Restores your daily login streak."},
   { name: "Restore Lost Items", robuxPrice: 19, description: "Restores items lost after death." },
   { name: "x10 Tier 1 Vehicle Crate", robuxPrice: 198, description: "Gives 10 Tier 1 Vehicle Crates" },
   { name: "x50 Tier 1 Vehicle Crate", robuxPrice: 849, description: "Gives 50 Tier 1 Vehicle Crates" },

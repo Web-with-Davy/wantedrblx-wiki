@@ -1,4 +1,5 @@
 const UPDATES = [
+    { version: "D.04/M.10/Y.2026", description: "Money Laundering Update", color: "rgb(255, 255, 255)", color2: "rgb(73, 94, 255)" },
     { version: "D.05/M.09/Y.2026", description: "Motorcycle Update", color: "rgb(255, 60, 0)", color2: "rgb(161, 179, 0)" },
     { version: "D.15/M.08/Y.2026", description: "Evidence Room Update", color: "rgb(0, 42, 255)", color2: "rgb(179, 140, 0)" },
     { version: "D.26/M.07/Y.2026", description: "Police Update", color: "#0091ffff", color2: "#0056b3ff" },
@@ -14,7 +15,7 @@ const UPDATES = [
     // { version: "D.12/M.12/Y.2025", description: "Christmas Event", color: "#00ffaaff", color2: "#ffffffff" }
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-10-02T20:00:00+03:00');
+const COUNTDOWN_TARGET = new Date('2026-10-17T20:00:00+03:00');
 const VAULT_GUESSER_OPTIONS = ['Regular Vault', 'Silver Vault', 'Gold Vault', 'Sapphire Vault', 'Ruby Vault', 'Emerald Vault', 'Amethyst Vault'];
 const VAULT_GUESSER_WEIGHTS = [5354, 2634, 1696, 219, 61, 28, 9];
 const VAULT_GUESSER_META = {
