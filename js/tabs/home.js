@@ -316,35 +316,59 @@ function renderHome() {
             <div class="home-admin-sidebar">
                 <div class="admin-section">
 
-                    <div class="sidebar-block">
-                        <h2 class="sidebar-title">OFFICIAL LINKS</h2>
-                        <div class="official-links-grid">
-                            <a href="https://www.roblox.com/games/14438406081/Wanted" target="_blank" rel="noopener" class="official-link-btn official-link-btn--roblox">
-                                <span class="official-link-icon">🎮</span>
-                                <span>PLAY GAME</span>
-                            </a>
-                            <a href="https://discord.gg/wanted" target="_blank" rel="noopener" class="official-link-btn official-link-btn--discord">
-                                <span class="official-link-icon">📡</span>
-                                <span>DISCORD</span>
-                            </a>
-                        </div>
-                    </div>
+<div class="sidebar-block">
+    <h2 class="sidebar-title">OFFICIAL LINKS</h2>
+    <div class="official-links-grid">
+        <a href="https://www.roblox.com/games/14438406081/Wanted" target="_blank" rel="noopener" class="official-link-btn official-link-btn--roblox">
+            <span class="official-link-icon">🎮</span>
+            <span>WANTED GAME</span>
+        </a>
+        <a href="https://discord.gg/wanted" target="_blank" rel="noopener" class="official-link-btn official-link-btn--discord">
+            <span class="official-link-icon">📡</span>
+            <span>WANTED DISCORD</span>
+        </a>
+        <a href="https://www.roblox.com/communities/4856485/DevvGames" target="_blank" rel="noopener" class="official-link-btn official-link-btn--roblox">
+            <span class="official-link-icon">👥</span>
+            <span>DEVVGAMES GROUP</span>
+        </a>
+        <a href="https://x.com/DevvGamesRblx" target="_blank" rel="noopener" class="official-link-btn official-link-btn--twitter">
+            <span class="official-link-icon">🐦</span>
+            <span>DEVVGAMES TWITTER/X</span>
+        </a>
+    </div>
+</div>
 
-                    <div class="sidebar-block">
-                        <h2 class="sidebar-title">WIKI DISCORD SERVER</h2>
-                        <div class="discord-widget-box">
-                            <div class="discord-widget-header">
-                                <span class="discord-widget-icon">📡</span>
-                                <div class="discord-widget-info">
-                                    <div class="discord-widget-name">Wanted Wiki</div>
-                                    <div class="discord-widget-status"><span class="discord-dot"></span>Community &amp; Support</div>
-                                </div>
-                            </div>
-                            <a href="https://discord.gg/3NqFCz5sRx" target="_blank" rel="noopener" class="discord-join-btn">
-                                JOIN SERVER
-                            </a>
-                        </div>
-                    </div>
+<div class="sidebar-block">
+    <h2 class="sidebar-title">WIKI DISCORD SERVER</h2>
+    <div class="discord-widget-box">
+        <div class="discord-widget-header">
+            <span class="discord-widget-icon">📡</span>
+            <div class="discord-widget-info">
+                <div class="discord-widget-name">Wanted Wiki</div>
+                <div class="discord-widget-status"><span class="discord-dot"></span>Community &amp; Support</div>
+            </div>
+        </div>
+        <a href="https://discord.gg/3NqFCz5sRx" target="_blank" rel="noopener" class="discord-join-btn">
+            JOIN SERVER
+        </a>
+    </div>
+</div>
+
+<div class="sidebar-block">
+    <h2 class="sidebar-title">WIKI UGCS</h2>
+    <div class="discord-widget-box">
+        <div class="discord-widget-header">
+            <span class="discord-widget-icon">🛍️</span>
+            <div class="discord-widget-info">
+                <div class="discord-widget-name">GATTO CLOTHES</div>
+                <div class="discord-widget-status"><span class="discord-dot"></span>Roblox Clothing & UGC</div>
+            </div>
+        </div>
+        <a href="https://www.roblox.com/communities/34347750/Gatto-Clothes" target="_blank" rel="noopener" class="discord-join-btn">
+            VISIT GROUP
+        </a>
+    </div>
+</div>
 
                     <div class="sidebar-block">
                         <h2 class="sidebar-title">RECENT UPDATES</h2>
