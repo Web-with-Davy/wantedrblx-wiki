@@ -2699,7 +2699,7 @@ window.VEHICLE_RIFT = [
 
 ];
 
-/* --- js/data/vehicles/Ground/Badlands/road_hog.js --- */
+/* --- js/data/vehicles/Ground/Badlands/road-hog.js --- */
 window.VEHICLE_ROAD_HOG = [
 
   {
@@ -3109,7 +3109,7 @@ window.VEHICLE_TRACKSTAR = [
       Health: "Body-300/Wheels-100/Windows-100",
       armor: 2
     }
-  }
+  },
 
 ];
 

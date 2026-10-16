@@ -17,6 +17,7 @@ const __MANIFEST_vehicles = [
   "js/data/vehicles/Ground/Bayview/razor.js",
   "js/data/vehicles/Ground/Bayview/spectre.js",
   "js/data/vehicles/Ground/Bayview/stallion-450.js",
+  "js/data/vehicles/Ground/Bayview/trackstar.js",
   "js/data/vehicles/Ground/Bayview/vanguard.js",
   "js/data/vehicles/Ground/Bayview/zoro.js",
   "js/data/vehicles/Ground/Bayview/zorvello.js",

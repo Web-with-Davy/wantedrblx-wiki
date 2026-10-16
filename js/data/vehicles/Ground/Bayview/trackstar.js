@@ -16,6 +16,6 @@ window.VEHICLE_TRACKSTAR = [
       Health: "Body-300/Wheels-100/Windows-100",
       armor: 2
     }
-  }
+  },
 
 ];
