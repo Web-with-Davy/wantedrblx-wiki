@@ -2,6 +2,7 @@ window.VEHICLE_PULSE_477 = [
 
   {
     name: "Pulse 477",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Pulse 477 is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",

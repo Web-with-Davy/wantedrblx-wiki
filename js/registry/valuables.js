@@ -4,6 +4,7 @@ const __MANIFEST_valuables = [
   "js/data/valuables/easter.js",
   "js/data/valuables/electronics.js",
   "js/data/valuables/gems.js",
+  "js/data/valuables/halloween.js",
   "js/data/valuables/jewelry.js",
   "js/data/valuables/miscellaneous.js",
   "js/data/valuables/mission-items.js",
@@ -31,6 +32,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_valuables).then(() => {
     window.EASTER_VALUABLES_DATA = window.VALUABLES_EASTER || [];
     window.CHRISTMAS_VALUABLES_DATA = window.VALUABLES_CHRISTMAS || [];
     window.FOURTH_OF_JULY_VALUABLES_DATA = window.VALUABLES_4TH_OF_JULY || [];
+    window.HALLOWEEN_VALUABLES_DATA = window.VALUABLES_HALLOWEEN || [];
   } catch (err) {
     console.error("Failed building data for js/registry/valuables.js:", err);
   }

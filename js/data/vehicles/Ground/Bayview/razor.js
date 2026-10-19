@@ -2,6 +2,7 @@ window.VEHICLE_RAZOR = [
 
   {
     name: "Razor",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Razor is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",

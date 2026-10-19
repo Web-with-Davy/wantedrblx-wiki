@@ -2,6 +2,7 @@ window.VEHICLE_INTERCEPTOR = [
 
   {
     name: "Interceptor",
+    category: "Car",
     description: "Pretty fast car for a police vehicle",
     type: "ground",
     obtaining: "Police Level 1",

@@ -2,6 +2,7 @@ window.VEHICLE_BEAM = [
 
   {
     name: "Beam",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "ITs a very cool car, but not many players have bought it due to there being better options at a similar price",
     type: "ground",

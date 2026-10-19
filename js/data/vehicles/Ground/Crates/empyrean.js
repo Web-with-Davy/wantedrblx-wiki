@@ -2,6 +2,7 @@ window.VEHICLE_EMPYREAN = [
 
   {
     name: "Empyrean",
+    category: "Car",
     description: "Fastest ground vehicle in the game, flex rights",
     type: "ground",
     obtaining: "Vehicle Crates",

@@ -2,6 +2,7 @@ window.VEHICLE_STALLION_450 = [
 
   {
     name: "Stallion 450",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Its  a very cool looking car, most beginer friendly and affordable car in the game",
     type: "ground",

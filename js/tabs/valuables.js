@@ -64,8 +64,17 @@ function renderValuables(sort = 'high') {
     { type: 'Shoes', label: 'Shoes' },
     { type: 'Miscellaneous', label: 'Miscellaneous' },
     { type: 'Mission Items', label: 'Mission Items' },
+    { type: 'Halloween', label: 'Halloween' },
     { type: 'Easter', label: 'Easter' },
   ];
+
+  const knownTypes = new Set(categories.map(c => c.type));
+  sortedRegular.forEach(item => {
+    if (item.category && !knownTypes.has(item.category)) {
+      knownTypes.add(item.category);
+      categories.push({ type: item.category, label: item.category });
+    }
+  });
 
   const sections = categories.map((cat, index) => {
     const items = sortedRegular.filter(item => item.category === cat.type);

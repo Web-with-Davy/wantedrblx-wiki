@@ -2,6 +2,7 @@ window.VEHICLE_CRUISER = [
 
   {
     name: "Cruiser",
+    category: "Car",
     obtaining: "Starter",
     description: "Your first car, brings back memories",
     type: "ground",

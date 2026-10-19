@@ -140,6 +140,11 @@
     box-shadow: 0 0 6px #b22234;
 }
 
+.val-rarity-bar.rarity-halloween {
+    background: linear-gradient(90deg, #ff7518, #9400d3, #ff7518);
+    box-shadow: 0 0 6px #ff7518;
+}
+
 .val-img-wrap {
     position: relative;
     width: 100%;

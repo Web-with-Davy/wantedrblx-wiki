@@ -2,6 +2,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
 
   {
     name: "Golden Barrett M82",
+    category: "Airdrop",
     description: "Its a golden colored barrett m82, VERY EXPENSIVE!",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",

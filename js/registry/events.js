@@ -1,7 +1,8 @@
 const __MANIFEST_events = [
-  "js/data/events/christmas-2025.js",
+  "js/data/events/halloween-2026.js",
+  "js/data/events/july-4th-2026.js",
   "js/data/events/easter-2026.js",
-  "js/data/events/july-4th-2026.js"
+  "js/data/events/christmas-2025.js",
 ];
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];

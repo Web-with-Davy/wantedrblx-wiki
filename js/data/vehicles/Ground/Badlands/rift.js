@@ -2,6 +2,7 @@ window.VEHICLE_RIFT = [
 
   {
     name: "Rift",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "The best and rarest motorcycle",
     type: "ground",

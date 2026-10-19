@@ -17,8 +17,13 @@ function makeVehicleCard(item, displayName) {
 }
 
 function renderVehicles(sort = "high") {
-  const groundVehicles = VEHICLES_DATA.filter(v => v.type === 'ground');
-  const flyingVehicles = VEHICLES_DATA.filter(v => v.type === 'flying');
+  const isMotorcycle = v => v.category === 'Motorcycle' || v.category === 'Motorcycles' || ['Rift', 'Road Hog', 'Rooster', 'Shinobi', 'Reaper'].includes(v.name);
+  const isCar = v => (v.category === 'Car' || v.category === 'Cars' || v.type === 'ground') && !isMotorcycle(v);
+  const isAir = v => v.type === 'flying' || v.category === 'Air' || v.category === 'Air Vehicles';
+
+  const cars = (window.VEHICLES_DATA || []).filter(isCar);
+  const motorcycles = (window.VEHICLES_DATA || []).filter(isMotorcycle);
+  const flyingVehicles = (window.VEHICLES_DATA || []).filter(isAir);
 
   const sortFn = (a, b) => {
     const isUnA = typeof a.contractPrice !== 'number';
@@ -32,12 +37,12 @@ function renderVehicles(sort = "high") {
     return sort === "high" ? pB - pA : pA - pB;
   };
 
-  const sortedGround = [...groundVehicles].sort(sortFn);
+  const sortedCars = [...cars].sort(sortFn);
+  const sortedMotorcycles = [...motorcycles].sort(sortFn);
   const sortedFlying = [...flyingVehicles].sort(sortFn);
 
-
-
-  const groundCards = sortedGround.map(v => makeVehicleCard(v)).join('');
+  const carCards = sortedCars.map(v => makeVehicleCard(v)).join('');
+  const motorcycleCards = sortedMotorcycles.map(v => makeVehicleCard(v)).join('');
   const flyingCards = sortedFlying.map(v => makeVehicleCard(v)).join('');
 
   const sortButtons = renderSortButtons([
@@ -46,7 +51,8 @@ function renderVehicles(sort = "high") {
   ], sort);
 
   const jumpNav = `<div class="page-jump-nav">
-    <a onclick="document.getElementById('vehicles-ground')?.scrollIntoView({behavior:'smooth'})">Ground</a>
+    <a onclick="document.getElementById('vehicles-cars')?.scrollIntoView({behavior:'smooth'})">Cars</a>
+    <a onclick="document.getElementById('vehicles-motorcycles')?.scrollIntoView({behavior:'smooth'})">Motorcycles</a>
     <a onclick="document.getElementById('vehicles-air')?.scrollIntoView({behavior:'smooth'})">Air</a>
   </div>`;
 
@@ -54,11 +60,17 @@ function renderVehicles(sort = "high") {
     <h2>VEHICLES</h2>
     ${sortButtons}
     ${jumpNav}
-    <div class="val-section-header" id="vehicles-ground">
-      <h3 class="val-section-title">Ground Vehicles</h3>
-      <span class="val-section-count">${sortedGround.length} items</span>
+    <div class="val-section-header" id="vehicles-cars">
+      <h3 class="val-section-title">Cars</h3>
+      <span class="val-section-count">${sortedCars.length} items</span>
     </div>
-    <div class="val-grid">${groundCards}</div>
+    <div class="val-grid">${carCards}</div>
+    <div class="val-section-divider"></div>
+    <div class="val-section-header" id="vehicles-motorcycles">
+      <h3 class="val-section-title">Motorcycles</h3>
+      <span class="val-section-count">${sortedMotorcycles.length} items</span>
+    </div>
+    <div class="val-grid">${motorcycleCards}</div>
     <div class="val-section-divider"></div>
     <div class="val-section-header" id="vehicles-air">
       <h3 class="val-section-title">Air Vehicles</h3>

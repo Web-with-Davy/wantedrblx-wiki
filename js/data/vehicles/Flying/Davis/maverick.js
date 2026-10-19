@@ -2,6 +2,7 @@ window.VEHICLE_MAVERICK = [
 
   {
     name: "Maverick",
+    category: "Air",
     obtaining: "Davis' Heliport",
     description: "The Maverick is a fast and agile helicopter that is perfect for transportation and combat. It is a fan favorite among players for its speed and maneuverability",
     type: "flying",

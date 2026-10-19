@@ -31,7 +31,7 @@ const ITEM_PAGE_REGISTRY = {
   },
   valuables: {
     label: 'VALUABLES', emoji: '💎',
-    getData: () => [...(window.VALUABLES_DATA || []), ...(window.CHRISTMAS_VALUABLES_DATA || []), ...(window.FOURTH_OF_JULY_VALUABLES_DATA || [])],
+    getData: () => [...(window.VALUABLES_DATA || []), ...(window.CHRISTMAS_VALUABLES_DATA || []), ...(window.FOURTH_OF_JULY_VALUABLES_DATA || []), ...(window.EASTER_VALUABLES_DATA || []), ...(window.HALLOWEEN_VALUABLES_DATA || [])],
     folder: 'valuables',
     renderDetails: renderValuableDetails,
   },
@@ -232,6 +232,7 @@ function renderWeaponDetails(item) {
     </div>` : '';
 
   const statsHtml = [
+    _stat('Category', item.category),
     _stat('Obtaining', item.obtaining),
     _stat('Location', item.location || (item.stats && item.stats.location)),
     _stat('Buy Price', f(item.contractPrice)),
@@ -281,6 +282,7 @@ function renderVehicleDetails(item) {
 
   const statsHtml = [
     _stat('Type', item.type ? (item.type.charAt(0).toUpperCase() + item.type.slice(1)) : null),
+    _stat('Category', item.category),
     _stat('Obtaining', item.obtaining),
     _stat('Seats', item.stats && item.stats.seats != null ? String(item.stats.seats) : null),
     _stat('Buy Price', f(item.contractPrice)),

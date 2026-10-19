@@ -2,6 +2,7 @@ window.VEHICLE_TRACKSTAR = [
 
   {
     name: "Trackstar",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "A very sturdy vehicle.",
     type: "ground",

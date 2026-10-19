@@ -2,6 +2,7 @@ window.VEHICLE_SPECTRE = [
 
   {
     name: "Spectre",
+    category: "Car",
     obtaining: "Bayview Motors",
     type: "ground",
     description: "The most expensive car in the game, bought for flex and speed",

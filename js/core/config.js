@@ -8,7 +8,8 @@ const RARITIES = {
   UNOBTAINABLE: { name: "Unobtainable", class: "rarity-unobtainable", color: "#000000ff" },
   CHRISTMAS: { name: "Christmas-Limited", class: "rarity-christmas-limited", color: "#0f0" },
   EASTER: { name: "Easter-Limited", class: "rarity-easter", color: "#ff50c2" },
-  "4TH_OF_JULY": { name: "4th of July Limited", class: "rarity-4th-of-july", color: "#b22234" }
+  "4TH_OF_JULY": { name: "4th of July Limited", class: "rarity-4th-of-july", color: "#b22234" },
+  HALLOWEEN: { name: "Halloween", class: "rarity-halloween", color: "#ff7518" }
 };
 
 const DIFFICULTIES = {
@@ -16,7 +17,8 @@ const DIFFICULTIES = {
   MEDIUM: { name: "Medium", class: "rarity-medium", order: 2 },
   HARD: { name: "Hard", class: "rarity-hard", order: 3 },
   CHRISTMAS: { name: "Christmas-Limited", class: "rarity-christmas-limited", order: 0 },
-  EASTER: { name: "Easter-Limited", class: "rarity-easter", order: 0 }
+  EASTER: { name: "Easter-Limited", class: "rarity-easter", order: 0 },
+  HALLOWEEN: { name: "Halloween", class: "rarity-halloween", order: 0 }
 };
 
 const TEAMS = {

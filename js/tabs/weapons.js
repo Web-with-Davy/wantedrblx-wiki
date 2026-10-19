@@ -29,9 +29,34 @@ function renderWeapons(sort = "high") {
     return sort === "high" ? pB - pA : pA - pB;
   };
 
-  const sortedGuns = [...GUNS_DATA].sort(sortFn);
-  const sortedExplosives = [...EXPLOSIVES_DATA].sort(sortFn);
-  const sortedEquipment = [...EQUIPMENT_DATA].sort(sortFn);
+  const categories = [
+    { id: 'weapons-light', key: 'Light', label: 'Light' },
+    { id: 'weapons-medium', key: 'Medium', label: 'Medium' },
+    { id: 'weapons-heavy', key: 'Heavy', label: 'Heavy' },
+    { id: 'weapons-explosives', key: 'Explosives', label: 'Explosives' },
+    { id: 'weapons-equipment', key: 'Equipment', label: 'Equipment' },
+    { id: 'weapons-airdrop', key: 'Airdrop', label: 'Airdrop' },
+  ];
+
+  const knownKeys = new Set(categories.map(c => c.key));
+  if (window.WEAPONS_BY_CATEGORY) {
+    Object.keys(window.WEAPONS_BY_CATEGORY).forEach(k => {
+      if (!knownKeys.has(k) && (window.WEAPONS_BY_CATEGORY[k] || []).length > 0) {
+        categories.push({ id: `weapons-${k.toLowerCase()}`, key: k, label: k });
+      }
+    });
+  }
+
+  const getCategoryItems = (key) => {
+    if (window.WEAPONS_BY_CATEGORY && window.WEAPONS_BY_CATEGORY[key]) {
+      return window.WEAPONS_BY_CATEGORY[key];
+    }
+    if (key === 'Equipment') return window.EQUIPMENT_DATA || [];
+    if (key === 'Explosives') return window.EXPLOSIVES_DATA || [];
+    const all = window.WEAPONS_DATA || [...(window.GUNS_DATA || []), ...(window.EXPLOSIVES_DATA || []), ...(window.EQUIPMENT_DATA || [])];
+    return all.filter(item => item.category === key);
+  };
+
   const makeSectionCards = (data) => data.map(item => makeWeaponCard(item)).join('');
 
   const sortButtons = renderSortButtons([
@@ -39,28 +64,31 @@ function renderWeapons(sort = "high") {
     { label: 'Cheapest first', value: 'low', onClick: "sortWeapons('low')" }
   ], sort);
 
+  const activeCategories = categories.filter(cat => getCategoryItems(cat.key).length > 0);
+
   const jumpNav = `<div class="page-jump-nav">
-    <a onclick="document.getElementById('weapons-guns')?.scrollIntoView({behavior:'smooth'})">Guns</a>
-    <a onclick="document.getElementById('weapons-explosives')?.scrollIntoView({behavior:'smooth'})">Explosives</a>
-    <a onclick="document.getElementById('weapons-equipment')?.scrollIntoView({behavior:'smooth'})">Equipment</a>
+    ${activeCategories.map(cat => `
+      <a onclick="document.getElementById('${cat.id}')?.scrollIntoView({behavior:'smooth'})">${cat.label}</a>
+    `).join('')}
   </div>`;
 
-  const section = (id, label, cards) => `
-    <div class="val-section-header" id="${id}">
-      <h3 class="val-section-title">${label}</h3>
-      <span class="val-section-count">${cards.split('val-card').length - 1} items</span>
-    </div>
-    <div class="val-grid">${cards}</div>`;
+  const sectionsHtml = activeCategories.map((cat, idx) => {
+    const sortedItems = [...getCategoryItems(cat.key)].sort(sortFn);
+    const divider = idx > 0 ? '<div class="val-section-divider"></div>' : '';
+    return `
+      ${divider}
+      <div class="val-section-header" id="${cat.id}">
+        <h3 class="val-section-title">${cat.label}</h3>
+        <span class="val-section-count">${sortedItems.length} items</span>
+      </div>
+      <div class="val-grid">${makeSectionCards(sortedItems)}</div>`;
+  }).join('');
 
   return `
     <h2>WEAPONS</h2>
     ${sortButtons}
     ${jumpNav}
-    ${section('weapons-guns', 'Guns', makeSectionCards(sortedGuns))}
-    <div class="val-section-divider"></div>
-    ${section('weapons-explosives', 'Explosives', makeSectionCards(sortedExplosives))}
-    <div class="val-section-divider"></div>
-    ${section('weapons-equipment', 'Equipment', makeSectionCards(sortedEquipment))}
+    ${sectionsHtml}
   `;
 }
 

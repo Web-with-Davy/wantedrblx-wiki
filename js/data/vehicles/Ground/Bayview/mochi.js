@@ -2,6 +2,7 @@ window.VEHICLE_MOCHI = [
 
   {
     name: "Mochi",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Flippy floppy lights, but not bad for a beginner car",
     type: "ground",

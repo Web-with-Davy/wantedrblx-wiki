@@ -2,6 +2,7 @@ window.VEHICLE_BLADE = [
 
   {
     name: "Blade",
+    category: "Car",
     description: "Blade is a fast and very armored car, which makes it good at both escaping and chasing",
     type: "ground",
     obtaining: "Syndicate Level 5",

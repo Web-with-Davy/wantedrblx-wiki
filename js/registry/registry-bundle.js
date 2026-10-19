@@ -119,6 +119,7 @@
         window.EASTER_VALUABLES_DATA      = typeof VALUABLES_EASTER      !== 'undefined' ? VALUABLES_EASTER      : [];
         window.CHRISTMAS_VALUABLES_DATA   = typeof VALUABLES_CHRISTMAS   !== 'undefined' ? VALUABLES_CHRISTMAS   : [];
         window.FOURTH_OF_JULY_VALUABLES_DATA = typeof VALUABLES_4TH_OF_JULY !== 'undefined' ? VALUABLES_4TH_OF_JULY : [];
+        window.HALLOWEEN_VALUABLES_DATA   = typeof VALUABLES_HALLOWEEN   !== 'undefined' ? VALUABLES_HALLOWEEN   : [];
     });
 
     // ----- Vehicles -----
@@ -135,23 +136,25 @@
     // Data vars: WEAPON_<NAME> (e.g. WEAPON_AK_47, WEAPON_M9)
     // Categories are inferred from the first item's category property.
     safe(() => {
-        const GUN_CATEGORIES = new Set(['Pistols', 'SMGs', 'Shotguns', 'Rifles', 'Snipers', 'Airdrop']);
+        const GUN_CATEGORIES = new Set(['Light', 'Medium', 'Heavy', 'Airdrop']);
         const weaponVars = Object.keys(window).filter(k => k.startsWith('WEAPON_'));
         const byCategory = {};
 
         weaponVars.forEach(k => {
             const data = window[k];
             if (!Array.isArray(data) || data.length === 0) return;
-            const cat = (data[0] && data[0].category) ? data[0].category : 'Rifles';
+            const cat = (data[0] && data[0].category) ? data[0].category : 'Heavy';
             if (!byCategory[cat]) byCategory[cat] = [];
             byCategory[cat].push(...data);
         });
 
+        window.WEAPONS_BY_CATEGORY = byCategory;
         window.GUNS_DATA = Object.entries(byCategory)
             .filter(([cat]) => GUN_CATEGORIES.has(cat))
             .flatMap(([, items]) => items);
         window.EQUIPMENT_DATA = byCategory['Equipment'] || [];
         window.EXPLOSIVES_DATA = byCategory['Explosives'] || [];
+        window.WEAPONS_DATA = Object.values(byCategory).flat();
         const itemVars = Object.keys(window).filter(k => k.startsWith('ITEM_'));
         window.ITEMS_BY_CATEGORY = {
             Tools: itemVars.filter(k => k.startsWith('ITEM_TOOLS_')).flatMap(k => window[k] || []),

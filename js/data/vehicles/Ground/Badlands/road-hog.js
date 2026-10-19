@@ -2,6 +2,7 @@ window.VEHICLE_ROAD_HOG = [
 
   {
     name: "Road Hog",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "Begginer friendly motorcycles",
     type: "ground",

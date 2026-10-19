@@ -1,6 +1,7 @@
 window.WEAPON_FLASHBANG = [
   {
     name: "Flashbang",
+    category: "Explosives",
     description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",
     obtaining: "Police Level 3",
     reBuyPrice: "?",

@@ -2,6 +2,7 @@ window.VEHICLE_PULSE_477_RS = [
 
   {
     name: "Pulse 477 RS",
+    category: "Car",
     description: "Fast but not the fastest, its a speedy car but lets be honest u wanted the empyrean",
     type: "ground",
     obtaining: "Vehicle Crates",

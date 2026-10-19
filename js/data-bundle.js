@@ -96,6 +96,25 @@ window.EVENT_EASTER_2026 = [
   }
 ];
 
+/* --- js/data/events/halloween-2026.js --- */
+window.EVENT_HALLOWEEN_2026 = [
+  {
+    id: "halloween-2026",
+    title: "Halloween 2026",
+    date: "October 2025",
+    dateColor: "rgb(255, 255, 255)",
+    dateOutline: "rgb(255, 183, 0)",
+    description: "The first annual Halloween event in Wanted! Mutants have taken over the map and need to be defeated.",
+    features: [
+      "New NPC: Boorgaboo (located at Bayview and Syndicate Base)",
+      "Limited Time Halloween Missions",
+      "Event Items: Mutant Parts, new vehicles and weapons",
+      "Exclusive Rewards: Vehicles, Weapons, Halloween 2026 Plate, Halloween Furniture, Vehicle Decorations"
+    ],
+    image: "halloween-2026"
+  }
+];
+
 /* --- js/data/events/july-4th-2026.js --- */
 window.EVENT_JULY_4TH_2026 = [
   {
@@ -2521,6 +2540,48 @@ window.VALUABLES_GEMS = [
 ];
 
 
+/* --- js/data/valuables/halloween.js --- */
+window.VALUABLES_HALLOWEEN = [
+
+  { name: "Ritual Skull", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1666, priceNonContract: false, weight: 5, commonLocation: "Got after defeating the boss fight during the Halloween event" },
+
+  { name: "Mutant Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 75, priceNonContract: false, weight: 4, commonLocation: "Kill normal zombies" },
+  { name: "Mutant Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 100, priceNonContract: false, weight: 2, commonLocation: "Kill normal zombies" },
+
+  { name: "Soldier Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 150, priceNonContract: false, weight: 4, commonLocation: "Kill soldier zombies" },
+  { name: "Soldier Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 5, commonLocation: "Kill soldier zombies" },
+
+  { name: "Hunter Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 100, priceNonContract: false, weight: 4, commonLocation: "Kill hunter zombies" },
+  { name: "Hunter Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 250, priceNonContract: false, weight: 2, commonLocation: "Kill hunter zombies" },
+
+  { name: "Blazing Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 350, priceNonContract: false, weight: 5, commonLocation: "Kill blazing zombies" },
+  { name: "Blazing Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill blazing zombies" },
+
+  { name: "Radioactive Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 400, priceNonContract: false, weight: 5, commonLocation: "Kill radioactive zombies" },  
+  { name: "Radioactive Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 750, priceNonContract: false, weight: 4, commonLocation: "Kill radioactive zombies" },
+  
+  { name: "Bloater Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 500, priceNonContract: false, weight: 6, commonLocation: "Kill bloater zombies" },
+  { name: "Bloater Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 750, priceNonContract: false, weight: 5, commonLocation: "Kill bloater zombies" },
+
+  { name: "Screamer Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 250, priceNonContract: false, weight: 5, commonLocation: "Kill screamer zombies" },
+  { name: "Screamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 500, priceNonContract: false, weight: 3, commonLocation: "Kill screamer zombies" },
+
+  { name: "Nuclear Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1200, priceNonContract: false, weight: 6, commonLocation: "Kill nuclear zombies" },
+  { name: "Nuclear Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill normal zombies" },
+
+  { name: "Plasma Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1250, priceNonContract: false, weight: 5, commonLocation: "Kill plasma zombies" },
+  { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill plasma zombies" },
+
+  { name: "Jack O Lantern", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 6666, priceNonContract: false, weight: 6, commonLocation: "Kill jack o lantern zombies" },
+ 
+  { name: "Crypt Keeper Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 3000, priceNonContract: false, weight: 15, commonLocation: "Kill the crypt keeper" },
+  { name: "Crypt Keeper Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 10000, priceNonContract: false, weight: 10, commonLocation: "Kill the crypt keeper" },
+
+  { name: "Test Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
+  { name: "Test Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
+
+];
+
 /* --- js/data/valuables/jewelry.js --- */
 window.VALUABLES_JEWELRY = [
 
@@ -2589,6 +2650,7 @@ window.VEHICLE_PANTHER = [
 
   {
     name: "Panther",
+    category: "Air",
     obtaining: "Vehicle Crates",
     description: "The Panther is a flying vehicle that is obtained from Vehicle Crates. It is a fast and maneuverable vehicle that is perfect for transportation and combat",
     type: "flying",
@@ -2612,6 +2674,7 @@ window.VEHICLE_MAVERICK = [
 
   {
     name: "Maverick",
+    category: "Air",
     obtaining: "Davis' Heliport",
     description: "The Maverick is a fast and agile helicopter that is perfect for transportation and combat. It is a fan favorite among players for its speed and maneuverability",
     type: "flying",
@@ -2635,6 +2698,7 @@ window.VEHICLE_MINI_BIRD = [
 
   {
     name: "Mini Bird",
+    category: "Air",
     obtaining: "Davis' Heliport",
     description: "The Scout is a fast and agile helicopter that is perfect for transportation and combat. Mostly bought because its the cheapest flying vehicle",
     type: "flying",
@@ -2658,6 +2722,7 @@ window.VEHICLE_SCOUT = [
 
   {
     name: "Scout",
+    category: "Air",
     obtaining: "Davis' Heliport",
     description: "It is a fast and agile helicopter that is perfect for transportation and combat",
     type: "flying",
@@ -2681,6 +2746,7 @@ window.VEHICLE_RIFT = [
 
   {
     name: "Rift",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "The best and rarest motorcycle",
     type: "ground",
@@ -2704,6 +2770,7 @@ window.VEHICLE_ROAD_HOG = [
 
   {
     name: "Road Hog",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "Begginer friendly motorcycles",
     type: "ground",
@@ -2727,6 +2794,7 @@ window.VEHICLE_ROOSTER = [
 
   {
     name: "Rooster",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "Cheapest of the motorcycles, gets the job done",
     type: "ground",
@@ -2750,6 +2818,7 @@ window.VEHICLE_SHINOBI = [
 
   {
     name: "Shinobi",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "Most expensive motorcycle, not the rarest",
     type: "ground",
@@ -2773,6 +2842,7 @@ window.VEHICLE_AEGIS = [
 
   {
     name: "Aegis",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "A very sturdy and expensive vehicle.",
     type: "ground",
@@ -2796,6 +2866,7 @@ window.VEHICLE_BEAM = [
 
   {
     name: "Beam",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "ITs a very cool car, but not many players have bought it due to there being better options at a similar price",
     type: "ground",
@@ -2819,6 +2890,7 @@ window.VEHICLE_CONTENDER = [
 
   {
     name: "Contender",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Contender is one of the most basic vehicles in the game. It is a sports car that is used by many players for its looks",
     type: "ground",
@@ -2842,6 +2914,7 @@ window.VEHICLE_CROWLINE = [
 
   {
     name: "Crowline",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Not many players buy this one, but it looks very nice and old style",
     type: "ground",
@@ -2865,6 +2938,7 @@ window.VEHICLE_FALCON_GT = [
 
   {
     name: "Falcon GT",
+    category: "Car",
     description: "The Falcon GT is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
     obtaining: "Bayview Motors",
@@ -2888,6 +2962,7 @@ window.VEHICLE_G_CRUISER = [
 
   {
     name: "G-Cruiser",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The G-Cruiser is a heavily armored SUV, used by teams",
     type: "ground",
@@ -2911,6 +2986,7 @@ window.VEHICLE_GEMSTONE = [
 
   {
     name: "Gemstone",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Only bought for the cool design, its not too good at anything and theres better options at a similar price",
     type: "ground",
@@ -2934,6 +3010,7 @@ window.VEHICLE_MOCHI = [
 
   {
     name: "Mochi",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Flippy floppy lights, but not bad for a beginner car",
     type: "ground",
@@ -2957,6 +3034,7 @@ window.VEHICLE_NOMAD = [
 
   {
     name: "Nomad",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The nomad is mostly bough for teams that dont have too much money to get anything better",
     type: "ground",
@@ -2980,6 +3058,7 @@ window.VEHICLE_PULSE_477 = [
 
   {
     name: "Pulse 477",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Pulse 477 is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
@@ -3003,6 +3082,7 @@ window.VEHICLE_RANGER = [
 
   {
     name: "Ranger",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "One of the cheapest cars in the game, it mostly looks good for new players tho",
     type: "ground",
@@ -3026,6 +3106,7 @@ window.VEHICLE_RAZOR = [
 
   {
     name: "Razor",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Razor is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
@@ -3049,6 +3130,7 @@ window.VEHICLE_SPECTRE = [
 
   {
     name: "Spectre",
+    category: "Car",
     obtaining: "Bayview Motors",
     type: "ground",
     description: "The most expensive car in the game, bought for flex and speed",
@@ -3072,6 +3154,7 @@ window.VEHICLE_STALLION_450 = [
 
   {
     name: "Stallion 450",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Its  a very cool looking car, most beginer friendly and affordable car in the game",
     type: "ground",
@@ -3095,6 +3178,7 @@ window.VEHICLE_TRACKSTAR = [
 
   {
     name: "Trackstar",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "A very sturdy vehicle.",
     type: "ground",
@@ -3118,6 +3202,7 @@ window.VEHICLE_VANGUARD = [
 
   {
     name: "Vanguard",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Lets be honest you bought it for the mission or got it from the robux pack",
     type: "ground",
@@ -3141,6 +3226,7 @@ window.VEHICLE_ZORO = [
 
   {
     name: "Zoro",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Zoro is a very strong car but it lacks speed",
     type: "ground",
@@ -3164,6 +3250,7 @@ window.VEHICLE_ZORVELLO = [
 
   {
     name: "Zorvello",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Zorvello is a very fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
@@ -3187,6 +3274,7 @@ window.VEHICLE_EMPYREAN = [
 
   {
     name: "Empyrean",
+    category: "Car",
     description: "Fastest ground vehicle in the game, flex rights",
     type: "ground",
     obtaining: "Vehicle Crates",
@@ -3210,6 +3298,7 @@ window.VEHICLE_HORIZON = [
 
   {
     name: "Horizon",
+    category: "Car",
     description: "Begginer friendly, tho its hard to get from crates so I dont know if its worth it",
     type: "ground",
     obtaining: "Vehicle Crates",
@@ -3233,6 +3322,7 @@ window.VEHICLE_PULSE_477_RS = [
 
   {
     name: "Pulse 477 RS",
+    category: "Car",
     description: "Fast but not the fastest, its a speedy car but lets be honest u wanted the empyrean",
     type: "ground",
     obtaining: "Vehicle Crates",
@@ -3256,6 +3346,7 @@ window.VEHICLE_ROKU = [
 
   {
     name: "Roku",
+    category: "Car",
     description: "Begginer friendly, tho its hard to get from crates so I dont know if its worth it",
     type: "ground",
     obtaining: "Vehicle Crates",
@@ -3279,6 +3370,7 @@ window.VEHICLE_TEMPORO = [
 
   {
     name: "Temporo",
+    category: "Car",
     description: "Looks like a car made out of legos, its very speedy tho",
     type: "ground",
     obtaining: "Vehicle Crates",
@@ -3302,6 +3394,7 @@ window.VEHICLE_RIVAL = [
 
   {
     name: "Rival",
+    category: "Car",
     description: "Decent acceleration and speed, pretty decent for beginners",
     type: "ground",
     obtaining: "Daily Rewards Day 3",
@@ -3320,11 +3413,60 @@ window.VEHICLE_RIVAL = [
 
 ];
 
+/* --- js/data/vehicles/Ground/Halloween/rattler.js --- */
+window.VEHICLE_RATTLER = [
+
+  {
+    name: "Rattler",
+    category: "Car",
+    obtaining: "Halloween Event",
+    description: "Its a mid car",
+    type: "ground",
+    repairPrice: 7500,
+    repairPriceGarage: 2250,
+    contractPrice: "Un-Buyable",
+    stats: {
+      seats: 2,
+      topSpeed: 46,
+      acceleration: 47,
+      braking: 57,
+      Health: "Body-400/Wheels-100/Windows-100",
+      armor: 2
+    }
+  }
+
+];
+
+/* --- js/data/vehicles/Ground/Halloween/reaper.js --- */
+window.VEHICLE_REAPER = [
+
+  {
+    name: "Reaper",
+    category: "Motorcycle",
+    obtaining: "Halloween Event",
+    description: "Its a very good bike",
+    type: "ground",
+    repairPrice: 7500,
+    repairPriceGarage: 2250,
+    contractPrice: "Un-Buyable",
+    stats: {
+      seats: 2,
+      topSpeed: 70,
+      acceleration: 65,
+      braking: 77,
+      Health: "Body-200/Wheels-100",
+      armor: 0
+    }
+  }
+
+];
+
 /* --- js/data/vehicles/Ground/Police/interceptor.js --- */
 window.VEHICLE_INTERCEPTOR = [
 
   {
     name: "Interceptor",
+    category: "Car",
     description: "Pretty fast car for a police vehicle",
     type: "ground",
     obtaining: "Police Level 1",
@@ -3348,6 +3490,7 @@ window.VEHICLE_WARDEN = [
 
   {
     name: "Warden",
+    category: "Car",
     description: "The Warden is a heavily armored police car that is used by the police to patrol the city",
     type: "ground",
     obtaining: "Police Level 5",
@@ -3371,6 +3514,7 @@ window.VEHICLE_CRUISER = [
 
   {
     name: "Cruiser",
+    category: "Car",
     obtaining: "Starter",
     description: "Your first car, brings back memories",
     type: "ground",
@@ -3394,6 +3538,7 @@ window.VEHICLE_BLADE = [
 
   {
     name: "Blade",
+    category: "Car",
     description: "Blade is a fast and very armored car, which makes it good at both escaping and chasing",
     type: "ground",
     obtaining: "Syndicate Level 5",
@@ -3417,6 +3562,7 @@ window.WEAPON_BARRETT_M82 = [
 
   {
     name: "Barrett M82",
+    category: "Airdrop",
     description: "A legendary sniper that can one-shot anyone with a headshot",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
@@ -3454,6 +3600,7 @@ window.WEAPON_GOLDEN_AK_47 = [
 
   {
     name: "Golden AK-47",
+    category: "Airdrop",
     description: "Its golden colored ak, not much else to say",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
@@ -3492,6 +3639,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
 
   {
     name: "Golden Barrett M82",
+    category: "Airdrop",
     description: "Its a golden colored barrett m82, VERY EXPENSIVE!",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
@@ -3529,6 +3677,7 @@ window.WEAPON_GOLDEN_DEAGLE = [
 
   {
     name: "Golden Deagle",
+    category: "Airdrop",
     description: "Its a golden colored deagle, not much else to say",
     obtaining: "Airdrop",
     sellPrice: 21000,
@@ -3561,6 +3710,7 @@ window.WEAPON_GOLDEN_DEAGLE = [
 window.WEAPON_BALLISTIC_SHIELD = [
   {
     name: "Ballistic Shield",
+    category: "Equipment",
     description: "Shield that can block bullets",
     obtaining: "Police Level 2",
     location: "Police Armory",
@@ -3572,6 +3722,7 @@ window.WEAPON_BALLISTIC_SHIELD = [
 window.WEAPON_C4 = [
   {
     name: "C4",
+    category: "Explosives",
     description: "Explosive used for destroying vault doors",
     reBuyPrice: 250,
     sellPrice: 75,
@@ -3591,6 +3742,7 @@ window.WEAPON_C4 = [
 window.WEAPON_FLASHBANG = [
   {
     name: "Flashbang",
+    category: "Explosives",
     description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",
     obtaining: "Police Level 3",
     reBuyPrice: "?",
@@ -3611,6 +3763,7 @@ window.WEAPON_FLASHBANG = [
 window.WEAPON_GRENADE_LAUNCHER = [
   {
     name: "Grenade Launcher",
+    category: "Explosives",
     description: "A grenade launcher that shoots grenades",
     obtaining: "Police Level 4",
     reBuyPrice: "?",
@@ -3631,6 +3784,7 @@ window.WEAPON_GRENADE_LAUNCHER = [
 window.WEAPON_M67 = [
   {
     name: "M67",
+    category: "Explosives",
     description: "A throwable grenade that explodes after a few seconds",
     reBuyPrice: 750,
     sellPrice: 225,
@@ -3650,6 +3804,7 @@ window.WEAPON_M67 = [
 window.WEAPON_RPG_7 = [
   {
     name: "RPG-7",
+    category: "Explosives",
     description: "A rocket launcher that shoots rockets",
     reBuyPrice: 10000,
     sellPrice: 3000,
@@ -3665,114 +3820,12 @@ window.WEAPON_RPG_7 = [
   }
 ];
 
-/* --- js/data/weapons/Pistols/deagle.js --- */
-window.WEAPON_DEAGLE = [
-
-  {
-    name: "Deagle",
-    description: "A powerful pistol with high damage and recoil",
-    obtaining: "Syndicate Level 3",
-    reBuyPrice: 3500,
-    sellPrice: 1050,
-    contractPrice: "Un-Buyable",
-    stats: {
-      ammo: "8/160",
-      ammoPrice: "$80 for 8",
-      damage: "Head-40/Torso-25/Limbs-20",
-      firerate: 200,
-      reload: 3,
-      accuracy: "±0.70m @ 25m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Pistol Holo", price: 12500 },
-        { name: "Reflex Sight", price: 20000 }
-      ],
-      Muzzle: [
-        { name: "Pistol Suppressor", price: 16000 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/Pistols/glock-18c.js --- */
-window.WEAPON_GLOCK_18C = [
-
-  {
-    name: "Glock 18c",
-    description: "A fully automatic pistol with high fire rate",
-    reBuyPrice: 3500,
-    sellPrice: 1050,
-    contractPrice: 1100000,
-    stats: {
-      ammo: "19/285",
-      ammoPrice: "$380 for 19",
-      damage: "11-9-8",
-      firerate: 750,
-      reload: 3,
-      accuracy: "±0.50m @ 25m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Pistol Holo", price: 12500 },
-        { name: "Reflex Sight", price: 20000 }
-      ],
-      Muzzle: [
-        { name: "Pistol Suppressor", price: 16000 }
-      ],
-      Stock: [
-        { name: "Pistol Stock", price: 70000 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/Pistols/m9.js --- */
-window.WEAPON_M9 = [
-
-  {
-    name: "M9",
-    description: "A beginner friendly pistol",
-    reBuyPrice: 100,
-    sellPrice: 30,
-    contractPrice: 0,
-    stats: {
-      ammo: "15/300",
-      ammoPrice: "$150 for 15",
-      damage: "Head-14/Torso-10/Limbs-8",
-      firerate: 400,
-      reload: 2.5,
-      accuracy: "±0.40m @ 25m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Reflex Sight", price: 12500 },
-        { name: "Pistol Holo", price: 20000 }
-      ],
-      Muzzle: [
-        { name: "Pistol Suppressor", price: 16000 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/Rifles/ak-47.js --- */
+/* --- js/data/weapons/Heavy/ak-47.js --- */
 window.WEAPON_AK_47 = [
 
   {
     name: "AK-47",
+    category: "Heavy",
     description: "A very powerful rifle, but it lacks speed",
     reBuyPrice: 3500,
     sellPrice: 1050,
@@ -3806,11 +3859,12 @@ window.WEAPON_AK_47 = [
 
 ];
 
-/* --- js/data/weapons/Rifles/arx-160.js --- */
+/* --- js/data/weapons/Heavy/arx-160.js --- */
 window.WEAPON_ARX_160 = [
 
   {
     name: "ARX-160",
+    category: "Heavy",
     description: "A very fast rifle",
     reBuyPrice: 9000,
     sellPrice: 2700,
@@ -3844,11 +3898,12 @@ window.WEAPON_ARX_160 = [
 
 ];
 
-/* --- js/data/weapons/Rifles/aug-a1.js --- */
+/* --- js/data/weapons/Heavy/aug-a1.js --- */
 window.WEAPON_AUG_A1 = [
 
   {
     name: "AUG A1",
+    category: "Heavy",
     description: "SUCKS, VERY BAD GUN",
     reBuyPrice: 1750,
     sellPrice: 525,
@@ -3876,11 +3931,74 @@ window.WEAPON_AUG_A1 = [
 
 ];
 
-/* --- js/data/weapons/Rifles/fn-fal.js --- */
+/* --- js/data/weapons/Heavy/awm.js --- */
+window.WEAPON_AWM = [
+
+  {
+    name: "AWM",
+    category: "Heavy",
+    description: "The AWM is a bolt-action sniper rifle renowned for its exceptional range and high damage output, making it a favorite among long-distance marksmen.",
+    reBuyPrice: 8000,
+    sellPrice: 2400,
+    contractPrice: 2500000,
+    stats: {
+      ammo: "5/40",
+      ammoPrice: "$750 for 5",
+      damage: "Head-150/Torso-65/Limbs-50",
+      firerate: 30,
+      reload: 3.5,
+      accuracy: "±0.40m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 },
+        { name: "AGOC", price: 250000 },
+        { name: "Rifle Scope", price: 1250000 }
+      ],
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Underbarrel: [
+        { name: "Horizontal Foregrip", price: 5000 },
+        { name: "Vertical Foregrip", price: 7500 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Heavy/flamethrower.js --- */
+window.WEAPON_FLAMETHROWER = [
+
+  {
+    name: "Flamethrower",
+    category: "Heavy",
+    description: "Its not that good but it can be used to burn mutans",
+    reBuyPrice: 6000,
+    sellPrice: 1800,
+    contractPrice: "Un-Buyable",
+    stats: {
+      ammo: "500/1500",
+      ammoPrice: "$2500 for 500",
+      damage: "Head-9/Torso-9/Limbs-9",
+      firerate: 750,
+      reload: 5,
+      accuracy: "±4.40m @ 50m"
+    },
+  },
+
+];
+
+/* --- js/data/weapons/Heavy/fn-fal.js --- */
 window.WEAPON_FN_FAL = [
 
   {
     name: "FN FAL",
+    category: "Heavy",
     description: "The FN FAL is a heavy-hitting automatic rifle with excellent range and damage, making it a favorite for mid-to-long range engagements. It features moderate recoil and a solid magazine capacity, balancing power with control.",
     obtaining: "Syndicate Level 4",
     reBuyPrice: 9000,
@@ -3915,49 +4033,12 @@ window.WEAPON_FN_FAL = [
 
 ];
 
-/* --- js/data/weapons/Rifles/light-carbine.js --- */
-window.WEAPON_LIGHT_CARBINE = [
-
-  {
-    name: "Light Carbine",
-    description: "A beginner friendly rifle",
-    reBuyPrice: 300,
-    sellPrice: 90,
-    contractPrice: 2500,
-    stats: {
-      ammo: "15/150",
-      ammoPrice: "$75 for 15",
-      damage: "Head-9/Torso-8/Limb-7",
-      firerate: 545,
-      reload: 1.6,
-      accuracy: "±1.10m @ 50m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Holographic Sight", price: 12500 },
-        { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
-      ],
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Underbarrel: [
-        { name: "Horizontal Foregrip", price: 5000 },
-        { name: "Vertical Foregrip", price: 7500 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/Rifles/m4a1.js --- */
+/* --- js/data/weapons/Heavy/m4a1.js --- */
 window.WEAPON_M4A1 = [
 
   {
     name: "M4A1",
+    category: "Heavy",
     description: "The M4A1 is a lightweight and versatile carbine known for its high rate of fire and low recoil. It’s a perfect all-rounder for players who need a reliable weapon in close-quarters combat and mid-range engagements.",
     reBuyPrice: 8000,
     sellPrice: 2400,
@@ -3991,11 +4072,12 @@ window.WEAPON_M4A1 = [
 
 ];
 
-/* --- js/data/weapons/Rifles/m60.js --- */
+/* --- js/data/weapons/Heavy/m60.js --- */
 window.WEAPON_M60 = [
 
   {
     name: "M60",
+    category: "Heavy",
     description: "Most used gun in the game, very OP",
     reBuyPrice: 10000,
     sellPrice: 3000,
@@ -4029,11 +4111,300 @@ window.WEAPON_M60 = [
 
 ];
 
-/* --- js/data/weapons/Shotguns/benelli-m1014.js --- */
+/* --- js/data/weapons/Heavy/svd.js --- */
+window.WEAPON_SVD = [
+
+  {
+    name: "SVD",
+    category: "Heavy",
+    description: "The SVD is a semi-automatic sniper rifle that balances power and rate of fire, making it effective for both aggressive and defensive playstyles.",
+    reBuyPrice: 10000,
+    sellPrice: 3000,
+    contractPrice: 5000000,
+    stats: {
+      ammo: "10/110",
+      ammoPrice: "$600 for 10",
+      damage: "Head-90/Torso-45/Limbs-45",
+      firerate: 150,
+      reload: 4,
+      accuracy: "±0.40m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 },
+        { name: "PSO Scope", price: 0 },
+        { name: "AGOC", price: 250000 }
+      ],
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Underbarrel: [
+        { name: "Horizontal Foregrip", price: 5000 },
+        { name: "Vertical Foregrip", price: 7500 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Light/deagle.js --- */
+window.WEAPON_DEAGLE = [
+
+  {
+    name: "Deagle",
+    category: "Light",
+    description: "A powerful pistol with high damage and recoil",
+    obtaining: "Syndicate Level 3",
+    reBuyPrice: 3500,
+    sellPrice: 1050,
+    contractPrice: "Un-Buyable",
+    stats: {
+      ammo: "8/160",
+      ammoPrice: "$80 for 8",
+      damage: "Head-40/Torso-25/Limbs-20",
+      firerate: 200,
+      reload: 3,
+      accuracy: "±0.70m @ 25m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Pistol Holo", price: 12500 },
+        { name: "Reflex Sight", price: 20000 }
+      ],
+      Muzzle: [
+        { name: "Pistol Suppressor", price: 16000 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Light/glock-18c.js --- */
+window.WEAPON_GLOCK_18C = [
+
+  {
+    name: "Glock 18c",
+    category: "Light",
+    description: "A fully automatic pistol with high fire rate",
+    reBuyPrice: 3500,
+    sellPrice: 1050,
+    contractPrice: 1100000,
+    stats: {
+      ammo: "19/285",
+      ammoPrice: "$380 for 19",
+      damage: "11-9-8",
+      firerate: 750,
+      reload: 3,
+      accuracy: "±0.50m @ 25m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Pistol Holo", price: 12500 },
+        { name: "Reflex Sight", price: 20000 }
+      ],
+      Muzzle: [
+        { name: "Pistol Suppressor", price: 16000 }
+      ],
+      Stock: [
+        { name: "Pistol Stock", price: 70000 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Light/light-carbine.js --- */
+window.WEAPON_LIGHT_CARBINE = [
+
+  {
+    name: "Light Carbine",
+    category: "Light",
+    description: "A beginner friendly rifle",
+    reBuyPrice: 300,
+    sellPrice: 90,
+    contractPrice: 2500,
+    stats: {
+      ammo: "15/150",
+      ammoPrice: "$75 for 15",
+      damage: "Head-9/Torso-8/Limb-7",
+      firerate: 545,
+      reload: 1.6,
+      accuracy: "±1.10m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 },
+        { name: "AGOC", price: 250000 }
+      ],
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Underbarrel: [
+        { name: "Horizontal Foregrip", price: 5000 },
+        { name: "Vertical Foregrip", price: 7500 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Light/m9.js --- */
+window.WEAPON_M9 = [
+
+  {
+    name: "M9",
+    category: "Light",
+    description: "A beginner friendly pistol",
+    reBuyPrice: 100,
+    sellPrice: 30,
+    contractPrice: 0,
+    stats: {
+      ammo: "15/300",
+      ammoPrice: "$150 for 15",
+      damage: "Head-14/Torso-10/Limbs-8",
+      firerate: 400,
+      reload: 2.5,
+      accuracy: "±0.40m @ 25m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Reflex Sight", price: 12500 },
+        { name: "Pistol Holo", price: 20000 }
+      ],
+      Muzzle: [
+        { name: "Pistol Suppressor", price: 16000 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Light/raygun.js --- */
+window.WEAPON_RAYGUN = [
+
+  {
+    name: "Raygun",
+    category: "Light",
+    description: "Powerfull against mutans, not so much against players",
+    obtaining: "Halloween Event",
+    reBuyPrice: 2000,
+    sellPrice: 600,
+    contractPrice: "Un-Buyable",
+    stats: {
+      ammo: "10/200",
+      ammoPrice: "$50 for 10",
+      damage: "Head-25/Torso-25/Limbs-25",
+      firerate: 193,
+      reload: 3.8,
+      accuracy: "±0.30m @ 25m"
+    },
+  },
+
+];
+
+/* --- js/data/weapons/Light/sawn-off.js --- */
+window.WEAPON_SAWN_OFF = [
+
+  {
+    name: "Sawn Off",
+    category: "Light",
+    description: "Yeah you wont do much with this one",
+    reBuyPrice: 150,
+    sellPrice: 45,
+    contractPrice: 800,
+    stats: {
+      ammo: "2/30",
+      ammoPrice: "$20 for 2",
+      damage: "Head-7/Torso-6/Limbs-4",
+      pellets: 8,
+      firerate: 193,
+      reload: 3.8,
+      accuracy: "±18.20m @ 25m"
+    }
+  }
+
+];
+
+/* --- js/data/weapons/Light/skorpion.js --- */
+window.WEAPON_SKORPION = [
+
+  {
+    name: "Skorpion",
+    category: "Light",
+    description: "Its a meh gun, not too good, not too bad",
+    reBuyPrice: 1000,
+    sellPrice: 300,
+    contractPrice: 100000,
+    stats: {
+      ammo: "20/220",
+      ammoPrice: "$200 for 20",
+      damage: "Head-9/Torso-8/Limbs-6",
+      firerate: 1200,
+      reload: 2,
+      accuracy: "±0.70m @ 25m"
+    },
+    attachments: {
+      Muzzle: [
+        { name: "Pistol Suppressor", price: 16000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Light/uzi.js --- */
+window.WEAPON_UZI = [
+
+  {
+    name: "Uzi",
+    category: "Light",
+    description: "Very annoying to go against",
+    reBuyPrice: 500,
+    sellPrice: 150,
+    contractPrice: 25000,
+    stats: {
+      ammo: "25/250",
+      ammoPrice: "$250 for 25",
+      damage: "Head-7/Torso-6/Limbs-5",
+      firerate: 1500,
+      reload: 2.2,
+      accuracy: "±0.90m @ 50m"
+    },
+    attachments: {
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Stock: [
+        { name: "Uzi Stock", price: 35000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Medium/benelli-m1014.js --- */
 window.WEAPON_BENELLI_M1014 = [
 
   {
     name: "Benelli M1014",
+    category: "Medium",
     description: "Too beginner friendly, too annoying",
     reBuyPrice: 4000,
     sellPrice: 1200,
@@ -4071,11 +4442,51 @@ window.WEAPON_BENELLI_M1014 = [
 
 ];
 
-/* --- js/data/weapons/Shotguns/model-870.js --- */
+/* --- js/data/weapons/Medium/kriss-vector.js --- */
+window.WEAPON_KRISS_VECTOR = [
+
+  {
+    name: "Kriss Vector",
+    category: "Medium",
+    description: "Very fast firing SMG with good damage",
+    reBuyPrice: 8000,
+    sellPrice: 2400,
+    contractPrice: 3600000,
+    stats: {
+      ammo: "30/330",
+      ammoPrice: "$450 for 30",
+      damage: "Head-8/Torso-6/Limbs-5",
+      firerate: 1200,
+      reload: 2,
+      accuracy: "±1.30m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 },
+        { name: "AGOC", price: 250000 }
+      ],
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Underbarrel: [
+        { name: "Horizontal Foregrip", price: 5000 },
+        { name: "Vertical Foregrip", price: 7500 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Medium/model-870.js --- */
 window.WEAPON_MODEL_870 = [
 
   {
     name: "Model 870",
+    category: "Medium",
     description: "Its a shotgun, very bad and boring gun",
     reBuyPrice: 750,
     sellPrice: 225,
@@ -4115,33 +4526,88 @@ window.WEAPON_MODEL_870 = [
 
 ];
 
-/* --- js/data/weapons/Shotguns/sawn-off.js --- */
-window.WEAPON_SAWN_OFF = [
+/* --- js/data/weapons/Medium/mp5k.js --- */
+window.WEAPON_MP5K = [
 
   {
-    name: "Sawn Off",
-    description: "Yeah you wont do much with this one",
-    reBuyPrice: 150,
-    sellPrice: 45,
-    contractPrice: 800,
+    name: "MP5K",
+    category: "Medium",
+    description: "A very fast SMG with good damage",
+    obtaining: "Daily Rewards Day 4",
+    reBuyPrice: 1500,
+    sellPrice: 450,
+    contractPrice: "Un-Buyable",
     stats: {
-      ammo: "2/30",
-      ammoPrice: "$20 for 2",
-      damage: "Head-7/Torso-6/Limbs-4",
-      pellets: 8,
-      firerate: 193,
-      reload: 3.8,
-      accuracy: "±18.20m @ 25m"
+      ammo: "30/240",
+      ammoPrice: "$150 for 30",
+      damage: "Head-7/Torso-6/Limbs-5",
+      firerate: 967,
+      reload: 2,
+      accuracy: "±1.50m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 },
+        { name: "AGOC", price: 250000 }
+      ],
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Underbarrel: [
+        { name: "Horizontal Foregrip", price: 5000 },
+        { name: "Vertical Foregrip", price: 7500 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
     }
-  }
+  },
 
 ];
 
-/* --- js/data/weapons/Shotguns/spas-12.js --- */
+/* --- js/data/weapons/Medium/p90.js --- */
+window.WEAPON_P90 = [
+
+  {
+    name: "P90",
+    category: "Medium",
+    description: "The P90 is a fan favorite SMG known for its iconic bullpup design and massive 50-round magazine, allowing for sustained fire and quick reloads.",
+    obtaining: "Police Level 3",
+    reBuyPrice: "5000",
+    sellPrice: "1500",
+    contractPrice: "Un-Buyable",
+    stats: {
+      ammo: "50/700",
+      ammoPrice: "$500 for 50",
+      damage: "Head-9/Torso-7/Limbs-7",
+      firerate: 909,
+      reload: 3.8,
+      accuracy: "±0.70m @ 50m"
+    },
+    attachments: {
+      Optics: [
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 },
+        { name: "AGOC", price: 250000 }
+      ],
+      Muzzle: [
+        { name: "Mono Suppressor", price: 32000 }
+      ],
+      Tactical: [
+        { name: "Tactical Laser", price: 50000 }
+      ]
+    }
+  },
+
+];
+
+/* --- js/data/weapons/Medium/spas-12.js --- */
 window.WEAPON_SPAS_12 = [
 
   {
     name: "SPAS-12",
+    category: "Medium",
     description: "Its somehow more expensive than the benelli and weaker than the benelli",
     reBuyPrice: 8000,
     sellPrice: 2400,
@@ -4181,149 +4647,12 @@ window.WEAPON_SPAS_12 = [
 
 ];
 
-/* --- js/data/weapons/SMGs/kriss-vector.js --- */
-window.WEAPON_KRISS_VECTOR = [
-
-  {
-    name: "Kriss Vector",
-    description: "Very fast firing SMG with good damage",
-    reBuyPrice: 8000,
-    sellPrice: 2400,
-    contractPrice: 3600000,
-    stats: {
-      ammo: "30/330",
-      ammoPrice: "$450 for 30",
-      damage: "Head-8/Torso-6/Limbs-5",
-      firerate: 1200,
-      reload: 2,
-      accuracy: "±1.30m @ 50m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Holographic Sight", price: 12500 },
-        { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
-      ],
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Underbarrel: [
-        { name: "Horizontal Foregrip", price: 5000 },
-        { name: "Vertical Foregrip", price: 7500 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/SMGs/mp5k.js --- */
-window.WEAPON_MP5K = [
-
-  {
-    name: "MP5K",
-    description: "A very fast SMG with good damage",
-    obtaining: "Daily Rewards Day 4",
-    reBuyPrice: 1500,
-    sellPrice: 450,
-    contractPrice: "Un-Buyable",
-    stats: {
-      ammo: "30/240",
-      ammoPrice: "$150 for 30",
-      damage: "Head-7/Torso-6/Limbs-5",
-      firerate: 967,
-      reload: 2,
-      accuracy: "±1.50m @ 50m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Holographic Sight", price: 12500 },
-        { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
-      ],
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Underbarrel: [
-        { name: "Horizontal Foregrip", price: 5000 },
-        { name: "Vertical Foregrip", price: 7500 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/SMGs/p90.js --- */
-window.WEAPON_P90 = [
-
-  {
-    name: "P90",
-    description: "The P90 is a fan favorite SMG known for its iconic bullpup design and massive 50-round magazine, allowing for sustained fire and quick reloads.",
-    obtaining: "Police Level 3",
-    reBuyPrice: "5000",
-    sellPrice: "1500",
-    contractPrice: "Un-Buyable",
-    stats: {
-      ammo: "50/700",
-      ammoPrice: "$500 for 50",
-      damage: "Head-9/Torso-7/Limbs-7",
-      firerate: 909,
-      reload: 3.8,
-      accuracy: "±0.70m @ 50m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Holographic Sight", price: 12500 },
-        { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
-      ],
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/SMGs/skorpion.js --- */
-window.WEAPON_SKORPION = [
-
-  {
-    name: "Skorpion",
-    description: "Its a meh gun, not too good, not too bad",
-    reBuyPrice: 1000,
-    sellPrice: 300,
-    contractPrice: 100000,
-    stats: {
-      ammo: "20/220",
-      ammoPrice: "$200 for 20",
-      damage: "Head-9/Torso-8/Limbs-6",
-      firerate: 1200,
-      reload: 2,
-      accuracy: "±0.70m @ 25m"
-    },
-    attachments: {
-      Muzzle: [
-        { name: "Pistol Suppressor", price: 16000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/SMGs/ump-45.js --- */
+/* --- js/data/weapons/Medium/ump-45.js --- */
 window.WEAPON_UMP_45 = [
 
   {
     name: "UMP 45",
+    category: "Medium",
     description: "Police SMG, its ok I guess",
     reBuyPrice: 1250,
     sellPrice: 375,
@@ -4340,113 +4669,6 @@ window.WEAPON_UMP_45 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
-      ],
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Underbarrel: [
-        { name: "Horizontal Foregrip", price: 5000 },
-        { name: "Vertical Foregrip", price: 7500 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/SMGs/uzi.js --- */
-window.WEAPON_UZI = [
-
-  {
-    name: "Uzi",
-    description: "Very annoying to go against",
-    reBuyPrice: 500,
-    sellPrice: 150,
-    contractPrice: 25000,
-    stats: {
-      ammo: "25/250",
-      ammoPrice: "$250 for 25",
-      damage: "Head-7/Torso-6/Limbs-5",
-      firerate: 1500,
-      reload: 2.2,
-      accuracy: "±0.90m @ 50m"
-    },
-    attachments: {
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Stock: [
-        { name: "Uzi Stock", price: 35000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/Snipers/awm.js --- */
-window.WEAPON_AWM = [
-
-  {
-    name: "AWM",
-    description: "The AWM is a bolt-action sniper rifle renowned for its exceptional range and high damage output, making it a favorite among long-distance marksmen.",
-    reBuyPrice: 8000,
-    sellPrice: 2400,
-    contractPrice: 2500000,
-    stats: {
-      ammo: "5/40",
-      ammoPrice: "$750 for 5",
-      damage: "Head-150/Torso-65/Limbs-50",
-      firerate: 30,
-      reload: 3.5,
-      accuracy: "±0.40m @ 50m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Holographic Sight", price: 12500 },
-        { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
-        { name: "Rifle Scope", price: 1250000 }
-      ],
-      Muzzle: [
-        { name: "Mono Suppressor", price: 32000 }
-      ],
-      Underbarrel: [
-        { name: "Horizontal Foregrip", price: 5000 },
-        { name: "Vertical Foregrip", price: 7500 }
-      ],
-      Tactical: [
-        { name: "Tactical Laser", price: 50000 }
-      ]
-    }
-  },
-
-];
-
-/* --- js/data/weapons/Snipers/svd.js --- */
-window.WEAPON_SVD = [
-
-  {
-    name: "SVD",
-    description: "The SVD is a semi-automatic sniper rifle that balances power and rate of fire, making it effective for both aggressive and defensive playstyles.",
-    reBuyPrice: 10000,
-    sellPrice: 3000,
-    contractPrice: 5000000,
-    stats: {
-      ammo: "10/110",
-      ammoPrice: "$600 for 10",
-      damage: "Head-90/Torso-45/Limbs-45",
-      firerate: 150,
-      reload: 4,
-      accuracy: "±0.40m @ 50m"
-    },
-    attachments: {
-      Optics: [
-        { name: "Holographic Sight", price: 12500 },
-        { name: "Reflex Sight", price: 20000 },
-        { name: "PSO Scope", price: 0 },
         { name: "AGOC", price: 250000 }
       ],
       Muzzle: [

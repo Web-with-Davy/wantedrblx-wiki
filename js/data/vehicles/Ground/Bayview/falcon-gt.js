@@ -2,6 +2,7 @@ window.VEHICLE_FALCON_GT = [
 
   {
     name: "Falcon GT",
+    category: "Car",
     description: "The Falcon GT is a fast and agile sports car that is perfect for transportation and combat",
     type: "ground",
     obtaining: "Bayview Motors",

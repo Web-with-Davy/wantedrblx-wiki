@@ -2,6 +2,7 @@ window.VEHICLE_RIVAL = [
 
   {
     name: "Rival",
+    category: "Car",
     description: "Decent acceleration and speed, pretty decent for beginners",
     type: "ground",
     obtaining: "Daily Rewards Day 3",

@@ -2,6 +2,7 @@ window.VEHICLE_ROOSTER = [
 
   {
     name: "Rooster",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "Cheapest of the motorcycles, gets the job done",
     type: "ground",

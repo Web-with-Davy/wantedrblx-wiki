@@ -2,6 +2,7 @@ window.VEHICLE_CONTENDER = [
 
   {
     name: "Contender",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Contender is one of the most basic vehicles in the game. It is a sports car that is used by many players for its looks",
     type: "ground",

@@ -1,6 +1,7 @@
 window.WEAPON_C4 = [
   {
     name: "C4",
+    category: "Explosives",
     description: "Explosive used for destroying vault doors",
     reBuyPrice: 250,
     sellPrice: 75,

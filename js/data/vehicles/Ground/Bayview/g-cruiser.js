@@ -2,6 +2,7 @@ window.VEHICLE_G_CRUISER = [
 
   {
     name: "G-Cruiser",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The G-Cruiser is a heavily armored SUV, used by teams",
     type: "ground",

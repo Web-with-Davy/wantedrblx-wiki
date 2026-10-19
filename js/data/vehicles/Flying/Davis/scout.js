@@ -2,6 +2,7 @@ window.VEHICLE_SCOUT = [
 
   {
     name: "Scout",
+    category: "Air",
     obtaining: "Davis' Heliport",
     description: "It is a fast and agile helicopter that is perfect for transportation and combat",
     type: "flying",

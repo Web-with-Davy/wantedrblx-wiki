@@ -3,6 +3,10 @@ const __MANIFEST_vehicles = [
   "js/data/vehicles/Flying/Davis/maverick.js",
   "js/data/vehicles/Flying/Davis/mini-bird.js",
   "js/data/vehicles/Flying/Davis/scout.js",
+  "js/data/vehicles/Ground/Badlands/rift.js",
+  "js/data/vehicles/Ground/Badlands/road-hog.js",
+  "js/data/vehicles/Ground/Badlands/rooster.js",
+  "js/data/vehicles/Ground/Badlands/shinobi.js",
   "js/data/vehicles/Ground/Bayview/aegis.js",
   "js/data/vehicles/Ground/Bayview/beam.js",
   "js/data/vehicles/Ground/Bayview/contender.js",
@@ -27,14 +31,12 @@ const __MANIFEST_vehicles = [
   "js/data/vehicles/Ground/Crates/roku.js",
   "js/data/vehicles/Ground/Crates/temporo.js",
   "js/data/vehicles/Ground/Daily/rival.js",
+  "js/data/vehicles/Ground/Halloween/rattler.js",
+  "js/data/vehicles/Ground/Halloween/reaper.js",
   "js/data/vehicles/Ground/Police/interceptor.js",
   "js/data/vehicles/Ground/Police/warden.js",
   "js/data/vehicles/Ground/Starter/cruiser.js",
-  "js/data/vehicles/Ground/Syndicate/blade.js",
-  "js/data/vehicles/Ground/Badlands/rooster.js",
-  "js/data/vehicles/Ground/Badlands/road-hog.js",
-  "js/data/vehicles/Ground/Badlands/shinobi.js",
-  "js/data/vehicles/Ground/Badlands/rift.js"
+  "js/data/vehicles/Ground/Syndicate/blade.js"
 ];
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];

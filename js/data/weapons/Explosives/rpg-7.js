@@ -1,6 +1,7 @@
 window.WEAPON_RPG_7 = [
   {
     name: "RPG-7",
+    category: "Explosives",
     description: "A rocket launcher that shoots rockets",
     reBuyPrice: 10000,
     sellPrice: 3000,

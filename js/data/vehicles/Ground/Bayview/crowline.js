@@ -2,6 +2,7 @@ window.VEHICLE_CROWLINE = [
 
   {
     name: "Crowline",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Not many players buy this one, but it looks very nice and old style",
     type: "ground",

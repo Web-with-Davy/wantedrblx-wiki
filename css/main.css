@@ -462,6 +462,12 @@ body {
     text-shadow: 0 0 10px #e53935;
 }
 
+.rarity-halloween {
+    color: #ff7518;
+    border-color: #ff7518;
+    text-shadow: 0 0 10px #ff7518;
+}
+
 h2 {
     margin: 20px 0;
     text-align: center;
@@ -3480,6 +3486,11 @@ body.left-sidebar-mode #settings-toggle.header-icon-btn {
 .val-rarity-bar.rarity-4th-of-july {
     background: linear-gradient(90deg, #b22234, #fff, #3c3b6e, #fff, #b22234);
     box-shadow: 0 0 6px #b22234;
+}
+
+.val-rarity-bar.rarity-halloween {
+    background: linear-gradient(90deg, #ff7518, #9400d3, #ff7518);
+    box-shadow: 0 0 6px #ff7518;
 }
 
 .val-img-wrap {

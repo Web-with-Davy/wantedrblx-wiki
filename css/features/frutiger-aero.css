@@ -935,6 +935,11 @@ body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-4th-of-july {
     background: #f9e7e8;
 }
 
+body.frutiger-aero :is(.rarity, .val-rarity-tag).rarity-halloween {
+    color: #b34700 !important;
+    background: #ffecd9;
+}
+
 body.frutiger-aero .price-tag {
     color: #684b11 !important;
     background: #fff2ca;

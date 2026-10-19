@@ -1,6 +1,7 @@
 window.WEAPON_GRENADE_LAUNCHER = [
   {
     name: "Grenade Launcher",
+    category: "Explosives",
     description: "A grenade launcher that shoots grenades",
     obtaining: "Police Level 4",
     reBuyPrice: "?",

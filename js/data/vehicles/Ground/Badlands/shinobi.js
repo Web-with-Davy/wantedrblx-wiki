@@ -2,6 +2,7 @@ window.VEHICLE_SHINOBI = [
 
   {
     name: "Shinobi",
+    category: "Motorcycle",
     obtaining: "Randys Motorshop",
     description: "Most expensive motorcycle, not the rarest",
     type: "ground",

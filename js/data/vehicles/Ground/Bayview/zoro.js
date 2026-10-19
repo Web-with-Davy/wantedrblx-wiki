@@ -2,6 +2,7 @@ window.VEHICLE_ZORO = [
 
   {
     name: "Zoro",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Zoro is a very strong car but it lacks speed",
     type: "ground",

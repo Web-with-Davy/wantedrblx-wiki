@@ -2,6 +2,7 @@ window.VEHICLE_AEGIS = [
 
   {
     name: "Aegis",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "A very sturdy and expensive vehicle.",
     type: "ground",

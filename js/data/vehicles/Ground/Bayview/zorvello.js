@@ -2,6 +2,7 @@ window.VEHICLE_ZORVELLO = [
 
   {
     name: "Zorvello",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "The Zorvello is a very fast and agile sports car that is perfect for transportation and combat",
     type: "ground",

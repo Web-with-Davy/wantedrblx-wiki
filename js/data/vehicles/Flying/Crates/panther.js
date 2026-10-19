@@ -2,6 +2,7 @@ window.VEHICLE_PANTHER = [
 
   {
     name: "Panther",
+    category: "Air",
     obtaining: "Vehicle Crates",
     description: "The Panther is a flying vehicle that is obtained from Vehicle Crates. It is a fast and maneuverable vehicle that is perfect for transportation and combat",
     type: "flying",

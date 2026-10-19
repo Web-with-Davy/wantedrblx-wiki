@@ -2,6 +2,7 @@ window.WEAPON_BARRETT_M82 = [
 
   {
     name: "Barrett M82",
+    category: "Airdrop",
     description: "A legendary sniper that can one-shot anyone with a headshot",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",

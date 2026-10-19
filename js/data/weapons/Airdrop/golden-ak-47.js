@@ -2,6 +2,7 @@ window.WEAPON_GOLDEN_AK_47 = [
 
   {
     name: "Golden AK-47",
+    category: "Airdrop",
     description: "Its golden colored ak, not much else to say",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",

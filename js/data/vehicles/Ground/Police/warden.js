@@ -2,6 +2,7 @@ window.VEHICLE_WARDEN = [
 
   {
     name: "Warden",
+    category: "Car",
     description: "The Warden is a heavily armored police car that is used by the police to patrol the city",
     type: "ground",
     obtaining: "Police Level 5",

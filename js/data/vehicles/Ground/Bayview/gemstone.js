@@ -2,6 +2,7 @@ window.VEHICLE_GEMSTONE = [
 
   {
     name: "Gemstone",
+    category: "Car",
     obtaining: "Bayview Motors",
     description: "Only bought for the cool design, its not too good at anything and theres better options at a similar price",
     type: "ground",
