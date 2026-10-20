@@ -10,4 +10,5 @@ window.PROMO_CODES_EXPIRED = [
   { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
+  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true },
 ];

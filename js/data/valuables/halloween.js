@@ -12,7 +12,7 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Hunter Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 250, priceNonContract: false, weight: 2, commonLocation: "Kill hunter zombies" },
 
   { name: "Blazing Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 350, priceNonContract: false, weight: 5, commonLocation: "Kill blazing zombies" },
-  { name: "Blazing Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill blazing zombies" },
+  { name: "Blazing Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 900, priceNonContract: false, weight: 3, commonLocation: "Kill blazing zombies" },
 
   { name: "Radioactive Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 400, priceNonContract: false, weight: 5, commonLocation: "Kill radioactive zombies" },  
   { name: "Radioactive Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 750, priceNonContract: false, weight: 4, commonLocation: "Kill radioactive zombies" },
@@ -30,9 +30,11 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill plasma zombies" },
 
   { name: "Jack O Lantern", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 6666, priceNonContract: false, weight: 6, commonLocation: "Kill jack o lantern zombies" },
- 
+
   { name: "Crypt Keeper Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 3000, priceNonContract: false, weight: 15, commonLocation: "Kill the crypt keeper" },
   { name: "Crypt Keeper Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 10000, priceNonContract: false, weight: 10, commonLocation: "Kill the crypt keeper" },
+
+  { name: "Streamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 13337, priceNonContract: false, weight: 4, commonLocation: "Kill streamer zombies" },
 
   { name: "Test Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
   { name: "Test Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },

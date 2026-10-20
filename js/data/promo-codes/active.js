@@ -6,5 +6,4 @@ window.PROMO_CODES_ACTIVE = [
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
   { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
-  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true }
 ];

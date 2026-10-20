@@ -20,11 +20,11 @@ window.ATMS_DATA = [
 /* --- js/data/atms/vaults.js --- */
 window.VAULTS_DATA = [
 
-  { name: "Regular Vault",  rarity: "COMMON",      rarityPercent: "53.54%",          priceMin: 5000,   priceMax: 7500   },
-  { name: "Silver Vault",   rarity: "COMMON",      rarityPercent: "26.34%",          priceMin: 7500,   priceMax: 9000   },
-  { name: "Gold Vault",     rarity: "UNCOMMON",    rarityPercent: "16.96%",          priceMin: 10000,  priceMax: 20000  },
-  { name: "Sapphire Vault", rarity: "EPIC",        rarityPercent: "2.19%",           priceMin: 30000,  priceMax: 40000  },
-  { name: "Ruby Vault",     rarity: "MYTHIC",      rarityPercent: "0.61%",           priceMin: 60000,  priceMax: 70000  },
+  { name: "Regular Vault",  rarity: "COMMON",      rarityPercent: "53.54%",          priceMin: 7500,   priceMax: 9000   },
+  { name: "Silver Vault",   rarity: "COMMON",      rarityPercent: "26.34%",          priceMin: 9500,   priceMax: 11000   },
+  { name: "Gold Vault",     rarity: "UNCOMMON",    rarityPercent: "16.96%",          priceMin: 12500,  priceMax: 20000  },
+  { name: "Sapphire Vault", rarity: "EPIC",        rarityPercent: "2.19%",           priceMin: 30000,  priceMax: 50000  },
+  { name: "Ruby Vault",     rarity: "MYTHIC",      rarityPercent: "0.61%",           priceMin: 60000,  priceMax: 75000  },
   { name: "Emerald Vault",  rarity: "LEGENDARY",   rarityPercent: "0.28%",           priceMin: 100000, priceMax: 150000 },
   { name: "Amethyst Vault", rarity: "LEGENDARY",   rarityPercent: "0.09%",           priceMin: 250000, priceMax: 275000 },
   { name: "Diamond Vault",  rarity: "UNOBTAINABLE",rarityPercent: "Admin Abuse Only",priceMin: 300000, priceMax: 325000 },
@@ -2381,13 +2381,13 @@ window.NPC_SOFTY = [
 
 /* --- js/data/promo-codes/active.js --- */
 window.PROMO_CODES_ACTIVE = [
+  { code: "HALLOWEEN", reward: "2k Bones and x2 Basic Vehicle Crates", active: true },
   { code: "DEVV", reward: "DEVV Tire Rims", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
   { code: "WANTED", reward: "$10,000 Cash", active: true },
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
   { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
-  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true }
 ];
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
@@ -2402,6 +2402,7 @@ window.PROMO_CODES_EXPIRED = [
   { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
+  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true },
 ];
 
 /* --- js/data/store/bag-boosts.js --- */
@@ -2555,7 +2556,7 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Hunter Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 250, priceNonContract: false, weight: 2, commonLocation: "Kill hunter zombies" },
 
   { name: "Blazing Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 350, priceNonContract: false, weight: 5, commonLocation: "Kill blazing zombies" },
-  { name: "Blazing Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill blazing zombies" },
+  { name: "Blazing Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 900, priceNonContract: false, weight: 3, commonLocation: "Kill blazing zombies" },
 
   { name: "Radioactive Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 400, priceNonContract: false, weight: 5, commonLocation: "Kill radioactive zombies" },  
   { name: "Radioactive Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 750, priceNonContract: false, weight: 4, commonLocation: "Kill radioactive zombies" },
@@ -2573,9 +2574,11 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill plasma zombies" },
 
   { name: "Jack O Lantern", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 6666, priceNonContract: false, weight: 6, commonLocation: "Kill jack o lantern zombies" },
- 
+
   { name: "Crypt Keeper Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 3000, priceNonContract: false, weight: 15, commonLocation: "Kill the crypt keeper" },
   { name: "Crypt Keeper Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 10000, priceNonContract: false, weight: 10, commonLocation: "Kill the crypt keeper" },
+
+  { name: "Streamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 13337, priceNonContract: false, weight: 4, commonLocation: "Kill streamer zombies" },
 
   { name: "Test Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
   { name: "Test Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
