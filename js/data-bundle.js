@@ -2550,7 +2550,7 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Mutant Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 100, priceNonContract: false, weight: 2, commonLocation: "Kill normal zombies" },
 
   { name: "Soldier Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 150, priceNonContract: false, weight: 4, commonLocation: "Kill soldier zombies" },
-  { name: "Soldier Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 5, commonLocation: "Kill soldier zombies" },
+  { name: "Soldier Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 350, priceNonContract: false, weight: 2, commonLocation: "Kill soldier zombies" },
 
   { name: "Hunter Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 100, priceNonContract: false, weight: 4, commonLocation: "Kill hunter zombies" },
   { name: "Hunter Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 250, priceNonContract: false, weight: 2, commonLocation: "Kill hunter zombies" },
@@ -2571,7 +2571,7 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Nuclear Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill normal zombies" },
 
   { name: "Plasma Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1250, priceNonContract: false, weight: 5, commonLocation: "Kill plasma zombies" },
-  { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill plasma zombies" },
+  { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 2500, priceNonContract: false, weight: 3, commonLocation: "Kill plasma zombies" },
 
   { name: "Jack O Lantern", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 6666, priceNonContract: false, weight: 6, commonLocation: "Kill jack o lantern zombies" },
 
