@@ -24,7 +24,7 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Screamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 500, priceNonContract: false, weight: 3, commonLocation: "Kill screamer zombies" },
 
   { name: "Nuclear Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1200, priceNonContract: false, weight: 6, commonLocation: "Kill nuclear zombies" },
-  { name: "Nuclear Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill normal zombies" },
+  { name: "Nuclear Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 2000, priceNonContract: false, weight: 4, commonLocation: "Kill normal zombies" },
 
   { name: "Plasma Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1250, priceNonContract: false, weight: 5, commonLocation: "Kill plasma zombies" },
   { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 2500, priceNonContract: false, weight: 3, commonLocation: "Kill plasma zombies" },
@@ -35,8 +35,5 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Crypt Keeper Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 10000, priceNonContract: false, weight: 10, commonLocation: "Kill the crypt keeper" },
 
   { name: "Streamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 13337, priceNonContract: false, weight: 4, commonLocation: "Kill streamer zombies" },
-
-  { name: "Test Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
-  { name: "Test Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
 
 ];

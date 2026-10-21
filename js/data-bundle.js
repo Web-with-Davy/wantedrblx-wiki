@@ -33,12 +33,10 @@ window.VAULTS_DATA = [
 
 /* --- js/data/contributors/contributors.js --- */
 window.CONTRIBUTORS_CONTRIBUTORS = [
-  { name: "Justin", contributions: "Financial Support" },
+  { name: "Justin", contributions: "Him" },
   { name: "RedRuby", contributions: "Vault Images" },
-  { name: "Borgaboo", contributions: "Deagle and FN-FAL Images" },
-  { name: "Ravozir", contributions: "Blade Car Info, Rod Loot" },
+  { name: "Borgaboo", contributions: "Various Wiki Images" },
   { name: "VibinLaz3r", contributions: "Rod Loot" },
-  { name: "OhRetyr", contributions: "Rod Loot" }
 ];
 
 /* --- js/data/contributors/managers.js --- */
@@ -48,14 +46,8 @@ window.CONTRIBUTORS_MANAGERS = [
 
 /* --- js/data/contributors/staff.js --- */
 window.CONTRIBUTORS_STAFF = [
-  { name: "Dedsec", title: "Wiki Staff" },
   { name: "MeepMeep", title: "Wiki Staff" },
-  { name: "Emperor", title: "Wiki Staff" },
   { name: "Professor Proish", title: "Wiki Staff" },
-  { name: "Ray_Meow", title: "Wiki Staff" },
-  { name: "Za_Orangemonke", title: "Wiki Staff" },
-  { name: "Ely", title: "Wiki Staff" },
-  { name: "xTrench", title: "Wiki Staff" }
 ];
 
 /* --- js/data/events/christmas-2025.js --- */
@@ -405,6 +397,24 @@ window.ITEM_TOOLS_BUZZSAW = [
       ammoPrice: "$250 for 1",
       damage: "10 per 0.2s",
     }
+  }
+];
+/* --- js/data/Items/Tools/skeleton-key.js --- */
+window.ITEM_TOOLS_SKELETON_KEY = [
+  {
+    name: "Skeleton Key",
+    description: "Used to open the door to fight the Crypt Keeper during the halloween event",
+    possibleDrops: [
+      "Special Mutants",
+    ],
+  }
+];
+/* --- js/data/Items/Tools/speakers-amulet.js --- */
+window.ITEM_TOOLS_SPEAKERS_AMULET = [
+  {
+    name: "Speakers Amulet",
+    description: "Used to speak to ghosts during the halloween event",
+    location: "Badlands Church",
   }
 ];
 /* --- js/data/Items/Tools/vault-cracker.js --- */
@@ -2382,7 +2392,7 @@ window.NPC_SOFTY = [
 /* --- js/data/promo-codes/active.js --- */
 window.PROMO_CODES_ACTIVE = [
   { code: "HALLOWEEN", reward: "2k Bones and x2 Basic Vehicle Crates", active: true },
-  { code: "DEVV", reward: "DEVV Tire Rims", active: true },
+  { code: "DEVV", reward: "$10,000 Cash", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
   { code: "WANTED", reward: "$10,000 Cash", active: true },
   { code: "BOOM", reward: "10 C4", active: true },
@@ -2568,7 +2578,7 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Screamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 500, priceNonContract: false, weight: 3, commonLocation: "Kill screamer zombies" },
 
   { name: "Nuclear Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1200, priceNonContract: false, weight: 6, commonLocation: "Kill nuclear zombies" },
-  { name: "Nuclear Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill normal zombies" },
+  { name: "Nuclear Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 2000, priceNonContract: false, weight: 4, commonLocation: "Kill normal zombies" },
 
   { name: "Plasma Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1250, priceNonContract: false, weight: 5, commonLocation: "Kill plasma zombies" },
   { name: "Plasma Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 2500, priceNonContract: false, weight: 3, commonLocation: "Kill plasma zombies" },
@@ -2579,9 +2589,6 @@ window.VALUABLES_HALLOWEEN = [
   { name: "Crypt Keeper Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 10000, priceNonContract: false, weight: 10, commonLocation: "Kill the crypt keeper" },
 
   { name: "Streamer Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 13337, priceNonContract: false, weight: 4, commonLocation: "Kill streamer zombies" },
-
-  { name: "Test Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
-  { name: "Test Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 0, priceNonContract: false, weight: 0, commonLocation: "Kill test zombies" },
 
 ];
 
