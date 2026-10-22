@@ -1,5 +1,5 @@
 const YOUTUBER_ENABLED = true;
-const YOUTUBER_TEST_MODE = true;
+const YOUTUBER_TEST_MODE = false;
 
 (function () {
     'use strict';
