@@ -2668,7 +2668,7 @@ window.VEHICLE_PANTHER = [
     repairPriceGarage: 0,
     contractPrice: "Un-Buyable",
     stats: {
-      seats: 0,
+      seats: 6,
       topSpeed: 100,
       handling: 100,
       spoolTime: 4,
@@ -2692,7 +2692,7 @@ window.VEHICLE_MAVERICK = [
     repairPriceGarage: 0,
     contractPrice: 8000000,
     stats: {
-      seats: 0,
+      seats: 4,
       topSpeed: 76,
       handling: 62,
       spoolTime: 3.5,
@@ -2716,7 +2716,7 @@ window.VEHICLE_MINI_BIRD = [
     repairPriceGarage: 0,
     contractPrice: 1400000,
     stats: {
-      seats: 0,
+      seats: 2,
       topSpeed: 58,
       handling: 50,
       spoolTime: 3,
@@ -2740,7 +2740,7 @@ window.VEHICLE_SCOUT = [
     repairPriceGarage: 0,
     contractPrice: 3200000,
     stats: {
-      seats: 0,
+      seats: 4,
       topSpeed: 100,
       handling: 100,
       spoolTime: 5,
