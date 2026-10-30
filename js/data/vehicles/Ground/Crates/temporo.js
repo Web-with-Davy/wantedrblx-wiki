@@ -10,6 +10,7 @@ window.VEHICLE_TEMPORO = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 71,
       acceleration: 62,

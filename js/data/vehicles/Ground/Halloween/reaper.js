@@ -10,6 +10,7 @@ window.VEHICLE_REAPER = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 70,
       acceleration: 65,

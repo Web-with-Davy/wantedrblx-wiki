@@ -10,6 +10,7 @@ window.VEHICLE_VANGUARD = [
     repairPriceGarage: 900,
     contractPrice: 750000,
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 53,
       acceleration: 36,

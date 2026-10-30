@@ -10,6 +10,7 @@ window.VEHICLE_SHINOBI = [
     repairPriceGarage: 900,
     contractPrice: 700000,
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 61,
       acceleration: 44,

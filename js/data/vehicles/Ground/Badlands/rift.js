@@ -10,6 +10,7 @@ window.VEHICLE_RIFT = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 79,
       acceleration: 68,

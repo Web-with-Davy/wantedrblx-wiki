@@ -10,6 +10,7 @@ window.VEHICLE_TRACKSTAR = [
     repairPriceGarage: 450,
     contractPrice: 220000,
     stats: {
+      vehicleType: "L-SUV",
       seats: 4,
       topSpeed: 47,
       acceleration: 36,

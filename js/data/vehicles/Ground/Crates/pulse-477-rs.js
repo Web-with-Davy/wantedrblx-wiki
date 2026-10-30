@@ -10,6 +10,7 @@ window.VEHICLE_PULSE_477_RS = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 66,
       acceleration: 60,

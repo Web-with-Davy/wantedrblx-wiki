@@ -10,6 +10,7 @@ window.VEHICLE_RATTLER = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 46,
       acceleration: 47,

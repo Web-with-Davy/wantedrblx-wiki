@@ -10,6 +10,7 @@ window.VEHICLE_BEAM = [
     repairPriceGarage: 180,
     contractPrice: 85000,
     stats: {
+      vehicleType: "Sedan",
       seats: 4,
       topSpeed: 42,
       acceleration: 33,

@@ -10,6 +10,7 @@ window.VEHICLE_RANGER = [
     repairPriceGarage: 180,
     contractPrice: 3000,
     stats: {
+      vehicleType: "Truck",
       seats: 4,
       topSpeed: 30,
       acceleration: 29,

@@ -10,6 +10,7 @@ window.VEHICLE_NOMAD = [
     repairPriceGarage: 180,
     contractPrice: 24000,
     stats: {
+      vehicleType: "SUV",
       seats: 4,
       topSpeed: 33,
       acceleration: 31,

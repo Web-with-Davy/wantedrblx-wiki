@@ -10,6 +10,7 @@ window.VEHICLE_CROWLINE = [
     repairPriceGarage: 180,
     contractPrice: 120000,
     stats: {
+      vehicleType: "Sedan",
       seats: 4,
       topSpeed: 34,
       acceleration: 30,

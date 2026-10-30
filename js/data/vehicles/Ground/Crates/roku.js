@@ -10,6 +10,7 @@ window.VEHICLE_ROKU = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 36,
       acceleration: 33,

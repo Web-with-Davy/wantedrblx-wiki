@@ -10,6 +10,7 @@ window.VEHICLE_HORIZON = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 46,
       acceleration: 36,

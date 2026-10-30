@@ -10,6 +10,7 @@ window.VEHICLE_FALCON_GT = [
     repairPriceGarage: 2250,
     contractPrice: 6200000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 70,
       acceleration: 62,

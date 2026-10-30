@@ -10,6 +10,7 @@ window.VEHICLE_G_CRUISER = [
     repairPriceGarage: 450,
     contractPrice: 280000,
     stats: {
+      vehicleType: "L-SUV",
       seats: 4,
       topSpeed: 41,
       acceleration: 28,

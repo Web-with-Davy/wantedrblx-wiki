@@ -10,6 +10,7 @@ window.VEHICLE_BLADE = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 55,
       acceleration: 44,

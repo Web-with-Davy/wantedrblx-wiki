@@ -10,6 +10,7 @@ window.VEHICLE_GEMSTONE = [
     repairPriceGarage: 450,
     contractPrice: 400000,
     stats: {
+      vehicleType: "L-Sedan",
       seats: 4,
       topSpeed: 46,
       acceleration: 35,

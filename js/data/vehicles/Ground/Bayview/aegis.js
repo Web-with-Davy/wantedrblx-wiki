@@ -10,6 +10,7 @@ window.VEHICLE_AEGIS = [
     repairPriceGarage: 900,
     contractPrice: 2500000,
     stats: {
+      vehicleType: "L-SUT",
       seats: 8,
       topSpeed: 44,
       acceleration: 31,

@@ -239,24 +239,42 @@ const YOUTUBER_TEST_MODE = false;
         return el;
     }
 
+    function isLowEnd() {
+        return document.body && document.body.classList.contains('low-end-mode');
+    }
+
     function popIn(el, onDone) {
         el.getBoundingClientRect();
-        el.classList.add('yt-in');
-        el.style.opacity = '1';
-        el.style.transform = 'scale(1) translateY(0)';
-        el.style.filter = 'blur(0px)';
-        el.style.pointerEvents = 'auto';
-        setTimeout(onDone, IN_MS);
+        if (isLowEnd()) {
+            el.style.opacity = '1';
+            el.style.transform = 'scale(1) translateY(0)';
+            el.style.filter = 'blur(0px)';
+            el.style.pointerEvents = 'auto';
+            onDone();
+        } else {
+            el.classList.add('yt-in');
+            el.style.opacity = '1';
+            el.style.transform = 'scale(1) translateY(0)';
+            el.style.filter = 'blur(0px)';
+            el.style.pointerEvents = 'auto';
+            setTimeout(onDone, IN_MS);
+        }
     }
 
     function popOut(el, onDone) {
-        el.classList.remove('yt-in');
-        el.classList.add('yt-out');
-        el.style.opacity = '0';
-        el.style.transform = 'scale(0.3)';
-        el.style.filter = 'blur(8px)';
-        el.style.pointerEvents = 'none';
-        setTimeout(onDone, OUT_MS);
+        if (isLowEnd()) {
+            el.style.opacity = '0';
+            el.style.pointerEvents = 'none';
+            onDone();
+        } else {
+            el.classList.remove('yt-in');
+            el.classList.add('yt-out');
+            el.style.opacity = '0';
+            el.style.transform = 'scale(0.3)';
+            el.style.filter = 'blur(8px)';
+            el.style.pointerEvents = 'none';
+            setTimeout(onDone, OUT_MS);
+        }
     }
 
     function showOnce(onDone) {
@@ -275,7 +293,7 @@ const YOUTUBER_TEST_MODE = false;
         showOnce(() => {
             setTimeout(() => {
                 showOnce(() => {});
-            }, GAP_MS);
+            }, isLowEnd() ? 0 : GAP_MS);
         });
     }
 

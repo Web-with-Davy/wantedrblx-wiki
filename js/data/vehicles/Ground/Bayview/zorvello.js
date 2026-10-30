@@ -10,6 +10,7 @@ window.VEHICLE_ZORVELLO = [
     repairPriceGarage: 2250,
     contractPrice: 5000000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 67,
       acceleration: 62,

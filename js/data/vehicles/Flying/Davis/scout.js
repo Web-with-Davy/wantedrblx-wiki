@@ -10,6 +10,7 @@ window.VEHICLE_SCOUT = [
     repairPriceGarage: 0,
     contractPrice: 3200000,
     stats: {
+      vehicleType: "Rotor",
       seats: 4,
       topSpeed: 100,
       handling: 100,

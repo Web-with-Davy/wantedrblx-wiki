@@ -10,6 +10,7 @@ window.VEHICLE_RIVAL = [
     repairPriceGarage: 180,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Muscle",
       seats: 2,
       topSpeed: 39,
       acceleration: 31,

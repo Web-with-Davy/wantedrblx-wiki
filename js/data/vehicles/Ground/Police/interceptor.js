@@ -11,6 +11,7 @@ window.VEHICLE_INTERCEPTOR = [
     repairPriceGarage: 200,
     seats: 4,
     stats: {
+      vehicleType: "Sedan",
       topSpeed: 40,
       acceleration: 31,
       braking: 52,

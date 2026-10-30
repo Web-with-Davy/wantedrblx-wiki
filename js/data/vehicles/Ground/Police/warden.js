@@ -10,6 +10,7 @@ window.VEHICLE_WARDEN = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Tactical",
       seats: 8,
       topSpeed: 47,
       acceleration: 31,

@@ -1333,6 +1333,26 @@ body.low-end-mode * {
     will-change: auto;
 }
 
+body.low-end-mode .official-link-btn {
+    clip-path: none;
+    transition: none;
+    box-shadow: none;
+}
+
+body.low-end-mode .official-link-btn::after {
+    display: none;
+}
+
+body.low-end-mode .official-link-btn:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+body.low-end-mode .official-link-icon {
+    filter: none;
+    opacity: 1;
+}
+
 .official-links-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

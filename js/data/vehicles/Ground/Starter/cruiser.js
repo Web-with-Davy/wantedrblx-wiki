@@ -10,6 +10,7 @@ window.VEHICLE_CRUISER = [
     repairPriceGarage: 0,
     contractPrice: 500,
     stats: {
+      vehicleType: "Sedan",
       seats: 4,
       topSpeed: 37,
       acceleration: 30,

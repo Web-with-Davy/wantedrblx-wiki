@@ -10,6 +10,7 @@ window.VEHICLE_RAZOR = [
     repairPriceGarage: 2250,
     contractPrice: 3500000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 63,
       acceleration: 55,

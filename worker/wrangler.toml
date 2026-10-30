@@ -1,0 +1,10 @@
+name = "wantedrblx-embed"
+main = "index.js"
+compatibility_date = "2024-09-23"
+
+[vars]
+
+# Route: intercept /item/* on the main domain; pass everything else to the static site
+# Set this up in the Cloudflare dashboard under Workers → Triggers → Routes:
+#   wantedrblx.com/item/*  → wantedrblx-embed
+
