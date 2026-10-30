@@ -27,10 +27,9 @@ echo "" >> "$OUT"
 echo "/* Sentinel: data bundle fully loaded */" >> "$OUT"
 echo "window.__WANTED_DATA_BUNDLED = true;" >> "$OUT"
 
-# Keep items-data.json updated for Discord embeds / item.php
-if [ -f "$WIKI_DIR/scripts/update-items-json.js" ]; then
-    echo "Updating items-data.json for item embeds..."
-    node "$WIKI_DIR/scripts/update-items-json.js"
+# Build Discord item embed pages
+if [ -f "$WIKI_DIR/scripts/build-item-embeds.js" ]; then
+    node "$WIKI_DIR/scripts/build-item-embeds.js"
 fi
 
 
