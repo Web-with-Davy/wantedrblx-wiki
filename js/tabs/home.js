@@ -355,17 +355,17 @@ function renderHome() {
 </div>
 
 <div class="sidebar-block">
-    <h2 class="sidebar-title">WIKI UGCS</h2>
+    <h2 class="sidebar-title">SUPPORT THE WIKI</h2>
     <div class="discord-widget-box">
         <div class="discord-widget-header">
-            <span class="discord-widget-icon">🛍️</span>
+            <span class="discord-widget-icon">☕</span>
             <div class="discord-widget-info">
-                <div class="discord-widget-name">GATTO CLOTHES</div>
-                <div class="discord-widget-status"><span class="discord-dot"></span>Roblox Clothing & UGC</div>
+                <div class="discord-widget-name">BUY ME A COFFEE</div>
+                <div class="discord-widget-status"><span class="discord-dot"></span>Help cover website hosting</div>
             </div>
         </div>
-        <a href="https://www.roblox.com/communities/34347750/Gatto-Clothes" target="_blank" rel="noopener" class="discord-join-btn">
-            VISIT GROUP
+        <a href="https://buymeacoffee.com/webwithdavy" target="_blank" rel="noopener" class="discord-join-btn">
+            DONATE
         </a>
     </div>
 </div>
