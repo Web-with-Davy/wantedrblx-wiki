@@ -1,7 +1,9 @@
 function makeVehicleCard(item, displayName) {
   const contractHtml = formatPrice(item.contractPrice);
+  const vehicleType = item.stats && item.stats.vehicleType;
 
   const visibleStats = [
+    vehicleType ? { label: 'Type', value: vehicleType } : null,
     contractHtml ? { label: 'Buy Price', value: contractHtml } : null,
   ].filter(Boolean);
 

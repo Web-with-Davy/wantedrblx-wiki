@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /
+
+# Route /item/<category>/<id> to item.php
+RewriteRule ^item/([^/]+)/([^/]+)/?$ item.php?category=$1&id=$2 [L,QSA]
+

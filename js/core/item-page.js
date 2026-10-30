@@ -279,8 +279,10 @@ function renderWeaponDetails(item) {
 function renderVehicleDetails(item) {
   const f = typeof formatPrice === 'function' ? formatPrice : (v => v);
   const isFlying = item.type === 'flying';
+  const vehicleType = item.stats && item.stats.vehicleType;
 
   const statsHtml = [
+    _stat('Class', vehicleType),
     _stat('Type', item.type ? (item.type.charAt(0).toUpperCase() + item.type.slice(1)) : null),
     _stat('Category', item.category),
     _stat('Obtaining', item.obtaining),

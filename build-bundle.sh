@@ -27,6 +27,14 @@ echo "" >> "$OUT"
 echo "/* Sentinel: data bundle fully loaded */" >> "$OUT"
 echo "window.__WANTED_DATA_BUNDLED = true;" >> "$OUT"
 
+# Keep items-data.json updated for Discord embeds / item.php
+if [ -f "$WIKI_DIR/scripts/update-items-json.js" ]; then
+    echo "Updating items-data.json for item embeds..."
+    node "$WIKI_DIR/scripts/update-items-json.js"
+fi
+
+
+
 # Update weapon manifest in js/registry/weapons.js to match current weapon data files
 WEAPONS_REGISTRY="$WIKI_DIR/js/registry/weapons.js"
 if [ -f "$WEAPONS_REGISTRY" ]; then

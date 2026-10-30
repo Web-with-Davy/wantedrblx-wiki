@@ -2668,6 +2668,7 @@ window.VEHICLE_PANTHER = [
     repairPriceGarage: 0,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Rotor",
       seats: 6,
       topSpeed: 100,
       handling: 100,
@@ -2692,6 +2693,7 @@ window.VEHICLE_MAVERICK = [
     repairPriceGarage: 0,
     contractPrice: 8000000,
     stats: {
+      vehicleType: "Rotor",
       seats: 4,
       topSpeed: 76,
       handling: 62,
@@ -2716,6 +2718,7 @@ window.VEHICLE_MINI_BIRD = [
     repairPriceGarage: 0,
     contractPrice: 1400000,
     stats: {
+      vehicleType: "Rotor",
       seats: 2,
       topSpeed: 58,
       handling: 50,
@@ -2740,6 +2743,7 @@ window.VEHICLE_SCOUT = [
     repairPriceGarage: 0,
     contractPrice: 3200000,
     stats: {
+      vehicleType: "Rotor",
       seats: 4,
       topSpeed: 100,
       handling: 100,
@@ -2764,6 +2768,7 @@ window.VEHICLE_RIFT = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 79,
       acceleration: 68,
@@ -2788,6 +2793,7 @@ window.VEHICLE_ROAD_HOG = [
     repairPriceGarage: 180,
     contractPrice: 30000,
     stats: {
+      vehicleType: "Cruiser",
       seats: 2,
       topSpeed: 36,
       acceleration: 31,
@@ -2812,6 +2818,7 @@ window.VEHICLE_ROOSTER = [
     repairPriceGarage: 180,
     contractPrice: 1000,
     stats: {
+      vehicleType: "Off-Road",
       seats: 2,
       topSpeed: 26,
       acceleration: 31,
@@ -2836,6 +2843,7 @@ window.VEHICLE_SHINOBI = [
     repairPriceGarage: 900,
     contractPrice: 700000,
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 61,
       acceleration: 44,
@@ -2860,6 +2868,7 @@ window.VEHICLE_AEGIS = [
     repairPriceGarage: 900,
     contractPrice: 2500000,
     stats: {
+      vehicleType: "L-SUT",
       seats: 8,
       topSpeed: 44,
       acceleration: 31,
@@ -2884,6 +2893,7 @@ window.VEHICLE_BEAM = [
     repairPriceGarage: 180,
     contractPrice: 85000,
     stats: {
+      vehicleType: "Sedan",
       seats: 4,
       topSpeed: 42,
       acceleration: 33,
@@ -2908,6 +2918,7 @@ window.VEHICLE_CONTENDER = [
     repairPriceGarage: 180,
     contractPrice: 65000,
     stats: {
+      vehicleType: "Muscle",
       seats: 2,
       topSpeed: 40,
       acceleration: 31,
@@ -2932,6 +2943,7 @@ window.VEHICLE_CROWLINE = [
     repairPriceGarage: 180,
     contractPrice: 120000,
     stats: {
+      vehicleType: "Sedan",
       seats: 4,
       topSpeed: 34,
       acceleration: 30,
@@ -2956,6 +2968,7 @@ window.VEHICLE_FALCON_GT = [
     repairPriceGarage: 2250,
     contractPrice: 6200000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 70,
       acceleration: 62,
@@ -2980,6 +2993,7 @@ window.VEHICLE_G_CRUISER = [
     repairPriceGarage: 450,
     contractPrice: 280000,
     stats: {
+      vehicleType: "L-SUV",
       seats: 4,
       topSpeed: 41,
       acceleration: 28,
@@ -3004,6 +3018,7 @@ window.VEHICLE_GEMSTONE = [
     repairPriceGarage: 450,
     contractPrice: 400000,
     stats: {
+      vehicleType: "L-Sedan",
       seats: 4,
       topSpeed: 46,
       acceleration: 35,
@@ -3028,6 +3043,7 @@ window.VEHICLE_MOCHI = [
     repairPriceGarage: 180,
     contractPrice: 6000,
     stats: {
+      vehicleType: "Roadster",
       seats: 2,
       topSpeed: 39,
       acceleration: 30,
@@ -3052,6 +3068,7 @@ window.VEHICLE_NOMAD = [
     repairPriceGarage: 180,
     contractPrice: 24000,
     stats: {
+      vehicleType: "SUV",
       seats: 4,
       topSpeed: 33,
       acceleration: 31,
@@ -3076,6 +3093,7 @@ window.VEHICLE_PULSE_477 = [
     repairPriceGarage: 900,
     contractPrice: 2400000,
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 60,
       acceleration: 45,
@@ -3100,6 +3118,7 @@ window.VEHICLE_RANGER = [
     repairPriceGarage: 180,
     contractPrice: 3000,
     stats: {
+      vehicleType: "Truck",
       seats: 4,
       topSpeed: 30,
       acceleration: 29,
@@ -3124,6 +3143,7 @@ window.VEHICLE_RAZOR = [
     repairPriceGarage: 2250,
     contractPrice: 3500000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 63,
       acceleration: 55,
@@ -3148,6 +3168,7 @@ window.VEHICLE_SPECTRE = [
     repairPriceGarage: 2250,
     contractPrice: 8000000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 74,
       acceleration: 67,
@@ -3172,6 +3193,7 @@ window.VEHICLE_STALLION_450 = [
     repairPriceGarage: 180,
     contractPrice: 185000,
     stats: {
+      vehicleType: "Muscle",
       seats: 2,
       topSpeed: 45,
       acceleration: 34,
@@ -3196,6 +3218,7 @@ window.VEHICLE_TRACKSTAR = [
     repairPriceGarage: 450,
     contractPrice: 220000,
     stats: {
+      vehicleType: "L-SUV",
       seats: 4,
       topSpeed: 47,
       acceleration: 36,
@@ -3220,6 +3243,7 @@ window.VEHICLE_VANGUARD = [
     repairPriceGarage: 900,
     contractPrice: 750000,
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 53,
       acceleration: 36,
@@ -3244,6 +3268,7 @@ window.VEHICLE_ZORO = [
     repairPriceGarage: 900,
     contractPrice: 900000,
     stats: {
+      vehicleType: "Sport",
       seats: 4,
       topSpeed: 48,
       acceleration: 38,
@@ -3268,6 +3293,7 @@ window.VEHICLE_ZORVELLO = [
     repairPriceGarage: 2250,
     contractPrice: 5000000,
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 67,
       acceleration: 62,
@@ -3292,6 +3318,7 @@ window.VEHICLE_EMPYREAN = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 77,
       acceleration: 67,
@@ -3316,6 +3343,7 @@ window.VEHICLE_HORIZON = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 46,
       acceleration: 36,
@@ -3340,6 +3368,7 @@ window.VEHICLE_PULSE_477_RS = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 66,
       acceleration: 60,
@@ -3364,6 +3393,7 @@ window.VEHICLE_ROKU = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 36,
       acceleration: 33,
@@ -3388,6 +3418,7 @@ window.VEHICLE_TEMPORO = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 71,
       acceleration: 62,
@@ -3412,6 +3443,7 @@ window.VEHICLE_RIVAL = [
     repairPriceGarage: 180,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Muscle",
       seats: 2,
       topSpeed: 39,
       acceleration: 31,
@@ -3436,6 +3468,7 @@ window.VEHICLE_RATTLER = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 46,
       acceleration: 47,
@@ -3460,6 +3493,7 @@ window.VEHICLE_REAPER = [
     repairPriceGarage: 2250,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Super",
       seats: 2,
       topSpeed: 70,
       acceleration: 65,
@@ -3485,6 +3519,7 @@ window.VEHICLE_INTERCEPTOR = [
     repairPriceGarage: 200,
     seats: 4,
     stats: {
+      vehicleType: "Sedan",
       topSpeed: 40,
       acceleration: 31,
       braking: 52,
@@ -3508,6 +3543,7 @@ window.VEHICLE_WARDEN = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Tactical",
       seats: 8,
       topSpeed: 47,
       acceleration: 31,
@@ -3532,6 +3568,7 @@ window.VEHICLE_CRUISER = [
     repairPriceGarage: 0,
     contractPrice: 500,
     stats: {
+      vehicleType: "Sedan",
       seats: 4,
       topSpeed: 37,
       acceleration: 30,
@@ -3556,6 +3593,7 @@ window.VEHICLE_BLADE = [
     repairPriceGarage: 900,
     contractPrice: "Un-Buyable",
     stats: {
+      vehicleType: "Sport",
       seats: 2,
       topSpeed: 55,
       acceleration: 44,
