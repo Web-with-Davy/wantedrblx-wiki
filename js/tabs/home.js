@@ -1,3 +1,9 @@
+const DONATION_GOAL = {
+    current: 0,
+    target: 20,
+    currency: '$'
+};
+
 const UPDATES = [
     { version: "D.04/M.10/Y.2026", description: "Money Laundering Update", color: "rgb(255, 255, 255)", color2: "rgb(73, 94, 255)" },
     { version: "D.05/M.09/Y.2026", description: "Motorcycle Update", color: "rgb(255, 60, 0)", color2: "rgb(161, 179, 0)" },
@@ -237,6 +243,8 @@ function renderHome() {
         </div>
     `;
 
+    const donationPercent = Math.min(100, Math.round((DONATION_GOAL.current / DONATION_GOAL.target) * 100));
+
     return `
         <div class="home-container">
             <div class="home-main-content">
@@ -356,13 +364,23 @@ function renderHome() {
 
 <div class="sidebar-block">
     <h2 class="sidebar-title">SUPPORT THE WIKI</h2>
-    <div class="discord-widget-box">
+    <div class="discord-widget-box bmac-widget-box">
         <div class="discord-widget-header">
             <span class="discord-widget-icon">☕</span>
             <div class="discord-widget-info">
                 <div class="discord-widget-name">BUY ME A COFFEE</div>
                 <div class="discord-widget-status"><span class="discord-dot"></span>Help cover website hosting</div>
             </div>
+        </div>
+        <div class="bmac-goal-section">
+            <div class="bmac-goal-header">
+                <span class="bmac-goal-label">YEARLY GOAL</span>
+                <span class="bmac-goal-values">${DONATION_GOAL.currency}${DONATION_GOAL.current} / ${DONATION_GOAL.currency}${DONATION_GOAL.target}</span>
+            </div>
+            <div class="bmac-progress-track">
+                <div class="bmac-progress-fill" style="width: ${donationPercent}%;"></div>
+            </div>
+            <div class="bmac-goal-subtext">${donationPercent}% funded</div>
         </div>
         <a href="https://buymeacoffee.com/webwithdavy" target="_blank" rel="noopener" class="discord-join-btn">
             DONATE
