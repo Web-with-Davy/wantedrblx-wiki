@@ -2391,6 +2391,7 @@ window.NPC_SOFTY = [
 
 /* --- js/data/promo-codes/active.js --- */
 window.PROMO_CODES_ACTIVE = [
+  { code: "50K", reward: "50k Bones and x2 Basic Vehicle Crates", active: true },
   { code: "HALLOWEEN", reward: "2k Bones and x2 Basic Vehicle Crates", active: true },
   { code: "DEVV", reward: "$10,000 Cash", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
