@@ -59,7 +59,7 @@ function initMobileBottomNav() {
         if (typeof window.loadPage === 'function') {
             window.loadPage(page);
         } else {
-            window.location.hash = page === 'home' ? '' : page;
+            window.location.assign(page === 'home' ? '/' : `/${page}`);
         }
     });
 

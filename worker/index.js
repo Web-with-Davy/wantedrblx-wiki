@@ -128,7 +128,23 @@ const PAGE_PATH_COMPAT = `<script>
 (() => {
   const page = location.pathname.split('/').filter(Boolean)[0];
   const pages = ['valuables', 'atms', 'weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'store', 'items', 'events', 'promo-codes'];
-  if (!pages.includes(page)) return;
+  const isCategoryPath = pages.includes(page);
+  const isHomePath = location.pathname === '/';
+  if (!isCategoryPath && !isHomePath) return;
+
+  const cleanNavigationLinks = () => {
+    document.querySelectorAll('a[data-page]').forEach(link => {
+      const targetPage = link.dataset.page;
+      if (targetPage && targetPage !== 'home' && pages.includes(targetPage)) {
+        link.setAttribute('href', '/' + targetPage);
+      } else if (targetPage === 'home') {
+        link.setAttribute('href', '/');
+      }
+    });
+  };
+  cleanNavigationLinks();
+  document.addEventListener('DOMContentLoaded', cleanNavigationLinks, { once: true });
+  new MutationObserver(cleanNavigationLinks).observe(document.documentElement, { childList: true, subtree: true });
 
   const pushState = history.pushState.bind(history);
   history.pushState = (state, title, url) => {
@@ -151,6 +167,8 @@ const PAGE_PATH_COMPAT = `<script>
     npcs: 'NPCs', locations: 'LOCATIONS', store: 'STORE', items: 'ITEMS',
     events: 'EVENTS', 'promo-codes': 'PROMO CODES'
   };
+  if (!isCategoryPath) return;
+
   const timer = setInterval(() => {
     const label = document.getElementById('page-label')?.textContent;
     if (label === labels[page]) {
@@ -172,7 +190,8 @@ export default {
     const itemMatch = url.pathname.match(/^\/item\/([^\/]+)\/([^\/]+)\/?$/);
     const page = url.pathname.split('/').filter(Boolean)[0] || '';
     const isPageRoute = PAGE_PATHS.has(page);
-    if (!itemMatch && !isPageRoute) {
+    const isHomeRoute = url.pathname === '/';
+    if (!itemMatch && !isPageRoute && !isHomeRoute) {
       // Pass everything else through to origin
       return fetch(request);
     }
