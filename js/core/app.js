@@ -19,6 +19,8 @@ const PAGE_NAMES = {
 };
 
 function getCurrentPage() {
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    if (VALID_PAGES.includes(path)) return path;
     const hash = window.location.hash.replace(/^#/, '');
     if (hash.startsWith('item/')) return null;
     if (VALID_PAGES.includes(hash)) return hash;
@@ -96,7 +98,7 @@ function loadPage(page, saveToHistory = true) {
         }
 
         if (saveToHistory) {
-            const url = page === "home" ? "#" : `#${page}`;
+            const url = page === "home" ? "/" : `/${page}`;
             window.history.pushState({ page }, "", url);
         }
 
@@ -148,7 +150,8 @@ window.addEventListener("popstate", (event) => {
         if (_handleItemPageHash(hash)) return;
     }
 
-    let page = (event.state && event.state.page);
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    let page = (event.state && event.state.page) || (VALID_PAGES.includes(path) ? path : null);
     if (!page) {
         page = VALID_PAGES.includes(hash) ? hash : "home";
     }
@@ -310,7 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const initialPage = VALID_PAGES.includes(hash) ? hash : "home";
+            const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+            const initialPage = VALID_PAGES.includes(path) ? path : VALID_PAGES.includes(hash) ? hash : "home";
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
             if (targetTab) {

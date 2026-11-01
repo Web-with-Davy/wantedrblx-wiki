@@ -3,7 +3,19 @@ main = "index.js"
 compatibility_date = "2024-09-23"
 
 routes = [
-	{ pattern = "wantedrblx.com/item/*", zone_name = "wantedrblx.com" }
+	{ pattern = "wantedrblx.com/item/*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/valuables*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/atms*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/weapons*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/vehicles*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/gun-crates*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/missions*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/npcs*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/locations*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/store*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/items*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/events*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/promo-codes*", zone_name = "wantedrblx.com" }
 ]
 
 [vars]

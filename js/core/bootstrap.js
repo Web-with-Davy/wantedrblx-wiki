@@ -5,13 +5,13 @@
     "js/tabs/home.js",
     "js/tabs/promo-codes.js",
     "js/core/renderer.js",
-    "js/core/item-page.js",
+    "js/core/item-page.js?v=20261101-1",
     "js/core/ui.js",
     "js/features/settings.js",
     "js/features/garage.js",
     "js/features/search.js",
     "js/features/youtuber.js",
-    "js/core/app.js?v=20261101-1"
+    "js/core/app.js?v=20261101-2"
   ];
 
   // Phase 2: Scripts for secondary tabs and non-critical features.

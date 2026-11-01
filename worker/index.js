@@ -8,6 +8,11 @@ const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, mis
 
 import ITEMS from '../items-data.json';
 
+const PAGE_PATHS = new Set([
+  'valuables', 'atms', 'weapons', 'vehicles', 'gun-crates', 'missions',
+  'npcs', 'locations', 'store', 'items', 'events', 'promo-codes'
+]);
+
 function slugify(str) {
   return (str || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -82,26 +87,107 @@ function isBot(ua) {
   );
 }
 
+const ITEM_PATH_COMPAT = `<script>
+(() => {
+  const parts = location.pathname.split('/').filter(Boolean);
+  if (parts.length !== 3 || parts[0] !== 'item') return;
+
+  const category = decodeURIComponent(parts[1]);
+  const id = decodeURIComponent(parts[2]);
+  const pushState = history.pushState.bind(history);
+
+  history.pushState = (state, title, url) => {
+    if (state && state.itemPage && typeof url === 'string' && url.startsWith('#item/')) {
+      const itemParts = url.slice(1).split('/');
+      if (itemParts.length >= 3) {
+        url = '/item/' + encodeURIComponent(itemParts[1]) + '/' + encodeURIComponent(itemParts.slice(2).join('/')) + '/';
+        if (url === location.pathname) return history.replaceState(state, title, url);
+      }
+    }
+    return pushState(state, title, url);
+  };
+
+  let pending = true;
+  window._handleItemPagePath = () => {
+    if (typeof window.loadItemPage === 'function') {
+      pending = false;
+      window.loadItemPage(category, id, category);
+    }
+    return true;
+  };
+
+  const timer = setInterval(() => {
+    if (pending && typeof window.loadItemPage === 'function') window._handleItemPagePath();
+    if (!pending) clearInterval(timer);
+  }, 50);
+  setTimeout(() => clearInterval(timer), 15000);
+})();
+</script>`;
+
+const PAGE_PATH_COMPAT = `<script>
+(() => {
+  const page = location.pathname.split('/').filter(Boolean)[0];
+  const pages = ['valuables', 'atms', 'weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'store', 'items', 'events', 'promo-codes'];
+  if (!pages.includes(page)) return;
+
+  const pushState = history.pushState.bind(history);
+  history.pushState = (state, title, url) => {
+    if (state && typeof state.page === 'string') {
+      url = state.page === 'home' ? '/' : '/' + state.page;
+      if (url === location.pathname) return history.replaceState(state, title, url);
+    }
+    return pushState(state, title, url);
+  };
+
+  const renderers = {
+    valuables: 'renderValuables', atms: 'renderATMs', weapons: 'renderWeapons',
+    vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates', missions: 'renderMissions',
+    npcs: 'renderNPCs', locations: 'renderLocations', store: 'renderStore',
+    items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes'
+  };
+  const labels = {
+    valuables: 'VALUABLES', atms: 'ATMs & VAULTS', weapons: 'WEAPONS',
+    vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES', missions: 'MISSIONS',
+    npcs: 'NPCs', locations: 'LOCATIONS', store: 'STORE', items: 'ITEMS',
+    events: 'EVENTS', 'promo-codes': 'PROMO CODES'
+  };
+  const timer = setInterval(() => {
+    const label = document.getElementById('page-label')?.textContent;
+    if (label === labels[page]) {
+      clearInterval(timer);
+      return;
+    }
+
+    if (typeof window.loadPage !== 'function' || typeof window[renderers[page]] !== 'function') return;
+    window.loadPage(page, false);
+  }, 750);
+  setTimeout(() => clearInterval(timer), 15000);
+})();
+</script>`;
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Only intercept /item/<category>/<slug>
-    const match = url.pathname.match(/^\/item\/([^\/]+)\/([^\/]+)\/?$/);
-    if (!match) {
+    const itemMatch = url.pathname.match(/^\/item\/([^\/]+)\/([^\/]+)\/?$/);
+    const page = url.pathname.split('/').filter(Boolean)[0] || '';
+    const isPageRoute = PAGE_PATHS.has(page);
+    if (!itemMatch && !isPageRoute) {
       // Pass everything else through to origin
       return fetch(request);
     }
 
-    const [, category, id] = match;
-    const item = lookup(category, id);
+    const [, category, id] = itemMatch || [];
+    const item = itemMatch ? lookup(category, id) : null;
     const ua = request.headers.get('user-agent') || '';
 
-    if (!isBot(ua)) {
+    if (!itemMatch || !isBot(ua)) {
       const appResponse = await fetch(new URL('/', url));
       if (!appResponse.ok) return appResponse;
 
-      const appHtml = (await appResponse.text()).replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">`);
+      const appHtml = (await appResponse.text())
+        .replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">${ITEM_PATH_COMPAT}${PAGE_PATH_COMPAT}`)
+        .replace(/js\/core\/bootstrap\.js\?v=[^"']+/, 'js/core/bootstrap.js?v=20261101-2');
       return new Response(appHtml, {
         status: appResponse.status,
         headers: {
