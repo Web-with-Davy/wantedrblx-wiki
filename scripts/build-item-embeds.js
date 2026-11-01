@@ -8,63 +8,12 @@ const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, mis
 const projectRoot = path.resolve(__dirname, '..');
 const bundlePath = path.join(projectRoot, 'js', 'data-bundle.js');
 const itemsJsonPath = path.join(projectRoot, 'items-data.json');
-const itemDir = path.join(projectRoot, 'item');
 
 function slugify(str) {
   return String(str || '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
-}
-
-function escHtml(str) {
-  return String(str || '')
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
-function buildHtml(item, category, id) {
-  const title = (item && item.n) ? `${item.n} — Wanted Wiki` : 'Wanted Wiki';
-  const desc = (item && item.d) ? item.d : DEFAULT_DESC;
-  const img = (item && item.i) ? item.i : DEFAULT_IMG;
-  const canonical = `${SITE}/item/${category}/${id}/`;
-  const hashUrl = `${SITE}/#item/${category}/${id}`;
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>${escHtml(title)}</title>
-  <meta name="description" content="${escHtml(desc)}">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Wanted Wiki">
-  <meta property="og:url" content="${escHtml(canonical)}">
-  <meta property="og:title" content="${escHtml(title)}">
-  <meta property="og:description" content="${escHtml(desc)}">
-  <meta property="og:image" content="${escHtml(img)}">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <meta property="og:image:alt" content="${escHtml(item && item.n ? item.n : 'Wanted Wiki')}">
-
-  <!-- Twitter Card: summary forces Discord to show the small square thumbnail -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="${escHtml(title)}">
-  <meta name="twitter:description" content="${escHtml(desc)}">
-  <meta name="twitter:image" content="${escHtml(img)}">
-
-  <link rel="canonical" href="${escHtml(canonical)}">
-  <meta http-equiv="refresh" content="0;url=${escHtml(hashUrl)}">
-</head>
-<body>
-  <script>location.replace(${JSON.stringify(hashUrl)});</script>
-  <p>Redirecting to <a href="${escHtml(hashUrl)}">${escHtml(title)}</a>…</p>
-</body>
-</html>
-`;
 }
 
 function run() {
@@ -134,26 +83,8 @@ function run() {
   // Save items-data.json
   fs.writeFileSync(itemsJsonPath, JSON.stringify(itemsData), 'utf8');
 
-  // Clean and generate static HTML files in item/
-  if (fs.existsSync(itemDir)) {
-    fs.rmSync(itemDir, { recursive: true, force: true });
-  }
-  fs.mkdirSync(itemDir, { recursive: true });
-
-  let totalPages = 0;
-  for (const [category, items] of Object.entries(itemsData)) {
-    const catDir = path.join(itemDir, category);
-    fs.mkdirSync(catDir, { recursive: true });
-
-    for (const [id, item] of Object.entries(items)) {
-      const targetDir = path.join(catDir, id);
-      fs.mkdirSync(targetDir, { recursive: true });
-      fs.writeFileSync(path.join(targetDir, 'index.html'), buildHtml(item, category, id), 'utf8');
-      totalPages++;
-    }
-  }
-
-  console.log(`Synced ${totalPages} items and generated Discord embed pages in item/`);
+  const totalItems = Object.values(itemsData).reduce((total, category) => total + Object.keys(category).length, 0);
+  console.log(`Synced ${totalItems} items for the embed Worker.`);
 }
 
 run();
