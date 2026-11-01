@@ -140,6 +140,8 @@ function loadPage(page, saveToHistory = true) {
 }
 
 window.addEventListener("popstate", (event) => {
+    if (typeof _handleItemPagePath === 'function' && _handleItemPagePath()) return;
+
     const hash = window.location.hash.replace(/^#/, '');
 
     if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
@@ -294,6 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof initGarage === 'function') {
         initGarage((skipped) => {
             window.audioUnlocked = true;
+
+            if (typeof _handleItemPagePath === 'function' && _handleItemPagePath()) {
+                if (!skipped && bgm) bgm.play().catch(() => { });
+                return;
+            }
 
             const hash = window.location.hash.replace(/^#/, '');
 

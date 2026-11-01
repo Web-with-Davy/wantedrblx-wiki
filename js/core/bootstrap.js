@@ -11,7 +11,7 @@
     "js/features/garage.js",
     "js/features/search.js",
     "js/features/youtuber.js",
-    "js/core/app.js?v=20261001-3"
+    "js/core/app.js?v=20261101-1"
   ];
 
   // Phase 2: Scripts for secondary tabs and non-critical features.

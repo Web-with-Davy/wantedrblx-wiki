@@ -97,8 +97,20 @@ export default {
     const item = lookup(category, id);
     const ua = request.headers.get('user-agent') || '';
 
-    // Bots get the OG-tagged HTML page
-    // Real browsers get an immediate JS redirect (they experience no delay)
+    if (!isBot(ua)) {
+      const appResponse = await fetch(new URL('/', url));
+      if (!appResponse.ok) return appResponse;
+
+      const appHtml = (await appResponse.text()).replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">`);
+      return new Response(appHtml, {
+        status: appResponse.status,
+        headers: {
+          'Content-Type': 'text/html;charset=UTF-8',
+          'Cache-Control': 'no-cache',
+        },
+      });
+    }
+
     const html = buildHtml(item, category, id);
 
     return new Response(html, {

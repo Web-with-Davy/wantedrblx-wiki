@@ -459,7 +459,7 @@ function renderATMDetails(item) {
 
 function loadItemPage(category, id, returnTab) {
   const back = returnTab || category;
-  window.history.pushState({ itemPage: true, category, id, back }, '', `#item/${category}/${id}`);
+  window.history.pushState({ itemPage: true, category, id, back }, '', `/item/${category}/${id}/`);
   _renderItemPage(category, id, back);
 }
 window.loadItemPage = loadItemPage;
@@ -494,7 +494,7 @@ function _renderItemPage(category, id, back) {
     const slug = item.id || _ipSlug(name);
     const imgSlug = item.image || slug;
     const ext = reg.ext || 'webp';
-    const imgSrc = reg.folder ? `images/${reg.folder}/${imgSlug}.${ext}` : `images/${imgSlug}.${ext}`;
+    const imgSrc = reg.folder ? `/images/${reg.folder}/${imgSlug}.${ext}` : `/images/${imgSlug}.${ext}`;
 
     const rarityKey = item.rarity || item.difficulty || item.team || null;
     const rarityData = rarityKey
@@ -526,7 +526,7 @@ function _renderItemPage(category, id, back) {
               src="${imgSrc}"
               alt="${name}"
               class="ip-hero-img"
-              onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('ip-img-fallback');"
+              onerror="this.onerror=null;this.src='/images/logo.webp';this.classList.add('ip-img-fallback');"
             >
             ${rarityName ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
           </div>
@@ -558,6 +558,16 @@ function _handleItemPageHash(route) {
   return true;
 }
 window._handleItemPageHash = _handleItemPageHash;
+
+function _handleItemPagePath(pathname = window.location.pathname) {
+  const match = pathname.match(/^\/item\/([^/]+)\/([^/]+)\/?$/);
+  if (!match) return false;
+  const [, category, id] = match;
+  const state = window.history.state;
+  _renderItemPage(category, id, state && state.itemPage ? state.back : category);
+  return true;
+}
+window._handleItemPagePath = _handleItemPagePath;
 
 function makeSeeMoreBtn(category, item) {
   const name = item.name || item.title || item.code || '';
