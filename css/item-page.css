@@ -377,6 +377,91 @@
     font-size: 0.9rem;
 }
 
+.ip-super-upgrades {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+.ip-upgrade-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+    gap: 10px;
+}
+
+.ip-upgrade-control {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+}
+
+.ip-upgrade-control select {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 2px;
+    background: #17191b;
+    color: #fff;
+    font: inherit;
+    text-transform: none;
+}
+
+.ip-upgrade-results {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.ip-upgrade-result-heading {
+    grid-column: 1 / -1;
+    padding: 10px 0 6px;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.ip-upgrade-result {
+    display: grid;
+    gap: 4px;
+    padding: 8px 10px 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.ip-upgrade-result > span,
+.ip-upgrade-result > small {
+    color: rgba(255,255,255,0.48);
+    font-size: 0.66rem;
+}
+
+.ip-upgrade-result > strong {
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.ip-upgrade-result output {
+    font: inherit;
+}
+
+.ip-upgrade-note {
+    grid-column: 1 / -1;
+    margin: 10px 0 0;
+    color: rgba(255,255,255,0.44);
+    font-size: 0.68rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+    .ip-upgrade-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 body.low-end-mode .ip-wrap {
     animation: none;
 }

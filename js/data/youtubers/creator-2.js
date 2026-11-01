@@ -4,19 +4,19 @@ window.YOUTUBER_CREATOR_2 = {
   channelUrl: "https://www.youtube.com/@CeeJay_",
   videos: [
     {
-      title: "MONEY LAUNDERING UPDATE CONFIRMED In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/WUX7E0-Tc9A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCZHA6lYdDmWY5wwI0iL2HtqaAuDg",
-      link: "https://www.youtube.com/watch?v=WUX7E0-Tc9A"
+      title: "NEW BLOOD MOON EVENT In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/6-smjiyRKzk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBeZpw5TOsXJObJB302yfdwUzSDaA",
+      link: "https://www.youtube.com/watch?v=6-smjiyRKzk"
     },
     {
-      title: "FISHING UPDATE CONFIRMED In Wanted?",
-      thumbnail: "https://i.ytimg.com/vi/NhuJl4QTBrQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCdjJKgsQeA10rhVtDxdydaA_-IUw",
-      link: "https://www.youtube.com/watch?v=NhuJl4QTBrQ"
+      title: "BAG SKINS + NEW CAR UPDATE REVEALED In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/XtBxBuQmPZU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDpPm5iKYsPKomvWZFgV69Z6m9ASQ",
+      link: "https://www.youtube.com/watch?v=XtBxBuQmPZU"
     },
     {
-      title: "RIFT REVIEW in Wanted",
-      thumbnail: "https://i.ytimg.com/vi/PLVb5I8WZ5c/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFntHmJ80nHXRiVjDgsP-kjY164w",
-      link: "https://www.youtube.com/watch?v=PLVb5I8WZ5c"
+      title: "REAPER & RATTLER REVIEW In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/1h4L7SfVF2g/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBWvAcV7B4VIt7MYa8RHYIwn7mvQg",
+      link: "https://www.youtube.com/watch?v=1h4L7SfVF2g"
     }
   ]
 };

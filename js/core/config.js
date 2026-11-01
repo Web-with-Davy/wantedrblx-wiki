@@ -31,21 +31,29 @@ const generateSlug = (name) => {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 };
 
+const assetUrl = (path) => {
+  const assetPath = String(path).replace(/^\/+/, '');
+  if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+    return new URL(assetPath, window.location.href).href;
+  }
+  return `/${assetPath}`;
+};
+
 const formatPrice = (price) => {
   if (price === undefined || price === null) return undefined;
   if (price === 0) return 'Free';
   const num = typeof price === 'number' ? price : Number(price);
   if (!isNaN(num) && num !== 0) {
-    return `<img src="/images/cash.webp" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">${num.toLocaleString()}</span>`;
+    return `<img src="${assetUrl('images/cash.webp')}" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">${num.toLocaleString()}</span>`;
   }
   return String(price);
 };
 
 const formatReward = (reward) => {
   if (typeof reward !== 'string') return reward;
-  return reward.replace(/\$([\d,.]+)/g, '<img src="/images/cash.webp" alt="$" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">$1</span>');
+  return reward.replace(/\$([\d,.]+)/g, `<img src="${assetUrl('images/cash.webp')}" alt="$" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">$1</span>`);
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { RARITIES, DIFFICULTIES, TEAMS, generateSlug, formatPrice, formatReward };
+  module.exports = { RARITIES, DIFFICULTIES, TEAMS, generateSlug, assetUrl, formatPrice, formatReward };
 }

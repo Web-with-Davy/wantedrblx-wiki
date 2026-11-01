@@ -4,19 +4,19 @@ window.YOUTUBER_CREATOR_1 = {
   channelUrl: "https://www.youtube.com/@Borgaboo",
   videos: [
     {
-      title: "All Police Career Rewards! / Roblox Wanted / Part 28",
-      thumbnail: "https://i.ytimg.com/vi/KZs4bPtYdvA/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAyo33Xsi16LH6EYo-asb0YS3AIgA",
-      link: "https://www.youtube.com/watch?v=KZs4bPtYdvA"
+      title: "New Tank Zombie & Leaking New Gun!  / Roblox Wanted / Part 46",
+      thumbnail: "https://i.ytimg.com/vi/GHbYHFW3fag/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAP3HtGXXOclwk2m7k5Q3Zsn_OKMA",
+      link: "https://www.youtube.com/watch?v=GHbYHFW3fag"
     },
     {
-      title: "Police Finally got Updated! / Roblox Wanted / Part 27",
-      thumbnail: "https://i.ytimg.com/vi/IpAkMI57HAg/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAABItRkxqjpQBLvf3jDdEQ5HNyoQ",
-      link: "https://www.youtube.com/watch?v=IpAkMI57HAg"
+      title: "New Lore & Mysteries.. / Roblox Wanted / Part 44",
+      thumbnail: "https://i.ytimg.com/vi/PTd8l3hlWv4/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC_dKZc76oNzYXg4ji17wxbghZFEg",
+      link: "https://www.youtube.com/watch?v=PTd8l3hlWv4"
     },
     {
-      title: "4th July Firework Show & USA Flag Loot! / Roblox Wanted / Part 26",
-      thumbnail: "https://i.ytimg.com/vi/-SDf22J-z-o/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAC4LDyV2cQJy6PpWTxrpXelyDTLQ",
-      link: "https://www.youtube.com/watch?v=-SDf22J-z-o"
+      title: "All 10 Ghost Locations! / Roblox Wanted / Part 43",
+      thumbnail: "https://i.ytimg.com/vi/sA8WrDe9QD0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBpRl9KgEEHDA_ieXWc4gDqh8xJGg",
+      link: "https://www.youtube.com/watch?v=sA8WrDe9QD0"
     }
   ]
 };

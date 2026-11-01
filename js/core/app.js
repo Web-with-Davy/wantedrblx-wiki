@@ -98,7 +98,9 @@ function loadPage(page, saveToHistory = true) {
         }
 
         if (saveToHistory) {
-            const url = page === "home" ? "/" : `/${page}`;
+            const url = window.location.protocol === 'file:'
+                ? `${window.location.pathname}${page === "home" ? '' : `#${page}`}`
+                : page === "home" ? "/" : `/${page}`;
             window.history.pushState({ page }, "", url);
         }
 

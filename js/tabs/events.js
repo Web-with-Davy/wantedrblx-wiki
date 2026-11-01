@@ -2,7 +2,7 @@ function makeEventCard(event, displayName) {
   const name = event.title || event.name || '';
   const imgSlug = event.image || event.id || generateSlug(name);
   const cardId = `card-${imgSlug}-${++_cardIdCounter}`;
-  const imgSrc = `images/events/${imgSlug}.${CARD_IMG_EXT}`;
+  const imgSrc = assetUrl(`images/events/${imgSlug}.${CARD_IMG_EXT}`);
 
   const dc = event.dateColor ? `color:${event.dateColor};` : '';
   const ds = event.dateOutline
@@ -40,7 +40,7 @@ function makeEventCard(event, displayName) {
           loading="lazy"
           class="val-img"
           style="object-fit:cover;"
-          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');"
+          onerror="this.onerror=null;this.src='${assetUrl('images/logo.webp')}';this.classList.add('val-img-fallback');"
         >
         ${dateTag}
       </div>

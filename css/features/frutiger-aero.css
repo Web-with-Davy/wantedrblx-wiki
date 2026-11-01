@@ -288,6 +288,50 @@ body.frutiger-aero .ip-section-body .val-stat {
     border-color: rgba(255, 255, 255, 0.98);
 }
 
+body.frutiger-aero .ip-upgrade-control {
+    color: #315a70;
+}
+
+body.frutiger-aero .ip-upgrade-control select {
+    color: #123d58;
+    color-scheme: light;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(218, 243, 252, 0.95));
+    border-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 12px rgba(9, 71, 112, 0.12), inset 0 1px #fff;
+}
+
+body.frutiger-aero .ip-upgrade-control select:focus-visible {
+    outline: 2px solid #168bb5;
+    outline-offset: 2px;
+}
+
+body.frutiger-aero .ip-upgrade-control select option {
+    color: #123d58;
+    background: #effaff;
+}
+
+body.frutiger-aero .ip-upgrade-results {
+    border-top-color: rgba(18, 108, 145, 0.2);
+}
+
+body.frutiger-aero .ip-upgrade-result-heading {
+    color: #315a70;
+}
+
+body.frutiger-aero .ip-upgrade-result {
+    border-bottom-color: rgba(18, 108, 145, 0.14);
+}
+
+body.frutiger-aero .ip-upgrade-result > span,
+body.frutiger-aero .ip-upgrade-result > small,
+body.frutiger-aero .ip-upgrade-note {
+    color: #315a70;
+}
+
+body.frutiger-aero .ip-upgrade-result > strong {
+    color: #123d58;
+}
+
 body.frutiger-aero .ip-att-group {
     color: #103b55;
     background: linear-gradient(145deg, rgba(250, 254, 255, 0.97), rgba(218, 242, 252, 0.94));

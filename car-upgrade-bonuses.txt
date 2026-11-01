@@ -1,0 +1,480 @@
+
+============================================================
+SUBCATEGORY: Muscle
+============================================================
+Engine
+  Street: Top Speed +1% | Acceleration +0.3%
+  Sport:  Top Speed +1.9% | Acceleration +0.6%
+  Race:   Top Speed +3.9% | Acceleration +0.9%
+Transmission
+  Street: Acceleration +0.5%
+  Sport:  Acceleration +1.2%
+  Race:   Acceleration +2.5%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.2%
+  Quad Turbo:    Acceleration +3.1%
+Brakes
+  Street: Braking +2.7%
+  Sport:  Braking +6.6%
+  Race:   Braking +13.3%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Sport
+============================================================
+Engine
+  Street: Top Speed +2.7% | Acceleration +0.7%
+  Sport:  Top Speed +5.3% | Acceleration +1.5%
+  Race:   Top Speed +10.6% | Acceleration +2.2%
+Transmission
+  Street: Acceleration +1.1%
+  Sport:  Acceleration +2.9%
+  Race:   Acceleration +5.8%
+Aspiration
+  Turbo Charger: Acceleration +0.7%
+  Twin Turbo:    Acceleration +1.5%
+  Quad Turbo:    Acceleration +3.6%
+Brakes
+  Street: Braking +2.9%
+  Sport:  Braking +7.2%
+  Race:   Braking +14.3%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Super
+============================================================
+Engine
+  Street: Top Speed +5.6% | Acceleration +1.9%
+  Sport:  Top Speed +11.1% | Acceleration +3.9%
+  Race:   Top Speed +22.3% | Acceleration +5.8%
+Transmission
+  Street: Acceleration +2.9%
+  Sport:  Acceleration +7.7%
+  Race:   Acceleration +15.4%
+Aspiration
+  Turbo Charger: Acceleration +1.3%
+  Twin Turbo:    Acceleration +2.6%
+  Quad Turbo:    Acceleration +6.4%
+Brakes
+  Street: Braking +3.8%
+  Sport:  Braking +9.5%
+  Race:   Braking +18.9%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 375 | Armor stat 1
+    Medium: Body 500 | Armor stat 2
+    Heavy: Body 625 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Sedan
+============================================================
+Engine
+  Street: Top Speed +0.9% | Acceleration +0.3%
+  Sport:  Top Speed +1.8% | Acceleration +0.6%
+  Race:   Top Speed +3.7% | Acceleration +0.9%
+Transmission
+  Street: Acceleration +0.4%
+  Sport:  Acceleration +1.2%
+  Race:   Acceleration +2.4%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.2%
+  Quad Turbo:    Acceleration +3%
+Brakes
+  Street: Braking +2.5%
+  Sport:  Braking +6.3%
+  Race:   Braking +12.6%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: L-Sedan
+============================================================
+Engine
+  Street: Top Speed +1.7% | Acceleration +0.5%
+  Sport:  Top Speed +3.5% | Acceleration +1.1%
+  Race:   Top Speed +6.9% | Acceleration +1.6%
+Transmission
+  Street: Acceleration +0.8%
+  Sport:  Acceleration +2.1%
+  Race:   Acceleration +4.2%
+Aspiration
+  Turbo Charger: Acceleration +0.7%
+  Twin Turbo:    Acceleration +1.4%
+  Quad Turbo:    Acceleration +3.5%
+Brakes
+  Street: Braking +2.8%
+  Sport:  Braking +7%
+  Race:   Braking +14%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: SUV
+============================================================
+Engine
+  Street: Top Speed +0.8% | Acceleration +0.3%
+  Sport:  Top Speed +1.6% | Acceleration +0.6%
+  Race:   Top Speed +3.3% | Acceleration +0.9%
+Transmission
+  Street: Acceleration +0.5%
+  Sport:  Acceleration +1.2%
+  Race:   Acceleration +2.4%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.2%
+  Quad Turbo:    Acceleration +3.1%
+Brakes
+  Street: Braking +2.3%
+  Sport:  Braking +5.8%
+  Race:   Braking +11.6%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 600 | Armor stat 3
+    Medium: Body 800 | Armor stat 4
+    Heavy: Body 1000 | Armor stat 5
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: L-SUV
+============================================================
+Engine
+  Street: Top Speed +1.5% | Acceleration +0.4%
+  Sport:  Top Speed +3.1% | Acceleration +0.8%
+  Race:   Top Speed +6.1% | Acceleration +1.3%
+Transmission
+  Street: Acceleration +0.6%
+  Sport:  Acceleration +1.7%
+  Race:   Acceleration +3.3%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.1%
+  Quad Turbo:    Acceleration +2.8%
+Brakes
+  Street: Braking +2.3%
+  Sport:  Braking +5.8%
+  Race:   Braking +11.6%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 750 | Armor stat 4
+    Medium: Body 1000 | Armor stat 5
+    Heavy: Body 1250 | Armor stat 6
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Truck
+============================================================
+Engine
+  Street: Top Speed +0.8% | Acceleration +0.3%
+  Sport:  Top Speed +1.5% | Acceleration +0.6%
+  Race:   Top Speed +3% | Acceleration +0.9%
+Transmission
+  Street: Acceleration +0.4%
+  Sport:  Acceleration +1.2%
+  Race:   Acceleration +2.4%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.2%
+  Quad Turbo:    Acceleration +2.9%
+Brakes
+  Street: Braking +2.2%
+  Sport:  Braking +5.5%
+  Race:   Braking +11.1%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 450 | Armor stat 1
+    Medium: Body 600 | Armor stat 2
+    Heavy: Body 750 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: L-SUT
+============================================================
+Engine
+  Street: Top Speed +2.2% | Acceleration +0.6%
+  Sport:  Top Speed +4.4% | Acceleration +1.2%
+  Race:   Top Speed +8.8% | Acceleration +1.8%
+Transmission
+  Street: Acceleration +0.9%
+  Sport:  Acceleration +2.4%
+  Race:   Acceleration +4.9%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.2%
+  Quad Turbo:    Acceleration +3.1%
+Brakes
+  Street: Braking +2.5%
+  Sport:  Braking +6.3%
+  Race:   Braking +12.6%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 1125 | Armor stat 4
+    Medium: Body 1500 | Armor stat 5
+    Heavy: Body 1875 | Armor stat 6
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Cruiser
+============================================================
+Engine
+  Street: Top Speed +0.9% | Acceleration +0.4%
+  Sport:  Top Speed +1.8% | Acceleration +0.8%
+  Race:   Top Speed +3.6% | Acceleration +1.1%
+Transmission
+  Street: Acceleration +0.6%
+  Sport:  Acceleration +1.5%
+  Race:   Acceleration +3%
+Aspiration
+  Turbo Charger: Acceleration +0.8%
+  Twin Turbo:    Acceleration +1.5%
+  Quad Turbo:    Acceleration +3.8%
+Brakes
+  Street: Braking +2.7%
+  Sport:  Braking +6.8%
+  Race:   Braking +13.7%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Off-Road
+============================================================
+Engine
+  Street: Top Speed +0.6% | Acceleration +0.4%
+  Sport:  Top Speed +1.3% | Acceleration +0.7%
+  Race:   Top Speed +2.6% | Acceleration +1.1%
+Transmission
+  Street: Acceleration +0.5%
+  Sport:  Acceleration +1.4%
+  Race:   Acceleration +2.9%
+Aspiration
+  Turbo Charger: Acceleration +0.7%
+  Twin Turbo:    Acceleration +1.4%
+  Quad Turbo:    Acceleration +3.6%
+Brakes
+  Street: Braking +2.3%
+  Sport:  Braking +5.8%
+  Race:   Braking +11.6%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Tactical
+============================================================
+Street: Top Speed +2.3% | Acceleration +0.6%
+Sport: Top Speed +4.7% | Acceleration +1.3%
+Race: Top Speed +9.4% | Acceleration +1.9%
+Transmission
+Street: Acceleration +1%
+Sport: Acceleration +2.7%
+Race: Acceleration +5.3%
+Aspiration
+Turbo Charger: Acceleration +0.7%
+Twin Turbo: Acceleration +1.3%
+Quad Turbo: Acceleration +3.3%
+Brakes
+Street: Braking +2.6%
+Sport: Braking +6.6%
+Race: Braking +13.2%
+
+Health (final health numbers)
+Armor (Body)
+Stock: 1500
+Light: Body 2250| Armor stat 1
+Medium: Body 3000| Armor stat 2
+Heavy: Body 3750| Armor stat 3
+Tires (Wheels)
+Stock: 500
+Upgraded: Wheels 750
+Reinforced: Wheels 1500
+Bullet Proof: Wheels ∞
+Windows
+Stock: 700
+Upgraded: Windows 1050
+Reinforced: Windows 2100
+Bullet Proof: Windows ∞
+
+============================================================
+SUBCATEGORY: Roadster
+============================================================
+Engine
+  Street: Top Speed +1% | Acceleration +0.3%
+  Sport:  Top Speed +1.9% | Acceleration +0.6%
+  Race:   Top Speed +3.9% | Acceleration +0.9%
+Transmission
+  Street: Acceleration +0.4%
+  Sport:  Acceleration +1.2%
+  Race:   Acceleration +2.4%
+Aspiration
+  Turbo Charger: Acceleration +0.6%
+  Twin Turbo:    Acceleration +1.2%
+  Quad Turbo:    Acceleration +3%
+Brakes
+  Street: Braking +2.6%
+  Sport:  Braking +6.5%
+  Race:   Braking +13.1%
+
+Health (final health numbers)
+  Armor (Body)
+    Stock: use vehicle base Body and Armor stat values
+    Light: Body 300 | Armor stat 1
+    Medium: Body 400 | Armor stat 2
+    Heavy: Body 500 | Armor stat 3
+  Tires (Wheels)
+    Stock: use vehicle base Wheels value
+    Upgraded: Wheels 150
+    Reinforced: Wheels 300
+    Bullet Proof: Wheels ∞
+  Windows
+    Stock: use vehicle base Windows value
+    Upgraded: Windows 150
+    Reinforced: Windows 300
+    Bullet Proof: Windows ∞

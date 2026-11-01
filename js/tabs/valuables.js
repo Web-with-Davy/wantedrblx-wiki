@@ -1,7 +1,7 @@
 function makeValuableCard(item, displayName) {
   const name = item.name || '';
   const slug = item.id || generateSlug(name);
-  const imgSrc = `images/valuables/${slug}.${CARD_IMG_EXT}`;
+  const imgSrc = assetUrl(`images/valuables/${slug}.${CARD_IMG_EXT}`);
 
   const rarity = RARITIES[item.rarity];
   const rarityName = rarity ? rarity.name : '';
@@ -27,7 +27,7 @@ function makeValuableCard(item, displayName) {
           alt="${name}"
           loading="lazy"
           class="val-img"
-          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');"
+          onerror="this.onerror=null;this.src='${assetUrl('images/logo.webp')}';this.classList.add('val-img-fallback');"
         >
         ${rarityName ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
         ${perKgHtml}

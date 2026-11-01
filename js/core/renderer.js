@@ -13,7 +13,7 @@ function makeUniversalCard(item, opts = {}) {
   const imgSlug = item.image || slug;
   const ext = opts.ext || CARD_IMG_EXT;
   const folder = opts.folder || '';
-  const imgSrc = folder ? `images/${folder}/${imgSlug}.${ext}` : `images/${imgSlug}.${ext}`;
+  const imgSrc = assetUrl(folder ? `images/${folder}/${imgSlug}.${ext}` : `images/${imgSlug}.${ext}`);
   const codeText = opts.codeText || null;
 
   const rarityKey = opts.rarityKey;
@@ -75,7 +75,7 @@ function makeUniversalCard(item, opts = {}) {
         return `<div class="val-code-display" style="--code-accent:${opts.accentColor || '#fff'};"><span class="val-code-text" style="font-size:${fs};">${codeText}</span></div>`;
       })()
       : `<img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img"
-          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');">`
+          onerror="this.onerror=null;this.src='${assetUrl('images/logo.webp')}';this.classList.add('val-img-fallback');">`
     }
         ${rarityName && !opts.dateTag ? `<span class="val-rarity-tag ${rarityClass}">${rarityName}</span>` : ''}
         ${dateTagHtml}
@@ -218,7 +218,7 @@ function renderEventCard(item, visibleContent, hiddenContent, folder = 'events')
   const name = item.title || item.name || '';
   const imgSlug = item.image || item.id || generateSlug(name);
   const cardId = `card-${imgSlug}-${++_cardIdCounter}`;
-  const imgSrc = `images/${folder}/${imgSlug}.${CARD_IMG_EXT}`;
+  const imgSrc = assetUrl(`images/${folder}/${imgSlug}.${CARD_IMG_EXT}`);
 
   const dc = item.dateColor ? `color:${item.dateColor};` : '';
   const ds = item.dateOutline ? `border-color:${item.dateOutline};box-shadow:0 0 8px ${item.dateOutline};text-shadow:0 0 5px ${item.dateOutline};` : '';
@@ -233,7 +233,7 @@ function renderEventCard(item, visibleContent, hiddenContent, folder = 'events')
       <div class="val-rarity-bar" style="background:linear-gradient(90deg,${item.dateOutline || '#fff'},${item.dateColor || '#fff'},${item.dateOutline || '#fff'});"></div>
       <div class="val-img-wrap">
         <img src="${imgSrc}" alt="${name}" loading="lazy" class="val-img" style="object-fit:cover;"
-          onerror="this.onerror=null;this.src='images/logo.webp';this.classList.add('val-img-fallback');">
+          onerror="this.onerror=null;this.src='${assetUrl('images/logo.webp')}';this.classList.add('val-img-fallback');">
         ${dateTagHtml}
       </div>
       <div class="val-body">

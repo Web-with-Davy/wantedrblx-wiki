@@ -4,19 +4,19 @@ window.YOUTUBER_CREATOR_3 = {
   channelUrl: "https://www.youtube.com/@ZDMD",
   videos: [
     {
-      title: "FASTEST WAY To UNLOCK SIR B In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/ISHUoDupU2A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCy81yTDxXixPSc6H-0bntW1t7K3g",
-      link: "https://www.youtube.com/watch?v=ISHUoDupU2A"
+      title: "I Ranked EVERY Roblox HALLOWEEN Update...",
+      thumbnail: "https://i.ytimg.com/vi/uU75lknw0HU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBgKseQnrysotqtVwgDtJ1o8Brc1Q",
+      link: "https://www.youtube.com/watch?v=uU75lknw0HU"
     },
     {
-      title: "250K/HOUR METHOD In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/epJFAUJF6kM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDffR4Vu0fnEZz9H8TyAQBpT5mEUg",
-      link: "https://www.youtube.com/watch?v=epJFAUJF6kM"
+      title: "RARE LOOT LOCATIONS In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/h9wagqvuqPc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC1FHJp4JAZRu8pgI3hMr0Po5Kieg",
+      link: "https://www.youtube.com/watch?v=h9wagqvuqPc"
     },
     {
-      title: "Rift VS Empyrean In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/cGfE4XCHF7Q/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCvUQSEuabAR9gZD2g7mDP7jjVutw",
-      link: "https://www.youtube.com/watch?v=cGfE4XCHF7Q"
+      title: "I'M IN ROBLOX WANTED!",
+      thumbnail: "https://i.ytimg.com/vi/6pFsxHGYX58/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBl8n-iTgGJvi1SkejCXLIvPo2IWw",
+      link: "https://www.youtube.com/watch?v=6pFsxHGYX58"
     }
   ]
 };

@@ -37,6 +37,7 @@ window.CONTRIBUTORS_CONTRIBUTORS = [
   { name: "RedRuby", contributions: "Vault Images" },
   { name: "Borgaboo", contributions: "Various Wiki Images" },
   { name: "VibinLaz3r", contributions: "Rod Loot" },
+  { name: "Doggy", contributions: "Warden Stats" },
 ];
 
 /* --- js/data/contributors/managers.js --- */
@@ -4742,19 +4743,19 @@ window.YOUTUBER_CREATOR_1 = {
   channelUrl: "https://www.youtube.com/@Borgaboo",
   videos: [
     {
-      title: "All Police Career Rewards! / Roblox Wanted / Part 28",
-      thumbnail: "https://i.ytimg.com/vi/KZs4bPtYdvA/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAyo33Xsi16LH6EYo-asb0YS3AIgA",
-      link: "https://www.youtube.com/watch?v=KZs4bPtYdvA"
+      title: "New Tank Zombie & Leaking New Gun!  / Roblox Wanted / Part 46",
+      thumbnail: "https://i.ytimg.com/vi/GHbYHFW3fag/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAP3HtGXXOclwk2m7k5Q3Zsn_OKMA",
+      link: "https://www.youtube.com/watch?v=GHbYHFW3fag"
     },
     {
-      title: "Police Finally got Updated! / Roblox Wanted / Part 27",
-      thumbnail: "https://i.ytimg.com/vi/IpAkMI57HAg/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAABItRkxqjpQBLvf3jDdEQ5HNyoQ",
-      link: "https://www.youtube.com/watch?v=IpAkMI57HAg"
+      title: "New Lore & Mysteries.. / Roblox Wanted / Part 44",
+      thumbnail: "https://i.ytimg.com/vi/PTd8l3hlWv4/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC_dKZc76oNzYXg4ji17wxbghZFEg",
+      link: "https://www.youtube.com/watch?v=PTd8l3hlWv4"
     },
     {
-      title: "4th July Firework Show & USA Flag Loot! / Roblox Wanted / Part 26",
-      thumbnail: "https://i.ytimg.com/vi/-SDf22J-z-o/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAC4LDyV2cQJy6PpWTxrpXelyDTLQ",
-      link: "https://www.youtube.com/watch?v=-SDf22J-z-o"
+      title: "All 10 Ghost Locations! / Roblox Wanted / Part 43",
+      thumbnail: "https://i.ytimg.com/vi/sA8WrDe9QD0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBpRl9KgEEHDA_ieXWc4gDqh8xJGg",
+      link: "https://www.youtube.com/watch?v=sA8WrDe9QD0"
     }
   ]
 };
@@ -4766,19 +4767,19 @@ window.YOUTUBER_CREATOR_2 = {
   channelUrl: "https://www.youtube.com/@CeeJay_",
   videos: [
     {
-      title: "MONEY LAUNDERING UPDATE CONFIRMED In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/WUX7E0-Tc9A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCZHA6lYdDmWY5wwI0iL2HtqaAuDg",
-      link: "https://www.youtube.com/watch?v=WUX7E0-Tc9A"
+      title: "NEW BLOOD MOON EVENT In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/6-smjiyRKzk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBeZpw5TOsXJObJB302yfdwUzSDaA",
+      link: "https://www.youtube.com/watch?v=6-smjiyRKzk"
     },
     {
-      title: "FISHING UPDATE CONFIRMED In Wanted?",
-      thumbnail: "https://i.ytimg.com/vi/NhuJl4QTBrQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCdjJKgsQeA10rhVtDxdydaA_-IUw",
-      link: "https://www.youtube.com/watch?v=NhuJl4QTBrQ"
+      title: "BAG SKINS + NEW CAR UPDATE REVEALED In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/XtBxBuQmPZU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDpPm5iKYsPKomvWZFgV69Z6m9ASQ",
+      link: "https://www.youtube.com/watch?v=XtBxBuQmPZU"
     },
     {
-      title: "RIFT REVIEW in Wanted",
-      thumbnail: "https://i.ytimg.com/vi/PLVb5I8WZ5c/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFntHmJ80nHXRiVjDgsP-kjY164w",
-      link: "https://www.youtube.com/watch?v=PLVb5I8WZ5c"
+      title: "REAPER & RATTLER REVIEW In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/1h4L7SfVF2g/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBWvAcV7B4VIt7MYa8RHYIwn7mvQg",
+      link: "https://www.youtube.com/watch?v=1h4L7SfVF2g"
     }
   ]
 };
@@ -4790,19 +4791,19 @@ window.YOUTUBER_CREATOR_3 = {
   channelUrl: "https://www.youtube.com/@ZDMD",
   videos: [
     {
-      title: "FASTEST WAY To UNLOCK SIR B In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/ISHUoDupU2A/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCy81yTDxXixPSc6H-0bntW1t7K3g",
-      link: "https://www.youtube.com/watch?v=ISHUoDupU2A"
+      title: "I Ranked EVERY Roblox HALLOWEEN Update...",
+      thumbnail: "https://i.ytimg.com/vi/uU75lknw0HU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBgKseQnrysotqtVwgDtJ1o8Brc1Q",
+      link: "https://www.youtube.com/watch?v=uU75lknw0HU"
     },
     {
-      title: "250K/HOUR METHOD In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/epJFAUJF6kM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDffR4Vu0fnEZz9H8TyAQBpT5mEUg",
-      link: "https://www.youtube.com/watch?v=epJFAUJF6kM"
+      title: "RARE LOOT LOCATIONS In Wanted!",
+      thumbnail: "https://i.ytimg.com/vi/h9wagqvuqPc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC1FHJp4JAZRu8pgI3hMr0Po5Kieg",
+      link: "https://www.youtube.com/watch?v=h9wagqvuqPc"
     },
     {
-      title: "Rift VS Empyrean In Wanted!",
-      thumbnail: "https://i.ytimg.com/vi/cGfE4XCHF7Q/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCvUQSEuabAR9gZD2g7mDP7jjVutw",
-      link: "https://www.youtube.com/watch?v=cGfE4XCHF7Q"
+      title: "I'M IN ROBLOX WANTED!",
+      thumbnail: "https://i.ytimg.com/vi/6pFsxHGYX58/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBl8n-iTgGJvi1SkejCXLIvPo2IWw",
+      link: "https://www.youtube.com/watch?v=6pFsxHGYX58"
     }
   ]
 };

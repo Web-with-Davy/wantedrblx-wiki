@@ -1399,23 +1399,23 @@ body.low-end-mode .official-link-icon {
 }
 
 .official-link-btn--roblox:hover {
-    border-color: #39ff14;
-    background: rgba(57, 255, 20, 0.07);
-    box-shadow: 0 0 12px rgba(57, 255, 20, 0.2);
+    border-color: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
 }
 
 .official-link-btn--roblox:hover::after {
-    border-top-color: #39ff14;
+    border-top-color: rgba(255, 255, 255, 0.82);
 }
 
 .official-link-btn--discord:hover {
-    border-color: #5865f2;
-    background: rgba(88, 101, 242, 0.1);
-    box-shadow: 0 0 12px rgba(88, 101, 242, 0.3);
+    border-color: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
 }
 
 .official-link-btn--discord:hover::after {
-    border-top-color: #5865f2;
+    border-top-color: rgba(255, 255, 255, 0.82);
 }
 
 body.low-end-mode .official-link-btn,
