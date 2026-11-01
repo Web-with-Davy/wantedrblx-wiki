@@ -481,7 +481,11 @@
             startAnimation();
         }
     }
-    new MutationObserver(syncPause).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    new MutationObserver(() => {
+        const wasPaused = paused;
+        syncPause();
+        if (wasPaused && paused && W && H) drawLowEndBackground();
+    }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     syncPause();
 
     function resize() {

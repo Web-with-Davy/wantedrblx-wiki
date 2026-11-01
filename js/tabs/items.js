@@ -14,6 +14,8 @@ function makeItemCard(item, displayName) {
 
 function renderItems(sort = 'high') {
   const sortItems = (items) => [...items].sort((a, b) => {
+    if (sort === 'az') return (a.name || '').localeCompare(b.name || '');
+    if (sort === 'za') return (b.name || '').localeCompare(a.name || '');
     const priceA = typeof a.contractPrice === 'number' ? a.contractPrice : -1;
     const priceB = typeof b.contractPrice === 'number' ? b.contractPrice : -1;
     return sort === 'high' ? priceB - priceA : priceA - priceB;
@@ -22,7 +24,9 @@ function renderItems(sort = 'high') {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortItems('high')" },
-    { label: 'Cheapest first', value: 'low', onClick: "sortItems('low')" }
+    { label: 'Cheapest first', value: 'low', onClick: "sortItems('low')" },
+    { label: 'A-Z', value: 'az', onClick: "sortItems('az')" },
+    { label: 'Z-A', value: 'za', onClick: "sortItems('za')" }
   ], sort);
 
   const sections = categories.map((category, index) => {
@@ -38,7 +42,7 @@ function renderItems(sort = 'high') {
     </div>${content}`;
   }).join('');
 
-  return `<h2>ITEMS</h2>${sortButtons}<div class="page-jump-nav">${categories.map(category => `<a onclick="document.getElementById('items-${category.toLowerCase()}')?.scrollIntoView({behavior:'smooth'})">${category}</a>`).join('')}</div>${sections}`;
+  return `<h2>ITEMS</h2>${sortButtons}<div class="page-jump-nav">${categories.map(category => `<a onclick="scrollToPageSection('items-${category.toLowerCase()}')">${category}</a>`).join('')}</div>${sections}`;
 }
 
 function sortItems(order) {

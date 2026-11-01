@@ -346,39 +346,35 @@ body.low-end-mode #mobile-bottom-nav {
 }
 
 .sort-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin: 0;
-    padding: 6px 14px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.65rem;
+    display: inline-block;
+    margin: 0 4px 6px;
+    padding: 5px 12px;
+    background: #000;
+    border: 1px solid #666;
+    font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    transform: none;
-    border-radius: 2px;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: inherit;
+    transition: 0.2s;
+    transform: skew(-15deg);
+    border-radius: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Geist Pixel', system-ui;
     text-transform: uppercase;
 }
 
 .sort-btn:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: #333;
+    border-color: var(--fg);
     color: #fff;
-    transform: none;
-    box-shadow: none;
+    box-shadow: 0 0 10px var(--fg);
 }
 
 .sort-btn.active {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: #333;
+    border-color: var(--fg);
     color: #fff;
-    box-shadow: none;
-    transform: none;
+    box-shadow: 0 0 10px var(--fg);
 }
 
 @media (max-width: 600px) {

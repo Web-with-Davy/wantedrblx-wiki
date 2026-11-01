@@ -31,11 +31,23 @@ function makeVaultCard(item, displayName) {
 }
 
 function renderATMs(sort = "high") {
-  const sortedATMs = [...ATMS_DATA].sort((a, b) =>
-    sort === "high" ? b.price - a.price : a.price - b.price
-  );
+  const sortByRarity = (a, b) => {
+    const chanceA = parseFloat(String(a.rarityPercent || '').replace('%', ''));
+    const chanceB = parseFloat(String(b.rarityPercent || '').replace('%', ''));
+    const validA = Number.isFinite(chanceA);
+    const validB = Number.isFinite(chanceB);
+    if (validA !== validB) return validA ? -1 : 1;
+    const order = sort === 'rare' ? chanceA - chanceB : chanceB - chanceA;
+    return (validA ? order : 0) || (a.name || '').localeCompare(b.name || '');
+  };
+
+  const sortedATMs = [...ATMS_DATA].sort((a, b) => {
+    if (sort === 'rare' || sort === 'common') return sortByRarity(a, b);
+    return sort === "high" ? b.price - a.price : a.price - b.price;
+  });
 
   const sortedVaults = [...VAULTS_DATA].sort((a, b) => {
+    if (sort === 'rare' || sort === 'common') return sortByRarity(a, b);
     const avgA = (typeof a.priceMin === 'number' && typeof a.priceMax === 'number') ? (a.priceMin + a.priceMax) / 2 : 0;
     const avgB = (typeof b.priceMin === 'number' && typeof b.priceMax === 'number') ? (b.priceMin + b.priceMax) / 2 : 0;
     return sort === "high" ? avgB - avgA : avgA - avgB;
@@ -47,12 +59,14 @@ function renderATMs(sort = "high") {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortATMs('high')" },
-    { label: 'Cheapest first',       value: 'low',  onClick: "sortATMs('low')"  }
+    { label: 'Cheapest first',       value: 'low',  onClick: "sortATMs('low')"  },
+    { label: 'Rarest first', value: 'rare', onClick: "sortATMs('rare')" },
+    { label: 'Most common first', value: 'common', onClick: "sortATMs('common')" }
   ], sort);
 
   const jumpNav = `<div class="page-jump-nav">
-    <a onclick="document.getElementById('atms-atms')?.scrollIntoView({behavior:'smooth'})">ATMs</a>
-    <a onclick="document.getElementById('atms-vaults')?.scrollIntoView({behavior:'smooth'})">Vaults</a>
+    <a onclick="scrollToPageSection('atms-atms')">ATMs</a>
+    <a onclick="scrollToPageSection('atms-vaults')">Vaults</a>
   </div>`;
 
   return `

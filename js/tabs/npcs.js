@@ -15,15 +15,19 @@ function makeNPCCard(item, displayName) {
 }
 
 function renderNPCs(order = "az") {
-  const sorted = [...NPCS_DATA].sort((a, b) =>
-    order === "az" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
-  );
+  const sorted = [...NPCS_DATA].sort((a, b) => {
+    if (order === 'team') return (a.team || '').localeCompare(b.team || '') || a.name.localeCompare(b.name);
+    if (order === 'location') return (a.location || '').localeCompare(b.location || '') || a.name.localeCompare(b.name);
+    return order === "az" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+  });
 
   const cards = sorted.map(item => makeNPCCard(item)).join('');
 
   const sortButtons = renderSortButtons([
     { label: 'A-Z', value: 'az', onClick: "sortNPCs('az')" },
-    { label: 'Z-A', value: 'za', onClick: "sortNPCs('za')" }
+    { label: 'Z-A', value: 'za', onClick: "sortNPCs('za')" },
+    { label: 'By team', value: 'team', onClick: "sortNPCs('team')" },
+    { label: 'By location', value: 'location', onClick: "sortNPCs('location')" }
   ], order);
 
   return `

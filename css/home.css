@@ -1418,6 +1418,23 @@ body.low-end-mode .official-link-icon {
     border-top-color: #5865f2;
 }
 
+body.low-end-mode .official-link-btn,
+body.low-end-mode .official-link-btn:hover {
+    color: #fff;
+    background: #0a0a0a;
+    border-color: #333;
+    border-radius: 0;
+    clip-path: none;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+}
+
+body.low-end-mode .official-link-btn--roblox:hover::after,
+body.low-end-mode .official-link-btn--discord:hover::after {
+    display: none;
+}
+
 .official-link-icon {
     font-size: 1.4rem;
     filter: grayscale(100%) brightness(10);

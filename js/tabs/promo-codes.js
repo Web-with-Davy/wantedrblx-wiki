@@ -1,7 +1,15 @@
-function renderPromoCodes(filter = "all") {
-  let filteredCodes = PROMO_CODES_DATA;
+let promoCodeFilter = 'all';
+let promoCodeSort = 'az';
+
+function renderPromoCodes(filter = promoCodeFilter, sort = promoCodeSort) {
+  promoCodeFilter = filter;
+  promoCodeSort = sort;
+  let filteredCodes = [...PROMO_CODES_DATA];
   if (filter === "active")  filteredCodes = PROMO_CODES_DATA.filter(item => item.active);
   if (filter === "expired") filteredCodes = PROMO_CODES_DATA.filter(item => !item.active);
+  filteredCodes.sort((a, b) => sort === 'reward'
+    ? (a.reward || '').localeCompare(b.reward || '') || a.code.localeCompare(b.code)
+    : a.code.localeCompare(b.code));
 
   const cards = filteredCodes.map(item => {
     const statusColor = item.active ? '#00ffaa' : '#ff3333';
@@ -30,15 +38,25 @@ function renderPromoCodes(filter = "all") {
     { label: 'Active',  value: 'active',  onClick: "filterPromoCodes('active')"  },
     { label: 'Expired', value: 'expired', onClick: "filterPromoCodes('expired')" }
   ], filter);
+  const sortButtons = renderSortButtons([
+    { label: 'Code A-Z', value: 'az', onClick: "sortPromoCodes('az')" },
+    { label: 'Reward A-Z', value: 'reward', onClick: "sortPromoCodes('reward')" }
+  ], sort);
 
   return `
     <h2>PROMO CODES</h2>
     ${filterButtons}
+    ${sortButtons}
     <div class="val-grid">${cards}</div>
   `;
 }
 
 function filterPromoCodes(status) {
   const container = document.getElementById("page-container");
-  if (container) container.innerHTML = renderPromoCodes(status);
+  if (container) container.innerHTML = renderPromoCodes(status, promoCodeSort);
+}
+
+function sortPromoCodes(order) {
+  const container = document.getElementById("page-container");
+  if (container) container.innerHTML = renderPromoCodes(promoCodeFilter, order);
 }

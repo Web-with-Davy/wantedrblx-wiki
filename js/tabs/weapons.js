@@ -17,7 +17,28 @@ function makeWeaponCard(item, displayName) {
 }
 
 function renderWeapons(sort = "high") {
+  const damagePerShot = item => {
+    const values = String(item.stats && item.stats.damage || '').match(/\d+(?:\.\d+)?/g) || [];
+    const highestHit = values.reduce((highest, value) => Math.max(highest, Number(value)), 0);
+    const pellets = Number(item.stats && item.stats.pellets);
+    return highestHit * (Number.isFinite(pellets) && pellets > 0 ? pellets : 1);
+  };
+
   const sortFn = (a, b) => {
+    if (sort === 'damage') {
+      return damagePerShot(b) - damagePerShot(a) || (a.name || '').localeCompare(b.name || '');
+    }
+    if (sort === 'fire-rate') {
+      const rateA = Number(a.stats && a.stats.firerate);
+      const rateB = Number(b.stats && b.stats.firerate);
+      const validA = Number.isFinite(rateA);
+      const validB = Number.isFinite(rateB);
+      if (validA !== validB) return validA ? -1 : 1;
+      return (validB ? rateB - rateA : 0) || (a.name || '').localeCompare(b.name || '');
+    }
+    if (sort === 'az') return (a.name || '').localeCompare(b.name || '');
+    if (sort === 'za') return (b.name || '').localeCompare(a.name || '');
+
     const isUnA = typeof a.contractPrice !== 'number';
     const isUnB = typeof b.contractPrice !== 'number';
     if (isUnA && !isUnB) return 1;
@@ -61,14 +82,17 @@ function renderWeapons(sort = "high") {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortWeapons('high')" },
-    { label: 'Cheapest first', value: 'low', onClick: "sortWeapons('low')" }
+    { label: 'Cheapest first', value: 'low', onClick: "sortWeapons('low')" },
+    { label: 'Most damage per shot', value: 'damage', onClick: "sortWeapons('damage')" },
+    { label: 'Fastest fire rate', value: 'fire-rate', onClick: "sortWeapons('fire-rate')" },
+    { label: 'A-Z', value: 'az', onClick: "sortWeapons('az')" }
   ], sort);
 
   const activeCategories = categories.filter(cat => getCategoryItems(cat.key).length > 0);
 
   const jumpNav = `<div class="page-jump-nav">
     ${activeCategories.map(cat => `
-      <a onclick="document.getElementById('${cat.id}')?.scrollIntoView({behavior:'smooth'})">${cat.label}</a>
+      <a onclick="scrollToPageSection('${cat.id}')">${cat.label}</a>
     `).join('')}
   </div>`;
 

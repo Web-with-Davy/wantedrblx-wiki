@@ -19,8 +19,11 @@ function makeStoreCard(item, displayName) {
 }
 
 function renderStore(sort = "high") {
-  const sortFn = (a, b) =>
-    sort === "high" ? b.robuxPrice - a.robuxPrice : a.robuxPrice - b.robuxPrice;
+  const sortFn = (a, b) => {
+    if (sort === 'az') return (a.name || '').localeCompare(b.name || '');
+    if (sort === 'za') return (b.name || '').localeCompare(a.name || '');
+    return sort === "high" ? b.robuxPrice - a.robuxPrice : a.robuxPrice - b.robuxPrice;
+  };
 
   const sortedStoreItems = [...STORE_DATA].sort(sortFn);
 
@@ -28,7 +31,9 @@ function renderStore(sort = "high") {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortStore('high')" },
-    { label: 'Cheapest first',       value: 'low',  onClick: "sortStore('low')"  }
+    { label: 'Cheapest first',       value: 'low',  onClick: "sortStore('low')"  },
+    { label: 'A-Z', value: 'az', onClick: "sortStore('az')" },
+    { label: 'Z-A', value: 'za', onClick: "sortStore('za')" }
   ], sort);
 
   return `

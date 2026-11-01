@@ -53,11 +53,25 @@ function makeEventCard(event, displayName) {
     </div>`;
 }
 
-function renderEvents() {
-  const cards = EVENTS_DATA.map(event => makeEventCard(event)).join('');
+function renderEvents(sort = 'az') {
+  const sortedEvents = [...EVENTS_DATA].sort((a, b) => {
+    const titleA = a.title || a.name || '';
+    const titleB = b.title || b.name || '';
+    return sort === 'za' ? titleB.localeCompare(titleA) : titleA.localeCompare(titleB);
+  });
+  const cards = sortedEvents.map(event => makeEventCard(event)).join('');
+  const sortButtons = renderSortButtons([
+    { label: 'A-Z', value: 'az', onClick: "sortEvents('az')" },
+    { label: 'Z-A', value: 'za', onClick: "sortEvents('za')" }
+  ], sort);
 
   return `
     <h2>EVENTS</h2>
+    ${sortButtons}
     <div class="val-grid val-grid-events">${cards}</div>
   `;
+}
+
+function sortEvents(order) {
+  document.getElementById('page-container').innerHTML = renderEvents(order);
 }

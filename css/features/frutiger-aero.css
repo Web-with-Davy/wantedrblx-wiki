@@ -679,6 +679,20 @@ body.low-end-mode.frutiger-aero :is(.card, .val-card, .sidebar-box, .views-box, 
     box-shadow: none;
 }
 
+body.low-end-mode.frutiger-aero .official-link-btn,
+body.low-end-mode.frutiger-aero .official-link-btn:hover {
+    color: var(--aero-ink);
+    background: #eaf7fb;
+    border-color: #b7dce8;
+    border-radius: 0;
+    clip-path: none;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
 body.low-end-mode.frutiger-aero .hero-logo,
 body.low-end-mode.frutiger-aero .val-img,
 body.low-end-mode.frutiger-aero .ip-hero-img,

@@ -177,7 +177,7 @@
     </div>
     <script>
         (function () {
-            const isSidebar = localStorage.getItem("sidebarMode") === "true";
+            const isSidebar = localStorage.getItem("sidebarMode") === "true" && window.innerWidth > 1024;
             if (localStorage.getItem("visualTheme") === "frutiger-aero") {
                 document.body.classList.add("frutiger-aero");
             }

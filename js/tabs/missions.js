@@ -19,6 +19,9 @@ function renderMissions(order = "hard") {
   const allMissions = [...MISSIONS_DATA];
 
   const sortMissionsList = (list) => [...list].sort((a, b) => {
+    if (order === 'az') return (a.title || '').localeCompare(b.title || '');
+    if (order === 'za') return (b.title || '').localeCompare(a.title || '');
+
     const diffA = DIFFICULTIES[a.difficulty] || { order: 0 };
     const diffB = DIFFICULTIES[b.difficulty] || { order: 0 };
     if (diffA.order === diffB.order) {
@@ -42,7 +45,7 @@ function renderMissions(order = "hard") {
 
   const jumpLinks = categories
     .filter(cat => allMissions.some(m => m.missionType === cat.type))
-    .map(cat => `<a onclick="document.getElementById('${cat.id}')?.scrollIntoView({behavior:'smooth'})">${cat.label}</a>`)
+    .map(cat => `<a onclick="scrollToPageSection('${cat.id}')">${cat.label}</a>`)
     .join('');
 
   const sections = categories.map((cat, index) => {
@@ -62,7 +65,9 @@ function renderMissions(order = "hard") {
 
   const sortButtons = renderSortButtons([
     { label: 'Hardest first', value: 'hard', onClick: "sortMissions('hard')" },
-    { label: 'Easiest first', value: 'easy', onClick: "sortMissions('easy')" }
+    { label: 'Easiest first', value: 'easy', onClick: "sortMissions('easy')" },
+    { label: 'A-Z', value: 'az', onClick: "sortMissions('az')" },
+    { label: 'Z-A', value: 'za', onClick: "sortMissions('za')" }
   ], order);
 
   return `

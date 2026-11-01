@@ -119,6 +119,14 @@ function renderSortButtons(buttons, activeSort) {
   return `<div class="sort-buttons">${buttons.map(btn => `<span class="sort-btn ${activeSort === btn.value ? 'active' : ''}" onclick="${btn.onClick}">${btn.label}</span>`).join('')}</div>`;
 }
 
+function scrollToPageSection(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const behavior = window.matchMedia('(max-width: 700px)').matches ? 'auto' : 'smooth';
+  target.scrollIntoView({ behavior, block: 'start' });
+}
+window.scrollToPageSection = scrollToPageSection;
+
 function renderPage(title, sortButtons, cards, disclaimer = null) {
   return `<h2>${title}</h2>${disclaimer ? `<div class="page-disclaimer">${disclaimer}</div>` : ''}${sortButtons}<div class="val-grid">${cards.join('')}</div>`;
 }

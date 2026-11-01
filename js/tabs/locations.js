@@ -159,28 +159,47 @@ const MAP_PINS = [
 ];
 
 
-function renderLocations() {
+let locationsSort = 'az';
+
+function renderLocationSortButtons(sort) {
+  return renderSortButtons([
+    { label: 'A-Z', value: 'az', onClick: "sortLocations('az')" },
+    { label: 'Z-A', value: 'za', onClick: "sortLocations('za')" }
+  ], sort);
+}
+
+function renderLocationLegend(sort) {
+  const pins = [...MAP_PINS].sort((a, b) => sort === 'za'
+    ? b.name.localeCompare(a.name)
+    : a.name.localeCompare(b.name));
+
+  return pins.map(pin => `
+    <button
+      class="map-legend-item"
+      data-pin-id="${pin.id}"
+      id="legend-${pin.id}"
+      onclick="mapTogglePin('${pin.id}', this)"
+      style="--pin-color: ${pin.color};"
+    >
+      <img src="${pin.icon}" class="map-legend-icon" alt="${pin.name}"
+        style="filter: drop-shadow(0 0 4px ${pin.color})">
+      <span class="map-legend-name">${pin.name}</span>
+      <span class="map-legend-badge">${pin.positions.length > 1 ? pin.positions.length + 'x' : ''}</span>
+    </button>
+  `).join('');
+}
+
+function renderLocations(sort = locationsSort) {
+  locationsSort = sort;
   return `
 <div class="map-page-root">
   <div class="map-sidebar" id="map-sidebar">
     <div class="map-sidebar-header">
       <span class="map-sidebar-title"><span class="map-sidebar-emoji" aria-hidden="true">📍</span> LOCATIONS</span>
     </div>
+    <div id="locations-sort-buttons">${renderLocationSortButtons(sort)}</div>
     <div class="map-legend" id="map-legend">
-      ${MAP_PINS.map(pin => `
-        <button
-          class="map-legend-item"
-          data-pin-id="${pin.id}"
-          id="legend-${pin.id}"
-          onclick="mapTogglePin('${pin.id}', this)"
-          style="--pin-color: ${pin.color};"
-        >
-          <img src="${pin.icon}" class="map-legend-icon" alt="${pin.name}"
-            style="filter: drop-shadow(0 0 4px ${pin.color})">
-          <span class="map-legend-name">${pin.name}</span>
-          <span class="map-legend-badge">${pin.positions.length > 1 ? pin.positions.length + 'x' : ''}</span>
-        </button>
-      `).join('')}
+      ${renderLocationLegend(sort)}
     </div>
   </div>
 
@@ -572,4 +591,11 @@ function renderLocations() {
   observer.observe(document.getElementById('page-container') || document.body, { childList: true, subtree: true });
 })();
 
-function sortLocations() { /* no-op: map doesn't sort */ }
+function sortLocations(sort) {
+  if (sort !== 'az' && sort !== 'za') return;
+  locationsSort = sort;
+  const legend = document.getElementById('map-legend');
+  const sortButtons = document.getElementById('locations-sort-buttons');
+  if (legend) legend.innerHTML = renderLocationLegend(sort);
+  if (sortButtons) sortButtons.innerHTML = renderLocationSortButtons(sort);
+}

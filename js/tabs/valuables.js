@@ -45,16 +45,27 @@ function makeValuableCard(item, displayName) {
 }
 
 function renderValuables(sort = 'high') {
+  const sortItems = (items) => [...items].sort((a, b) => {
+    if (sort === 'az') return (a.name || '').localeCompare(b.name || '');
+    if (sort === 'weight-high' || sort === 'weight-low') {
+      const weightA = Number(a.weight);
+      const weightB = Number(b.weight);
+      const validA = a.weight !== undefined && a.weight !== null && a.weight !== '' && Number.isFinite(weightA);
+      const validB = b.weight !== undefined && b.weight !== null && b.weight !== '' && Number.isFinite(weightB);
+      if (validA !== validB) return validA ? -1 : 1;
+      return (validA ? (sort === 'weight-high' ? weightB - weightA : weightA - weightB) : 0)
+        || (a.name || '').localeCompare(b.name || '');
+    }
 
-  const sortedRegular = [...VALUABLES_DATA].sort((a, b) => {
-    const priceA = a.priceNonContract ? 0 : a.price;
-    const priceB = b.priceNonContract ? 0 : b.price;
-
+    const priceA = a.priceNonContract ? 0 : Number(a.price) || 0;
+    const priceB = b.priceNonContract ? 0 : Number(b.price) || 0;
     if (priceA > 0 && priceB > 0) return sort === 'high' ? priceB - priceA : priceA - priceB;
     if (priceA > 0) return -1;
     if (priceB > 0) return 1;
-    return sort === 'high' ? b.price - a.price : a.price - b.price;
+    return sort === 'high' ? priceB - priceA : priceA - priceB;
   });
+
+  const sortedRegular = sortItems(VALUABLES_DATA);
 
   const categories = [
     { type: 'Gems', label: 'Gems' },
@@ -92,8 +103,7 @@ function renderValuables(sort = 'high') {
       <div class="val-grid">${items.map(item => makeValuableCard(item)).join('')}</div>`;
   }).join('');
 
-  const christmasItems = [...CHRISTMAS_VALUABLES_DATA]
-    .sort((a, b) => sort === 'high' ? b.price - a.price : a.price - b.price);
+  const christmasItems = sortItems(CHRISTMAS_VALUABLES_DATA);
 
   const christmasSection = christmasItems.length > 0 ? `
     <div class="val-section-divider"></div>
@@ -103,8 +113,7 @@ function renderValuables(sort = 'high') {
     </div>
     <div class="val-grid">${christmasItems.map(item => makeValuableCard(item)).join('')}</div>` : '';
 
-  const fourthOfJulyItems = [...FOURTH_OF_JULY_VALUABLES_DATA]
-    .sort((a, b) => sort === 'high' ? b.price - a.price : a.price - b.price);
+  const fourthOfJulyItems = sortItems(FOURTH_OF_JULY_VALUABLES_DATA);
 
   const fourthOfJulySection = fourthOfJulyItems.length > 0 ? `
     <div class="val-section-divider"></div>
@@ -116,18 +125,21 @@ function renderValuables(sort = 'high') {
 
   const sortButtons = renderSortButtons([
     { label: 'Most expensive first', value: 'high', onClick: "sortValuables('high')" },
-    { label: 'Cheapest first', value: 'low', onClick: "sortValuables('low')" }
+    { label: 'Cheapest first', value: 'low', onClick: "sortValuables('low')" },
+    { label: 'Heaviest first', value: 'weight-high', onClick: "sortValuables('weight-high')" },
+    { label: 'Lightest first', value: 'weight-low', onClick: "sortValuables('weight-low')" },
+    { label: 'A-Z', value: 'az', onClick: "sortValuables('az')" }
   ], sort);
 
   const jumpLinks = categories
     .filter(cat => sortedRegular.some(item => item.category === cat.type))
-    .map(cat => `<a onclick="document.getElementById('val-cat-${generateSlug(cat.type)}')?.scrollIntoView({behavior:'smooth',block:'start'})">${cat.label}</a>`)
+    .map(cat => `<a onclick="scrollToPageSection('val-cat-${generateSlug(cat.type)}')">${cat.label}</a>`)
     .join('');
   const xmasLink = christmasItems.length > 0
-    ? `<a onclick="document.getElementById('val-cat-christmas')?.scrollIntoView({behavior:'smooth',block:'start'})">Christmas</a>`
+    ? `<a onclick="scrollToPageSection('val-cat-christmas')">Christmas</a>`
     : '';
   const fourthLink = fourthOfJulyItems.length > 0
-    ? `<a onclick="document.getElementById('val-cat-4th-of-july')?.scrollIntoView({behavior:'smooth',block:'start'})">4th of July</a>`
+    ? `<a onclick="scrollToPageSection('val-cat-4th-of-july')">4th of July</a>`
     : '';
   const jumpNav = `<div class="page-jump-nav">${jumpLinks}${xmasLink}${fourthLink}</div>`;
 

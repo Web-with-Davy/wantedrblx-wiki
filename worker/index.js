@@ -27,10 +27,6 @@ function buildHtml(item, category, id) {
   const title = item ? `${item.n} — Wanted Wiki` : 'Wanted Wiki';
   const desc  = (item && item.d) ? item.d : DEFAULT_DESC;
   const image = (item && item.i) ? item.i : DEFAULT_IMG;
-  const imagePath = new URL(image).pathname.replace(/^\/+/, '');
-  const banner = item
-    ? `${SITE}/cdn-cgi/image/width=1200,height=630,fit=pad,background=%230C0E12/${imagePath}`
-    : image;
   const canonical = SITE + '/item/' + category + '/' + id;
   const hashUrl   = SITE + '/#item/' + category + '/' + id;
 
@@ -45,14 +41,12 @@ function buildHtml(item, category, id) {
   <meta property="og:url" content="${escHtml(canonical)}">
   <meta property="og:title" content="${escHtml(title)}">
   <meta property="og:description" content="${escHtml(desc)}">
-  <meta property="og:image" content="${escHtml(banner)}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image" content="${escHtml(image)}">
   <meta property="og:image:alt" content="${escHtml(item ? item.n : 'Wanted Wiki')}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escHtml(title)}">
   <meta name="twitter:description" content="${escHtml(desc)}">
-  <meta name="twitter:image" content="${escHtml(banner)}">
+  <meta name="twitter:image" content="${escHtml(image)}">
   <link rel="canonical" href="${escHtml(canonical)}">
   <meta http-equiv="refresh" content="0;url=${escHtml(hashUrl)}">
 </head>
