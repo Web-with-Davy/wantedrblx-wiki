@@ -3,478 +3,530 @@
 SUBCATEGORY: Muscle
 ============================================================
 Engine
-  Street: Top Speed +1% | Acceleration +0.3%
-  Sport:  Top Speed +1.9% | Acceleration +0.6%
-  Race:   Top Speed +3.9% | Acceleration +0.9%
+  Street: Top Speed +1% | Acceleration +0.3% | $10000
+  Sport:  Top Speed +1.9% | Acceleration +0.6% | $30000
+  Race:   Top Speed +3.9% | Acceleration +0.9% | $80000
 Transmission
-  Street: Acceleration +0.5%
-  Sport:  Acceleration +1.2%
-  Race:   Acceleration +2.5%
+  Street: Acceleration +0.5% | $20000
+  Sport:  Acceleration +1.2% | $50000
+  Race:   Acceleration +2.5% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.2%
-  Quad Turbo:    Acceleration +3.1%
+  Turbo Charger: Acceleration +0.6% | $10000
+  Twin Turbo:    Acceleration +1.2% | $30000
+  Quad Turbo:    Acceleration +3.1% | $80000
 Brakes
-  Street: Braking +2.7%
-  Sport:  Braking +6.6%
-  Race:   Braking +13.3%
+  Street: Braking +2.7% | $4000
+  Sport:  Braking +6.6% | $10000
+  Race:   Braking +13.3% | $30000
+Suspension:
+  Lowered: $16000
+  Lifted:  $40000
+  Monster: $100000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $5000
+    Medium: Body 400 | Armor stat 2 | $16000
+    Heavy: Body 500 | Armor stat 3 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $2000
+    Reinforced: Windows 300 | $10000
+    Bullet Proof: Windows ∞ | $40000
 
 ============================================================
 SUBCATEGORY: Sport
 ============================================================
 Engine
-  Street: Top Speed +2.7% | Acceleration +0.7%
-  Sport:  Top Speed +5.3% | Acceleration +1.5%
-  Race:   Top Speed +10.6% | Acceleration +2.2%
+  Street: Top Speed +2.7% | Acceleration +0.7% | $50000
+  Sport:  Top Speed +5.3% | Acceleration +1.5% | $150000
+  Race:   Top Speed +10.6% | Acceleration +2.2% | $400000
 Transmission
-  Street: Acceleration +1.1%
-  Sport:  Acceleration +2.9%
-  Race:   Acceleration +5.8%
+  Street: Acceleration +1.1% | $100000
+  Sport:  Acceleration +2.9% | $250000
+  Race:   Acceleration +5.8% | $500000
 Aspiration
-  Turbo Charger: Acceleration +0.7%
-  Twin Turbo:    Acceleration +1.5%
-  Quad Turbo:    Acceleration +3.6%
+  Turbo Charger: Acceleration +0.7% | $50000
+  Twin Turbo:    Acceleration +1.5% | $150000
+  Quad Turbo:    Acceleration +3.6% | $400000
 Brakes
-  Street: Braking +2.9%
-  Sport:  Braking +7.2%
-  Race:   Braking +14.3%
+  Street: Braking +2.9% | $20000
+  Sport:  Braking +7.2% | $50000
+  Race:   Braking +14.3% | $150000
+Suspension:
+  Lowered: $80000
+  Lifted:  $200000
+  Monster: $500000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $25000
+    Medium: Body 400 | Armor stat 2 | $80000
+    Heavy: Body 500 | Armor stat 3 | $200000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $10000
+    Reinforced: Wheels 300 | $50000
+    Bullet Proof: Wheels ∞ | $200000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $10000
+    Reinforced: Windows 300 | $50000
+    Bullet Proof: Windows ∞ | $200000
 
 ============================================================
 SUBCATEGORY: Super
 ============================================================
 Engine
-  Street: Top Speed +5.6% | Acceleration +1.9%
-  Sport:  Top Speed +11.1% | Acceleration +3.9%
-  Race:   Top Speed +22.3% | Acceleration +5.8%
+  Street: Top Speed +5.6% | Acceleration +1.9% | $125000
+  Sport:  Top Speed +11.1% | Acceleration +3.9% | $375000
+  Race:   Top Speed +22.3% | Acceleration +5.8% | $1000000
 Transmission
-  Street: Acceleration +2.9%
-  Sport:  Acceleration +7.7%
-  Race:   Acceleration +15.4%
+  Street: Acceleration +2.9% | $250000
+  Sport:  Acceleration +7.7% | $625000
+  Race:   Acceleration +15.4% | $1250000
 Aspiration
-  Turbo Charger: Acceleration +1.3%
-  Twin Turbo:    Acceleration +2.6%
-  Quad Turbo:    Acceleration +6.4%
+  Turbo Charger: Acceleration +1.3% | $125000
+  Twin Turbo:    Acceleration +2.6% | $375000
+  Quad Turbo:    Acceleration +6.4% | $1000000
 Brakes
-  Street: Braking +3.8%
-  Sport:  Braking +9.5%
-  Race:   Braking +18.9%
+  Street: Braking +3.8% | $50000
+  Sport:  Braking +9.5% | $125000
+  Race:   Braking +18.9% | $375000
+Suspension:
+  Lowered: $200000
+  Lifted:  $500000
+  Monster: $1250000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 375 | Armor stat 1
-    Medium: Body 500 | Armor stat 2
-    Heavy: Body 625 | Armor stat 3
+    Light: Body 375 | Armor stat 1 | $63000
+    Medium: Body 500 | Armor stat 2 | $200000
+    Heavy: Body 625 | Armor stat 3 | $500000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $25000
+    Reinforced: Wheels 300 | $125000
+    Bullet Proof: Wheels ∞ | $500000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $25000
+    Reinforced: Windows 300 | $125000
+    Bullet Proof: Windows ∞ | $500000
 
 ============================================================
 SUBCATEGORY: Sedan
 ============================================================
 Engine
-  Street: Top Speed +0.9% | Acceleration +0.3%
-  Sport:  Top Speed +1.8% | Acceleration +0.6%
-  Race:   Top Speed +3.7% | Acceleration +0.9%
+  Street: Top Speed +0.9% | Acceleration +0.3% | $10000
+  Sport:  Top Speed +1.8% | Acceleration +0.6% | $30000
+  Race:   Top Speed +3.7% | Acceleration +0.9% | $80000
 Transmission
-  Street: Acceleration +0.4%
-  Sport:  Acceleration +1.2%
-  Race:   Acceleration +2.4%
+  Street: Acceleration +0.4% | $20000
+  Sport:  Acceleration +1.2% | $50000
+  Race:   Acceleration +2.4% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.2%
-  Quad Turbo:    Acceleration +3%
+  Turbo Charger: Acceleration +0.6% | $10000
+  Twin Turbo:    Acceleration +1.2% | $30000
+  Quad Turbo:    Acceleration +3% | $80000
 Brakes
-  Street: Braking +2.5%
-  Sport:  Braking +6.3%
-  Race:   Braking +12.6%
+  Street: Braking +2.5% | $4000
+  Sport:  Braking +6.3% | $10000
+  Race:   Braking +12.6% | $30000
+Suspension:
+  Lowered: $16000
+  Lifted:  $40000
+  Monster: $100000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $5000
+    Medium: Body 400 | Armor stat 2 | $16000
+    Heavy: Body 500 | Armor stat 3 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $2000
+    Reinforced: Windows 300 | $10000
+    Bullet Proof: Windows ∞ | $40000
 
 ============================================================
 SUBCATEGORY: L-Sedan
 ============================================================
 Engine
-  Street: Top Speed +1.7% | Acceleration +0.5%
-  Sport:  Top Speed +3.5% | Acceleration +1.1%
-  Race:   Top Speed +6.9% | Acceleration +1.6%
+  Street: Top Speed +1.7% | Acceleration +0.5% | $25000
+  Sport:  Top Speed +3.5% | Acceleration +1.1% | $75000
+  Race:   Top Speed +6.9% | Acceleration +1.6% | $200000
 Transmission
-  Street: Acceleration +0.8%
-  Sport:  Acceleration +2.1%
-  Race:   Acceleration +4.2%
+  Street: Acceleration +0.8% | $50000
+  Sport:  Acceleration +2.1% | $125000
+  Race:   Acceleration +4.2% | $250000
 Aspiration
-  Turbo Charger: Acceleration +0.7%
-  Twin Turbo:    Acceleration +1.4%
-  Quad Turbo:    Acceleration +3.5%
+  Turbo Charger: Acceleration +0.7% | $25000
+  Twin Turbo:    Acceleration +1.4% | $75000
+  Quad Turbo:    Acceleration +3.5% | $200000
 Brakes
-  Street: Braking +2.8%
-  Sport:  Braking +7%
-  Race:   Braking +14%
+  Street: Braking +2.8% | $10000
+  Sport:  Braking +7% | $25000
+  Race:   Braking +14% | $75000
+Suspension:
+  Lowered: $40000
+  Lifted:  $100000
+  Monster: $250000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $13000
+    Medium: Body 400 | Armor stat 2 | $40000
+    Heavy: Body 500 | Armor stat 3 | $100000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $5000
+    Reinforced: Wheels 300 | $25000
+    Bullet Proof: Wheels ∞ | $100000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $5000
+    Reinforced: Windows 300 | $25000
+    Bullet Proof: Windows ∞ | $100000
 
 ============================================================
 SUBCATEGORY: SUV
 ============================================================
 Engine
-  Street: Top Speed +0.8% | Acceleration +0.3%
-  Sport:  Top Speed +1.6% | Acceleration +0.6%
-  Race:   Top Speed +3.3% | Acceleration +0.9%
+  Street: Top Speed +0.8% | Acceleration +0.3% | $10000
+  Sport:  Top Speed +1.6% | Acceleration +0.6% | $30000
+  Race:   Top Speed +3.3% | Acceleration +0.9% | $80000
 Transmission
-  Street: Acceleration +0.5%
-  Sport:  Acceleration +1.2%
-  Race:   Acceleration +2.4%
+  Street: Acceleration +0.5% | $20000
+  Sport:  Acceleration +1.2% | $50000
+  Race:   Acceleration +2.4% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.2%
-  Quad Turbo:    Acceleration +3.1%
+  Turbo Charger: Acceleration +0.6% | $10000
+  Twin Turbo:    Acceleration +1.2% | $30000
+  Quad Turbo:    Acceleration +3.1% | $80000
 Brakes
-  Street: Braking +2.3%
-  Sport:  Braking +5.8%
-  Race:   Braking +11.6%
+  Street: Braking +2.3% | $4000
+  Sport:  Braking +5.8% | $10000
+  Race:   Braking +11.6% | $30000
+Suspension:
+  Lowered: $16000
+  Lifted:  $40000
+  Monster: $100000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 600 | Armor stat 3
-    Medium: Body 800 | Armor stat 4
-    Heavy: Body 1000 | Armor stat 5
+    Light: Body 600 | Armor stat 3 | $5000
+    Medium: Body 800 | Armor stat 4 | $16000
+    Heavy: Body 1000 | Armor stat 5 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $2000
+    Reinforced: Windows 300 | $10000
+    Bullet Proof: Windows ∞ | $40000
 
 ============================================================
 SUBCATEGORY: L-SUV
 ============================================================
 Engine
-  Street: Top Speed +1.5% | Acceleration +0.4%
-  Sport:  Top Speed +3.1% | Acceleration +0.8%
-  Race:   Top Speed +6.1% | Acceleration +1.3%
+  Street: Top Speed +1.5% | Acceleration +0.4% | $25000
+  Sport:  Top Speed +3.1% | Acceleration +0.8% | $75000
+  Race:   Top Speed +6.1% | Acceleration +1.3% | $200000
 Transmission
-  Street: Acceleration +0.6%
-  Sport:  Acceleration +1.7%
-  Race:   Acceleration +3.3%
+  Street: Acceleration +0.6% | $50000
+  Sport:  Acceleration +1.7% | $125000
+  Race:   Acceleration +3.3% | $250000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.1%
-  Quad Turbo:    Acceleration +2.8%
+  Turbo Charger: Acceleration +0.6% | $25000
+  Twin Turbo:    Acceleration +1.1% | $75000
+  Quad Turbo:    Acceleration +2.8% | $200000
 Brakes
-  Street: Braking +2.3%
-  Sport:  Braking +5.8%
-  Race:   Braking +11.6%
+  Street: Braking +2.3% | $10000
+  Sport:  Braking +5.8% | $25000
+  Race:   Braking +11.6% | $75000
+Suspension:
+  Lowered: $40000
+  Lifted:  $100000
+  Monster: $250000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 750 | Armor stat 4
-    Medium: Body 1000 | Armor stat 5
-    Heavy: Body 1250 | Armor stat 6
+    Light: Body 750 | Armor stat 4 | $13000
+    Medium: Body 1000 | Armor stat 5 | $40000
+    Heavy: Body 1250 | Armor stat 6 | $100000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $5000
+    Reinforced: Wheels 300 | $25000
+    Bullet Proof: Wheels ∞ | $100000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $5000
+    Reinforced: Windows 300 | $25000
+    Bullet Proof: Windows ∞ | $100000
 
 ============================================================
 SUBCATEGORY: Truck
 ============================================================
 Engine
-  Street: Top Speed +0.8% | Acceleration +0.3%
-  Sport:  Top Speed +1.5% | Acceleration +0.6%
-  Race:   Top Speed +3% | Acceleration +0.9%
+  Street: Top Speed +0.8% | Acceleration +0.3% | $10000
+  Sport:  Top Speed +1.5% | Acceleration +0.6% | $30000
+  Race:   Top Speed +3% | Acceleration +0.9% | $80000
 Transmission
-  Street: Acceleration +0.4%
-  Sport:  Acceleration +1.2%
-  Race:   Acceleration +2.4%
+  Street: Acceleration +0.4% | $20000
+  Sport:  Acceleration +1.2% | $50000
+  Race:   Acceleration +2.4% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.2%
-  Quad Turbo:    Acceleration +2.9%
+  Turbo Charger: Acceleration +0.6% | $10000
+  Twin Turbo:    Acceleration +1.2% | $30000
+  Quad Turbo:    Acceleration +2.9% | $80000
 Brakes
-  Street: Braking +2.2%
-  Sport:  Braking +5.5%
-  Race:   Braking +11.1%
+  Street: Braking +2.2% | $4000
+  Sport:  Braking +5.5% | $10000
+  Race:   Braking +11.1% | $30000
+Suspension:
+  Lowered: $16000
+  Lifted:  $40000
+  Monster: $100000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 450 | Armor stat 1
-    Medium: Body 600 | Armor stat 2
-    Heavy: Body 750 | Armor stat 3
+    Light: Body 450 | Armor stat 1 | $5000
+    Medium: Body 600 | Armor stat 2 | $16000
+    Heavy: Body 750 | Armor stat 3 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $2000
+    Reinforced: Windows 300 | $10000
+    Bullet Proof: Windows ∞ | $40000
 
 ============================================================
 SUBCATEGORY: L-SUT
 ============================================================
 Engine
-  Street: Top Speed +2.2% | Acceleration +0.6%
-  Sport:  Top Speed +4.4% | Acceleration +1.2%
-  Race:   Top Speed +8.8% | Acceleration +1.8%
+  Street: Top Speed +2.2% | Acceleration +0.6% | $50000
+  Sport:  Top Speed +4.4% | Acceleration +1.2% | $150000
+  Race:   Top Speed +8.8% | Acceleration +1.8% | $400000
 Transmission
-  Street: Acceleration +0.9%
-  Sport:  Acceleration +2.4%
-  Race:   Acceleration +4.9%
+  Street: Acceleration +0.9% | $100000
+  Sport:  Acceleration +2.4% | $250000
+  Race:   Acceleration +4.9% | $500000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.2%
-  Quad Turbo:    Acceleration +3.1%
+  Turbo Charger: Acceleration +0.6% | $50000
+  Twin Turbo:    Acceleration +1.2% | $150000
+  Quad Turbo:    Acceleration +3.1% | $400000
 Brakes
-  Street: Braking +2.5%
-  Sport:  Braking +6.3%
-  Race:   Braking +12.6%
+  Street: Braking +2.5% | $20000
+  Sport:  Braking +6.3% | $50000
+  Race:   Braking +12.6% | $150000
+Suspension:
+  Lowered: $80000
+  Lifted:  $200000
+  Monster: $500000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 1125 | Armor stat 4
-    Medium: Body 1500 | Armor stat 5
-    Heavy: Body 1875 | Armor stat 6
+    Light: Body 1125 | Armor stat 4 | $25000
+    Medium: Body 1500 | Armor stat 5 | $80000
+    Heavy: Body 1875 | Armor stat 6 | $200000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $10000
+    Reinforced: Wheels 300 | $50000
+    Bullet Proof: Wheels ∞ | $200000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $10000
+    Reinforced: Windows 300 | $50000
+    Bullet Proof: Windows ∞ | $200000
 
 ============================================================
 SUBCATEGORY: Cruiser
 ============================================================
 Engine
-  Street: Top Speed +0.9% | Acceleration +0.4%
-  Sport:  Top Speed +1.8% | Acceleration +0.8%
-  Race:   Top Speed +3.6% | Acceleration +1.1%
+  Street: Top Speed +0.9% | Acceleration +0.4% | $10000
+  Sport:  Top Speed +1.8% | Acceleration +0.8% | $30000
+  Race:   Top Speed +3.6% | Acceleration +1.1% | $80000
 Transmission
-  Street: Acceleration +0.6%
-  Sport:  Acceleration +1.5%
-  Race:   Acceleration +3%
+  Street: Acceleration +0.6% | $20000
+  Sport:  Acceleration +1.5% | $50000
+  Race:   Acceleration +3% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.8%
-  Twin Turbo:    Acceleration +1.5%
-  Quad Turbo:    Acceleration +3.8%
+  Turbo Charger: Acceleration +0.8% | $10000
+  Twin Turbo:    Acceleration +1.5% | $30000
+  Quad Turbo:    Acceleration +3.8% | $80000
 Brakes
-  Street: Braking +2.7%
-  Sport:  Braking +6.8%
-  Race:   Braking +13.7%
+  Street: Braking +2.7% | $4000
+  Sport:  Braking +6.8% | $10000
+  Race:   Braking +13.7% | $30000
+Suspension:
+  Lowered: $
+  Lifted:  $
+  Monster: $
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $5000
+    Medium: Body 400 | Armor stat 2 | $16000
+    Heavy: Body 500 | Armor stat 3 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $2000
+    Reinforced: Windows 300 | $10000
+    Bullet Proof: Windows ∞ | $40000
 
 ============================================================
 SUBCATEGORY: Off-Road
 ============================================================
 Engine
-  Street: Top Speed +0.6% | Acceleration +0.4%
-  Sport:  Top Speed +1.3% | Acceleration +0.7%
-  Race:   Top Speed +2.6% | Acceleration +1.1%
+  Street: Top Speed +0.6% | Acceleration +0.4% | $10000
+  Sport:  Top Speed +1.3% | Acceleration +0.7% | $30000
+  Race:   Top Speed +2.6% | Acceleration +1.1% | $80000
 Transmission
-  Street: Acceleration +0.5%
-  Sport:  Acceleration +1.4%
-  Race:   Acceleration +2.9%
+  Street: Acceleration +0.5% | $20000
+  Sport:  Acceleration +1.4% | $50000
+  Race:   Acceleration +2.9% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.7%
-  Twin Turbo:    Acceleration +1.4%
-  Quad Turbo:    Acceleration +3.6%
+  Turbo Charger: Acceleration +0.7% | $10000
+  Twin Turbo:    Acceleration +1.4% | $30000
+  Quad Turbo:    Acceleration +3.6% | $80000
 Brakes
-  Street: Braking +2.3%
-  Sport:  Braking +5.8%
-  Race:   Braking +11.6%
+  Street: Braking +2.3% | $4000
+  Sport:  Braking +5.8% | $10000
+  Race:   Braking +11.6% | $30000
+Suspension:
+  Lowered: $
+  Lifted:  $
+  Monster: $
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $5000
+    Medium: Body 400 | Armor stat 2 | $16000
+    Heavy: Body 500 | Armor stat 3 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 1050 | $
+    Reinforced: Windows 2100 | $
+    Bullet Proof: Windows ∞ | $
 
 ============================================================
 SUBCATEGORY: Tactical
 ============================================================
-Street: Top Speed +2.3% | Acceleration +0.6%
-Sport: Top Speed +4.7% | Acceleration +1.3%
-Race: Top Speed +9.4% | Acceleration +1.9%
+Street: Top Speed +2.3% | Acceleration +0.6% | $
+Sport: Top Speed +4.7% | Acceleration +1.3% | $
+Race: Top Speed +9.4% | Acceleration +1.9% | $
 Transmission
-Street: Acceleration +1%
-Sport: Acceleration +2.7%
-Race: Acceleration +5.3%
+Street: Acceleration +1% | $
+Sport: Acceleration +2.7% | $
+Race: Acceleration +5.3% | $
 Aspiration
-Turbo Charger: Acceleration +0.7%
-Twin Turbo: Acceleration +1.3%
-Quad Turbo: Acceleration +3.3%
+Turbo Charger: Acceleration +0.7% | $
+Twin Turbo: Acceleration +1.3% | $
+Quad Turbo: Acceleration +3.3% | $
 Brakes
-Street: Braking +2.6%
-Sport: Braking +6.6%
-Race: Braking +13.2%
+Street: Braking +2.6% | $
+Sport: Braking +6.6% | $
+Race: Braking +13.2% | $
+Suspension:
+Lowered: $
+Lifted: $
+Monster: $
 
 Health (final health numbers)
 Armor (Body)
 Stock: 1500
-Light: Body 2250| Armor stat 1
-Medium: Body 3000| Armor stat 2
-Heavy: Body 3750| Armor stat 3
+Light: Body 2250| Armor stat 1 | $
+Medium: Body 3000| Armor stat 2 | $
+Heavy: Body 3750| Armor stat 3 | $
 Tires (Wheels)
 Stock: 500
-Upgraded: Wheels 750
-Reinforced: Wheels 1500
-Bullet Proof: Wheels ∞
+Upgraded: Wheels 750 | $
+Reinforced: Wheels 1500 | $
+Bullet Proof: Wheels ∞ | $
 Windows
 Stock: 700
-Upgraded: Windows 1050
-Reinforced: Windows 2100
-Bullet Proof: Windows ∞
+Upgraded: Windows 1050 | $
+Reinforced: Windows 2100 | $
+Bullet Proof: Windows ∞ | $
 
 ============================================================
 SUBCATEGORY: Roadster
 ============================================================
 Engine
-  Street: Top Speed +1% | Acceleration +0.3%
-  Sport:  Top Speed +1.9% | Acceleration +0.6%
-  Race:   Top Speed +3.9% | Acceleration +0.9%
+  Street: Top Speed +1% | Acceleration +0.3% | $10000
+  Sport:  Top Speed +1.9% | Acceleration +0.6% | $30000
+  Race:   Top Speed +3.9% | Acceleration +0.9% | $80000
 Transmission
-  Street: Acceleration +0.4%
-  Sport:  Acceleration +1.2%
-  Race:   Acceleration +2.4%
+  Street: Acceleration +0.4% | $20000
+  Sport:  Acceleration +1.2% | $50000
+  Race:   Acceleration +2.4% | $100000
 Aspiration
-  Turbo Charger: Acceleration +0.6%
-  Twin Turbo:    Acceleration +1.2%
-  Quad Turbo:    Acceleration +3%
+  Turbo Charger: Acceleration +0.6% | $10000
+  Twin Turbo:    Acceleration +1.2% | $30000
+  Quad Turbo:    Acceleration +3% | $80000
 Brakes
-  Street: Braking +2.6%
-  Sport:  Braking +6.5%
-  Race:   Braking +13.1%
+  Street: Braking +2.6% | $4000
+  Sport:  Braking +6.5% | $10000
+  Race:   Braking +13.1% | $30000
+Suspension:
+  Lowered: $16000
+  Lifted:  $40000
+  Monster: $100000
 
 Health (final health numbers)
   Armor (Body)
     Stock: use vehicle base Body and Armor stat values
-    Light: Body 300 | Armor stat 1
-    Medium: Body 400 | Armor stat 2
-    Heavy: Body 500 | Armor stat 3
+    Light: Body 300 | Armor stat 1 | $5000
+    Medium: Body 400 | Armor stat 2 | $16000
+    Heavy: Body 500 | Armor stat 3 | $40000
   Tires (Wheels)
     Stock: use vehicle base Wheels value
-    Upgraded: Wheels 150
-    Reinforced: Wheels 300
-    Bullet Proof: Wheels ∞
+    Upgraded: Wheels 150 | $2000
+    Reinforced: Wheels 300 | $10000
+    Bullet Proof: Wheels ∞ | $40000
   Windows
     Stock: use vehicle base Windows value
-    Upgraded: Windows 150
-    Reinforced: Windows 300
-    Bullet Proof: Windows ∞
+    Upgraded: Windows 150 | $2000
+    Reinforced: Windows 300 | $10000
+    Bullet Proof: Windows ∞ | $40000

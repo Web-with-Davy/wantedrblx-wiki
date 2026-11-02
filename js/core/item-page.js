@@ -762,8 +762,106 @@ const VEHICLE_UPGRADE_BONUSES = {
 
 const SUPER_CAR_UPGRADES = VEHICLE_UPGRADE_BONUSES;
 
+const VEHICLE_UPGRADE_PRICE_TIERS = {
+  standard: {
+    engine: [10000, 30000, 80000],
+    transmission: [20000, 50000, 100000],
+    aspiration: [10000, 30000, 80000],
+    brakes: [4000, 10000, 30000],
+    suspension: [16000, 40000, 100000],
+    armor: [5000, 16000, 40000],
+    tires: [2000, 10000, 40000],
+    windows: [2000, 10000, 40000],
+  },
+  sport: {
+    engine: [50000, 150000, 400000],
+    transmission: [100000, 250000, 500000],
+    aspiration: [50000, 150000, 400000],
+    brakes: [20000, 50000, 150000],
+    suspension: [80000, 200000, 500000],
+    armor: [25000, 80000, 200000],
+    tires: [10000, 50000, 200000],
+    windows: [10000, 50000, 200000],
+  },
+  super: {
+    engine: [125000, 375000, 1000000],
+    transmission: [250000, 625000, 1250000],
+    aspiration: [125000, 375000, 1000000],
+    brakes: [50000, 125000, 375000],
+    suspension: [200000, 500000, 1250000],
+    armor: [63000, 200000, 500000],
+    tires: [25000, 125000, 500000],
+    windows: [25000, 125000, 500000],
+  },
+  luxury: {
+    engine: [25000, 75000, 200000],
+    transmission: [50000, 125000, 250000],
+    aspiration: [25000, 75000, 200000],
+    brakes: [10000, 25000, 75000],
+    suspension: [40000, 100000, 250000],
+    armor: [13000, 40000, 100000],
+    tires: [5000, 25000, 100000],
+    windows: [5000, 25000, 100000],
+  },
+};
+
+const VEHICLE_UPGRADE_PRICE_TIER_BY_TYPE = {
+  Muscle: 'standard',
+  Sport: 'sport',
+  Super: 'super',
+  Sedan: 'standard',
+  'L-Sedan': 'luxury',
+  SUV: 'standard',
+  'L-SUV': 'luxury',
+  Truck: 'standard',
+  'L-SUT': 'sport',
+  Cruiser: 'standard',
+  'Off-Road': 'standard',
+  Tactical: null,
+  Roadster: 'standard',
+};
+
+const VEHICLE_UPGRADE_UNKNOWN_PRICES = {
+  Cruiser: { suspension: true },
+  'Off-Road': { suspension: true },
+};
+
+const UPGRADE_OPTION_INDEX = {
+  street: 0,
+  sport: 1,
+  race: 2,
+  turbo: 0,
+  twinTurbo: 1,
+  quadTurbo: 2,
+  light: 0,
+  medium: 1,
+  heavy: 2,
+  upgraded: 0,
+  reinforced: 1,
+  bulletProof: 2,
+  lowered: 0,
+  lifted: 1,
+  monster: 2,
+};
+
+function getVehicleUpgradePrice(vehicleType, category, key) {
+  if (VEHICLE_UPGRADE_UNKNOWN_PRICES[vehicleType]?.[category]) return '$';
+  const tier = VEHICLE_UPGRADE_PRICE_TIER_BY_TYPE[vehicleType];
+  return tier ? VEHICLE_UPGRADE_PRICE_TIERS[tier][category]?.[UPGRADE_OPTION_INDEX[key]] : '$';
+}
+
+function formatUpgradeOption(vehicleType, category, key, label) {
+  const price = getVehicleUpgradePrice(vehicleType, category, key);
+  return `${label} ($${typeof price === 'number' ? price.toLocaleString() : ''})`;
+}
+
+function formatUpgradeTotal(price) {
+  if (price === '$') return '$';
+  return `<img src="${assetUrl('images/cash.webp')}" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">${price.toLocaleString()}</span>`;
+}
+
 function getVehicleUpgradeConfig(item) {
-  if (!item || item.type !== 'ground' || item.category !== 'Car') return null;
+  if (!item || item.type !== 'ground' || !['Car', 'Motorcycle'].includes(item.category)) return null;
   const vehicleType = item.stats && item.stats.vehicleType;
   if (!vehicleType) return null;
   return VEHICLE_UPGRADE_BONUSES[vehicleType] || null;
@@ -772,6 +870,7 @@ function getVehicleUpgradeConfig(item) {
 function renderSuperCarUpgrades(item) {
   const stats = item.stats || {};
   const vehicleType = stats.vehicleType || item.name || 'Vehicle';
+  const isMotorcycle = item.category === 'Motorcycle';
   const upgradeSet = getVehicleUpgradeConfig(item);
   if (!upgradeSet) return '';
 
@@ -800,16 +899,25 @@ function renderSuperCarUpgrades(item) {
     ['transmission', 'Transmission', ['street', 'sport', 'race']],
     ['aspiration', 'Aspiration', ['turbo', 'twinTurbo', 'quadTurbo']],
     ['brakes', 'Brakes', ['street', 'sport', 'race']],
+    ...(!isMotorcycle ? [['suspension', 'Suspension', ['lowered', 'lifted', 'monster']]] : []),
     ['armor', 'Armor', ['light', 'medium', 'heavy']],
     ['tires', 'Tires', ['upgraded', 'reinforced', 'bulletProof']],
-    ['windows', 'Windows', ['upgraded', 'reinforced', 'bulletProof']],
+    ...(!isMotorcycle ? [['windows', 'Windows', ['upgraded', 'reinforced', 'bulletProof']]] : []),
   ];
+  const suspensionLabels = {
+    lowered: 'Lowered',
+    lifted: 'Lifted',
+    monster: 'Monster',
+  };
   const controls = categories.map(([category, label, keys]) => `
     <label class="ip-upgrade-control">
       <span>${label}</span>
       <select aria-label="${label} upgrade" data-upgrade-category="${category}" onchange="updateSuperCarUpgrades(this)">
         <option value="stock">Stock</option>
-        ${keys.map(key => `<option value="${key}">${upgradeSet[category][key].label}</option>`).join('')}
+        ${keys.map(key => {
+          const option = category === 'suspension' ? { label: suspensionLabels[key] } : upgradeSet[category][key];
+          return `<option value="${key}">${formatUpgradeOption(vehicleType, category, key, option.label)}</option>`;
+        }).join('')}
       </select>
     </label>`).join('');
 
@@ -819,7 +927,7 @@ function renderSuperCarUpgrades(item) {
       <strong><output data-rounded-result="${stat}">${Number.isFinite(baseValues[stat]) ? `${Math.ceil(baseValues[stat])}%` : '—'}</output></strong>
       <small>Exact: <output data-exact-result="${stat}">${Number.isFinite(baseValues[stat]) ? `${baseValues[stat]}%` : '—'}</output></small>
     </div>`).join('');
-  const healthRows = ['body', 'armor', 'wheels', 'windows'].map(stat => `
+  const healthRows = ['body', 'armor', 'wheels', ...(!isMotorcycle ? ['windows'] : [])].map(stat => `
     <div class="ip-upgrade-result">
       <span>${{ body: 'Body', armor: 'Armor', wheels: 'Wheels', windows: 'Windows' }[stat]}</span>
       <strong><output data-health-result="${stat}">${Number.isFinite(baseValues[stat]) ? baseValues[stat] : '—'}</output></strong>
@@ -828,6 +936,10 @@ function renderSuperCarUpgrades(item) {
   return _section('🛠 Vehicle Upgrades', `
     <div class="ip-super-upgrades" data-super-upgrade-panel data-vehicle-type="${vehicleType}" ${baseAttributes}>
       <div class="ip-upgrade-controls">${controls}</div>
+      <div class="ip-upgrade-result ip-upgrade-total" aria-live="polite">
+        <span>Total Upgrades Price</span>
+        <strong><output data-upgrade-total>${formatUpgradeTotal(0)}</output></strong>
+      </div>
       <div class="ip-upgrade-results" aria-live="polite">
         <div class="ip-upgrade-result-heading">Performance</div>
         ${performanceRows}
@@ -848,6 +960,20 @@ function updateSuperCarUpgrades(select) {
 
   const selected = Object.fromEntries([...panel.querySelectorAll('[data-upgrade-category]')]
     .map(control => [control.dataset.upgradeCategory, control.value]));
+  let totalPrice = 0;
+  let hasUnknownPrice = false;
+  for (const [category, key] of Object.entries(selected)) {
+    if (key === 'stock') continue;
+    const price = getVehicleUpgradePrice(vehicleType, category, key);
+    if (typeof price !== 'number') {
+      hasUnknownPrice = true;
+      continue;
+    }
+    totalPrice += price;
+  }
+  const totalOutput = panel.querySelector('[data-upgrade-total]');
+  if (totalOutput) totalOutput.innerHTML = formatUpgradeTotal(hasUnknownPrice ? '$' : totalPrice);
+
   const performanceBonus = { topSpeed: 0, acceleration: 0, braking: 0 };
   for (const category of ['engine', 'transmission', 'aspiration', 'brakes']) {
     const upgrade = vehicleUpgradeSet[category][selected[category]];
@@ -867,7 +993,7 @@ function updateSuperCarUpgrades(select) {
 
   const armorUpgrade = vehicleUpgradeSet.armor[selected.armor];
   const tireUpgrade = vehicleUpgradeSet.tires[selected.tires];
-  const windowUpgrade = vehicleUpgradeSet.windows[selected.windows];
+  const windowUpgrade = vehicleUpgradeSet.windows?.[selected.windows];
   const healthValues = {
     body: armorUpgrade?.body ?? Number(panel.dataset.baseBody),
     armor: armorUpgrade?.armor ?? Number(panel.dataset.baseArmor),
