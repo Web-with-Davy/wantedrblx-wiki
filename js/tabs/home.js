@@ -233,15 +233,15 @@ function renderHome() {
         : `<div style="color:#888;font-size:0.8rem;">No active codes at this time.</div>`;
 
     const makeCatCard = (title, emoji, desc, tab, imgSrc) => `
-        <div class="home-category-card" onclick="goToTab('${tab}')">
+        <a href="/${tab}" data-page="${tab}" class="home-category-card">
             <div class="cat-content">
                 <div class="cat-header">
                     <h3 class="cat-title">${title}</h3>
-                    <span class="cat-icon">${emoji}</span>
+                    <span class="cat-icon" aria-hidden="true">${emoji}</span>
                 </div>
                 <p class="cat-desc">${desc}</p>
             </div>
-        </div>
+        </a>
     `;
 
     const donationPercent = Math.min(100, Math.round((DONATION_GOAL.current / DONATION_GOAL.target) * 100));
@@ -254,7 +254,7 @@ function renderHome() {
                     <div class="hero-logo-container">
                         <img src="images/logo.webp" alt="WANTED Logo" class="hero-logo" width="1066" height="852">
                     </div>
-                    <h1 class="hero-title">WANTED WIKI</h1>
+                    <p class="hero-title">WANTED WIKI</p>
                     <p class="hero-text">
                         Welcome to the ultimate <strong>Wanted Wiki</strong>.<br>Here we document all information about the Roblox game Wanted.<br><br>
                         <em>Note: This wiki is community-managed and is not affiliated with Roblox, the game Wanted, or DevvGames.</em>
@@ -267,8 +267,8 @@ function renderHome() {
                         <div class="grid-header">
                             <h2 class="grid-title"><span class="cat-icon">⚔️</span> COMBAT</h2>
                             <div class="grid-nav-arrows">
-                                <span onclick="scrollCardGrid('grid-combat',-1)">&lt;</span>
-                                <span onclick="scrollCardGrid('grid-combat',1)">&gt;</span>
+                                <button type="button" class="grid-arrow" aria-label="Scroll left" onclick="scrollCardGrid('grid-combat',-1)">&lt;</button>
+                                <button type="button" class="grid-arrow" aria-label="Scroll right" onclick="scrollCardGrid('grid-combat',1)">&gt;</button>
                             </div>
                         </div>
                         <div class="inner-card-grid" id="grid-combat">
@@ -282,8 +282,8 @@ function renderHome() {
                         <div class="grid-header">
                             <h2 class="grid-title"><span class="cat-icon">🌍</span> WORLD</h2>
                             <div class="grid-nav-arrows">
-                                <span onclick="scrollCardGrid('grid-world',-1)">&lt;</span>
-                                <span onclick="scrollCardGrid('grid-world',1)">&gt;</span>
+                                <button type="button" class="grid-arrow" aria-label="Scroll left" onclick="scrollCardGrid('grid-world',-1)">&lt;</button>
+                                <button type="button" class="grid-arrow" aria-label="Scroll right" onclick="scrollCardGrid('grid-world',1)">&gt;</button>
                             </div>
                         </div>
                         <div class="inner-card-grid" id="grid-world">
@@ -298,8 +298,8 @@ function renderHome() {
                         <div class="grid-header">
                             <h2 class="grid-title"><span class="cat-icon">💰</span> ECONOMY</h2>
                             <div class="grid-nav-arrows">
-                                <span onclick="scrollCardGrid('grid-economy',-1)">&lt;</span>
-                                <span onclick="scrollCardGrid('grid-economy',1)">&gt;</span>
+                                <button type="button" class="grid-arrow" aria-label="Scroll left" onclick="scrollCardGrid('grid-economy',-1)">&lt;</button>
+                                <button type="button" class="grid-arrow" aria-label="Scroll right" onclick="scrollCardGrid('grid-economy',1)">&gt;</button>
                             </div>
                         </div>
                         <div class="inner-card-grid" id="grid-economy">

@@ -1,0 +1,133 @@
+*:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.search-input:focus-visible {
+    outline-offset: 0;
+}
+
+button,
+[role="button"] {
+    cursor: pointer;
+}
+
+.neon-title,
+.tab,
+.dropdown-content a,
+.home-category-card,
+.official-link-btn,
+.youtuber-header,
+.featured-video-card,
+.discord-join-btn {
+    text-decoration: none;
+}
+
+.attachment-category-header {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 0;
+    background: transparent;
+    text-align: left;
+}
+
+.search-count {
+    margin: 0.5rem 0 1rem;
+    color: #888;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.grid-arrow {
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.sort-btn {
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+@media (min-width: 1025px) {
+    .dropdown:focus-within .dropdown-content {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+@media (hover: none) {
+    .val-card,
+    .val-card:hover,
+    .value-card,
+    .value-card:hover {
+        transform: skew(-1deg);
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .val-card:hover::before,
+    .value-card:hover::before {
+        transform: scaleX(1);
+        opacity: 0.4;
+    }
+
+    .val-card:hover .val-img,
+    .value-card:hover img {
+        transform: none;
+    }
+
+    .home-category-card:hover,
+    .sidebar-box:hover,
+    .views-box:hover,
+    .updates-box:hover,
+    .countdown-box:hover,
+    .featured-video-card:hover,
+    .discord-widget-box:hover {
+        transform: none;
+        background: initial;
+        border-color: initial;
+        box-shadow: none;
+    }
+
+    .official-link-btn:hover,
+    .discord-join-btn:hover,
+    .youtuber-header:hover {
+        transform: none;
+        background: initial;
+        box-shadow: none;
+    }
+
+    .grid-arrow:hover {
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    body.frutiger-aero .val-card:hover,
+    body.frutiger-aero .value-card:hover,
+    body.frutiger-aero .home-category-card:hover,
+    body.frutiger-aero .sidebar-box:hover,
+    body.frutiger-aero .views-box:hover,
+    body.frutiger-aero .updates-box:hover,
+    body.frutiger-aero .countdown-box:hover,
+    body.frutiger-aero .featured-video-card:hover,
+    body.frutiger-aero .discord-widget-box:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

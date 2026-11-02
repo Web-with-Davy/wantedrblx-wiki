@@ -983,23 +983,6 @@ window.MISSIONS_BERT_TACTICAL_UNIT = [
 
 ];
 
-/* --- js/data/missions/Bert/template.js --- */
-window.MISSIONS_BERT_TEMPLATE = [
-
-  {
-    id: "template",
-    title: "Template",
-    location: "Police Station – Talk to Bert",
-    description: "",
-    howToComplete: "",
-    difficulty: "MEDIUM",
-    missionType: "Bert",
-    rewards: ["150 Police XP", "$3,000"],
-    tipsAndInfo: []
-  },
-
-];
-
 /* --- js/data/missions/Bert/the-italian-job.js --- */
 window.MISSIONS_BERT_THE_ITALIAN_JOB = [
 
@@ -1118,10 +1101,10 @@ window.MISSIONS_EASTER_SYNDICEGG = [
     title: "Syndicegg",
     location: "Park – Talk to The Easter Bunny",
     description: "Word around town is you've been looking for eggs. I can hook you up, but you're going to need to do some stuff for me first.",
-    howToComplete: "Sell $200,000 worth of loot to Sir B. ,Eliminate 1 Police with Golden Deagle, Rob 1 Gold Vault, Play with your crew for 24 hours.",
+    howToComplete: "Sell $200,000 worth of loot to Sir B. Eliminate 1 Police with Golden Deagle, Rob 1 Gold Vault, Play with your crew for 24 hours.",
     difficulty: "EASTER",
     missionType: "Easter",
-    rewards: ["", ""],
+    rewards: [],
     tipsAndInfo: []
   },
 

@@ -1,43 +1,41 @@
 (function () {
-  // Phase 1: Scripts needed to render home page and initialize core UI.
-  // Loaded immediately after registry data is ready.
   const CRITICAL_SCRIPTS = [
-    "js/tabs/home.js",
-    "js/tabs/promo-codes.js",
-    "js/core/renderer.js",
-    "js/core/item-page.js?v=20261101-1",
-    "js/core/ui.js",
-    "js/features/settings.js",
-    "js/features/garage.js",
-    "js/features/search.js",
-    "js/features/youtuber.js",
-    "js/core/app.js?v=20261101-2"
+    "js/tabs/home.js?v=20261102-1",
+    "js/core/renderer.js?v=20261102-1",
+    "js/core/item-page.js?v=20261102-1",
+    "js/core/ui.js?v=20261102-1",
+    "js/features/settings.js?v=20261102-1",
+    "js/features/garage.js?v=20261102-1",
+    "js/features/search.js?v=20261102-1",
+    "js/core/app.js?v=20261102-1"
   ];
 
-  // Phase 2: Scripts for secondary tabs and non-critical features.
-  // Deferred until browser is idle after first paint.
   const DEFERRED_SCRIPTS = [
-    "js/tabs/atms.js",
-    "js/tabs/events.js",
-    "js/tabs/gun-crates.js",
-    "js/tabs/items.js",
-    "js/tabs/locations.js?v=20261001-2",
-    "js/tabs/missions.js",
-    "js/tabs/npcs.js",
-    "js/tabs/store.js",
-    "js/tabs/valuables.js",
-    "js/tabs/vehicles.js",
-    "js/tabs/weapons.js",
-    "js/events/easter_eggs.js",
-    "js/events/birthday.js",
-    "js/events/4th-of-july.js",
-    "js/features/tutorial.js"
+    "js/tabs/promo-codes.js?v=20261102-1",
+    "js/tabs/atms.js?v=20261102-1",
+    "js/tabs/events.js?v=20261102-1",
+    "js/tabs/gun-crates.js?v=20261102-1",
+    "js/tabs/items.js?v=20261102-1",
+    "js/tabs/locations.js?v=20261102-1",
+    "js/tabs/missions.js?v=20261102-1",
+    "js/tabs/npcs.js?v=20261102-1",
+    "js/tabs/store.js?v=20261102-1",
+    "js/tabs/valuables.js?v=20261102-1",
+    "js/tabs/vehicles.js?v=20261102-1",
+    "js/tabs/weapons.js?v=20261102-1",
+    "js/features/youtuber.js?v=20261102-1",
+    "js/features/tutorial.js?v=20261102-1",
+    "js/events/easter_eggs.js?v=20261102-1"
   ];
+
+  if (new Date().getMonth() === 6 && new Date().getDate() === 4) {
+    DEFERRED_SCRIPTS.push("js/events/4th-of-july.js?v=20261102-1");
+  }
 
   function loadDeferred() {
     const doLoad = () =>
       loadScripts(DEFERRED_SCRIPTS).then(() => {
-        document.dispatchEvent(new Event('wantedDeferredReady'));
+        document.dispatchEvent(new Event("wantedDeferredReady"));
       });
     if (typeof requestIdleCallback === 'function') {
       requestIdleCallback(doLoad, { timeout: 2000 });
@@ -48,10 +46,7 @@
 
   Promise.all(window.__WANTED_LOADERS || [])
     .then(() => loadScripts(CRITICAL_SCRIPTS))
-    .then(() => {
-      document.dispatchEvent(new Event("DOMContentLoaded"));
-      loadDeferred();
-    })
+    .then(loadDeferred)
     .catch((err) => console.error("Wanted wiki failed to load:", err));
 })();
 

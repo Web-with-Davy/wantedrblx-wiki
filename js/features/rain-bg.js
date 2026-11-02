@@ -5,8 +5,15 @@
     canvas.id = 'rain-canvas';
     canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;';
     document.body.insertBefore(canvas, document.body.firstChild);
-    const ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d');
     let W = 0, H = 0;
+
+    const baseCanvas = document.createElement('canvas');
+    const baseCtx = baseCanvas.getContext('2d');
+    const mirrorCanvas = document.createElement('canvas');
+    const mirrorCtx = mirrorCanvas.getContext('2d');
+    const overlayCanvas = document.createElement('canvas');
+    const overlayCtx = overlayCanvas.getContext('2d');
 
     const blurReflCanvas = document.createElement('canvas');
     const blurReflCtx = blurReflCanvas.getContext('2d');
@@ -150,7 +157,7 @@
         }
     }
 
-    function drawBuildingLayer(list, alpha, brightness) {
+    function drawBuildingLayer(list, alpha, brightness, includeFlicker = true) {
         const now = Date.now();
         const aeroTheme = document.body.classList.contains('frutiger-aero');
         const bodyColor = aeroTheme
@@ -169,7 +176,7 @@
             ctx.fillRect(b.bx, b.by, b.bw, 1);
             drawRooftop(b);
             b.wins.forEach(w => {
-                if (w.flicker && Math.sin(now * 0.0001 + w.x) <= 0) return;
+                if (w.flicker && (!includeFlicker || Math.sin(now * 0.0001 + w.x) <= 0)) return;
                 ctx.fillStyle = aeroTheme
                     ? `rgba(220,255,255,${(0.55 + rng(w.x * 0.1) * 0.35) * alpha})`
                     : `rgba(215,215,215,${(0.38 + rng(w.x * 0.1) * 0.30) * alpha})`;
@@ -291,7 +298,7 @@
         ctx.fillStyle = fog; ctx.fillRect(0, 0, W, H);
     }
 
-    function drawAeroCity() {
+    function drawAeroCity(includeFlicker = true) {
         const sky = ctx.createLinearGradient(0, 0, 0, H * 0.72);
         sky.addColorStop(0, '#0786df');
         sky.addColorStop(0.48, '#32b9ec');
@@ -327,8 +334,8 @@
         drawCloud(W * 0.55, H * 0.43, W * 0.19);
         drawCloud(W * 0.88, H * 0.4, W * 0.14);
 
-        drawBuildingLayer(farBuildings, 0.72, 0.82);
-        drawBuildingLayer(nearBuildings, 0.98, 1.12);
+        drawBuildingLayer(farBuildings, 0.72, 0.82, includeFlicker);
+        drawBuildingLayer(nearBuildings, 0.98, 1.12, includeFlicker);
 
         const groundY = H * 0.65;
         const meadow = ctx.createLinearGradient(0, groundY, 0, H);
@@ -364,18 +371,89 @@
         ctx.fillRect(0, groundY - H * 0.025, W, H * 0.06);
     }
 
+    function drawClassicBase(includeFlicker = false) {
+        const sky = ctx.createLinearGradient(0, 0, 0, H);
+        sky.addColorStop(0, '#030406');
+        sky.addColorStop(0.45, '#07090e');
+        sky.addColorStop(0.80, '#0e1016');
+        sky.addColorStop(1, '#14161d');
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, W, H);
+        const mx = W * 0.78, my = H * 0.14, mr = H * 0.038;
+        ctx.fillStyle = '#d9d9d9';
+        ctx.beginPath();
+        ctx.arc(mx, my, mr, 0, Math.PI * 2);
+        ctx.fill();
+        drawBuildingLayer(farBuildings, 0.70, 0.72, includeFlicker);
+        drawBuildingLayer(nearBuildings, 1.00, 1.00, includeFlicker);
+        ctx.fillStyle = '#050505';
+        ctx.fillRect(0, H * 0.65, W, H * 0.05);
+        ctx.fillStyle = '#181818';
+        ctx.fillRect(0, H * 0.65, W, 2);
+        ctx.fillStyle = '#0c0f15';
+        ctx.fillRect(0, H * 0.70, W, H * 0.30);
+    }
+
+    function drawFlickeringWindows(now) {
+        const aeroTheme = document.body.classList.contains('frutiger-aero');
+        [farBuildings, nearBuildings].forEach((list, layerIndex) => {
+            list.forEach(building => building.wins.forEach(window => {
+                if (!window.flicker || Math.sin(now * 0.0001 + window.x) <= 0) return;
+                ctx.fillStyle = aeroTheme
+                    ? `rgba(220,255,255,${layerIndex ? 0.8 : 0.6})`
+                    : `rgba(215,215,215,${layerIndex ? 0.68 : 0.5})`;
+                ctx.fillRect(window.x, window.y, 5, 8);
+            }));
+        });
+    }
+
+    function paintLayers() {
+        baseCanvas.width = mirrorCanvas.width = overlayCanvas.width = W;
+        baseCanvas.height = mirrorCanvas.height = overlayCanvas.height = H;
+        ctx = baseCtx;
+        baseCtx.clearRect(0, 0, W, H);
+        if (document.body.classList.contains('frutiger-aero')) {
+            drawAeroCity(false);
+        } else {
+            drawClassicBase(false);
+        }
+
+        ctx = mirrorCtx;
+        mirrorCtx.clearRect(0, 0, W, H);
+        mirrorCtx.save();
+        mirrorCtx.translate(0, H * 1.4);
+        mirrorCtx.scale(1, -1);
+        mirrorCtx.drawImage(baseCanvas, 0, 0);
+        mirrorCtx.restore();
+
+        ctx = overlayCtx;
+        overlayCtx.clearRect(0, 0, W, H);
+        if (!document.body.classList.contains('frutiger-aero')) {
+            const lakeY = H * 0.70;
+            const shading = overlayCtx.createLinearGradient(0, lakeY, 0, H);
+            shading.addColorStop(0, 'rgba(5, 8, 12, 0.40)');
+            shading.addColorStop(0.5, 'rgba(3, 5, 8, 0.70)');
+            shading.addColorStop(1, 'rgba(0, 0, 0, 0.95)');
+            overlayCtx.fillStyle = shading;
+            overlayCtx.fillRect(0, lakeY, W, H - lakeY);
+            overlayCtx.fillStyle = 'rgba(255,255,255,0.08)';
+            overlayCtx.fillRect(0, lakeY, W, 1);
+        }
+        ctx = canvas.getContext('2d');
+    }
+
     const ripples = [];
     function addRipple(x) {
         if (ripples.length >= 28) ripples.shift();
         ripples.push({ x, r: 1, a: 0.48 });
     }
-    function drawRipples() {
+    function drawRipples(elapsed = 1) {
         const ly = H * 0.70;
         const lh = H - ly;
         for (let i = ripples.length - 1; i >= 0; i--) {
             const r = ripples[i];
-            r.r += 0.5 + (r.yFrac * 1.5);
-            r.a -= 0.015 + (1 - r.yFrac) * 0.02;
+            r.r += (0.5 + (r.yFrac * 1.5)) * elapsed;
+            r.a -= (0.015 + (1 - r.yFrac) * 0.02) * elapsed;
             if (r.a <= 0) { ripples.splice(i, 1); continue; }
 
             const ry = ly + r.yFrac * lh;
@@ -411,22 +489,41 @@
         });
     }
 
+    let lastFrameTime = 0;
+    let paintedTheme = null;
+
     function draw() {
-        if (document.body.classList.contains('frutiger-aero')) {
-            drawAeroCity();
-            return;
+        const now = performance.now();
+        const elapsed = Math.min(3, Math.max(0.25, lastFrameTime ? (now - lastFrameTime) / 16.67 : 1));
+        lastFrameTime = now;
+        const aeroTheme = document.body.classList.contains('frutiger-aero');
+        if (paintedTheme !== aeroTheme) {
+            paintLayers();
+            paintedTheme = aeroTheme;
         }
-
-        const sky = ctx.createLinearGradient(0, 0, 0, H);
-        sky.addColorStop(0, '#030406');
-        sky.addColorStop(0.45, '#07090e');
-        sky.addColorStop(0.80, '#0e1016');
-        sky.addColorStop(1, '#14161d');
-        ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
-
-        drawCity();
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(baseCanvas, 0, 0);
+        drawFlickeringWindows(now);
 
         const LAKE_Y = H * 0.70;
+        if (!aeroTheme) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, LAKE_Y, W, H - LAKE_Y);
+            ctx.clip();
+            const wt = now * 0.00045;
+            for (let s = 0; s < 40; s++) {
+                const fracStart = Math.pow(s / 40, 1.5);
+                const fracEnd = Math.pow((s + 1) / 40, 1.5);
+                const dstY = LAKE_Y + fracStart * (H - LAKE_Y);
+                const dstH = (fracEnd - fracStart) * (H - LAKE_Y);
+                const wave = Math.sin(wt + s * 0.3) * (1 + fracStart * 15);
+                ctx.drawImage(mirrorCanvas, wave, LAKE_Y + fracStart * (H - LAKE_Y) * 1.2, W, Math.max(1, dstH * 1.2), 0, dstY, W, Math.max(1, dstH + 1));
+            }
+            ctx.restore();
+            ctx.drawImage(overlayCanvas, 0, 0);
+        }
+
         LAYERS.forEach((L, li) => {
             const drops = dropsByLayer[li];
             const dx = Math.sin(L.ang);
@@ -439,8 +536,8 @@
                 ctx.lineWidth = d.w;
                 ctx.lineCap = 'round';
                 ctx.stroke();
-                d.x += d.spd * dx;
-                d.y += d.spd;
+                d.x += d.spd * dx * elapsed;
+                d.y += d.spd * elapsed;
                 if (d.y > LAKE_Y) {
                     if (Math.random() < 0.3) {
                         const yFrac = Math.pow(Math.random(), 1.5);
@@ -451,7 +548,7 @@
             });
         });
 
-        drawRipples();
+        drawRipples(elapsed);
     }
 
     let paused = false;
@@ -469,39 +566,69 @@
     }
     function syncPause() {
         const shouldPause = document.body.classList.contains('low-end-mode');
-        if (paused === shouldPause) return;
+        if (paused === shouldPause) {
+            if (W && H) {
+                paintLayers();
+                paintedTheme = document.body.classList.contains('frutiger-aero');
+                if (paused) {
+                    ctx.clearRect(0, 0, W, H);
+                    ctx.drawImage(baseCanvas, 0, 0);
+                    ctx.drawImage(overlayCanvas, 0, 0);
+                }
+            }
+            return;
+        }
         paused = shouldPause;
         if (paused) {
             if (animationFrame !== null) cancelAnimationFrame(animationFrame);
             animationFrame = null;
-            if (W && H) drawLowEndBackground();
+            if (W && H) {
+                paintLayers();
+                ctx.clearRect(0, 0, W, H);
+                ctx.drawImage(baseCanvas, 0, 0);
+                ctx.drawImage(overlayCanvas, 0, 0);
+            }
         } else {
-            bakeReflection();
+            paintLayers();
+            paintedTheme = document.body.classList.contains('frutiger-aero');
             initDrops();
             startAnimation();
         }
     }
     new MutationObserver(() => {
-        const wasPaused = paused;
         syncPause();
-        if (wasPaused && paused && W && H) drawLowEndBackground();
     }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    syncPause();
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+        } else if (!paused) {
+            lastFrameTime = 0;
+            startAnimation();
+        }
+    });
 
     function resize() {
         W = canvas.width = window.innerWidth;
         H = canvas.height = window.innerHeight;
         buildCity();
+        paintLayers();
+        paintedTheme = document.body.classList.contains('frutiger-aero');
         if (paused) {
-            drawLowEndBackground();
-        } else {
-            bakeReflection();
+            ctx.clearRect(0, 0, W, H);
+            ctx.drawImage(baseCanvas, 0, 0);
+            ctx.drawImage(overlayCanvas, 0, 0);
         }
     }
 
+    let resizeTimer = null;
     window.addEventListener('resize', () => {
-        resize();
-        if (!paused) initDrops();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            resize();
+            if (!paused) initDrops();
+        }, 150);
     });
 
     // Defer ALL heavy canvas initialization until browser is idle after first paint.
@@ -510,7 +637,9 @@
     function startRain() {
         resize();
         if (paused) {
-            drawLowEndBackground();
+            ctx.clearRect(0, 0, W, H);
+            ctx.drawImage(baseCanvas, 0, 0);
+            ctx.drawImage(overlayCanvas, 0, 0);
         } else {
             initDrops();
             startAnimation();

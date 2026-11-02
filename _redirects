@@ -1,1 +1,14 @@
-/* /index.html 200
+/weapons /index.html 200
+/vehicles /index.html 200
+/gun-crates /index.html 200
+/missions /index.html 200
+/npcs /index.html 200
+/locations /index.html 200
+/atms /index.html 200
+/valuables /index.html 200
+/store /index.html 200
+/items /index.html 200
+/events /index.html 200
+/promo-codes /index.html 200
+/item/* /index.html 200
+/home /

@@ -204,7 +204,7 @@
     pointer-events: none;
     border: 2px solid rgba(255, 255, 255, 0.9);
     z-index: 10000;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
     border-radius: 3px;
     opacity: 0;
     box-shadow: 0 0 0 0 rgba(255,255,255,0);
@@ -222,7 +222,7 @@
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='white' stroke='black' stroke-width='1.5'%3E%3Cpath d='M5.5 3.21V20.8l5.2-5.13 3.51 8.27h2l-3.66-8.59 7.45.05L5.5 3.21z'/%3E%3C/svg%3E") no-repeat;
     pointer-events: none;
     z-index: 10002;
-    transition: all 0.75s cubic-bezier(0.23, 1, 0.32, 1), transform 0.15s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
     opacity: 0;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
     transform-origin: top left;

@@ -18,6 +18,29 @@ const PAGE_NAMES = {
     store: 'STORE', items: 'ITEMS', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
 };
 
+const PAGE_META = {
+    home: { title: 'Wanted Wiki - Roblox Wanted Game Wiki', path: '/' },
+    valuables: { title: 'Valuables - Wanted Wiki', path: '/valuables' },
+    atms: { title: 'ATMs & Vaults - Wanted Wiki', path: '/atms' },
+    weapons: { title: 'Weapons - Wanted Wiki', path: '/weapons' },
+    vehicles: { title: 'Vehicles - Wanted Wiki', path: '/vehicles' },
+    'gun-crates': { title: 'Gun Crates - Wanted Wiki', path: '/gun-crates' },
+    missions: { title: 'Missions - Wanted Wiki', path: '/missions' },
+    npcs: { title: 'NPCs - Wanted Wiki', path: '/npcs' },
+    locations: { title: 'Locations - Wanted Wiki', path: '/locations' },
+    store: { title: 'Store - Wanted Wiki', path: '/store' },
+    items: { title: 'Items - Wanted Wiki', path: '/items' },
+    events: { title: 'Events - Wanted Wiki', path: '/events' },
+    'promo-codes': { title: 'Promo Codes - Wanted Wiki', path: '/promo-codes' }
+};
+
+function setPageMeta(page) {
+    const meta = PAGE_META[page] || PAGE_META.home;
+    document.title = meta.title;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = `https://wantedrblx.com${meta.path}`;
+}
+
 function getCurrentPage() {
     const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
     if (VALID_PAGES.includes(path)) return path;
@@ -29,19 +52,17 @@ function getCurrentPage() {
 window.getCurrentPage = getCurrentPage;
 
 function loadPage(page, saveToHistory = true) {
-    if (saveToHistory && typeof saveToHistory === 'object') saveToHistory = true;
     if (!container) return;
+
+    const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const currentHash = window.location.hash.replace(/^#/, '');
+    if (!saveToHistory && !VALID_PAGES.includes(currentPath) && VALID_PAGES.includes(currentHash)) {
+        window.history.replaceState({ page }, '', page === 'home' ? '/' : `/${page}`);
+    }
 
 
     document.querySelectorAll(".tab[data-page]").forEach(t => {
         t.classList.toggle("active", t.dataset.page === page);
-    });
-
-    document.querySelectorAll(".tab-dropdown-item[data-page]").forEach(item => {
-        const isActive = item.dataset.page === page;
-        item.classList.toggle("active", isActive);
-        const trigger = item.closest('.tab-group')?.querySelector('.tab-dropdown-trigger');
-        if (trigger) trigger.classList.toggle("active", isActive);
     });
 
     const isLowEnd = document.body.classList.contains('low-end-mode');
@@ -87,6 +108,7 @@ function loadPage(page, saveToHistory = true) {
         }
 
         container.innerHTML = content;
+        setPageMeta(page);
 
         const pageLabel = document.getElementById('page-label');
         if (pageLabel) pageLabel.textContent = PAGE_NAMES[page] || page.toUpperCase();
@@ -134,13 +156,13 @@ function loadPage(page, saveToHistory = true) {
             container.style.transform = 'translateY(0)';
             cards.forEach((card, index) => {
                 setTimeout(() => {
-                    card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
                     card.style.opacity = '1';
                     card.style.transform = '';
-                }, index * 20);
+                }, Math.min(index, 13) * 18);
             });
         });
-    }, isLowEnd ? 0 : 150);
+    }, isLowEnd ? 0 : 60);
 }
 
 window.addEventListener("popstate", (event) => {
@@ -161,7 +183,12 @@ window.addEventListener("popstate", (event) => {
     loadPage(page, false);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
+    const bootPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const bootHash = window.location.hash.replace(/^#/, '');
+    if (!VALID_PAGES.includes(bootPath) && VALID_PAGES.includes(bootHash)) {
+        window.history.replaceState({ page: bootHash }, '', bootHash === 'home' ? '/' : `/${bootHash}`);
+    }
 
     const themeSelect = document.getElementById('theme-select');
     if (themeSelect) {
@@ -225,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('mouseover', (e) => {
             const el = e.target.closest(interactiveSelectors);
+            if (!window.matchMedia('(hover: hover)').matches) return;
             if (el && window.audioUnlocked && hoverSfx) {
                 if (el.dataset.hovered === "true") return;
                 el.dataset.hovered = "true";
@@ -267,19 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.querySelectorAll(".tab[data-page]").forEach(tab => {
-        tab.addEventListener("click", (e) => {
-            e.preventDefault();
-            loadPage(tab.dataset.page);
-        });
-    });
-
-
     document.addEventListener('click', (e) => {
-        const item = e.target.closest('.tab-dropdown-item[data-page], .tab-direct[data-page]');
-        if (item) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const link = e.target.closest('a[data-page]');
+        if (link) {
             e.preventDefault();
-            loadPage(item.dataset.page);
+            loadPage(link.dataset.page);
         }
     });
 
@@ -316,6 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+            if (!VALID_PAGES.includes(path) && VALID_PAGES.includes(hash)) {
+                window.history.replaceState({ page: hash }, '', hash === 'home' ? '/' : `/${hash}`);
+            }
             const initialPage = VALID_PAGES.includes(path) ? path : VALID_PAGES.includes(hash) ? hash : "home";
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
@@ -502,4 +526,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateBGM();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp, { once: true });
+} else {
+    initApp();
+}

@@ -12,7 +12,6 @@ function initBackToTop() {
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    document.addEventListener('scroll', onScroll, { passive: true });
 
     btn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -123,4 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     initSearchShortcut();
     initMobileBottomNav();
-});
+}, { once: true });

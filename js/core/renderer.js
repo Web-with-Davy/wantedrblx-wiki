@@ -116,7 +116,7 @@ function renderPriceTag(price) {
 }
 
 function renderSortButtons(buttons, activeSort) {
-  return `<div class="sort-buttons">${buttons.map(btn => `<span class="sort-btn ${activeSort === btn.value ? 'active' : ''}" onclick="${btn.onClick}">${btn.label}</span>`).join('')}</div>`;
+  return `<div class="sort-buttons" role="group" aria-label="Sort">${buttons.map(btn => `<button type="button" class="sort-btn ${activeSort === btn.value ? 'active' : ''}" aria-pressed="${activeSort === btn.value}" onclick="${btn.onClick}">${btn.label}</button>`).join('')}</div>`;
 }
 
 function scrollToPageSection(id) {
@@ -162,7 +162,14 @@ function toggleCardOverlay(btn) {
 
 function toggleAttachmentCategory(headerEl) {
   const group = headerEl.closest('.attachment-group');
-  if (group) group.classList.toggle('open');
+  if (group) {
+    const isOpen = group.classList.toggle('open');
+    headerEl.setAttribute('aria-expanded', String(isOpen));
+  }
+}
+
+function attachmentGroupHtml(category, itemsHtml) {
+  return `<div class="attachment-group"><button type="button" class="attachment-category-header" aria-expanded="false" onclick="toggleAttachmentCategory(this)"><span>${category}</span><span class="attachment-chevron">▼</span></button><div class="attachment-category-items">${itemsHtml}</div></div>`;
 }
 
 function renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder = 'npcs') {
@@ -176,7 +183,7 @@ function renderNPCCard(item, rarityKey, visibleContent, hiddenContent, folder = 
   const dialoguesHTML = Object.entries(dialogueData).map(([category, items]) => {
     if (!items || items.length === 0) return '';
     const itemsHTML = items.map(d => `<div class="card-overlay-item"><p style="white-space:normal;line-height:1.5;word-break:break-word;">${d.title ? `<strong>${d.title}:</strong> ` : ''}${d.dialogue}</p></div>`).join('');
-    return `<div class="attachment-group"><div class="attachment-category-header" onclick="toggleAttachmentCategory(this)"><span>${category}</span><span class="attachment-chevron">▼</span></div><div class="attachment-category-items">${itemsHTML}</div></div>`;
+    return attachmentGroupHtml(category, itemsHTML);
   }).join('');
 
   return makeUniversalCard(item, {
@@ -198,7 +205,7 @@ function renderWeaponCard(item, rarityKey, visibleContent, hiddenContent, folder
   const attachmentsHTML = Object.entries(item.attachments || {}).map(([category, items]) => {
     if (!items || items.length === 0) return '';
     const itemsHTML = items.map(att => `<div class="card-overlay-item"><p><strong>${att.name}:</strong> ${att.price === 0 ? `<span style="color:#666">Free</span>` : formatPrice(att.price)}</p></div>`).join('');
-    return `<div class="attachment-group"><div class="attachment-category-header" onclick="toggleAttachmentCategory(this)"><span>${category}</span><span class="attachment-chevron">▼</span></div><div class="attachment-category-items">${itemsHTML}</div></div>`;
+    return attachmentGroupHtml(category, itemsHTML);
   }).join('');
 
   const contractHtml = formatPrice(item.contractPrice);

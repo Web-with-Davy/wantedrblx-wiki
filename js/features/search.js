@@ -10,6 +10,12 @@ const SEARCH_FOLDER_MAP = {
     'event': 'events'
 };
 
+function escapeSearchText(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[character]));
+}
+
 function initSearch(container, renderSearchItem) {
     const searchInput = document.getElementById("search-input");
     if (!searchInput) return;
@@ -85,28 +91,33 @@ function performSearch(query, container, renderSearchItem) {
     checkData((typeof STORE_DATA !== 'undefined' ? STORE_DATA : []), 'store', 'STORE');
 
     if (results.length === 0) {
-        container.innerHTML = `<h2>NO MATCHES FOUND</h2><p style="text-align:center; color:#888;">No entries match "${query}"</p>`;
+        container.innerHTML = `<h2>NO MATCHES FOUND</h2><p style="text-align:center; color:#888;">No entries match "${escapeSearchText(query)}"</p>`;
         return;
     }
 
+    const cappedResults = results.slice(0, 80);
+    const resultCount = results.length === 1 ? '1 match' : `${results.length} matches`;
+    const countText = results.length > cappedResults.length
+        ? `Showing ${cappedResults.length} of ${results.length} matches. Refine your search.`
+        : resultCount;
     const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    const cardsHTML = results.map(item => {
+    const cardsHTML = cappedResults.map(item => {
         // highlightedName is HTML — kept separate from item.name (plain text)
         const highlightedName = item.name.replace(regex, '<span class="highlight">$1</span>');
         return renderSearchItem({ ...item, highlightedName });
     }).join('');
 
-    container.innerHTML = `<h2>SEARCH RESULTS: "${query}"</h2><div class="val-grid">${cardsHTML}</div>`;
+    container.innerHTML = `<h2>SEARCH RESULTS: "${escapeSearchText(query)}"</h2><p class="search-count">${countText}</p><div class="val-grid">${cardsHTML}</div>`;
 
     const cards = container.querySelectorAll('.val-card');
     cards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px) skew(-1deg)';
         setTimeout(() => {
-            card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
             card.style.opacity = '1';
             card.style.transform = '';
-        }, index * 20);
+        }, Math.min(index, 13) * 18);
     });
 }
 window.renderSearchItem = renderSearchItem;

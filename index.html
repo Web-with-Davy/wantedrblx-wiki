@@ -7,32 +7,26 @@
 
     <!-- Resource hints for faster connections -->
     <link rel="dns-prefetch" href="https://www.clarity.ms">
-    <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet"></noscript>
 
     <!-- Preload LCP image: logo is the largest contentful paint element -->
     <link rel="preload" as="image" href="images/logo.webp" fetchpriority="high">
     <title>Wanted Wiki - Roblox Wanted Game Wiki</title>
 
-    <link rel="icon" type="image/x-icon" href="images/logo.webp">
-    <link rel="icon" type="image/png" sizes="48x48" href="images/logo.webp">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.webp">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.webp">
+    <link rel="icon" type="image/webp" href="images/logo.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logo.webp">
     <link rel="manifest" href="site.webmanifest">
     <link rel="canonical" href="https://wantedrblx.com/">
 
     <meta name="description"
         content="The Roblox Wanted Wiki — find all ATMs, Events, Gun Crates, Locations, Missions, NPCs, Promo Codes, Store, Valuables, Vehicles, Weapons and more!">
-    <meta name="keywords"
-        content="Wanted Roblox Wiki, Roblox Wanted, Wanted Wiki, Wanted weapons, Wanted vehicles, Wanted missions, Wanted promo codes, Wanted ATMs, Wanted locations, Wanted NPCs, Wanted valuables, Wanted gun crates">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Wanted Wiki Community">
     <meta name="language" content="en">
 
-    <meta name="thumbnail" content="https://wantedrblx.com/images/logo.webp">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Wanted Wiki - Roblox Wanted Game Wiki">
@@ -51,8 +45,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Wanted Wiki - Roblox Wanted Game Wiki">
     <meta name="twitter:description" content="The Roblox Wanted Wiki — find all ATMs, Events, Gun Crates, Locations, Missions, NPCs, Promo Codes, Store, Valuables, Vehicles, Weapons and more!">
-    <meta name="twitter:image" content="https://wantedrblx.com/images/logo.webp">
-    <meta name="twitter:image:alt" content="Wanted Wiki Logo">
+    <meta name="twitter:image" content="https://wantedrblx.com/images/og-image.webp">
+    <meta name="twitter:image:alt" content="Wanted Wiki - The Roblox Wanted Game Wiki">
 
     <meta name="theme-color" content="#000001">
 
@@ -70,11 +64,6 @@
                 "width": 1080,
                 "height": 1080
             },
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://wantedrblx.com/?search={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
         },
         {
             "@context": "https://schema.org",
@@ -85,25 +74,25 @@
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Locations",
-                    "url": "https://wantedrblx.com/#locations"
+                    "url": "https://wantedrblx.com/locations"
                 },
                 {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Weapons",
-                    "url": "https://wantedrblx.com/#weapons"
+                    "url": "https://wantedrblx.com/weapons"
                 },
                 {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Vehicles",
-                    "url": "https://wantedrblx.com/#vehicles"
+                    "url": "https://wantedrblx.com/vehicles"
                 },
                 {
                     "@type": "ListItem",
                     "position": 4,
                     "name": "Missions",
-                    "url": "https://wantedrblx.com/#missions"
+                    "url": "https://wantedrblx.com/missions"
                 }
             ]
         }
@@ -111,39 +100,40 @@
     </script>
 
     <!-- Critical CSS: only what's needed for above-the-fold render -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/controls.css">
-    <link rel="stylesheet" href="css/cards.css">
-    <link rel="stylesheet" href="css/dropdown.css">
-    <link rel="stylesheet" href="css/home.css?v=20261001-2">
-    <link rel="stylesheet" href="css/features/settings.css">
-    <link rel="stylesheet" href="css/features/wiki-ux.css">
+    <link rel="stylesheet" href="css/base.css?v=20261102-1">
+    <link rel="stylesheet" href="css/layout.css?v=20261102-1">
+    <link rel="stylesheet" href="css/controls.css?v=20261102-1">
+    <link rel="stylesheet" href="css/cards.css?v=20261102-1">
+    <link rel="stylesheet" href="css/dropdown.css?v=20261102-1">
+    <link rel="stylesheet" href="css/home.css?v=20261102-1">
+    <link rel="stylesheet" href="css/features/settings.css?v=20261102-1">
+    <link rel="stylesheet" href="css/features/wiki-ux.css?v=20261102-1">
 
     <!-- Non-critical CSS: loaded asynchronously to unblock render -->
-    <link rel="stylesheet" href="css/features/garage.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/features/tutorial.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/val-cards.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/map.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/item-page.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/events/birthday.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/events/4th-of-july.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/features/frutiger-aero.css?v=20261001-12">
+    <link rel="stylesheet" href="css/features/garage.css?v=20261102-1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/features/tutorial.css?v=20261102-1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/val-cards.css?v=20261102-1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/map.css?v=20261102-1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/item-page.css?v=20261102-1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/events/4th-of-july.css?v=20261102-1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/features/frutiger-aero.css?v=20261102-1">
+    <link rel="stylesheet" href="css/features/ux-polish.css?v=20261102-1">
     <!-- Fallback for browsers that don't support onload on link -->
     <noscript>
-        <link rel="stylesheet" href="css/features/garage.css">
-        <link rel="stylesheet" href="css/features/settings.css">
-        <link rel="stylesheet" href="css/features/tutorial.css">
-        <link rel="stylesheet" href="css/val-cards.css">
-        <link rel="stylesheet" href="css/map.css">
-        <link rel="stylesheet" href="css/item-page.css">
-        <link rel="stylesheet" href="css/events/birthday.css">
-        <link rel="stylesheet" href="css/events/4th-of-july.css">
+        <link rel="stylesheet" href="css/features/garage.css?v=20261102-1">
+        <link rel="stylesheet" href="css/features/settings.css?v=20261102-1">
+        <link rel="stylesheet" href="css/features/tutorial.css?v=20261102-1">
+        <link rel="stylesheet" href="css/val-cards.css?v=20261102-1">
+        <link rel="stylesheet" href="css/map.css?v=20261102-1">
+        <link rel="stylesheet" href="css/item-page.css?v=20261102-1">
+        <link rel="stylesheet" href="css/events/4th-of-july.css?v=20261102-1">
     </noscript>
 
     <script>
         if (localStorage.getItem("skipGarageIntro") === "true") {
-            document.write('<style>#garage-intro { display: none !important; }</style>');
+            const style = document.createElement('style');
+            style.textContent = '#garage-intro { display: none !important; }';
+            document.head.appendChild(style);
         }
     </script>
     <!-- Clarity analytics: async so it never blocks render -->
@@ -166,12 +156,12 @@
             Valuables, Vehicles, Weapons and more! Your complete community guide to the Roblox game Wanted by DevvGames.</p>
         <nav aria-label="Wiki sections">
             <ul>
-                <li><a href="https://wantedrblx.com/#weapons">Weapons</a></li>
-                <li><a href="https://wantedrblx.com/#vehicles">Vehicles</a></li>
-                <li><a href="https://wantedrblx.com/#missions">Missions</a></li>
-                <li><a href="https://wantedrblx.com/#locations">Locations</a></li>
-                <li><a href="https://wantedrblx.com/#atms">ATMs and Vaults</a></li>
-                <li><a href="https://wantedrblx.com/#promo-codes">Promo Codes</a></li>
+                <li><a href="/weapons">Weapons</a></li>
+                <li><a href="/vehicles">Vehicles</a></li>
+                <li><a href="/missions">Missions</a></li>
+                <li><a href="/locations">Locations</a></li>
+                <li><a href="/atms">ATMs and Vaults</a></li>
+                <li><a href="/promo-codes">Promo Codes</a></li>
             </ul>
         </nav>
     </div>
@@ -222,13 +212,16 @@
             }
 
             if (styles) {
-                document.write('<style id="initial-layout-styles">' + styles + '</style>');
+                const style = document.createElement('style');
+                style.id = 'initial-layout-styles';
+                style.textContent = styles;
+                document.head.appendChild(style);
             }
         })();
     </script>
 
-    <div class="police-flash-red"></div>
-    <div class="police-flash-blue"></div>
+    <div class="police-flash-red" aria-hidden="true"></div>
+    <div class="police-flash-blue" aria-hidden="true"></div>
 
     <div id="garage-intro" class="garage-intro">
         <div id="garage-door-mover" class="garage-door-mover">
@@ -245,19 +238,19 @@
 
     <header class="fixed-header">
         <div class="header-top">
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <button type="button" class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-controls="top-tabs">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <h1 class="neon-title">WANTED</h1>
+            <a href="/" data-page="home" class="neon-title">WANTED</a>
         </div>
         <nav class="top-tabs" id="top-tabs">
             <a href="/" class="tab" data-page="home"><span><span class="emoji-style">🏠</span>
                     <span>HOME</span></span></a>
 
             <div class="dropdown">
-                <a class="tab dropdown-btn"><span><span class="emoji-style">⚔️</span> <span>COMBAT</span> ▼</span></a>
+                <button type="button" class="tab dropdown-btn"><span><span class="emoji-style">⚔️</span> <span>COMBAT</span> ▼</span></button>
                 <div class="dropdown-content">
                     <a href="/weapons" class="tab dropdown-tab" data-page="weapons"><span><span
                                 class="emoji-style">🔫</span> <span>WEAPONS</span></span></a>
@@ -269,7 +262,7 @@
             </div>
 
             <div class="dropdown">
-                <a class="tab dropdown-btn"><span><span class="emoji-style">🌍</span> <span>WORLD</span> ▼</span></a>
+                <button type="button" class="tab dropdown-btn"><span><span class="emoji-style">🌍</span> <span>WORLD</span> ▼</span></button>
                 <div class="dropdown-content">
                     <a href="/locations" class="tab dropdown-tab" data-page="locations"><span><span
                                 class="emoji-style">📍</span> <span>LOCATIONS</span></span></a>
@@ -283,7 +276,7 @@
             </div>
 
             <div class="dropdown">
-                <a class="tab dropdown-btn"><span><span class="emoji-style">💰</span> <span>ECONOMY</span> ▼</span></a>
+                <button type="button" class="tab dropdown-btn"><span><span class="emoji-style">💰</span> <span>ECONOMY</span> ▼</span></button>
                 <div class="dropdown-content">
                     <a href="/atms" class="tab dropdown-tab" data-page="atms"><span><span class="emoji-style">🏧</span>
                             <span>ATMs & VAULTs</span></span></a>
@@ -300,12 +293,12 @@
 
             <div class="mobile-controls-group">
                 <div class="search-container">
-                    <input type="text" id="search-input" class="search-input" placeholder="Search... (/)">
-                    <span class="search-shortcut-hint">/</span>
+                        <input type="text" id="search-input" class="search-input" placeholder="Search... (/)" aria-label="Search the wiki" autocomplete="off">
+                        <span class="search-shortcut-hint" aria-hidden="true">/</span>
                 </div>
                 <div class="header-actions">
                     <button id="settings-toggle" class="settings-toggle header-icon-btn"
-                        title="Settings">&#x2699;&#xFE0E;</button>
+                        title="Settings" aria-label="Open settings">&#x2699;&#xFE0E;</button>
                 </div>
             </div>
         </nav>
@@ -314,21 +307,21 @@
 
     <div id="settings-panel" class="settings-panel">
         <div class="settings-backdrop"></div>
-        <div class="settings-content">
+        <div class="settings-content" role="dialog" aria-modal="true" aria-labelledby="settings-heading">
             <div class="settings-header">
-                <h2>SETTINGS</h2>
-                <button id="settings-close" class="settings-close" title="Close">&times;</button>
+                <h2 id="settings-heading">SETTINGS</h2>
+                <button id="settings-close" class="settings-close" title="Close" aria-label="Close settings">&times;</button>
             </div>
             <div class="settings-body">
                 <div class="setting-item">
-                    <label class="setting-label">
+                    <label class="setting-label" for="bgm-volume">
                         <span class="setting-icon">♪</span>
                         <span class="setting-name">Music Volume</span>
                     </label>
                     <input type="range" id="bgm-volume" class="setting-slider" min="0" max="1" step="0.01" value="0.4">
                 </div>
                 <div class="setting-item">
-                    <label class="setting-label">
+                    <label class="setting-label" for="bgm-upload-btn">
                         <span class="setting-icon">📂</span>
                         <span class="setting-name">Custom Music (.aac)</span>
                     </label>
@@ -341,7 +334,7 @@
                     <input type="file" id="bgm-upload" accept="audio/aac" style="display: none;">
                 </div>
                 <div class="setting-item">
-                    <label class="setting-label">
+                    <label class="setting-label" for="card-size-slider">
                         <span class="setting-icon">▤</span>
                         <span class="setting-name">Card Size</span>
                     </label>
@@ -393,10 +386,10 @@
                         <div class="hero-section">
                             <div class="hero-bg"></div>
                             <div class="hero-logo-container">
-                                <img src="images/logo.webp" alt="WANTED Logo" class="hero-logo" width="1066"
+                                <img src="images/logo.webp" alt="" class="hero-logo" width="1066"
                                     height="852" fetchpriority="high">
                             </div>
-                            <h1 class="hero-title">WANTED WIKI</h1>
+                            <p class="hero-title">WANTED WIKI</p>
                             <p class="hero-text">
                                 Welcome to the ultimate <strong>Wanted Wiki</strong>.<br>Here we document all
                                 information about the Roblox game Wanted.
@@ -411,27 +404,27 @@
     <div id="page-label">HOME</div>
 
     <button id="back-to-top" aria-label="Back to top">↑</button>
-    <div id="copy-toast"></div>
+    <div id="copy-toast" role="status" aria-live="polite"></div>
 
     <nav id="mobile-bottom-nav" aria-label="Quick navigation">
         <div class="mobile-nav-items">
-            <button class="mobile-nav-item active" data-page="home">
+                <button type="button" class="mobile-nav-item active" data-page="home">
                 <span class="mobile-nav-icon">🏠</span>
                 <span class="mobile-nav-label">Home</span>
             </button>
-            <button class="mobile-nav-item" data-page="weapons">
+                <button type="button" class="mobile-nav-item" data-page="weapons">
                 <span class="mobile-nav-icon">🔫</span>
                 <span class="mobile-nav-label">Weapons</span>
             </button>
-            <button class="mobile-nav-item" data-page="vehicles">
+                <button type="button" class="mobile-nav-item" data-page="vehicles">
                 <span class="mobile-nav-icon">🚗</span>
                 <span class="mobile-nav-label">Vehicles</span>
             </button>
-            <button class="mobile-nav-item" data-page="missions">
+                <button type="button" class="mobile-nav-item" data-page="missions">
                 <span class="mobile-nav-icon">📜</span>
                 <span class="mobile-nav-label">Missions</span>
             </button>
-            <button class="mobile-nav-item" data-page="promo-codes">
+                <button type="button" class="mobile-nav-item" data-page="promo-codes">
                 <span class="mobile-nav-icon">🎟️</span>
                 <span class="mobile-nav-label">Codes</span>
             </button>
@@ -446,32 +439,32 @@
     <audio id="sfx-load" src="sounds/load.aac" preload="metadata"></audio>
 
     <!-- Core: loader must come before data-bundle and registries -->
-    <script defer src="js/features/rain-bg.js?v=20261001-2"></script>
-    <script defer src="js/core/config.js"></script>
-    <script defer src="js/core/loader.js"></script>
+    <script defer src="js/features/rain-bg.js?v=20261102-1"></script>
+    <script defer src="js/core/config.js?v=20261102-1"></script>
+    <script defer src="js/core/loader.js?v=20261102-1"></script>
 
     <!-- Data bundle: 177 data files merged into 1 request.
          Sets window.__WANTED_DATA_BUNDLED = true so registry scripts skip loadScripts() for data files.
          Re-run ./build-bundle.sh whenever data files are added or changed. -->
-    <script defer src="js/data-bundle.js"></script>
+    <script defer src="js/data-bundle.js?v=20261102-1"></script>
 
     <!-- Registry scripts: use data variables from data-bundle.js; loadScripts() for js/data/ is skipped -->
-    <script defer src="js/registry/atms.js"></script>
-    <script defer src="js/registry/contributors.js"></script>
-    <script defer src="js/registry/events.js"></script>
-    <script defer src="js/registry/gun-crates.js"></script>
-    <script defer src="js/registry/items.js"></script>
-    <script defer src="js/registry/missions.js"></script>
-    <script defer src="js/registry/npcs.js"></script>
-    <script defer src="js/registry/promo-codes.js"></script>
-    <script defer src="js/registry/store.js"></script>
-    <script defer src="js/registry/valuables.js"></script>
-    <script defer src="js/registry/vehicles.js"></script>
-    <script defer src="js/registry/youtubers.js"></script>
-    <script defer src="js/registry/weapons.js"></script>
+    <script defer src="js/registry/atms.js?v=20261102-1"></script>
+    <script defer src="js/registry/contributors.js?v=20261102-1"></script>
+    <script defer src="js/registry/events.js?v=20261102-1"></script>
+    <script defer src="js/registry/gun-crates.js?v=20261102-1"></script>
+    <script defer src="js/registry/items.js?v=20261102-1"></script>
+    <script defer src="js/registry/missions.js?v=20261102-1"></script>
+    <script defer src="js/registry/npcs.js?v=20261102-1"></script>
+    <script defer src="js/registry/promo-codes.js?v=20261102-1"></script>
+    <script defer src="js/registry/store.js?v=20261102-1"></script>
+    <script defer src="js/registry/valuables.js?v=20261102-1"></script>
+    <script defer src="js/registry/vehicles.js?v=20261102-1"></script>
+    <script defer src="js/registry/youtubers.js?v=20261102-1"></script>
+    <script defer src="js/registry/weapons.js?v=20261102-1"></script>
 
-    <script defer src="js/features/wiki-ux.js"></script>
-    <script defer src="js/core/bootstrap.js?v=20261001-4"></script>
+    <script defer src="js/features/wiki-ux.js?v=20261102-1"></script>
+    <script defer src="js/core/bootstrap.js?v=20261102-1"></script>
 
 
 </body>

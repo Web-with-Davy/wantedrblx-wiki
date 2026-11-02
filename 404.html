@@ -4,20 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanted Wiki - Redirecting...</title>
-    <link rel="icon" type="image/x-icon" href="/images/logo.webp">
-    <link rel="canonical" href="https://wantedrblx.com/">
+    <title>Wanted Wiki - Page Not Found</title>
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
 
     <meta name="robots" content="noindex, nofollow">
-
-    <script>
-        (function () {
-            var validPages = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "events", "promo-codes"];
-            var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').replace('.html', '');
-            var hash = validPages.includes(path) ? '#' + path : '';
-            window.location.replace('/' + hash);
-        })();
-    </script>
 
     <style>
         body {
@@ -30,12 +20,47 @@
             justify-content: center;
             min-height: 100vh;
             font-size: 1.2rem;
+            text-align: center;
+        }
+        main {
+            max-width: 720px;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        a {
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
-    <p>Redirecting...</p>
+    <main>
+        <h1>Page not found</h1>
+        <p>The page you requested does not exist.</p>
+        <nav aria-label="Wiki sections">
+            <a href="/">Home</a>
+            <a href="/weapons">Weapons</a>
+            <a href="/vehicles">Vehicles</a>
+            <a href="/gun-crates">Gun Crates</a>
+            <a href="/missions">Missions</a>
+            <a href="/npcs">NPCs</a>
+            <a href="/locations">Locations</a>
+            <a href="/atms">ATMs &amp; Vaults</a>
+            <a href="/valuables">Valuables</a>
+            <a href="/store">Store</a>
+            <a href="/items">Items</a>
+            <a href="/events">Events</a>
+            <a href="/promo-codes">Promo Codes</a>
+        </nav>
+    </main>
 </body>
 
 </html>

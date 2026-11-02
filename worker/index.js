@@ -8,11 +8,6 @@ const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, mis
 
 import ITEMS from '../items-data.json';
 
-const PAGE_PATHS = new Set([
-  'valuables', 'atms', 'weapons', 'vehicles', 'gun-crates', 'missions',
-  'npcs', 'locations', 'store', 'items', 'events', 'promo-codes'
-]);
-
 function slugify(str) {
   return (str || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -32,8 +27,7 @@ function buildHtml(item, category, id) {
   const title = item ? `${item.n} — Wanted Wiki` : 'Wanted Wiki';
   const desc  = (item && item.d) ? item.d : DEFAULT_DESC;
   const image = (item && item.i) ? item.i : DEFAULT_IMG;
-  const canonical = SITE + '/item/' + category + '/' + id;
-  const hashUrl   = SITE + '/#item/' + category + '/' + id;
+  const canonical = SITE + '/item/' + category + '/' + id + '/';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -53,11 +47,11 @@ function buildHtml(item, category, id) {
   <meta name="twitter:description" content="${escHtml(desc)}">
   <meta name="twitter:image" content="${escHtml(image)}">
   <link rel="canonical" href="${escHtml(canonical)}">
-  <meta http-equiv="refresh" content="0;url=${escHtml(hashUrl)}">
 </head>
 <body>
-  <script>location.replace(${JSON.stringify(hashUrl)});</script>
-  <p>Redirecting to <a href="${escHtml(hashUrl)}">${escHtml(title)}</a>…</p>
+  <h1>${escHtml(title)}</h1>
+  <p>${escHtml(desc)}</p>
+  <a href="${SITE}/">Back to the Wanted Wiki</a>
 </body>
 </html>`;
 }
@@ -87,126 +81,33 @@ function isBot(ua) {
   );
 }
 
-const ITEM_PATH_COMPAT = `<script>
-(() => {
-  const parts = location.pathname.split('/').filter(Boolean);
-  if (parts.length !== 3 || parts[0] !== 'item') return;
-
-  const category = decodeURIComponent(parts[1]);
-  const id = decodeURIComponent(parts[2]);
-  const pushState = history.pushState.bind(history);
-
-  history.pushState = (state, title, url) => {
-    if (state && state.itemPage && typeof url === 'string' && url.startsWith('#item/')) {
-      const itemParts = url.slice(1).split('/');
-      if (itemParts.length >= 3) {
-        url = '/item/' + encodeURIComponent(itemParts[1]) + '/' + encodeURIComponent(itemParts.slice(2).join('/')) + '/';
-        if (url === location.pathname) return history.replaceState(state, title, url);
-      }
-    }
-    return pushState(state, title, url);
-  };
-
-  let pending = true;
-  window._handleItemPagePath = () => {
-    if (typeof window.loadItemPage === 'function') {
-      pending = false;
-      window.loadItemPage(category, id, category);
-    }
-    return true;
-  };
-
-  const timer = setInterval(() => {
-    if (pending && typeof window.loadItemPage === 'function') window._handleItemPagePath();
-    if (!pending) clearInterval(timer);
-  }, 50);
-  setTimeout(() => clearInterval(timer), 15000);
-})();
-</script>`;
-
-const PAGE_PATH_COMPAT = `<script>
-(() => {
-  const page = location.pathname.split('/').filter(Boolean)[0];
-  const pages = ['valuables', 'atms', 'weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'store', 'items', 'events', 'promo-codes'];
-  const isCategoryPath = pages.includes(page);
-  const isHomePath = location.pathname === '/';
-  if (!isCategoryPath && !isHomePath) return;
-
-  const cleanNavigationLinks = () => {
-    document.querySelectorAll('a[data-page]').forEach(link => {
-      const targetPage = link.dataset.page;
-      if (targetPage && targetPage !== 'home' && pages.includes(targetPage)) {
-        link.setAttribute('href', '/' + targetPage);
-      } else if (targetPage === 'home') {
-        link.setAttribute('href', '/');
-      }
-    });
-  };
-  cleanNavigationLinks();
-  document.addEventListener('DOMContentLoaded', cleanNavigationLinks, { once: true });
-  new MutationObserver(cleanNavigationLinks).observe(document.documentElement, { childList: true, subtree: true });
-
-  const pushState = history.pushState.bind(history);
-  history.pushState = (state, title, url) => {
-    if (state && typeof state.page === 'string') {
-      url = state.page === 'home' ? '/' : '/' + state.page;
-      if (url === location.pathname) return history.replaceState(state, title, url);
-    }
-    return pushState(state, title, url);
-  };
-
-  const renderers = {
-    valuables: 'renderValuables', atms: 'renderATMs', weapons: 'renderWeapons',
-    vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates', missions: 'renderMissions',
-    npcs: 'renderNPCs', locations: 'renderLocations', store: 'renderStore',
-    items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes'
-  };
-  const labels = {
-    valuables: 'VALUABLES', atms: 'ATMs & VAULTS', weapons: 'WEAPONS',
-    vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES', missions: 'MISSIONS',
-    npcs: 'NPCs', locations: 'LOCATIONS', store: 'STORE', items: 'ITEMS',
-    events: 'EVENTS', 'promo-codes': 'PROMO CODES'
-  };
-  if (!isCategoryPath) return;
-
-  const timer = setInterval(() => {
-    const label = document.getElementById('page-label')?.textContent;
-    if (label === labels[page]) {
-      clearInterval(timer);
-      return;
-    }
-
-    if (typeof window.loadPage !== 'function' || typeof window[renderers[page]] !== 'function') return;
-    window.loadPage(page, false);
-  }, 750);
-  setTimeout(() => clearInterval(timer), 15000);
-})();
-</script>`;
-
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
-
-    const itemMatch = url.pathname.match(/^\/item\/([^\/]+)\/([^\/]+)\/?$/);
-    const page = url.pathname.split('/').filter(Boolean)[0] || '';
-    const isPageRoute = PAGE_PATHS.has(page);
-    const isHomeRoute = url.pathname === '/';
-    if (!itemMatch && !isPageRoute && !isHomeRoute) {
-      // Pass everything else through to origin
+    let url;
+    let itemMatch;
+    try {
+      url = new URL(request.url);
+      itemMatch = url.pathname.match(/^\/item\/([^\/]+)\/([^\/]+)\/?$/);
+      if (itemMatch) {
+        itemMatch[1] = decodeURIComponent(itemMatch[1]);
+        itemMatch[2] = decodeURIComponent(itemMatch[2]);
+      }
+    } catch (error) {
       return fetch(request);
     }
 
-    const [, category, id] = itemMatch || [];
-    const item = itemMatch ? lookup(category, id) : null;
+    if (!itemMatch) return fetch(request);
+
+    const [, category, id] = itemMatch;
+    const item = lookup(category, id);
     const ua = request.headers.get('user-agent') || '';
 
-    if (!itemMatch || !isBot(ua)) {
+    if (!isBot(ua)) {
       const appResponse = await fetch(new URL('/', url));
       if (!appResponse.ok) return appResponse;
 
       const appHtml = (await appResponse.text())
-        .replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">${ITEM_PATH_COMPAT}${PAGE_PATH_COMPAT}`)
-        .replace(/js\/core\/bootstrap\.js\?v=[^"']+/, 'js/core/bootstrap.js?v=20261101-2');
+        .replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">`);
       return new Response(appHtml, {
         status: appResponse.status,
         headers: {
@@ -215,6 +116,8 @@ export default {
         },
       });
     }
+
+    if (!item) return new Response('Not found', { status: 404 });
 
     const html = buildHtml(item, category, id);
 
