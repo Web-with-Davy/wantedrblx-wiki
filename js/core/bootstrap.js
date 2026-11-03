@@ -24,8 +24,7 @@
     "js/tabs/vehicles.js?v=20261102-1",
     "js/tabs/weapons.js?v=20261102-1",
     "js/features/youtuber.js?v=20261102-1",
-    "js/features/tutorial.js?v=20261102-1",
-    "js/events/easter_eggs.js?v=20261102-1"
+    "js/features/tutorial.js?v=20261102-1"
   ];
 
   if (new Date().getMonth() === 6 && new Date().getDate() === 4) {
