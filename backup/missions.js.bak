@@ -851,7 +851,6 @@ const MISSIONS_DATA = [
     rewards: ["500 Syndicate XP", "$10,000"]
   },
 
-  // Easter Missions
   {
     id: "the-egg-hunt",
     showMoreButton: true,
@@ -900,7 +899,6 @@ const MISSIONS_DATA = [
     rewards: ["", ""]
   },
 
-  // Christmas Missions
   {
     id: "santas-helper",
     showMoreButton: true,

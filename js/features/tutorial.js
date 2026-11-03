@@ -379,7 +379,6 @@ function initTutorial() {
         if (currentStep === 0) {
             highlight.classList.remove('active');
             highlight.style.opacity = '0';
-            // Centred via CSS on all screen sizes — clear any residual inline styles.
             content.style.top = '';
             content.style.left = '';
             content.style.right = '';
@@ -394,14 +393,12 @@ function initTutorial() {
         content.style.opacity = '1';
 
         if (!isMobile) {
-            // Desktop: pin to bottom-right.
             content.style.transform = 'none';
             content.style.top = 'auto';
             content.style.left = 'auto';
             content.style.right = '24px';
             content.style.bottom = '24px';
         } else {
-            // Mobile: CSS handles bottom-centre positioning; clear any desktop overrides.
             content.style.transform = '';
             content.style.top = '';
             content.style.left = '';

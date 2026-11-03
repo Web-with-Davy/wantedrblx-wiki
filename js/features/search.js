@@ -102,7 +102,6 @@ function performSearch(query, container, renderSearchItem) {
         : resultCount;
     const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     const cardsHTML = cappedResults.map(item => {
-        // highlightedName is HTML — kept separate from item.name (plain text)
         const highlightedName = item.name.replace(regex, '<span class="highlight">$1</span>');
         return renderSearchItem({ ...item, highlightedName });
     }).join('');

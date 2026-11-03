@@ -283,7 +283,7 @@ function initApp() {
     initGlobalSounds();
 
     if (bgm && volumeSlider) {
-        const savedVol = localStorage.getItem("bgmVolume") || 0.025;
+        const savedVol = localStorage.getItem("bgmVolume") || 0.05;
         volumeSlider.value = savedVol;
         bgm.volume = savedVol;
 
@@ -321,11 +321,8 @@ function initApp() {
         loadPage(page);
     });
 
-    // Pages whose renderers are loaded in the deferred (non-critical) bundle.
     const DEFERRED_PAGES = ["atms", "events", "gun-crates", "items", "locations", "missions", "npcs", "store", "valuables", "vehicles", "weapons"];
 
-    // Top-level listener registered BEFORE the garage runs — immune to race conditions.
-    // When deferred scripts finish, load any page that was parked during the garage phase.
     window.__deferredReady = false;
     document.addEventListener('wantedDeferredReady', () => {
         window.__deferredReady = true;
@@ -364,7 +361,6 @@ function initApp() {
                 targetTab.classList.add("active");
             }
 
-            // Check renderer readiness using the actual function names (avoids case mismatch like renderAtms vs renderATMs).
             const RENDERER_MAP = {
                 home: 'renderHome', valuables: 'renderValuables', atms: 'renderATMs',
                 weapons: 'renderWeapons', vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates',
@@ -375,8 +371,6 @@ function initApp() {
             const rendererReady = !DEFERRED_PAGES.includes(initialPage) || typeof window[rendererName] === 'function';
 
             if (!rendererReady) {
-                // Renderer not loaded yet — park it.
-                // If wantedDeferredReady already fired (race condition), load immediately.
                 if (window.__deferredReady) {
                     if (skipped) {
                         loadPage(initialPage, false);
@@ -389,7 +383,6 @@ function initApp() {
                     if (!skipped) playBGM();
                 }
             } else {
-                // Renderer already available — load immediately.
                 if (skipped) {
                     loadPage(initialPage, false);
                 } else {

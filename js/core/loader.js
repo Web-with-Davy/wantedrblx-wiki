@@ -1,6 +1,4 @@
 function loadScripts(paths) {
-  // If the data bundle has been pre-loaded, skip any individual data file requests.
-  // This eliminates 177+ HTTP requests when running with data-bundle.js.
   const filteredPaths = window.__WANTED_DATA_BUNDLED
     ? paths.filter(p => !p.startsWith('js/data/'))
     : paths;

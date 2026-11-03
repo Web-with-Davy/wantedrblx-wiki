@@ -22,7 +22,6 @@ function run() {
     return;
   }
 
-  // Load existing items dictionary if present
   let itemsData = {
     weapons: {},
     vehicles: {},
@@ -43,7 +42,6 @@ function run() {
     } catch (_) {}
   }
 
-  // Evaluate data-bundle in isolated sandbox
   const sandbox = { window: {} };
   const bundleCode = fs.readFileSync(bundlePath, 'utf8');
   try {
@@ -56,7 +54,6 @@ function run() {
 
   const w = sandbox.window;
 
-  // Sync data from bundle
   for (const [key, val] of Object.entries(w)) {
     if (!Array.isArray(val) || val.length === 0) continue;
 
@@ -80,7 +77,6 @@ function run() {
     if (key.startsWith('EVENT_')) mapItem('events', 'events');
   }
 
-  // Save items-data.json
   fs.writeFileSync(itemsJsonPath, JSON.stringify(itemsData), 'utf8');
 
   const totalItems = Object.values(itemsData).reduce((total, category) => total + Object.keys(category).length, 0);

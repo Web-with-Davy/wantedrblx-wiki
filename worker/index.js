@@ -1,6 +1,3 @@
-// Wanted Wiki — Item embed worker
-// Intercepts /item/<category>/<slug> requests and returns OG-tagged HTML
-// for Discord/social embeds. All other requests pass through to the origin.
 
 const SITE = 'https://wantedrblx.com';
 const DEFAULT_IMG = SITE + '/images/og-image.webp';
@@ -15,9 +12,7 @@ function slugify(str) {
 function lookup(category, id) {
   const cat = ITEMS[category];
   if (!cat) return null;
-  // direct hit
   if (cat[id]) return cat[id];
-  // try normalizing the id
   const norm = slugify(id);
   if (cat[norm]) return cat[norm];
   return null;
