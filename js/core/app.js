@@ -301,11 +301,19 @@ function initApp() {
 
     document.addEventListener('click', (e) => {
         if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        const link = e.target.closest('a[data-page]');
-        if (link) {
-            e.preventDefault();
-            loadPage(link.dataset.page);
-        }
+
+        const link = e.target.closest('a');
+        if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+
+        const linkedPage = link.dataset.page || url.pathname.replace(/^\/+|\/+$/g, '');
+        const page = linkedPage || 'home';
+        if (!VALID_PAGES.includes(page)) return;
+
+        e.preventDefault();
+        loadPage(page);
     });
 
     // Pages whose renderers are loaded in the deferred (non-critical) bundle.
