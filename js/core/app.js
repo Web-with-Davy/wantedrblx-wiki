@@ -192,13 +192,17 @@ function initApp() {
 
     const themeSelect = document.getElementById('theme-select');
     if (themeSelect) {
-        const savedTheme = localStorage.getItem('visualTheme') === 'frutiger-aero' ? 'frutiger-aero' : 'classic';
+        const storedTheme = localStorage.getItem('visualTheme');
+        const savedTheme = ['christmas', 'classic', 'frutiger-aero'].includes(storedTheme) ? storedTheme : 'classic';
         themeSelect.value = savedTheme;
         const applyTheme = (theme) => {
+            const useChristmasTheme = theme === 'christmas';
             const useAeroTheme = theme === 'frutiger-aero';
             document.body.classList.toggle('frutiger-aero', useAeroTheme);
-            localStorage.setItem('visualTheme', useAeroTheme ? 'frutiger-aero' : 'classic');
-            document.dispatchEvent(new CustomEvent('wantedThemeChanged', { detail: { theme: useAeroTheme ? 'frutiger-aero' : 'classic' } }));
+            document.body.classList.toggle('christmas-theme', useChristmasTheme);
+            const activeTheme = theme === 'frutiger-aero' ? 'frutiger-aero' : useChristmasTheme ? 'christmas' : 'classic';
+            localStorage.setItem('visualTheme', activeTheme);
+            document.dispatchEvent(new CustomEvent('wantedThemeChanged', { detail: { theme: activeTheme } }));
         };
 
         applyTheme(savedTheme);

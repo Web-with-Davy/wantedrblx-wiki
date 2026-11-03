@@ -117,6 +117,7 @@
     <link rel="stylesheet" href="css/item-page.css?v=20261102-1" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/events/4th-of-july.css?v=20261102-1" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/features/frutiger-aero.css?v=20261102-1">
+    <link rel="stylesheet" href="css/features/christmas.css?v=20261103-1">
     <link rel="stylesheet" href="css/features/ux-polish.css?v=20261102-1">
     <!-- Fallback for browsers that don't support onload on link -->
     <noscript>
@@ -168,9 +169,9 @@
     <script>
         (function () {
             const isSidebar = localStorage.getItem("sidebarMode") === "true" && window.innerWidth > 1024;
-            if (localStorage.getItem("visualTheme") === "frutiger-aero") {
-                document.body.classList.add("frutiger-aero");
-            }
+            const savedTheme = localStorage.getItem("visualTheme");
+            if (savedTheme === "frutiger-aero") document.body.classList.add("frutiger-aero");
+            if (savedTheme === "christmas") document.body.classList.add("christmas-theme");
             if (isSidebar) {
                 document.body.classList.add("left-sidebar-mode");
                 document.documentElement.classList.add("left-sidebar-mode");
@@ -348,6 +349,7 @@
                         <span class="setting-name">Visual Theme</span>
                     </label>
                     <select id="theme-select" class="setting-select">
+                        <option value="christmas">Christmas</option>
                         <option value="classic">Classic</option>
                         <option value="frutiger-aero">Frutiger Aero</option>
                     </select>
@@ -439,7 +441,7 @@
     <audio id="sfx-load" src="sounds/load.aac" preload="metadata"></audio>
 
     <!-- Core: loader must come before data-bundle and registries -->
-    <script defer src="js/features/rain-bg.js?v=20261102-1"></script>
+    <script defer src="js/features/rain-bg.js?v=20261103-1"></script>
     <script defer src="js/core/config.js?v=20261102-1"></script>
     <script defer src="js/core/loader.js?v=20261102-1"></script>
 
