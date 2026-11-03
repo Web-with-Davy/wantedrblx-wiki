@@ -406,14 +406,19 @@ function initApp() {
     const lowEndToggle = document.getElementById("low-end-toggle");
     const lowEndStatus = document.getElementById("low-end-status");
     if (lowEndToggle && lowEndStatus) {
-        const isLowEnd = document.body.classList.contains("low-end-mode");
-        lowEndToggle.classList.toggle("active", isLowEnd);
-        lowEndStatus.textContent = isLowEnd ? 'ON' : 'OFF';
+        const syncLowEndToggle = () => {
+            const isLowEnd = document.body.classList.contains("low-end-mode");
+            lowEndToggle.classList.toggle("active", isLowEnd);
+            lowEndStatus.textContent = isLowEnd ? 'ON' : 'OFF';
+        };
+
+        syncLowEndToggle();
+        window.addEventListener('pageshow', syncLowEndToggle);
         lowEndToggle.addEventListener("click", () => {
             const active = document.body.classList.toggle("low-end-mode");
             lowEndToggle.classList.toggle("active", active);
             lowEndStatus.textContent = active ? 'ON' : 'OFF';
-            localStorage.setItem("lowEndMode", active);
+            localStorage.setItem("lowEndMode", active ? "true" : "false");
         });
     }
 

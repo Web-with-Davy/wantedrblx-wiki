@@ -1161,7 +1161,7 @@
         drawRipples(elapsed);
     }
 
-    let paused = false;
+    let paused = document.body.classList.contains('low-end-mode');
     let animationFrame = null;
 
     function loop() {

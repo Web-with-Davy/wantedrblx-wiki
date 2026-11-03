@@ -1232,8 +1232,10 @@ body.low-end-mode .updates-box,
 body.low-end-mode .countdown-box,
 body.low-end-mode .staff-card,
 body.low-end-mode .contributor-card,
-body.low-end-mode .settings-content {
+body.low-end-mode .settings-content,
+body.low-end-mode .fixed-header {
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     background: #0a0a0a;
     box-shadow: none;
     border-color: #333;

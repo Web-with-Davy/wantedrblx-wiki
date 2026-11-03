@@ -7,7 +7,7 @@
     "js/features/settings.js?v=20261102-1",
     "js/features/garage.js?v=20261102-1",
     "js/features/search.js?v=20261102-1",
-    "js/core/app.js?v=20261103-1"
+    "js/core/app.js?v=20261103-2"
   ];
 
   const DEFERRED_SCRIPTS = [
