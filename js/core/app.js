@@ -278,7 +278,7 @@ function initApp() {
     initGlobalSounds();
 
     if (bgm && volumeSlider) {
-        const savedVol = localStorage.getItem("bgmVolume") || 0.4;
+        const savedVol = localStorage.getItem("bgmVolume") || 0.1;
         volumeSlider.value = savedVol;
         bgm.volume = savedVol;
 
