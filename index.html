@@ -49,6 +49,15 @@
 
     <meta name="theme-color" content="#000001">
 
+    <script>
+        (function () {
+            const route = new URLSearchParams(window.location.search).get('route');
+            if (route && /^\/(?:[a-z0-9-]+(?:\/[^/?#]+)?)\/?$/i.test(route)) {
+                window.history.replaceState({}, document.title, route);
+            }
+        })();
+    </script>
+
     <script type="application/ld+json">
     [
         {

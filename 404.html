@@ -67,7 +67,7 @@
             const pages = new Set(['weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'atms', 'valuables', 'store', 'items', 'events', 'promo-codes']);
             const page = window.location.pathname.replace(/^\/+|\/+$/g, '');
             if (pages.has(page) && !window.location.hash) {
-                window.location.replace(`/#${page}`);
+                window.location.replace(`/?route=${encodeURIComponent('/' + page)}`);
                 return;
             }
             document.body.style.visibility = 'visible';
