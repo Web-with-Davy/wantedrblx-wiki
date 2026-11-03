@@ -6,9 +6,3 @@ routes = [
 	{ pattern = "wantedrblx.com/item/*", zone_name = "wantedrblx.com" }
 ]
 
-[vars]
-
-# Route: intercept /item/* on the main domain; pass everything else to the static site
-# Set this up in the Cloudflare dashboard under Workers → Triggers → Routes:
-#   wantedrblx.com/item/*  → wantedrblx-embed
-

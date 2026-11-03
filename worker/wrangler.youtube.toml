@@ -1,0 +1,11 @@
+name = "wanted-youtube-videos"
+main = "youtube.js"
+compatibility_date = "2024-09-23"
+
+[[ratelimits]]
+name = "YOUTUBE_REFRESH_LIMITER"
+namespace_id = "2026110301"
+
+	[ratelimits.simple]
+	limit = 10
+	period = 60

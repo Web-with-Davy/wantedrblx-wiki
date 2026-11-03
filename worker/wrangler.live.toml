@@ -1,0 +1,12 @@
+name = "wanted-live-check"
+main = "live-check.js"
+compatibility_date = "2024-09-23"
+preview_urls = false
+
+[[ratelimits]]
+name = "LIVE_CHECK_LIMITER"
+namespace_id = "2026110302"
+
+  [ratelimits.simple]
+  limit = 30
+  period = 60
