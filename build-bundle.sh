@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # build-bundle.sh — Concatenates all wiki data files into a single JS bundle.
-# This replaces 177+ individual HTTP requests with a single file load.
+# This replaces the individual data-file HTTP requests with a single file load.
 # Run this script whenever data files are added or changed.
 
 set -e
@@ -31,8 +31,6 @@ echo "window.__WANTED_DATA_BUNDLED = true;" >> "$OUT"
 if [ -f "$WIKI_DIR/scripts/build-item-embeds.js" ]; then
     node "$WIKI_DIR/scripts/build-item-embeds.js"
 fi
-
-
 
 # Update weapon manifest in js/registry/weapons.js to match current weapon data files
 WEAPONS_REGISTRY="$WIKI_DIR/js/registry/weapons.js"

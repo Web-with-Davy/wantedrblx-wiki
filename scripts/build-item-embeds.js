@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const SITE = 'https://wantedrblx.com';
-const DEFAULT_IMG = `${SITE}/images/og-image.webp`;
-const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, missions, valuables, promo codes and more!';
 
 const projectRoot = path.resolve(__dirname, '..');
 const bundlePath = path.join(projectRoot, 'js', 'data-bundle.js');

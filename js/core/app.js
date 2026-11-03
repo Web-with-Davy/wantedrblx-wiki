@@ -58,7 +58,7 @@ function getCurrentPage() {
 }
 window.getCurrentPage = getCurrentPage;
 
-function loadPage(page, saveToHistory = true) {
+function loadPage(page, saveToHistory = true, sectionId = null) {
     if (!container) return;
 
     const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
@@ -126,10 +126,14 @@ function loadPage(page, saveToHistory = true) {
             breadcrumb._hideTimer = setTimeout(() => breadcrumb.classList.remove('visible'), 1200);
         }
 
+        if (sectionId) {
+            requestAnimationFrame(() => scrollToPageSection(sectionId));
+        }
+
         if (saveToHistory) {
             const url = window.location.protocol === 'file:'
                 ? `${window.location.pathname}${page === "home" ? '' : `#${page}`}`
-                : page === "home" ? "/" : `/${page}`;
+                : page === "home" ? "/" : `/${page}${sectionId ? `#${sectionId}` : ''}`;
             window.history.pushState({ page }, "", url);
         }
 
@@ -251,7 +255,7 @@ function initApp() {
         };
 
         document.addEventListener('click', (e) => {
-            resumeAudio();
+            resumeAudio(e);
             const el = e.target.closest(interactiveSelectors);
             if (el && window.audioUnlocked && clickSfx) {
                 clickSfx.currentTime = 0;
@@ -319,7 +323,11 @@ function initApp() {
         if (!VALID_PAGES.includes(page)) return;
 
         e.preventDefault();
-        loadPage(page);
+        const hash = url.hash.replace(/^#/, '').toLowerCase();
+        const sectionId = page === 'weapons'
+            ? (hash.startsWith('weapons-') ? hash : hash ? `weapons-${hash}` : null)
+            : null;
+        loadPage(page, true, sectionId);
     });
 
     const DEFERRED_PAGES = ["atms", "events", "gun-crates", "items", "locations", "missions", "npcs", "store", "valuables", "vehicles", "weapons"];
@@ -356,6 +364,9 @@ function initApp() {
                 window.history.replaceState({ page: hash }, '', hash === 'home' ? '/' : `/${hash}`);
             }
             const initialPage = VALID_PAGES.includes(path) ? path : VALID_PAGES.includes(hash) ? hash : "home";
+            const initialSectionId = initialPage === 'weapons' && hash
+                ? (hash.startsWith('weapons-') ? hash : `weapons-${hash}`)
+                : null;
 
             const targetTab = document.querySelector(`.tab[data-page="${initialPage}"]`);
             if (targetTab) {
@@ -374,10 +385,10 @@ function initApp() {
             if (!rendererReady) {
                 if (window.__deferredReady) {
                     if (skipped) {
-                        loadPage(initialPage, false);
+                        loadPage(initialPage, false, initialSectionId);
                     } else {
                         playBGM();
-                        loadPage(initialPage, false);
+                        loadPage(initialPage, false, initialSectionId);
                     }
                 } else {
                     window.__pendingDeferredPage = initialPage;
@@ -385,10 +396,10 @@ function initApp() {
                 }
             } else {
                 if (skipped) {
-                    loadPage(initialPage, false);
+                    loadPage(initialPage, false, initialSectionId);
                 } else {
                     playBGM();
-                    loadPage(initialPage, false);
+                    loadPage(initialPage, false, initialSectionId);
                 }
             }
         });

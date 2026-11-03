@@ -4228,7 +4228,7 @@ window.WEAPON_GLOCK_18C = [
     description: "A fully automatic pistol with high fire rate",
     reBuyPrice: 3500,
     sellPrice: 1050,
-    contractPrice: 1100000,
+    contractPrice: 400000,
     stats: {
       ammo: "19/285",
       ammoPrice: "$380 for 19",
