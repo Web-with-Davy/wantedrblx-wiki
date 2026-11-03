@@ -181,7 +181,7 @@
             if (savedTheme === "frutiger-aero") addBodyClass("frutiger-aero");
             if (savedTheme === "christmas") addBodyClass("christmas-theme");
             if (isSidebar) {
-                document.body.classList.add("left-sidebar-mode");
+                addBodyClass("left-sidebar-mode");
                 document.documentElement.classList.add("left-sidebar-mode");
             }
             const savedLowEndMode = localStorage.getItem("lowEndMode");
