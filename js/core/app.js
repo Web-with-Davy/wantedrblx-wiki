@@ -479,7 +479,9 @@ function initApp() {
     const setThemeTrack = (theme) => {
         if (!bgm || bgm.dataset.customUrl) return;
 
-        const nextTrack = theme === 'frutiger-aero' ? 'sounds/aero-background.aac' : 'sounds/background.aac';
+        const nextTrack = theme === 'frutiger-aero'
+            ? 'sounds/aero-background.aac'
+            : theme === 'christmas' ? 'sounds/christmas-background.aac' : 'sounds/background.aac';
         if (bgm.getAttribute('src') === nextTrack) return;
 
         const resumePlayback = window.audioUnlocked && !bgm.paused;
@@ -529,9 +531,10 @@ function initApp() {
             if (bgm) {
                 if (bgm.dataset.customUrl) URL.revokeObjectURL(bgm.dataset.customUrl);
                 delete bgm.dataset.customUrl;
-                bgm.src = localStorage.getItem('visualTheme') === 'frutiger-aero'
+                const theme = localStorage.getItem('visualTheme');
+                bgm.src = theme === 'frutiger-aero'
                     ? "sounds/aero-background.aac"
-                    : "sounds/background.aac";
+                    : theme === 'christmas' ? "sounds/christmas-background.aac" : "sounds/background.aac";
                 if (window.audioUnlocked) bgm.play().catch(() => { });
             }
         });
