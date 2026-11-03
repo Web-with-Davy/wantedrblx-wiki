@@ -3,7 +3,7 @@ window.WEAPON_RAYGUN = [
   {
     name: "Raygun",
     category: "Light",
-    description: "Powerfull against mutans, not so much against players",
+    description: "Powerfull against mutants, not so much against players",
     obtaining: "Halloween Event",
     reBuyPrice: 2000,
     sellPrice: 600,
