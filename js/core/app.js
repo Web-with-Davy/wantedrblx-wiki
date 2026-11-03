@@ -314,6 +314,7 @@ function initApp() {
 
         const link = e.target.closest('a');
         if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+        if (!link.hasAttribute('href')) return;
 
         const url = new URL(link.href, window.location.href);
         if (url.origin !== window.location.origin) return;
