@@ -245,7 +245,8 @@ function initApp() {
             'a'
         ].join(', ');
 
-        const resumeAudio = () => {
+        const resumeAudio = (event) => {
+            if (event.target.closest('#bgm-stop-btn')) return;
             if (bgm && bgm.paused) playBGM();
         };
 
@@ -346,7 +347,7 @@ function initApp() {
 
             if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
                 if (!skipped) playBGM();
-                setTimeout(() => _handleItemPageHash(hash), skipped ? 0 : 400);
+                _handleItemPageHash(hash);
                 return;
             }
 
@@ -376,7 +377,7 @@ function initApp() {
                         loadPage(initialPage, false);
                     } else {
                         playBGM();
-                        setTimeout(() => loadPage(initialPage, false), 400);
+                        loadPage(initialPage, false);
                     }
                 } else {
                     window.__pendingDeferredPage = initialPage;
@@ -387,13 +388,14 @@ function initApp() {
                     loadPage(initialPage, false);
                 } else {
                     playBGM();
-                    setTimeout(() => loadPage(initialPage, false), 400);
+                    loadPage(initialPage, false);
                 }
             }
         });
     }
 
-    const startAudioOnInteraction = () => {
+    const startAudioOnInteraction = (event) => {
+        if (event.target.closest('#bgm-stop-btn')) return;
         if (bgm && bgm.paused) playBGM();
     };
     window.addEventListener('mousedown', startAudioOnInteraction, true);

@@ -49,7 +49,7 @@ async function refreshYoutuberVideos(youtubers) {
 }
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
-window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(async () => {
+window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(() => {
   try {
     const youtubers = __MANIFEST_youtubers.flatMap(path => {
       const filename = path.split('/').pop().replace('.js', '');
@@ -61,8 +61,8 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(async () => 
       }
       return [data];
     });
-    await refreshYoutuberVideos(youtubers);
     window.YOUTUBERS_DATA = youtubers;
+    refreshYoutuberVideos(youtubers);
   } catch (err) {
     console.error("Failed building data for js/registry/youtubers.js:", err);
   }
