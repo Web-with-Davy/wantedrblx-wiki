@@ -185,7 +185,7 @@ function renderHome() {
             <div class="youtuber-block">
                 <a href="${yt.channelUrl}" target="_blank" rel="noopener" class="youtuber-header">
                     <img src="${yt.avatar}" alt="${yt.name}" class="youtuber-avatar"
-                        onerror="this.src='images/logo.webp'">
+                        onerror="this.src='/images/logo.webp'">
                     <div class="youtuber-info">
                         <div class="youtuber-name">${yt.name}</div>
                         <div class="youtuber-subtext">VIEW CHANNEL <span class="yt-arrow">&#8599;</span></div>
@@ -252,7 +252,7 @@ function renderHome() {
                 <div class="hero-section">
                     <div class="hero-bg"></div>
                     <div class="hero-logo-container">
-                        <img src="images/logo.webp" alt="WANTED Logo" class="hero-logo" width="1066" height="852">
+                        <img src="/images/logo.webp" alt="WANTED Logo" class="hero-logo" width="1066" height="852">
                     </div>
                     <p class="hero-title">WANTED WIKI</p>
                     <p class="hero-text">
