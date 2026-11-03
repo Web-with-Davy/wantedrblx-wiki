@@ -4,9 +4,16 @@ const loadSfx = document.getElementById("sfx-load");
 const clickSfx = document.getElementById("sfx-click");
 const hoverSfx = document.getElementById("sfx-hover");
 const volumeSlider = document.getElementById("bgm-volume");
+const bgmStopBtn = document.getElementById("bgm-stop-btn");
 const sizeSlider = document.getElementById("card-size-slider");
 
 window.audioUnlocked = false;
+window.audioStopped = localStorage.getItem("bgmStopped") === "true";
+
+const playBGM = () => {
+    if (!window.audioUnlocked || window.audioStopped || !bgm) return;
+    bgm.play().catch(() => { });
+};
 
 window.loadPage = loadPage;
 
@@ -239,9 +246,7 @@ function initApp() {
         ].join(', ');
 
         const resumeAudio = () => {
-            if (bgm && bgm.paused && window.audioUnlocked) {
-                bgm.play().catch(() => { });
-            }
+            if (bgm && bgm.paused) playBGM();
         };
 
         document.addEventListener('click', (e) => {
@@ -278,7 +283,7 @@ function initApp() {
     initGlobalSounds();
 
     if (bgm && volumeSlider) {
-        const savedVol = localStorage.getItem("bgmVolume") || 0.1;
+        const savedVol = localStorage.getItem("bgmVolume") || 0.025;
         volumeSlider.value = savedVol;
         bgm.volume = savedVol;
 
@@ -336,14 +341,14 @@ function initApp() {
             window.audioUnlocked = true;
 
             if (typeof _handleItemPagePath === 'function' && _handleItemPagePath()) {
-                if (!skipped && bgm) bgm.play().catch(() => { });
+                if (!skipped) playBGM();
                 return;
             }
 
             const hash = window.location.hash.replace(/^#/, '');
 
             if (hash.startsWith('item/') && typeof _handleItemPageHash === 'function') {
-                if (!skipped && bgm) bgm.play().catch(() => { });
+                if (!skipped) playBGM();
                 setTimeout(() => _handleItemPageHash(hash), skipped ? 0 : 400);
                 return;
             }
@@ -376,19 +381,19 @@ function initApp() {
                     if (skipped) {
                         loadPage(initialPage, false);
                     } else {
-                        if (bgm) bgm.play().catch(() => { });
+                        playBGM();
                         setTimeout(() => loadPage(initialPage, false), 400);
                     }
                 } else {
                     window.__pendingDeferredPage = initialPage;
-                    if (!skipped && bgm) bgm.play().catch(() => { });
+                    if (!skipped) playBGM();
                 }
             } else {
                 // Renderer already available — load immediately.
                 if (skipped) {
                     loadPage(initialPage, false);
                 } else {
-                    if (bgm) bgm.play().catch(() => { });
+                    playBGM();
                     setTimeout(() => loadPage(initialPage, false), 400);
                 }
             }
@@ -396,12 +401,30 @@ function initApp() {
     }
 
     const startAudioOnInteraction = () => {
-        if (window.audioUnlocked && bgm && bgm.paused) {
-            bgm.play().catch(() => { });
-        }
+        if (bgm && bgm.paused) playBGM();
     };
     window.addEventListener('mousedown', startAudioOnInteraction, true);
     window.addEventListener('keydown', startAudioOnInteraction, true);
+
+    if (bgmStopBtn) {
+        const syncBGMStopButton = () => {
+            const isStopped = window.audioStopped;
+            bgmStopBtn.textContent = isStopped ? 'Resume Music' : 'Stop Music';
+            bgmStopBtn.setAttribute('aria-pressed', String(isStopped));
+        };
+
+        syncBGMStopButton();
+        bgmStopBtn.addEventListener('click', () => {
+            window.audioStopped = !window.audioStopped;
+            localStorage.setItem('bgmStopped', String(window.audioStopped));
+            if (window.audioStopped) {
+                if (bgm) bgm.pause();
+            } else {
+                playBGM();
+            }
+            syncBGMStopButton();
+        });
+    }
 
     const lowEndToggle = document.getElementById("low-end-toggle");
     const lowEndStatus = document.getElementById("low-end-status");
@@ -493,7 +516,7 @@ function initApp() {
         bgm.pause();
         bgm.src = nextTrack;
         bgm.load();
-        if (resumePlayback) bgm.play().catch(() => { });
+        if (resumePlayback) playBGM();
     };
 
     const updateBGM = async () => {
@@ -504,7 +527,7 @@ function initApp() {
             if (bgm.dataset.customUrl) URL.revokeObjectURL(bgm.dataset.customUrl);
             bgm.src = url;
             bgm.dataset.customUrl = url;
-            if (window.audioUnlocked) bgm.play().catch(() => { });
+            playBGM();
         } else {
             setThemeTrack(localStorage.getItem('visualTheme'));
         }
@@ -540,7 +563,7 @@ function initApp() {
                 bgm.src = theme === 'frutiger-aero'
                     ? "sounds/aero-background.aac"
                     : theme === 'christmas' ? "sounds/christmas-background.aac" : "sounds/background.aac";
-                if (window.audioUnlocked) bgm.play().catch(() => { });
+                playBGM();
             }
         });
     }

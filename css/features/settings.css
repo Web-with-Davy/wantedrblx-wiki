@@ -195,6 +195,10 @@
     gap: 10px;
 }
 
+.setting-item > .setting-toggle-btn {
+    margin-top: 12px;
+}
+
 .setting-toggle-btn:hover {
     border-color: #fff;
     background: #fff;
