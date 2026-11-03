@@ -46,21 +46,28 @@
         <h1>Page not found</h1>
         <p>The page you requested does not exist.</p>
         <nav aria-label="Wiki sections">
-            <a href="/">Home</a>
-            <a href="/weapons">Weapons</a>
-            <a href="/vehicles">Vehicles</a>
-            <a href="/gun-crates">Gun Crates</a>
-            <a href="/missions">Missions</a>
-            <a href="/npcs">NPCs</a>
-            <a href="/locations">Locations</a>
-            <a href="/atms">ATMs &amp; Vaults</a>
-            <a href="/valuables">Valuables</a>
-            <a href="/store">Store</a>
-            <a href="/items">Items</a>
-            <a href="/events">Events</a>
-            <a href="/promo-codes">Promo Codes</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#weapons">Weapons</a>
+            <a href="index.html#vehicles">Vehicles</a>
+            <a href="index.html#gun-crates">Gun Crates</a>
+            <a href="index.html#missions">Missions</a>
+            <a href="index.html#npcs">NPCs</a>
+            <a href="index.html#locations">Locations</a>
+            <a href="index.html#atms">ATMs &amp; Vaults</a>
+            <a href="index.html#valuables">Valuables</a>
+            <a href="index.html#store">Store</a>
+            <a href="index.html#items">Items</a>
+            <a href="index.html#events">Events</a>
+            <a href="index.html#promo-codes">Promo Codes</a>
         </nav>
     </main>
+    <script>
+        (function () {
+            const pages = new Set(['weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'atms', 'valuables', 'store', 'items', 'events', 'promo-codes']);
+            const page = window.location.pathname.replace(/^\/+|\/+$/g, '');
+            if (pages.has(page) && !window.location.hash) window.location.replace(`/#${page}`);
+        })();
+    </script>
 </body>
 
 </html>

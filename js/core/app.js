@@ -186,7 +186,7 @@ window.addEventListener("popstate", (event) => {
 function initApp() {
     const bootPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
     const bootHash = window.location.hash.replace(/^#/, '');
-    if (!VALID_PAGES.includes(bootPath) && VALID_PAGES.includes(bootHash)) {
+    if (window.location.protocol !== 'file:' && !VALID_PAGES.includes(bootPath) && VALID_PAGES.includes(bootHash)) {
         window.history.replaceState({ page: bootHash }, '', bootHash === 'home' ? '/' : `/${bootHash}`);
     }
 

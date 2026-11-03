@@ -31,7 +31,15 @@ async function refreshYoutuberVideos(youtubers) {
     youtubers.forEach(creator => {
       const handle = creator.channelUrl.match(/\/@([^/]+)/)?.[1];
       const videos = handle && payload.videos?.[handle];
-      if (Array.isArray(videos)) creator.videos = videos;
+      if (Array.isArray(videos)) {
+        const mergedVideos = [...videos, ...(creator.videos || [])];
+        const seenLinks = new Set();
+        creator.videos = mergedVideos.filter(video => {
+          if (!video?.link || seenLinks.has(video.link)) return false;
+          seenLinks.add(video.link);
+          return true;
+        }).slice(0, 3);
+      }
     });
   } catch (error) {
     console.warn('YouTuber video refresh unavailable; using cached data.', error);
