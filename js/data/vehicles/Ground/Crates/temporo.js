@@ -3,7 +3,7 @@ window.VEHICLE_TEMPORO = [
   {
     name: "Temporo",
     category: "Car",
-    description: "Looks like a car made out of legos, its very speedy tho",
+    description: "It looks like a car made out of LEGO, but it is very speedy.",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 7500,

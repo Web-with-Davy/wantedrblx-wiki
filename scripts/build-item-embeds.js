@@ -57,10 +57,11 @@ function run() {
 
     const mapItem = (cat, folder) => {
       val.forEach(item => {
-        if (!item || !item.name) return;
-        const slug = slugify(item.name);
+        const name = item && (item.name || item.title);
+        if (!name) return;
+        const slug = slugify(item.id || name);
         itemsData[cat][slug] = {
-          n: item.name,
+          n: name,
           d: item.description || (itemsData[cat] && itemsData[cat][slug] && itemsData[cat][slug].d) || null,
           i: `${SITE}/images/${folder}/${slug}.webp`
         };
@@ -71,6 +72,7 @@ function run() {
     if (key.startsWith('VEHICLE_')) mapItem('vehicles', 'vehicles');
     if (key.startsWith('GUN_CRATE_')) mapItem('gun-crates', 'crates');
     if (key.startsWith('ITEM_')) mapItem('items', 'items');
+    if (key.startsWith('MISSIONS_')) mapItem('missions', 'missions');
     if (key.startsWith('NPC_')) mapItem('npcs', 'npcs');
     if (key.startsWith('EVENT_')) mapItem('events', 'events');
   }

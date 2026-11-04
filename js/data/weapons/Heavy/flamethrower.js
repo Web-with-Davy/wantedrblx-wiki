@@ -3,7 +3,7 @@ window.WEAPON_FLAMETHROWER = [
   {
     name: "Flamethrower",
     category: "Heavy",
-    description: "Its not that good but it can be used to burn mutants",
+    description: "It is not that good, but it can be used to burn mutants.",
     reBuyPrice: 6000,
     sellPrice: 1800,
     contractPrice: "Un-Buyable",

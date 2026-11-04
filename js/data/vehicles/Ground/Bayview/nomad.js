@@ -4,7 +4,7 @@ window.VEHICLE_NOMAD = [
     name: "Nomad",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "The nomad is mostly bough for teams that dont have too much money to get anything better",
+    description: "The Nomad is mostly bought by teams that do not have enough money for anything better.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

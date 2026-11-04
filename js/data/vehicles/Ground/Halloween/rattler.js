@@ -4,7 +4,7 @@ window.VEHICLE_RATTLER = [
     name: "Rattler",
     category: "Car",
     obtaining: "Halloween Event",
-    description: "Its a mid car",
+    description: "It is an average car.",
     type: "ground",
     repairPrice: 7500,
     repairPriceGarage: 2250,

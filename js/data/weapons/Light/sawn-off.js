@@ -3,7 +3,7 @@ window.WEAPON_SAWN_OFF = [
   {
     name: "Sawn Off",
     category: "Light",
-    description: "Yeah you wont do much with this one",
+    description: "You will not do much with this one.",
     reBuyPrice: 150,
     sellPrice: 45,
     contractPrice: 800,

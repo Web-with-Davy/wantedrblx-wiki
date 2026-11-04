@@ -19,7 +19,7 @@ window.WEAPON_M60 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
+        { name: "ACOG", price: 250000 },
         { name: "Rifle Scope", price: 1250000 }
       ],
       Muzzle: [

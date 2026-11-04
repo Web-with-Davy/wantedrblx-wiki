@@ -3,7 +3,7 @@ window.WEAPON_UMP_45 = [
   {
     name: "UMP 45",
     category: "Medium",
-    description: "Police SMG, its ok I guess",
+    description: "A police SMG; it is okay, I guess.",
     reBuyPrice: 1250,
     sellPrice: 375,
     contractPrice: 40000,
@@ -19,7 +19,7 @@ window.WEAPON_UMP_45 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }

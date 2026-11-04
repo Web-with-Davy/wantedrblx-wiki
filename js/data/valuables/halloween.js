@@ -1,6 +1,6 @@
 window.VALUABLES_HALLOWEEN = [
 
-  { name: "Ritual Skull", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1666, priceNonContract: false, weight: 5, commonLocation: "Got after defeating the boss fight during the Halloween event" },
+  { name: "Ritual Skull", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1666, priceNonContract: false, weight: 5, commonLocation: "Obtained after defeating the boss during the Halloween event" },
 
   { name: "Mutant Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 75, priceNonContract: false, weight: 4, commonLocation: "Kill normal mutants" },
   { name: "Mutant Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 100, priceNonContract: false, weight: 2, commonLocation: "Kill normal mutants" },

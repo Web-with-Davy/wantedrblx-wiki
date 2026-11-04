@@ -4,7 +4,7 @@ window.MISSIONS_SIR_B_TELLER = [
     id: "teller",
     title: "Teller - Part 1",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "I'll let you in on a little secret: the entire system is designed to keep you down and poor. Banks are charging you money to get your own money out of the machine. Who ever thought you'd pay cash to get cash? That's where we've gotten to. They own you.",
+    description: "I'll let you in on a little secret: the entire system is designed to keep you down and poor. Banks are charging you money to get your own money out of the machine. Whoever thought you'd pay cash to get cash? That's where we've gotten to. They own you.",
     howToComplete: "Rob 20 ATMs and 20 Cash Registers.",
     difficulty: "EASY",
     missionType: "Sir. B",

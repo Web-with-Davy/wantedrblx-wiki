@@ -4,7 +4,7 @@ window.VEHICLE_REAPER = [
     name: "Reaper",
     category: "Motorcycle",
     obtaining: "Halloween Event",
-    description: "Its a very good bike",
+    description: "It is a very good bike.",
     type: "ground",
     repairPrice: 7500,
     repairPriceGarage: 2250,

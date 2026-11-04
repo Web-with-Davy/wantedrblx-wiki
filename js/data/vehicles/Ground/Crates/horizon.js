@@ -3,7 +3,7 @@ window.VEHICLE_HORIZON = [
   {
     name: "Horizon",
     category: "Car",
-    description: "Begginer friendly, tho its hard to get from crates so I dont know if its worth it",
+    description: "Beginner-friendly, though it is difficult to obtain from crates, so I do not know whether it is worth it.",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 3000,

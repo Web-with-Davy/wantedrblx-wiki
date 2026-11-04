@@ -4,7 +4,7 @@ window.VEHICLE_RANGER = [
     name: "Ranger",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "One of the cheapest cars in the game, it mostly looks good for new players tho",
+    description: "One of the cheapest cars in the game; it mostly looks good to new players, though.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

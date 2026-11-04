@@ -3,7 +3,7 @@ window.WEAPON_GOLDEN_AK_47 = [
   {
     name: "Golden AK-47",
     category: "Airdrop",
-    description: "Its golden colored ak, not much else to say",
+    description: "It is a gold-colored AK; there is not much else to say.",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
     sellPrice: 60000,
@@ -19,7 +19,7 @@ window.WEAPON_GOLDEN_AK_47 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+          { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }

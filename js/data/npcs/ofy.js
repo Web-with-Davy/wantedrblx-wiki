@@ -2,7 +2,7 @@ window.NPC_OFY = [
   {
     name: "Ofy",
     team: "CRIMINAL",
-    location: "Ofys Value Pawn",
-    description: "Ofy is the main guy where you can sell your hard earned (stolen) loot. He gives cash instantly but at a lower price point than Sir.B."
+    location: "Ofy's Value Pawn",
+    description: "Ofy is the main person to sell your hard-earned (stolen) loot to. He gives you cash instantly, but at a lower price than Sir B."
   }
 ];

@@ -4,7 +4,7 @@ window.VEHICLE_VANGUARD = [
     name: "Vanguard",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "Lets be honest you bought it for the mission or got it from the robux pack",
+    description: "Let's be honest: you bought it for the mission or got it from the Robux pack.",
     type: "ground",
     repairPrice: 3000,
     repairPriceGarage: 900,

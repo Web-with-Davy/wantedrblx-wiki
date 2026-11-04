@@ -4,7 +4,7 @@ window.VEHICLE_MINI_BIRD = [
     name: "Mini Bird",
     category: "Air",
     obtaining: "Davis' Heliport",
-    description: "The Scout is a fast and agile helicopter that is perfect for transportation and combat. Mostly bought because its the cheapest flying vehicle",
+    description: "The Mini Bird is a fast and agile helicopter that is perfect for transportation and combat. It is mostly bought because it is the cheapest flying vehicle.",
     type: "flying",
     repairPrice: 0,
     repairPriceGarage: 0,

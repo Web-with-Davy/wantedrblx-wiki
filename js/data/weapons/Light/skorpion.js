@@ -3,7 +3,7 @@ window.WEAPON_SKORPION = [
   {
     name: "Skorpion",
     category: "Light",
-    description: "Its a meh gun, not too good, not too bad",
+    description: "It is an average gun: not too good, not too bad.",
     reBuyPrice: 1000,
     sellPrice: 300,
     contractPrice: 100000,

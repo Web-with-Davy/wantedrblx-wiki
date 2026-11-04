@@ -1,6 +1,6 @@
 window.VALUABLES_EASTER = [
 
-  { name: "Planetary Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden within the Orrery Observatory (Requires 1 Diamond)" },
+  { name: "Planetary Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden within the Orrery Observatory (requires 1 Diamond)" },
   { name: "Pear Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Found inside the Pear Store" },
   { name: "Soldier Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Tucked inside hackable crates at Fort Emberreach" },
   { name: "Waterfall Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden behind the waterfall near Frostpire Mountain" },
@@ -16,7 +16,7 @@ window.VALUABLES_EASTER = [
   { name: "Big Red Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 20, commonLocation: "Resting atop the bridge near the Police Station" },
   { name: "Prisoner Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Locked inside a jail cell at the Police Station" },
   { name: "Construction Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Perched on the construction crane near Oasis Bank" },
-  { name: "Glass Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Displayed inside Ofys Value Pawn" },
+  { name: "Glass Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Displayed inside Ofy's Value Pawn" },
   { name: "Syndicate Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Granted upon completing the Syndicegg Mission" },
 
 ];

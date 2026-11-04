@@ -4,7 +4,7 @@ window.VEHICLE_STALLION_450 = [
     name: "Stallion 450",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "Its  a very cool looking car, most beginer friendly and affordable car in the game",
+    description: "It is a very cool-looking car and one of the most beginner-friendly and affordable cars in the game.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,

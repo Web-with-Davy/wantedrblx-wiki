@@ -3,7 +3,7 @@ window.WEAPON_MODEL_870 = [
   {
     name: "Model 870",
     category: "Medium",
-    description: "Its a shotgun, very bad and boring gun",
+    description: "It is a shotgun, but a very bad and boring gun.",
     reBuyPrice: 750,
     sellPrice: 225,
     contractPrice: 20000,
@@ -20,7 +20,7 @@ window.WEAPON_MODEL_870 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }

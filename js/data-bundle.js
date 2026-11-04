@@ -132,7 +132,7 @@ window.GUN_CRATE_AK_47 = [
   {
     id: "ak-47-crate",
     name: "AK-47 Crate",
-    description: "One of the most common crates in the game. It is a crate that gives you a free AK-47 with a Mono Supressor and Horizontal Foregrip pre-attached",
+    description: "One of the most common crates in the game. It gives you a free AK-47 with a Mono Suppressor and Horizontal Foregrip pre-attached.",
     gun: "AK-47",
     cooldown: "4 Days",
     location: "Syndicate Headquarters - Next to Erik's Armory"
@@ -173,7 +173,7 @@ window.GUN_CRATE_AWM = [
 
   {
     id: "awm-crate",
-    description: "It is a crate that gives you a free AWM, usefull for missions that require a sniper rifle",
+    description: "It is a crate that gives you a free AWM, useful for missions that require a sniper rifle.",
     name: "AWM Crate",
     gun: "AWM",
     cooldown: "5 Days",
@@ -201,7 +201,7 @@ window.GUN_CRATE_GLOCK_18C = [
 
   {
     id: "glock-18c-crate",
-    description: "It is a crate that gives you a free Glock 18c with a Reflex Sight, Pistol Suppresor and Pistol Stock pre-attached",
+    description: "It is a crate that gives you a free Glock 18C with a Reflex Sight, Pistol Suppressor, and Pistol Stock pre-attached.",
     name: "Glock 18c Crate",
     gun: "Glock 18c",
     cooldown: "2 Days",
@@ -229,7 +229,7 @@ window.GUN_CRATE_M4A1 = [
   {
     id: "m4a1-crate",
     showMoreButton: false,
-    description: "It is a crate that gives you a free M4A1 with a AGOC Sight, Horizontal Foregrip and Tactical Laser pre-attached",
+    description: "It is a crate that gives you a free M4A1 with an ACOG Sight, Horizontal Foregrip, and Tactical Laser pre-attached.",
     name: "M4A1 Crate",
     gun: "M4A1",
     cooldown: "5 Days",
@@ -404,7 +404,7 @@ window.ITEM_TOOLS_BUZZSAW = [
 window.ITEM_TOOLS_SKELETON_KEY = [
   {
     name: "Skeleton Key",
-    description: "Used to open the door to fight the Crypt Keeper during the halloween event",
+    description: "Used to open the door to fight the Crypt Keeper during the Halloween event.",
     possibleDrops: [
       "Special Mutants",
     ],
@@ -414,7 +414,7 @@ window.ITEM_TOOLS_SKELETON_KEY = [
 window.ITEM_TOOLS_SPEAKERS_AMULET = [
   {
     name: "Speakers Amulet",
-    description: "Used to speak to ghosts during the halloween event",
+    description: "Used to speak to ghosts during the Halloween event.",
     location: "Badlands Church",
   }
 ];
@@ -550,7 +550,7 @@ window.MISSIONS_BERT_CON_AIR = [
     id: "con-air",
     title: "Con Air",
     location: "Police Station – Talk to Bert",
-    description: "We need you down at the airport ASAP: there's been a hi-jacking. A crew snuck into the cargo plane as it was refueling and took the controls.\n\nMake your way on before takeoff and thwart the robbery before they get away with the plane and everything in it.",
+    description: "We need you down at the airport ASAP: there's been a hijacking. A crew snuck into the cargo plane as it was refueling and took the controls.\n\nMake your way on before takeoff and thwart the robbery before they get away with the plane and everything in it.",
     howToComplete: "Patrol Cargo Plane for 30 minutes, arrest 10 criminals at Cargo Plane and collect 30,000 of police bounty cash",
     difficulty: "HARD",
     missionType: "Bert",
@@ -584,7 +584,7 @@ window.MISSIONS_BERT_COUNTER_INTEL = [
     id: "counter-intel",
     title: "Counter-Intel",
     location: "Police Station – Talk to Bert",
-    description: "Ofy is an agent of a much larger criminal organization: known as the Syndicate. We need to learn more, it's time for you to go undercover. Infiltrate the Syndicate hideout and make a copy any useful information you find.",
+    description: "Ofy is an agent of a much larger criminal organization known as the Syndicate. We need to learn more, so it is time for you to go undercover. Infiltrate the Syndicate hideout and make a copy of any useful information you find.",
     howToComplete: "Locate the Criminal Hideout at the Badlands and seize the Syndicate Intel.",
     difficulty: "EASY",
     missionType: "Bert",
@@ -1427,7 +1427,7 @@ window.MISSIONS_SIR_B_DATA_DISK = [
     id: "data-disk",
     title: "Data Disk",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "One of my agents was en route with critical information when their plane suddenly crash landed... no survivors. The plane went down somewhere around Frostspire Summit. Find out what happened and retrieve the data.",
+    description: "One of my agents was en route with critical information when their plane suddenly crash-landed... no survivors. The plane went down somewhere around Frostspire Summit. Find out what happened and retrieve the data.",
     howToComplete: "Locate the Crash Site and find the Data Disk.",
     difficulty: "EASY",
     missionType: "Sir. B",
@@ -1474,7 +1474,7 @@ window.MISSIONS_SIR_B_FENCE = [
     image: "fence",
     title: "Fence - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "That was a good start, but now let's up the ante. This time, sell $30,000 worth of stolen goods through the pawn shop. Pull off biggers jobs, get paid more. That's the name of the game.",
+    description: "That was a good start, but now let's up the ante. This time, sell $30,000 worth of stolen goods through the pawn shop. Pull off bigger jobs, get paid more. That's the name of the game.",
     howToComplete: "Sell $30,000 worth of stolen goods through the pawn shop.",
     difficulty: "EASY",
     missionType: "Sir. B",
@@ -1645,7 +1645,7 @@ window.MISSIONS_SIR_B_LIGHTS_OUT = [
     id: "lights-out",
     title: "Lights Out",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "We don't want the cops sniffing around our business, so let's hit them where it hurts. Disable three of their cruisers - that'll keep them from from interfering with our operations. Don't get caught.",
+    description: "We don't want the cops sniffing around our business, so let's hit them where it hurts. Disable three of their cruisers; that'll keep them from interfering with our operations. Don't get caught.",
     howToComplete: "Disable 3 police cars and escape 3 stars with $2,500 bounty.",
     difficulty: "EASY",
     missionType: "Sir. B",
@@ -2018,7 +2018,7 @@ window.MISSIONS_SIR_B_TELLER = [
     id: "teller",
     title: "Teller - Part 1",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "I'll let you in on a little secret: the entire system is designed to keep you down and poor. Banks are charging you money to get your own money out of the machine. Who ever thought you'd pay cash to get cash? That's where we've gotten to. They own you.",
+    description: "I'll let you in on a little secret: the entire system is designed to keep you down and poor. Banks are charging you money to get your own money out of the machine. Whoever thought you'd pay cash to get cash? That's where we've gotten to. They own you.",
     howToComplete: "Rob 20 ATMs and 20 Cash Registers.",
     difficulty: "EASY",
     missionType: "Sir. B",
@@ -2189,7 +2189,7 @@ window.MISSIONS_SIR_B_WARGAMES = [
     image: "wargames",
     title: "WarGames - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "Fort Emberreach is at the heart of the entire government operation. Raze the base. This raid will be a bullet straight though their hearts.",
+    description: "Fort Emberreach is at the heart of the entire government operation. Raze the base. This raid will be a bullet straight through their hearts.",
     howToComplete: "Hack 5 Secure Crate, Open 15 Military Chests, and Get 20 kills at Military.",
     difficulty: "MEDIUM",
     missionType: "Sir. B",
@@ -2294,8 +2294,8 @@ window.NPC_OFY = [
   {
     name: "Ofy",
     team: "CRIMINAL",
-    location: "Ofys Value Pawn",
-    description: "Ofy is the main guy where you can sell your hard earned (stolen) loot. He gives cash instantly but at a lower price point than Sir.B."
+    location: "Ofy's Value Pawn",
+    description: "Ofy is the main person to sell your hard-earned (stolen) loot to. He gives you cash instantly, but at a lower price than Sir B."
   }
 ];
 
@@ -2305,20 +2305,20 @@ window.NPC_ROD = [
     name: "Rod",
     team: "CRIMINAL",
     location: "Oasis City Port",
-    description: "The current manager of Oasis City Port, specializing in across the sea trading. You can sell guns to him for 35% of the guns re-buy price, get info on loot crates, and buy the vault crackers from him.",
+    description: "The current manager of Oasis City Port, specializing in overseas trading. You can sell guns to him for 35% of their rebuy price, get information about loot crates, and buy vault crackers from him.",
     dialogue: {
       "[Browser Shop]": [
         { dialogue: "Buy Vault Cracker [$10,000]" }
       ],
       "Any valuable crates today? [$200]": [
-        { dialogue: "Theres a weird crate that hardly weighs anything [2 Bitcoin]" },
-        { dialogue: "Theres a strange order on the manifest. Looks to be Government [2 Secret Files and Flash Drive]" },
+        { dialogue: "There's a weird crate that hardly weighs anything [2 Bitcoin]" },
+        { dialogue: "There's a strange order on the manifest. It looks to be from the government [2 Secret Files and Flash Drive]" },
         { dialogue: "There's a shipment of diamonds on the manifest today [2 Diamonds]" },
         { dialogue: "Some illicit cargo came in today [1 Money Printer]" },
         { dialogue: "Big shipment of gems just came in [4 Gems Total (Diamonds, Amethyst, Emeralds, Rubies, Sapphires)]" },
         { dialogue: "An order from the bank came in - big cash shipment [+10K Cash]" },
         { dialogue: "Saw an order from Oasis Jewelry [5 Jewelry Total (Rollie, Amethyst/Diamond/Emerald/Ruby/Sapphire Rings, Pearl Necklace, Gold Chain)]" },
-        { dialogue: "Theres an order here for some expensive tech parts [PearPods, HDDs, PearWatches, PSU, GPU]" },
+        { dialogue: "There's an order here for some expensive tech parts [PearPods, HDDs, PearWatches, PSU, GPU]" },
         { dialogue: "There's some real heavy weapons [AWM, RPG, M60, M4A1]" },
         { dialogue: "I saw a shipment of some military-grade weapons [AWM, ARX, SPAS, RPG, AK47]" },
         { dialogue: "Looks like a shipment of gold pear tech [2 Goldbooks, 2 Goldphones, 2 Gold Pods, 2 Gold Watches]" }
@@ -2420,7 +2420,7 @@ window.STORE_CASH = [
 
 /* --- js/data/store/money-printers.js --- */
 window.STORE_MONEY_PRINTERS = [
-  { name: "Daily Printer", robuxPrice: 36, description: "Gives x1 Money Printera at 50% the price." },
+  { name: "Daily Printer", robuxPrice: 36, description: "Gives you one Money Printer at 50% of the price." },
   { name: "x11 Money Printers", robuxPrice: 675, description: "Gives x11 Money Printers and an extra 2 for first purchase." },
   { name: "Money Printer", robuxPrice: 75, description: "Gives x1 Money Printer." }
 ];
@@ -2441,7 +2441,7 @@ window.STORE_OTHER = [
 window.STORE_PACKS = [
   { name: "Zoro + Zorvello", robuxPrice: 2499, description: "Unlocks the Zoro & Zorvello car." },
   { name: "Weapon Pack", robuxPrice: 199, description: "A bundle of weapons containing the RPG, Benelli M1014, UMP 45 and Uzi." },
-  { name: "Mini-Vec Pack", robuxPrice: 649, description: "Includes the Mini Bird helicopter and Kriss Vector " },
+  { name: "Mini-Vec Pack", robuxPrice: 649, description: "Includes the Mini Bird helicopter and Kriss Vector." },
   { name: "Vanguard Pack", robuxPrice: 1899, description: "Includes the Vanguard car, SPAS-12 and x3 Money Printers" }
 ];
 
@@ -2470,7 +2470,7 @@ window.VALUABLES_CHRISTMAS = [
 /* --- js/data/valuables/easter.js --- */
 window.VALUABLES_EASTER = [
 
-  { name: "Planetary Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden within the Orrery Observatory (Requires 1 Diamond)" },
+  { name: "Planetary Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden within the Orrery Observatory (requires 1 Diamond)" },
   { name: "Pear Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Found inside the Pear Store" },
   { name: "Soldier Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Tucked inside hackable crates at Fort Emberreach" },
   { name: "Waterfall Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Hidden behind the waterfall near Frostpire Mountain" },
@@ -2486,7 +2486,7 @@ window.VALUABLES_EASTER = [
   { name: "Big Red Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 20, commonLocation: "Resting atop the bridge near the Police Station" },
   { name: "Prisoner Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Locked inside a jail cell at the Police Station" },
   { name: "Construction Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Perched on the construction crane near Oasis Bank" },
-  { name: "Glass Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Displayed inside Ofys Value Pawn" },
+  { name: "Glass Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Displayed inside Ofy's Value Pawn" },
   { name: "Syndicate Egg", description: "", rarity: "EASTER", category: "Easter", price: 0, priceNonContract: false, weight: 1, commonLocation: "Granted upon completing the Syndicegg Mission" },
 
 ];
@@ -2539,7 +2539,7 @@ window.VALUABLES_GEMS = [
 /* --- js/data/valuables/halloween.js --- */
 window.VALUABLES_HALLOWEEN = [
 
-  { name: "Ritual Skull", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1666, priceNonContract: false, weight: 5, commonLocation: "Got after defeating the boss fight during the Halloween event" },
+  { name: "Ritual Skull", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 1666, priceNonContract: false, weight: 5, commonLocation: "Obtained after defeating the boss during the Halloween event" },
 
   { name: "Mutant Arm", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 75, priceNonContract: false, weight: 4, commonLocation: "Kill normal mutants" },
   { name: "Mutant Head", description: "", rarity: "HALLOWEEN", category: "Halloween", price: 100, priceNonContract: false, weight: 2, commonLocation: "Kill normal mutants" },
@@ -2697,7 +2697,7 @@ window.VEHICLE_MINI_BIRD = [
     name: "Mini Bird",
     category: "Air",
     obtaining: "Davis' Heliport",
-    description: "The Scout is a fast and agile helicopter that is perfect for transportation and combat. Mostly bought because its the cheapest flying vehicle",
+    description: "The Mini Bird is a fast and agile helicopter that is perfect for transportation and combat. It is mostly bought because it is the cheapest flying vehicle.",
     type: "flying",
     repairPrice: 0,
     repairPriceGarage: 0,
@@ -2772,7 +2772,7 @@ window.VEHICLE_ROAD_HOG = [
     name: "Road Hog",
     category: "Motorcycle",
     obtaining: "Randys Motorshop",
-    description: "Begginer friendly motorcycles",
+    description: "A beginner-friendly motorcycle.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
@@ -2872,7 +2872,7 @@ window.VEHICLE_BEAM = [
     name: "Beam",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "ITs a very cool car, but not many players have bought it due to there being better options at a similar price",
+    description: "It is a very cool car, but not many players have bought it because there are better options at a similar price.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
@@ -2897,7 +2897,7 @@ window.VEHICLE_CONTENDER = [
     name: "Contender",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "Contender is one of the most basic vehicles in the game. It is a sports car that is used by many players for its looks",
+    description: "The Contender is one of the most basic vehicles in the game. It is a sports car that many players use for its looks.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
@@ -2997,7 +2997,7 @@ window.VEHICLE_GEMSTONE = [
     name: "Gemstone",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "Only bought for the cool design, its not too good at anything and theres better options at a similar price",
+    description: "Bought mainly for its cool design; it is not especially good at anything, and there are better options at a similar price.",
     type: "ground",
     repairPrice: 1500,
     repairPriceGarage: 450,
@@ -3047,7 +3047,7 @@ window.VEHICLE_NOMAD = [
     name: "Nomad",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "The nomad is mostly bough for teams that dont have too much money to get anything better",
+    description: "The Nomad is mostly bought by teams that do not have enough money for anything better.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
@@ -3097,7 +3097,7 @@ window.VEHICLE_RANGER = [
     name: "Ranger",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "One of the cheapest cars in the game, it mostly looks good for new players tho",
+    description: "One of the cheapest cars in the game; it mostly looks good to new players, though.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
@@ -3172,7 +3172,7 @@ window.VEHICLE_STALLION_450 = [
     name: "Stallion 450",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "Its  a very cool looking car, most beginer friendly and affordable car in the game",
+    description: "It is a very cool-looking car and one of the most beginner-friendly and affordable cars in the game.",
     type: "ground",
     repairPrice: 600,
     repairPriceGarage: 180,
@@ -3222,7 +3222,7 @@ window.VEHICLE_VANGUARD = [
     name: "Vanguard",
     category: "Car",
     obtaining: "Bayview Motors",
-    description: "Lets be honest you bought it for the mission or got it from the robux pack",
+    description: "Let's be honest: you bought it for the mission or got it from the Robux pack.",
     type: "ground",
     repairPrice: 3000,
     repairPriceGarage: 900,
@@ -3321,7 +3321,7 @@ window.VEHICLE_HORIZON = [
   {
     name: "Horizon",
     category: "Car",
-    description: "Begginer friendly, tho its hard to get from crates so I dont know if its worth it",
+    description: "Beginner-friendly, though it is difficult to obtain from crates, so I do not know whether it is worth it.",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 3000,
@@ -3346,7 +3346,7 @@ window.VEHICLE_PULSE_477_RS = [
   {
     name: "Pulse 477 RS",
     category: "Car",
-    description: "Fast but not the fastest, its a speedy car but lets be honest u wanted the empyrean",
+    description: "Fast but not the fastest. It is a speedy car, but let's be honest: you wanted the Empyrean.",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 3000,
@@ -3371,7 +3371,7 @@ window.VEHICLE_ROKU = [
   {
     name: "Roku",
     category: "Car",
-    description: "Begginer friendly, tho its hard to get from crates so I dont know if its worth it",
+    description: "Beginner-friendly, though it is difficult to obtain from crates, so I do not know whether it is worth it.",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 3000,
@@ -3396,7 +3396,7 @@ window.VEHICLE_TEMPORO = [
   {
     name: "Temporo",
     category: "Car",
-    description: "Looks like a car made out of legos, its very speedy tho",
+    description: "It looks like a car made out of LEGO, but it is very speedy.",
     type: "ground",
     obtaining: "Vehicle Crates",
     repairPrice: 7500,
@@ -3447,7 +3447,7 @@ window.VEHICLE_RATTLER = [
     name: "Rattler",
     category: "Car",
     obtaining: "Halloween Event",
-    description: "Its a mid car",
+    description: "It is an average car.",
     type: "ground",
     repairPrice: 7500,
     repairPriceGarage: 2250,
@@ -3472,7 +3472,7 @@ window.VEHICLE_REAPER = [
     name: "Reaper",
     category: "Motorcycle",
     obtaining: "Halloween Event",
-    description: "Its a very good bike",
+    description: "It is a very good bike.",
     type: "ground",
     repairPrice: 7500,
     repairPriceGarage: 2250,
@@ -3612,7 +3612,7 @@ window.WEAPON_BARRETT_M82 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
+          { name: "ACOG", price: 250000 },
         { name: "Rifle Scope", price: 1250000 },
         { name: "Nightforce Scope", price: 2500000 }
       ],
@@ -3634,7 +3634,7 @@ window.WEAPON_GOLDEN_AK_47 = [
   {
     name: "Golden AK-47",
     category: "Airdrop",
-    description: "Its golden colored ak, not much else to say",
+    description: "It is a gold-colored AK; there is not much else to say.",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
     sellPrice: 60000,
@@ -3650,7 +3650,7 @@ window.WEAPON_GOLDEN_AK_47 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+          { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -3673,7 +3673,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
   {
     name: "Golden Barrett M82",
     category: "Airdrop",
-    description: "Its a golden colored barrett m82, VERY EXPENSIVE!",
+    description: "It is a gold-colored Barrett M82. Very expensive!",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
     sellPrice: "300000",
@@ -3689,7 +3689,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
+          { name: "ACOG", price: 250000 },
         { name: "Rifle Scope", price: 1250000 },
         { name: "Nightforce Scope", price: 2500000 }
       ],
@@ -3711,7 +3711,7 @@ window.WEAPON_GOLDEN_DEAGLE = [
   {
     name: "Golden Deagle",
     category: "Airdrop",
-    description: "Its a golden colored deagle, not much else to say",
+    description: "It is a gold-colored Deagle; there is not much else to say.",
     obtaining: "Airdrop",
     sellPrice: 21000,
     contractPrice: "Un-Buyable",
@@ -3875,7 +3875,7 @@ window.WEAPON_AK_47 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -3986,7 +3986,7 @@ window.WEAPON_AWM = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
+        { name: "ACOG", price: 250000 },
         { name: "Rifle Scope", price: 1250000 }
       ],
       Muzzle: [
@@ -4010,7 +4010,7 @@ window.WEAPON_FLAMETHROWER = [
   {
     name: "Flamethrower",
     category: "Heavy",
-    description: "Its not that good but it can be used to burn mutants",
+    description: "It is not that good, but it can be used to burn mutants.",
     reBuyPrice: 6000,
     sellPrice: 1800,
     contractPrice: "Un-Buyable",
@@ -4049,7 +4049,7 @@ window.WEAPON_FN_FAL = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4088,7 +4088,7 @@ window.WEAPON_M4A1 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4127,7 +4127,7 @@ window.WEAPON_M60 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
+        { name: "ACOG", price: 250000 },
         { name: "Rifle Scope", price: 1250000 }
       ],
       Muzzle: [
@@ -4167,7 +4167,7 @@ window.WEAPON_SVD = [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
         { name: "PSO Scope", price: 0 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4278,7 +4278,7 @@ window.WEAPON_LIGHT_CARBINE = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4335,7 +4335,7 @@ window.WEAPON_RAYGUN = [
   {
     name: "Raygun",
     category: "Light",
-    description: "Powerfull against mutants, not so much against players",
+    description: "Powerful against mutants, but not so much against players.",
     obtaining: "Halloween Event",
     reBuyPrice: 2000,
     sellPrice: 600,
@@ -4358,7 +4358,7 @@ window.WEAPON_SAWN_OFF = [
   {
     name: "Sawn Off",
     category: "Light",
-    description: "Yeah you wont do much with this one",
+    description: "You will not do much with this one.",
     reBuyPrice: 150,
     sellPrice: 45,
     contractPrice: 800,
@@ -4381,7 +4381,7 @@ window.WEAPON_SKORPION = [
   {
     name: "Skorpion",
     category: "Light",
-    description: "Its a meh gun, not too good, not too bad",
+    description: "It is an average gun: not too good, not too bad.",
     reBuyPrice: 1000,
     sellPrice: 300,
     contractPrice: 100000,
@@ -4455,7 +4455,7 @@ window.WEAPON_BENELLI_M1014 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4497,7 +4497,7 @@ window.WEAPON_KRISS_VECTOR = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4520,7 +4520,7 @@ window.WEAPON_MODEL_870 = [
   {
     name: "Model 870",
     category: "Medium",
-    description: "Its a shotgun, very bad and boring gun",
+    description: "It is a shotgun, but a very bad and boring gun.",
     reBuyPrice: 750,
     sellPrice: 225,
     contractPrice: 20000,
@@ -4537,7 +4537,7 @@ window.WEAPON_MODEL_870 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4582,7 +4582,7 @@ window.WEAPON_MP5K = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4622,7 +4622,7 @@ window.WEAPON_P90 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4641,7 +4641,7 @@ window.WEAPON_SPAS_12 = [
   {
     name: "SPAS-12",
     category: "Medium",
-    description: "Its somehow more expensive than the benelli and weaker than the benelli",
+    description: "It is somehow more expensive than the Benelli and weaker than the Benelli.",
     reBuyPrice: 8000,
     sellPrice: 2400,
     contractPrice: 2000000,
@@ -4658,7 +4658,7 @@ window.WEAPON_SPAS_12 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }
@@ -4686,7 +4686,7 @@ window.WEAPON_UMP_45 = [
   {
     name: "UMP 45",
     category: "Medium",
-    description: "Police SMG, its ok I guess",
+    description: "A police SMG; it is okay, I guess.",
     reBuyPrice: 1250,
     sellPrice: 375,
     contractPrice: 40000,
@@ -4702,7 +4702,7 @@ window.WEAPON_UMP_45 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }

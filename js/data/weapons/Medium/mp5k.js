@@ -20,7 +20,7 @@ window.WEAPON_MP5K = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }

@@ -3,7 +3,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
   {
     name: "Golden Barrett M82",
     category: "Airdrop",
-    description: "Its a golden colored barrett m82, VERY EXPENSIVE!",
+    description: "It is a gold-colored Barrett M82. Very expensive!",
     obtaining: "Airdrop",
     contractPrice: "Un-Buyable",
     sellPrice: "300000",
@@ -19,7 +19,7 @@ window.WEAPON_GOLDEN_BARRETT_M82 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 },
+          { name: "ACOG", price: 250000 },
         { name: "Rifle Scope", price: 1250000 },
         { name: "Nightforce Scope", price: 2500000 }
       ],

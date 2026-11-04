@@ -17,7 +17,7 @@ window.MISSIONS_SIR_B_WARGAMES = [
     image: "wargames",
     title: "WarGames - Part 2",
     location: "Criminal Outpost – Talk to Sir. B",
-    description: "Fort Emberreach is at the heart of the entire government operation. Raze the base. This raid will be a bullet straight though their hearts.",
+    description: "Fort Emberreach is at the heart of the entire government operation. Raze the base. This raid will be a bullet straight through their hearts.",
     howToComplete: "Hack 5 Secure Crate, Open 15 Military Chests, and Get 20 kills at Military.",
     difficulty: "MEDIUM",
     missionType: "Sir. B",

@@ -3,7 +3,7 @@ window.WEAPON_SPAS_12 = [
   {
     name: "SPAS-12",
     category: "Medium",
-    description: "Its somehow more expensive than the benelli and weaker than the benelli",
+    description: "It is somehow more expensive than the Benelli and weaker than the Benelli.",
     reBuyPrice: 8000,
     sellPrice: 2400,
     contractPrice: 2000000,
@@ -20,7 +20,7 @@ window.WEAPON_SPAS_12 = [
       Optics: [
         { name: "Holographic Sight", price: 12500 },
         { name: "Reflex Sight", price: 20000 },
-        { name: "AGOC", price: 250000 }
+        { name: "ACOG", price: 250000 }
       ],
       Muzzle: [
         { name: "Mono Suppressor", price: 32000 }

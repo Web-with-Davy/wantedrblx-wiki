@@ -3,7 +3,7 @@ window.WEAPON_GOLDEN_DEAGLE = [
   {
     name: "Golden Deagle",
     category: "Airdrop",
-    description: "Its a golden colored deagle, not much else to say",
+    description: "It is a gold-colored Deagle; there is not much else to say.",
     obtaining: "Airdrop",
     sellPrice: 21000,
     contractPrice: "Un-Buyable",
