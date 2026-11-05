@@ -28,6 +28,31 @@ body.frutiger-aero #copy-toast {
     -webkit-backdrop-filter: blur(18px) saturate(145%);
 }
 
+#theme-notification[data-theme="aero"] {
+    color: var(--aero-ink, #123d58);
+    background: rgba(226, 248, 255, 0.94);
+    border-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 14px rgba(9, 71, 112, 0.2), inset 0 1px rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+}
+
+#theme-notification[data-theme="aero"]:hover {
+    background: linear-gradient(135deg, #138cc3, #27b4c2);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(9, 71, 112, 0.25), inset 0 1px rgba(255, 255, 255, 0.72);
+}
+
+#theme-transition[data-theme="aero"] {
+    background:
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.9), transparent 24%),
+        linear-gradient(145deg, #62fbff, #138cc3 58%, #8bdc78);
+}
+
+#theme-transition[data-theme="aero"] span {
+    color: #075578;
+    text-shadow: 0 1px #fff, 0 3px 12px rgba(22, 143, 190, 0.35);
+}
+
 body.frutiger-aero .fixed-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.94);
 }
