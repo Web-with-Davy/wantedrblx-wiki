@@ -23,13 +23,25 @@ async function refreshYoutuberVideos(youtubers) {
   const timeout = setTimeout(() => controller.abort(), 12000);
 
   try {
-    const response = await fetch(`${YOUTUBER_VIDEOS_URL}?handles=${handles.map(encodeURIComponent).join(',')}`, {
-      signal: controller.signal,
-      cache: 'no-store'
-    });
-    if (!response.ok) return;
+    let payload = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const response = await fetch(`${YOUTUBER_VIDEOS_URL}?handles=${handles.map(encodeURIComponent).join(',')}`, {
+        signal: controller.signal,
+        cache: 'no-store'
+      });
+      if (response.ok) {
+        payload = await response.json();
+        const hasStatsReadyVideo = Object.values(payload.videos || {}).some(videos =>
+          Array.isArray(videos) && videos.some(video =>
+            Number.isFinite(video?.views) && Number.isFinite(video?.likes)
+          )
+        );
+        if (hasStatsReadyVideo || attempt === 2) break;
+      }
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+    if (!payload) return;
 
-    const payload = await response.json();
     youtubers.forEach(creator => {
       const handle = creator.channelUrl.match(/\/@([^/]+)/)?.[1];
       const videos = handle && payload.videos?.[handle];
