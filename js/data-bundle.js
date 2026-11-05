@@ -4673,7 +4673,7 @@ window.WEAPON_SPAS_12 = [
       Ammunition: [
         { name: "Rubber Slugs", price: 25000 },
         { name: "12 Gauge Slugs", price: 35000 },
-        { name: "Dragon's Breath", price: 750000 }
+        { name: "Dragon's Breath", price: 2500000 }
       ]
     }
   },
