@@ -1,4 +1,5 @@
 const YOUTUBE_API_CACHE_SECONDS = 900;
+const UPSTREAM_TIMEOUT_MS = 8000;
 const YOUTUBE_VIDEO_LIMIT = 3;
 const YOUTUBE_CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
@@ -6,6 +7,16 @@ const YOUTUBE_CHANNEL_IDS = {
   ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g'
 };
 const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
+
+async function fetchWithTimeout(input, init = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
 function decodeXml(value) {
   return String(value || '')
@@ -37,7 +48,7 @@ function parseYoutubeFeed(xml) {
 async function resolveChannelId(handle) {
   if (YOUTUBE_CHANNEL_IDS[handle]) return YOUTUBE_CHANNEL_IDS[handle];
 
-  const response = await fetch(`https://www.youtube.com/@${encodeURIComponent(handle)}?hl=en`, {
+  const response = await fetchWithTimeout(`https://www.youtube.com/@${encodeURIComponent(handle)}?hl=en`, {
     redirect: 'follow',
     headers: { 'User-Agent': 'Mozilla/5.0' }
   });
@@ -53,7 +64,7 @@ function parseYoutubeMetric(html, name) {
 }
 
 async function getYoutubeVideoDetails(videoId) {
-  const response = await fetch(`https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`, {
+  const response = await fetchWithTimeout(`https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`, {
     headers: { 'User-Agent': 'Mozilla/5.0' }
   });
   if (!response.ok) return null;
@@ -82,7 +93,7 @@ async function getWantedVideos(handle, env) {
   const channelId = await resolveChannelId(handle);
   if (!channelId) return [];
 
-  const feedResponse = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
+  const feedResponse = await fetchWithTimeout(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
     headers: { 'User-Agent': 'Wanted Wiki video updater' }
   });
   if (!feedResponse.ok) return [];
@@ -90,12 +101,10 @@ async function getWantedVideos(handle, env) {
   const feed = parseYoutubeFeed(await feedResponse.text());
   const candidates = feed.filter(video => /\bwanted\b/i.test(video.title)
     && !/\b(?:live|livestream|live stream|streaming)\b/i.test(video.title));
-  const videos = [];
-
-  for (const video of candidates) {
+  const videos = (await Promise.all(candidates.map(async video => {
     const details = await getYoutubeVideoDetails(video.videoId);
-    if (details?.isLive) continue;
-    videos.push({
+    if (details?.isLive) return null;
+    return {
       title: video.title,
       thumbnail: video.thumbnail,
       link: `https://www.youtube.com/watch?v=${video.videoId}`,
@@ -103,9 +112,8 @@ async function getWantedVideos(handle, env) {
       views: Number.isFinite(details?.views) ? details.views : null,
       likes: Number.isFinite(details?.likes) ? details.likes : null,
       clicks: await getVideoClicks(env, video.videoId)
-    });
-    if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
-  }
+    };
+  }))).filter(Boolean).slice(0, YOUTUBE_VIDEO_LIMIT);
 
   return videos;
 }
@@ -149,7 +157,7 @@ async function handleYoutubeVideos(request, env) {
   })));
 
   return new Response(JSON.stringify({ videos }), {
-    headers: responseHeaders()
+    headers: responseHeaders(`public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`)
   });
 }
 

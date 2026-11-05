@@ -1,4 +1,15 @@
 const LIVE_CHECK_CACHE_SECONDS = 30;
+const UPSTREAM_TIMEOUT_MS = 8000;
+
+async function fetchWithTimeout(input, init = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
 function jsonHeaders(cacheControl = 'no-store') {
   return {
@@ -43,7 +54,7 @@ export default {
 
     try {
       const targetUrl = `https://www.youtube.com/@${encodeURIComponent(handle)}/live`;
-      const response = await fetch(targetUrl, {
+      const response = await fetchWithTimeout(targetUrl, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
