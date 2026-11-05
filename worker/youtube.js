@@ -94,14 +94,14 @@ async function getWantedVideos(handle, env) {
 
   for (const video of candidates) {
     const details = await getYoutubeVideoDetails(video.videoId);
-    if (!details || details.isLive || !Number.isFinite(details.views) || !Number.isFinite(details.likes)) continue;
+    if (details?.isLive) continue;
     videos.push({
       title: video.title,
       thumbnail: video.thumbnail,
       link: `https://www.youtube.com/watch?v=${video.videoId}`,
       published: video.published,
-      views: details.views,
-      likes: details.likes,
+      views: Number.isFinite(details?.views) ? details.views : 0,
+      likes: Number.isFinite(details?.likes) ? details.likes : 0,
       clicks: await getVideoClicks(env, video.videoId)
     });
     if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
@@ -118,6 +118,12 @@ function responseHeaders(cacheControl = 'no-store') {
     'Referrer-Policy': 'no-referrer',
     'X-Content-Type-Options': 'nosniff'
   };
+}
+
+async function exceedsRateLimit(env, key) {
+  if (!env.YOUTUBE_REFRESH_LIMITER?.limit) return false;
+  const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key });
+  return !success;
 }
 
 async function handleYoutubeVideos(request, env) {
@@ -156,8 +162,7 @@ async function handleVideoClick(request, env) {
   }
 
   const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
-  const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key: `click:${clientKey}` });
-  if (!success) {
+  if (await exceedsRateLimit(env, `click:${clientKey}`)) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
       status: 429,
       headers: { ...responseHeaders(), 'Retry-After': '60' }
@@ -264,8 +269,7 @@ export default {
     }
 
     const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
-    const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key: clientKey });
-    if (!success) {
+    if (await exceedsRateLimit(env, clientKey)) {
       return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
         status: 429,
         headers: {
