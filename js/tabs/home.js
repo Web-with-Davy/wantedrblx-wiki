@@ -43,6 +43,7 @@ function initAdSense() {
     ad.dataset.adSlot = config.slotId;
 
     const renderAd = () => {
+        if (ad.clientWidth < 250) return;
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (error) {
@@ -52,6 +53,10 @@ function initAdSense() {
 
     if (document.getElementById('adsense-loader')) {
         renderAd();
+        if (ad.clientWidth < 250 && typeof ResizeObserver === 'function') {
+            const resizeObserver = new ResizeObserver(renderAd);
+            resizeObserver.observe(ad);
+        }
         return;
     }
 
@@ -127,6 +132,11 @@ document.addEventListener('click', (event) => {
 });
 
 document.addEventListener('youtuberVideosUpdated', () => {
+    const youtuberList = document.querySelector('.youtuber-list');
+    if (youtuberList) youtuberList.innerHTML = renderYoutubersHTML();
+});
+
+window.YOUTUBER_VIDEOS_READY?.then(() => {
     const youtuberList = document.querySelector('.youtuber-list');
     if (youtuberList) youtuberList.innerHTML = renderYoutubersHTML();
 });
@@ -427,7 +437,7 @@ function renderHome() {
     <span class="ad-label">ADVERTISEMENT</span>
     <ins class="adsbygoogle"
         style="display:block"
-        data-ad-format="horizontal"
+        data-ad-format="auto"
         data-full-width-responsive="true"></ins>
 </div>
 

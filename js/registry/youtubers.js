@@ -51,7 +51,7 @@ async function refreshYoutuberVideos(youtubers) {
 }
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
-window.YOUTUBER_VIDEOS_READY = loadScripts(__MANIFEST_youtubers).then(() => {
+window.YOUTUBER_DATA_READY = loadScripts(__MANIFEST_youtubers).then(() => {
   try {
     const youtubers = __MANIFEST_youtubers.flatMap(path => {
       const filename = path.split('/').pop().replace('.js', '');
@@ -64,13 +64,16 @@ window.YOUTUBER_VIDEOS_READY = loadScripts(__MANIFEST_youtubers).then(() => {
       return [data];
     });
     window.YOUTUBERS_DATA = youtubers;
-    return refreshYoutuberVideos(youtubers).then(() => {
-      document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
-      return youtubers;
-    });
+    return youtubers;
   } catch (err) {
     console.error("Failed building data for js/registry/youtubers.js:", err);
     return [];
   }
 });
-window.__WANTED_LOADERS.push(window.YOUTUBER_VIDEOS_READY);
+window.__WANTED_LOADERS.push(window.YOUTUBER_DATA_READY);
+window.YOUTUBER_VIDEOS_READY = window.YOUTUBER_DATA_READY.then(youtubers =>
+  refreshYoutuberVideos(youtubers).then(() => {
+    document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
+    return youtubers;
+  })
+);
