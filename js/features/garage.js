@@ -5,6 +5,7 @@ function initGarage(onOpen) {
     const hash = window.location.hash.replace(/^#/, '');
 
     if (path === 'privacy' || hash === 'privacy') {
+        if (garageIntro) garageIntro.remove();
         if (onOpen) onOpen(true);
         return;
     }
