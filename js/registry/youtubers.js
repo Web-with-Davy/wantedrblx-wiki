@@ -20,7 +20,7 @@ async function refreshYoutuberVideos(youtubers) {
   if (!handles.length) return;
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 5000);
+  const timeout = setTimeout(() => controller.abort(), 12000);
 
   try {
     const response = await fetch(`${YOUTUBER_VIDEOS_URL}?handles=${handles.map(encodeURIComponent).join(',')}`, {
@@ -50,29 +50,8 @@ async function refreshYoutuberVideos(youtubers) {
   }
 }
 
-function scheduleYoutuberVideoRefresh(youtubers) {
-  let started = false;
-  const start = () => {
-    if (started) return;
-    started = true;
-
-    const refresh = () => refreshYoutuberVideos(youtubers).then(() => {
-      document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
-    });
-
-    if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(refresh, { timeout: 3000 });
-    } else {
-      setTimeout(refresh, 0);
-    }
-  };
-
-  document.addEventListener('wantedDeferredReady', start, { once: true });
-  window.addEventListener('load', start, { once: true });
-}
-
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
-window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(() => {
+window.YOUTUBER_VIDEOS_READY = loadScripts(__MANIFEST_youtubers).then(() => {
   try {
     const youtubers = __MANIFEST_youtubers.flatMap(path => {
       const filename = path.split('/').pop().replace('.js', '');
@@ -85,8 +64,13 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(() => {
       return [data];
     });
     window.YOUTUBERS_DATA = youtubers;
-    scheduleYoutuberVideoRefresh(youtubers);
+    return refreshYoutuberVideos(youtubers).then(() => {
+      document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
+      return youtubers;
+    });
   } catch (err) {
     console.error("Failed building data for js/registry/youtubers.js:", err);
+    return [];
   }
-}));
+});
+window.__WANTED_LOADERS.push(window.YOUTUBER_VIDEOS_READY);
