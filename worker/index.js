@@ -22,7 +22,9 @@ function buildHtml(item, category, id) {
   const title = item ? `${item.n} — Wanted Wiki` : 'Wanted Wiki';
   const desc  = (item && item.d) ? item.d : DEFAULT_DESC;
   const image = (item && item.i) ? item.i : DEFAULT_IMG;
-  const canonical = SITE + '/item/' + category + '/' + id + '/';
+  const canonicalCategory = String(category).toLowerCase();
+  const canonicalId = slugify(id);
+  const canonical = SITE + '/item/' + encodeURIComponent(canonicalCategory) + '/' + encodeURIComponent(canonicalId) + '/';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -98,6 +100,10 @@ export default {
       }
     } catch (error) {
       return fetch(request);
+    }
+
+    if (url.hostname !== 'wantedrblx.com') {
+      return Response.redirect(`https://wantedrblx.com${url.pathname}${url.search}`, 301);
     }
 
     if (!itemMatch) return fetch(request);

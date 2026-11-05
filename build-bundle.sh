@@ -32,6 +32,11 @@ if [ -f "$WIKI_DIR/scripts/build-item-embeds.js" ]; then
     node "$WIKI_DIR/scripts/build-item-embeds.js"
 fi
 
+# Keep the crawler sitemap in sync with the item catalog used by the embed worker.
+if [ -f "$WIKI_DIR/scripts/build-sitemap.js" ]; then
+    node "$WIKI_DIR/scripts/build-sitemap.js"
+fi
+
 # Update weapon manifest in js/registry/weapons.js to match current weapon data files
 WEAPONS_REGISTRY="$WIKI_DIR/js/registry/weapons.js"
 if [ -f "$WEAPONS_REGISTRY" ]; then

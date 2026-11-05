@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
+Disallow: /*?route=
+Disallow: /*?theme=
 
 Sitemap: https://wantedrblx.com/sitemap.xml

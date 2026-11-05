@@ -26,19 +26,19 @@ const PAGE_NAMES = {
 };
 
 const PAGE_META = {
-    home: { title: 'Wanted Wiki - Roblox Wanted Game Wiki', path: '/' },
-    valuables: { title: 'Valuables - Wanted Wiki', path: '/valuables' },
-    atms: { title: 'ATMs & Vaults - Wanted Wiki', path: '/atms' },
-    weapons: { title: 'Weapons - Wanted Wiki', path: '/weapons' },
-    vehicles: { title: 'Vehicles - Wanted Wiki', path: '/vehicles' },
-    'gun-crates': { title: 'Gun Crates - Wanted Wiki', path: '/gun-crates' },
-    missions: { title: 'Missions - Wanted Wiki', path: '/missions' },
-    npcs: { title: 'NPCs - Wanted Wiki', path: '/npcs' },
-    locations: { title: 'Locations - Wanted Wiki', path: '/locations' },
-    store: { title: 'Store - Wanted Wiki', path: '/store' },
-    items: { title: 'Items - Wanted Wiki', path: '/items' },
-    events: { title: 'Events - Wanted Wiki', path: '/events' },
-    'promo-codes': { title: 'Promo Codes - Wanted Wiki', path: '/promo-codes' }
+    home: { title: 'Wanted Wiki - Roblox Wanted Game Wiki', path: '/', description: 'Wanted Wiki is the complete Roblox Wanted game guide: weapons, vehicles, missions, locations, NPCs, promo codes, gun crates, valuables, ATMs and events.' },
+    valuables: { title: 'Valuables - Wanted Wiki', path: '/valuables', description: 'Find every valuable, rarity, weight and sell price in the Roblox Wanted game.' },
+    atms: { title: 'ATMs & Vaults - Wanted Wiki', path: '/atms', description: 'Find ATMs, vaults, cash limits and locations in the Roblox Wanted game.' },
+    weapons: { title: 'Weapons - Wanted Wiki', path: '/weapons', description: 'Browse every Roblox Wanted weapon with damage, fire rate, ammo, price and other stats.' },
+    vehicles: { title: 'Vehicles - Wanted Wiki', path: '/vehicles', description: 'Browse every Roblox Wanted vehicle with prices, performance and locations.' },
+    'gun-crates': { title: 'Gun Crates - Wanted Wiki', path: '/gun-crates', description: 'Find every gun crate, its contents, price and location in Roblox Wanted.' },
+    missions: { title: 'Missions - Wanted Wiki', path: '/missions', description: 'Learn how to complete every Roblox Wanted mission and collect its rewards.' },
+    npcs: { title: 'NPCs - Wanted Wiki', path: '/npcs', description: 'Find Roblox Wanted NPCs, dialogue, roles and locations.' },
+    locations: { title: 'Locations - Wanted Wiki', path: '/locations', description: 'Explore the complete Roblox Wanted map and find important locations.' },
+    store: { title: 'Store - Wanted Wiki', path: '/store', description: 'Browse the Roblox Wanted store, items, prices and availability.' },
+    items: { title: 'Items - Wanted Wiki', path: '/items', description: 'Browse every item in Roblox Wanted with descriptions, prices and uses.' },
+    events: { title: 'Events - Wanted Wiki', path: '/events', description: 'Track Roblox Wanted events, dates, rewards and how to participate.' },
+    'promo-codes': { title: 'Promo Codes - Wanted Wiki', path: '/promo-codes', description: 'Find the latest active Roblox Wanted promo codes and rewards.' }
 };
 
 function setPageMeta(page) {
@@ -46,6 +46,16 @@ function setPageMeta(page) {
     document.title = meta.title;
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.href = `https://wantedrblx.com${meta.path}`;
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.content = meta.description;
+    document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]').forEach(element => {
+        element.content = meta.title;
+    });
+    document.querySelectorAll('meta[property="og:description"], meta[name="twitter:description"]').forEach(element => {
+        element.content = meta.description;
+    });
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = `https://wantedrblx.com${meta.path}`;
 }
 
 function getCurrentPage() {
