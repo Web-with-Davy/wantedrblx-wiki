@@ -401,7 +401,7 @@ function renderHome() {
     <span class="ad-label">ADVERTISEMENT</span>
     <ins class="adsbygoogle"
         style="display:block"
-        data-ad-format="auto"
+        data-ad-format="rectangle"
         data-full-width-responsive="true"></ins>
 </div>
 
