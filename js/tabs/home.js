@@ -50,15 +50,15 @@ function initAdSense() {
         }
     };
 
-    if (document.querySelector('script[data-adsense-loader]')) {
+    if (document.getElementById('adsense-loader')) {
         renderAd();
         return;
     }
 
     const script = document.createElement('script');
+    script.id = 'adsense-loader';
     script.async = true;
     script.crossOrigin = 'anonymous';
-    script.dataset.adsenseLoader = 'true';
     script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.publisherId)}`;
     script.onload = renderAd;
     document.head.appendChild(script);
@@ -401,7 +401,7 @@ function renderHome() {
     <span class="ad-label">ADVERTISEMENT</span>
     <ins class="adsbygoogle"
         style="display:block"
-        data-ad-format="rectangle"
+        data-ad-format="horizontal"
         data-full-width-responsive="true"></ins>
 </div>
 

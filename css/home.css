@@ -264,8 +264,8 @@
 
 .wiki-ad {
     position: relative;
-    height: 286px;
-    max-height: 286px;
+    height: 136px;
+    max-height: 136px;
     padding: 10px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(0, 0, 0, 0.18);
@@ -276,8 +276,8 @@
 .wiki-ad .adsbygoogle {
     display: block;
     width: 100%;
-    height: 250px;
-    max-height: 250px;
+    height: 100px;
+    max-height: 100px;
     min-height: 0;
     overflow: hidden;
 }
