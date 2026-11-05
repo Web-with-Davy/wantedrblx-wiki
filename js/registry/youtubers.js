@@ -48,6 +48,27 @@ async function refreshYoutuberVideos(youtubers) {
   }
 }
 
+function scheduleYoutuberVideoRefresh(youtubers) {
+  let started = false;
+  const start = () => {
+    if (started) return;
+    started = true;
+
+    const refresh = () => refreshYoutuberVideos(youtubers).then(() => {
+      document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
+    });
+
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(refresh, { timeout: 3000 });
+    } else {
+      setTimeout(refresh, 0);
+    }
+  };
+
+  document.addEventListener('wantedDeferredReady', start, { once: true });
+  window.addEventListener('load', start, { once: true });
+}
+
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];
 window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(() => {
   try {
@@ -62,7 +83,7 @@ window.__WANTED_LOADERS.push(loadScripts(__MANIFEST_youtubers).then(() => {
       return [data];
     });
     window.YOUTUBERS_DATA = youtubers;
-    refreshYoutuberVideos(youtubers);
+    scheduleYoutuberVideoRefresh(youtubers);
   } catch (err) {
     console.error("Failed building data for js/registry/youtubers.js:", err);
   }

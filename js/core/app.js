@@ -415,6 +415,20 @@ function initApp() {
     window.addEventListener('mousedown', startAudioOnInteraction, true);
     window.addEventListener('keydown', startAudioOnInteraction, true);
 
+    let wasPlayingBeforeTabHidden = false;
+    document.addEventListener('visibilitychange', () => {
+        if (!bgm) return;
+
+        if (document.visibilityState === 'hidden') {
+            wasPlayingBeforeTabHidden = !bgm.paused;
+            bgm.pause();
+            return;
+        }
+
+        if (wasPlayingBeforeTabHidden && !window.audioStopped) playBGM();
+        wasPlayingBeforeTabHidden = false;
+    });
+
     if (bgmStopBtn) {
         const syncBGMStopButton = () => {
             const isStopped = window.audioStopped;
