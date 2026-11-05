@@ -60,11 +60,12 @@
             <a href="/?route=%2Fitems">Items</a>
             <a href="/?route=%2Fevents">Events</a>
             <a href="/?route=%2Fpromo-codes">Promo Codes</a>
+            <a href="/?route=%2Fprivacy">Privacy Policy</a>
         </nav>
     </main>
     <script>
         (function () {
-            const pages = new Set(['weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'atms', 'valuables', 'store', 'items', 'events', 'promo-codes']);
+            const pages = new Set(['weapons', 'vehicles', 'gun-crates', 'missions', 'npcs', 'locations', 'atms', 'valuables', 'store', 'items', 'events', 'promo-codes', 'privacy']);
             const page = window.location.pathname.replace(/^\/+|\/+$/g, '');
             if (pages.has(page) && !window.location.hash) {
                 window.location.replace(`/?route=${encodeURIComponent('/' + page)}`);

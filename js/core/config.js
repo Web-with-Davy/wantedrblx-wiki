@@ -12,6 +12,11 @@ const RARITIES = {
   HALLOWEEN: { name: "Halloween", class: "rarity-halloween", color: "#ff7518" }
 };
 
+window.ADSENSE_CONFIG = {
+  publisherId: 'ca-pub-5574601525092016',
+  slotId: '6084822267'
+};
+
 const DIFFICULTIES = {
   EASY: { name: "Easy", class: "rarity-easy", order: 1 },
   MEDIUM: { name: "Medium", class: "rarity-medium", order: 2 },

@@ -27,6 +27,43 @@ const VAULT_GUESSER_META = {
 const VAULT_GUESSER_SLOT_MS = 20 * 60 * 1000;
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
 
+function initAdSense() {
+    const config = window.ADSENSE_CONFIG || {};
+    const ad = document.querySelector('.wiki-ad ins.adsbygoogle');
+    if (!ad || !config.publisherId || !config.slotId) return;
+
+    const isPublisherId = /^ca-pub-\d+$/.test(config.publisherId);
+    const isSlotId = /^\d+$/.test(config.slotId);
+    if (!isPublisherId || !isSlotId) {
+        console.warn('AdSense configuration is invalid. Expected a ca-pub ID and numeric slot ID.');
+        return;
+    }
+
+    ad.dataset.adClient = config.publisherId;
+    ad.dataset.adSlot = config.slotId;
+
+    const renderAd = () => {
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+            console.warn('AdSense could not render this ad.', error);
+        }
+    };
+
+    if (document.querySelector('script[data-adsense-loader]')) {
+        renderAd();
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.dataset.adsenseLoader = 'true';
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.publisherId)}`;
+    script.onload = renderAd;
+    document.head.appendChild(script);
+}
+
 function renderYoutubersHTML() {
     const renderYoutuberVideo = (video) => `
         <a href="${video.link}" target="_blank" rel="noopener" class="featured-video-card">
@@ -358,6 +395,14 @@ function renderHome() {
             JOIN SERVER
         </a>
     </div>
+</div>
+
+<div class="sidebar-block wiki-ad" aria-label="Advertisement">
+    <span class="ad-label">ADVERTISEMENT</span>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
 </div>
 
 <div class="sidebar-block">

@@ -14,5 +14,6 @@ http://wantedrblx.com/* https://wantedrblx.com/:splat 301!
 /items /index.html 200
 /events /index.html 200
 /promo-codes /index.html 200
+/privacy /index.html 200
 /item/* /index.html 200
 /home /

@@ -262,6 +262,22 @@
     flex-shrink: 0;
 }
 
+.wiki-ad {
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.ad-label {
+    display: block;
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
 .home-admin-sidebar::-webkit-scrollbar {
     width: 6px;
 }

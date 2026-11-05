@@ -17,12 +17,12 @@ const playBGM = () => {
 
 window.loadPage = loadPage;
 
-const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "items", "events", "promo-codes"];
+const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "items", "events", "promo-codes", "privacy"];
 const PAGE_NAMES = {
     home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
     weapons: 'WEAPONS', vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES',
     missions: 'MISSIONS', npcs: 'NPCs', locations: 'LOCATIONS',
-    store: 'STORE', items: 'ITEMS', events: 'EVENTS', 'promo-codes': 'PROMO CODES'
+    store: 'STORE', items: 'ITEMS', events: 'EVENTS', 'promo-codes': 'PROMO CODES', privacy: 'PRIVACY'
 };
 
 const PAGE_META = {
@@ -38,7 +38,8 @@ const PAGE_META = {
     store: { title: 'Store - Wanted Wiki', path: '/store', description: 'Browse the Roblox Wanted store, items, prices and availability.' },
     items: { title: 'Items - Wanted Wiki', path: '/items', description: 'Browse every item in Roblox Wanted with descriptions, prices and uses.' },
     events: { title: 'Events - Wanted Wiki', path: '/events', description: 'Track Roblox Wanted events, dates, rewards and how to participate.' },
-    'promo-codes': { title: 'Promo Codes - Wanted Wiki', path: '/promo-codes', description: 'Find the latest active Roblox Wanted promo codes and rewards.' }
+    'promo-codes': { title: 'Promo Codes - Wanted Wiki', path: '/promo-codes', description: 'Find the latest active Roblox Wanted promo codes and rewards.' },
+    privacy: { title: 'Privacy Policy - Wanted Wiki', path: '/privacy', description: 'Privacy Policy for Wanted Wiki, including advertising, cookies, local storage and third-party services.' }
 };
 
 function setPageMeta(page) {
@@ -73,7 +74,7 @@ function loadPage(page, saveToHistory = true, sectionId = null) {
 
     const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
     const currentHash = window.location.hash.replace(/^#/, '');
-    if (!saveToHistory && !VALID_PAGES.includes(currentPath) && VALID_PAGES.includes(currentHash)) {
+    if (window.location.protocol !== 'file:' && !saveToHistory && !VALID_PAGES.includes(currentPath) && VALID_PAGES.includes(currentHash)) {
         window.history.replaceState({ page }, '', page === 'home' ? '/' : `/${page}`);
     }
 
@@ -117,6 +118,7 @@ function loadPage(page, saveToHistory = true, sectionId = null) {
                 case "items": content = typeof renderItems === "function" ? renderItems() : ""; break;
                 case "events": content = typeof renderEvents === "function" ? renderEvents() : ""; break;
                 case "promo-codes": content = typeof renderPromoCodes === "function" ? renderPromoCodes() : ""; break;
+                case "privacy": content = typeof renderPrivacy === "function" ? renderPrivacy() : ""; break;
                 default: content = `<h2>Work In Progress</h2><p>Under construction...</p>`;
             }
         } catch (e) {
@@ -152,6 +154,7 @@ function loadPage(page, saveToHistory = true, sectionId = null) {
         if (page === "home") {
             if (typeof initCountdownTimer === "function") initCountdownTimer();
             if (typeof initVaultGuesser === "function") initVaultGuesser();
+            if (typeof initAdSense === "function") initAdSense();
         }
 
         const cards = container.querySelectorAll('.val-card');
@@ -373,7 +376,7 @@ function initApp() {
             }
 
             const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
-            if (!VALID_PAGES.includes(path) && VALID_PAGES.includes(hash)) {
+            if (window.location.protocol !== 'file:' && !VALID_PAGES.includes(path) && VALID_PAGES.includes(hash)) {
                 window.history.replaceState({ page: hash }, '', hash === 'home' ? '/' : `/${hash}`);
             }
             const initialPage = VALID_PAGES.includes(path) ? path : VALID_PAGES.includes(hash) ? hash : "home";
@@ -390,7 +393,7 @@ function initApp() {
                 home: 'renderHome', valuables: 'renderValuables', atms: 'renderATMs',
                 weapons: 'renderWeapons', vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates',
                 missions: 'renderMissions', npcs: 'renderNPCs', locations: 'renderLocations',
-                store: 'renderStore', items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes'
+                store: 'renderStore', items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes', privacy: 'renderPrivacy'
             };
             const rendererName = RENDERER_MAP[initialPage] || '';
             const rendererReady = !DEFERRED_PAGES.includes(initialPage) || typeof window[rendererName] === 'function';
