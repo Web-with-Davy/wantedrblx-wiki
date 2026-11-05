@@ -92,7 +92,7 @@ function initAdSense() {
 function renderYoutubersHTML() {
     const formatVideoMetric = (value) => Number.isFinite(value)
         ? Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)
-        : '--';
+        : '...';
 
     const renderYoutuberVideo = (video) => `
         <a href="${video.link}" target="_blank" rel="noopener" class="featured-video-card" data-video-id="${video.link.match(/[?&]v=([\w-]+)/)?.[1] || ''}">

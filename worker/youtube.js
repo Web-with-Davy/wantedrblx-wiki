@@ -100,8 +100,8 @@ async function getWantedVideos(handle, env) {
       thumbnail: video.thumbnail,
       link: `https://www.youtube.com/watch?v=${video.videoId}`,
       published: video.published,
-      views: Number.isFinite(details?.views) ? details.views : 0,
-      likes: Number.isFinite(details?.likes) ? details.likes : 0,
+      views: Number.isFinite(details?.views) ? details.views : null,
+      likes: Number.isFinite(details?.likes) ? details.likes : null,
       clicks: await getVideoClicks(env, video.videoId)
     });
     if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
