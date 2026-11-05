@@ -31,6 +31,9 @@ function initAdSense() {
     const config = window.ADSENSE_CONFIG || {};
     const ad = document.querySelector('.wiki-ad ins.adsbygoogle');
     if (!ad || !config.publisherId || !config.slotId) return;
+    const adBox = ad.closest('.wiki-ad');
+    if (!adBox) return;
+    adBox.hidden = true;
 
     const isPublisherId = /^ca-pub-\d+$/.test(config.publisherId);
     const isSlotId = /^\d+$/.test(config.slotId);
@@ -42,14 +45,31 @@ function initAdSense() {
     ad.dataset.adClient = config.publisherId;
     ad.dataset.adSlot = config.slotId;
 
+    const revealFilledAd = () => {
+        if (ad.dataset.adStatus === 'filled') {
+            adBox.hidden = false;
+            return true;
+        }
+        return false;
+    };
+
     const renderAd = () => {
         if (ad.clientWidth < 250) return;
+        if (ad.dataset.adRequested === 'true') return;
+        ad.dataset.adRequested = 'true';
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (error) {
+            ad.dataset.adRequested = 'false';
             console.warn('AdSense could not render this ad.', error);
         }
     };
+
+    const adObserver = new MutationObserver(() => {
+        if (revealFilledAd()) adObserver.disconnect();
+    });
+    adObserver.observe(ad, { attributes: true, childList: true, subtree: true });
+    setTimeout(() => adObserver.disconnect(), 15000);
 
     if (document.getElementById('adsense-loader')) {
         renderAd();

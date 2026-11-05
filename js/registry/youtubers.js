@@ -34,10 +34,13 @@ async function refreshYoutuberVideos(youtubers) {
       const handle = creator.channelUrl.match(/\/@([^/]+)/)?.[1];
       const videos = handle && payload.videos?.[handle];
       if (Array.isArray(videos)) {
-        const mergedVideos = [...videos, ...(creator.videos || [])];
+        const statsReadyVideos = videos.filter(video =>
+          Number.isFinite(video?.views) && Number.isFinite(video?.likes)
+        );
+        const mergedVideos = [...statsReadyVideos, ...(creator.videos || [])];
         const seenLinks = new Set();
         creator.videos = mergedVideos.filter(video => {
-          if (!video?.link || seenLinks.has(video.link)) return false;
+          if (!video?.link || !Number.isFinite(video.views) || !Number.isFinite(video.likes) || seenLinks.has(video.link)) return false;
           seenLinks.add(video.link);
           return true;
         }).slice(0, 3);

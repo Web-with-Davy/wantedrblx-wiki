@@ -94,14 +94,14 @@ async function getWantedVideos(handle, env) {
 
   for (const video of candidates) {
     const details = await getYoutubeVideoDetails(video.videoId);
-    if (details?.isLive) continue;
+    if (!details || details.isLive || !Number.isFinite(details.views) || !Number.isFinite(details.likes)) continue;
     videos.push({
       title: video.title,
       thumbnail: video.thumbnail,
       link: `https://www.youtube.com/watch?v=${video.videoId}`,
       published: video.published,
-      views: details?.views ?? null,
-      likes: details?.likes ?? null,
+      views: details.views,
+      likes: details.likes,
       clicks: await getVideoClicks(env, video.videoId)
     });
     if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
