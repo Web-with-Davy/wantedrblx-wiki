@@ -182,6 +182,77 @@ const YOUTUBER_TEST_MODE = false;
             font-family: 'Geist Pixel', system-ui;
         }
 
+        body.christmas-theme .yt-live-card {
+            color: var(--xmas-ink, #fff1d2);
+            background: var(--xmas-gloss, linear-gradient(180deg, rgba(255, 240, 210, 0.2), rgba(0, 0, 0, 0.14))), var(--xmas-plate, #231812);
+            border-color: var(--xmas-gold-hi, #f2cd7a);
+            box-shadow: var(--xmas-shadow, 0 10px 26px rgba(8, 4, 2, 0.45)), var(--xmas-rim-soft, inset 0 1px 0 rgba(255, 236, 190, 0.12));
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+        }
+        body.christmas-theme .yt-live-card::after {
+            border-color: var(--xmas-gold-hi, #f2cd7a);
+        }
+        body.christmas-theme .yt-live-card:hover {
+            border-color: var(--xmas-gold-hi, #f2cd7a);
+            background: var(--xmas-wood-btn-hover, linear-gradient(180deg, #7a5540, #4c3322));
+            box-shadow: var(--xmas-shadow, 0 10px 26px rgba(8, 4, 2, 0.45)), var(--xmas-glow, 0 0 16px rgba(240, 180, 90, 0.22));
+        }
+        body.christmas-theme .yt-live-card:hover::after {
+            border-color: var(--xmas-gold-hi, #f2cd7a);
+        }
+        body.christmas-theme .yt-live-badge {
+            color: var(--xmas-gold-hi, #f2cd7a);
+        }
+        body.christmas-theme .yt-live-badge::before {
+            background: var(--xmas-ember, #8a3a31);
+            box-shadow: 0 0 5px var(--xmas-ember, #8a3a31);
+        }
+        body.christmas-theme .yt-live-name {
+            color: var(--xmas-ink, #fff1d2);
+        }
+        body.christmas-theme .yt-live-card img {
+            border-color: var(--xmas-edge-hi, rgba(224, 177, 91, 0.7));
+            background: var(--xmas-wood, #2b1d15);
+        }
+
+        body.frutiger-aero .yt-live-card {
+            color: var(--aero-ink, #123d58);
+            background: var(--aero-glass, rgba(236, 250, 255, 0.9));
+            border-color: var(--aero-edge, rgba(255, 255, 255, 0.94));
+            box-shadow: var(--aero-shadow, 0 12px 30px rgba(9, 71, 112, 0.2), inset 0 1px rgba(255, 255, 255, 0.92));
+            text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+        }
+        body.frutiger-aero .yt-live-card::after {
+            border-color: var(--aero-edge, rgba(255, 255, 255, 0.94));
+        }
+        body.frutiger-aero .yt-live-card:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.98);
+            background: linear-gradient(135deg, #138cc3, #27b4c2);
+            box-shadow: 0 12px 30px rgba(9, 71, 112, 0.25), inset 0 1px rgba(255, 255, 255, 0.72);
+            text-shadow: 0 1px rgba(0, 61, 93, 0.4);
+        }
+        body.frutiger-aero .yt-live-card:hover::after {
+            border-color: rgba(255, 255, 255, 0.98);
+        }
+        body.frutiger-aero .yt-live-badge {
+            color: #c62850;
+        }
+        body.frutiger-aero .yt-live-badge::before {
+            background: #d82c57;
+            box-shadow: 0 0 5px rgba(216, 44, 87, 0.7);
+        }
+        body.frutiger-aero .yt-live-name {
+            color: var(--aero-ink, #123d58);
+        }
+        body.frutiger-aero .yt-live-card:hover .yt-live-name {
+            color: #fff;
+        }
+        body.frutiger-aero .yt-live-card img {
+            border-color: rgba(255, 255, 255, 0.9);
+            background: #dff8ff;
+        }
+
         @media (max-width: 1024px) {
             .yt-live-card {
                 padding: 6px 12px 6px 8px;

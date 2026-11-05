@@ -11,7 +11,7 @@ window.audioUnlocked = false;
 window.audioStopped = localStorage.getItem("bgmStopped") === "true";
 
 const playBGM = () => {
-    if (!window.audioUnlocked || window.audioStopped || !bgm) return;
+    if (!window.audioUnlocked || window.audioStopped || document.hidden || !bgm) return;
     bgm.play().catch(() => { });
 };
 
@@ -419,7 +419,7 @@ function initApp() {
     document.addEventListener('visibilitychange', () => {
         if (!bgm) return;
 
-        if (document.visibilityState === 'hidden') {
+        if (document.hidden) {
             wasPlayingBeforeTabHidden = !bgm.paused;
             bgm.pause();
             return;
