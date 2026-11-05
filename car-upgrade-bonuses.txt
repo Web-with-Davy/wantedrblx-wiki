@@ -453,41 +453,41 @@ Health (final health numbers)
 ============================================================
 SUBCATEGORY: Tactical
 ============================================================
-Street: Top Speed +2.3% | Acceleration +0.6% | $
-Sport: Top Speed +4.7% | Acceleration +1.3% | $
+Street: Top Speed +2.3% | Acceleration +0.6% | $50000
+Sport: Top Speed +4.7% | Acceleration +1.3% | $150000
 Race: Top Speed +9.4% | Acceleration +1.9% | $
 Transmission
-Street: Acceleration +1% | $
-Sport: Acceleration +2.7% | $
-Race: Acceleration +5.3% | $
+Street: Acceleration +1% | $100000
+Sport: Acceleration +2.7% | $250000
+Race: Acceleration +5.3% | $500000
 Aspiration
-Turbo Charger: Acceleration +0.7% | $
-Twin Turbo: Acceleration +1.3% | $
-Quad Turbo: Acceleration +3.3% | $
+Turbo Charger: Acceleration +0.7% | $50000
+Twin Turbo: Acceleration +1.3% | $150000
+Quad Turbo: Acceleration +3.3% | $400000
 Brakes
-Street: Braking +2.6% | $
-Sport: Braking +6.6% | $
-Race: Braking +13.2% | $
+Street: Braking +2.6% | $20000
+Sport: Braking +6.6% | $50000
+Race: Braking +13.2% | $150000
 Suspension:
-Lowered: $
-Lifted: $
-Monster: $
+Lowered: $80000
+Lifted: $200000
+Monster: $500000
 
 Health (final health numbers)
 Armor (Body)
 Stock: 1500
-Light: Body 2250| Armor stat 1 | $
-Medium: Body 3000| Armor stat 2 | $
+Light: Body 2250| Armor stat 1 | $25000
+Medium: Body 3000| Armor stat 2 | $80000
 Heavy: Body 3750| Armor stat 3 | $
 Tires (Wheels)
 Stock: 500
-Upgraded: Wheels 750 | $
-Reinforced: Wheels 1500 | $
-Bullet Proof: Wheels ∞ | $
+Upgraded: Wheels 750 | $10000
+Reinforced: Wheels 1500 | $50000
+Bullet Proof: Wheels ∞ | $200000
 Windows
 Stock: 700
-Upgraded: Windows 1050 | $
-Reinforced: Windows 2100 | $
+Upgraded: Windows 1050 | $10000
+Reinforced: Windows 2100 | $50000
 Bullet Proof: Windows ∞ | $
 
 ============================================================

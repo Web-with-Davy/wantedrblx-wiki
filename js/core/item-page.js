@@ -803,6 +803,16 @@ const VEHICLE_UPGRADE_PRICE_TIERS = {
     tires: [5000, 25000, 100000],
     windows: [5000, 25000, 100000],
   },
+  tactical: {
+    engine: [50000, 150000, '$'],
+    transmission: [100000, 250000, 500000],
+    aspiration: [50000, 150000, 400000],
+    brakes: [20000, 50000, 150000],
+    suspension: [80000, 200000, 500000],
+    armor: [25000, 80000, '$'],
+    tires: [10000, 50000, 200000],
+    windows: [10000, 50000, '$'],
+  },
 };
 
 const VEHICLE_UPGRADE_PRICE_TIER_BY_TYPE = {
@@ -817,7 +827,7 @@ const VEHICLE_UPGRADE_PRICE_TIER_BY_TYPE = {
   'L-SUT': 'sport',
   Cruiser: 'standard',
   'Off-Road': 'standard',
-  Tactical: null,
+  Tactical: 'tactical',
   Roadster: 'standard',
 };
 
