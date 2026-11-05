@@ -94,14 +94,14 @@ async function getWantedVideos(handle, env) {
 
   for (const video of candidates) {
     const details = await getYoutubeVideoDetails(video.videoId);
-    if (!details || details.isLive) continue;
+    if (details?.isLive) continue;
     videos.push({
       title: video.title,
       thumbnail: video.thumbnail,
       link: `https://www.youtube.com/watch?v=${video.videoId}`,
       published: video.published,
-      views: details.views,
-      likes: details.likes,
+      views: details?.views ?? null,
+      likes: details?.likes ?? null,
       clicks: await getVideoClicks(env, video.videoId)
     });
     if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
@@ -120,7 +120,7 @@ function responseHeaders(cacheControl = 'no-store') {
   };
 }
 
-async function handleYoutubeVideos(request) {
+async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const handles = [...new Set((url.searchParams.get('handles') || '')
     .split(',')
@@ -143,7 +143,7 @@ async function handleYoutubeVideos(request) {
   })));
 
   return new Response(JSON.stringify({ videos }), {
-    headers: responseHeaders(`public, max-age=${YOUTUBE_API_CACHE_SECONDS}`)
+    headers: responseHeaders()
   });
 }
 
@@ -275,6 +275,6 @@ export default {
       });
     }
 
-    return handleYoutubeVideos(request);
+    return handleYoutubeVideos(request, env);
   }
 };
