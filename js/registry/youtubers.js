@@ -26,8 +26,7 @@ async function refreshYoutuberVideos(youtubers) {
     let payload = null;
     for (let attempt = 0; attempt < 3; attempt++) {
       const response = await fetch(`${YOUTUBER_VIDEOS_URL}?handles=${handles.map(encodeURIComponent).join(',')}`, {
-        signal: controller.signal,
-        cache: 'no-store'
+        signal: controller.signal
       });
       if (response.ok) {
         payload = await response.json();

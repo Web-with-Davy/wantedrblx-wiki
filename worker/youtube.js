@@ -136,6 +136,11 @@ async function exceedsRateLimit(env, key) {
 
 async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
+  const cache = caches.default;
+  const cacheKey = new Request(url.toString(), { method: 'GET' });
+  const cachedResponse = await cache.match(cacheKey);
+  if (cachedResponse) return cachedResponse;
+
   const handles = [...new Set((url.searchParams.get('handles') || '')
     .split(',')
     .map(handle => handle.trim().replace(/^@/, ''))
@@ -156,9 +161,11 @@ async function handleYoutubeVideos(request, env) {
     }
   })));
 
-  return new Response(JSON.stringify({ videos }), {
+  const response = new Response(JSON.stringify({ videos }), {
     headers: responseHeaders(`public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`)
   });
+  await cache.put(cacheKey, response.clone());
+  return response;
 }
 
 async function handleVideoClick(request, env) {
