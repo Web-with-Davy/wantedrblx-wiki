@@ -1,10 +1,12 @@
 const __MANIFEST_youtubers = [
   "js/data/youtubers/creator-1.js",
   "js/data/youtubers/creator-2.js",
-  "js/data/youtubers/creator-3.js"
+  "js/data/youtubers/creator-3.js",
+  "js/data/youtubers/creator-4.js"
 ];
 
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
+window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
 
 async function refreshYoutuberVideos(youtubers) {
   const handles = youtubers.map(creator => {

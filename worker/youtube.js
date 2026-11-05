@@ -5,6 +5,7 @@ const YOUTUBE_CHANNEL_IDS = {
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
   ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g'
 };
+const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
 
 function decodeXml(value) {
   return String(value || '')
@@ -46,17 +47,38 @@ async function resolveChannelId(handle) {
   return html.match(/(?:"channelId"|"externalId")\s*:\s*"(UC[^"]+)"/)?.[1] || null;
 }
 
-async function isLivestream(videoId) {
+function parseYoutubeMetric(html, name) {
+  const match = html.match(new RegExp(`"${name}"\\s*:\\s*"?(\\d+)"?`, 'i'));
+  return match ? Number(match[1]) : null;
+}
+
+async function getYoutubeVideoDetails(videoId) {
   const response = await fetch(`https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`, {
     headers: { 'User-Agent': 'Mozilla/5.0' }
   });
-  if (!response.ok) return false;
+  if (!response.ok) return null;
 
   const html = await response.text();
-  return /"isLiveContent"\s*:\s*true|"isUpcoming"\s*:\s*true/i.test(html);
+  return {
+    isLive: /"isLiveContent"\s*:\s*true|"isUpcoming"\s*:\s*true/i.test(html),
+    views: parseYoutubeMetric(html, 'viewCount'),
+    likes: parseYoutubeMetric(html, 'likeCount')
+  };
 }
 
-async function getWantedVideos(handle) {
+async function getVideoClicks(env, videoId) {
+  if (!env.VIDEO_ANALYTICS || !VIDEO_ID_PATTERN.test(videoId)) return 0;
+
+  const id = env.VIDEO_ANALYTICS.idFromName('video-clicks');
+  const stub = env.VIDEO_ANALYTICS.get(id);
+  const response = await stub.fetch(`https://analytics/count?videoId=${encodeURIComponent(videoId)}`);
+  if (!response.ok) return 0;
+
+  const payload = await response.json();
+  return Number.isFinite(payload.clicks) ? payload.clicks : 0;
+}
+
+async function getWantedVideos(handle, env) {
   const channelId = await resolveChannelId(handle);
   if (!channelId) return [];
 
@@ -71,12 +93,16 @@ async function getWantedVideos(handle) {
   const videos = [];
 
   for (const video of candidates) {
-    if (await isLivestream(video.videoId)) continue;
+    const details = await getYoutubeVideoDetails(video.videoId);
+    if (!details || details.isLive) continue;
     videos.push({
       title: video.title,
       thumbnail: video.thumbnail,
       link: `https://www.youtube.com/watch?v=${video.videoId}`,
-      published: video.published
+      published: video.published,
+      views: details.views,
+      likes: details.likes,
+      clicks: await getVideoClicks(env, video.videoId)
     });
     if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
   }
@@ -109,7 +135,7 @@ async function handleYoutubeVideos(request) {
 
   const videos = Object.fromEntries(await Promise.all(handles.map(async handle => {
     try {
-      return [handle, await getWantedVideos(handle)];
+      return [handle, await getWantedVideos(handle, env)];
     } catch (error) {
       console.error(`YouTube refresh failed for ${handle}:`, error);
       return [handle, []];
@@ -121,9 +147,103 @@ async function handleYoutubeVideos(request) {
   });
 }
 
+async function handleVideoClick(request, env) {
+  if (request.method !== 'POST') {
+    return new Response('Method not allowed', {
+      status: 405,
+      headers: { 'Allow': 'POST', 'Cache-Control': 'no-store' }
+    });
+  }
+
+  const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
+  const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key: `click:${clientKey}` });
+  if (!success) {
+    return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
+      status: 429,
+      headers: { ...responseHeaders(), 'Retry-After': '60' }
+    });
+  }
+
+  if (!env.VIDEO_ANALYTICS) {
+    return new Response(JSON.stringify({ error: 'Analytics unavailable' }), {
+      status: 503,
+      headers: responseHeaders()
+    });
+  }
+
+  let payload;
+  try {
+    payload = await request.json();
+  } catch (_) {
+    return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
+      status: 400,
+      headers: responseHeaders()
+    });
+  }
+
+  const videoId = String(payload?.videoId || '');
+  if (!VIDEO_ID_PATTERN.test(videoId)) {
+    return new Response(JSON.stringify({ error: 'Invalid video ID' }), {
+      status: 400,
+      headers: responseHeaders()
+    });
+  }
+
+  const id = env.VIDEO_ANALYTICS.idFromName('video-clicks');
+  const stub = env.VIDEO_ANALYTICS.get(id);
+  const response = await stub.fetch(`https://analytics/increment?videoId=${encodeURIComponent(videoId)}`, {
+    method: 'POST'
+  });
+  return new Response(await response.text(), {
+    status: response.status,
+    headers: responseHeaders()
+  });
+}
+
+export class VideoAnalytics {
+  constructor(state) {
+    this.state = state;
+    this.state.blockConcurrencyWhile(async () => {
+      this.state.storage.sql.exec(`
+        CREATE TABLE IF NOT EXISTS video_clicks (
+          video_id TEXT PRIMARY KEY,
+          clicks INTEGER NOT NULL DEFAULT 0
+        )
+      `);
+    });
+  }
+
+  async fetch(request) {
+    const url = new URL(request.url);
+    const videoId = url.searchParams.get('videoId') || '';
+    if (!VIDEO_ID_PATTERN.test(videoId)) {
+      return new Response(JSON.stringify({ error: 'Invalid video ID' }), { status: 400 });
+    }
+
+    if (url.pathname === '/increment' && request.method === 'POST') {
+      this.state.storage.sql.exec(
+        `INSERT INTO video_clicks (video_id, clicks) VALUES (?, 1)
+         ON CONFLICT(video_id) DO UPDATE SET clicks = clicks + 1`,
+        videoId
+      );
+    }
+
+    const result = this.state.storage.sql.exec(
+      'SELECT clicks FROM video_clicks WHERE video_id = ?',
+      videoId
+    ).toArray()[0];
+    return new Response(JSON.stringify({ clicks: result?.clicks || 0 }), {
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+    });
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/youtube/click') {
+      return handleVideoClick(request, env);
+    }
     if (url.pathname !== '/youtube/videos') {
       return new Response('Not found', {
         status: 404,

@@ -65,13 +65,18 @@ function initAdSense() {
 }
 
 function renderYoutubersHTML() {
+    const formatVideoMetric = (value) => Number.isFinite(value)
+        ? Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)
+        : '--';
+
     const renderYoutuberVideo = (video) => `
-        <a href="${video.link}" target="_blank" rel="noopener" class="featured-video-card">
+        <a href="${video.link}" target="_blank" rel="noopener" class="featured-video-card" data-video-id="${video.link.match(/[?&]v=([\w-]+)/)?.[1] || ''}">
             <div class="video-thumb-container">
                 <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
                 <div class="video-play-overlay"><span>▶</span></div>
             </div>
             <div class="video-title-card">${video.title}</div>
+            <div class="video-stats">${formatVideoMetric(video.views)} views · ${formatVideoMetric(video.likes)} likes · ${formatVideoMetric(video.clicks)} clicks</div>
         </a>
     `;
 
@@ -99,6 +104,27 @@ function renderYoutubersHTML() {
         `;
     }).join('');
 }
+
+document.addEventListener('click', (event) => {
+    const videoLink = event.target.closest('.featured-video-card[data-video-id]');
+    const videoId = videoLink?.dataset.videoId;
+    if (!videoId || !window.WANTED_YOUTUBER_VIDEO_CLICK_URL) return;
+
+    const body = JSON.stringify({ videoId });
+    if (navigator.sendBeacon) {
+        navigator.sendBeacon(
+            window.WANTED_YOUTUBER_VIDEO_CLICK_URL,
+            new Blob([body], { type: 'text/plain' })
+        );
+    } else {
+        fetch(window.WANTED_YOUTUBER_VIDEO_CLICK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body,
+            keepalive: true
+        }).catch(() => {});
+    }
+});
 
 document.addEventListener('youtuberVideosUpdated', () => {
     const youtuberList = document.querySelector('.youtuber-list');

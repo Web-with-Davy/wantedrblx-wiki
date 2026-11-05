@@ -86,6 +86,25 @@ if [ -f "$VALUABLES_REGISTRY" ]; then
     "
 fi
 
+# Update YouTuber manifest in js/registry/youtubers.js to match creator data files
+YOUTUBERS_REGISTRY="$WIKI_DIR/js/registry/youtubers.js"
+if [ -f "$YOUTUBERS_REGISTRY" ]; then
+    echo "Updating YouTuber manifest in js/registry/youtubers.js..."
+    node -e "
+    const fs = require('fs');
+    const path = require('path');
+    const youtubersDir = path.join('$DATA_DIR', 'youtubers');
+    const youtuberFiles = fs.readdirSync(youtubersDir)
+        .filter(f => f.endsWith('.js'))
+        .sort()
+        .map(f => 'js/data/youtubers/' + f);
+    let content = fs.readFileSync('$YOUTUBERS_REGISTRY', 'utf8');
+    const manifestStr = 'const __MANIFEST_youtubers = [\n' + youtuberFiles.map(f => '  \"' + f + '\"').join(',\n') + '\n];';
+    content = content.replace(/const __MANIFEST_youtubers = \[[\s\S]*?\];/, manifestStr);
+    fs.writeFileSync('$YOUTUBERS_REGISTRY', content);
+    "
+fi
+
 # Update vehicles manifest in js/registry/vehicles.js to match current vehicle data files
 VEHICLES_REGISTRY="$WIKI_DIR/js/registry/vehicles.js"
 if [ -f "$VEHICLES_REGISTRY" ]; then
