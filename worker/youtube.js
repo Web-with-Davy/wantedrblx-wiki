@@ -103,21 +103,34 @@ async function getCandidates(handle, env) {
 
 async function getVideoDetails(ids) {
   const details = new Map();
-  await Promise.all(ids.slice(0, 50).map(async videoId => {
+  await Promise.all(ids.slice(0, VIDEO_LIMIT * MAX_HANDLES).map(async videoId => {
     try {
       const res = await fetchWithTimeout('https://www.youtube.com/youtubei/v1/player', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36',
+          'Origin': 'https://www.youtube.com',
+          'Referer': 'https://www.youtube.com/'
+        },
         body: JSON.stringify({
           context: { client: { clientName: 'WEB', clientVersion: '2.20241126.01.00' } },
           videoId
         })
       });
-      if (!res.ok) return;
+      if (!res.ok) {
+        console.error(`YouTube player request failed for ${videoId}:`, res.status);
+        return;
+      }
 
       const data = await res.json();
       const video = data.videoDetails;
-      if (!video) return;
+      if (!video) {
+        console.error(`YouTube player response missing video details for ${videoId}:`, data.playabilityStatus?.status);
+        return;
+      }
       details.set(videoId, {
         isLive: video.isLiveContent === true,
         views: numberOrNull(video.viewCount),
@@ -180,7 +193,9 @@ async function handleVideos(request, env) {
     })
   ));
 
-  const ids = [...new Set(candidates.flat().map(video => video.videoId))]
+  const ids = [...new Set(candidates.flatMap(channelVideos => channelVideos
+    .slice(0, VIDEO_LIMIT)
+    .map(video => video.videoId)))]
     .filter(id => VIDEO_ID_PATTERN.test(id));
 
   const [details, clicks] = await Promise.all([

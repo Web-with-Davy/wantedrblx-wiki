@@ -45,8 +45,12 @@
     }
   }
 
-  Promise.all(window.__WANTED_LOADERS || [])
-    .then(() => loadScripts(CRITICAL_SCRIPTS))
+  const dataReady = Promise.all(window.__WANTED_LOADERS || []);
+  dataReady
+    .then(() => {
+      document.dispatchEvent(new Event("wantedDataReady"));
+      return loadScripts(CRITICAL_SCRIPTS);
+    })
     .then(loadDeferred)
     .catch((err) => console.error("Wanted wiki failed to load:", err));
 })();
