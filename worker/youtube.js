@@ -1,4 +1,3 @@
-const YOUTUBE_API = 'https://www.googleapis.com/youtube/v3';
 const ALLOWED_ORIGIN = 'https://wantedrblx.com';
 const CACHE_SECONDS = 900;
 const UPSTREAM_TIMEOUT_MS = 6000;
@@ -67,21 +66,23 @@ function xmlValue(xml, tag) {
 function parseFeed(xml) {
   return [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/gi)].map(([, entry]) => {
     const videoId = xmlValue(entry, 'yt:videoId');
+    const published = xmlValue(entry, 'published');
     const thumbnail = entry.match(/<media:thumbnail[^>]+url="([^"]+)"/i)?.[1]
       || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-    return { videoId, title: xmlValue(entry, 'title'), thumbnail };
+    return { videoId, title: xmlValue(entry, 'title'), thumbnail, published };
   }).filter(video => video.videoId && video.title);
 }
 
 async function resolveChannelId(handle, env) {
   if (CHANNEL_IDS[handle]) return CHANNEL_IDS[handle];
-  if (!env.YOUTUBE_API_KEY) return null;
 
-  const params = new URLSearchParams({ part: 'id', forHandle: `@${handle}`, key: env.YOUTUBE_API_KEY });
-  const res = await fetchWithTimeout(`${YOUTUBE_API}/channels?${params}`);
+  const res = await fetchWithTimeout(`https://www.youtube.com/@${encodeURIComponent(handle)}?hl=en`, {
+    headers: { 'User-Agent': 'Wanted Wiki video updater' }
+  });
   if (!res.ok) return null;
-  const data = await res.json();
-  return data.items?.[0]?.id || null;
+
+  const html = await res.text();
+  return html.match(/(?:"channelId"|"externalId")\s*:\s*"(UC[^"]+)"/)?.[1] || null;
 }
 
 async function getCandidates(handle, env) {
@@ -100,26 +101,32 @@ async function getCandidates(handle, env) {
     .slice(0, CANDIDATES_PER_CHANNEL);
 }
 
-async function getVideoDetails(ids, env) {
+async function getVideoDetails(ids) {
   const details = new Map();
-  if (!env.YOUTUBE_API_KEY || !ids.length) return details;
+  await Promise.all(ids.slice(0, 50).map(async videoId => {
+    try {
+      const res = await fetchWithTimeout('https://www.youtube.com/youtubei/v1/player', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          context: { client: { clientName: 'WEB', clientVersion: '2.20241126.01.00' } },
+          videoId
+        })
+      });
+      if (!res.ok) return;
 
-  const params = new URLSearchParams({
-    part: 'snippet,statistics',
-    id: ids.slice(0, 50).join(','),
-    key: env.YOUTUBE_API_KEY
-  });
-  const res = await fetchWithTimeout(`${YOUTUBE_API}/videos?${params}`);
-  if (!res.ok) return details;
-
-  const data = await res.json();
-  for (const item of data.items || []) {
-    details.set(item.id, {
-      isLive: (item.snippet?.liveBroadcastContent || 'none') !== 'none',
-      views: numberOrNull(item.statistics?.viewCount),
-      likes: numberOrNull(item.statistics?.likeCount)
-    });
-  }
+      const data = await res.json();
+      const video = data.videoDetails;
+      if (!video) return;
+      details.set(videoId, {
+        isLive: video.isLiveContent === true,
+        views: numberOrNull(video.viewCount),
+        likes: numberOrNull(video.likeCount)
+      });
+    } catch (error) {
+      console.error(`YouTube player lookup failed for ${videoId}:`, error);
+    }
+  }));
   return details;
 }
 
@@ -177,7 +184,7 @@ async function handleVideos(request, env) {
     .filter(id => VIDEO_ID_PATTERN.test(id));
 
   const [details, clicks] = await Promise.all([
-    getVideoDetails(ids, env).catch(() => new Map()),
+    getVideoDetails(ids).catch(() => new Map()),
     getClicks(ids, env).catch(() => ({}))
   ]);
 
@@ -192,6 +199,7 @@ async function handleVideos(request, env) {
           title: video.title,
           thumbnail: video.thumbnail,
           link: `https://www.youtube.com/watch?v=${video.videoId}`,
+          published: video.published,
           views: stats.views ?? null,
           likes: stats.likes ?? null,
           clicks: clicks[video.videoId] || 0
@@ -203,7 +211,10 @@ async function handleVideos(request, env) {
     'Cache-Control': `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`
   });
 
-  if (Object.values(videos).some(list => list.length)) {
+  const hasStats = [...details.values()].some(stats =>
+    Number.isFinite(stats.views) || Number.isFinite(stats.likes)
+  );
+  if (Object.values(videos).some(list => list.length) && hasStats) {
     await cache.put(cacheKey, response.clone()).catch(error => {
       console.error('Cache write failed:', error);
     });

@@ -6,6 +6,7 @@ const __MANIFEST_youtubers = [
 ];
 
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
+const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-2';
 window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
 
 async function refreshYoutuberVideos(youtubers) {
@@ -24,7 +25,7 @@ async function refreshYoutuberVideos(youtubers) {
 
   try {
     const response = await fetch(
-      `${YOUTUBER_VIDEOS_URL}?handles=${handles.map(encodeURIComponent).join(',')}`,
+      `${YOUTUBER_VIDEOS_URL}?handles=${handles.map(encodeURIComponent).join(',')}&v=${YOUTUBER_VIDEOS_CACHE_VERSION}`,
       { signal: controller.signal }
     );
     if (!response.ok) return;
@@ -34,13 +35,23 @@ async function refreshYoutuberVideos(youtubers) {
       const handle = creator.channelUrl.match(/\/@([^/]+)/)?.[1];
       const videos = handle && payload.videos?.[handle];
       if (Array.isArray(videos)) {
-        const mergedVideos = [...videos, ...(creator.videos || [])];
-        const seenLinks = new Set();
-        creator.videos = mergedVideos.filter(video => {
-          if (!video?.link || seenLinks.has(video.link)) return false;
-          seenLinks.add(video.link);
-          return true;
-        }).slice(0, 3);
+        const existingByLink = new Map((creator.videos || [])
+          .filter(video => video?.link)
+          .map(video => [video.link, video]));
+        const mergedVideos = videos.map(video => {
+          const existing = existingByLink.get(video.link) || {};
+          return {
+            ...existing,
+            ...video,
+            views: Number.isFinite(video.views) ? video.views : existing.views,
+            likes: Number.isFinite(video.likes) ? video.likes : existing.likes,
+            clicks: Number.isFinite(video.clicks) ? video.clicks : (existing.clicks || 0)
+          };
+        });
+        const remoteLinks = new Set(mergedVideos.map(video => video.link));
+        creator.videos = [...mergedVideos, ...(creator.videos || []).filter(video =>
+          video?.link && !remoteLinks.has(video.link)
+        )].slice(0, 3);
       }
     });
   } catch (error) {
