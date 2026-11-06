@@ -34,15 +34,30 @@
   }
 
   function loadDeferred() {
-    const doLoad = () =>
-      loadScripts(DEFERRED_SCRIPTS).then(() => {
-        document.dispatchEvent(new Event("wantedDeferredReady"));
-      });
-    if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(doLoad, { timeout: 2000 });
-    } else {
-      setTimeout(doLoad, 500);
-    }
+    const batchSize = 3;
+    const batchLoads = [];
+
+    const scheduleBatch = start => {
+      const doLoad = () => {
+        const end = Math.min(start + batchSize, DEFERRED_SCRIPTS.length);
+        batchLoads.push(loadScripts(DEFERRED_SCRIPTS.slice(start, end)));
+        if (end < DEFERRED_SCRIPTS.length) {
+          scheduleBatch(end);
+        } else {
+          Promise.all(batchLoads).then(() => {
+            document.dispatchEvent(new Event("wantedDeferredReady"));
+          });
+        }
+      };
+
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(doLoad, { timeout: 2000 });
+      } else {
+        setTimeout(doLoad, start === 0 ? 500 : 0);
+      }
+    };
+
+    scheduleBatch(0);
   }
 
   const dataReady = Promise.all(window.__WANTED_LOADERS || []);

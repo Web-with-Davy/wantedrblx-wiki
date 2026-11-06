@@ -3,7 +3,7 @@ const UPSTREAM_TIMEOUT_MS = 6000;
 const VIDEO_LIMIT = 3;
 const CANDIDATES_PER_CHANNEL = 8;
 const MAX_HANDLES = 8;
-const MAX_STATS_IDS = VIDEO_LIMIT * MAX_HANDLES;
+const MAX_STATS_IDS = CANDIDATES_PER_CHANNEL * MAX_HANDLES;
 const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
 const CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
@@ -201,7 +201,7 @@ async function handleVideos(request, env) {
   ));
 
   const ids = [...new Set(candidates.flatMap(channelVideos => channelVideos
-    .slice(0, VIDEO_LIMIT)
+    .slice(0, CANDIDATES_PER_CHANNEL)
     .map(video => video.videoId)))]
     .filter(id => VIDEO_ID_PATTERN.test(id));
 
@@ -210,7 +210,7 @@ async function handleVideos(request, env) {
   const videos = {};
   handles.forEach((handle, index) => {
     videos[handle] = candidates[index]
-      .slice(0, VIDEO_LIMIT)
+      .slice(0, CANDIDATES_PER_CHANNEL)
       .map(video => {
         return {
           title: video.title,

@@ -7,7 +7,7 @@ const __MANIFEST_youtubers = [
 
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
 const YOUTUBER_STATS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/stats';
-const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-5';
+const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-6';
 window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
 
 async function refreshYoutuberVideos(youtubers) {
@@ -52,7 +52,7 @@ async function refreshYoutuberVideos(youtubers) {
         const remoteLinks = new Set(mergedVideos.map(video => video.link));
         creator.videos = [...mergedVideos, ...(creator.videos || []).filter(video =>
           video?.link && !remoteLinks.has(video.link)
-        )].slice(0, 3);
+        )];
       }
     });
   } catch (error) {
