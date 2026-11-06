@@ -122,8 +122,11 @@ function responseHeaders(cacheControl = 'no-store') {
   return {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'https://wantedrblx.com',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
     'Cache-Control': cacheControl,
     'Referrer-Policy': 'no-referrer',
+    'Vary': 'Origin',
     'X-Content-Type-Options': 'nosniff'
   };
 }
@@ -131,6 +134,8 @@ function responseHeaders(cacheControl = 'no-store') {
 function withCors(response) {
   const headers = new Headers(response.headers);
   headers.set('Access-Control-Allow-Origin', 'https://wantedrblx.com');
+  headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  headers.set('Access-Control-Allow-Headers', 'Content-Type');
   headers.set('Vary', 'Origin');
   return new Response(response.body, {
     status: response.status,
@@ -181,10 +186,10 @@ async function handleYoutubeVideos(request, env) {
 
 async function handleVideoClick(request, env) {
   if (request.method !== 'POST') {
-    return new Response('Method not allowed', {
+    return withCors(new Response('Method not allowed', {
       status: 405,
       headers: { 'Allow': 'POST', 'Cache-Control': 'no-store' }
-    });
+    }));
   }
 
   const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
@@ -272,6 +277,10 @@ export class VideoAnalytics {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (request.method === 'OPTIONS') {
+      return withCors(new Response(null, { status: 204 }));
+    }
+
     if (url.pathname === '/youtube/click') {
       return handleVideoClick(request, env);
     }
