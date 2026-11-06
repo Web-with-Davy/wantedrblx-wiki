@@ -6,15 +6,9 @@ const __MANIFEST_youtubers = [
 ];
 
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
+const YOUTUBER_STATS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/stats';
 const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-3';
 window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
-
-const wantedDataReady = new Promise(resolve => {
-  document.addEventListener('wantedDataReady', resolve, { once: true });
-});
-const wantedDeferredReady = new Promise(resolve => {
-  document.addEventListener('wantedDeferredReady', resolve, { once: true });
-});
 
 async function refreshYoutuberVideos(youtubers) {
   const handles = youtubers.map(creator => {
@@ -50,8 +44,8 @@ async function refreshYoutuberVideos(youtubers) {
           return {
             ...existing,
             ...video,
-            views: Number.isFinite(video.views) ? video.views : existing.views,
-            likes: Number.isFinite(video.likes) ? video.likes : existing.likes,
+            views: Number.isFinite(video.views) ? video.views : (existing.views ?? null),
+            likes: Number.isFinite(video.likes) ? video.likes : (existing.likes ?? null),
             clicks: Number.isFinite(video.clicks) ? video.clicks : (existing.clicks || 0)
           };
         });
@@ -63,6 +57,42 @@ async function refreshYoutuberVideos(youtubers) {
     });
   } catch (error) {
     console.warn('YouTuber video refresh unavailable; using cached data.', error);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function refreshYoutuberStats(youtubers) {
+  const videoIdFromLink = link => link?.match(/[?&]v=([\w-]+)/)?.[1];
+  const ids = [...new Set(youtubers.flatMap(creator =>
+    (creator.videos || []).map(video => videoIdFromLink(video.link)).filter(Boolean)
+  ))];
+  if (!ids.length) return;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+
+  try {
+    const response = await fetch(`${YOUTUBER_STATS_URL}?ids=${ids.map(encodeURIComponent).join(',')}`, {
+      signal: controller.signal
+    });
+    if (!response.ok) return;
+    const payload = await response.json();
+    const statsById = payload.stats || {};
+
+    youtubers.forEach(creator => {
+      creator.videos = (creator.videos || []).flatMap(video => {
+        const stats = statsById[videoIdFromLink(video.link)];
+        if (stats?.isLive) return [];
+        return [{
+          ...video,
+          views: Number.isFinite(stats?.views) ? stats.views : video.views,
+          likes: Number.isFinite(stats?.likes) ? stats.likes : video.likes
+        }];
+      }).slice(0, 3);
+    });
+  } catch (error) {
+    console.warn('YouTuber video stats unavailable; using cached data.', error);
   } finally {
     clearTimeout(timeout);
   }
@@ -89,11 +119,13 @@ window.YOUTUBER_DATA_READY = loadScripts(__MANIFEST_youtubers).then(() => {
     return [];
   }
 });
-window.YOUTUBER_VIDEOS_READY = Promise.all([
-  window.YOUTUBER_DATA_READY,
-  wantedDataReady,
-  wantedDeferredReady
-]).then(([youtubers]) => refreshYoutuberVideos(youtubers).then(() => {
+window.YOUTUBER_STATS_READY = Promise.resolve();
+window.YOUTUBER_VIDEOS_READY = window.YOUTUBER_DATA_READY.then(async youtubers => {
+  await refreshYoutuberVideos(youtubers);
+  document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
+  window.YOUTUBER_STATS_READY = refreshYoutuberStats(youtubers).then(() => {
     document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
     return youtubers;
-  }));
+  });
+  return youtubers;
+});

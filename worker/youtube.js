@@ -3,7 +3,8 @@ const CACHE_SECONDS = 900;
 const UPSTREAM_TIMEOUT_MS = 6000;
 const VIDEO_LIMIT = 3;
 const CANDIDATES_PER_CHANNEL = 8;
-const MAX_HANDLES = 20;
+const MAX_HANDLES = 8;
+const MAX_STATS_IDS = VIDEO_LIMIT * MAX_HANDLES;
 const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
 const CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
@@ -134,7 +135,7 @@ async function getVideoDetails(ids) {
       details.set(videoId, {
         isLive: video.isLiveContent === true,
         views: numberOrNull(video.viewCount),
-        likes: numberOrNull(video.likeCount)
+        likes: numberOrNull(data.microformat?.playerMicroformatRenderer?.likeCount)
       });
     } catch (error) {
       console.error(`YouTube player lookup failed for ${videoId}:`, error);
@@ -198,25 +199,20 @@ async function handleVideos(request, env) {
     .map(video => video.videoId)))]
     .filter(id => VIDEO_ID_PATTERN.test(id));
 
-  const [details, clicks] = await Promise.all([
-    getVideoDetails(ids).catch(() => new Map()),
-    getClicks(ids, env).catch(() => ({}))
-  ]);
+  const clicks = await getClicks(ids, env).catch(() => ({}));
 
   const videos = {};
   handles.forEach((handle, index) => {
     videos[handle] = candidates[index]
-      .filter(video => !details.get(video.videoId)?.isLive)
       .slice(0, VIDEO_LIMIT)
       .map(video => {
-        const stats = details.get(video.videoId) || {};
         return {
           title: video.title,
           thumbnail: video.thumbnail,
           link: `https://www.youtube.com/watch?v=${video.videoId}`,
           published: video.published,
-          views: stats.views ?? null,
-          likes: stats.likes ?? null,
+          views: null,
+          likes: null,
           clicks: clicks[video.videoId] || 0
         };
       });
@@ -226,12 +222,44 @@ async function handleVideos(request, env) {
     'Cache-Control': `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`
   });
 
-  const hasStats = [...details.values()].some(stats =>
-    Number.isFinite(stats.views) || Number.isFinite(stats.likes)
-  );
-  if (Object.values(videos).some(list => list.length) && hasStats) {
+  if (Object.values(videos).some(list => list.length)) {
     await cache.put(cacheKey, response.clone()).catch(error => {
       console.error('Cache write failed:', error);
+    });
+  }
+  return response;
+}
+
+async function handleVideoStats(request, env) {
+  const url = new URL(request.url);
+  const ids = [...new Set((url.searchParams.get('ids') || '')
+    .split(',')
+    .filter(id => VIDEO_ID_PATTERN.test(id)))].slice(0, MAX_STATS_IDS);
+  if (!ids.length) return json({ error: 'Missing or invalid video IDs' }, 400);
+
+  const cache = caches.default;
+  const cacheUrl = new URL(url.origin + '/youtube/stats');
+  cacheUrl.searchParams.set('ids', ids.join(','));
+  const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
+  const cached = await cache.match(cacheKey).catch(() => null);
+  if (cached) return withCors(cached);
+
+  const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
+  if (await exceedsRateLimit(env, `stats:${clientKey}`)) {
+    return json({ error: 'Rate limit exceeded' }, 429, { 'Retry-After': '60' });
+  }
+
+  const details = await getVideoDetails(ids).catch(() => new Map());
+  const stats = Object.fromEntries([...details.entries()].map(([id, values]) => [id, values]));
+  const response = json({ stats }, 200, {
+    'Cache-Control': `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`
+  });
+
+  if (Object.values(stats).some(values =>
+    Number.isFinite(values.views) || Number.isFinite(values.likes)
+  )) {
+    await cache.put(cacheKey, response.clone()).catch(error => {
+      console.error('Stats cache write failed:', error);
     });
   }
   return response;
@@ -308,7 +336,7 @@ export class VideoAnalytics {
 
     if (url.pathname === '/counts' && request.method === 'POST') {
       const body = await request.json().catch(() => ({}));
-      const ids = Array.isArray(body.ids) ? body.ids : [];
+      const ids = Array.isArray(body?.ids) ? body.ids : [];
       const counts = {};
       for (const id of ids.filter(id => VIDEO_ID_PATTERN.test(id)).slice(0, 50)) {
         counts[id] = this.readClicks(id);
@@ -329,6 +357,12 @@ export default {
 
       const url = new URL(request.url);
       if (url.pathname === '/youtube/click') return await handleVideoClick(request, env);
+      if (url.pathname === '/youtube/stats') {
+        if (request.method !== 'GET') {
+          return new Response('Method not allowed', { status: 405, headers: corsHeaders({ Allow: 'GET' }) });
+        }
+        return await handleVideoStats(request, env);
+      }
       if (url.pathname !== '/youtube/videos') {
         return new Response('Not found', { status: 404, headers: corsHeaders({ 'Cache-Control': 'no-store' }) });
       }
