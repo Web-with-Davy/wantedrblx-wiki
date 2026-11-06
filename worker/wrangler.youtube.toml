@@ -15,5 +15,5 @@ name = "YOUTUBE_REFRESH_LIMITER"
 namespace_id = "2026110301"
 
 	[ratelimits.simple]
-	limit = 10
+	limit = 60
 	period = 60

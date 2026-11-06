@@ -7,7 +7,7 @@ const __MANIFEST_youtubers = [
 
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
 const YOUTUBER_STATS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/stats';
-const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-3';
+const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-4';
 window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
 
 async function refreshYoutuberVideos(youtubers) {

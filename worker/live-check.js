@@ -1,4 +1,3 @@
-const LIVE_CHECK_CACHE_SECONDS = 30;
 const UPSTREAM_TIMEOUT_MS = 8000;
 
 async function fetchWithTimeout(input, init = {}) {
@@ -11,20 +10,20 @@ async function fetchWithTimeout(input, init = {}) {
   }
 }
 
-function jsonHeaders(cacheControl = 'no-store') {
+function jsonHeaders() {
   return {
     'Access-Control-Allow-Origin': 'https://wantedrblx.com',
-    'Cache-Control': cacheControl,
+    'Cache-Control': 'no-store',
     'Content-Type': 'application/json',
     'Referrer-Policy': 'no-referrer',
     'X-Content-Type-Options': 'nosniff'
   };
 }
 
-function jsonResponse(body, status = 200, cacheControl = 'no-store') {
+function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: jsonHeaders(cacheControl)
+    headers: jsonHeaders()
   });
 }
 
@@ -64,7 +63,7 @@ export default {
       const canonicalHref = canonicalMatch ? canonicalMatch[1] : '';
       const videoIdMatch = canonicalHref.match(/watch\?v=([\w-]+)/);
 
-      if (!videoIdMatch) return jsonResponse({ live: false }, 200, `public, max-age=${LIVE_CHECK_CACHE_SECONDS}`);
+      if (!videoIdMatch) return jsonResponse({ live: false });
 
       const videoId = videoIdMatch[1];
       const titleMatch = html.match(/<meta property="og:title" content="([^"]*)"/);
@@ -75,7 +74,7 @@ export default {
         videoId,
         title,
         url: `https://www.youtube.com/watch?v=${videoId}`
-      }, 200, `public, max-age=${LIVE_CHECK_CACHE_SECONDS}`);
+      });
     } catch (error) {
       console.error('Live check failed:', error);
       return jsonResponse({ error: 'Live check unavailable' }, 502);

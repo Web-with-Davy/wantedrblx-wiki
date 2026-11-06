@@ -78,10 +78,10 @@ function isBot(ua) {
   );
 }
 
-function htmlHeaders(cacheControl) {
+function htmlHeaders() {
   return {
     'Content-Type': 'text/html;charset=UTF-8',
-    'Cache-Control': cacheControl,
+    'Cache-Control': 'no-store',
     'Referrer-Policy': 'no-referrer',
     'X-Content-Type-Options': 'nosniff'
   };
@@ -118,19 +118,19 @@ export default {
 
       const appHtml = (await appResponse.text())
         .replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">`);
-      return new Response(appHtml, { status: appResponse.status, headers: htmlHeaders('no-cache') });
+      return new Response(appHtml, { status: appResponse.status, headers: htmlHeaders() });
     }
 
     if (!item) return new Response('Not found', {
       status: 404,
-      headers: { ...htmlHeaders('no-store'), 'Content-Type': 'text/plain;charset=UTF-8' }
+      headers: { ...htmlHeaders(), 'Content-Type': 'text/plain;charset=UTF-8' }
     });
 
     const html = buildHtml(item, category, id);
 
     return new Response(html, {
       status: 200,
-      headers: htmlHeaders('public, max-age=300'),
+      headers: htmlHeaders(),
     });
   },
 };

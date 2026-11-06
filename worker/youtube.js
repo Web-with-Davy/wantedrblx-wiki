@@ -1,5 +1,4 @@
 const ALLOWED_ORIGIN = 'https://wantedrblx.com';
-const CACHE_SECONDS = 900;
 const UPSTREAM_TIMEOUT_MS = 6000;
 const VIDEO_LIMIT = 3;
 const CANDIDATES_PER_CHANNEL = 8;
@@ -29,12 +28,6 @@ function json(body, status = 200, headers = {}) {
     status,
     headers: corsHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers })
   });
-}
-
-function withCors(response) {
-  const headers = new Headers(response.headers);
-  for (const [key, value] of Object.entries(corsHeaders())) headers.set(key, value);
-  return new Response(response.body, { status: response.status, headers });
 }
 
 async function fetchWithTimeout(input, init = {}) {
@@ -170,11 +163,6 @@ async function exceedsRateLimit(env, key) {
 
 async function handleVideos(request, env) {
   const url = new URL(request.url);
-  const cache = caches.default;
-  const cacheKey = new Request(url.toString(), { method: 'GET' });
-
-  const cached = await cache.match(cacheKey).catch(() => null);
-  if (cached) return withCors(cached);
 
   const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
   if (await exceedsRateLimit(env, `videos:${clientKey}`)) {
@@ -218,16 +206,7 @@ async function handleVideos(request, env) {
       });
   });
 
-  const response = json({ videos }, 200, {
-    'Cache-Control': `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`
-  });
-
-  if (Object.values(videos).some(list => list.length)) {
-    await cache.put(cacheKey, response.clone()).catch(error => {
-      console.error('Cache write failed:', error);
-    });
-  }
-  return response;
+  return json({ videos });
 }
 
 async function handleVideoStats(request, env) {
@@ -237,13 +216,6 @@ async function handleVideoStats(request, env) {
     .filter(id => VIDEO_ID_PATTERN.test(id)))].slice(0, MAX_STATS_IDS);
   if (!ids.length) return json({ error: 'Missing or invalid video IDs' }, 400);
 
-  const cache = caches.default;
-  const cacheUrl = new URL(url.origin + '/youtube/stats');
-  cacheUrl.searchParams.set('ids', ids.join(','));
-  const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
-  const cached = await cache.match(cacheKey).catch(() => null);
-  if (cached) return withCors(cached);
-
   const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
   if (await exceedsRateLimit(env, `stats:${clientKey}`)) {
     return json({ error: 'Rate limit exceeded' }, 429, { 'Retry-After': '60' });
@@ -251,18 +223,7 @@ async function handleVideoStats(request, env) {
 
   const details = await getVideoDetails(ids).catch(() => new Map());
   const stats = Object.fromEntries([...details.entries()].map(([id, values]) => [id, values]));
-  const response = json({ stats }, 200, {
-    'Cache-Control': `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`
-  });
-
-  if (Object.values(stats).some(values =>
-    Number.isFinite(values.views) || Number.isFinite(values.likes)
-  )) {
-    await cache.put(cacheKey, response.clone()).catch(error => {
-      console.error('Stats cache write failed:', error);
-    });
-  }
-  return response;
+  return json({ stats });
 }
 
 async function handleVideoClick(request, env) {
@@ -356,6 +317,13 @@ export default {
       }
 
       const url = new URL(request.url);
+      if (url.pathname === '/') {
+        return json({
+          service: 'wanted-youtube-videos',
+          status: 'ok',
+          endpoints: ['/youtube/videos', '/youtube/stats', '/youtube/click']
+        });
+      }
       if (url.pathname === '/youtube/click') return await handleVideoClick(request, env);
       if (url.pathname === '/youtube/stats') {
         if (request.method !== 'GET') {
