@@ -7,7 +7,7 @@ const __MANIFEST_youtubers = [
 
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
 const YOUTUBER_STATS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/stats';
-const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-4';
+const YOUTUBER_VIDEOS_CACHE_VERSION = '20261106-5';
 window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
 
 async function refreshYoutuberVideos(youtubers) {
@@ -122,10 +122,10 @@ window.YOUTUBER_DATA_READY = loadScripts(__MANIFEST_youtubers).then(() => {
 window.YOUTUBER_STATS_READY = Promise.resolve();
 window.YOUTUBER_VIDEOS_READY = window.YOUTUBER_DATA_READY.then(async youtubers => {
   await refreshYoutuberVideos(youtubers);
-  document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
   window.YOUTUBER_STATS_READY = refreshYoutuberStats(youtubers).then(() => {
-    document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
     return youtubers;
   });
+  await window.YOUTUBER_STATS_READY;
+  document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
   return youtubers;
 });
