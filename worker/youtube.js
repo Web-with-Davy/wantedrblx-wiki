@@ -146,16 +146,25 @@ function withCors(response) {
 
 async function exceedsRateLimit(env, key) {
   if (!env.YOUTUBE_REFRESH_LIMITER?.limit) return false;
-  const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key });
-  return !success;
+  try {
+    const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key });
+    return !success;
+  } catch (error) {
+    console.error('YouTube rate limiter unavailable; allowing request:', error);
+    return false;
+  }
 }
 
 async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheKey = new Request(url.toString(), { method: 'GET' });
-  const cachedResponse = await cache.match(cacheKey);
-  if (cachedResponse) return withCors(cachedResponse);
+  try {
+    const cachedResponse = await cache.match(cacheKey);
+    if (cachedResponse) return withCors(cachedResponse);
+  } catch (error) {
+    console.error('YouTube response cache read failed; continuing:', error);
+  }
 
   const handles = [...new Set((url.searchParams.get('handles') || '')
     .split(',')
@@ -180,8 +189,20 @@ async function handleYoutubeVideos(request, env) {
   const response = new Response(JSON.stringify({ videos }), {
     headers: responseHeaders(`public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`)
   });
-  await cache.put(cacheKey, response.clone());
+  try {
+    await cache.put(cacheKey, response.clone());
+  } catch (error) {
+    console.error('YouTube response cache write failed; returning response:', error);
+  }
   return withCors(response);
+}
+
+function errorResponse(error) {
+  console.error('YouTube worker request failed:', error);
+  return new Response(JSON.stringify({ error: 'YouTube videos unavailable' }), {
+    status: 503,
+    headers: responseHeaders()
+  });
 }
 
 async function handleVideoClick(request, env) {
@@ -276,44 +297,48 @@ export class VideoAnalytics {
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
-    if (request.method === 'OPTIONS') {
-      return withCors(new Response(null, { status: 204 }));
-    }
+    try {
+      const url = new URL(request.url);
+      if (request.method === 'OPTIONS') {
+        return withCors(new Response(null, { status: 204 }));
+      }
 
-    if (url.pathname === '/youtube/click') {
-      return handleVideoClick(request, env);
-    }
-    if (url.pathname !== '/youtube/videos') {
-      return withCors(new Response('Not found', {
-        status: 404,
-        headers: {
-          'Content-Type': 'text/plain;charset=UTF-8',
-          'Cache-Control': 'no-store',
-          'Referrer-Policy': 'no-referrer',
-          'X-Content-Type-Options': 'nosniff'
-        }
-      }));
-    }
+      if (url.pathname === '/youtube/click') {
+        return await handleVideoClick(request, env);
+      }
+      if (url.pathname !== '/youtube/videos') {
+        return withCors(new Response('Not found', {
+          status: 404,
+          headers: {
+            'Content-Type': 'text/plain;charset=UTF-8',
+            'Cache-Control': 'no-store',
+            'Referrer-Policy': 'no-referrer',
+            'X-Content-Type-Options': 'nosniff'
+          }
+        }));
+      }
 
-    if (request.method !== 'GET') {
-      return withCors(new Response('Method not allowed', {
-        status: 405,
-        headers: { 'Allow': 'GET', 'Cache-Control': 'no-store' }
-      }));
-    }
+      if (request.method !== 'GET') {
+        return withCors(new Response('Method not allowed', {
+          status: 405,
+          headers: { 'Allow': 'GET', 'Cache-Control': 'no-store' }
+        }));
+      }
 
-    const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
-    if (await exceedsRateLimit(env, clientKey)) {
-      return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
-        status: 429,
-        headers: {
-          ...responseHeaders(),
-          'Retry-After': '60'
-        }
-      });
-    }
+      const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
+      if (await exceedsRateLimit(env, clientKey)) {
+        return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
+          status: 429,
+          headers: {
+            ...responseHeaders(),
+            'Retry-After': '60'
+          }
+        });
+      }
 
-    return handleYoutubeVideos(request, env);
+      return await handleYoutubeVideos(request, env);
+    } catch (error) {
+      return errorResponse(error);
+    }
   }
 };
