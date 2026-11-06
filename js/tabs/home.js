@@ -151,14 +151,16 @@ document.addEventListener('click', (event) => {
     }
 });
 
-document.addEventListener('youtuberVideosUpdated', () => {
+function refreshYoutuberList() {
     const youtuberList = document.querySelector('.youtuber-list');
     if (youtuberList) youtuberList.innerHTML = renderYoutubersHTML();
-});
+}
+
+document.addEventListener('youtuberDataReady', refreshYoutuberList);
+document.addEventListener('youtuberVideosUpdated', refreshYoutuberList);
 
 window.YOUTUBER_VIDEOS_READY?.then(() => {
-    const youtuberList = document.querySelector('.youtuber-list');
-    if (youtuberList) youtuberList.innerHTML = renderYoutubersHTML();
+    refreshYoutuberList();
 });
 
 function getVaultGuesserSlotStart(date = new Date()) {

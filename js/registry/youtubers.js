@@ -64,13 +64,13 @@ window.YOUTUBER_DATA_READY = loadScripts(__MANIFEST_youtubers).then(() => {
       return [data];
     });
     window.YOUTUBERS_DATA = youtubers;
+    document.dispatchEvent(new CustomEvent('youtuberDataReady'));
     return youtubers;
   } catch (err) {
     console.error("Failed building data for js/registry/youtubers.js:", err);
     return [];
   }
 });
-window.__WANTED_LOADERS.push(window.YOUTUBER_DATA_READY);
 window.YOUTUBER_VIDEOS_READY = window.YOUTUBER_DATA_READY.then(youtubers =>
   refreshYoutuberVideos(youtubers).then(() => {
     document.dispatchEvent(new CustomEvent('youtuberVideosUpdated'));
