@@ -1,46 +1,28 @@
-const ALLOWED_ORIGIN = 'https://wantedrblx.com';
-const UPSTREAM_TIMEOUT_MS = 6000;
-const VIDEO_LIMIT = 3;
-const CANDIDATES_PER_CHANNEL = 8;
-const MAX_HANDLES = 8;
-const MAX_STATS_IDS = CANDIDATES_PER_CHANNEL * MAX_HANDLES;
-const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
-const CHANNEL_IDS = {
+const YOUTUBE_API_CACHE_SECONDS = 900;
+const UPSTREAM_TIMEOUT_MS = 8000;
+const YOUTUBE_VIDEO_LIMIT = 3;
+const YOUTUBE_CANDIDATE_LIMIT = 8;
+const YOUTUBE_CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
   ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g'
 };
-
-function corsHeaders(extra = {}) {
-  return {
-    'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Vary': 'Origin',
-    'Referrer-Policy': 'no-referrer',
-    'X-Content-Type-Options': 'nosniff',
-    ...extra
-  };
-}
-
-function json(body, status = 200, headers = {}) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: corsHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers })
-  });
-}
+const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
+const YOUTUBE_WATCH_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+  'Accept-Language': 'en-US,en;q=0.9',
+  'Cookie': 'CONSENT=YES+cb.20240101-00-p0.en+FX+001; SOCS=CAI'
+};
 
 async function fetchWithTimeout(input, init = {}) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
   try {
     return await fetch(input, { ...init, signal: controller.signal });
   } finally {
-    clearTimeout(timer);
+    clearTimeout(timeout);
   }
 }
-
-const numberOrNull = value => (value == null || !Number.isFinite(Number(value)) ? null : Number(value));
 
 function decodeXml(value) {
   return String(value || '')
@@ -57,115 +39,206 @@ function xmlValue(xml, tag) {
   return decodeXml(match && match[1]);
 }
 
-function parseFeed(xml) {
-  return [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/gi)].map(([, entry]) => {
+function parseYoutubeFeed(xml) {
+  return [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/gi)].map(match => {
+    const entry = match[1];
     const videoId = xmlValue(entry, 'yt:videoId');
+    const title = xmlValue(entry, 'title');
     const published = xmlValue(entry, 'published');
     const thumbnail = entry.match(/<media:thumbnail[^>]+url="([^"]+)"/i)?.[1]
-      || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-    return { videoId, title: xmlValue(entry, 'title'), thumbnail, published };
+      || `https://i.ytimg.com/vi/${videoId}/hq720.jpg`;
+    return { videoId, title, published, thumbnail };
   }).filter(video => video.videoId && video.title);
 }
 
-async function resolveChannelId(handle, env) {
-  if (CHANNEL_IDS[handle]) return CHANNEL_IDS[handle];
+async function resolveChannelId(handle) {
+  if (YOUTUBE_CHANNEL_IDS[handle]) return YOUTUBE_CHANNEL_IDS[handle];
 
-  const res = await fetchWithTimeout(`https://www.youtube.com/@${encodeURIComponent(handle)}?hl=en`, {
-    headers: { 'User-Agent': 'Wanted Wiki video updater' }
+  const response = await fetchWithTimeout(`https://www.youtube.com/@${encodeURIComponent(handle)}?hl=en`, {
+    redirect: 'follow',
+    headers: YOUTUBE_WATCH_HEADERS
   });
-  if (!res.ok) return null;
+  if (!response.ok) return null;
 
-  const html = await res.text();
+  const html = await response.text();
   return html.match(/(?:"channelId"|"externalId")\s*:\s*"(UC[^"]+)"/)?.[1] || null;
 }
 
-async function getCandidates(handle, env) {
-  const channelId = await resolveChannelId(handle, env);
-  if (!channelId) return [];
+// Extracts a JSON object that follows a marker such as "ytInitialPlayerResponse = ".
+// Scans braces while respecting strings, so it only reads the object itself.
+function extractJsonObject(html, marker) {
+  const start = html.indexOf(marker);
+  if (start === -1) return null;
+  const jsonStart = html.indexOf('{', start + marker.length);
+  if (jsonStart === -1) return null;
 
-  const res = await fetchWithTimeout(
-    `https://www.youtube.com/feeds/videos.xml?channel_id=${encodeURIComponent(channelId)}`,
-    { headers: { 'User-Agent': 'Wanted Wiki video updater' } }
-  );
-  if (!res.ok) return [];
-
-  return parseFeed(await res.text())
-    .filter(video => /\bwanted\b/i.test(video.title)
-      && !/\b(?:live|livestream|live stream|streaming)\b/i.test(video.title))
-    .slice(0, CANDIDATES_PER_CHANNEL);
-}
-
-async function getVideoDetails(ids) {
-  const details = new Map();
-  const clients = [
-    {
-      name: 'WEB',
-      version: '2.20241126.01.00',
-      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36'
-    },
-    {
-      name: 'ANDROID',
-      version: '20.10.38',
-      userAgent: 'com.google.android.youtube/20.10.38 (Linux; U; Android 11) gzip'
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let i = jsonStart; i < html.length; i++) {
+    const ch = html[i];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (ch === '\\') escaped = true;
+      else if (ch === '"') inString = false;
+      continue;
     }
-  ];
-
-  await Promise.all(ids.slice(0, VIDEO_LIMIT * MAX_HANDLES).map(async videoId => {
-    for (const client of clients) {
-      try {
-        const res = await fetchWithTimeout('https://www.youtube.com/youtubei/v1/player', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'User-Agent': client.userAgent,
-            'Origin': 'https://www.youtube.com',
-            'Referer': 'https://www.youtube.com/'
-          },
-          body: JSON.stringify({
-            context: { client: { clientName: client.name, clientVersion: client.version } },
-            videoId
-          })
-        });
-        if (!res.ok) {
-          console.error(`YouTube ${client.name} player request failed for ${videoId}:`, res.status);
-          continue;
+    if (ch === '"') inString = true;
+    else if (ch === '{') depth++;
+    else if (ch === '}') {
+      depth--;
+      if (depth === 0) {
+        try {
+          return JSON.parse(html.slice(jsonStart, i + 1));
+        } catch (_) {
+          return null;
         }
-
-        const data = await res.json();
-        const video = data.videoDetails;
-        if (!video) {
-          console.error(`YouTube ${client.name} player response missing details for ${videoId}:`, data.playabilityStatus?.status);
-          continue;
-        }
-        const existing = details.get(videoId) || {};
-        details.set(videoId, {
-          isLive: existing.isLive === true || video.isLiveContent === true,
-          views: numberOrNull(video.viewCount) ?? existing.views ?? null,
-          likes: numberOrNull(data.microformat?.playerMicroformatRenderer?.likeCount) ?? existing.likes ?? null
-        });
-        const stats = details.get(videoId);
-        if (stats.views != null && stats.likes != null) break;
-      } catch (error) {
-        console.error(`YouTube ${client.name} player lookup failed for ${videoId}:`, error);
       }
     }
-  }));
-  return details;
+  }
+  return null;
 }
 
-async function getClicks(ids, env) {
-  if (!env.VIDEO_ANALYTICS || !ids.length) return {};
+function parseCompactNumber(raw) {
+  const match = String(raw).trim().match(/^([\d.,]+)\s*([KMB])?/i);
+  if (!match) return null;
+  const multipliers = { K: 1e3, M: 1e6, B: 1e9 };
+  const suffix = (match[2] || '').toUpperCase();
+  const value = suffix
+    ? Number(match[1].replace(',', '.'))
+    : Number(match[1].replace(/[,.]/g, ''));
+  return Number.isFinite(value) ? Math.round(value * (multipliers[suffix] || 1)) : null;
+}
 
-  const stub = env.VIDEO_ANALYTICS.get(env.VIDEO_ANALYTICS.idFromName('video-clicks'));
-  const res = await stub.fetch('https://analytics/counts', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ids })
+// Reads the like count from the raw watch-page HTML. Returns null when no pattern matches.
+function parseLikeCount(html) {
+  const accessible = html.match(/"likeCountA11y"\s*:\s*"([^"]*?)\s*likes?"/i);
+  if (accessible) {
+    const count = parseCompactNumber(accessible[1]);
+    if (count !== null) return count;
+  }
+  // "Like this video along with N other people" means the viewer plus N others have liked it.
+  const along = html.match(/like this video along with ([\d,]+) other/i);
+  if (along) {
+    const count = parseCompactNumber(along[1]);
+    if (count !== null) return count + 1;
+  }
+  return null;
+}
+
+// Returns:
+//   { ok: false }                   -> blocked, consent page, or markup change. Not cached; retried.
+//   { ok: true, unavailable: true } -> private or removed. Skipped; does not block caching.
+//   { ok: true, player, likes }     -> page parsed. `likes` may be null if the pattern missed.
+async function fetchWatchPage(videoId) {
+  const response = await fetchWithTimeout(
+    `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&hl=en`,
+    { headers: YOUTUBE_WATCH_HEADERS }
+  );
+  if (!response.ok) return { ok: false };
+
+  const html = await response.text();
+  const player = extractJsonObject(html, 'ytInitialPlayerResponse = ');
+  if (!player) return { ok: false };
+  if (!player.videoDetails) return { ok: true, unavailable: true };
+
+  return { ok: true, player, likes: parseLikeCount(html) };
+}
+
+async function getVideoClicks(env, videoId) {
+  if (!env.VIDEO_ANALYTICS || !VIDEO_ID_PATTERN.test(videoId)) return 0;
+
+  const id = env.VIDEO_ANALYTICS.idFromName('video-clicks');
+  const stub = env.VIDEO_ANALYTICS.get(id);
+  const response = await stub.fetch(`https://analytics/count?videoId=${encodeURIComponent(videoId)}`);
+  if (!response.ok) return 0;
+
+  const payload = await response.json();
+  return Number.isFinite(payload.clicks) ? payload.clicks : 0;
+}
+
+async function getWantedVideos(handle, env) {
+  const channelId = await resolveChannelId(handle);
+  if (!channelId) return { videos: [], complete: false };
+
+  const feedResponse = await fetchWithTimeout(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
+    headers: { 'User-Agent': 'Wanted Wiki video updater' }
   });
-  if (!res.ok) return {};
-  return (await res.json()).counts || {};
+  if (!feedResponse.ok) return { videos: [], complete: false };
+
+  const candidates = parseYoutubeFeed(await feedResponse.text())
+    .filter(video => /\bwanted\b/i.test(video.title))
+    .slice(0, YOUTUBE_CANDIDATE_LIMIT);
+  if (!candidates.length) return { videos: [], complete: true };
+
+  const pages = await Promise.all(candidates.map(video =>
+    fetchWatchPage(video.videoId).catch(() => ({ ok: false }))
+  ));
+
+  let complete = pages.every(page => page.ok);
+  const videos = [];
+
+  for (let i = 0; i < candidates.length; i++) {
+    const page = pages[i];
+    if (!page.ok || page.unavailable) continue;
+
+    const details = page.player.videoDetails;
+    if (details.isLiveContent === true) continue;
+
+    const views = Number(details.viewCount);
+    if (!Number.isFinite(views)) {
+      complete = false;
+      console.warn(`YouTube views missing for ${candidates[i].videoId}`);
+      continue;
+    }
+    if (page.likes === null) {
+      // Treat a missed like pattern as incomplete so the bad result is not cached.
+      complete = false;
+      console.warn(`YouTube likes not parsed for ${candidates[i].videoId}`);
+      continue;
+    }
+
+    const candidate = candidates[i];
+    videos.push({
+      title: candidate.title,
+      thumbnail: candidate.thumbnail,
+      link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
+      published: candidate.published,
+      views,
+      likes: page.likes,
+      clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
+    });
+
+    if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
+  }
+
+  return { videos, complete };
+}
+
+function responseHeaders(cacheControl = 'no-store') {
+  return {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'https://wantedrblx.com',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Cache-Control': cacheControl,
+    'Referrer-Policy': 'no-referrer',
+    'Vary': 'Origin',
+    'X-Content-Type-Options': 'nosniff'
+  };
+}
+
+function withCors(response) {
+  const headers = new Headers(response.headers);
+  headers.set('Access-Control-Allow-Origin', 'https://wantedrblx.com');
+  headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  headers.set('Access-Control-Allow-Headers', 'Content-Type');
+  headers.set('Vary', 'Origin');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
 }
 
 async function exceedsRateLimit(env, key) {
@@ -174,104 +247,122 @@ async function exceedsRateLimit(env, key) {
     const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key });
     return !success;
   } catch (error) {
-    console.error('Rate limiter unavailable; allowing request:', error);
+    console.error('YouTube rate limiter unavailable; allowing request:', error);
     return false;
   }
 }
 
-async function handleVideos(request, env) {
+async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
+  const cache = caches.default;
+  const cacheKey = new Request(url.toString(), { method: 'GET' });
 
-  const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
-  if (await exceedsRateLimit(env, `videos:${clientKey}`)) {
-    return json({ error: 'Rate limit exceeded' }, 429, { 'Retry-After': '60' });
+  try {
+    const cachedResponse = await cache.match(cacheKey);
+    if (cachedResponse) return withCors(cachedResponse);
+  } catch (error) {
+    console.error('YouTube response cache read failed; continuing:', error);
   }
 
   const handles = [...new Set((url.searchParams.get('handles') || '')
     .split(',')
     .map(handle => handle.trim().replace(/^@/, ''))
-    .filter(handle => /^[\w.-]{1,100}$/.test(handle)))].slice(0, MAX_HANDLES);
-  if (!handles.length) return json({ error: 'Missing handles' }, 400);
-
-  const candidates = await Promise.all(handles.map(handle =>
-    getCandidates(handle, env).catch(error => {
-      console.error(`Feed lookup failed for ${handle}:`, error);
-      return [];
-    })
-  ));
-
-  const ids = [...new Set(candidates.flatMap(channelVideos => channelVideos
-    .slice(0, CANDIDATES_PER_CHANNEL)
-    .map(video => video.videoId)))]
-    .filter(id => VIDEO_ID_PATTERN.test(id));
-
-  const clicks = await getClicks(ids, env).catch(() => ({}));
-
-  const videos = {};
-  handles.forEach((handle, index) => {
-    videos[handle] = candidates[index]
-      .slice(0, CANDIDATES_PER_CHANNEL)
-      .map(video => {
-        return {
-          title: video.title,
-          thumbnail: video.thumbnail,
-          link: `https://www.youtube.com/watch?v=${video.videoId}`,
-          published: video.published,
-          views: null,
-          likes: null,
-          clicks: clicks[video.videoId] || 0
-        };
-      });
-  });
-
-  return json({ videos });
-}
-
-async function handleVideoStats(request, env) {
-  const url = new URL(request.url);
-  const ids = [...new Set((url.searchParams.get('ids') || '')
-    .split(',')
-    .filter(id => VIDEO_ID_PATTERN.test(id)))].slice(0, MAX_STATS_IDS);
-  if (!ids.length) return json({ error: 'Missing or invalid video IDs' }, 400);
-
-  const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
-  if (await exceedsRateLimit(env, `stats:${clientKey}`)) {
-    return json({ error: 'Rate limit exceeded' }, 429, { 'Retry-After': '60' });
+    .filter(handle => /^[\w.-]+$/.test(handle)))].slice(0, 20);
+  if (!handles.length) {
+    return new Response(JSON.stringify({ error: 'Missing handles' }), {
+      status: 400,
+      headers: responseHeaders()
+    });
   }
 
-  const details = await getVideoDetails(ids).catch(() => new Map());
-  const stats = Object.fromEntries([...details.entries()].map(([id, values]) => [id, values]));
-  return json({ stats });
+  const results = await Promise.all(handles.map(async handle => {
+    try {
+      return [handle, await getWantedVideos(handle, env)];
+    } catch (error) {
+      console.error(`YouTube refresh failed for ${handle}:`, error);
+      return [handle, { videos: [], complete: false }];
+    }
+  }));
+
+  const complete = results.every(([, result]) => result.complete);
+  const body = {
+    complete,
+    videos: Object.fromEntries(results.map(([handle, result]) => [handle, result.videos]))
+  };
+
+  // Only complete results are cached. Incomplete results are never stored, so the next request retries.
+  const cacheControl = complete
+    ? `public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`
+    : 'no-store';
+  const response = new Response(JSON.stringify(body), { headers: responseHeaders(cacheControl) });
+
+  if (complete) {
+    try {
+      await cache.put(cacheKey, response.clone());
+    } catch (error) {
+      console.error('YouTube response cache write failed; returning response:', error);
+    }
+  }
+  return withCors(response);
+}
+
+function errorResponse(error) {
+  console.error('YouTube worker request failed:', error);
+  return new Response(JSON.stringify({ error: 'YouTube videos unavailable' }), {
+    status: 503,
+    headers: responseHeaders()
+  });
 }
 
 async function handleVideoClick(request, env) {
   if (request.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405, headers: corsHeaders({ Allow: 'POST' }) });
+    return withCors(new Response('Method not allowed', {
+      status: 405,
+      headers: { 'Allow': 'POST', 'Cache-Control': 'no-store' }
+    }));
   }
 
   const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
   if (await exceedsRateLimit(env, `click:${clientKey}`)) {
-    return json({ error: 'Rate limit exceeded' }, 429, { 'Retry-After': '60' });
+    return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
+      status: 429,
+      headers: { ...responseHeaders(), 'Retry-After': '60' }
+    });
   }
-  if (!env.VIDEO_ANALYTICS) return json({ error: 'Analytics unavailable' }, 503);
+
+  if (!env.VIDEO_ANALYTICS) {
+    return new Response(JSON.stringify({ error: 'Analytics unavailable' }), {
+      status: 503,
+      headers: responseHeaders()
+    });
+  }
 
   let payload;
   try {
     payload = await request.json();
-  } catch {
-    return json({ error: 'Invalid JSON' }, 400);
+  } catch (_) {
+    return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
+      status: 400,
+      headers: responseHeaders()
+    });
   }
 
   const videoId = String(payload?.videoId || '');
-  if (!VIDEO_ID_PATTERN.test(videoId)) return json({ error: 'Invalid video ID' }, 400);
+  if (!VIDEO_ID_PATTERN.test(videoId)) {
+    return new Response(JSON.stringify({ error: 'Invalid video ID' }), {
+      status: 400,
+      headers: responseHeaders()
+    });
+  }
 
-  const stub = env.VIDEO_ANALYTICS.get(env.VIDEO_ANALYTICS.idFromName('video-clicks'));
-  const res = await stub.fetch(`https://analytics/increment?videoId=${encodeURIComponent(videoId)}`, {
+  const id = env.VIDEO_ANALYTICS.idFromName('video-clicks');
+  const stub = env.VIDEO_ANALYTICS.get(id);
+  const response = await stub.fetch(`https://analytics/increment?videoId=${encodeURIComponent(videoId)}`, {
     method: 'POST'
   });
-  return new Response(await res.text(), {
-    status: res.status,
-    headers: corsHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-store' })
+  return new Response(await response.text(), {
+    status: response.status,
+    headers: responseHeaders()
   });
 }
 
@@ -288,78 +379,75 @@ export class VideoAnalytics {
     });
   }
 
-  readClicks(videoId) {
-    return this.state.storage.sql
-      .exec('SELECT clicks FROM video_clicks WHERE video_id = ?', videoId)
-      .toArray()[0]?.clicks || 0;
-  }
-
   async fetch(request) {
     const url = new URL(request.url);
-    const reply = (body, status = 200) => new Response(JSON.stringify(body), {
-      status,
-      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
-    });
+    const videoId = url.searchParams.get('videoId') || '';
+    if (!VIDEO_ID_PATTERN.test(videoId)) {
+      return new Response(JSON.stringify({ error: 'Invalid video ID' }), { status: 400 });
+    }
 
     if (url.pathname === '/increment' && request.method === 'POST') {
-      const videoId = url.searchParams.get('videoId') || '';
-      if (!VIDEO_ID_PATTERN.test(videoId)) return reply({ error: 'Invalid video ID' }, 400);
-
       this.state.storage.sql.exec(
         `INSERT INTO video_clicks (video_id, clicks) VALUES (?, 1)
          ON CONFLICT(video_id) DO UPDATE SET clicks = clicks + 1`,
         videoId
       );
-      return reply({ clicks: this.readClicks(videoId) });
     }
 
-    if (url.pathname === '/counts' && request.method === 'POST') {
-      const body = await request.json().catch(() => ({}));
-      const ids = Array.isArray(body?.ids) ? body.ids : [];
-      const counts = {};
-      for (const id of ids.filter(id => VIDEO_ID_PATTERN.test(id)).slice(0, 50)) {
-        counts[id] = this.readClicks(id);
-      }
-      return reply({ counts });
-    }
-
-    return reply({ error: 'Not found' }, 404);
+    const result = this.state.storage.sql.exec(
+      'SELECT clicks FROM video_clicks WHERE video_id = ?',
+      videoId
+    ).toArray()[0];
+    return new Response(JSON.stringify({ clicks: result?.clicks || 0 }), {
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+    });
   }
 }
 
 export default {
   async fetch(request, env) {
     try {
+      const url = new URL(request.url);
       if (request.method === 'OPTIONS') {
-        return new Response(null, { status: 204, headers: corsHeaders() });
+        return withCors(new Response(null, { status: 204 }));
       }
 
-      const url = new URL(request.url);
-      if (url.pathname === '/') {
-        return json({
-          service: 'wanted-youtube-videos',
-          status: 'ok',
-          endpoints: ['/youtube/videos', '/youtube/stats', '/youtube/click']
-        });
-      }
-      if (url.pathname === '/youtube/click') return await handleVideoClick(request, env);
-      if (url.pathname === '/youtube/stats') {
-        if (request.method !== 'GET') {
-          return new Response('Method not allowed', { status: 405, headers: corsHeaders({ Allow: 'GET' }) });
-        }
-        return await handleVideoStats(request, env);
+      if (url.pathname === '/youtube/click') {
+        return await handleVideoClick(request, env);
       }
       if (url.pathname !== '/youtube/videos') {
-        return new Response('Not found', { status: 404, headers: corsHeaders({ 'Cache-Control': 'no-store' }) });
-      }
-      if (request.method !== 'GET') {
-        return new Response('Method not allowed', { status: 405, headers: corsHeaders({ Allow: 'GET' }) });
+        return withCors(new Response('Not found', {
+          status: 404,
+          headers: {
+            'Content-Type': 'text/plain;charset=UTF-8',
+            'Cache-Control': 'no-store',
+            'Referrer-Policy': 'no-referrer',
+            'X-Content-Type-Options': 'nosniff'
+          }
+        }));
       }
 
-      return await handleVideos(request, env);
+      if (request.method !== 'GET') {
+        return withCors(new Response('Method not allowed', {
+          status: 405,
+          headers: { 'Allow': 'GET', 'Cache-Control': 'no-store' }
+        }));
+      }
+
+      const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
+      if (await exceedsRateLimit(env, clientKey)) {
+        return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
+          status: 429,
+          headers: {
+            ...responseHeaders(),
+            'Retry-After': '60'
+          }
+        });
+      }
+
+      return await handleYoutubeVideos(request, env);
     } catch (error) {
-      console.error('YouTube worker failed:', error);
-      return json({ error: 'YouTube videos unavailable' }, 503);
+      return errorResponse(error);
     }
   }
 };

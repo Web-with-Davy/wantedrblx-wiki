@@ -89,6 +89,8 @@ function initAdSense() {
     document.head.appendChild(script);
 }
 
+const youtuberSortKeys = new Map();
+
 function renderYoutubersHTML() {
     const formatVideoMetric = (value) => Number.isFinite(value)
         ? Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)
@@ -105,11 +107,12 @@ function renderYoutubersHTML() {
         </a>
     `;
 
-    const youtubersList = [...(window.YOUTUBERS_DATA || [])];
-    for (let i = youtubersList.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [youtubersList[i], youtubersList[j]] = [youtubersList[j], youtubersList[i]];
-    }
+    const youtubersList = [...(window.YOUTUBERS_DATA || [])]
+        .map(youtuber => {
+            if (!youtuberSortKeys.has(youtuber.name)) youtuberSortKeys.set(youtuber.name, Math.random());
+            return youtuber;
+        })
+        .sort((a, b) => youtuberSortKeys.get(a.name) - youtuberSortKeys.get(b.name));
 
     return youtubersList.map(youtuber => {
         const videosHTML = (youtuber.videos || []).slice(0, 3).map(renderYoutuberVideo).join('');
@@ -158,10 +161,6 @@ function refreshYoutuberList() {
 
 document.addEventListener('youtuberDataReady', refreshYoutuberList);
 document.addEventListener('youtuberVideosUpdated', refreshYoutuberList);
-
-window.YOUTUBER_VIDEOS_READY?.then(() => {
-    refreshYoutuberList();
-});
 
 function getVaultGuesserSlotStart(date = new Date()) {
     const slotDate = new Date(date);
