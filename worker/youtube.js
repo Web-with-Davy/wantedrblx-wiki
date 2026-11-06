@@ -128,6 +128,17 @@ function responseHeaders(cacheControl = 'no-store') {
   };
 }
 
+function withCors(response) {
+  const headers = new Headers(response.headers);
+  headers.set('Access-Control-Allow-Origin', 'https://wantedrblx.com');
+  headers.set('Vary', 'Origin');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
 async function exceedsRateLimit(env, key) {
   if (!env.YOUTUBE_REFRESH_LIMITER?.limit) return false;
   const { success } = await env.YOUTUBE_REFRESH_LIMITER.limit({ key });
@@ -139,7 +150,7 @@ async function handleYoutubeVideos(request, env) {
   const cache = caches.default;
   const cacheKey = new Request(url.toString(), { method: 'GET' });
   const cachedResponse = await cache.match(cacheKey);
-  if (cachedResponse) return cachedResponse;
+  if (cachedResponse) return withCors(cachedResponse);
 
   const handles = [...new Set((url.searchParams.get('handles') || '')
     .split(',')
@@ -165,7 +176,7 @@ async function handleYoutubeVideos(request, env) {
     headers: responseHeaders(`public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`)
   });
   await cache.put(cacheKey, response.clone());
-  return response;
+  return withCors(response);
 }
 
 async function handleVideoClick(request, env) {
@@ -265,7 +276,7 @@ export default {
       return handleVideoClick(request, env);
     }
     if (url.pathname !== '/youtube/videos') {
-      return new Response('Not found', {
+      return withCors(new Response('Not found', {
         status: 404,
         headers: {
           'Content-Type': 'text/plain;charset=UTF-8',
@@ -273,14 +284,14 @@ export default {
           'Referrer-Policy': 'no-referrer',
           'X-Content-Type-Options': 'nosniff'
         }
-      });
+      }));
     }
 
     if (request.method !== 'GET') {
-      return new Response('Method not allowed', {
+      return withCors(new Response('Method not allowed', {
         status: 405,
         headers: { 'Allow': 'GET', 'Cache-Control': 'no-store' }
-      });
+      }));
     }
 
     const clientKey = request.headers.get('cf-connecting-ip') || 'unknown-client';
