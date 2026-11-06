@@ -97,41 +97,59 @@ async function getCandidates(handle, env) {
 
 async function getVideoDetails(ids) {
   const details = new Map();
-  await Promise.all(ids.slice(0, VIDEO_LIMIT * MAX_HANDLES).map(async videoId => {
-    try {
-      const res = await fetchWithTimeout('https://www.youtube.com/youtubei/v1/player', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Accept-Language': 'en-US,en;q=0.9',
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36',
-          'Origin': 'https://www.youtube.com',
-          'Referer': 'https://www.youtube.com/'
-        },
-        body: JSON.stringify({
-          context: { client: { clientName: 'WEB', clientVersion: '2.20241126.01.00' } },
-          videoId
-        })
-      });
-      if (!res.ok) {
-        console.error(`YouTube player request failed for ${videoId}:`, res.status);
-        return;
-      }
+  const clients = [
+    {
+      name: 'WEB',
+      version: '2.20241126.01.00',
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36'
+    },
+    {
+      name: 'ANDROID',
+      version: '20.10.38',
+      userAgent: 'com.google.android.youtube/20.10.38 (Linux; U; Android 11) gzip'
+    }
+  ];
 
-      const data = await res.json();
-      const video = data.videoDetails;
-      if (!video) {
-        console.error(`YouTube player response missing video details for ${videoId}:`, data.playabilityStatus?.status);
-        return;
+  await Promise.all(ids.slice(0, VIDEO_LIMIT * MAX_HANDLES).map(async videoId => {
+    for (const client of clients) {
+      try {
+        const res = await fetchWithTimeout('https://www.youtube.com/youtubei/v1/player', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'User-Agent': client.userAgent,
+            'Origin': 'https://www.youtube.com',
+            'Referer': 'https://www.youtube.com/'
+          },
+          body: JSON.stringify({
+            context: { client: { clientName: client.name, clientVersion: client.version } },
+            videoId
+          })
+        });
+        if (!res.ok) {
+          console.error(`YouTube ${client.name} player request failed for ${videoId}:`, res.status);
+          continue;
+        }
+
+        const data = await res.json();
+        const video = data.videoDetails;
+        if (!video) {
+          console.error(`YouTube ${client.name} player response missing details for ${videoId}:`, data.playabilityStatus?.status);
+          continue;
+        }
+        const existing = details.get(videoId) || {};
+        details.set(videoId, {
+          isLive: existing.isLive === true || video.isLiveContent === true,
+          views: numberOrNull(video.viewCount) ?? existing.views ?? null,
+          likes: numberOrNull(data.microformat?.playerMicroformatRenderer?.likeCount) ?? existing.likes ?? null
+        });
+        const stats = details.get(videoId);
+        if (stats.views != null && stats.likes != null) break;
+      } catch (error) {
+        console.error(`YouTube ${client.name} player lookup failed for ${videoId}:`, error);
       }
-      details.set(videoId, {
-        isLive: video.isLiveContent === true,
-        views: numberOrNull(video.viewCount),
-        likes: numberOrNull(data.microformat?.playerMicroformatRenderer?.likeCount)
-      });
-    } catch (error) {
-      console.error(`YouTube player lookup failed for ${videoId}:`, error);
     }
   }));
   return details;

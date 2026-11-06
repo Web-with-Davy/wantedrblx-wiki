@@ -70,7 +70,7 @@ async function refreshYoutuberStats(youtubers) {
   if (!ids.length) return;
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12000);
+  const timeout = setTimeout(() => controller.abort(), 25000);
 
   try {
     const response = await fetch(`${YOUTUBER_STATS_URL}?ids=${ids.map(encodeURIComponent).join(',')}`, {
