@@ -245,7 +245,7 @@ async function getWantedVideos(handle, env) {
   const feedEntries = feedResponse?.ok ? parseYoutubeFeed(await feedResponse.text()) : [];
   const candidates = [...new Map(feedEntries
     .slice(0, YOUTUBE_CANDIDATE_LIMIT)
-    .filter(video => VIDEO_ID_PATTERN.test(video.videoId))
+    .filter(video => VIDEO_ID_PATTERN.test(video.videoId) && /\bwanted\b/i.test(video.title))
     .map(video => [video.videoId, video])).values()]
     .sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0))
     .slice(0, YOUTUBE_VIDEO_LIMIT);
@@ -312,7 +312,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '9');
+  cacheUrl.searchParams.set('cache_version', '10');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
