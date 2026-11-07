@@ -3225,8 +3225,8 @@ window.VEHICLE_STINGER = [
     obtaining: "Bayview Motors",
     description: "A sleek sport coupe tuned for quick cornering and confident highway pulls.",
     type: "ground",
-    repairPrice: 2200,
-    repairPriceGarage: 660,
+    repairPrice: 3000,
+    repairPriceGarage: 900,
     contractPrice: 1400000,
     stats: {
       vehicleType: "Sport",
