@@ -92,20 +92,40 @@ function initAdSense() {
 const youtuberSortKeys = new Map();
 
 function renderYoutubersHTML() {
+    const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[character]);
+
     const formatVideoMetric = (value) => Number.isFinite(value)
         ? Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)
-        : '...';
+        : 'N/A';
 
-    const renderYoutuberVideo = (video) => `
-        <a href="${video.link}" target="_blank" rel="noopener" class="featured-video-card" data-video-id="${video.link.match(/[?&]v=([\w-]+)/)?.[1] || ''}">
+    const renderYoutuberVideo = (video) => {
+        let videoId = '';
+        try {
+            const url = new URL(video.link);
+            if (url.protocol !== 'https:' || url.hostname !== 'www.youtube.com' || url.pathname !== '/watch') return '';
+            videoId = url.searchParams.get('v') || '';
+        } catch (_) {
+            return '';
+        }
+        if (!/^[\w-]{6,20}$/.test(videoId)) return '';
+
+        return `
+        <a href="${escapeHTML(video.link)}" target="_blank" rel="noopener" class="featured-video-card" data-video-id="${escapeHTML(videoId)}">
             <div class="video-thumb-container">
-                <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
+                <img src="${escapeHTML(video.thumbnail)}" alt="${escapeHTML(video.title)}" class="video-thumbnail" loading="lazy">
                 <div class="video-play-overlay"><span>▶</span></div>
             </div>
-            <div class="video-title-card">${video.title}</div>
+            <div class="video-title-card">${escapeHTML(video.title)}</div>
             <div class="video-stats">${formatVideoMetric(video.views)} views · ${formatVideoMetric(video.likes)} likes · ${formatVideoMetric(video.clicks)} clicks</div>
         </a>
     `;
+    };
 
     const youtubersList = [...(window.YOUTUBERS_DATA || [])]
         .map(youtuber => {
@@ -116,18 +136,24 @@ function renderYoutubersHTML() {
 
     return youtubersList.map(youtuber => {
         const videosHTML = (youtuber.videos || []).slice(0, 3).map(renderYoutuberVideo).join('');
+        const status = window.YOUTUBER_VIDEOS_STATUS || 'loading';
+        const emptyMessage = status === 'loading'
+            ? 'Loading videos...'
+            : status === 'error'
+                ? 'Videos temporarily unavailable'
+                : 'No recent Wanted videos';
 
         return `
             <div class="youtuber-block">
-                <a href="${youtuber.channelUrl}" target="_blank" rel="noopener" class="youtuber-header">
-                    <img src="${youtuber.avatar}" alt="${youtuber.name}" class="youtuber-avatar"
+                <a href="${escapeHTML(youtuber.channelUrl)}" target="_blank" rel="noopener" class="youtuber-header">
+                    <img src="${escapeHTML(youtuber.avatar)}" alt="${escapeHTML(youtuber.name)}" class="youtuber-avatar"
                         onerror="this.src='/images/logo.webp'">
                     <div class="youtuber-info">
-                        <div class="youtuber-name">${youtuber.name}</div>
+                        <div class="youtuber-name">${escapeHTML(youtuber.name)}</div>
                         <div class="youtuber-subtext">VIEW CHANNEL <span class="yt-arrow">&#8599;</span></div>
                     </div>
                 </a>
-                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : '<div class="youtuber-empty-state">No videos yet</div>'}
+                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : `<div class="youtuber-empty-state">${emptyMessage}</div>`}
             </div>
         `;
     }).join('');

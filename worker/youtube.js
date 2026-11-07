@@ -180,13 +180,15 @@ async function getWantedVideos(handle, env) {
   for (const videoId of curatedIds) {
     candidatesById.set(videoId, { videoId, title: '', published: '', thumbnail: '' });
   }
-  for (const candidate of feedCandidates.slice(0, YOUTUBE_CANDIDATE_LIMIT)) {
+  for (const candidate of feedCandidates) {
     candidatesById.set(candidate.videoId, candidate);
   }
-  const candidates = [...candidatesById.values()];
+  const candidates = [...candidatesById.values()]
+    .sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0))
+    .slice(0, YOUTUBE_CANDIDATE_LIMIT);
   if (!candidates.length) {
     console.info(`YouTube discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length} curatedResolved=0`);
-    return { videos: [], complete: false };
+    return { videos: [], complete: Boolean(feedResponse?.ok) };
   }
 
   const pages = await Promise.all(candidates.map(video =>
@@ -197,38 +199,31 @@ async function getWantedVideos(handle, env) {
     count + (curatedIds.includes(candidate.videoId) && pages[index].ok && !pages[index].unavailable ? 1 : 0), 0);
   console.info(`YouTube discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length} curatedResolved=${curatedResolved}`);
 
-  let complete = Boolean(feedResponse?.ok) && pages.every(page => page.ok);
+  let complete = Boolean(feedResponse?.ok);
   const videos = [];
 
   for (let i = 0; i < candidates.length; i++) {
     const page = pages[i];
-    if (!page.ok || page.unavailable) continue;
+    if (page.ok && page.unavailable) continue;
 
-    const details = page.player.videoDetails;
-    if (details.isLiveContent === true) continue;
+    const details = page.ok ? page.player.videoDetails : null;
+    if (details?.isLiveContent === true) continue;
 
-    const views = Number(details.viewCount);
-    if (!Number.isFinite(views)) {
-      complete = false;
-      console.warn(`YouTube views missing for ${candidates[i].videoId}`);
-      continue;
-    }
-    if (page.likes === null) {
-      // Treat a missed like pattern as incomplete so the bad result is not cached.
-      complete = false;
-      console.warn(`YouTube likes not parsed for ${candidates[i].videoId}`);
-      continue;
-    }
+    const views = details ? Number(details.viewCount) : null;
+    const title = candidates[i].title || details?.title || '';
+    if (!title) continue;
 
     const candidate = candidates[i];
-    const microformat = page.player.microformat?.playerMicroformatRenderer || {};
+    const microformat = page.ok
+      ? page.player.microformat?.playerMicroformatRenderer || {}
+      : {};
     videos.push({
-      title: candidate.title || details.title || '',
-      thumbnail: candidate.thumbnail || details.thumbnail?.thumbnails?.at(-1)?.url || `https://i.ytimg.com/vi/${candidate.videoId}/hq720.jpg`,
+      title,
+      thumbnail: candidate.thumbnail || details?.thumbnail?.thumbnails?.at(-1)?.url || `https://i.ytimg.com/vi/${candidate.videoId}/hq720.jpg`,
       link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
-      published: candidate.published || microformat.publishDate || microformat.uploadDate || '',
-      views,
-      likes: page.likes,
+      published: candidate.published || microformat?.publishDate || microformat?.uploadDate || '',
+      views: Number.isFinite(views) ? views : null,
+      likes: page.ok ? page.likes : null,
       clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
     });
   }
