@@ -426,6 +426,16 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://wantedrblx.com/item/vehicles/helix/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wantedrblx.com/item/vehicles/stinger/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://wantedrblx.com/item/missions/air-support/</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

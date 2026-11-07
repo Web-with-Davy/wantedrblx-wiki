@@ -758,6 +758,43 @@ const VEHICLE_UPGRADE_BONUSES = {
       bulletProof: { label: 'Bullet Proof', windows: Infinity },
     },
   },
+  Hyper: {
+    engine: {
+      street: { label: 'Street', topSpeed: 5.7, acceleration: 2 },
+      sport: { label: 'Sport', topSpeed: 11.4, acceleration: 4 },
+      race: { label: 'Race', topSpeed: 22.7, acceleration: 5.9 },
+    },
+    transmission: {
+      street: { label: 'Street', acceleration: 3 },
+      sport: { label: 'Sport', acceleration: 7.9 },
+      race: { label: 'Race', acceleration: 15.8 },
+    },
+    aspiration: {
+      turbo: { label: 'Turbo Charger', acceleration: 1.3 },
+      twinTurbo: { label: 'Twin Turbo', acceleration: 2.6 },
+      quadTurbo: { label: 'Quad Turbo', acceleration: 6.6 },
+    },
+    brakes: {
+      street: { label: 'Street', braking: 4 },
+      sport: { label: 'Sport', braking: 9.9 },
+      race: { label: 'Race', braking: 19.8 },
+    },
+    armor: {
+      light: { label: 'Light', body: 375, armor: 1 },
+      medium: { label: 'Medium', body: 500, armor: 2 },
+      heavy: { label: 'Heavy', body: 625, armor: 3 },
+    },
+    tires: {
+      upgraded: { label: 'Upgraded', wheels: 150 },
+      reinforced: { label: 'Reinforced', wheels: 300 },
+      bulletProof: { label: 'Bullet Proof', wheels: Infinity },
+    },
+    windows: {
+      upgraded: { label: 'Upgraded', windows: 150 },
+      reinforced: { label: 'Reinforced', windows: 300 },
+      bulletProof: { label: 'Bullet Proof', windows: Infinity },
+    },
+  },
 };
 
 const SUPER_CAR_UPGRADES = VEHICLE_UPGRADE_BONUSES;
@@ -784,6 +821,16 @@ const VEHICLE_UPGRADE_PRICE_TIERS = {
     windows: [10000, 50000, 200000],
   },
   super: {
+    engine: [125000, 375000, 1000000],
+    transmission: [250000, 625000, 1250000],
+    aspiration: [125000, 375000, 1000000],
+    brakes: [50000, 125000, 375000],
+    suspension: [200000, 500000, 1250000],
+    armor: [63000, 200000, 500000],
+    tires: [25000, 125000, 500000],
+    windows: [25000, 125000, 500000],
+  },
+  hyper: {
     engine: [125000, 375000, 1000000],
     transmission: [250000, 625000, 1250000],
     aspiration: [125000, 375000, 1000000],
@@ -829,6 +876,7 @@ const VEHICLE_UPGRADE_PRICE_TIER_BY_TYPE = {
   'Off-Road': 'standard',
   Tactical: 'tactical',
   Roadster: 'standard',
+  Hyper: 'hyper',
 };
 
 const VEHICLE_UPGRADE_UNKNOWN_PRICES = {

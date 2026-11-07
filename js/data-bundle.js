@@ -2375,8 +2375,7 @@ window.NPC_SOFTY = [
 
 /* --- js/data/promo-codes/active.js --- */
 window.PROMO_CODES_ACTIVE = [
-  { code: "50K", reward: "50k Bones and x2 Basic Vehicle Crates", active: true },
-  { code: "HALLOWEEN", reward: "2k Bones and x2 Basic Vehicle Crates", active: true },
+  { code: "HELIX", reward: "x2 Basic Vehicle Crates", active: true },
   { code: "DEVV", reward: "$10,000 Cash", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
   { code: "WANTED", reward: "$10,000 Cash", active: true },
@@ -2386,6 +2385,8 @@ window.PROMO_CODES_ACTIVE = [
 ];
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
+  { code: "50K", reward: "50k Bones and x2 Basic Vehicle Crates", active: false },
+  { code: "HALLOWEEN", reward: "2k Bones and x2 Basic Vehicle Crates", active: false },
   { code: "SANTA", reward: "$10,000 Cash", active: false },
   { code: "ZORVELLO", reward: "Zorvello Chair Funiture", active: false },
   { code: "EASTER", reward: "Egg Display Furniture", active: false },
@@ -3015,6 +3016,31 @@ window.VEHICLE_GEMSTONE = [
 
 ];
 
+/* --- js/data/vehicles/Ground/Bayview/helix.js --- */
+window.VEHICLE_HELIX = [
+
+  {
+    name: "Helix",
+    category: "Car",
+    obtaining: "Bayview Motors",
+    description: "A high-performance sports coupe built for speed, control, and sharp handling.",
+    type: "ground",
+    repairPrice: 2250,
+    repairPriceGarage: 7500,
+    contractPrice: 15000000,
+    stats: {
+      vehicleType: "Hyper",
+      seats: 2,
+      topSpeed: 76,
+      acceleration: 66,
+      braking: 79,
+      Health: "Body-250/Wheels-100/Windows-100",
+      armor: 0
+    }
+  },
+
+];
+
 /* --- js/data/vehicles/Ground/Bayview/mochi.js --- */
 window.VEHICLE_MOCHI = [
 
@@ -3183,6 +3209,31 @@ window.VEHICLE_STALLION_450 = [
       topSpeed: 45,
       acceleration: 34,
       braking: 54,
+      Health: "Body-200/Wheels-100/Windows-100",
+      armor: 0
+    }
+  },
+
+];
+
+/* --- js/data/vehicles/Ground/Bayview/stinger.js --- */
+window.VEHICLE_STINGER = [
+
+  {
+    name: "Stinger",
+    category: "Car",
+    obtaining: "Bayview Motors",
+    description: "A sleek sport coupe tuned for quick cornering and confident highway pulls.",
+    type: "ground",
+    repairPrice: 2200,
+    repairPriceGarage: 660,
+    contractPrice: 1400000,
+    stats: {
+      vehicleType: "Sport",
+      seats: 2,
+      topSpeed: 56,
+      acceleration: 49,
+      braking: 64,
       Health: "Body-200/Wheels-100/Windows-100",
       armor: 0
     }
