@@ -143,7 +143,8 @@ test('loads three newest videos and stats for every creator with bounded concurr
         const stats = await request.json();
         durableStats.set(videoId, {
           views: stats.views ?? durableStats.get(videoId)?.views ?? null,
-          likes: stats.likes ?? durableStats.get(videoId)?.likes ?? null
+          likes: stats.likes ?? durableStats.get(videoId)?.likes ?? null,
+          statsUpdatedAt: stats.updatedAt ?? durableStats.get(videoId)?.statsUpdatedAt ?? null
         });
         return new Response(JSON.stringify(durableStats.get(videoId)));
       }
@@ -202,4 +203,68 @@ test('loads three newest videos and stats for every creator with bounded concurr
   const repeatedPayload = await repeatResponse.json();
   assert.equal(repeatedPayload.complete, true);
   assert.equal(statsRequestCount, 12);
+});
+
+test('keeps saved views and likes when YouTube throttles a refresh', async () => {
+  const cachedResponses = new Map();
+  globalThis.caches = {
+    default: {
+      async match(request) {
+        return cachedResponses.get(request.url)?.clone();
+      },
+      async put(request, response) {
+        cachedResponses.set(request.url, response.clone());
+      }
+    }
+  };
+
+  const videoId = 'wanted123';
+  const oldUpdatedAt = Date.now() - 60 * 60 * 1000;
+  let watchPageRequests = 0;
+  const analyticsStub = {
+    async fetch(input, init = {}) {
+      const request = input instanceof Request ? input : new Request(input, init);
+      const url = new URL(request.url);
+      if (url.pathname === '/count') {
+        return new Response(JSON.stringify({
+          clicks: 7,
+          views: 8421,
+          likes: 316,
+          statsUpdatedAt: oldUpdatedAt
+        }));
+      }
+      throw new Error(`Unexpected Durable Object URL: ${url}`);
+    }
+  };
+  globalThis.fetch = async input => {
+    const url = new URL(input);
+    if (url.pathname === '/@ExampleCreator') {
+      return new Response('<script>{"channelId":"UC123456789"}</script>');
+    }
+    if (url.pathname === '/feeds/videos.xml') {
+      return new Response(`<feed><entry><yt:videoId>${videoId}</yt:videoId><title>Wanted Update</title><published>2026-11-07T10:00:00Z</published><media:thumbnail url="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg" /></entry></feed>`);
+    }
+    if (url.pathname === '/watch') {
+      watchPageRequests++;
+      return new Response('Rate limited', { status: 429 });
+    }
+    throw new Error(`Unexpected upstream URL: ${url}`);
+  };
+
+  const response = await worker.fetch(
+    new Request('https://worker.test/youtube/videos?handles=ExampleCreator'),
+    {
+      VIDEO_ANALYTICS: {
+        idFromName: () => 'video-clicks',
+        get: () => analyticsStub
+      }
+    }
+  );
+  const payload = await response.json();
+  const [video] = payload.videos.ExampleCreator;
+
+  assert.equal(watchPageRequests, 1);
+  assert.equal(video.views, 8421);
+  assert.equal(video.likes, 316);
+  assert.equal(video.clicks, 7);
 });

@@ -1,5 +1,6 @@
 const YOUTUBE_STATS_CACHE_SECONDS = 900;
 const YOUTUBE_FAILED_STATS_CACHE_SECONDS = 30;
+const YOUTUBE_THROTTLED_STATS_CACHE_SECONDS = 300;
 const YOUTUBE_RESPONSE_CACHE_SECONDS = 60;
 const UPSTREAM_TIMEOUT_MS = 5000;
 const YOUTUBE_VIDEO_LIMIT = 3;
@@ -126,16 +127,20 @@ async function fetchVideoStats(videoId, cache, cacheOrigin, env) {
     const cachedResponse = await cache.match(cacheKey);
     if (cachedResponse) {
       const cachedStats = await cachedResponse.json();
-      await saveVideoStats(env, videoId, cachedStats).catch(() => {});
-      return cachedStats;
+      const reusableStats = {
+        ...cachedStats,
+        updatedAt: cachedStats.updatedAt || Date.now()
+      };
+      await saveVideoStats(env, videoId, reusableStats).catch(() => {});
+      return reusableStats;
     }
   } catch (error) {
     console.warn(`YouTube stats cache read failed for ${videoId}`);
   }
 
-  const saveStats = async stats => {
-    const hasStats = Number.isFinite(stats.views) && Number.isFinite(stats.likes);
-    const ttl = hasStats ? YOUTUBE_STATS_CACHE_SECONDS : YOUTUBE_FAILED_STATS_CACHE_SECONDS;
+  const saveStats = async (stats, ttlOverride) => {
+    const hasStats = Number.isFinite(stats.views) || Number.isFinite(stats.likes);
+    const ttl = ttlOverride || (hasStats ? YOUTUBE_STATS_CACHE_SECONDS : YOUTUBE_FAILED_STATS_CACHE_SECONDS);
     try {
       await cache.put(cacheKey, new Response(JSON.stringify(stats), {
         headers: {
@@ -157,7 +162,11 @@ async function fetchVideoStats(videoId, cache, cacheOrigin, env) {
     );
     if (!response.ok) {
       console.warn(`YouTube stats request for ${videoId} returned HTTP ${response.status}`);
-      return saveStats({ views: null, likes: null });
+      const retryAfter = Number(response.headers.get('Retry-After'));
+      const retryTtl = response.status === 429
+        ? Math.max(YOUTUBE_THROTTLED_STATS_CACHE_SECONDS, Number.isFinite(retryAfter) ? retryAfter : 0)
+        : YOUTUBE_FAILED_STATS_CACHE_SECONDS;
+      return saveStats({ views: null, likes: null }, retryTtl);
     }
 
     const html = await response.text();
@@ -169,7 +178,8 @@ async function fetchVideoStats(videoId, cache, cacheOrigin, env) {
     }
     return saveStats({
       views,
-      likes
+      likes,
+      updatedAt: views !== null || likes !== null ? Date.now() : null
     });
   } catch (_) {
     console.warn(`YouTube stats request failed for ${videoId}`);
@@ -217,7 +227,8 @@ async function getVideoMetrics(env, videoId) {
   return {
     clicks: Number.isFinite(payload.clicks) ? payload.clicks : 0,
     views: Number.isFinite(payload.views) ? payload.views : null,
-    likes: Number.isFinite(payload.likes) ? payload.likes : null
+    likes: Number.isFinite(payload.likes) ? payload.likes : null,
+    statsUpdatedAt: Number.isFinite(payload.statsUpdatedAt) ? payload.statsUpdatedAt : null
   };
 }
 
@@ -263,6 +274,7 @@ async function getWantedVideos(handle, env) {
       published: candidate.published,
       views: metrics.views,
       likes: metrics.likes,
+      statsUpdatedAt: metrics.statsUpdatedAt,
       clicks: metrics.clicks
     };
   }));
@@ -312,7 +324,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '10');
+  cacheUrl.searchParams.set('cache_version', '11');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
@@ -346,13 +358,17 @@ async function handleYoutubeVideos(request, env) {
   const stats = await mapWithConcurrency(
     selectedVideos,
     YOUTUBE_STATS_CONCURRENCY,
-    video => Number.isFinite(video.views) && Number.isFinite(video.likes)
+    video => Number.isFinite(video.views)
+      && Number.isFinite(video.likes)
+      && Number.isFinite(video.statsUpdatedAt)
+      && Date.now() - video.statsUpdatedAt < YOUTUBE_STATS_CACHE_SECONDS * 1000
       ? Promise.resolve({ views: video.views, likes: video.likes })
       : fetchVideoStats(video.videoId, cache, url.origin, env)
   );
   selectedVideos.forEach((video, index) => {
     video.views = stats[index].views ?? video.views;
     video.likes = stats[index].likes ?? video.likes;
+    if (Number.isFinite(stats[index].updatedAt)) video.statsUpdatedAt = stats[index].updatedAt;
   });
 
   const complete = results.every(([, result]) => result.complete);
@@ -361,7 +377,7 @@ async function handleYoutubeVideos(request, env) {
     complete,
     videos: Object.fromEntries(results.map(([handle, result]) => [
       handle,
-      result.videos.map(({ videoId, ...video }) => video)
+      result.videos.map(({ videoId, statsUpdatedAt, ...video }) => video)
     ]))
   };
 
@@ -479,6 +495,7 @@ export class VideoAnalytics {
 
       const views = Number.isFinite(payload?.views) ? Math.max(0, Math.trunc(payload.views)) : null;
       const likes = Number.isFinite(payload?.likes) ? Math.max(0, Math.trunc(payload.likes)) : null;
+      const updatedAt = Number.isFinite(payload?.updatedAt) ? Math.trunc(payload.updatedAt) : Date.now();
       if (views === null && likes === null) {
         return new Response(JSON.stringify({ error: 'No video stats provided' }), { status: 400 });
       }
@@ -486,15 +503,17 @@ export class VideoAnalytics {
       this.state.storage.sql.exec(
         `INSERT INTO video_stats (video_id, views, likes, updated_at) VALUES (?, ?, ?, ?)
          ON CONFLICT(video_id) DO UPDATE SET
-           views = COALESCE(excluded.views, video_stats.views),
-           likes = COALESCE(excluded.likes, video_stats.likes),
-           updated_at = excluded.updated_at`,
+           views = CASE WHEN excluded.updated_at >= video_stats.updated_at
+             THEN COALESCE(excluded.views, video_stats.views) ELSE video_stats.views END,
+           likes = CASE WHEN excluded.updated_at >= video_stats.updated_at
+             THEN COALESCE(excluded.likes, video_stats.likes) ELSE video_stats.likes END,
+           updated_at = MAX(video_stats.updated_at, excluded.updated_at)`,
         videoId,
         views,
         likes,
-        Date.now()
+        updatedAt
       );
-      return new Response(JSON.stringify({ views, likes }), {
+      return new Response(JSON.stringify({ views, likes, updatedAt }), {
         headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
       });
     }
@@ -515,11 +534,11 @@ export class VideoAnalytics {
       'SELECT views, likes, updated_at FROM video_stats WHERE video_id = ?',
       videoId
     ).toArray()[0];
-    const statsAreFresh = stats && Date.now() - stats.updated_at < YOUTUBE_STATS_CACHE_SECONDS * 1000;
     return new Response(JSON.stringify({
       clicks: result?.clicks || 0,
-      views: statsAreFresh ? stats.views : null,
-      likes: statsAreFresh ? stats.likes : null
+      views: stats?.views ?? null,
+      likes: stats?.likes ?? null,
+      statsUpdatedAt: stats?.updated_at ?? null
     }), {
       headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
     });
