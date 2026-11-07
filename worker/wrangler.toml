@@ -1,9 +1,11 @@
 name = "wantedrblx-embed"
 main = "index.js"
 compatibility_date = "2024-09-23"
+version_metadata = { binding = "CF_VERSION_METADATA" }
 
 routes = [
 	{ pattern = "wantedrblx.com/item/*", zone_name = "wantedrblx.com" },
-	{ pattern = "www.wantedrblx.com/item/*", zone_name = "wantedrblx.com" }
+	{ pattern = "www.wantedrblx.com/item/*", zone_name = "wantedrblx.com" },
+	{ pattern = "wantedrblx.com/version", zone_name = "wantedrblx.com" }
 ]
 
