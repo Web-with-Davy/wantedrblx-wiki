@@ -1,7 +1,14 @@
 (() => {
     const VERSION_KEY = 'wanted-wiki-deployment-version';
+    const RELOAD_PARAM = '__wanted_version';
     const CHECK_INTERVAL_MS = 60_000;
     let reloadStarted = false;
+
+    const currentUrl = new URL(window.location.href);
+    if (currentUrl.searchParams.has(RELOAD_PARAM)) {
+        currentUrl.searchParams.delete(RELOAD_PARAM);
+        window.history.replaceState({}, document.title, `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`);
+    }
 
     async function checkForUpdate() {
         if (reloadStarted) return;
@@ -21,14 +28,19 @@
             if (previousVersion === version) return;
 
             reloadStarted = true;
-            localStorage.setItem(VERSION_KEY, version);
-
             if ('caches' in window) {
-                const cacheNames = await caches.keys();
-                await Promise.all(cacheNames.map(cacheName => caches.delete(cacheName)));
+                try {
+                    const cacheNames = await caches.keys();
+                    await Promise.allSettled(cacheNames.map(cacheName => caches.delete(cacheName)));
+                } catch (error) {
+                    console.warn('Could not clear site caches.', error);
+                }
             }
 
-            window.location.reload();
+            localStorage.setItem(VERSION_KEY, version);
+            const reloadUrl = new URL(window.location.href);
+            reloadUrl.searchParams.set(RELOAD_PARAM, version);
+            window.location.replace(reloadUrl.href);
         } catch (error) {
             console.warn('Could not check for a site update.', error);
         }
