@@ -106,9 +106,14 @@ test('returns the newest three videos from the first 15 RSS entries', async () =
 
 test('loads three newest videos and stats for every creator with bounded concurrency', async () => {
   const cachedResponses = new Map();
+  const durableStats = new Map();
+  let bypassVideoEdgeCache = false;
   globalThis.caches = {
     default: {
       async match(request) {
+        if (bypassVideoEdgeCache && new URL(request.url).pathname.includes('/_internal/video-stats/')) {
+          return undefined;
+        }
         return cachedResponses.get(request.url)?.clone();
       },
       async put(request, response) {
@@ -127,6 +132,28 @@ test('loads three newest videos and stats for every creator with bounded concurr
   let activeStatsRequests = 0;
   let maximumStatsRequests = 0;
   let statsRequestCount = 0;
+  const analyticsStub = {
+    async fetch(input, init = {}) {
+      const request = input instanceof Request ? input : new Request(input, init);
+      const url = new URL(request.url);
+      const videoId = url.searchParams.get('videoId');
+      if (url.pathname === '/stats' && request.method === 'POST') {
+        const stats = await request.json();
+        durableStats.set(videoId, {
+          views: stats.views ?? durableStats.get(videoId)?.views ?? null,
+          likes: stats.likes ?? durableStats.get(videoId)?.likes ?? null
+        });
+        return new Response(JSON.stringify(durableStats.get(videoId)));
+      }
+      return new Response(JSON.stringify({ clicks: 0, ...durableStats.get(videoId) }));
+    }
+  };
+  const env = {
+    VIDEO_ANALYTICS: {
+      idFromName: () => 'video-clicks',
+      get: () => analyticsStub
+    }
+  };
 
   globalThis.fetch = async input => {
     const url = new URL(input);
@@ -155,7 +182,7 @@ test('loads three newest videos and stats for every creator with bounded concurr
 
   const response = await worker.fetch(
     new Request('https://worker.test/youtube/videos?handles=Borgaboo,CeeJay_,ZDMD,Revndetta'),
-    {}
+    env
   );
   const payload = await response.json();
 
@@ -165,9 +192,10 @@ test('loads three newest videos and stats for every creator with bounded concurr
   assert.ok(maximumStatsRequests <= 4);
   assert.ok(Object.values(payload.videos).flat().every(video => video.views === 1206 && video.likes === 27));
 
+  bypassVideoEdgeCache = true;
   const repeatResponse = await worker.fetch(
     new Request('https://worker.test/youtube/videos?handles=Borgaboo,CeeJay_,ZDMD,Revndetta&refresh=again'),
-    {}
+    env
   );
   const repeatedPayload = await repeatResponse.json();
   assert.equal(repeatedPayload.complete, true);

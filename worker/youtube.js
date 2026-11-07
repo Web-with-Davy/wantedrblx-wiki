@@ -120,11 +120,15 @@ function parseViewCount(html, player) {
   return label ? parseCompactNumber(label[1]) : null;
 }
 
-async function fetchVideoStats(videoId, cache, cacheOrigin) {
+async function fetchVideoStats(videoId, cache, cacheOrigin, env) {
   const cacheKey = new Request(`${cacheOrigin}/_internal/video-stats/v1/${videoId}`);
   try {
     const cachedResponse = await cache.match(cacheKey);
-    if (cachedResponse) return await cachedResponse.json();
+    if (cachedResponse) {
+      const cachedStats = await cachedResponse.json();
+      await saveVideoStats(env, videoId, cachedStats).catch(() => {});
+      return cachedStats;
+    }
   } catch (error) {
     console.warn(`YouTube stats cache read failed for ${videoId}`);
   }
@@ -142,6 +146,7 @@ async function fetchVideoStats(videoId, cache, cacheOrigin) {
     } catch (error) {
       console.warn(`YouTube stats cache write failed for ${videoId}`);
     }
+    await saveVideoStats(env, videoId, stats).catch(() => {});
     return stats;
   };
 
@@ -198,16 +203,33 @@ async function resolveChannelId(handle) {
   return html.match(/(?:"channelId"|"externalId")\s*:\s*"(UC[^"]+)"/)?.[1] || null;
 }
 
-async function getVideoClicks(env, videoId) {
-  if (!env.VIDEO_ANALYTICS || !VIDEO_ID_PATTERN.test(videoId)) return 0;
+async function getVideoMetrics(env, videoId) {
+  if (!env.VIDEO_ANALYTICS || !VIDEO_ID_PATTERN.test(videoId)) {
+    return { clicks: 0, views: null, likes: null };
+  }
 
   const id = env.VIDEO_ANALYTICS.idFromName('video-clicks');
   const stub = env.VIDEO_ANALYTICS.get(id);
   const response = await stub.fetch(`https://analytics/count?videoId=${encodeURIComponent(videoId)}`);
-  if (!response.ok) return 0;
+  if (!response.ok) return { clicks: 0, views: null, likes: null };
 
   const payload = await response.json();
-  return Number.isFinite(payload.clicks) ? payload.clicks : 0;
+  return {
+    clicks: Number.isFinite(payload.clicks) ? payload.clicks : 0,
+    views: Number.isFinite(payload.views) ? payload.views : null,
+    likes: Number.isFinite(payload.likes) ? payload.likes : null
+  };
+}
+
+async function saveVideoStats(env, videoId, stats) {
+  if (!env.VIDEO_ANALYTICS || (!Number.isFinite(stats.views) && !Number.isFinite(stats.likes))) return;
+  const id = env.VIDEO_ANALYTICS.idFromName('video-clicks');
+  const stub = env.VIDEO_ANALYTICS.get(id);
+  await stub.fetch(`https://analytics/stats?videoId=${encodeURIComponent(videoId)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(stats)
+  });
 }
 
 async function getWantedVideos(handle, env) {
@@ -227,16 +249,23 @@ async function getWantedVideos(handle, env) {
     .map(video => [video.videoId, video])).values()]
     .sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0))
     .slice(0, YOUTUBE_VIDEO_LIMIT);
-  const videos = await Promise.all(candidates.map(async candidate => ({
-    videoId: candidate.videoId,
-    title: candidate.title,
-    thumbnail: candidate.thumbnail,
-    link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
-    published: candidate.published,
-    views: null,
-    likes: null,
-    clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
-  })));
+  const videos = await Promise.all(candidates.map(async candidate => {
+    const metrics = await getVideoMetrics(env, candidate.videoId).catch(() => ({
+      clicks: 0,
+      views: null,
+      likes: null
+    }));
+    return {
+      videoId: candidate.videoId,
+      title: candidate.title,
+      thumbnail: candidate.thumbnail,
+      link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
+      published: candidate.published,
+      views: metrics.views,
+      likes: metrics.likes,
+      clicks: metrics.clicks
+    };
+  }));
 
   console.info(`YouTube RSS discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} selected=${videos.length}`);
   return { videos, complete: Boolean(feedResponse?.ok) };
@@ -283,7 +312,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '8');
+  cacheUrl.searchParams.set('cache_version', '9');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
@@ -317,11 +346,13 @@ async function handleYoutubeVideos(request, env) {
   const stats = await mapWithConcurrency(
     selectedVideos,
     YOUTUBE_STATS_CONCURRENCY,
-    video => fetchVideoStats(video.videoId, cache, url.origin)
+    video => Number.isFinite(video.views) && Number.isFinite(video.likes)
+      ? Promise.resolve({ views: video.views, likes: video.likes })
+      : fetchVideoStats(video.videoId, cache, url.origin, env)
   );
   selectedVideos.forEach((video, index) => {
-    video.views = stats[index].views;
-    video.likes = stats[index].likes;
+    video.views = stats[index].views ?? video.views;
+    video.likes = stats[index].likes ?? video.likes;
   });
 
   const complete = results.every(([, result]) => result.complete);
@@ -420,6 +451,14 @@ export class VideoAnalytics {
           clicks INTEGER NOT NULL DEFAULT 0
         )
       `);
+      this.state.storage.sql.exec(`
+        CREATE TABLE IF NOT EXISTS video_stats (
+          video_id TEXT PRIMARY KEY,
+          views INTEGER,
+          likes INTEGER,
+          updated_at INTEGER NOT NULL
+        )
+      `);
     });
   }
 
@@ -428,6 +467,36 @@ export class VideoAnalytics {
     const videoId = url.searchParams.get('videoId') || '';
     if (!VIDEO_ID_PATTERN.test(videoId)) {
       return new Response(JSON.stringify({ error: 'Invalid video ID' }), { status: 400 });
+    }
+
+    if (url.pathname === '/stats' && request.method === 'POST') {
+      let payload;
+      try {
+        payload = await request.json();
+      } catch (_) {
+        return new Response(JSON.stringify({ error: 'Invalid stats payload' }), { status: 400 });
+      }
+
+      const views = Number.isFinite(payload?.views) ? Math.max(0, Math.trunc(payload.views)) : null;
+      const likes = Number.isFinite(payload?.likes) ? Math.max(0, Math.trunc(payload.likes)) : null;
+      if (views === null && likes === null) {
+        return new Response(JSON.stringify({ error: 'No video stats provided' }), { status: 400 });
+      }
+
+      this.state.storage.sql.exec(
+        `INSERT INTO video_stats (video_id, views, likes, updated_at) VALUES (?, ?, ?, ?)
+         ON CONFLICT(video_id) DO UPDATE SET
+           views = COALESCE(excluded.views, video_stats.views),
+           likes = COALESCE(excluded.likes, video_stats.likes),
+           updated_at = excluded.updated_at`,
+        videoId,
+        views,
+        likes,
+        Date.now()
+      );
+      return new Response(JSON.stringify({ views, likes }), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+      });
     }
 
     if (url.pathname === '/increment' && request.method === 'POST') {
@@ -442,7 +511,16 @@ export class VideoAnalytics {
       'SELECT clicks FROM video_clicks WHERE video_id = ?',
       videoId
     ).toArray()[0];
-    return new Response(JSON.stringify({ clicks: result?.clicks || 0 }), {
+    const stats = this.state.storage.sql.exec(
+      'SELECT views, likes, updated_at FROM video_stats WHERE video_id = ?',
+      videoId
+    ).toArray()[0];
+    const statsAreFresh = stats && Date.now() - stats.updated_at < YOUTUBE_STATS_CACHE_SECONDS * 1000;
+    return new Response(JSON.stringify({
+      clicks: result?.clicks || 0,
+      views: statsAreFresh ? stats.views : null,
+      likes: statsAreFresh ? stats.likes : null
+    }), {
       headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
     });
   }
