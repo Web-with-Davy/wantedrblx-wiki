@@ -1,7 +1,8 @@
 const YOUTUBE_API_CACHE_SECONDS = 900;
-const UPSTREAM_TIMEOUT_MS = 8000;
+const UPSTREAM_TIMEOUT_MS = 5000;
 const YOUTUBE_VIDEO_LIMIT = 3;
 const YOUTUBE_CANDIDATE_LIMIT = 15;
+const YOUTUBE_STATS_CONCURRENCY = 4;
 const YOUTUBE_CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
@@ -51,6 +52,113 @@ function parseYoutubeFeed(xml) {
   }).filter(video => video.videoId && video.title);
 }
 
+function extractJsonObject(html, marker) {
+  const markerIndex = html.indexOf(marker);
+  if (markerIndex === -1) return null;
+  const jsonStart = html.indexOf('{', markerIndex + marker.length);
+  if (jsonStart === -1) return null;
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let index = jsonStart; index < html.length; index++) {
+    const character = html[index];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (character === '\\') escaped = true;
+      else if (character === '"') inString = false;
+      continue;
+    }
+    if (character === '"') inString = true;
+    else if (character === '{') depth++;
+    else if (character === '}' && --depth === 0) {
+      try {
+        return JSON.parse(html.slice(jsonStart, index + 1));
+      } catch (_) {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+function parseCompactNumber(raw) {
+  const match = String(raw ?? '').trim().match(/^([\d.,]+)\s*([KMB])?/i);
+  if (!match) return null;
+  const suffix = (match[2] || '').toUpperCase();
+  const number = suffix
+    ? Number(match[1].replace(',', '.'))
+    : Number(match[1].replace(/[,.]/g, ''));
+  const multiplier = { K: 1e3, M: 1e6, B: 1e9 }[suffix] || 1;
+  return Number.isFinite(number) ? Math.round(number * multiplier) : null;
+}
+
+function parseLikeCount(html) {
+  const along = html.match(/"accessibilityText"\s*:\s*"like this video along with ([^"]+?) other/i);
+  if (along) {
+    const count = parseCompactNumber(along[1]);
+    if (count !== null) return count + 1;
+  }
+
+  const accessible = html.match(/"likeCountA11y"\s*:\s*"([^"]*?)\s*likes?"/i);
+  return accessible ? parseCompactNumber(accessible[1]) : null;
+}
+
+function parseViewCount(html, player) {
+  const playerCount = parseCompactNumber(player?.videoDetails?.viewCount);
+  if (playerCount !== null) return playerCount;
+
+  const rawCount = html.match(/"viewCount"\s*:\s*"?([\d,.]+)"?/i);
+  if (rawCount) {
+    const count = parseCompactNumber(rawCount[1]);
+    if (count !== null) return count;
+  }
+
+  const label = html.match(/"(?:simpleText|label)"\s*:\s*"([\d,.]+\s*[KMB]?)\s+views?\b/i);
+  return label ? parseCompactNumber(label[1]) : null;
+}
+
+async function fetchVideoStats(videoId) {
+  try {
+    const response = await fetchWithTimeout(
+      `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&hl=en`,
+      { headers: YOUTUBE_WATCH_HEADERS }
+    );
+    if (!response.ok) {
+      console.warn(`YouTube stats request for ${videoId} returned HTTP ${response.status}`);
+      return { views: null, likes: null };
+    }
+
+    const html = await response.text();
+    const player = extractJsonObject(html, 'ytInitialPlayerResponse = ');
+    const views = parseViewCount(html, player);
+    const likes = parseLikeCount(html);
+    if (views === null || likes === null) {
+      console.warn(`YouTube stats incomplete for ${videoId}: player=${Boolean(player?.videoDetails)} views=${views !== null} likes=${likes !== null} bytes=${html.length}`);
+    }
+    return {
+      views,
+      likes
+    };
+  } catch (_) {
+    console.warn(`YouTube stats request failed for ${videoId}`);
+    return { views: null, likes: null };
+  }
+}
+
+async function mapWithConcurrency(items, limit, mapper) {
+  const results = new Array(items.length);
+  let nextIndex = 0;
+  const workerCount = Math.min(limit, items.length);
+  await Promise.all(Array.from({ length: workerCount }, async () => {
+    while (nextIndex < items.length) {
+      const index = nextIndex++;
+      results[index] = await mapper(items[index], index);
+    }
+  }));
+  return results;
+}
+
 async function resolveChannelId(handle) {
   if (YOUTUBE_CHANNEL_IDS[handle]) return YOUTUBE_CHANNEL_IDS[handle];
 
@@ -87,13 +195,14 @@ async function getWantedVideos(handle, env) {
     headers: { 'User-Agent': 'Wanted Wiki video updater' }
   }).catch(() => null);
   const feedEntries = feedResponse?.ok ? parseYoutubeFeed(await feedResponse.text()) : [];
-  const feedCandidates = feedEntries
+  const candidates = [...new Map(feedEntries
     .slice(0, YOUTUBE_CANDIDATE_LIMIT)
-    .filter(video => VIDEO_ID_PATTERN.test(video.videoId) && /\bwanted\b/i.test(video.title));
-  const candidates = [...new Map(feedCandidates.map(video => [video.videoId, video])).values()]
+    .filter(video => VIDEO_ID_PATTERN.test(video.videoId))
+    .map(video => [video.videoId, video])).values()]
     .sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0))
     .slice(0, YOUTUBE_VIDEO_LIMIT);
   const videos = await Promise.all(candidates.map(async candidate => ({
+    videoId: candidate.videoId,
     title: candidate.title,
     thumbnail: candidate.thumbnail,
     link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
@@ -103,7 +212,7 @@ async function getWantedVideos(handle, env) {
     clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
   })));
 
-  console.info(`YouTube RSS discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length}`);
+  console.info(`YouTube RSS discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} selected=${videos.length}`);
   return { videos, complete: Boolean(feedResponse?.ok) };
 }
 
@@ -148,7 +257,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '4');
+  cacheUrl.searchParams.set('cache_version', '7');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
@@ -178,11 +287,25 @@ async function handleYoutubeVideos(request, env) {
     }
   }));
 
+  const selectedVideos = results.flatMap(([, result]) => result.videos);
+  const stats = await mapWithConcurrency(
+    selectedVideos,
+    YOUTUBE_STATS_CONCURRENCY,
+    video => fetchVideoStats(video.videoId)
+  );
+  selectedVideos.forEach((video, index) => {
+    video.views = stats[index].views;
+    video.likes = stats[index].likes;
+  });
+
   const complete = results.every(([, result]) => result.complete);
   const hasVideos = results.some(([, result]) => result.videos.length > 0);
   const body = {
     complete,
-    videos: Object.fromEntries(results.map(([handle, result]) => [handle, result.videos]))
+    videos: Object.fromEntries(results.map(([handle, result]) => [
+      handle,
+      result.videos.map(({ videoId, ...video }) => video)
+    ]))
   };
 
   // Only complete results are cached. Incomplete results are never stored, so the next request retries.

@@ -100,10 +100,9 @@ function renderYoutubersHTML() {
         "'": '&#39;'
     })[character]);
 
-    const formatVideoMetric = (value) => Intl.NumberFormat(undefined, {
-        notation: 'compact',
-        maximumFractionDigits: 1
-    }).format(value);
+    const formatVideoMetric = (value) => Number.isFinite(value)
+        ? Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)
+        : '--';
 
     const renderYoutuberVideo = (video) => {
         let videoId = '';
@@ -116,13 +115,8 @@ function renderYoutubersHTML() {
         }
         if (!/^[\w-]{6,20}$/.test(videoId)) return '';
 
-        const hasPublicMetrics = Number.isFinite(video.views) || Number.isFinite(video.likes);
-        const stats = ['views', 'likes', ...(hasPublicMetrics ? ['clicks'] : [])]
-            .filter(metric => Number.isFinite(video[metric]))
+        const stats = ['views', 'likes', 'clicks']
             .map(metric => `${formatVideoMetric(video[metric])} ${metric}`);
-        const published = video.published && Number.isFinite(Date.parse(video.published))
-            ? `Published ${new Date(video.published).toLocaleDateString()}`
-            : '';
 
         return `
         <a href="${escapeHTML(video.link)}" target="_blank" rel="noopener" class="featured-video-card" data-video-id="${escapeHTML(videoId)}">
@@ -131,7 +125,7 @@ function renderYoutubersHTML() {
                 <div class="video-play-overlay"><span>▶</span></div>
             </div>
             <div class="video-title-card">${escapeHTML(video.title)}</div>
-            <div class="video-stats">${stats.length ? stats.join(' · ') : escapeHTML(published)}</div>
+            <div class="video-stats">${stats.join(' · ')}</div>
         </a>
     `;
     };
