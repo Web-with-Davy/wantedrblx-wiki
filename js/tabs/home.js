@@ -12,7 +12,7 @@ const UPDATES = [
     { version: "D.26/M.07/Y.2026", description: "Police Update", color: "#0091ffff", color2: "#0056b3ff" },
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-11-07sT20:00:00+04:00');
+const COUNTDOWN_TARGET = new Date('2026-11-07sT21:00:00+03:00');
 const VAULT_GUESSER_OPTIONS = ['Regular Vault', 'Silver Vault', 'Gold Vault', 'Sapphire Vault', 'Ruby Vault', 'Emerald Vault', 'Amethyst Vault'];
 const VAULT_GUESSER_WEIGHTS = [5354, 2634, 1696, 219, 61, 28, 9];
 const VAULT_GUESSER_META = {
