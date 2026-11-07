@@ -139,6 +139,11 @@
     gap: 14px;
 }
 
+.youtuber-empty-state {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.75rem;
+}
+
 .youtuber-header {
     display: inline-flex;
     align-items: center;

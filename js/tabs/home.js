@@ -127,7 +127,7 @@ function renderYoutubersHTML() {
                         <div class="youtuber-subtext">VIEW CHANNEL <span class="yt-arrow">&#8599;</span></div>
                     </div>
                 </a>
-                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : ''}
+                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : '<div class="youtuber-empty-state">No videos yet</div>'}
             </div>
         `;
     }).join('');

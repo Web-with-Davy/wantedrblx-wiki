@@ -7,6 +7,11 @@ const YOUTUBE_CHANNEL_IDS = {
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
   ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g'
 };
+const YOUTUBE_CURATED_VIDEO_IDS = {
+  Borgaboo: ['vSUg3C4229U', 'VdB9Q5xZhYI'],
+  CeeJay_: ['3HwYYOsKp8g', 'eK4QxpD47rk', 'TSEu7zeftAc', '6-smjiyRKzk', 'XtBxBuQmPZU'],
+  ZDMD: ['msXHqXRuyeE', 'zO6lxkklPS0', 'eWeeUKCr_oQ', 'o3vOnv1Lrgw', 'h9wagqvuqPc']
+};
 const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
 const YOUTUBE_WATCH_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
@@ -159,23 +164,40 @@ async function getVideoClicks(env, videoId) {
 
 async function getWantedVideos(handle, env) {
   const channelId = await resolveChannelId(handle);
-  if (!channelId) return { videos: [], complete: false };
+  if (!channelId) {
+    console.warn(`YouTube discovery for ${handle}: channelId=unresolved feedEntries=0 titleMatches=0 curatedResolved=0`);
+    return { videos: [], complete: false };
+  }
 
   const feedResponse = await fetchWithTimeout(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
     headers: { 'User-Agent': 'Wanted Wiki video updater' }
-  });
-  if (!feedResponse.ok) return { videos: [], complete: false };
+  }).catch(() => null);
+  const feedEntries = feedResponse?.ok ? parseYoutubeFeed(await feedResponse.text()) : [];
+  const feedCandidates = feedEntries.filter(video => /\bwanted\b/i.test(video.title));
+  const curatedIds = (YOUTUBE_CURATED_VIDEO_IDS[handle] || []).filter(videoId => VIDEO_ID_PATTERN.test(videoId));
+  const candidatesById = new Map();
 
-  const candidates = parseYoutubeFeed(await feedResponse.text())
-    .filter(video => /\bwanted\b/i.test(video.title))
-    .slice(0, YOUTUBE_CANDIDATE_LIMIT);
-  if (!candidates.length) return { videos: [], complete: true };
+  for (const videoId of curatedIds) {
+    candidatesById.set(videoId, { videoId, title: '', published: '', thumbnail: '' });
+  }
+  for (const candidate of feedCandidates.slice(0, YOUTUBE_CANDIDATE_LIMIT)) {
+    candidatesById.set(candidate.videoId, candidate);
+  }
+  const candidates = [...candidatesById.values()];
+  if (!candidates.length) {
+    console.info(`YouTube discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length} curatedResolved=0`);
+    return { videos: [], complete: false };
+  }
 
   const pages = await Promise.all(candidates.map(video =>
     fetchWatchPage(video.videoId).catch(() => ({ ok: false }))
   ));
 
-  let complete = pages.every(page => page.ok);
+  const curatedResolved = candidates.reduce((count, candidate, index) =>
+    count + (curatedIds.includes(candidate.videoId) && pages[index].ok && !pages[index].unavailable ? 1 : 0), 0);
+  console.info(`YouTube discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length} curatedResolved=${curatedResolved}`);
+
+  let complete = Boolean(feedResponse?.ok) && pages.every(page => page.ok);
   const videos = [];
 
   for (let i = 0; i < candidates.length; i++) {
@@ -199,19 +221,21 @@ async function getWantedVideos(handle, env) {
     }
 
     const candidate = candidates[i];
+    const microformat = page.player.microformat?.playerMicroformatRenderer || {};
     videos.push({
-      title: candidate.title,
-      thumbnail: candidate.thumbnail,
+      title: candidate.title || details.title || '',
+      thumbnail: candidate.thumbnail || details.thumbnail?.thumbnails?.at(-1)?.url || `https://i.ytimg.com/vi/${candidate.videoId}/hq720.jpg`,
       link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
-      published: candidate.published,
+      published: candidate.published || microformat.publishDate || microformat.uploadDate || '',
       views,
       likes: page.likes,
       clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
     });
-
-    if (videos.length === YOUTUBE_VIDEO_LIMIT) break;
   }
 
+  videos.sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
+  if (!videos.length) complete = false;
+  videos.splice(YOUTUBE_VIDEO_LIMIT);
   return { videos, complete };
 }
 
@@ -255,7 +279,9 @@ async function exceedsRateLimit(env, key) {
 async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
-  const cacheKey = new Request(url.toString(), { method: 'GET' });
+  const cacheUrl = new URL(url);
+  cacheUrl.searchParams.set('cache_version', '2');
+  const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
     const cachedResponse = await cache.match(cacheKey);
@@ -285,18 +311,19 @@ async function handleYoutubeVideos(request, env) {
   }));
 
   const complete = results.every(([, result]) => result.complete);
+  const hasVideos = results.some(([, result]) => result.videos.length > 0);
   const body = {
     complete,
     videos: Object.fromEntries(results.map(([handle, result]) => [handle, result.videos]))
   };
 
   // Only complete results are cached. Incomplete results are never stored, so the next request retries.
-  const cacheControl = complete
+  const cacheControl = complete && hasVideos
     ? `public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`
     : 'no-store';
   const response = new Response(JSON.stringify(body), { headers: responseHeaders(cacheControl) });
 
-  if (complete) {
+  if (complete && hasVideos) {
     try {
       await cache.put(cacheKey, response.clone());
     } catch (error) {
