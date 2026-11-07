@@ -105,12 +105,15 @@ test('returns the newest three videos from the first 15 RSS entries', async () =
 });
 
 test('loads three newest videos and stats for every creator with bounded concurrency', async () => {
+  const cachedResponses = new Map();
   globalThis.caches = {
     default: {
-      async match() {
-        return undefined;
+      async match(request) {
+        return cachedResponses.get(request.url)?.clone();
       },
-      async put() {}
+      async put(request, response) {
+        cachedResponses.set(request.url, response.clone());
+      },
     }
   };
 
@@ -161,4 +164,12 @@ test('loads three newest videos and stats for every creator with bounded concurr
   assert.equal(statsRequestCount, 12);
   assert.ok(maximumStatsRequests <= 4);
   assert.ok(Object.values(payload.videos).flat().every(video => video.views === 1206 && video.likes === 27));
+
+  const repeatResponse = await worker.fetch(
+    new Request('https://worker.test/youtube/videos?handles=Borgaboo,CeeJay_,ZDMD,Revndetta&refresh=again'),
+    {}
+  );
+  const repeatedPayload = await repeatResponse.json();
+  assert.equal(repeatedPayload.complete, true);
+  assert.equal(statsRequestCount, 12);
 });

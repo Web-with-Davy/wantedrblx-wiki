@@ -1,4 +1,6 @@
-const YOUTUBE_API_CACHE_SECONDS = 900;
+const YOUTUBE_STATS_CACHE_SECONDS = 900;
+const YOUTUBE_FAILED_STATS_CACHE_SECONDS = 30;
+const YOUTUBE_RESPONSE_CACHE_SECONDS = 60;
 const UPSTREAM_TIMEOUT_MS = 5000;
 const YOUTUBE_VIDEO_LIMIT = 3;
 const YOUTUBE_CANDIDATE_LIMIT = 15;
@@ -118,7 +120,31 @@ function parseViewCount(html, player) {
   return label ? parseCompactNumber(label[1]) : null;
 }
 
-async function fetchVideoStats(videoId) {
+async function fetchVideoStats(videoId, cache, cacheOrigin) {
+  const cacheKey = new Request(`${cacheOrigin}/_internal/video-stats/v1/${videoId}`);
+  try {
+    const cachedResponse = await cache.match(cacheKey);
+    if (cachedResponse) return await cachedResponse.json();
+  } catch (error) {
+    console.warn(`YouTube stats cache read failed for ${videoId}`);
+  }
+
+  const saveStats = async stats => {
+    const hasStats = Number.isFinite(stats.views) && Number.isFinite(stats.likes);
+    const ttl = hasStats ? YOUTUBE_STATS_CACHE_SECONDS : YOUTUBE_FAILED_STATS_CACHE_SECONDS;
+    try {
+      await cache.put(cacheKey, new Response(JSON.stringify(stats), {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': `public, max-age=${ttl}, s-maxage=${ttl}`
+        }
+      }));
+    } catch (error) {
+      console.warn(`YouTube stats cache write failed for ${videoId}`);
+    }
+    return stats;
+  };
+
   try {
     const response = await fetchWithTimeout(
       `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&hl=en`,
@@ -126,7 +152,7 @@ async function fetchVideoStats(videoId) {
     );
     if (!response.ok) {
       console.warn(`YouTube stats request for ${videoId} returned HTTP ${response.status}`);
-      return { views: null, likes: null };
+      return saveStats({ views: null, likes: null });
     }
 
     const html = await response.text();
@@ -136,13 +162,13 @@ async function fetchVideoStats(videoId) {
     if (views === null || likes === null) {
       console.warn(`YouTube stats incomplete for ${videoId}: player=${Boolean(player?.videoDetails)} views=${views !== null} likes=${likes !== null} bytes=${html.length}`);
     }
-    return {
+    return saveStats({
       views,
       likes
-    };
+    });
   } catch (_) {
     console.warn(`YouTube stats request failed for ${videoId}`);
-    return { views: null, likes: null };
+    return saveStats({ views: null, likes: null });
   }
 }
 
@@ -257,7 +283,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '7');
+  cacheUrl.searchParams.set('cache_version', '8');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
@@ -291,7 +317,7 @@ async function handleYoutubeVideos(request, env) {
   const stats = await mapWithConcurrency(
     selectedVideos,
     YOUTUBE_STATS_CONCURRENCY,
-    video => fetchVideoStats(video.videoId)
+    video => fetchVideoStats(video.videoId, cache, url.origin)
   );
   selectedVideos.forEach((video, index) => {
     video.views = stats[index].views;
@@ -310,7 +336,7 @@ async function handleYoutubeVideos(request, env) {
 
   // Only complete results are cached. Incomplete results are never stored, so the next request retries.
   const cacheControl = complete && hasVideos
-    ? `public, max-age=${YOUTUBE_API_CACHE_SECONDS}, s-maxage=${YOUTUBE_API_CACHE_SECONDS}`
+    ? `public, max-age=${YOUTUBE_RESPONSE_CACHE_SECONDS}, s-maxage=${YOUTUBE_RESPONSE_CACHE_SECONDS}`
     : 'no-store';
   const response = new Response(JSON.stringify(body), { headers: responseHeaders(cacheControl) });
 
