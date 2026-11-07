@@ -1,6 +1,6 @@
 (function () {
   const CRITICAL_SCRIPTS = [
-    "js/tabs/home.js?v=20261107-1",
+    "js/tabs/home.js?v=20261107-2",
     "js/tabs/privacy.js?v=20261105-1",
     "js/core/renderer.js?v=20261102-1",
     "js/core/item-page.js?v=20261102-1",

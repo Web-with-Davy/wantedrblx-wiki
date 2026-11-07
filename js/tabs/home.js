@@ -100,9 +100,10 @@ function renderYoutubersHTML() {
         "'": '&#39;'
     })[character]);
 
-    const formatVideoMetric = (value) => Number.isFinite(value)
-        ? Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)
-        : 'N/A';
+    const formatVideoMetric = (value) => Intl.NumberFormat(undefined, {
+        notation: 'compact',
+        maximumFractionDigits: 1
+    }).format(value);
 
     const renderYoutuberVideo = (video) => {
         let videoId = '';
@@ -115,14 +116,22 @@ function renderYoutubersHTML() {
         }
         if (!/^[\w-]{6,20}$/.test(videoId)) return '';
 
+        const hasPublicMetrics = Number.isFinite(video.views) || Number.isFinite(video.likes);
+        const stats = ['views', 'likes', ...(hasPublicMetrics ? ['clicks'] : [])]
+            .filter(metric => Number.isFinite(video[metric]))
+            .map(metric => `${formatVideoMetric(video[metric])} ${metric}`);
+        const published = video.published && Number.isFinite(Date.parse(video.published))
+            ? `Published ${new Date(video.published).toLocaleDateString()}`
+            : '';
+
         return `
         <a href="${escapeHTML(video.link)}" target="_blank" rel="noopener" class="featured-video-card" data-video-id="${escapeHTML(videoId)}">
             <div class="video-thumb-container">
-                <img src="${escapeHTML(video.thumbnail)}" alt="${escapeHTML(video.title)}" class="video-thumbnail" loading="lazy">
+                <img src="${escapeHTML(video.thumbnail)}" alt="${escapeHTML(video.title)}" class="video-thumbnail" loading="eager" decoding="async">
                 <div class="video-play-overlay"><span>▶</span></div>
             </div>
             <div class="video-title-card">${escapeHTML(video.title)}</div>
-            <div class="video-stats">${formatVideoMetric(video.views)} views · ${formatVideoMetric(video.likes)} likes · ${formatVideoMetric(video.clicks)} clicks</div>
+            <div class="video-stats">${stats.length ? stats.join(' · ') : escapeHTML(published)}</div>
         </a>
     `;
     };
