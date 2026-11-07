@@ -1,7 +1,7 @@
 const YOUTUBE_API_CACHE_SECONDS = 900;
 const UPSTREAM_TIMEOUT_MS = 8000;
 const YOUTUBE_VIDEO_LIMIT = 3;
-const YOUTUBE_CANDIDATE_LIMIT = 8;
+const YOUTUBE_CANDIDATE_LIMIT = 15;
 const YOUTUBE_CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
@@ -275,7 +275,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '2');
+  cacheUrl.searchParams.set('cache_version', '3');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
