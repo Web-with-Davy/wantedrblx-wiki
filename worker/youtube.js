@@ -7,11 +7,6 @@ const YOUTUBE_CHANNEL_IDS = {
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
   ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g'
 };
-const YOUTUBE_CURATED_VIDEO_IDS = {
-  Borgaboo: ['vSUg3C4229U', 'VdB9Q5xZhYI'],
-  CeeJay_: ['3HwYYOsKp8g', 'eK4QxpD47rk', 'TSEu7zeftAc', '6-smjiyRKzk', 'XtBxBuQmPZU'],
-  ZDMD: ['msXHqXRuyeE', 'zO6lxkklPS0', 'eWeeUKCr_oQ', 'o3vOnv1Lrgw', 'h9wagqvuqPc']
-};
 const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
 const YOUTUBE_WATCH_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
@@ -69,87 +64,6 @@ async function resolveChannelId(handle) {
   return html.match(/(?:"channelId"|"externalId")\s*:\s*"(UC[^"]+)"/)?.[1] || null;
 }
 
-// Extracts a JSON object that follows a marker such as "ytInitialPlayerResponse = ".
-// Scans braces while respecting strings, so it only reads the object itself.
-function extractJsonObject(html, marker) {
-  const start = html.indexOf(marker);
-  if (start === -1) return null;
-  const jsonStart = html.indexOf('{', start + marker.length);
-  if (jsonStart === -1) return null;
-
-  let depth = 0;
-  let inString = false;
-  let escaped = false;
-  for (let i = jsonStart; i < html.length; i++) {
-    const ch = html[i];
-    if (inString) {
-      if (escaped) escaped = false;
-      else if (ch === '\\') escaped = true;
-      else if (ch === '"') inString = false;
-      continue;
-    }
-    if (ch === '"') inString = true;
-    else if (ch === '{') depth++;
-    else if (ch === '}') {
-      depth--;
-      if (depth === 0) {
-        try {
-          return JSON.parse(html.slice(jsonStart, i + 1));
-        } catch (_) {
-          return null;
-        }
-      }
-    }
-  }
-  return null;
-}
-
-function parseCompactNumber(raw) {
-  const match = String(raw).trim().match(/^([\d.,]+)\s*([KMB])?/i);
-  if (!match) return null;
-  const multipliers = { K: 1e3, M: 1e6, B: 1e9 };
-  const suffix = (match[2] || '').toUpperCase();
-  const value = suffix
-    ? Number(match[1].replace(',', '.'))
-    : Number(match[1].replace(/[,.]/g, ''));
-  return Number.isFinite(value) ? Math.round(value * (multipliers[suffix] || 1)) : null;
-}
-
-// Reads the like count from the raw watch-page HTML. Returns null when no pattern matches.
-function parseLikeCount(html) {
-  const accessible = html.match(/"likeCountA11y"\s*:\s*"([^"]*?)\s*likes?"/i);
-  if (accessible) {
-    const count = parseCompactNumber(accessible[1]);
-    if (count !== null) return count;
-  }
-  // "Like this video along with N other people" means the viewer plus N others have liked it.
-  const along = html.match(/like this video along with ([\d,]+) other/i);
-  if (along) {
-    const count = parseCompactNumber(along[1]);
-    if (count !== null) return count + 1;
-  }
-  return null;
-}
-
-// Returns:
-//   { ok: false }                   -> blocked, consent page, or markup change. Not cached; retried.
-//   { ok: true, unavailable: true } -> private or removed. Skipped; does not block caching.
-//   { ok: true, player, likes }     -> page parsed. `likes` may be null if the pattern missed.
-async function fetchWatchPage(videoId) {
-  const response = await fetchWithTimeout(
-    `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&hl=en`,
-    { headers: YOUTUBE_WATCH_HEADERS }
-  );
-  if (!response.ok) return { ok: false };
-
-  const html = await response.text();
-  const player = extractJsonObject(html, 'ytInitialPlayerResponse = ');
-  if (!player) return { ok: false };
-  if (!player.videoDetails) return { ok: true, unavailable: true };
-
-  return { ok: true, player, likes: parseLikeCount(html) };
-}
-
 async function getVideoClicks(env, videoId) {
   if (!env.VIDEO_ANALYTICS || !VIDEO_ID_PATTERN.test(videoId)) return 0;
 
@@ -173,65 +87,24 @@ async function getWantedVideos(handle, env) {
     headers: { 'User-Agent': 'Wanted Wiki video updater' }
   }).catch(() => null);
   const feedEntries = feedResponse?.ok ? parseYoutubeFeed(await feedResponse.text()) : [];
-  const feedCandidates = feedEntries.filter(video => /\bwanted\b/i.test(video.title));
-  const curatedIds = (YOUTUBE_CURATED_VIDEO_IDS[handle] || []).filter(videoId => VIDEO_ID_PATTERN.test(videoId));
-  const candidatesById = new Map();
-
-  for (const videoId of curatedIds) {
-    candidatesById.set(videoId, { videoId, title: '', published: '', thumbnail: '' });
-  }
-  for (const candidate of feedCandidates) {
-    candidatesById.set(candidate.videoId, candidate);
-  }
-  const candidates = [...candidatesById.values()]
+  const feedCandidates = feedEntries
+    .slice(0, YOUTUBE_CANDIDATE_LIMIT)
+    .filter(video => VIDEO_ID_PATTERN.test(video.videoId) && /\bwanted\b/i.test(video.title));
+  const candidates = [...new Map(feedCandidates.map(video => [video.videoId, video])).values()]
     .sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0))
-    .slice(0, YOUTUBE_CANDIDATE_LIMIT);
-  if (!candidates.length) {
-    console.info(`YouTube discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length} curatedResolved=0`);
-    return { videos: [], complete: Boolean(feedResponse?.ok) };
-  }
+    .slice(0, YOUTUBE_VIDEO_LIMIT);
+  const videos = await Promise.all(candidates.map(async candidate => ({
+    title: candidate.title,
+    thumbnail: candidate.thumbnail,
+    link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
+    published: candidate.published,
+    views: null,
+    likes: null,
+    clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
+  })));
 
-  const pages = await Promise.all(candidates.map(video =>
-    fetchWatchPage(video.videoId).catch(() => ({ ok: false }))
-  ));
-
-  const curatedResolved = candidates.reduce((count, candidate, index) =>
-    count + (curatedIds.includes(candidate.videoId) && pages[index].ok && !pages[index].unavailable ? 1 : 0), 0);
-  console.info(`YouTube discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length} curatedResolved=${curatedResolved}`);
-
-  let complete = Boolean(feedResponse?.ok);
-  const videos = [];
-
-  for (let i = 0; i < candidates.length; i++) {
-    const page = pages[i];
-    if (page.ok && page.unavailable) continue;
-
-    const details = page.ok ? page.player.videoDetails : null;
-    if (details?.isLiveContent === true) continue;
-
-    const views = details ? Number(details.viewCount) : null;
-    const title = candidates[i].title || details?.title || '';
-    if (!title) continue;
-
-    const candidate = candidates[i];
-    const microformat = page.ok
-      ? page.player.microformat?.playerMicroformatRenderer || {}
-      : {};
-    videos.push({
-      title,
-      thumbnail: candidate.thumbnail || details?.thumbnail?.thumbnails?.at(-1)?.url || `https://i.ytimg.com/vi/${candidate.videoId}/hq720.jpg`,
-      link: `https://www.youtube.com/watch?v=${candidate.videoId}`,
-      published: candidate.published || microformat?.publishDate || microformat?.uploadDate || '',
-      views: Number.isFinite(views) ? views : null,
-      likes: page.ok ? page.likes : null,
-      clicks: await getVideoClicks(env, candidate.videoId).catch(() => 0)
-    });
-  }
-
-  videos.sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
-  if (!videos.length) complete = false;
-  videos.splice(YOUTUBE_VIDEO_LIMIT);
-  return { videos, complete };
+  console.info(`YouTube RSS discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} titleMatches=${feedCandidates.length}`);
+  return { videos, complete: Boolean(feedResponse?.ok) };
 }
 
 function responseHeaders(cacheControl = 'no-store') {
@@ -275,7 +148,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '3');
+  cacheUrl.searchParams.set('cache_version', '4');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {

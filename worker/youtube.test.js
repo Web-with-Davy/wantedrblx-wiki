@@ -11,7 +11,7 @@ afterEach(() => {
   else globalThis.caches = originalCaches;
 });
 
-test('returns RSS video cards when YouTube watch-page scraping fails', async () => {
+test('returns RSS video cards without scraping YouTube watch pages', async () => {
   globalThis.caches = {
     default: {
       async match() {
@@ -33,7 +33,7 @@ test('returns RSS video cards when YouTube watch-page scraping fails', async () 
         { headers: { 'Content-Type': 'application/xml' } }
       );
     }
-    if (url.pathname === '/watch') return new Response('Unavailable', { status: 503 });
+    if (url.pathname === '/watch') throw new Error('Watch-page scraping must not be used');
     throw new Error(`Unexpected upstream URL: ${url}`);
   };
 
@@ -52,7 +52,7 @@ test('returns RSS video cards when YouTube watch-page scraping fails', async () 
   assert.equal(payload.videos.ExampleCreator[0].likes, null);
 });
 
-test('fills three video slots from within the first 15 RSS entries', async () => {
+test('finds three Wanted videos across the first 15 RSS entries', async () => {
   globalThis.caches = {
     default: {
       async match() {
@@ -65,7 +65,8 @@ test('fills three video slots from within the first 15 RSS entries', async () =>
   const entries = Array.from({ length: 15 }, (_, index) => {
     const number = String(index + 1).padStart(2, '0');
     const date = new Date(Date.UTC(2026, 10, 7, 12, 15 - index)).toISOString();
-    return `<entry><yt:videoId>video${number}</yt:videoId><title>Wanted Video ${number}</title><published>${date}</published><media:thumbnail url="https://i.ytimg.com/vi/video${number}/hqdefault.jpg" /></entry>`;
+    const title = index < 12 ? `Other Game Video ${number}` : `Wanted Video ${number}`;
+    return `<entry><yt:videoId>video${number}</yt:videoId><title>${title}</title><published>${date}</published><media:thumbnail url="https://i.ytimg.com/vi/video${number}/hqdefault.jpg" /></entry>`;
   }).join('');
 
   globalThis.fetch = async input => {
@@ -74,13 +75,7 @@ test('fills three video slots from within the first 15 RSS entries', async () =>
       return new Response('<script>{"channelId":"UC123456789"}</script>');
     }
     if (url.pathname === '/feeds/videos.xml') return new Response(`<feed>${entries}</feed>`);
-    if (url.pathname === '/watch') {
-      const videoId = url.searchParams.get('v');
-      if (['video01', 'video02', 'video03'].includes(videoId)) {
-        return new Response('ytInitialPlayerResponse = {};');
-      }
-      return new Response('Unavailable', { status: 503 });
-    }
+    if (url.pathname === '/watch') throw new Error('Watch-page scraping must not be used');
     throw new Error(`Unexpected upstream URL: ${url}`);
   };
 
@@ -94,9 +89,9 @@ test('fills three video slots from within the first 15 RSS entries', async () =>
   assert.deepEqual(
     payload.videos.ExampleCreator.map(video => video.link),
     [
-      'https://www.youtube.com/watch?v=video04',
-      'https://www.youtube.com/watch?v=video05',
-      'https://www.youtube.com/watch?v=video06'
+      'https://www.youtube.com/watch?v=video13',
+      'https://www.youtube.com/watch?v=video14',
+      'https://www.youtube.com/watch?v=video15'
     ]
   );
 });
