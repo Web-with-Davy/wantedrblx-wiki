@@ -2381,14 +2381,14 @@ window.PROMO_CODES_ACTIVE = [
   { code: "WANTED", reward: "$10,000 Cash", active: true },
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
-  { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
-  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true, isNew: true },
-  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true, isNew: true },
 ];
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
   { code: "50K", reward: "50k Bones and x2 Basic Vehicle Crates", active: false },
   { code: "HALLOWEEN", reward: "2k Bones and x2 Basic Vehicle Crates", active: false },
+  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: false },
+  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: false },
+  { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: false },
   { code: "SANTA", reward: "$10,000 Cash", active: false },
   { code: "ZORVELLO", reward: "Zorvello Chair Funiture", active: false },
   { code: "EASTER", reward: "Egg Display Furniture", active: false },
