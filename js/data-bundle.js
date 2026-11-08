@@ -2375,13 +2375,15 @@ window.NPC_SOFTY = [
 
 /* --- js/data/promo-codes/active.js --- */
 window.PROMO_CODES_ACTIVE = [
-  { code: "HELIX", reward: "x2 Basic Vehicle Crates", active: true },
+  { code: "HELIX", reward: "x2 Basic Vehicle Crates", active: true, isNew: true },
   { code: "DEVV", reward: "$10,000 Cash", active: true },
   { code: "UZI", reward: "Uzi Weapon", active: true },
   { code: "WANTED", reward: "$10,000 Cash", active: true },
   { code: "BOOM", reward: "10 C4", active: true },
   { code: "FRAG", reward: "Frag Grenade", active: true },
   { code: "FREECRATE", reward: "x1 Basic Vehicle Crate", active: true },
+  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true, isNew: true },
+  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true, isNew: true },
 ];
 /* --- js/data/promo-codes/expired.js --- */
 window.PROMO_CODES_EXPIRED = [
@@ -2397,8 +2399,6 @@ window.PROMO_CODES_EXPIRED = [
   { code: "SAWNOFF", reward: "Sawn Off Shotgun and 2x Basic Vehicle Crates", active: false },
   { code: "POLICE", reward: "x2 Basic Vehicle Crates", active: false },
   { code: "EVIDENCE", reward: "x2 Basic Vehicle Crates", active: false },
-  { code: "MOTORCYCLE", reward: "x2 Basic Vehicle Crates and Motorcycle Helmet furniture", active: true },
-  { code: "LAUNDER", reward: "x2 Basic Vehicle Crates", active: true },
 ];
 
 /* --- js/data/store/bag-boosts.js --- */
