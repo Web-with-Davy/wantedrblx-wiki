@@ -475,7 +475,6 @@ function renderLocations(sort = locationsSort) {
     tip.style.transform = entering
       ? 'translateX(-50%) translateY(0)'
       : 'translateX(-50%) translateY(4px)';
-    el.style.filter = entering ? 'brightness(1.4)' : '';
     el.style.zIndex = entering ? '50' : '';
   };
 
