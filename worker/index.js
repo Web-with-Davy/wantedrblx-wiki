@@ -2,6 +2,7 @@
 const SITE = 'https://wantedrblx.com';
 const DEFAULT_IMG = SITE + '/images/og-image.webp';
 const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, missions, valuables, promo codes and more!';
+const GITHUB_VERSION_URL = 'https://api.github.com/repos/Web-with-Davy/wantedrblx-wiki/commits/main';
 
 import ITEMS from '../items-data.json';
 
@@ -88,7 +89,7 @@ function htmlHeaders() {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request) {
     let url;
     let itemMatch;
     try {
@@ -104,6 +105,30 @@ export default {
 
     if (url.hostname !== 'wantedrblx.com') {
       return Response.redirect(`https://wantedrblx.com${url.pathname}${url.search}`, 301);
+    }
+
+    if (url.pathname === '/version') {
+      try {
+        const response = await fetch(GITHUB_VERSION_URL, {
+          headers: {
+            'Accept': 'application/vnd.github+json',
+            'User-Agent': 'wantedrblx-wiki-version-check'
+          },
+          cf: { cacheTtl: 300, cacheEverything: true }
+        });
+        if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+
+        const { sha } = await response.json();
+        if (typeof sha !== 'string' || !sha) throw new Error('GitHub response did not include a commit SHA');
+
+        return Response.json({ version: sha }, { headers: { 'Cache-Control': 'no-store' } });
+      } catch (error) {
+        console.error('Could not check the GitHub version.', error);
+        return Response.json({ error: 'Version unavailable' }, {
+          status: 503,
+          headers: { 'Cache-Control': 'no-store' }
+        });
+      }
     }
 
     if (!itemMatch) return fetch(request);
