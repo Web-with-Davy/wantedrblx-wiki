@@ -57,6 +57,22 @@ const MAP_PINS = [
     positions: [{ x: 1310, y: 806 }],
   },
   {
+    id: "bag-shop",
+    name: "Bag Shop",
+    color: "#ed3d6f",
+    icon: "images/map/Markers/bag-store.webp",
+    iconSize: 30,
+    positions: [{ x: 1270, y: 610 }],
+  },
+  {
+    id: "badlands-church",
+    name: "Badlands church",
+    color: "#aa55ff",
+    icon: "images/map/Markers/badlands-church.webp",
+    iconSize: 30,
+    positions: [{ x: 510, y: 1270 }],
+  },
+  {
     id: "fort",
     name: "Fort Emberreach",
     color: "#ffff00",

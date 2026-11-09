@@ -24,6 +24,7 @@ window.WEAPON_M9 = [
         { name: "Pistol Suppressor", price: 16000 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ]
     }

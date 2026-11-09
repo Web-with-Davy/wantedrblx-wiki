@@ -29,6 +29,7 @@ window.WEAPON_M60 = [
         { name: "M60 Bipod", price: 5000 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ]
     }

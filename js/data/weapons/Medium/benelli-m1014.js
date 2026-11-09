@@ -30,6 +30,7 @@ window.WEAPON_BENELLI_M1014 = [
         { name: "Vertical Foregrip", price: 7500 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ],
       Ammunition: [

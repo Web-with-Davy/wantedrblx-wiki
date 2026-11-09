@@ -2,7 +2,7 @@ window.WEAPON_ARX_160 = [
 
   {
     name: "ARX-160",
-    category: "Heavy",
+    category: "Medium",
     description: "A very fast rifle",
     reBuyPrice: 9000,
     sellPrice: 2700,
@@ -17,19 +17,19 @@ window.WEAPON_ARX_160 = [
     },
     attachments: {
       Optics: [
-        { name: "N/A", price: 0 }
+        { name: "Holographic Sight", price: 12500 },
+        { name: "Reflex Sight", price: 20000 }
       ],
       Muzzle: [
-        { name: "N/A", price: 0 }
+        { name: "Mono Suppressor", price: 32000 }
       ],
       Underbarrel: [
-        { name: "N/A", price: 0 }
+        { name: "Horizontal Foregrip", price: 5000 },
+        { name: "Vertical Foregrip", price: 7500 }
       ],
       Tactical: [
-        { name: "N/A", price: 0 }
-      ],
-      Ammunition: [
-        { name: "N/A", price: 0 }
+        { name: "Flashlight", price: 5000 },
+        { name: "Tactical Laser", price: 50000 }
       ]
     }
   },

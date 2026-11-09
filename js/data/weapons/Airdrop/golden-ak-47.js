@@ -29,6 +29,7 @@ window.WEAPON_GOLDEN_AK_47 = [
         { name: "Vertical Foregrip", price: 7500 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ]
     }

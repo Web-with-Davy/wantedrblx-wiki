@@ -29,6 +29,7 @@ window.WEAPON_LIGHT_CARBINE = [
         { name: "Vertical Foregrip", price: 7500 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ]
     }

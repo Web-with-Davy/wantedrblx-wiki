@@ -23,6 +23,7 @@ window.WEAPON_AUG_A1 = [
         { name: "Mono Suppressor", price: 32000 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ]
     }

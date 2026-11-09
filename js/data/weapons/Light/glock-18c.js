@@ -27,6 +27,7 @@ window.WEAPON_GLOCK_18C = [
         { name: "Pistol Stock", price: 70000 }
       ],
       Tactical: [
+        { name: "Flashlight", price: 5000 },
         { name: "Tactical Laser", price: 50000 }
       ]
     }
