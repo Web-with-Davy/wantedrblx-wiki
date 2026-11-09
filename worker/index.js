@@ -106,11 +106,6 @@ export default {
       return Response.redirect(`https://wantedrblx.com${url.pathname}${url.search}`, 301);
     }
 
-    if (url.pathname === '/version') {
-      const version = env.CF_VERSION_METADATA?.id || env.CF_PAGES_COMMIT_SHA || 'local';
-      return Response.json({ version }, { headers: { 'Cache-Control': 'no-store' } });
-    }
-
     if (!itemMatch) return fetch(request);
 
     const [, category, id] = itemMatch;
