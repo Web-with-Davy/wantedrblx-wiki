@@ -353,17 +353,20 @@ function renderHome() {
         `).join('')
         : `<div style="color:#888;font-size:0.8rem;">No active codes at this time.</div>`;
 
-    const makeCatCard = (title, emoji, desc, tab, imgSrc) => `
-        <a href="/${tab}" data-page="${tab}" class="home-category-card">
-            <div class="cat-content">
-                <div class="cat-header">
-                    <h3 class="cat-title">${title}</h3>
-                    <span class="cat-icon" aria-hidden="true">${emoji}</span>
+    const makeCatCard = (title, emoji, desc, tab, imgSrc) => {
+        const cardStyle = imgSrc ? `style="--card-bg-image: url('${imgSrc}')"` : '';
+        return `
+            <a href="/${tab}" data-page="${tab}" class="home-category-card" ${cardStyle}>
+                <div class="cat-content">
+                    <div class="cat-header">
+                        <h3 class="cat-title">${title}</h3>
+                        <span class="cat-icon" aria-hidden="true">${emoji}</span>
+                    </div>
+                    <p class="cat-desc">${desc}</p>
                 </div>
-                <p class="cat-desc">${desc}</p>
-            </div>
-        </a>
-    `;
+            </a>
+        `;
+    };
 
     const donationPercent = Math.min(100, Math.round((DONATION_GOAL.current / DONATION_GOAL.target) * 100));
 
