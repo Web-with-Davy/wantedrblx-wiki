@@ -1,36 +1,36 @@
 (function () {
   const CRITICAL_SCRIPTS = [
-    "js/tabs/home.js?v=20261107-3",
-    "js/tabs/privacy.js?v=20261105-1",
-    "js/core/renderer.js?v=20261102-1",
-    "js/core/item-page.js?v=20261102-1",
-    "js/core/ui.js?v=20261102-1",
-    "js/features/settings.js?v=20261102-1",
-    "js/features/garage.js?v=20261102-1",
-    "js/features/search.js?v=20261102-1",
-    "js/core/app.js?v=20261103-4",
-    "js/features/theme-notification.js?v=20261105-1"
+    "js/tabs/home.js",
+    "js/tabs/privacy.js",
+    "js/core/renderer.js",
+    "js/core/item-page.js",
+    "js/core/ui.js",
+    "js/features/settings.js",
+    "js/features/garage.js",
+    "js/features/search.js",
+    "js/core/app.js",
+    "js/features/theme-notification.js"
   ];
 
   const DEFERRED_SCRIPTS = [
-    "js/tabs/promo-codes.js?v=20261102-1",
-    "js/tabs/atms.js?v=20261102-1",
-    "js/tabs/events.js?v=20261102-1",
-    "js/tabs/gun-crates.js?v=20261102-1",
-    "js/tabs/items.js?v=20261102-1",
-    "js/tabs/locations.js?v=20261102-1",
-    "js/tabs/missions.js?v=20261102-1",
-    "js/tabs/npcs.js?v=20261102-1",
-    "js/tabs/store.js?v=20261102-1",
-    "js/tabs/valuables.js?v=20261102-1",
-    "js/tabs/vehicles.js?v=20261102-1",
-    "js/tabs/weapons.js?v=20261102-1",
-    "js/features/youtuber.js?v=20261102-1",
-    "js/features/tutorial.js?v=20261102-1"
+    "js/tabs/promo-codes.js",
+    "js/tabs/atms.js",
+    "js/tabs/events.js",
+    "js/tabs/gun-crates.js",
+    "js/tabs/items.js",
+    "js/tabs/locations.js",
+    "js/tabs/missions.js",
+    "js/tabs/npcs.js",
+    "js/tabs/store.js",
+    "js/tabs/valuables.js",
+    "js/tabs/vehicles.js",
+    "js/tabs/weapons.js",
+    "js/features/youtuber.js",
+    "js/features/tutorial.js"
   ];
 
   if (new Date().getMonth() === 6 && new Date().getDate() === 4) {
-    DEFERRED_SCRIPTS.push("js/events/4th-of-july.js?v=20261102-1");
+    DEFERRED_SCRIPTS.push("js/events/4th-of-july.js");
   }
 
   function loadDeferred() {
@@ -69,4 +69,3 @@
     .then(loadDeferred)
     .catch((err) => console.error("Wanted wiki failed to load:", err));
 })();
-

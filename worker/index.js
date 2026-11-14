@@ -2,7 +2,6 @@
 const SITE = 'https://wantedrblx.com';
 const DEFAULT_IMG = SITE + '/images/og-image.webp';
 const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, missions, valuables, promo codes and more!';
-const GITHUB_VERSION_URL = 'https://api.github.com/repos/Web-with-Davy/wantedrblx-wiki/commits/main';
 
 import ITEMS from '../items-data.json';
 
@@ -107,23 +106,28 @@ export default {
       return Response.redirect(`https://wantedrblx.com${url.pathname}${url.search}`, 301);
     }
 
-    if (url.pathname === '/version') {
+    if (url.pathname === '/version' || url.pathname === '/version.json') {
       try {
-        const response = await fetch(GITHUB_VERSION_URL, {
-          headers: {
-            'Accept': 'application/vnd.github+json',
-            'User-Agent': 'wantedrblx-wiki-version-check'
-          },
-          cf: { cacheTtl: 300, cacheEverything: true }
+        const originUrl = new URL('/version.json', request.url);
+        originUrl.searchParams.set('_t', Date.now().toString());
+        const response = await fetch(originUrl.toString(), {
+          headers: { 'Accept': 'application/json' },
+          cf: { cacheTtl: 0, cacheEverything: false }
         });
-        if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
-
-        const { sha } = await response.json();
-        if (typeof sha !== 'string' || !sha) throw new Error('GitHub response did not include a commit SHA');
-
-        return Response.json({ version: sha }, { headers: { 'Cache-Control': 'no-store' } });
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.version) {
+            return Response.json(data, {
+              headers: {
+                'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+                'Access-Control-Allow-Origin': '*'
+              }
+            });
+          }
+        }
+        return response;
       } catch (error) {
-        console.error('Could not check the GitHub version.', error);
+        console.error('Could not check site version from origin.', error);
         return Response.json({ error: 'Version unavailable' }, {
           status: 503,
           headers: { 'Cache-Control': 'no-store' }

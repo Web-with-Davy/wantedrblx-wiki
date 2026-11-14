@@ -1,2 +1,10 @@
 /*
   Cache-Control: public, max-age=0, must-revalidate
+
+/version.json
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Access-Control-Allow-Origin: *
+
+/version
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Access-Control-Allow-Origin: *

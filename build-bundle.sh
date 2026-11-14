@@ -37,102 +37,10 @@ if [ -f "$WIKI_DIR/scripts/build-sitemap.js" ]; then
     node "$WIKI_DIR/scripts/build-sitemap.js"
 fi
 
-# Update weapon manifest in js/registry/weapons.js to match current weapon data files
-WEAPONS_REGISTRY="$WIKI_DIR/js/registry/weapons.js"
-if [ -f "$WEAPONS_REGISTRY" ]; then
-    echo "Updating weapons manifest in js/registry/weapons.js..."
-    node -e "
-    const fs = require('fs');
-    const path = require('path');
-    const weaponsDir = path.join('$DATA_DIR', 'weapons');
-    function getFiles(dir) {
-        let results = [];
-        const list = fs.readdirSync(dir);
-        list.forEach(file => {
-            const fullPath = path.join(dir, file);
-            const stat = fs.statSync(fullPath);
-            if (stat && stat.isDirectory()) {
-                results = results.concat(getFiles(fullPath));
-            } else if (file.endsWith('.js')) {
-                results.push(path.relative('$WIKI_DIR', fullPath));
-            }
-        });
-        return results;
-    }
-    const weaponFiles = getFiles(weaponsDir).sort();
-    let content = fs.readFileSync('$WEAPONS_REGISTRY', 'utf8');
-    const manifestStr = 'const __MANIFEST_weapons = [\n' + weaponFiles.map(f => '  \"' + f + '\"').join(',\n') + '\n];';
-    content = content.replace(/const __MANIFEST_weapons = \[[\s\S]*?\];/, manifestStr);
-    fs.writeFileSync('$WEAPONS_REGISTRY', content);
-    "
-fi
-
-# Update valuables manifest in js/registry/valuables.js to match current valuable data files
-VALUABLES_REGISTRY="$WIKI_DIR/js/registry/valuables.js"
-if [ -f "$VALUABLES_REGISTRY" ]; then
-    echo "Updating valuables manifest in js/registry/valuables.js..."
-    node -e "
-    const fs = require('fs');
-    const path = require('path');
-    const valDir = path.join('$DATA_DIR', 'valuables');
-    const valFiles = fs.readdirSync(valDir)
-        .filter(f => f.endsWith('.js'))
-        .sort()
-        .map(f => 'js/data/valuables/' + f);
-    let content = fs.readFileSync('$VALUABLES_REGISTRY', 'utf8');
-    const manifestStr = 'const __MANIFEST_valuables = [\n' + valFiles.map(f => '  \"' + f + '\"').join(',\n') + '\n];';
-    content = content.replace(/const __MANIFEST_valuables = \[[\s\S]*?\];/, manifestStr);
-    fs.writeFileSync('$VALUABLES_REGISTRY', content);
-    "
-fi
-
-# Update YouTuber manifest in js/registry/youtubers.js to match creator data files
-YOUTUBERS_REGISTRY="$WIKI_DIR/js/registry/youtubers.js"
-if [ -f "$YOUTUBERS_REGISTRY" ]; then
-    echo "Updating YouTuber manifest in js/registry/youtubers.js..."
-    node -e "
-    const fs = require('fs');
-    const path = require('path');
-    const youtubersDir = path.join('$DATA_DIR', 'youtubers');
-    const youtuberFiles = fs.readdirSync(youtubersDir)
-        .filter(f => f.endsWith('.js'))
-        .sort()
-        .map(f => 'js/data/youtubers/' + f);
-    let content = fs.readFileSync('$YOUTUBERS_REGISTRY', 'utf8');
-    const manifestStr = 'const __MANIFEST_youtubers = [\n' + youtuberFiles.map(f => '  \"' + f + '\"').join(',\n') + '\n];';
-    content = content.replace(/const __MANIFEST_youtubers = \[[\s\S]*?\];/, manifestStr);
-    fs.writeFileSync('$YOUTUBERS_REGISTRY', content);
-    "
-fi
-
-# Update vehicles manifest in js/registry/vehicles.js to match current vehicle data files
-VEHICLES_REGISTRY="$WIKI_DIR/js/registry/vehicles.js"
-if [ -f "$VEHICLES_REGISTRY" ]; then
-    echo "Updating vehicles manifest in js/registry/vehicles.js..."
-    node -e "
-    const fs = require('fs');
-    const path = require('path');
-    const vecDir = path.join('$DATA_DIR', 'vehicles');
-    function getFiles(dir) {
-        let results = [];
-        const list = fs.readdirSync(dir);
-        list.forEach(file => {
-            const fullPath = path.join(dir, file);
-            const stat = fs.statSync(fullPath);
-            if (stat && stat.isDirectory()) {
-                results = results.concat(getFiles(fullPath));
-            } else if (file.endsWith('.js')) {
-                results.push(path.relative('$WIKI_DIR', fullPath));
-            }
-        });
-        return results;
-    }
-    const vecFiles = getFiles(vecDir).sort();
-    let content = fs.readFileSync('$VEHICLES_REGISTRY', 'utf8');
-    const manifestStr = 'const __MANIFEST_vehicles = [\n' + vecFiles.map(f => '  \"' + f + '\"').join(',\n') + '\n];';
-    content = content.replace(/const __MANIFEST_vehicles = \[[\s\S]*?\];/, manifestStr);
-    fs.writeFileSync('$VEHICLES_REGISTRY', content);
-    "
+# Update all registry manifests to match current data files
+if [ -f "$WIKI_DIR/scripts/build-manifests.js" ]; then
+    echo "Updating registry manifests..."
+    node "$WIKI_DIR/scripts/build-manifests.js"
 fi
 
 LINES=$(wc -l < "$OUT")
@@ -143,3 +51,10 @@ echo "Done! Bundle: $OUT"
 echo "  Files merged: $COUNT"
 echo "  Total lines:  $LINES"
 echo "  File size:    $SIZE"
+
+# Update site version and sync cache-busting version tags across assets and version.json
+if [ -f "$WIKI_DIR/scripts/update-version.js" ]; then
+    echo ""
+    echo "Updating site version and cache-busting asset tags..."
+    node "$WIKI_DIR/scripts/update-version.js"
+fi

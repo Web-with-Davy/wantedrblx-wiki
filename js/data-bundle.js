@@ -912,7 +912,7 @@ window.MISSIONS_BERT_PUBLIC_RELATIONS = [
   }
 ];
 
-/* --- js/data/missions/Bert/rought-cargo.js --- */
+/* --- js/data/missions/Bert/rough-cargo.js --- */
 window.MISSIONS_BERT_ROUGH_CARGO = [
 
   {

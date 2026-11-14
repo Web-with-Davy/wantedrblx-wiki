@@ -1,7 +1,9 @@
 const __MANIFEST_items = [
-  "js/data/Items/Dropables/dropables.js",
   "js/data/Items/Dropables/mystery-gift.js",
+  "js/data/Items/Dropables/printer.js",
   "js/data/Items/Tools/buzzsaw.js",
+  "js/data/Items/Tools/skeleton-key.js",
+  "js/data/Items/Tools/speakers-amulet.js",
   "js/data/Items/Tools/vault-cracker.js"
 ];
 
