@@ -8,7 +8,7 @@ const __MANIFEST_youtubers = [
 const YOUTUBER_VIDEOS_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/videos';
 window.WANTED_YOUTUBER_VIDEO_CLICK_URL = 'https://wanted-youtube-videos.the-davy-devv.workers.dev/youtube/click';
 
-const YOUTUBER_FETCH_TIMEOUT_MS = 20000;
+const YOUTUBER_FETCH_TIMEOUT_MS = 12000;
 const YOUTUBER_MAX_ATTEMPTS = 3;
 const YOUTUBER_RETRY_BASE_MS = 1500;
 const YOUTUBER_VIDEO_LIMIT = 3;
@@ -56,7 +56,7 @@ async function refreshYoutuberVideos(youtubers) {
   let payload = null;
   for (let attempt = 1; attempt <= YOUTUBER_MAX_ATTEMPTS; attempt++) {
     payload = await fetchYoutuberVideosOnce(handles);
-    if (payload?.complete) break;
+    if (payload?.videos) break;
     if (attempt < YOUTUBER_MAX_ATTEMPTS) await wait(YOUTUBER_RETRY_BASE_MS * attempt);
   }
   if (!payload?.videos || typeof payload.videos !== 'object') return false;
@@ -64,11 +64,12 @@ async function refreshYoutuberVideos(youtubers) {
   youtubers.forEach(creator => {
     const handle = creator.channelUrl.match(/\/@([^/]+)/)?.[1];
     const handleVideos = handle && payload.videos[handle];
-    const videos = (Array.isArray(handleVideos) ? handleVideos : []).filter(isVideoReady);
-    creator.videos = videos.slice(0, YOUTUBER_VIDEO_LIMIT);
+    creator.videos = (Array.isArray(handleVideos) ? handleVideos : [])
+      .filter(isVideoReady)
+      .slice(0, YOUTUBER_VIDEO_LIMIT);
   });
 
-  return payload.complete === true || youtubers.some(creator => creator.videos.length > 0);
+  return youtubers.some(creator => creator.videos.length > 0);
 }
 
 window.__WANTED_LOADERS = window.__WANTED_LOADERS || [];

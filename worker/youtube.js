@@ -5,12 +5,16 @@ const YOUTUBE_RESPONSE_CACHE_SECONDS = 60;
 const UPSTREAM_TIMEOUT_MS = 5000;
 const YOUTUBE_VIDEO_LIMIT = 3;
 const YOUTUBE_CANDIDATE_LIMIT = 15;
-const YOUTUBE_STATS_CONCURRENCY = 4;
+const YOUTUBE_STATS_CONCURRENCY = 6;
 const YOUTUBE_CHANNEL_IDS = {
   Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
   CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
-  ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g'
+  ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g',
+  Revndetta: 'UCUzNDXbOHPF10m4kR9KZ6rQ'
 };
+const YOUTUBE_HANDLE_DEADLINE_MS = 12000;
+const YOUTUBE_STATS_TIMEOUT_MS = 3000;
+const YOUTUBE_PARTIAL_CACHE_SECONDS = 60;
 const VIDEO_ID_PATTERN = /^[\w-]{6,20}$/;
 const YOUTUBE_WATCH_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
@@ -26,6 +30,14 @@ async function fetchWithTimeout(input, init = {}) {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+function withDeadline(promise, ms, fallback) {
+  let timer;
+  const timeout = new Promise(resolve => {
+    timer = setTimeout(() => resolve(fallback), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
 }
 
 function decodeXml(value) {
@@ -155,10 +167,12 @@ async function fetchVideoStats(videoId, cache, cacheOrigin, env) {
     return stats;
   };
 
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), YOUTUBE_STATS_TIMEOUT_MS);
   try {
-    const response = await fetchWithTimeout(
+    const response = await fetch(
       `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&hl=en`,
-      { headers: YOUTUBE_WATCH_HEADERS }
+      { headers: YOUTUBE_WATCH_HEADERS, signal: controller.signal }
     );
     if (!response.ok) {
       console.warn(`YouTube stats request for ${videoId} returned HTTP ${response.status}`);
@@ -182,8 +196,10 @@ async function fetchVideoStats(videoId, cache, cacheOrigin, env) {
       updatedAt: views !== null || likes !== null ? Date.now() : null
     });
   } catch (_) {
-    console.warn(`YouTube stats request failed for ${videoId}`);
+    console.warn(`YouTube stats request failed or timed out for ${videoId}`);
     return saveStats({ views: null, likes: null });
+  } finally {
+    clearTimeout(timer);
   }
 }
 
@@ -345,14 +361,16 @@ async function handleYoutubeVideos(request, env) {
     });
   }
 
-  const results = await Promise.all(handles.map(async handle => {
-    try {
-      return [handle, await getWantedVideos(handle, env)];
-    } catch (error) {
-      console.error(`YouTube refresh failed for ${handle}:`, error);
-      return [handle, { videos: [], complete: false }];
-    }
-  }));
+  const results = await Promise.all(handles.map(handle =>
+    withDeadline(
+      getWantedVideos(handle, env).catch(error => {
+        console.error(`YouTube refresh failed for ${handle}:`, error);
+        return { videos: [], complete: false };
+      }),
+      YOUTUBE_HANDLE_DEADLINE_MS,
+      { videos: [], complete: false }
+    ).then(result => [handle, result])
+  ));
 
   const selectedVideos = results.flatMap(([, result]) => result.videos);
   const stats = await mapWithConcurrency(
@@ -381,13 +399,18 @@ async function handleYoutubeVideos(request, env) {
     ]))
   };
 
-  // Only complete results are cached. Incomplete results are never stored, so the next request retries.
-  const cacheControl = complete && hasVideos
-    ? `public, max-age=${YOUTUBE_RESPONSE_CACHE_SECONDS}, s-maxage=${YOUTUBE_RESPONSE_CACHE_SECONDS}`
+  // Cache complete results fully, partial results briefly if any videos were found
+  const cacheSeconds = complete && hasVideos
+    ? YOUTUBE_RESPONSE_CACHE_SECONDS
+    : hasVideos
+      ? YOUTUBE_PARTIAL_CACHE_SECONDS
+      : 0;
+  const cacheControl = cacheSeconds > 0
+    ? `public, max-age=${cacheSeconds}, s-maxage=${cacheSeconds}`
     : 'no-store';
   const response = new Response(JSON.stringify(body), { headers: responseHeaders(cacheControl) });
 
-  if (complete && hasVideos) {
+  if (cacheSeconds > 0) {
     try {
       await cache.put(cacheKey, response.clone());
     } catch (error) {

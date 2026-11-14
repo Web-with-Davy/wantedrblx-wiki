@@ -128,7 +128,7 @@ test('loads three newest videos and stats for every creator with bounded concurr
     Borgaboo: 'UCWZ4-zS2eeZA3lnOj7gQrrg',
     CeeJay_: 'UCHf5I37Mbk56eWNW-pXgBdA',
     ZDMD: 'UC9sVkmJIWkOrXI0pUW8M87g',
-    Revndetta: 'UCRevndetta1234567890'
+    Revndetta: 'UCUzNDXbOHPF10m4kR9KZ6rQ'
   };
   const handlesByChannelId = Object.fromEntries(Object.entries(channelIds).map(([handle, id]) => [id, handle]));
   let activeStatsRequests = 0;
@@ -192,7 +192,7 @@ test('loads three newest videos and stats for every creator with bounded concurr
   assert.equal(payload.complete, true);
   assert.deepEqual(Object.values(payload.videos).map(videos => videos.length), [3, 3, 3, 3]);
   assert.equal(statsRequestCount, 12);
-  assert.ok(maximumStatsRequests <= 4);
+  assert.ok(maximumStatsRequests <= 6);
   assert.ok(Object.values(payload.videos).flat().every(video => video.views === 1206 && video.likes === 27));
 
   bypassVideoEdgeCache = true;
