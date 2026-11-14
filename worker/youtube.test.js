@@ -268,3 +268,77 @@ test('keeps saved views and likes when YouTube throttles a refresh', async () =>
   assert.equal(video.likes, 316);
   assert.equal(video.clicks, 7);
 });
+
+test('falls back to channel videos page when RSS feed returns 404', async () => {
+  globalThis.caches = {
+    default: {
+      async match() { return undefined; },
+      async put() {}
+    }
+  };
+
+  const channelVideosData = {
+    contents: {
+      twoColumnBrowseResultsRenderer: {
+        tabs: [{
+          tabRenderer: {
+            content: {
+              richGridRenderer: {
+                contents: [{
+                  richItemRenderer: {
+                    content: {
+                      lockupViewModel: {
+                        contentId: 'fallbackVid1',
+                        metadata: {
+                          lockupMetadataViewModel: {
+                            title: { content: 'Roblox Wanted: Big Update' }
+                          }
+                        },
+                        contentImage: {
+                          thumbnailViewModel: {
+                            image: { sources: [{ url: 'https://i.ytimg.com/vi/fallbackVid1/hq720.jpg' }] }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }]
+              }
+            }
+          }
+        }]
+      }
+    }
+  };
+
+  globalThis.fetch = async input => {
+    const url = new URL(input);
+    if (url.pathname === '/@ExampleCreator') {
+      return new Response('<script>{"channelId":"UC123456789"}</script>');
+    }
+    if (url.pathname === '/feeds/videos.xml') {
+      return new Response('Not found', { status: 404 });
+    }
+    if (url.pathname === '/@ExampleCreator/videos') {
+      return new Response(`<html><body><script>ytInitialData = ${JSON.stringify(channelVideosData)};</script></body></html>`);
+    }
+    if (url.pathname === '/watch') {
+      return new Response('ytInitialPlayerResponse = {"videoDetails":{"viewCount":"500"}}; "accessibilityText":"like this video along with 10 other people"');
+    }
+    throw new Error(`Unexpected upstream URL: ${url}`);
+  };
+
+  const response = await worker.fetch(
+    new Request('https://worker.test/youtube/videos?handles=ExampleCreator'),
+    {}
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(payload.complete, true);
+  assert.equal(payload.videos.ExampleCreator.length, 1);
+  assert.equal(payload.videos.ExampleCreator[0].link, 'https://www.youtube.com/watch?v=fallbackVid1');
+  assert.equal(payload.videos.ExampleCreator[0].title, 'Roblox Wanted: Big Update');
+  assert.equal(payload.videos.ExampleCreator[0].views, 500);
+  assert.equal(payload.videos.ExampleCreator[0].likes, 11);
+});

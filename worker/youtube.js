@@ -67,6 +67,44 @@ function parseYoutubeFeed(xml) {
   }).filter(video => video.videoId && video.title);
 }
 
+function parseChannelVideos(data) {
+  const videos = [];
+  function walk(node) {
+    if (!node || typeof node !== 'object') return;
+    if (node.lockupViewModel) {
+      const lvm = node.lockupViewModel;
+      let videoId = lvm.contentId;
+      const title = lvm.metadata?.lockupMetadataViewModel?.title?.content || '';
+      const images = lvm.contentImage?.thumbnailViewModel?.image?.sources || [];
+      const thumbnail = images.length ? images[images.length - 1].url : '';
+      if (!videoId && thumbnail.includes('/vi/')) {
+        const m = thumbnail.match(/\/vi\/([\w-]{6,20})\//);
+        if (m) videoId = m[1];
+      }
+      if (videoId && title) {
+        videos.push({ videoId, title, thumbnail, published: '' });
+      }
+    } else if (node.videoRenderer) {
+      const vr = node.videoRenderer;
+      const videoId = vr.videoId;
+      const title = vr.title?.runs?.[0]?.text || '';
+      const thumbs = vr.thumbnail?.thumbnails || [];
+      const thumbnail = thumbs.length ? thumbs[thumbs.length - 1].url : '';
+      if (videoId && title) {
+        videos.push({ videoId, title, thumbnail, published: '' });
+      }
+    } else {
+      if (Array.isArray(node)) {
+        for (const item of node) walk(item);
+      } else {
+        for (const key of Object.keys(node)) walk(node[key]);
+      }
+    }
+  }
+  walk(data);
+  return videos;
+}
+
 function extractJsonObject(html, marker) {
   const markerIndex = html.indexOf(marker);
   if (markerIndex === -1) return null;
@@ -260,23 +298,51 @@ async function saveVideoStats(env, videoId, stats) {
 }
 
 async function getWantedVideos(handle, env) {
+  let feedEntries = [];
+  let feedOk = false;
+
   const channelId = await resolveChannelId(handle);
-  if (!channelId) {
-    console.warn(`YouTube discovery for ${handle}: channelId=unresolved feedEntries=0 titleMatches=0 curatedResolved=0`);
-    return { videos: [], complete: false };
+  if (channelId) {
+    const feedResponse = await fetchWithTimeout(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
+      headers: { 'User-Agent': 'Wanted Wiki video updater' }
+    }).catch(() => null);
+    if (feedResponse?.ok) {
+      feedEntries = parseYoutubeFeed(await feedResponse.text());
+      feedOk = true;
+    }
   }
 
-  const feedResponse = await fetchWithTimeout(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
-    headers: { 'User-Agent': 'Wanted Wiki video updater' }
-  }).catch(() => null);
-  const feedEntries = feedResponse?.ok ? parseYoutubeFeed(await feedResponse.text()) : [];
+  // Fallback to scraping the channel videos tab if RSS is unavailable / empty
+  if (!feedEntries.length) {
+    try {
+      const channelResponse = await fetchWithTimeout(
+        `https://www.youtube.com/@${encodeURIComponent(handle)}/videos?hl=en`,
+        { headers: YOUTUBE_WATCH_HEADERS }
+      );
+      if (channelResponse?.ok) {
+        const html = await channelResponse.text();
+        const data = extractJsonObject(html, 'ytInitialData = ');
+        if (data) {
+          feedEntries = parseChannelVideos(data);
+          feedOk = feedEntries.length > 0;
+        }
+      }
+    } catch (err) {
+      console.warn(`Channel videos scrape failed for ${handle}:`, err);
+    }
+  }
+
   const candidates = [...new Map(feedEntries
     .slice(0, YOUTUBE_CANDIDATE_LIMIT)
     .filter(video => VIDEO_ID_PATTERN.test(video.videoId) && /\bwanted\b/i.test(video.title))
-    .map(video => [video.videoId, video])).values()]
-    .sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0))
-    .slice(0, YOUTUBE_VIDEO_LIMIT);
-  const videos = await Promise.all(candidates.map(async candidate => {
+    .map(video => [video.videoId, video])).values()];
+
+  const hasDates = candidates.some(c => c.published && !isNaN(Date.parse(c.published)));
+  if (hasDates) {
+    candidates.sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
+  }
+
+  const videos = await Promise.all(candidates.slice(0, YOUTUBE_VIDEO_LIMIT).map(async candidate => {
     const metrics = await getVideoMetrics(env, candidate.videoId).catch(() => ({
       clicks: 0,
       views: null,
@@ -295,8 +361,8 @@ async function getWantedVideos(handle, env) {
     };
   }));
 
-  console.info(`YouTube RSS discovery for ${handle}: channelId=${channelId} feedEntries=${feedEntries.length} selected=${videos.length}`);
-  return { videos, complete: Boolean(feedResponse?.ok) };
+  console.info(`YouTube discovery for ${handle}: channelId=${channelId || 'unresolved'} feedEntries=${feedEntries.length} selected=${videos.length}`);
+  return { videos, complete: feedOk };
 }
 
 function responseHeaders(cacheControl = 'no-store') {
@@ -340,7 +406,7 @@ async function handleYoutubeVideos(request, env) {
   const url = new URL(request.url);
   const cache = caches.default;
   const cacheUrl = new URL(url);
-  cacheUrl.searchParams.set('cache_version', '11');
+  cacheUrl.searchParams.set('cache_version', '12');
   const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
 
   try {
