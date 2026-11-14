@@ -3,10 +3,8 @@
     background: transparent;
     display: flex;
     flex-direction: row;
-    gap: 28px;
     font-family: 'Geist Pixel', system-ui;
     align-items: flex-start;
-    padding-bottom: 12px;
 }
 
 .home-left-sidebar {
@@ -270,11 +268,9 @@
 }
 
 .home-admin-sidebar {
-    width: 300px;
+    width: 275px;
     height: auto;
-    position: sticky;
-    top: 120px;
-    align-self: flex-start;
+    position: relative;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     background: transparent;
     flex-shrink: 0;
@@ -333,7 +329,6 @@
     overflow-x: clip;
     min-width: 0;
     width: 0;
-    gap: 20px;
 }
 
 @media(max-width: 1024px) {
@@ -397,26 +392,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 32px 28px 26px;
+    padding: 24px 20px;
     text-align: center;
     color: white;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 28px;
-    background:
-        linear-gradient(180deg, rgba(8, 13, 19, 0.9), rgba(11, 17, 23, 0.72)),
-        radial-gradient(circle at top, rgba(138, 182, 255, 0.18), transparent 40%);
-    box-shadow: var(--panel-glow), inset 0 1px 0 rgba(255,255,255,0.06);
-}
-
-.hero-section::before {
-    content: "";
-    position: absolute;
-    inset: 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    pointer-events: none;
 }
 
 .hero-bg,
@@ -440,19 +420,19 @@
     width: 100%;
     height: auto;
     aspect-ratio: 1066 / 852;
-    filter: grayscale(100%) contrast(1.18) brightness(1.18) drop-shadow(0 0 18px rgba(255,255,255,0.12));
-    opacity: 0.96;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 28%, rgba(0, 0, 0, 0.88) 72%, rgba(0, 0, 0, 0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 28%, rgba(0, 0, 0, 0.88) 72%, rgba(0, 0, 0, 0) 100%);
+    filter: grayscale(100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-title {
-    font-size: clamp(1.5rem, 3vw, 3rem);
-    letter-spacing: clamp(0.18em, 0.32em, 0.52em);
+    font-size: clamp(1.4rem, 3vw, 3rem);
+    letter-spacing: clamp(0.15em, 0.4em, 0.6em);
     text-transform: uppercase;
-    margin: 0 0 18px 0;
-    color: rgba(255, 255, 255, 0.96);
-    text-shadow: 0 0 18px rgba(255,255,255,0.14);
+    margin: 0 0 20px 0;
+    color: white;
+    text-shadow: 0 0 10px black, 0 0 20px white, 0 0 40px white, 0 0 80px white;
+    animation: flicker 4s infinite alternate;
     word-break: break-word;
     overflow-wrap: break-word;
     will-change: opacity;
@@ -460,21 +440,19 @@
 }
 
 .hero-text {
-    font-size: clamp(0.88rem, 1.2vw, 1.08rem);
-    line-height: 1.7;
-    max-width: 780px;
-    opacity: 0.9;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 12px;
-    text-shadow: none;
-    letter-spacing: 0.02em;
+    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+    line-height: 1.8;
+    max-width: 800px;
+    opacity: 0.95;
+    text-shadow: 0 0 8px white, 0 0 16px white;
+    color: white;
+    margin-bottom: 24px;
 }
 
 .main-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    padding: 0 0 8px;
+    display: flex;
+    gap: 16px;
+    padding: 8px 20px 36px;
     width: 100%;
     box-sizing: border-box;
     overflow: visible;
@@ -486,37 +464,31 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 18px 14px 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 22px;
-    background: linear-gradient(180deg, rgba(11, 17, 24, 0.78), rgba(8, 12, 17, 0.88));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
 .grid-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    padding-bottom: 12px;
-    margin-bottom: 16px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
     min-width: 0;
     gap: 6px;
 }
 
 .grid-title {
-    font-size: clamp(0.78rem, 1.1vw, 1.18rem);
+    font-size: clamp(0.75rem, 1.1vw, 1.2rem);
     font-family: inherit;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 0.1em;
+    color: white;
+    letter-spacing: 0.04em;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     flex-shrink: 1;
     min-width: 0;
-    text-transform: uppercase;
 }
 
 .grid-nav-arrows {
@@ -547,14 +519,15 @@
 .inner-card-grid {
     display: flex;
     flex-direction: row;
-    gap: 12px;
-    overflow-x: auto;
-    padding: 4px 2px 8px;
+    gap: 10px;
+    overflow-x: scroll;
+    padding-bottom: 4px;
     flex-wrap: nowrap;
     scroll-behavior: smooth;
     scrollbar-width: none;
+
     -ms-overflow-style: none;
-    scroll-snap-type: x proximity;
+
 }
 
 .inner-card-grid::-webkit-scrollbar {
@@ -565,21 +538,19 @@
 .home-category-card {
     flex: 0 0 calc(55% - 5px);
     min-width: 120px;
-    background: linear-gradient(180deg, rgba(13, 18, 24, 0.84), rgba(9, 13, 18, 0.94));
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 18px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
     padding: 16px 14px;
     color: white;
     font-family: sans-serif;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
     position: relative;
     box-sizing: border-box;
     user-select: none;
     -webkit-user-select: none;
-    overflow: hidden;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255,255,255,0.04);
-    scroll-snap-align: start;
 }
 
 .home-category-card * {
@@ -587,53 +558,44 @@
 }
 
 .home-category-card::before {
-    content: "";
+    content: '';
     position: absolute;
-    inset: 0;
-    background-image: var(--card-bg-image, none);
-    background-position: center;
-    background-size: cover;
-    opacity: 0.12;
-    filter: grayscale(100%) contrast(1.2) brightness(0.75);
-    transform: scale(1.08);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(-45deg) translate(14px, 14px);
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
 }
 
 .home-category-card:hover {
-    background: linear-gradient(180deg, rgba(18, 24, 31, 0.9), rgba(11, 16, 22, 0.96));
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.32);
-    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255,255,255,0.06);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: white;
 }
 
 .home-category-card:hover::before {
-    opacity: 0.2;
-    transform: scale(1.12);
-}
-
-.home-category-card:hover::before {
-    opacity: 0.22;
+    border-top-color: white;
 }
 
 .cat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    padding-bottom: 9px;
-    margin-bottom: 9px;
-    position: relative;
-    z-index: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .cat-title {
     font-size: 0.82rem;
     font-weight: 800;
     margin: 0;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.3;
-    color: rgba(255,255,255,0.96);
 }
 
 .cat-icon {
@@ -1078,32 +1040,32 @@
 }
 
 .sidebar-block {
-    margin-bottom: 22px;
+    margin-bottom: 25px;
     width: 100%;
-    padding: 0;
 }
 
 .sidebar-title {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     font-family: inherit;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.55);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 8px;
+    padding-bottom: 6px;
 }
 
 .sidebar-box {
-    background: linear-gradient(180deg, rgba(8, 12, 18, 0.7), rgba(10, 15, 20, 0.92));
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
     padding: 15px;
     color: white;
     font-family: sans-serif;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    box-shadow: none;
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
     position: relative;
 }
 
@@ -1438,7 +1400,7 @@ body.low-end-mode .official-link-icon {
 
 .official-links-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
 }
 
@@ -1448,22 +1410,20 @@ body.low-end-mode .official-link-icon {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    min-height: 88px;
     padding: 12px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: linear-gradient(180deg, rgba(12, 18, 24, 0.9), rgba(8, 12, 17, 0.98));
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
     color: white;
     text-decoration: none;
     font-family: 'Geist Pixel', system-ui;
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
-    border-radius: 14px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
     position: relative;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.12);
 }
 
 .official-link-btn::after {
@@ -1481,14 +1441,12 @@ body.low-end-mode .official-link-icon {
 
 .official-link-btn:hover {
     transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.26);
-    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .official-link-btn--roblox:hover {
-    border-color: rgba(138, 182, 255, 0.6);
-    background: linear-gradient(180deg, rgba(16, 23, 31, 0.95), rgba(11, 18, 24, 0.98));
-    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(138, 182, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
 }
 
 .official-link-btn--roblox:hover::after {
@@ -1606,10 +1564,6 @@ body.low-end-mode .official-link-btn--twitter:hover::after {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.wiki-stats-box .wiki-stat-row:last-child {
-    border-bottom: none;
-}
-
 .wiki-stat-row:last-child {
     border-bottom: none;
 }
@@ -1674,16 +1628,15 @@ body.low-end-mode .cat-bg-img {
 }
 
 .discord-widget-box {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: linear-gradient(180deg, rgba(10, 15, 20, 0.82), rgba(12, 17, 24, 0.94));
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
     padding: 14px;
-    border-radius: 18px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
     position: relative;
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 .discord-widget-box::before {
