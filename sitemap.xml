@@ -1436,6 +1436,31 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://wantedrblx.com/item/missions/oasis-eight/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wantedrblx.com/item/missions/on-patrol-7/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wantedrblx.com/item/missions/when-pigs-fly/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wantedrblx.com/item/missions/one-mans-trash/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wantedrblx.com/item/missions/silk-road/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://wantedrblx.com/item/valuables/usa-flag/</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

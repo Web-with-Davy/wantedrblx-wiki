@@ -755,6 +755,23 @@ window.MISSIONS_BERT_NIGHT_SHIFT = [
 
 ];
 
+/* --- js/data/missions/Bert/oasis-eight.js --- */
+window.MISSIONS_BERT_OASIS_EIGHT = [
+
+  {
+    id: "oasis-eight",
+    title: "Oasis Eight",
+    location: "Police Station – Talk to Bert",
+    description: "There's a robbery in progress at the jewelry store. Manager tells us they're after the store's most prized possession: a huge diamond. Get down there and stop them before it's too late.",
+    howToComplete: "Patrol Jewelry Store for 60 minutes, dismantle 10 drills, and confiscate the Diamond.",
+    difficulty: "MEDIUM",
+    missionType: "Bert",
+    rewards: ["1,400 Police XP", "$100,000"],
+    tipsAndInfo: []
+  },
+
+];
+
 /* --- js/data/missions/Bert/officer-down.js --- */
 window.MISSIONS_BERT_OFFICER_DOWN = [
 
@@ -810,6 +827,19 @@ window.MISSIONS_BERT_ON_PATROL = [
     difficulty: "EASY",
     missionType: "Bert",
     rewards: ["1,100 Police XP", "$40,000"],
+    tipsAndInfo: []
+  },
+
+  {
+    id: "on-patrol-7",
+    image: "on-patrol",
+    title: "On Patrol - Part 7",
+    location: "Police Station – Talk to Bert",
+    description: "You're only as effective as the man sitting next to you. Surround yourself with the best and you will become the best. Build a crew of people that have your back, soldiers you trust. Then you'll be invincible.",
+    howToComplete: "Play with your crew for 72 hours, dismantle 5 drills, and arrest 25 criminals at Jewelry Store.",
+    difficulty: "HARD",
+    missionType: "Bert",
+    rewards: ["3,600 Police XP", "$1,000,000"],
     tipsAndInfo: []
   },
 
@@ -996,6 +1026,23 @@ window.MISSIONS_BERT_THE_ITALIAN_JOB = [
     difficulty: "MEDIUM",
     missionType: "Bert",
     rewards: ["600 Police XP", "$20,000"],
+    tipsAndInfo: []
+  },
+
+];
+
+/* --- js/data/missions/Bert/when-pigs-fly.js --- */
+window.MISSIONS_BERT_WHEN_PIGS_FLY = [
+
+  {
+    id: "when-pigs-fly",
+    title: "When Pigs Fly",
+    location: "Police Station – Talk to Bert",
+    description: "Criminals freeze up when the spotlight is on them. They hear the loudspeaker and the dogs and they know their time is up. Where do you even go when we're bearing down on you from the sky like that?",
+    howToComplete: "Purchase the Maverick and provide air support for 60 minutes.",
+    difficulty: "MEDIUM",
+    missionType: "Bert",
+    rewards: ["1,400 Police XP", "$300,000"],
     tipsAndInfo: []
   },
 
@@ -1802,6 +1849,23 @@ window.MISSIONS_SIR_B_OASIS_ELEVEN = [
 
 ];
 
+/* --- js/data/missions/Sir B/one-mans-trash.js --- */
+window.MISSIONS_SIR_B_ONE_MANS_TRASH = [
+
+  {
+    id: "one-mans-trash",
+    title: "One Man's Trash",
+    location: "Criminal Outpost – Talk to Sir. B",
+    description: "Sometimes you find things where you least expect them...",
+    howToComplete: "Collect 1 Diamond from a trash can.",
+    difficulty: "HARD",
+    missionType: "Sir. B",
+    rewards: ["2,200 Syndicate XP", "$100,000"],
+    tipsAndInfo: []
+  },
+
+];
+
 /* --- js/data/missions/Sir B/payday.js --- */
 window.MISSIONS_SIR_B_PAYDAY = [
 
@@ -1853,6 +1917,22 @@ window.MISSIONS_SIR_B_RING_COLLECTOR = [
 
 ];
 
+/* --- js/data/missions/Sir B/silk-road.js --- */
+window.MISSIONS_SIR_B_SILK_ROAD = [
+
+  {
+    id: "silk-road",
+    title: "Silk Road",
+    location: "Criminal Outpost – Talk to Sir. B",
+    description: "Cash isn't always king.We might want to investigate alternate sources of moving money around, ones that won't alert the feds. I want to run a little experiment, bring me 4 bitcoins and 4 GPUs.",
+    howToComplete: "Find and bring 4 bitcoins and 4 GPUs to Sir. B at the Syndicate Base.",
+    difficulty: "HARD",
+    missionType: "Sir. B",
+    rewards: ["3,000 Syndicate XP", "$100,000"],
+    tipsAndInfo: []
+  },
+
+];
 /* --- js/data/missions/Sir B/smuggler.js --- */
 window.MISSIONS_SIR_B_SMUGGLER = [
 
@@ -1890,7 +1970,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
     howToComplete: "Sell $300,000 worth of loot to Sir B.",
     difficulty: "EASY",
     missionType: "Sir. B",
-    rewards: ["450 Syndicate XP", "$10,000"],
+    rewards: ["450 Syndicate XP", "$30,000"],
     tipsAndInfo: []
   },
 
