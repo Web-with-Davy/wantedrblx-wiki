@@ -6,7 +6,7 @@ window.WEAPON_M9 = [
     description: "A beginner friendly pistol",
     reBuyPrice: 100,
     sellPrice: 30,
-    contractPrice: 0,
+    contractPrice: 250,
     stats: {
       ammo: "15/300",
       ammoPrice: "$150 for 15",

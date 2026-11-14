@@ -49,6 +49,7 @@ window.CONTRIBUTORS_MANAGERS = [
 window.CONTRIBUTORS_STAFF = [
   { name: "MeepMeep", title: "Wiki Staff" },
   { name: "Professor Proish", title: "Wiki Staff" },
+  { name: "Hyper", title: "Wiki Staff" },
 ];
 
 /* --- js/data/events/christmas-2025.js --- */
@@ -3602,7 +3603,7 @@ window.VEHICLE_CRUISER = [
     type: "ground",
     repairPrice: 0,
     repairPriceGarage: 0,
-    contractPrice: 500,
+    contractPrice: 250,
     stats: {
       vehicleType: "Sedan",
       seats: 4,
@@ -4330,7 +4331,7 @@ window.WEAPON_M9 = [
     description: "A beginner friendly pistol",
     reBuyPrice: 100,
     sellPrice: 30,
-    contractPrice: 0,
+    contractPrice: 250,
     stats: {
       ammo: "15/300",
       ammoPrice: "$150 for 15",

@@ -8,7 +8,7 @@ window.VEHICLE_CRUISER = [
     type: "ground",
     repairPrice: 0,
     repairPriceGarage: 0,
-    contractPrice: 500,
+    contractPrice: 250,
     stats: {
       vehicleType: "Sedan",
       seats: 4,
