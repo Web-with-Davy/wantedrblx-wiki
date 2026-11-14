@@ -6,7 +6,7 @@ window.WEAPON_BENELLI_M1014 = [
     description: "Too beginner friendly, too annoying",
     reBuyPrice: 4000,
     sellPrice: 1200,
-    contractPrice: 550000,
+    contractPrice: 45000,
     stats: {
       ammo: "30/270",
       ammoPrice: "$120 for 6",

@@ -6,7 +6,7 @@ window.WEAPON_AUG_A1 = [
     description: "SUCKS, VERY BAD GUN",
     reBuyPrice: 1750,
     sellPrice: 525,
-    contractPrice: 350000,
+    contractPrice: 25000,
     stats: {
       ammo: "30/270",
       ammoPrice: "$450 for 30",

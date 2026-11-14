@@ -5,7 +5,7 @@ window.WEAPON_C4 = [
     description: "Explosive used for destroying vault doors",
     reBuyPrice: 250,
     sellPrice: 75,
-    contractPrice: 50000,
+    contractPrice: 3000,
     stats: {
       ammo: "1/10",
       ammoPrice: "$250 for 1",

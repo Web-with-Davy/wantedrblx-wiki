@@ -6,7 +6,7 @@ window.WEAPON_SKORPION = [
     description: "It is an average gun: not too good, not too bad.",
     reBuyPrice: 1000,
     sellPrice: 300,
-    contractPrice: 100000,
+    contractPrice: 25000,
     stats: {
       ammo: "20/220",
       ammoPrice: "$200 for 20",

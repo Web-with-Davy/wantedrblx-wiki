@@ -3814,7 +3814,7 @@ window.WEAPON_C4 = [
     description: "Explosive used for destroying vault doors",
     reBuyPrice: 250,
     sellPrice: 75,
-    contractPrice: 50000,
+    contractPrice: 3000,
     stats: {
       ammo: "1/10",
       ammoPrice: "$250 for 1",
@@ -3876,7 +3876,7 @@ window.WEAPON_M67 = [
     description: "A throwable grenade that explodes after a few seconds",
     reBuyPrice: 750,
     sellPrice: 225,
-    contractPrice: 80000,
+    contractPrice: 50000,
     stats: {
       ammo: "1/3",
       ammoPrice: "$1500 for 1",
@@ -3896,7 +3896,7 @@ window.WEAPON_RPG_7 = [
     description: "A rocket launcher that shoots rockets",
     reBuyPrice: 10000,
     sellPrice: 3000,
-    contractPrice: 1250000,
+    contractPrice: 725000,
     stats: {
       ammo: "1/6",
       ammoPrice: "$1000 for 1",
@@ -3957,7 +3957,7 @@ window.WEAPON_AUG_A1 = [
     description: "SUCKS, VERY BAD GUN",
     reBuyPrice: 1750,
     sellPrice: 525,
-    contractPrice: 350000,
+    contractPrice: 25000,
     stats: {
       ammo: "30/270",
       ammoPrice: "$450 for 30",
@@ -4095,7 +4095,7 @@ window.WEAPON_M4A1 = [
     description: "The M4A1 is a lightweight and versatile carbine known for its high rate of fire and low recoil. It’s a perfect all-rounder for players who need a reliable weapon in close-quarters combat and mid-range engagements.",
     reBuyPrice: 8000,
     sellPrice: 2400,
-    contractPrice: 1600000,
+    contractPrice: 750000,
     stats: {
       ammo: "30/420",
       ammoPrice: "$600 for 30",
@@ -4411,7 +4411,7 @@ window.WEAPON_SKORPION = [
     description: "It is an average gun: not too good, not too bad.",
     reBuyPrice: 1000,
     sellPrice: 300,
-    contractPrice: 100000,
+    contractPrice: 25000,
     stats: {
       ammo: "20/220",
       ammoPrice: "$200 for 20",
@@ -4507,7 +4507,7 @@ window.WEAPON_BENELLI_M1014 = [
     description: "Too beginner friendly, too annoying",
     reBuyPrice: 4000,
     sellPrice: 1200,
-    contractPrice: 550000,
+    contractPrice: 45000,
     stats: {
       ammo: "30/270",
       ammoPrice: "$120 for 6",
@@ -4591,7 +4591,7 @@ window.WEAPON_MODEL_870 = [
     description: "It is a shotgun, but a very bad and boring gun.",
     reBuyPrice: 750,
     sellPrice: 225,
-    contractPrice: 20000,
+    contractPrice: 5000,
     stats: {
       ammo: "4/80",
       ammoPrice: "$60 for 4",
@@ -4761,7 +4761,7 @@ window.WEAPON_UMP_45 = [
     description: "A police SMG; it is okay, I guess.",
     reBuyPrice: 1250,
     sellPrice: 375,
-    contractPrice: 40000,
+    contractPrice: 9000,
     stats: {
       ammo: "30/240",
       ammoPrice: "$300 for 30",

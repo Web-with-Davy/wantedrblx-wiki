@@ -5,7 +5,7 @@ window.WEAPON_RPG_7 = [
     description: "A rocket launcher that shoots rockets",
     reBuyPrice: 10000,
     sellPrice: 3000,
-    contractPrice: 1250000,
+    contractPrice: 725000,
     stats: {
       ammo: "1/6",
       ammoPrice: "$1000 for 1",

@@ -6,7 +6,7 @@ window.WEAPON_UMP_45 = [
     description: "A police SMG; it is okay, I guess.",
     reBuyPrice: 1250,
     sellPrice: 375,
-    contractPrice: 40000,
+    contractPrice: 9000,
     stats: {
       ammo: "30/240",
       ammoPrice: "$300 for 30",
