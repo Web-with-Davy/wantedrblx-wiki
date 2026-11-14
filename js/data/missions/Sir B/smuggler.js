@@ -34,7 +34,7 @@ window.MISSIONS_SIR_B_SMUGGLER = [
     howToComplete: "Sell $300,000 worth of loot to Sir B.",
     difficulty: "EASY",
     missionType: "Sir. B",
-    rewards: ["450 Syndicate XP", "$10,000"],
+    rewards: ["450 Syndicate XP", "$30,000"],
     tipsAndInfo: []
   },
 

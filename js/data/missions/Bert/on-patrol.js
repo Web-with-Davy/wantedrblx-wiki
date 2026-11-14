@@ -38,4 +38,17 @@ window.MISSIONS_BERT_ON_PATROL = [
     tipsAndInfo: []
   },
 
+  {
+    id: "on-patrol-7",
+    image: "on-patrol",
+    title: "On Patrol - Part 7",
+    location: "Police Station – Talk to Bert",
+    description: "You're only as effective as the man sitting next to you. Surround yourself with the best and you will become the best. Build a crew of people that have your back, soldiers you trust. Then you'll be invincible.",
+    howToComplete: "Play with your crew for 72 hours, dismantle 5 drills, and arrest 25 criminals at Jewelry Store.",
+    difficulty: "HARD",
+    missionType: "Bert",
+    rewards: ["3,600 Police XP", "$1,000,000"],
+    tipsAndInfo: []
+  },
+
 ];
