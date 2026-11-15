@@ -14,6 +14,7 @@
 
   const DEFERRED_SCRIPTS = [
     "js/tabs/promo-codes.js",
+    "js/tabs/tips-and-tricks.js",
     "js/tabs/atms.js",
     "js/tabs/events.js",
     "js/tabs/gun-crates.js",
@@ -25,8 +26,7 @@
     "js/tabs/valuables.js",
     "js/tabs/vehicles.js",
     "js/tabs/weapons.js",
-    "js/features/youtuber.js",
-    "js/features/tutorial.js"
+    "js/features/youtuber.js"
   ];
 
   if (new Date().getMonth() === 6 && new Date().getDate() === 4) {

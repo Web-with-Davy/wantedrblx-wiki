@@ -19,6 +19,7 @@ const sections = [
   ['/store', 'weekly', '0.7'],
   ['/items', 'weekly', '0.7'],
   ['/promo-codes', 'daily', '0.9'],
+  ['/tips-and-tricks', 'monthly', '0.8'],
   ['/events', 'monthly', '0.6'],
 ];
 
@@ -37,7 +38,9 @@ function urlEntry(url, changefreq, priority) {
 
 const entries = sections.map(([url, changefreq, priority]) => urlEntry(url, changefreq, priority));
 for (const [category, categoryItems] of Object.entries(items)) {
-  for (const id of Object.keys(categoryItems)) {
+  for (const [id, item] of Object.entries(categoryItems)) {
+    const description = String(item.d || '').trim();
+    if (description.length < 60 || /^(unknown|\?|tbd|coming soon)$/i.test(description)) continue;
     entries.push(urlEntry(`/item/${encodeURIComponent(category)}/${encodeURIComponent(id)}/`, 'monthly', '0.6'));
   }
 }
@@ -51,4 +54,4 @@ const sitemap = [
 ].join('\n');
 
 fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-console.log(`Generated ${entries.length} sitemap URLs (${entries.length - sections.length} item URLs).`);
+console.log(`Generated ${entries.length} sitemap URLs (${entries.length - sections.length} substantive item URLs).`);

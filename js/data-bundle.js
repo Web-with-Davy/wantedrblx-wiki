@@ -56,7 +56,7 @@ window.CONTRIBUTORS_STAFF = [
 window.EVENT_CHRISTMAS_2025 = [
   {
     id: "christmas-2025",
-    title: "Christmas 2025",
+    title: "Christmas 2025 (Past Event)",
     date: "December 2025",
     dateColor: "#ffffffff",
     dateOutline: "#59ff00ff",
@@ -75,7 +75,7 @@ window.EVENT_CHRISTMAS_2025 = [
 window.EVENT_EASTER_2026 = [
   {
     id: "easter-2026",
-    title: "Easter 2026",
+    title: "Easter 2026 (Past Event)",
     date: "April 2026",
     dateColor: "#ffffffff",
     dateOutline: "#ff70faff",
@@ -95,7 +95,7 @@ window.EVENT_HALLOWEEN_2026 = [
   {
     id: "halloween-2026",
     title: "Halloween 2026",
-    date: "October 2025",
+    date: "October 2026",
     dateColor: "rgb(255, 255, 255)",
     dateOutline: "rgb(255, 183, 0)",
     description: "The first annual Halloween event in Wanted! Mutants have taken over the map and need to be defeated.",
@@ -149,7 +149,7 @@ window.GUN_CRATE_ARX_160 = [
     id: "arx-160-crate",
     name: "ARX-160 Crate",
     gun: "ARX-160",
-    cooldown: "Unknown",
+    cooldown: null,
     location: "Bayview - Back of the Laundromat next to Ofy's Value Pawn"
   },
 
@@ -218,7 +218,7 @@ window.GUN_CRATE_LIGHT_CARBINE = [
     id: "light-carbine-crate",
     name: "Light Carbine Crate",
     gun: "Light Carbine",
-    cooldown: "Unknown",
+    cooldown: null,
     location: "Oasis City - Middle of the Oasis Bank laser obstacle course"
   },
 
@@ -246,7 +246,7 @@ window.GUN_CRATE_MODEL_870 = [
     id: "model-870-crate",
     name: "Model 870 Crate",
     gun: "Model 870",
-    cooldown: "Unknown",
+    cooldown: null,
     location: "Bayview Sewers"
   },
 
@@ -274,7 +274,7 @@ window.GUN_CRATE_SAWN_OFF = [
     id: "sawn-off-crate",
     name: "Sawn-Off Crate",
     gun: "Sawn-Off",
-    cooldown: "Unknown",
+    cooldown: null,
     location: "Bayview - Inside Ofy's Value Pawn"
   },
 
@@ -287,7 +287,7 @@ window.GUN_CRATE_SKORPION = [
     id: "skorpion-crate",
     name: "Skorpion Crate",
     gun: "Skorpion",
-    cooldown: "Unknown",
+    cooldown: null,
     location: "Bayview - Behind Ofy's Value Pawn, inside the middle storage room"
   },
 
@@ -356,7 +356,7 @@ window.ITEM_DROPABLES_MYSTERY_GIFT = [
 window.ITEM_DROPABLES_PRINTER = [
   {
     name: "Money Printer",
-    description: "Most used economy item, prints money for you",
+    description: "The Money Printer produces a cash payout every 30 seconds. Each print amount and the number of prints before it breaks follow the listed odds, which determine its expected lifetime yield.",
     location: "Robux store, daily login reward, or the wheel at crystal club & resort",
     printerStats: {
       intervalSeconds: 30,
@@ -2604,9 +2604,9 @@ window.VALUABLES_GEMS = [
     description: "" },
   { name: "Ruby", rarity: "EPIC", category: "Gems", price: 10000, weight: 4, commonLocation: "Bank of Oasis",
     description: "" },
-  { name: "Gold Brick", rarity: "EPIC", category: "Gems", price: 1400, weight: 3, commonLocation: "Nowhere",
+  { name: "Gold Brick", rarity: "EPIC", category: "Gems", price: 1400, weight: 3, commonLocation: null,
     description: "" },
-  { name: "Gold Bricks", rarity: "LEGENDARY", category: "Gems", price: 2400, weight: 6, commonLocation: "Nowhere",
+  { name: "Gold Bricks", rarity: "LEGENDARY", category: "Gems", price: 2400, weight: 6, commonLocation: null,
     description: "" },
   { name: "Emerald", rarity: "LEGENDARY", category: "Gems", price: 25000, weight: 4, commonLocation: "Bank of Oasis",
     description: "" },
@@ -3914,11 +3914,11 @@ window.WEAPON_FLASHBANG = [
     category: "Explosives",
     description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",
     obtaining: "Police Level 3",
-    reBuyPrice: "?",
-    sellPrice: "?",
+    reBuyPrice: null,
+    sellPrice: null,
     contractPrice: "Un-Buyable",
     stats: {
-      ammo: "?/?",
+      ammo: null,
       ammoPrice: "1500 for 1",
       damage: "Head-0/Torso-0/Limbs-0",
       firerate: 0,
@@ -3935,8 +3935,8 @@ window.WEAPON_GRENADE_LAUNCHER = [
     category: "Explosives",
     description: "A grenade launcher that shoots grenades",
     obtaining: "Police Level 4",
-    reBuyPrice: "?",
-    sellPrice: "?",
+    reBuyPrice: null,
+    sellPrice: null,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "1/6",

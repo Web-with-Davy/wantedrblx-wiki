@@ -72,7 +72,6 @@ function renderMissions(order = "hard") {
 
   return `
     <h2>MISSIONS</h2>
-    <div class="page-disclaimer">This page is currently unfinished and being worked on</div>
     ${sortButtons}
     <div class="page-jump-nav">${jumpLinks}</div>
     ${sections}

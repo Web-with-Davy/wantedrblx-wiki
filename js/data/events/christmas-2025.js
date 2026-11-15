@@ -1,7 +1,7 @@
 window.EVENT_CHRISTMAS_2025 = [
   {
     id: "christmas-2025",
-    title: "Christmas 2025",
+    title: "Christmas 2025 (Past Event)",
     date: "December 2025",
     dateColor: "#ffffffff",
     dateOutline: "#59ff00ff",

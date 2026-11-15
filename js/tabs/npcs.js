@@ -32,7 +32,6 @@ function renderNPCs(order = "az") {
 
   return `
     <h2>NPCs</h2>
-    <div class="page-disclaimer">This page is currently unfinished and being worked on</div>
     ${sortButtons}
     <div class="val-grid">${cards}</div>
   `;

@@ -4,8 +4,8 @@ window.WEAPON_GRENADE_LAUNCHER = [
     category: "Explosives",
     description: "A grenade launcher that shoots grenades",
     obtaining: "Police Level 4",
-    reBuyPrice: "?",
-    sellPrice: "?",
+    reBuyPrice: null,
+    sellPrice: null,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "1/6",

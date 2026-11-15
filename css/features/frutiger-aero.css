@@ -233,6 +233,31 @@ body.frutiger-aero .content table :is(td, th) {
     text-shadow: none !important;
 }
 
+body.frutiger-aero .tips-guide-section {
+    color: var(--aero-ink);
+    background: linear-gradient(145deg, rgba(248, 254, 255, 0.93), rgba(214, 242, 252, 0.86));
+    border: 1px solid var(--aero-edge);
+    border-radius: 12px;
+    box-shadow: var(--aero-shadow);
+    backdrop-filter: blur(12px) saturate(135%);
+    -webkit-backdrop-filter: blur(12px) saturate(135%);
+}
+
+body.frutiger-aero .tips-guide-section :is(p, li) {
+    color: #0b2d46;
+    opacity: 1;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.72);
+}
+
+body.frutiger-aero .tips-guide-section a {
+    color: #075d84;
+    text-decoration-color: rgba(7, 93, 132, 0.5);
+}
+
+body.frutiger-aero .tips-guide-section a:hover {
+    color: #033a56;
+}
+
 body.frutiger-aero .card,
 body.frutiger-aero .val-card,
 body.frutiger-aero .sidebar-box,

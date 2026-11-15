@@ -5,7 +5,6 @@ const DONATION_GOAL = {
 };
 
 const UPDATES = [
-    { version: "D.07/M.11/Y.2026", description: "???", color: "rgb(0, 0, 0)", color2: "rgb(255, 255, 255)" },
     { version: "D.07/M.11/Y.2026", description: "Bag Skins Update & New Car", color: "rgb(255, 89, 0)", color2: "rgb(34, 255, 0)" },
     { version: "D.04/M.10/Y.2026", description: "Money Laundering Update", color: "rgb(255, 255, 255)", color2: "rgb(73, 94, 255)" },
     { version: "D.05/M.09/Y.2026", description: "Motorcycle Update", color: "rgb(255, 60, 0)", color2: "rgb(161, 179, 0)" },
@@ -27,68 +26,6 @@ const VAULT_GUESSER_META = {
 };
 const VAULT_GUESSER_SLOT_MS = 20 * 60 * 1000;
 window.COUNTDOWN_TARGET = COUNTDOWN_TARGET;
-
-function initAdSense() {
-    const config = window.ADSENSE_CONFIG || {};
-    const ad = document.querySelector('.wiki-ad ins.adsbygoogle');
-    if (!ad || !config.publisherId || !config.slotId) return;
-    const adBox = ad.closest('.wiki-ad');
-    if (!adBox) return;
-    adBox.hidden = true;
-
-    const isPublisherId = /^ca-pub-\d+$/.test(config.publisherId);
-    const isSlotId = /^\d+$/.test(config.slotId);
-    if (!isPublisherId || !isSlotId) {
-        console.warn('AdSense configuration is invalid. Expected a ca-pub ID and numeric slot ID.');
-        return;
-    }
-
-    ad.dataset.adClient = config.publisherId;
-    ad.dataset.adSlot = config.slotId;
-
-    const revealFilledAd = () => {
-        if (ad.dataset.adStatus === 'filled') {
-            adBox.hidden = false;
-            return true;
-        }
-        return false;
-    };
-
-    const renderAd = () => {
-        if (ad.clientWidth < 250) return;
-        if (ad.dataset.adRequested === 'true') return;
-        ad.dataset.adRequested = 'true';
-        try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (error) {
-            ad.dataset.adRequested = 'false';
-            console.warn('AdSense could not render this ad.', error);
-        }
-    };
-
-    const adObserver = new MutationObserver(() => {
-        if (revealFilledAd()) adObserver.disconnect();
-    });
-    adObserver.observe(ad, { attributes: true, childList: true, subtree: true });
-    setTimeout(() => adObserver.disconnect(), 15000);
-
-    if (document.getElementById('adsense-loader')) {
-        renderAd();
-        if (ad.clientWidth < 250 && typeof ResizeObserver === 'function') {
-            const resizeObserver = new ResizeObserver(renderAd);
-            resizeObserver.observe(ad);
-        }
-        return;
-    }
-
-    const script = document.createElement('script');
-    script.id = 'adsense-loader';
-    script.async = true;
-    script.crossOrigin = 'anonymous';
-    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.publisherId)}`;
-    script.onload = renderAd;
-    document.head.appendChild(script);
-}
 
 const youtuberSortKeys = new Map();
 
@@ -140,13 +77,6 @@ function renderYoutubersHTML() {
 
     return youtubersList.map(youtuber => {
         const videosHTML = (youtuber.videos || []).slice(0, 3).map(renderYoutuberVideo).join('');
-        const status = window.YOUTUBER_VIDEOS_STATUS || 'loading';
-        const emptyMessage = status === 'loading'
-            ? 'Loading videos...'
-            : status === 'error'
-                ? 'Videos temporarily unavailable'
-                : 'No recent Wanted videos';
-
         return `
             <div class="youtuber-block">
                 <a href="${escapeHTML(youtuber.channelUrl)}" target="_blank" rel="noopener" class="youtuber-header">
@@ -157,7 +87,7 @@ function renderYoutubersHTML() {
                         <div class="youtuber-subtext">VIEW CHANNEL <span class="yt-arrow">&#8599;</span></div>
                     </div>
                 </a>
-                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : `<div class="youtuber-empty-state">${emptyMessage}</div>`}
+                ${videosHTML ? `<div class="video-list-container video-row-flex youtuber-videos">${videosHTML}</div>` : ''}
             </div>
         `;
     }).join('');
@@ -186,7 +116,8 @@ document.addEventListener('click', (event) => {
 
 function refreshYoutuberList() {
     const youtuberList = document.querySelector('.youtuber-list');
-    if (youtuberList) youtuberList.innerHTML = renderYoutubersHTML();
+    if (!youtuberList) return;
+    youtuberList.innerHTML = renderYoutubersHTML();
 }
 
 document.addEventListener('youtuberDataReady', refreshYoutuberList);
@@ -339,7 +270,7 @@ function renderHome() {
         <div class="wiki-stat-row">
             <span class="wiki-stat-icon">${s.icon}</span>
             <span class="wiki-stat-label">${s.label}</span>
-            <span class="wiki-stat-value">${s.count || '?'}</span>
+            <span class="wiki-stat-value">${s.count}</span>
         </div>
     `).join('');
 
@@ -365,7 +296,11 @@ function renderHome() {
         </a>
     `;
 
-    const donationPercent = Math.min(100, Math.round((DONATION_GOAL.current / DONATION_GOAL.target) * 100));
+    const donationPercent = DONATION_GOAL.current > 0 && DONATION_GOAL.target > 0
+        ? Math.min(100, Math.round((DONATION_GOAL.current / DONATION_GOAL.target) * 100))
+        : null;
+
+    const videoCreatorsHTML = renderYoutubersHTML();
 
     return `
         <div class="home-container">
@@ -437,7 +372,7 @@ function renderHome() {
                     <div class="sidebar-block" style="width: 100%;">
                         <h2 class="sidebar-title">CONTENT CREATORS</h2>
                         <div class="youtuber-list">
-                            ${renderYoutubersHTML()}
+                            ${videoCreatorsHTML}
                         </div>
                     </div>
                 </div>
@@ -484,14 +419,6 @@ function renderHome() {
     </div>
 </div>
 
-<div class="sidebar-block wiki-ad" aria-label="Advertisement">
-    <span class="ad-label">ADVERTISEMENT</span>
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-</div>
-
 <div class="sidebar-block">
     <h2 class="sidebar-title">SUPPORT THE WIKI</h2>
     <div class="discord-widget-box bmac-widget-box">
@@ -502,7 +429,7 @@ function renderHome() {
                 <div class="discord-widget-status"><span class="discord-dot"></span>Help cover website hosting</div>
             </div>
         </div>
-        <div class="bmac-goal-section">
+        ${donationPercent === null ? '' : `<div class="bmac-goal-section">
             <div class="bmac-goal-header">
                 <span class="bmac-goal-label">YEARLY GOAL</span>
                 <span class="bmac-goal-values">${DONATION_GOAL.currency}${DONATION_GOAL.current} / ${DONATION_GOAL.currency}${DONATION_GOAL.target}</span>
@@ -511,7 +438,7 @@ function renderHome() {
                 <div class="bmac-progress-fill" style="width: ${donationPercent}%;"></div>
             </div>
             <div class="bmac-goal-subtext">${donationPercent}% funded</div>
-        </div>
+        </div>`}
         <a href="https://buymeacoffee.com/webwithdavy" target="_blank" rel="noopener" class="discord-join-btn">
             DONATE
         </a>
@@ -566,17 +493,6 @@ function renderHome() {
                         </div>
                     </div>
 
-                    <div class="sidebar-block">
-                        <div class="sidebar-box views-box" style="width: 100%;">
-                            <div class="views-header" style="justify-content: center;">
-                                <h3 class="views-title">VAULT GUESSER</h3>
-                            </div>
-                            <div class="views-display">
-                                <div id="vault-guesser-result" class="views-count">Loading...</div>
-                                <div id="vault-guesser-next" class="views-subtext">NEXT GUESS: --:--</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

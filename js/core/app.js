@@ -17,12 +17,12 @@ const playBGM = () => {
 
 window.loadPage = loadPage;
 
-const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "items", "events", "promo-codes", "privacy"];
+const VALID_PAGES = ["home", "valuables", "atms", "weapons", "vehicles", "gun-crates", "missions", "npcs", "locations", "store", "items", "events", "promo-codes", "tips-and-tricks", "privacy"];
 const PAGE_NAMES = {
     home: 'HOME', valuables: 'VALUABLES', atms: 'ATMs & VAULTS',
     weapons: 'WEAPONS', vehicles: 'VEHICLES', 'gun-crates': 'GUN CRATES',
     missions: 'MISSIONS', npcs: 'NPCs', locations: 'LOCATIONS',
-    store: 'STORE', items: 'ITEMS', events: 'EVENTS', 'promo-codes': 'PROMO CODES', privacy: 'PRIVACY'
+    store: 'STORE', items: 'ITEMS', events: 'EVENTS', 'promo-codes': 'PROMO CODES', 'tips-and-tricks': 'TIPS AND TRICKS', privacy: 'PRIVACY'
 };
 
 const PAGE_META = {
@@ -39,12 +39,15 @@ const PAGE_META = {
     items: { title: 'Items - Wanted Wiki', path: '/items', description: 'Browse every item in Roblox Wanted with descriptions, prices and uses.' },
     events: { title: 'Events - Wanted Wiki', path: '/events', description: 'Track Roblox Wanted events, dates, rewards and how to participate.' },
     'promo-codes': { title: 'Promo Codes - Wanted Wiki', path: '/promo-codes', description: 'Find the latest active Roblox Wanted promo codes and rewards.' },
+    'tips-and-tricks': { title: 'Tips and Tricks - Wanted Wiki', path: '/tips-and-tricks', description: 'Practical Wanted game tips, starter vehicles, mission guidance, gun crate comparisons, and money printer yield.' },
     privacy: { title: 'Privacy Policy - Wanted Wiki', path: '/privacy', description: 'Privacy Policy for Wanted Wiki, including advertising, cookies, local storage and third-party services.' }
 };
 
 function setPageMeta(page) {
     const meta = PAGE_META[page] || PAGE_META.home;
     document.title = meta.title;
+    const robots = document.querySelector('meta[name="robots"]');
+    if (robots) robots.content = 'index, follow';
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.href = `https://wantedrblx.com${meta.path}`;
     const description = document.querySelector('meta[name="description"]');
@@ -118,8 +121,9 @@ function loadPage(page, saveToHistory = true, sectionId = null) {
                 case "items": content = typeof renderItems === "function" ? renderItems() : ""; break;
                 case "events": content = typeof renderEvents === "function" ? renderEvents() : ""; break;
                 case "promo-codes": content = typeof renderPromoCodes === "function" ? renderPromoCodes() : ""; break;
+                case "tips-and-tricks": content = typeof renderTipsAndTricks === "function" ? renderTipsAndTricks() : ""; break;
                 case "privacy": content = typeof renderPrivacy === "function" ? renderPrivacy() : ""; break;
-                default: content = `<h2>Work In Progress</h2><p>Under construction...</p>`;
+                default: content = `<h2>Page Not Found</h2><p><a href="/" data-page="home">Return to the Wanted Wiki home page</a></p>`;
             }
         } catch (e) {
             console.error("Error rendering page:", page, e);
@@ -153,8 +157,6 @@ function loadPage(page, saveToHistory = true, sectionId = null) {
 
         if (page === "home") {
             if (typeof initCountdownTimer === "function") initCountdownTimer();
-            if (typeof initVaultGuesser === "function") initVaultGuesser();
-            if (typeof initAdSense === "function") initAdSense();
         }
 
         const cards = container.querySelectorAll('.val-card');
@@ -346,7 +348,7 @@ function initApp() {
         loadPage(page, true, sectionId);
     });
 
-    const DEFERRED_PAGES = ["atms", "events", "gun-crates", "items", "locations", "missions", "npcs", "store", "valuables", "vehicles", "weapons"];
+    const DEFERRED_PAGES = ["atms", "events", "gun-crates", "items", "locations", "missions", "npcs", "store", "tips-and-tricks", "valuables", "vehicles", "weapons"];
 
     window.__deferredReady = false;
     document.addEventListener('wantedDeferredReady', () => {
@@ -393,7 +395,7 @@ function initApp() {
                 home: 'renderHome', valuables: 'renderValuables', atms: 'renderATMs',
                 weapons: 'renderWeapons', vehicles: 'renderVehicles', 'gun-crates': 'renderGunCrates',
                 missions: 'renderMissions', npcs: 'renderNPCs', locations: 'renderLocations',
-                store: 'renderStore', items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes', privacy: 'renderPrivacy'
+                store: 'renderStore', items: 'renderItems', events: 'renderEvents', 'promo-codes': 'renderPromoCodes', 'tips-and-tricks': 'renderTipsAndTricks', privacy: 'renderPrivacy'
             };
             const rendererName = RENDERER_MAP[initialPage] || '';
             const rendererReady = !DEFERRED_PAGES.includes(initialPage) || typeof window[rendererName] === 'function';

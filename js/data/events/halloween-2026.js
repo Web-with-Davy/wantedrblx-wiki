@@ -2,7 +2,7 @@ window.EVENT_HALLOWEEN_2026 = [
   {
     id: "halloween-2026",
     title: "Halloween 2026",
-    date: "October 2025",
+    date: "October 2026",
     dateColor: "rgb(255, 255, 255)",
     dateOutline: "rgb(255, 183, 0)",
     description: "The first annual Halloween event in Wanted! Mutants have taken over the map and need to be defeated.",

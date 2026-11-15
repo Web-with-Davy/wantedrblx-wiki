@@ -1,7 +1,7 @@
 window.ITEM_DROPABLES_PRINTER = [
   {
     name: "Money Printer",
-    description: "Most used economy item, prints money for you",
+    description: "The Money Printer produces a cash payout every 30 seconds. Each print amount and the number of prints before it breaks follow the listed odds, which determine its expected lifetime yield.",
     location: "Robux store, daily login reward, or the wheel at crystal club & resort",
     printerStats: {
       intervalSeconds: 30,

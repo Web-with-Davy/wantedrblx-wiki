@@ -297,6 +297,32 @@ body.christmas-theme .content :where(p, li, td, dd) a:hover {
     color: #fff8e9;
 }
 
+body.christmas-theme .tips-guide-section {
+    color: var(--xmas-ink);
+    background: var(--xmas-grain), var(--xmas-gloss), linear-gradient(160deg, rgba(78, 53, 38, 0.95), rgba(42, 28, 20, 0.96));
+    border: 1px solid var(--xmas-edge);
+    border-top-color: rgba(255, 236, 190, 0.42);
+    border-radius: 12px;
+    box-shadow: var(--xmas-rim-soft), var(--xmas-shadow);
+    backdrop-filter: blur(10px) saturate(115%);
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
+}
+
+body.christmas-theme .tips-guide-section :is(p, li) {
+    color: var(--xmas-ink);
+    opacity: 1;
+    text-shadow: none;
+}
+
+body.christmas-theme .tips-guide-section a {
+    color: var(--xmas-gold-hi);
+    text-decoration-color: rgba(242, 205, 122, 0.5);
+}
+
+body.christmas-theme .tips-guide-section a:hover {
+    color: #fff8e9;
+}
+
 body.christmas-theme .content h1,
 body.christmas-theme .content h2,
 body.christmas-theme .content h3,

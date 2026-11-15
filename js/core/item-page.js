@@ -72,6 +72,33 @@ function _ipSlug(str) {
   return (str || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+function setItemPageMeta(item, category, id, name, image) {
+  const facts = [item.location || item.commonLocation, item.obtaining, item.gun]
+    .filter(value => typeof value === 'string' && value.trim() && value !== 'Unknown' && value !== 'Nowhere');
+  const description = String(item.description || '').trim()
+    || `${name} details for Roblox Wanted${facts.length ? `: ${facts.join('; ')}` : ''}.`;
+  const canonical = `https://wantedrblx.com/item/${encodeURIComponent(category)}/${encodeURIComponent(id)}/`;
+  document.title = `${name} - Wanted Wiki`;
+  const metadata = [
+    ['meta[name="description"]', description],
+    ['meta[property="og:title"]', document.title],
+    ['meta[property="og:description"]', description],
+    ['meta[property="og:url"]', canonical],
+    ['meta[property="og:image"]', image],
+    ['meta[name="twitter:title"]', document.title],
+    ['meta[name="twitter:description"]', description],
+    ['meta[name="twitter:image"]', image],
+  ];
+  for (const [selector, content] of metadata) {
+    const element = document.querySelector(selector);
+    if (element) element.content = content;
+  }
+  const canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (canonicalLink) canonicalLink.href = canonical;
+  const robots = document.querySelector('meta[name="robots"]');
+  if (robots) robots.content = String(item.description || '').trim().length >= 60 ? 'index, follow' : 'noindex, follow';
+}
+
 function _findItem(category, id) {
   const reg = ITEM_PAGE_REGISTRY[category];
   if (!reg) return null;
@@ -159,6 +186,24 @@ function _descBlock(text) {
   return `<div class="ip-desc-block sidebar-box">${text}</div>`;
 }
 
+function getPrinterYieldStats(printerStats) {
+  if (!printerStats?.cashOutcomes?.length || !printerStats?.printOutcomes?.length) return null;
+  const cashChanceTotal = printerStats.cashOutcomes.reduce((total, outcome) => total + outcome.chance, 0);
+  const printChanceTotal = printerStats.printOutcomes.reduce((total, outcome) => total + outcome.chance, 0);
+  if (cashChanceTotal <= 0 || printChanceTotal <= 0) return null;
+  const averageCash = printerStats.cashOutcomes.reduce((total, outcome) => total + outcome.amount * outcome.chance, 0) / cashChanceTotal;
+  const averagePrints = printerStats.printOutcomes.reduce((total, outcome) => total + outcome.count * outcome.chance, 0) / printChanceTotal;
+  return {
+    cashChanceTotal,
+    printChanceTotal,
+    averageCash,
+    averagePrints,
+    expectedLifetimeCash: averageCash * averagePrints,
+    expectedRuntime: averagePrints * printerStats.intervalSeconds,
+  };
+}
+window.getPrinterYieldStats = getPrinterYieldStats;
+
 function renderWeaponDetails(item) {
   const f = typeof formatPrice === 'function' ? formatPrice : (v => v);
   const dpsStats = _weaponDps(item);
@@ -187,12 +232,9 @@ function renderWeaponDetails(item) {
 
   const printerStats = item.printerStats;
   const printerYieldHtml = printerStats ? (() => {
-    const cashChanceTotal = printerStats.cashOutcomes.reduce((total, outcome) => total + outcome.chance, 0);
-    const printChanceTotal = printerStats.printOutcomes.reduce((total, outcome) => total + outcome.chance, 0);
-    const averageCash = printerStats.cashOutcomes.reduce((total, outcome) => total + outcome.amount * outcome.chance, 0) / cashChanceTotal;
-    const averagePrints = printerStats.printOutcomes.reduce((total, outcome) => total + outcome.count * outcome.chance, 0) / printChanceTotal;
-    const expectedLifetimeCash = averageCash * averagePrints;
-    const expectedRuntime = averagePrints * printerStats.intervalSeconds;
+    const yieldStats = getPrinterYieldStats(printerStats);
+    if (!yieldStats) return '';
+    const { cashChanceTotal, printChanceTotal, averagePrints, expectedLifetimeCash, expectedRuntime } = yieldStats;
     const oddsRows = (outcomes, valueKey, valueFormatter) => outcomes.map(outcome => {
       const chance = Number.isInteger(outcome.chance) ? outcome.chance.toFixed(1) : outcome.chance;
       return `<tr><td>${valueFormatter(outcome[valueKey])}</td><td>${chance}%</td></tr>`;
@@ -227,7 +269,7 @@ function renderWeaponDetails(item) {
       <span class="val-stat-label">Possible Item Drops</span>
       <table class="printer-odds-table">
         <thead><tr><th>Item</th><th>Drop chance</th></tr></thead>
-        <tbody>${item.possibleDrops.map(drop => `<tr><td>${drop}</td><td>Unknown</td></tr>`).join('')}</tbody>
+        <tbody>${item.possibleDrops.map(drop => `<tr><td>${drop}</td><td>Not documented</td></tr>`).join('')}</tbody>
       </table>
     </div>` : '';
 
@@ -851,14 +893,14 @@ const VEHICLE_UPGRADE_PRICE_TIERS = {
     windows: [5000, 25000, 100000],
   },
   tactical: {
-    engine: [50000, 150000, '$'],
+    engine: [50000, 150000, 'Unknown'],
     transmission: [100000, 250000, 500000],
     aspiration: [50000, 150000, 400000],
     brakes: [20000, 50000, 150000],
     suspension: [80000, 200000, 500000],
-    armor: [25000, 80000, '$'],
+    armor: [25000, 80000, 'Unknown'],
     tires: [10000, 50000, 200000],
-    windows: [10000, 50000, '$'],
+    windows: [10000, 50000, 'Unknown'],
   },
 };
 
@@ -903,18 +945,18 @@ const UPGRADE_OPTION_INDEX = {
 };
 
 function getVehicleUpgradePrice(vehicleType, category, key) {
-  if (VEHICLE_UPGRADE_UNKNOWN_PRICES[vehicleType]?.[category]) return '$';
+  if (VEHICLE_UPGRADE_UNKNOWN_PRICES[vehicleType]?.[category]) return 'Unknown';
   const tier = VEHICLE_UPGRADE_PRICE_TIER_BY_TYPE[vehicleType];
-  return tier ? VEHICLE_UPGRADE_PRICE_TIERS[tier][category]?.[UPGRADE_OPTION_INDEX[key]] : '$';
+  return tier ? VEHICLE_UPGRADE_PRICE_TIERS[tier][category]?.[UPGRADE_OPTION_INDEX[key]] ?? 'Unknown' : 'Unknown';
 }
 
 function formatUpgradeOption(vehicleType, category, key, label) {
   const price = getVehicleUpgradePrice(vehicleType, category, key);
-  return `${label} ($${typeof price === 'number' ? price.toLocaleString() : ''})`;
+  return `${label} (${typeof price === 'number' ? `$${price.toLocaleString()}` : 'Unknown'})`;
 }
 
 function formatUpgradeTotal(price) {
-  if (price === '$') return '$';
+  if (typeof price !== 'number') return 'Unknown';
   return `<img src="${assetUrl('images/cash.webp')}" alt="Cash" style="height: 16px; width: auto; vertical-align: middle; margin-right: 2px;"><span class="val-stat-highlight">${price.toLocaleString()}</span>`;
 }
 
@@ -1030,7 +1072,7 @@ function updateSuperCarUpgrades(select) {
     totalPrice += price;
   }
   const totalOutput = panel.querySelector('[data-upgrade-total]');
-  if (totalOutput) totalOutput.innerHTML = formatUpgradeTotal(hasUnknownPrice ? '$' : totalPrice);
+  if (totalOutput) totalOutput.innerHTML = formatUpgradeTotal(hasUnknownPrice ? 'Unknown' : totalPrice);
 
   const performanceBonus = { topSpeed: 0, acceleration: 0, braking: 0 };
   for (const category of ['engine', 'transmission', 'aspiration', 'brakes']) {
@@ -1290,6 +1332,7 @@ function _renderItemPage(category, id, back) {
     const imgSlug = item.image || slug;
     const ext = reg.ext || 'webp';
     const imgSrc = assetUrl(reg.folder ? `images/${reg.folder}/${imgSlug}.${ext}` : `images/${imgSlug}.${ext}`);
+    setItemPageMeta(item, category, slug, name, new URL(imgSrc, window.location.href).href);
 
     const rarityKey = item.rarity || item.difficulty || item.team || null;
     const rarityData = rarityKey

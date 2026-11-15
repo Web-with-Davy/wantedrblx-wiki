@@ -1,7 +1,5 @@
 
 const SITE = 'https://wantedrblx.com';
-const DEFAULT_IMG = SITE + '/images/og-image.webp';
-const DEFAULT_DESC = 'The Roblox Wanted Wiki — find all weapons, vehicles, missions, valuables, promo codes and more!';
 
 import ITEMS from '../items-data.json';
 
@@ -18,64 +16,65 @@ function lookup(category, id) {
   return null;
 }
 
-function buildHtml(item, category, id) {
-  const title = item ? `${item.n} — Wanted Wiki` : 'Wanted Wiki';
-  const desc  = (item && item.d) ? item.d : DEFAULT_DESC;
-  const image = (item && item.i) ? item.i : DEFAULT_IMG;
-  const canonicalCategory = String(category).toLowerCase();
-  const canonicalId = slugify(id);
-  const canonical = SITE + '/item/' + encodeURIComponent(canonicalCategory) + '/' + encodeURIComponent(canonicalId) + '/';
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>${escHtml(title)}</title>
-  <meta name="description" content="${escHtml(desc)}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Wanted Wiki">
-  <meta property="og:url" content="${escHtml(canonical)}">
-  <meta property="og:title" content="${escHtml(title)}">
-  <meta property="og:description" content="${escHtml(desc)}">
-  <meta property="og:image" content="${escHtml(image)}">
-  <meta property="og:image:alt" content="${escHtml(item ? item.n : 'Wanted Wiki')}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${escHtml(title)}">
-  <meta name="twitter:description" content="${escHtml(desc)}">
-  <meta name="twitter:image" content="${escHtml(image)}">
-  <link rel="canonical" href="${escHtml(canonical)}">
-</head>
-<body>
-  <h1>${escHtml(title)}</h1>
-  <p>${escHtml(desc)}</p>
-  <a href="${SITE}/">Back to the Wanted Wiki</a>
-</body>
-</html>`;
-}
-
-function escHtml(str) {
-  return String(str)
+function escapeHtml(value) {
+  return String(value ?? '')
     .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-function isBot(ua) {
-  if (!ua) return false;
-  const lower = ua.toLowerCase();
-  return (
-    lower.includes('discordbot') ||
-    lower.includes('twitterbot') ||
-    lower.includes('facebookexternalhit') ||
-    lower.includes('slackbot') ||
-    lower.includes('telegrambot') ||
-    lower.includes('whatsapp') ||
-    lower.includes('linkedinbot') ||
-    lower.includes('bot') ||
-    lower.includes('crawler') ||
-    lower.includes('spider')
-  );
+function buildItemMarkup(item) {
+  const stats = Object.entries(item.s || {}).map(([label, value]) => `
+    <div class="val-stat"><span class="val-stat-label">${escapeHtml(label)}</span><span class="val-stat-value">${escapeHtml(value)}</span></div>
+  `).join('');
+  const description = item.d
+    ? `<div class="ip-desc-block sidebar-box">${escapeHtml(item.d)}</div>`
+    : '';
+
+  return `
+    <article class="ip-wrap">
+      <header class="ip-hero sidebar-box">
+        <div class="ip-hero-img-wrap"><img class="ip-hero-img" src="${escapeHtml(item.i)}" alt="${escapeHtml(item.n)}"></div>
+        <div class="ip-hero-info"><h1 class="ip-title">${escapeHtml(item.n)}</h1></div>
+      </header>
+      <div class="ip-body">
+        ${description}
+        ${stats ? `<section class="ip-section sidebar-box"><h2 class="ip-section-header">Item details</h2><div class="ip-section-body">${stats}</div></section>` : ''}
+      </div>
+    </article>`;
+}
+
+function itemDescription(item) {
+  if (item.d) return item.d;
+  const facts = Object.entries(item.s || {}).slice(0, 4)
+    .map(([label, value]) => `${label}: ${value}`)
+    .join('; ');
+  return facts ? `${item.n} details for Roblox Wanted. ${facts}.` : `${item.n} in Roblox Wanted.`;
+}
+
+function applyItemMetadata(html, item, category, id) {
+  const title = `${item.n} - Wanted Wiki`;
+  const description = itemDescription(item);
+  const canonical = `${SITE}/item/${encodeURIComponent(String(category).toLowerCase())}/${encodeURIComponent(slugify(id))}/`;
+  const tags = [
+    [/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`],
+    [/<meta\s+name="description"[^>]*>/i, `<meta name="description" content="${escapeHtml(description)}">`],
+    [/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${escapeHtml(title)}">`],
+    [/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${escapeHtml(description)}">`],
+    [/<meta\s+property="og:url"[^>]*>/i, `<meta property="og:url" content="${escapeHtml(canonical)}">`],
+    [/<meta\s+property="og:image"[^>]*>/i, `<meta property="og:image" content="${escapeHtml(item.i)}">`],
+    [/<meta\s+name="twitter:title"[^>]*>/i, `<meta name="twitter:title" content="${escapeHtml(title)}">`],
+    [/<meta\s+name="twitter:description"[^>]*>/i, `<meta name="twitter:description" content="${escapeHtml(description)}">`],
+    [/<meta\s+name="twitter:image"[^>]*>/i, `<meta name="twitter:image" content="${escapeHtml(item.i)}">`],
+    [/<link\s+rel="canonical"[^>]*>/i, `<link rel="canonical" href="${escapeHtml(canonical)}">`],
+  ];
+  for (const [pattern, replacement] of tags) html = html.replace(pattern, replacement);
+  if (String(item.d || '').trim().length < 60) {
+    html = html.replace(/<meta\s+name="robots"[^>]*>/i, '<meta name="robots" content="noindex, follow">');
+  }
+  return html;
 }
 
 function htmlHeaders() {
@@ -139,27 +138,21 @@ export default {
 
     const [, category, id] = itemMatch;
     const item = lookup(category, id);
-    const ua = request.headers.get('user-agent') || '';
-
-    if (!isBot(ua)) {
-      const appResponse = await fetch(new URL('/', url));
-      if (!appResponse.ok) return appResponse;
-
-      const appHtml = (await appResponse.text())
-        .replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">`);
-      return new Response(appHtml, { status: appResponse.status, headers: htmlHeaders() });
-    }
-
     if (!item) return new Response('Not found', {
       status: 404,
       headers: { ...htmlHeaders(), 'Content-Type': 'text/plain;charset=UTF-8' }
     });
 
-    const html = buildHtml(item, category, id);
+    const appResponse = await fetch(new URL('/', url));
+    if (!appResponse.ok) return appResponse;
 
-    return new Response(html, {
-      status: 200,
-      headers: htmlHeaders(),
-    });
+    let appHtml = (await appResponse.text())
+      .replace(/<head(?:\s[^>]*)?>/i, head => `${head}<base href="/">`);
+    appHtml = applyItemMetadata(appHtml, item, category, id);
+    appHtml = appHtml.replace(
+      /(<div\b[^>]*\bid=["']page-container["'][^>]*>)[\s\S]*?(<\/div>\s*<\/main>\s*<\/div>)/i,
+      (_, openingTag, closingTags) => `${openingTag}${buildItemMarkup(item)}${closingTags}`
+    );
+    return new Response(appHtml, { status: appResponse.status, headers: htmlHeaders() });
   },
 };

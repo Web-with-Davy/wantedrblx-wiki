@@ -4,7 +4,7 @@ function renderPrivacy() {
             <header class="policy-header">
                 <p class="policy-eyebrow">SITE POLICY</p>
                 <h1>Privacy Policy</h1>
-                <p class="policy-updated">Last updated: November 5, 2026</p>
+                <p class="policy-updated">Last updated: November 15, 2026</p>
             </header>
 
             <section class="policy-section">
@@ -21,20 +21,20 @@ function renderPrivacy() {
 
             <section class="policy-section">
                 <h2>Advertising</h2>
-                <p>We use Google AdSense to display advertisements. Google and its advertising partners may use cookies or similar technologies to serve, measure, and limit advertising, subject to your choices and applicable law.</p>
+                <p>Advertising is currently disabled while we configure the required consent controls. If advertising is enabled, Google AdSense and its advertising partners may use cookies or similar technologies to serve, measure, and limit advertising, subject to your choices and applicable law.</p>
                 <p>Google may use information about your visits to this and other websites to provide advertising. You can learn more about Google's advertising practices and manage available settings at <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ad Settings</a>.</p>
-                <p>Advertisements are clearly labeled and are not part of the site's editorial content. We do not control the content of individual advertisements.</p>
+                <p>If advertising is enabled, ads will be labeled and kept separate from the site's editorial content. We do not control the content of individual advertisements.</p>
             </section>
 
             <section class="policy-section">
                 <h2>Cookies and consent</h2>
-                <p>Google AdSense may use advertising cookies when permitted. Visitors in regions requiring consent may be shown Google's consent controls or a Google-certified consent management platform before personalized advertising is used. You can change your choices through the consent controls when they are available.</p>
+                <p>No advertising or consent-management scripts are currently loaded by the site. Before advertising is enabled, we will configure a Google-certified consent management platform for visitors in the EEA, UK, and Switzerland and update this policy to describe the active controls.</p>
                 <p>Disabling cookies or using an ad blocker may affect advertising, but it does not prevent you from using the wiki.</p>
             </section>
 
             <section class="policy-section">
                 <h2>Children's privacy</h2>
-                <p>This site is not directed at children under 13, and we do not knowingly collect personal information from children. Do not submit personal information through the site. Parents or guardians who believe a child has provided personal information can contact us through the <a href="https://discord.gg/3NqFCz5sRx" target="_blank" rel="noopener">Wanted Wiki Discord server</a>.</p>
+                <p>Roblox has a broad audience that includes minors. Wanted Wiki is a general-audience reference site and does not ask visitors to create accounts or submit personal information. We do not knowingly collect personal information from children under 13. Parents or guardians can contact us through the <a href="https://discord.gg/3NqFCz5sRx" target="_blank" rel="noopener">Wanted Wiki Discord server</a>.</p>
             </section>
 
             <section class="policy-section">
