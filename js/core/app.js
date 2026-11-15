@@ -157,7 +157,9 @@ function loadPage(page, saveToHistory = true, sectionId = null) {
 
         if (page === "home") {
             if (typeof initCountdownTimer === "function") initCountdownTimer();
+            if (typeof initVaultGuesser === "function") initVaultGuesser();
         }
+        if (typeof initAdSense === "function") initAdSense();
 
         const cards = container.querySelectorAll('.val-card');
 
@@ -303,6 +305,7 @@ function initApp() {
     };
 
     initGlobalSounds();
+    if (typeof initAdSense === 'function') initAdSense();
 
     if (bgm && volumeSlider) {
         const savedVol = localStorage.getItem("bgmVolume") || 0.05;

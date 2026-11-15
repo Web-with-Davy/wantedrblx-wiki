@@ -297,6 +297,19 @@
     text-align: center;
 }
 
+.wiki-ad--footer {
+    height: auto;
+    max-height: none;
+    width: min(728px, calc(100% - 40px));
+    margin: 24px auto 0;
+}
+
+.wiki-ad--footer .adsbygoogle {
+    height: auto;
+    max-height: none;
+    min-height: 0;
+}
+
 .home-admin-sidebar::-webkit-scrollbar {
     width: 6px;
 }

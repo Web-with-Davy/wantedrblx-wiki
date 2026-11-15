@@ -419,6 +419,14 @@ function renderHome() {
     </div>
 </div>
 
+<div class="sidebar-block wiki-ad" aria-label="Advertisement">
+    <span class="ad-label">ADVERTISEMENT</span>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+</div>
+
 <div class="sidebar-block">
     <h2 class="sidebar-title">SUPPORT THE WIKI</h2>
     <div class="discord-widget-box bmac-widget-box">
@@ -497,6 +505,75 @@ function renderHome() {
             </div>
         </div>
     `;
+}
+
+function initAdSense() {
+    const config = window.ADSENSE_CONFIG || {};
+    const ads = [...document.querySelectorAll('.wiki-ad ins.adsbygoogle')];
+    if (!ads.length || !config.publisherId || !config.slotId) return;
+
+    const isPublisherId = /^ca-pub-\d+$/.test(config.publisherId);
+    const isSlotId = /^\d+$/.test(config.slotId);
+    if (!isPublisherId || !isSlotId) {
+        console.warn('AdSense configuration is invalid. Expected a ca-pub ID and numeric slot ID.');
+        return;
+    }
+
+    const setup = ads.map(ad => ({ ad, adBox: ad.closest('.wiki-ad') }));
+
+    setup.forEach(({ ad, adBox }) => {
+        ad.dataset.adClient = config.publisherId;
+        ad.dataset.adSlot = config.slotId;
+
+        if (ad.dataset.adStatus === 'filled') {
+            adBox.hidden = false;
+            return;
+        }
+        if (ad.dataset.adRequested === 'true') return;
+
+        adBox.hidden = true;
+        const observer = new MutationObserver(() => {
+            if (ad.dataset.adStatus === 'filled') {
+                adBox.hidden = false;
+                observer.disconnect();
+            }
+        });
+        observer.observe(ad, { attributes: true, childList: true, subtree: true });
+        setTimeout(() => observer.disconnect(), 15000);
+    });
+
+    const renderAd = ad => {
+        if (ad.dataset.adRequested === 'true') return;
+        if (ad.clientWidth < 250) {
+            if (!ad.dataset.resizeWatched && typeof ResizeObserver === 'function') {
+                ad.dataset.resizeWatched = 'true';
+                new ResizeObserver(() => renderAd(ad)).observe(ad);
+            }
+            return;
+        }
+        ad.dataset.adRequested = 'true';
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+            ad.dataset.adRequested = 'false';
+            console.warn('AdSense could not render this ad.', error);
+        }
+    };
+
+    const renderAll = () => setup.forEach(({ ad }) => renderAd(ad));
+
+    if (document.getElementById('adsense-loader')) {
+        renderAll();
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'adsense-loader';
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.publisherId)}`;
+    script.onload = renderAll;
+    document.head.appendChild(script);
 }
 
 function scrollCardGrid(gridId, direction) {
