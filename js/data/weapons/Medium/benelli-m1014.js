@@ -4,8 +4,8 @@ window.WEAPON_BENELLI_M1014 = [
     name: "Benelli M1014",
     category: "Medium",
     description: "Too beginner friendly, too annoying",
-    reBuyPrice: 4000,
-    sellPrice: 1200,
+    reBuyPrice: 1000,
+    sellPrice: 300,
     contractPrice: 45000,
     stats: {
       ammo: "30/270",

@@ -4,8 +4,8 @@ window.WEAPON_SPAS_12 = [
     name: "SPAS-12",
     category: "Medium",
     description: "It is somehow more expensive than the Benelli and weaker than the Benelli.",
-    reBuyPrice: 8000,
-    sellPrice: 2400,
+    reBuyPrice: 6000,
+    sellPrice: 1800,
     contractPrice: 2000000,
     stats: {
       ammo: "6/90",

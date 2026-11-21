@@ -4,8 +4,8 @@ window.WEAPON_MODEL_870 = [
     name: "Model 870",
     category: "Medium",
     description: "It is a shotgun, but a very bad and boring gun.",
-    reBuyPrice: 750,
-    sellPrice: 225,
+    reBuyPrice: 500,
+    sellPrice: 150,
     contractPrice: 5000,
     stats: {
       ammo: "4/80",

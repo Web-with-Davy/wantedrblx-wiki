@@ -4,8 +4,8 @@ window.WEAPON_ARX_160 = [
     name: "ARX-160",
     category: "Medium",
     description: "A very fast rifle",
-    reBuyPrice: 9000,
-    sellPrice: 2700,
+    reBuyPrice: 7000,
+    sellPrice: 2100,
     contractPrice: 2500000,
     stats: {
       ammo: "30/300",

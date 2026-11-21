@@ -4,8 +4,8 @@ window.WEAPON_GLOCK_18C = [
     name: "Glock 18c",
     category: "Light",
     description: "A fully automatic pistol with high fire rate",
-    reBuyPrice: 3500,
-    sellPrice: 1050,
+    reBuyPrice: 2000,
+    sellPrice: 600,
     contractPrice: 400000,
     stats: {
       ammo: "19/285",

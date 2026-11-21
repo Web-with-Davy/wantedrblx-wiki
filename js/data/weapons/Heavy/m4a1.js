@@ -4,8 +4,8 @@ window.WEAPON_M4A1 = [
     name: "M4A1",
     category: "Heavy",
     description: "The M4A1 is a lightweight and versatile carbine known for its high rate of fire and low recoil. It’s a perfect all-rounder for players who need a reliable weapon in close-quarters combat and mid-range engagements.",
-    reBuyPrice: 8000,
-    sellPrice: 2400,
+    reBuyPrice: 4000,
+    sellPrice: 1200,
     contractPrice: 750000,
     stats: {
       ammo: "30/420",

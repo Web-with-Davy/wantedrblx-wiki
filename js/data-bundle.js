@@ -2484,47 +2484,48 @@ window.PROMO_CODES_EXPIRED = [
 
 /* --- js/data/store/bag-boosts.js --- */
 window.STORE_BAG_BOOSTS = [
-  { name: " +30 Bag Boost: 12 Hours", robuxPrice: 999, description: "Increases your bag capacity by 30 for 12 hours. [Time goes down even when not in-game]" },
-  { name: " +20 Bag Boost: 12 Hours", robuxPrice: 699, description: "Increases your bag capacity by 20 for 12 hours. [Time goes down even when not in-game]" },
-  { name: "+15 Bag Boost: 12 Hours", robuxPrice: 399, description: "Increases your bag capacity by 15 for 12 hours. [Time goes down even when not in-game]" },
-  { name: "+5 Bag Boost: 12 Hours", robuxPrice: 19, description: "Increases your bag capacity by 5 for 12 hours. [Time goes down even when not in-game]" },
-  { name: "+10 Bag Boost: 12 Hours", robuxPrice: 99, description: "Increases your bag capacity by 10 for 12 hours. [Time goes down even when not in-game]" }
+  { name: " +30 Bag Boost: 12 Hours", robuxPrice: 1249, description: "Increases your bag capacity by 30 for 12 hours. [Time goes down even when not in-game]" },
+  { name: " +20 Bag Boost: 12 Hours", robuxPrice: 875, description: "Increases your bag capacity by 20 for 12 hours. [Time goes down even when not in-game]" },
+  { name: "+15 Bag Boost: 12 Hours", robuxPrice: 499, description: "Increases your bag capacity by 15 for 12 hours. [Time goes down even when not in-game]" },
+  { name: "+5 Bag Boost: 12 Hours", robuxPrice: 125, description: "Increases your bag capacity by 5 for 12 hours. [Time goes down even when not in-game]" },
+  { name: "+10 Bag Boost: 12 Hours", robuxPrice: 25, description: "Increases your bag capacity by 10 for 12 hours. [Time goes down even when not in-game]" }
 ];
 
 /* --- js/data/store/cash.js --- */
 window.STORE_CASH = [
-  { name: "Get 2,500,000 Cash", robuxPrice: 3999, description: "Instantly adds 2,500,000 cash to your account." },
-  { name: "Get 1,000,000 Cash", robuxPrice: 1749, description: "Instantly adds 1,000,000 cash to your account." },
-  { name: "Get 400,000 Cash", robuxPrice: 749, description: "Instantly adds 400,000 cash to your account." },
-  { name: "Get 200,000 Cash", robuxPrice: 379, description: "Instantly adds 200,000 cash to your account." },
-  { name: "Get 50,000 Cash", robuxPrice: 99, description: "Instantly adds 50,000 cash to your account." }
+  { name: "Get 5,000,000 Cash", robuxPrice: 4565, description: "Instantly adds 5,000,000 cash to your account." },
+  { name: "Get 2,500,000 Cash", robuxPrice: 2499, description: "Instantly adds 2,500,000 cash to your account." },
+  { name: "Get 1,000,000 Cash", robuxPrice: 1125, description: "Instantly adds 1,000,000 cash to your account." },
+  { name: "Get 400,000 Cash", robuxPrice: 475, description: "Instantly adds 400,000 cash to your account." },
+  { name: "Get 100,000 Cash", robuxPrice: 125, description: "Instantly adds 200,000 cash to your account." },
 ];
 
 /* --- js/data/store/money-printers.js --- */
 window.STORE_MONEY_PRINTERS = [
-  { name: "Daily Printer", robuxPrice: 36, description: "Gives you one Money Printer at 50% of the price." },
-  { name: "x11 Money Printers", robuxPrice: 675, description: "Gives x11 Money Printers and an extra 2 for first purchase." },
-  { name: "Money Printer", robuxPrice: 75, description: "Gives x1 Money Printer." }
+  { name: "Daily Printer", robuxPrice: 45, description: "Gives you one Money Printer at 50% of the price." },
+  { name: "x11 Money Printers", robuxPrice: 845, description: "Gives x11 Money Printers and and extra 2 for first purchase." },
+  { name: "Money Printer", robuxPrice: 95, description: "Gives x1 Money Printer." }
 ];
 
 /* --- js/data/store/other.js --- */
 window.STORE_OTHER = [
-  { name: "Restore Daily Login Streak", robuxPrice: 49, description: "Restores your daily login streak."},
-  { name: "Restore Lost Items", robuxPrice: 19, description: "Restores items lost after death." },
-  { name: "x10 Tier 1 Vehicle Crate", robuxPrice: 198, description: "Gives 10 Tier 1 Vehicle Crates" },
-  { name: "x50 Tier 1 Vehicle Crate", robuxPrice: 849, description: "Gives 50 Tier 1 Vehicle Crates" },
-  { name: "x200 Tier 1 Vehicle Crate", robuxPrice: 3149, description: "Gives 200 Tier 1 Vehicle Crates" },
-  { name: "x10 Tier 2 Vehicle Crate", robuxPrice: 849, description: "Gives 10 Tier 2 Vehicle Crates" },
-  { name: "x50 Tier 2 Vehicle Crate", robuxPrice: 3499, description: "Gives 50 Tier 2 Vehicle Crates" },
-  { name: "x200 Tier 2 Vehicle Crate", robuxPrice: 10999, description: "Gives 200 Tier 2 Vehicle Crates" }
+  { name: "Restore Daily Login Streak", robuxPrice: 65, description: "Restores your daily login streak."},
+  { name: "Restore Lost Items", robuxPrice: 25, description: "Restores items lost after death." },
+  { name: "x10 Basic Vehicle Crate", robuxPrice: 250, description: "Gives 10 Tier 1 Vehicle Crates" },
+  { name: "x50 Basic Vehicle Crate", robuxPrice: 1065, description: "Gives 50 Tier 1 Vehicle Crates" },
+  { name: "x200 Basic Vehicle Crate", robuxPrice: 3939, description: "Gives 200 Tier 1 Vehicle Crates" },
+  { name: "x10 Premium Vehicle Crate", robuxPrice: 1065, description: "Gives 10 Tier 2 Vehicle Crates" },
+  { name: "x50 Premium Vehicle Crate", robuxPrice: 4375, description: "Gives 50 Tier 2 Vehicle Crates" },
+  { name: "x200 Premium Vehicle Crate", robuxPrice: 13749, description: "Gives 200 Tier 2 Vehicle Crates" }
 ];
 
 /* --- js/data/store/packs.js --- */
 window.STORE_PACKS = [
-  { name: "Zoro + Zorvello", robuxPrice: 2499, description: "Unlocks the Zoro & Zorvello car." },
-  { name: "Weapon Pack", robuxPrice: 199, description: "A bundle of weapons containing the RPG, Benelli M1014, UMP 45 and Uzi." },
-  { name: "Mini-Vec Pack", robuxPrice: 649, description: "Includes the Mini Bird helicopter and Kriss Vector." },
-  { name: "Vanguard Pack", robuxPrice: 1899, description: "Includes the Vanguard car, SPAS-12 and x3 Money Printers" }
+  { name: "Starter Pack", robuxPrice: 30, description: "Starter bundle containing Model 870 Contract, C4 Contract, 30k Cash and the Beam Car" },
+  { name: "Zoro + Zorvello", robuxPrice: 3125, description: "Unlocks the Zoro & Zorvello car." },
+  { name: "Weapon Pack", robuxPrice: 115, description: "A bundle of weapons containing the RPG, Benelli M1014, UMP 45 and Uzi." },
+  { name: "Mini-Vec Pack", robuxPrice: 815, description: "Includes the Mini Bird helicopter and Kriss Vector." },
+  { name: "Vanguard Pack", robuxPrice: 1249, description: "Includes the Vanguard car, SPAS-12 and x3 Money Printers" }
 ];
 
 /* --- js/data/valuables/4th-of-july.js --- */
@@ -3882,6 +3883,8 @@ window.WEAPON_BALLISTIC_SHIELD = [
     category: "Equipment",
     description: "Shield that can block bullets",
     obtaining: "Police Level 2",
+    reBuyPrice: 3500,
+    sellPrice: 1050,
     location: "Police Armory",
     contractPrice: "Un-Buyable",
   }
@@ -3914,11 +3917,11 @@ window.WEAPON_FLASHBANG = [
     category: "Explosives",
     description: "A throwable grenade that creates a bright flash of light and a loud noise, temporarily blinding and deafening anyone nearby.",
     obtaining: "Police Level 3",
-    reBuyPrice: null,
-    sellPrice: null,
+    reBuyPrice: 1500,
+    sellPrice: 450,
     contractPrice: "Un-Buyable",
     stats: {
-      ammo: null,
+      ammo: "1/2",
       ammoPrice: "1500 for 1",
       damage: "Head-0/Torso-0/Limbs-0",
       firerate: 0,
@@ -3935,11 +3938,11 @@ window.WEAPON_GRENADE_LAUNCHER = [
     category: "Explosives",
     description: "A grenade launcher that shoots grenades",
     obtaining: "Police Level 4",
-    reBuyPrice: null,
-    sellPrice: null,
+    reBuyPrice: 8000,
+    sellPrice: 2400,
     contractPrice: "Un-Buyable",
     stats: {
-      ammo: "1/6",
+      ammo: "1/8",
       ammoPrice: "Cant buy ammo",
       damage: "80",
       firerate: 13,
@@ -3955,8 +3958,8 @@ window.WEAPON_M67 = [
     name: "M67",
     category: "Explosives",
     description: "A throwable grenade that explodes after a few seconds",
-    reBuyPrice: 750,
-    sellPrice: 225,
+    reBuyPrice: 1500,
+    sellPrice: 450,
     contractPrice: 50000,
     stats: {
       ammo: "1/3",
@@ -3996,9 +3999,9 @@ window.WEAPON_AK_47 = [
     name: "AK-47",
     category: "Heavy",
     description: "A very powerful rifle, but it lacks speed",
-    reBuyPrice: 3500,
-    sellPrice: 1050,
-    contractPrice: 800000,
+    reBuyPrice: 2000,
+    sellPrice: 600,
+    contractPrice: 90000,
     stats: {
       ammo: "30/300",
       ammoPrice: "$4500 for 30",
@@ -4036,8 +4039,8 @@ window.WEAPON_AUG_A1 = [
     name: "AUG A1",
     category: "Heavy",
     description: "SUCKS, VERY BAD GUN",
-    reBuyPrice: 1750,
-    sellPrice: 525,
+    reBuyPrice: 1000,
+    sellPrice: 300,
     contractPrice: 25000,
     stats: {
       ammo: "30/270",
@@ -4134,8 +4137,8 @@ window.WEAPON_FN_FAL = [
     category: "Heavy",
     description: "The FN FAL is a heavy-hitting automatic rifle with excellent range and damage, making it a favorite for mid-to-long range engagements. It features moderate recoil and a solid magazine capacity, balancing power with control.",
     obtaining: "Syndicate Level 4",
-    reBuyPrice: 9000,
-    sellPrice: 2700,
+    reBuyPrice: 3000,
+    sellPrice: 900,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "20/280",
@@ -4174,8 +4177,8 @@ window.WEAPON_M4A1 = [
     name: "M4A1",
     category: "Heavy",
     description: "The M4A1 is a lightweight and versatile carbine known for its high rate of fire and low recoil. It’s a perfect all-rounder for players who need a reliable weapon in close-quarters combat and mid-range engagements.",
-    reBuyPrice: 8000,
-    sellPrice: 2400,
+    reBuyPrice: 4000,
+    sellPrice: 1200,
     contractPrice: 750000,
     stats: {
       ammo: "30/420",
@@ -4331,8 +4334,8 @@ window.WEAPON_GLOCK_18C = [
     name: "Glock 18c",
     category: "Light",
     description: "A fully automatic pistol with high fire rate",
-    reBuyPrice: 3500,
-    sellPrice: 1050,
+    reBuyPrice: 2000,
+    sellPrice: 600,
     contractPrice: 400000,
     stats: {
       ammo: "19/285",
@@ -4445,8 +4448,8 @@ window.WEAPON_RAYGUN = [
     category: "Light",
     description: "Powerful against mutants, but not so much against players.",
     obtaining: "Halloween Event",
-    reBuyPrice: 2000,
-    sellPrice: 600,
+    reBuyPrice: 2500,
+    sellPrice: 750,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "10/200",
@@ -4519,7 +4522,7 @@ window.WEAPON_UZI = [
     description: "Very annoying to go against",
     reBuyPrice: 500,
     sellPrice: 150,
-    contractPrice: 25000,
+    contractPrice: 6500,
     stats: {
       ammo: "25/250",
       ammoPrice: "$250 for 25",
@@ -4547,8 +4550,8 @@ window.WEAPON_ARX_160 = [
     name: "ARX-160",
     category: "Medium",
     description: "A very fast rifle",
-    reBuyPrice: 9000,
-    sellPrice: 2700,
+    reBuyPrice: 7000,
+    sellPrice: 2100,
     contractPrice: 2500000,
     stats: {
       ammo: "30/300",
@@ -4586,8 +4589,8 @@ window.WEAPON_BENELLI_M1014 = [
     name: "Benelli M1014",
     category: "Medium",
     description: "Too beginner friendly, too annoying",
-    reBuyPrice: 4000,
-    sellPrice: 1200,
+    reBuyPrice: 1000,
+    sellPrice: 300,
     contractPrice: 45000,
     stats: {
       ammo: "30/270",
@@ -4670,8 +4673,8 @@ window.WEAPON_MODEL_870 = [
     name: "Model 870",
     category: "Medium",
     description: "It is a shotgun, but a very bad and boring gun.",
-    reBuyPrice: 750,
-    sellPrice: 225,
+    reBuyPrice: 500,
+    sellPrice: 150,
     contractPrice: 5000,
     stats: {
       ammo: "4/80",
@@ -4717,8 +4720,8 @@ window.WEAPON_MP5K = [
     category: "Medium",
     description: "A very fast SMG with good damage",
     obtaining: "Daily Rewards Day 4",
-    reBuyPrice: 1500,
-    sellPrice: 450,
+    reBuyPrice: 1000,
+    sellPrice: 300,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "30/240",
@@ -4794,8 +4797,8 @@ window.WEAPON_SPAS_12 = [
     name: "SPAS-12",
     category: "Medium",
     description: "It is somehow more expensive than the Benelli and weaker than the Benelli.",
-    reBuyPrice: 8000,
-    sellPrice: 2400,
+    reBuyPrice: 6000,
+    sellPrice: 1800,
     contractPrice: 2000000,
     stats: {
       ammo: "6/90",
@@ -4840,8 +4843,8 @@ window.WEAPON_UMP_45 = [
     name: "UMP 45",
     category: "Medium",
     description: "A police SMG; it is okay, I guess.",
-    reBuyPrice: 1250,
-    sellPrice: 375,
+    reBuyPrice: 500,
+    sellPrice: 150,
     contractPrice: 9000,
     stats: {
       ammo: "30/240",

@@ -3,8 +3,8 @@ window.WEAPON_M67 = [
     name: "M67",
     category: "Explosives",
     description: "A throwable grenade that explodes after a few seconds",
-    reBuyPrice: 750,
-    sellPrice: 225,
+    reBuyPrice: 1500,
+    sellPrice: 450,
     contractPrice: 50000,
     stats: {
       ammo: "1/3",

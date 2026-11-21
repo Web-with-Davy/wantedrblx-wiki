@@ -5,8 +5,8 @@ window.WEAPON_MP5K = [
     category: "Medium",
     description: "A very fast SMG with good damage",
     obtaining: "Daily Rewards Day 4",
-    reBuyPrice: 1500,
-    sellPrice: 450,
+    reBuyPrice: 1000,
+    sellPrice: 300,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "30/240",

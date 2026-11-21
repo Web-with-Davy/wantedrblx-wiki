@@ -5,8 +5,8 @@ window.WEAPON_RAYGUN = [
     category: "Light",
     description: "Powerful against mutants, but not so much against players.",
     obtaining: "Halloween Event",
-    reBuyPrice: 2000,
-    sellPrice: 600,
+    reBuyPrice: 2500,
+    sellPrice: 750,
     contractPrice: "Un-Buyable",
     stats: {
       ammo: "10/200",

@@ -4,9 +4,9 @@ window.WEAPON_AK_47 = [
     name: "AK-47",
     category: "Heavy",
     description: "A very powerful rifle, but it lacks speed",
-    reBuyPrice: 3500,
-    sellPrice: 1050,
-    contractPrice: 800000,
+    reBuyPrice: 2000,
+    sellPrice: 600,
+    contractPrice: 90000,
     stats: {
       ammo: "30/300",
       ammoPrice: "$4500 for 30",

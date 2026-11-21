@@ -6,7 +6,7 @@ window.WEAPON_UZI = [
     description: "Very annoying to go against",
     reBuyPrice: 500,
     sellPrice: 150,
-    contractPrice: 25000,
+    contractPrice: 6500,
     stats: {
       ammo: "25/250",
       ammoPrice: "$250 for 25",

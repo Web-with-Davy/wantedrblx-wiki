@@ -4,8 +4,8 @@ window.WEAPON_UMP_45 = [
     name: "UMP 45",
     category: "Medium",
     description: "A police SMG; it is okay, I guess.",
-    reBuyPrice: 1250,
-    sellPrice: 375,
+    reBuyPrice: 500,
+    sellPrice: 150,
     contractPrice: 9000,
     stats: {
       ammo: "30/240",
